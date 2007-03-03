@@ -74,7 +74,9 @@ void Scene::setGame( Game* game ) {
         removeItem( mark );
         delete mark;
     }
-   update();
+    QList<QRectF> tmp;
+    tmp.push_back(QRectF(0,0,width(),height()));
+    emit changed(tmp);
 }
 
 void Scene::updateBoard() {}
@@ -121,7 +123,9 @@ void Scene::slotGameMoveFinished() {
     Move move = m_game->lastMove();
     Mark* mark = new Mark(move.p, this, move.x, move.y);
     addItem(mark);
-    update();
+    QList<QRectF> tmp;
+    tmp.push_back(QRectF(0,0,width(),height()));
+    emit changed(tmp);
     m_game->startNextTurn();
 }
 

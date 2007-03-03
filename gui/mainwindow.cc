@@ -76,6 +76,7 @@ void MainWindow::slotNewGame() {
         m_scene = new Scene(m_game);
         connect( m_scene, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
         connect( m_game, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
+//        connect( m_game, SIGNAL(moveFinished()), SLOT(update()) ); //Why do this crash??
     } else {
         m_scene->setGame( m_game );
     }
