@@ -4,3 +4,4 @@ HISTORY:
 2007-02: v0.1, ai port to C++
 2008-02-28: v0.2, command line interface
 2008-03-02: v0.3, gui running, playable
+2008-03-03: import into KDE SVN playground module
