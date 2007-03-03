@@ -5,3 +5,6 @@ TASKS
 * smash all svg's into one file
 * only use one KSvgRenderer
 * What we try to do every night: Go conquer the world
+
+BUGS
+* When computer wins, statusbar says "Your turn"

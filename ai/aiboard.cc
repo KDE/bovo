@@ -82,12 +82,11 @@ namespace ai {
       b[c.x][c.y].point += p;
     }
 
-    usi LEFT = 1;
-    usi UP = 2;
-    usi RIGHT = 4;
-    usi DOWN = 8;
-    usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
     coord next(const coord& c, usi dir) {
+      usi LEFT = 1;
+      usi UP = 2;
+      usi RIGHT = 4;
+      usi DOWN = 8;
       coord tmp = c;
       if (dir & LEFT) tmp = tmp.left();
       else if (dir & RIGHT) tmp = tmp.right();
@@ -97,6 +96,11 @@ namespace ai {
     }
     
     bool aiboard::win(const coord& c) const {
+      usi LEFT = 1;
+      usi UP = 2;
+      usi RIGHT = 4;
+      usi DOWN = 8;
+      usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
       usi p = player(c);
       for (int i = 0; i < 4; ++i) {
         usi count = 1;
@@ -112,6 +116,7 @@ namespace ai {
         }
         if (count >= 5) return true;
       }
+      return false;
     }
 
     /** IDÉ: ta in en koordinat som parameter och uppdatera bara de koordinater runtikkring den (4-5 i var riktning)

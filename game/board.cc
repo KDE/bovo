@@ -79,37 +79,54 @@ namespace bovo {
     unsigned short int board::width() const { return m_dimension.w; }
     unsigned short int board::height() const { return m_dimension.h; }
     
-    usi LEFT = 1;
-    usi UP = 2;
-    usi RIGHT = 4;
-    usi DOWN = 8;
     coord next(const coord& c, usi dir) {
+      usi LEFT = 1;
+      usi UP = 2;
+      usi RIGHT = 4;
+      usi DOWN = 8;
       coord tmp = c;
       if (dir & LEFT) tmp = tmp.left();
       else if (dir & RIGHT) tmp = tmp.right();
       if (dir & UP) tmp = tmp.up();
       else if (dir & DOWN) tmp = tmp.down();
+      cout << "coord was (" << c.x << ", " << c.y << ") but now tmp is (" << tmp.x << ", " << tmp.y << ")" << endl;
       return tmp;
     }
     
-    usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
     
     bool board::win(const coord& c) const {
+      usi LEFT = 1;
+      usi UP = 2;
+      usi RIGHT = 4;
+      usi DOWN = 8;
+      usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
+      cout << "LEFT = " << left << "; ";
+      cout << "UP = " << UP << "; ";
+      cout << "RIGHT = " << RIGHT << "; ";
+      cout << "DOWN = " << DOWN << ";" << endl;      
+      for (int i = 0; i < 8; ++i)
+        cout << DIR[i];
+      cout << endl;
       usi p = player(c);
       for (int i = 0; i < 4; ++i) {
+        cout << "Commencing counting line " << i << "..." << endl;
         usi count = 1;
+        cout << "count: " << count << endl;
         coord tmp = next(c, DIR[2*i]);
         while (m_dimension.ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i]);
         }
+        cout << "count: " << count << endl;
         tmp = next(c, DIR[2*i+1]);
         while (m_dimension.ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i+1]);
         }
+        cout << "count: " << count << endl;
         if (count >= 5) return true;
       }
+      return false;
     }
 
     coord board::lastMove() const {
