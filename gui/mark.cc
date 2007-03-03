@@ -25,14 +25,20 @@
 #include <QtSvg>
 #include <QtGlobal>
 
+#include <kstandarddirs.h>
+
 #include "mark.h"
 #include "commondefs.h"
 #include "scene.h"
 
 namespace gui {
   Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_player(player), m_row(y), m_col(x) {
-    filename = m_player==X?"./x":"./o";
-    filename += m_player==X?QString::number(qrand()%6+1):QString::number(qrand()%5+1);
+    QString themeName = QString("themes/%1/pics/").arg("scribble"); // read scribble from some configuration, I guess
+    int themeNbrX = 6; //read this from some .desktop file, I guess
+    int themeNbrY = 5; //read this from some .desktop file, I guess
+    filename = KStandardDirs::locate("appdata", themeName);
+    filename += m_player==X?'x':'o';
+    filename += m_player==X?QString::number(qrand()%themeNbrX+1):QString::number(qrand()%themeNbrY+1);
     filename += ".svg";
     m_renderer = new QSvgRenderer(filename);
     setSharedRenderer(m_renderer);
