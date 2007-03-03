@@ -39,7 +39,6 @@ namespace gui {
     void setPlayer( Player player );
     void setRowCol( int row, int col ) { m_row = row; m_col = col; };
     void setXY(int x, int y) { m_col = x; m_row = y; }
-    void rePos();
     
     int y() const {return m_row;}
     int row() const { return m_row; }
@@ -48,15 +47,15 @@ namespace gui {
     Player player() const { return m_player; }
 
   protected:
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);    
   private:
+    QRectF glyphRectF() const;
     Scene* m_scene;
     Player m_player;
     int m_row;
     int m_col;
     QSvgRenderer* m_renderer;
     QString filename;
-    QRectF m_bounding;
   };
 } // namespace gui
 

@@ -51,17 +51,6 @@ void Scene::resizeScene( int width, int height )
     setSceneRect( 0, 0, size, size );
     qreal scale = static_cast<qreal>(size) / m_bkgndRenderer->defaultSize().width();
     m_curCellSize = m_bkgndRenderer->defaultSize().width() * scale / (NUMCOLS+2);
-
-    QList<QGraphicsItem*> allItems = items();
-    Mark *mark = 0;
-    foreach( QGraphicsItem* item, allItems ) {
-        mark = qgraphicsitem_cast<Mark*>(item);
-        if( mark ) {
-//            mark->setPos( cellTopLeft( mark->col(), mark->row() ) );
-            mark->rePos();
-//            mark->setPlayer( mark->player() ); // this will reread pixmap
-        }
-    }
 }
 
 void Scene::setGame( Game* game ) {
@@ -124,7 +113,7 @@ void Scene::slotGameMoveFinished() {
     Mark* mark = new Mark(move.p, this, move.x, move.y);
     addItem(mark);
     QList<QRectF> tmp;
-    tmp.push_back(QRectF(0,0,width(),height()));
+    tmp.push_back(QRectF(0,0,width(),height())); // only update this square. Possible, given the fact that we have x and y :)
     emit changed(tmp);
     m_game->startNextTurn();
 }

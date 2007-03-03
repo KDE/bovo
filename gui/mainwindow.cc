@@ -34,7 +34,7 @@
 #include <kmessagebox.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
-//#include <kselectaction.h>
+#include <kstandarddirs.h>
 
 #include <QGridLayout>
 #include <QWidget>
@@ -52,7 +52,10 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
     m_view = new View(m_scene, mainWid);
     m_view->show();
     lay->addWidget(m_view, 0, 0, 2, 1);
-    m_scene->setBackground("bg.svg");
+
+    // read scribble from some configuration, I guess, as well as name of bg file
+    QString bgFilename = KStandardDirs::locate("appdata", QString("themes/%1/pics/%2").arg("scribble").arg("bg.svg"));
+    m_scene->setBackground(bgFilename);
 
     setupActions();
     setCentralWidget(mainWid);
