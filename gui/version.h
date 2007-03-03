@@ -1,0 +1,1 @@
+#define BOVOCHESS_VERSION "0.4" 

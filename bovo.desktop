@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=bovo -caption "%c"
+Name=Bovo
+Type=Application
+DocPath=bovo/index.html
+GenericName=Five-in-a-row Board Game
+Terminal=false
+X-KDE-StartupNotify=true
+X-DBUS-StartupType=Multi
+Categories=Qt;KDE;Game;BoardGame;

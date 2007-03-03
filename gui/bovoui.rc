@@ -1,0 +1,15 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="bovo" version="2">
+
+<MenuBar>
+  <Menu name="game"><text>&amp;Game</text>
+    <Action name="new_game" />
+    <Action name="quit" />
+  </Menu>
+</MenuBar>
+
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+  <Action name="new_game" />
+  <Action name="quit" />
+</ToolBar>
+</kpartgui>

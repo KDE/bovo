@@ -1,0 +1,7 @@
+TASKS
+* Make resizing work
+* Refactor toghether commondefs.h ai.h and the similar one in game/
+* Kidnap an artist for some decent artworks
+* smash all svg's into one file
+* only use one KSvgRenderer
+* What we try to do every night: Go conquer the world
