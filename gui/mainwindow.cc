@@ -41,8 +41,9 @@
 
 namespace gui {
 
-MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0) {
-    statusBar()->insertItem( i18n("Your turn."), 0 );
+MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0) {
+    statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
+    statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     slotNewGame();
 
     QWidget *mainWid = new QWidget;
@@ -71,6 +72,9 @@ void MainWindow::setupActions() {
 }
 
 void MainWindow::slotNewGame() {
+    if (m_game != 0) {
+      if (!m_game->isGameOver()) statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
+    }
     delete m_game;
     m_game = new Game;
     connect( m_game, SIGNAL(gameOver()), SLOT(slotGameOver()) );
@@ -78,24 +82,32 @@ void MainWindow::slotNewGame() {
     if(m_scene == 0) { //first time
         m_scene = new Scene(m_game);
         connect( m_scene, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
-        connect( m_game, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
-//        connect( m_game, SIGNAL(moveFinished()), SLOT(update()) ); //Why do this crash??
     } else {
         m_scene->setGame( m_game );
     }
-
-    statusBar()->changeItem( i18n("Your turn."), 0 );
+    connect( m_game, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
+    statusBar()->showMessage(i18n("New game and it's your turn."));
 }
 
 void MainWindow::slotGameOver() {
     statusBar()->changeItem( i18n("GAME OVER."), 0 );
-    QString message = m_game->lastMove().p == X ? i18n("You won!") : i18n("You Lost!");
+    QString message;
+    if (m_game->lastMove().p == X) {
+      statusBar()->showMessage(i18n("GAME OVER. You won!"));
+      statusBar()->changeItem(i18n("Wins: %0").arg(++m_wins), 1);
+      message = i18n("You won!");
+    } else {
+      statusBar()->showMessage(i18n("GAME OVER. You lost!"));
+      statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
+      message = i18n("You lost!");
+    }
     m_scene->setWin();
-    KMessageBox::information( this, message, i18n("Game over") );
+    KMessageBox::information(this, message, i18n("Game over"));
 }
 
 void MainWindow::slotMoveFinished() {
-    statusBar()->changeItem( m_game->isComputersTurn() ? i18n("Computer's turn.") : i18n("Your turn."), 0 );
+    if (!m_game->isGameOver())
+      statusBar()->showMessage( m_game->isComputersTurn() ? i18n("Waiting for computer.") : i18n("It's your turn."), 0 );
 }
 
 } //namespace gui

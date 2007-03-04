@@ -1,5 +1,9 @@
 TASKS
-* Add score to statusbar (count number of AI wins and Player wins)
+* Theme support
+ + Read name of files from theme file
+ + Search for .desktop files in theme folders
+ + Save selected theme in configuration
+ + Put theme selection in Settings dialog (this means creating a Settings dialog) 
 * Refactor toghether commondefs.h ai.h and the similar one in game/
 * Kidnap an artist for some decent artworks
 * smash all svg's into one file
@@ -7,4 +11,4 @@ TASKS
 * What we try to do every night: Go conquer the world
 
 BUGS
-* When computer wins, statusbar says "Your turn"
+* No know bugs, Yay!

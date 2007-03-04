@@ -41,6 +41,7 @@ namespace gui {
     void slotMoveFinished();
     void slotGameOver();
   private:
+    int m_wins, m_losses;
     void setupActions();
     Scene *m_scene;
     View  *m_view;
