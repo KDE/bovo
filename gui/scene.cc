@@ -32,6 +32,7 @@
 #include "game.h"
 #include "mark.h"
 #include "commondefs.h"
+#include "winitem.h"
 
 namespace gui {
 
@@ -45,8 +46,52 @@ Scene::Scene( Game* game ) : m_game(0) {
 
 Scene::~Scene() {}
 
-void Scene::resizeScene( int width, int height )
-{
+bool isAWinner(unsigned short tmpX, unsigned short tmpY, Game* game, Player player) {
+  return tmpX >= 0 && 
+         tmpY >= 0 && 
+         tmpX < NUMCOLS && 
+         tmpY < NUMCOLS && 
+         game->playerAt(tmpX, tmpY) == player;
+}
+
+void Scene::setWin() {
+  if (!m_game->isGameOver()) return;
+  Player player = m_game->lastMove().p;
+  unsigned short x = m_game->lastMove().x;
+  unsigned short y = m_game->lastMove().y;
+  short dy, dx;
+  switch (m_game->winDir()) {
+    case 0: dx = 1; dy =  0; break;
+    case 1: dx = 0; dy =  1; break;
+    case 2: dx = 1; dy =  1; break;
+    case 3: dx = 1; dy = -1; break;
+  }
+  unsigned short minX = x;
+  unsigned short minY = y;
+  unsigned short tmpX = x + dx;
+  unsigned short tmpY = y + dy;
+  while (isAWinner(tmpX, tmpY, m_game, player)) {
+    minX = tmpX;
+    minY = tmpY;
+    tmpX += dx;
+    tmpY += dy;
+  }
+  tmpX = x - dx;
+  tmpY = y - dy;
+  unsigned short maxX = x;
+  unsigned short maxY = y;
+  while (isAWinner(tmpX, tmpY, m_game, player)) {
+    maxX = tmpX;
+    maxY = tmpY;
+    tmpX += -1*dx;
+    tmpY += -1*dy;
+  }
+  WinItem* item = new WinItem(this, minX, minY, maxX, maxY);
+  addItem(item);
+  demandRepaint();
+}
+
+void Scene::resizeScene( int width, int height ) {
     int size = qMin(width, height);
     setSceneRect( 0, 0, size, size );
     qreal scale = static_cast<qreal>(size) / m_bkgndRenderer->defaultSize().width();
@@ -112,10 +157,14 @@ void Scene::slotGameMoveFinished() {
     Move move = m_game->lastMove();
     Mark* mark = new Mark(move.p, this, move.x, move.y);
     addItem(mark);
+    demandRepaint();
+    m_game->startNextTurn();
+}
+
+void Scene::demandRepaint() {
     QList<QRectF> tmp;
     tmp.push_back(QRectF(0,0,width(),height())); // only update this square. Possible, given the fact that we have x and y :)
     emit changed(tmp);
-    m_game->startNextTurn();
 }
 
 } //namespace gui

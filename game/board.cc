@@ -35,11 +35,11 @@ namespace bovo {
 
     typedef unsigned short int usi;
 
-    board::board(const unsigned short int width, const unsigned short int height) : m_dimension(width, height) {
+    board::board(const unsigned short int width, const unsigned short int height) : m_dimension(width, height), win_dir(-1) {
       setup();
     }
     
-    board::board(const dim& dimension) : m_dimension(dimension) {
+    board::board(const dim& dimension) : m_dimension(dimension), win_dir(-1) {
       setup();
     }
     
@@ -89,42 +89,30 @@ namespace bovo {
       else if (dir & RIGHT) tmp = tmp.right();
       if (dir & UP) tmp = tmp.up();
       else if (dir & DOWN) tmp = tmp.down();
-      cout << "coord was (" << c.x << ", " << c.y << ") but now tmp is (" << tmp.x << ", " << tmp.y << ")" << endl;
       return tmp;
     }
     
     
-    bool board::win(const coord& c) const {
+    bool board::win(const coord& c) {
       usi LEFT = 1;
       usi UP = 2;
       usi RIGHT = 4;
       usi DOWN = 8;
       usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
-      cout << "LEFT = " << left << "; ";
-      cout << "UP = " << UP << "; ";
-      cout << "RIGHT = " << RIGHT << "; ";
-      cout << "DOWN = " << DOWN << ";" << endl;      
-      for (int i = 0; i < 8; ++i)
-        cout << DIR[i];
-      cout << endl;
       usi p = player(c);
       for (int i = 0; i < 4; ++i) {
-        cout << "Commencing counting line " << i << "..." << endl;
         usi count = 1;
-        cout << "count: " << count << endl;
         coord tmp = next(c, DIR[2*i]);
         while (m_dimension.ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i]);
         }
-        cout << "count: " << count << endl;
         tmp = next(c, DIR[2*i+1]);
         while (m_dimension.ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i+1]);
         }
-        cout << "count: " << count << endl;
-        if (count >= 5) return true;
+        if (count >= 5) {win_dir=i; return true;}
       }
       return false;
     }

@@ -33,8 +33,7 @@ static const char description[] = I18N_NOOP("KDE Five in a Row Board Game");
 
 using namespace gui;
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     KAboutData aboutData( "bovo", I18N_NOOP("Bovo"),
             BOVOCHESS_VERSION, description, KAboutData::License_GPL,
             "(c) 2002,2007 Aron Boström");
@@ -43,6 +42,7 @@ int main(int argc, char **argv)
     KCmdLineArgs::init( argc, argv, &aboutData );
 
     KApplication application;
+
     if( application.isSessionRestored() )
         RESTORE(MainWindow)
     else {

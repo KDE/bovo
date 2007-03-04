@@ -90,7 +90,7 @@ void MainWindow::slotNewGame() {
 void MainWindow::slotGameOver() {
     statusBar()->changeItem( i18n("GAME OVER."), 0 );
     QString message = m_game->lastMove().p == X ? i18n("You won!") : i18n("You Lost!");
-
+    m_scene->setWin();
     KMessageBox::information( this, message, i18n("Game over") );
 }
 

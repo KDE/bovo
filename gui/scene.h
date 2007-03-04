@@ -46,12 +46,14 @@ namespace gui {
     bool isBusy() const;
     QPointF cellCenter( int x, int y ) const;
     QPointF cellTopLeft( int x, int y ) const;
+    void setWin();
   public slots:
     void updateBoard();
     void slotGameMoveFinished();
   signals:
     void moveFinished();
   private:
+    void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
     Game *m_game;

@@ -21,46 +21,30 @@
 *
 ********************************************************************/                     
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef WINITEM_H
+#define WINITEM_H
 
-#include <QObject>
-#include <QStack>
+#include <QtGui>
 
 #include "commondefs.h"
-#include "aiboard.h"
-#include "board.h"
+#include "scene.h"
 
 namespace gui {
-  class Game : public QObject
-  {
-    Q_OBJECT
+  class WinItem : public QGraphicsItem {
   public:
-    Game();
-    ~Game();
-    void startNextTurn();
-    void makePlayerMove(int x, int y);
-    void makeComputerMove();
-    bool isGameOver() const;
-    Player currentPlayer() const { return m_curPlayer; }
-    Player playerAt( int x, int y ) const;
-    Move getLastMove() const;
-    Move lastMove() const {return getLastMove();}
-    bool isComputersTurn() const { return m_curPlayer == m_computerMark; }
-    short winDir() const {return m_board->winDir();}
-  signals:
-    void gameOver();
-    void boardChanged();
-    void moveFinished();
+    WinItem(Scene *scene, unsigned short minX, unsigned short minY, unsigned short maxX, unsigned short maxY);
+    ~WinItem() {}
+    QRectF boundingRect() const;
+  protected:
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);    
   private:
-    void makeMove( const Move& move );
-    void setPlayer(Player type, int x, int y);
-    Player m_curPlayer;
-    Player m_playerMark;
-    Player m_computerMark;
-    ai::aiboard *m_engine;
-    bovo::board *m_board;
+    QRectF boundingRect(unsigned short x, unsigned short y) const;
+    Scene* m_scene;
+    unsigned short m_maxX;
+    unsigned short m_maxY;
+    unsigned short m_minX;
+    unsigned short m_minY;
   };
-} //namespace gui
+} // namespace gui
 
-#endif //GAME_H
+#endif

@@ -49,12 +49,18 @@ namespace bovo {
         void echo() const;
         coord lastMove() const;
         bool isGameOver() const {return m_gameover;}
+        /**
+         * Tells in what direction the gameover was caused.
+         * @return -1 if game isn't over, 0 for horizontal, 1 for vertical, 2 for diagonal upperleft downwards right, 3 for bottomleft upwards right
+         */
+        short winDir() const {return win_dir;}
     private:
         dim m_dimension;
         square** m_board;
         void setup();
-        bool win(const coord&) const;
+        bool win(const coord&);
         bool m_gameover;
+        short win_dir;
         std::list<coord> history;
     };
 }
