@@ -160,24 +160,42 @@ namespace ai {
       return a.first > b.first;
     }
 
-    /**
-      *	Iterera genom brädet, lägg till alla värden som är minst 90 % av MAX i en vektor. Kontinuerligt uppdatera MAX. Qsortera och ta ut maximum. 
-      *	Vid flera maximum i listan, kom på något. Förmodligen är det i början på spelet då, så man ska prioritera rutor bredvid motståndare och centrala positioner.
-      */
     coord aiboard::evaluate() const {
       std::vector<std::pair<uli, coord> > v, v2, v3;
-      uli p = 0;
       for (int x = 0; x < d.w; ++x)
         for (int y = 0; y < d.h; ++y)
           v.push_back(make_pair(points(coord(x, y)), coord(x, y)));
       sort(v.begin(), v.end(), cmp);
       uli max = v.begin()->first;
       for (vector<pair<uli, coord> >::const_iterator it = v.begin(); it != v.end(); ++it) {
-        if (it->first == max)
-          v2.push_back(*it);
+        bool doBreak = false;
+        switch (m_skill) {
+          case Zlatan: case Hard: case Medium:
+            if (it->first == max)
+              v2.push_back(*it);
+            else {
+              doBreak = true;
+              break;
+            }
+          case Easy:
+            if(it->first * 4 >= max)
+              v2.push_back(*it);
+            else {
+              random_shuffle(v2.begin(), v2.end());
+              return v2.begin()->second;
+            }               
+            break;
+          case Rookie:
+            if (it->first * 10 >= max)
+              v2.push_back(*it);
+            else {
+              random_shuffle(v2.begin(), v2.end());
+              return v2.begin()->second;
+            }
+        }
+        if (doBreak) break;
       }
       if (v2.size() == 0) {
-        cerr << static_cast<char>(27) << "[31m" << " *** FELFELFEL!!! ***    v2 är tom " << static_cast<char>(27) << "[0m" << endl;
         throw gameover();
       } else if (v2.size() == 1)
         return v2.begin()->second;

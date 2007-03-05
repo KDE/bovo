@@ -36,8 +36,8 @@ using namespace bovo;
 namespace ai {
   class aiboard {
   public:
-    explicit aiboard(const usi width, const usi height) : d(width, height), cleanBoard(true) { setup(); } 
-    explicit aiboard(const dim& dimension) : d(dimension), cleanBoard(true) { setup(); }
+    explicit aiboard(const usi width, const usi height, Skill skill = Medium) : m_skill(skill), d(width, height), cleanBoard(true) { setup(); } 
+    explicit aiboard(const dim& dimension, Skill skill = Medium) : m_skill(skill), d(dimension), cleanBoard(true) { setup(); }
     ~aiboard();
     bool empty(const coord&) const throw(outOfBounds);
     bool empty(const usi x, const usi y) const throw(outOfBounds) { return empty(coord(x, y)); }
@@ -48,6 +48,7 @@ namespace ai {
     usi width() const { return d.w; }
     usi height() const { return d.h; }
     coord move(const coord& c);
+    coord* moves(const coord& c) {}
   private:
     void zero(const coord&);
     uli points(const coord&) const throw(outOfBounds);
@@ -63,6 +64,7 @@ namespace ai {
     bool m_gameover;
     bool cleanBoard;
     usi m_player;
+    Skill m_skill;
   };
 }
 
