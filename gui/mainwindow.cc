@@ -66,9 +66,16 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
 void MainWindow::setupActions() {
     QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
     QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
+    QAction *replayAct = actionCollection()->addAction(KStandardAction::Next, "go_next", this, SLOT(reload()));
+    replayAct->setText("&Replay");
+    replayAct->setIconText("&Replay");
+    replayAct->setToolTip("Replays game");
+    replayAct->setStatusTip("Replay game");
+    replayAct->setWhatsThis("Replays your last game for you to watch.");
 
     addAction(newGameAct);
     addAction(quitAct);
+    addAction(replayAct);
 }
 
 void MainWindow::slotNewGame() {
@@ -78,6 +85,12 @@ void MainWindow::slotNewGame() {
     delete m_game;
     m_game = new Game;
     connect( m_game, SIGNAL(gameOver()), SLOT(slotGameOver()) );
+    QAction* act = actionCollection()->action("go_next");
+    if (act == 0)
+      act = actionCollection()->action("&Replay");
+    if (act != 0) 
+      act->setEnabled(false);
+    qDebug() << "Replay: " << act << endl;
 
     if(m_scene == 0) { //first time
         m_scene = new Scene(m_game);
@@ -102,12 +115,25 @@ void MainWindow::slotGameOver() {
       message = i18n("You lost!");
     }
     m_scene->setWin();
+    actionCollection()->action("go_next")->setEnabled(true);
+    connect(actionCollection()->action("go_next"), SIGNAL(triggered()), this, SLOT(replay()));
     KMessageBox::information(this, message, i18n("Game over"));
 }
 
 void MainWindow::slotMoveFinished() {
     if (!m_game->isGameOver())
       statusBar()->showMessage( m_game->isComputersTurn() ? i18n("Waiting for computer.") : i18n("It's your turn."), 0 );
+}
+
+void MainWindow::replay() {
+    if (!m_game->isGameOver()) return;
+    statusBar()->showMessage("Replaying game");
+    actionCollection()->action("go_next")->setEnabled(false);
+    //clear scene
+    //reinsert everything with delays
+    // at the same time handle collisions with actNewGame and actQuit
+    //reset actions
+    actionCollection()->action("go_next")->setEnabled(true);
 }
 
 } //namespace gui

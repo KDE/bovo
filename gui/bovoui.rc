@@ -5,11 +5,13 @@
   <Menu name="game"><text>&amp;Game</text>
     <Action name="new_game" />
     <Action name="quit" />
+    <Action name="replay" />
   </Menu>
 </MenuBar>
 
 <ToolBar name="mainToolBar"><text>Main Toolbar</text>
   <Action name="new_game" />
   <Action name="quit" />
+  <Action name="replay" />
 </ToolBar>
 </kpartgui>

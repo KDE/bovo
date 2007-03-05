@@ -40,6 +40,7 @@ namespace gui {
     void slotNewGame();
     void slotMoveFinished();
     void slotGameOver();
+    void replay();
   private:
     int m_wins, m_losses;
     void setupActions();

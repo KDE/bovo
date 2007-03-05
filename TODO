@@ -1,10 +1,18 @@
 TASKS
+* Replay moves
+ + Replay action
+ + Empty scene from objects
+ + add Move* getMoves() in game
+ + iterate through moves, adding them to Scene and force redraw. With 1 second intervalls.
+ + Temporarily disable action replay
+ + renable action replay
+ + Action newGame and QuitGame should kill repaint
 * Theme support
  + Read name of files from theme file
- + Search for .desktop files in theme folders
+ + Search for theme files in theme folders
  + Save selected theme in configuration
- + Put theme selection in Settings dialog (this means creating a Settings dialog) 
-* Refactor toghether commondefs.h ai.h and the similar one in game/
+ + Put theme selection in Settings menu
+* Refactor together commondefs.h ai.h and the similar one in game/
 * Kidnap an artist for some decent artworks
 * smash all svg's into one file
 * only use one KSvgRenderer
@@ -12,3 +20,4 @@ TASKS
 
 BUGS
 * No know bugs, Yay!
+* Resizing the application quickly will cause it to crash, but the backtrace indicates it's not our fault, but KDE's.
