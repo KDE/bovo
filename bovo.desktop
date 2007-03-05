@@ -5,6 +5,7 @@ Name=Bovo
 Type=Application
 DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
+GenericName[nl]=Vier-op-een-rij
 Terminal=false
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
