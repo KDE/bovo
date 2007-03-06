@@ -81,6 +81,7 @@ void MainWindow::setupActions() {
     QStringList skills;
     skills << i18n("Ridiculously Easy") << i18n("Very Easy") << i18n("Easy") << i18n("Medium") << i18n("Hard") << i18n("Very Hard") << i18n("Impossible");
     skillsAct->setItems(skills);
+    skillsAct->setCurrentItem(m_skill);
     actionCollection()->addAction("skill", skillsAct);
     connect(skillsAct, SIGNAL(triggered(int)), this, SLOT(changeSkill(int)));
 

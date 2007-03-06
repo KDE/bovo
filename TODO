@@ -1,4 +1,6 @@
 TASKS
+* Bad luck! It has been mathematically proven that whoever begins will allways win if he doesn't play bad. Rather quickly in fact.
+ + IDEA: let computer and player take turn on who will begin playing.
 * Move this list to a wiki!
 * Tidy up source files, remove implemenation from *.h files, merge pointless .h files to a standard common.h
 * merge coord and Move classes, or at least bridge them together and make Move use coord internally.
@@ -25,6 +27,7 @@ TASKS
  + If 10 games hasn't been played yet, start with a random difficulty. If that proves to be to hard, back down by half (and so on) or double the difficulty, until the players starts loosing/winning. Then back down halfways to the last value and continue to do so whenever the winning/loosing situation changes but keep making it harder/easier if the situation doesn't change. When 10 games has passed, start playing with normal adaption.
  + Turn on highscore and connect that between adapted difficulty of AI and time of play.
  + Turn on global highscore. Send in exceptionally great levels of difficulty a player has reached to an Internet server, so a top-100 masterminds of the KDE world list is created. :)
+ + If window gets inactive, pause the AI cogitating thread.
  + Refactor out this cooooool adapting AI into a lib, which all KDE Board games could use! (GSoC idea?)
 * Implement draws (yes, it have never ever happened to me in real life, but it is not impossible in theory, ...right?)
 * View history in a right or left pane, where previous moves are displayed.
