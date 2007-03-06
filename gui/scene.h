@@ -27,6 +27,7 @@
 #include <QGraphicsScene>
 #include <QPixmap>
 #include <QList>
+#include <QTimer>
 
 #include "commondefs.h"
 #include "game.h"
@@ -54,6 +55,7 @@ namespace gui {
     void slotGameMoveFinished();
   signals:
     void moveFinished();
+    void replayFinished();
   private slots:
     void continueReplay();
   private:
@@ -65,6 +67,7 @@ namespace gui {
     qreal m_curCellSize;
     QList<Move> m_replayMoves;
     QList<Move>::const_iterator m_replayIterator;
+    QTimer* m_replayTimer;
   };
 } //namespace gui
 

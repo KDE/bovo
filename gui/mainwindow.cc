@@ -78,6 +78,7 @@ void MainWindow::setupActions() {
 //    replayAct->setStatusTip("Replay game");
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
     replayAct->setIcon(KIcon("player_play"));
+    replayAct->setEnabled(false);
     KSelectAction* skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
     skills << i18n("Ridiculously Easy") << i18n("Very Easy") << i18n("Easy") << i18n("Medium") << i18n("Hard") << i18n("Very Hard") << i18n("Impossible");
@@ -141,10 +142,15 @@ void MainWindow::replay() {
     statusBar()->showMessage("Replaying game");
     actionCollection()->action("replay")->setEnabled(false);
     m_scene->replay(m_game->getMoves());
+    connect(m_scene, SIGNAL(replayFinished()), this, SLOT(reEnableReplay()));
     //reinsert everything with delays
     // at the same time handle collisions with actNewGame and actQuit
     //reset actions
-    actionCollection()->action("replay")->setEnabled(true);
+//    actionCollection()->action("replay")->setEnabled(true);
+}
+
+void MainWindow::reEnableReplay() {
+  actionCollection()->action("replay")->setEnabled(true);
 }
 
 void MainWindow::changeSkill(int skill) {

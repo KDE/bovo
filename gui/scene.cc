@@ -21,10 +21,13 @@
 *
 ********************************************************************/                     
 
+#include <iostream>
+
 #include <QtSvg>
 #include <QtGui>
 #include <QtGlobal>
 #include <QtCore>
+#include <QTimer>
 
 #include <kdebug.h>
 
@@ -40,6 +43,8 @@ Scene::Scene( Game* game ) : m_game(0) {
     m_bkgndRenderer = new QSvgRenderer(this);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     setBackgroundBrush( Qt::lightGray );
+    m_replayTimer = new QTimer;
+    connect(m_replayTimer, SIGNAL(timeout()), this, SLOT(continueReplay()));
     resizeScene( (int)m_curCellSize*(NUMCOLS+2), (int)m_curCellSize*(NUMCOLS+2));
     setGame(game);
 }
@@ -168,6 +173,13 @@ void Scene::demandRepaint() {
 }
 
 void Scene::replay(const QList<Move>& moves) {
+//    if (m_replayTimer == 0) {} else {
+      //replay is already on, for some strange reason!!
+//      qDebug() << "ERROR: REPLAY SHOULDN'T RUN TWICE!!!" << endl;
+//      std::cout << m_replayTimer <<  std::endl;
+      m_replayTimer->stop();
+//      delete m_replayTimer;
+//    }
     QList<QGraphicsItem*> allMarks = items();
     m_replayMoves = moves;
     m_replayIterator = moves.begin();
@@ -176,20 +188,29 @@ void Scene::replay(const QList<Move>& moves) {
         delete mark;
     }
     demandRepaint();
-    QTimer::singleShot(200, this, SLOT(continueReplay()));
+//    m_replayTimer = new QTimer;
+//    m_replayTimer->setInterval(700);
+    m_replayTimer->start(700);
 }
 
 void Scene::continueReplay() {
-    if(!m_game->isGameOver())
+    if(!m_game->isGameOver()) {
+      m_replayTimer->stop();
+//      delete m_replayTimer;
       return;
+    }
     if (m_replayIterator != m_replayMoves.end()) {
       Mark* mark = new Mark(m_replayIterator->p, this, m_replayIterator->x, m_replayIterator->y);
+      ++m_replayIterator;
       addItem(mark);
       demandRepaint();
-      ++m_replayIterator;
-      QTimer::singleShot(200, this, SLOT(continueReplay()));
-    } else
+    } else {
       setWin();
+      m_replayTimer->stop();
+//      delete m_replayTimer;
+      emit replayFinished();
+//      reEnableReplay()
+    }
 }
 
 } //namespace gui

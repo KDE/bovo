@@ -45,6 +45,7 @@ namespace gui {
     void slotGameOver();
     void replay();
     void changeSkill(int);
+    void reEnableReplay();
   private:
     Scene *m_scene;
     View  *m_view;
