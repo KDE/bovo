@@ -122,4 +122,8 @@ namespace bovo {
         return coord(-1, -1);
       return history.back();
     }
+    
+    std::list<coord> board::getHistory() const {
+      return history;
+    }
 }

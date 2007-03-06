@@ -49,6 +49,7 @@ namespace bovo {
         void echo() const;
         coord lastMove() const;
         bool isGameOver() const {return m_gameover;}
+        std::list<coord> getHistory() const;
         /**
          * Tells in what direction the gameover was caused.
          * @return -1 if game isn't over, 0 for horizontal, 1 for vertical, 2 for diagonal upperleft downwards right, 3 for bottomleft upwards right

@@ -32,7 +32,7 @@ namespace gui {
   enum Player { X = 1, O = 2, No = 0 };
   
   struct Move {
-    Move(Player player = No, int row = -1, int col = -1) : x(row), y(col), p(player) {}
+    Move(Player player = No, int col = -1, int row = -1) : x(col), y(row), p(player) {}
     QString toQString() { QString ret; ret = (p==X?"X: (":"O: ("); ret+=QString::number(x);ret+=", ";ret+=QString::number(y);ret+=+")"; return ret; }
     int x;
     int y;

@@ -47,6 +47,7 @@ namespace gui {
     QPointF cellCenter( int x, int y ) const;
     QPointF cellTopLeft( int x, int y ) const;
     void setWin();
+    void replay(const Move* moves);
   public slots:
     void updateBoard();
     void slotGameMoveFinished();

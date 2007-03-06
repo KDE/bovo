@@ -167,6 +167,9 @@ void Scene::demandRepaint() {
     emit changed(tmp);
 }
 
+void Scene::replay(const Move* moves) {
+}
+
 } //namespace gui
 
 #include "scene.moc"

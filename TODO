@@ -6,7 +6,6 @@ TASKS
 * merge coord and Move classes, or at least bridge them together and make Move use coord internally.
 * Consistent NamingConventions! Why should it be Move but coord ?
 * Clean up the namespace mess.
-* Display AI level in statusbar.
 * Changing AI level means restarting game OR setting AI for next game (dialog)
 * Make "It's your turn" allways visible in status bar, so hovering with mouse over menus won't erase it's text.
 * ADAPTING AI: AI skill starts at Normal, and then it gets reevaluated after every gameover. The reevaluation takes into account the last 10 games played (if 10 games hasn't been played yet it's a new user and special rules will apply). However, this 10 latest games is "evaluated" (who won the most, the player or the AI?). If AI wins more than 4 out of 10 games, lower the difficulty by a few points on a 100-level scale. If player wins more than half 7 games out of 10 games, make the AI slightly more challenging. This will mean that the player (as he/she) gets better will start facing more challenging opponents, but still they won't be disshearteningly hard. The algorithm is meant to mean that a balance will occure were the player allways faces an opponent he will win ~60% of the games against, making him feel good about him/herself, lowering his/her blood pressure and making him/her like this game. :P

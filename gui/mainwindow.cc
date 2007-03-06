@@ -140,6 +140,7 @@ void MainWindow::replay() {
     if (!m_game->isGameOver()) return;
     statusBar()->showMessage("Replaying game");
     actionCollection()->action("replay")->setEnabled(false);
+    m_scene->replay(m_game->getMoves());
     //clear scene
     //reinsert everything with delays
     // at the same time handle collisions with actNewGame and actQuit

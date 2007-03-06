@@ -50,6 +50,7 @@ namespace gui {
     bool isComputersTurn() const { return m_curPlayer == m_computerMark; }
     short winDir() const {return m_board->winDir();}
     void setAiSkill(ai::Skill skill);
+    Move* getMoves() const;
   signals:
     void gameOver();
     void boardChanged();

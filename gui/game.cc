@@ -21,6 +21,8 @@
 *
 ********************************************************************/                     
 
+#include <list>
+
 #include "game.h"
 #include "ai.h"
 #include "commondefs.h"
@@ -94,6 +96,22 @@ Player Game::playerAt( int x, int y ) const {
 
 void Game::setAiSkill(Skill skill) {
   m_engine->setSkill(skill);
+}
+
+Move* Game::getMoves() const {
+  std::list<coord> history = m_board->getHistory();
+  int i = 0;
+  int size = history.size();
+  Move* moves = new Move[size];
+  std::list<coord>::const_iterator it = history.begin();
+  std::list<coord>::const_iterator end = history.end();
+  
+  while (it != end) {
+    moves[i++] = Move(i%2==1?X:O, it->x, it->y);
+    ++it;
+  }
+    
+  return moves;
 }
 
 } //namespace gui
