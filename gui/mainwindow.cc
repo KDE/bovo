@@ -139,7 +139,7 @@ void MainWindow::slotMoveFinished() {
 
 void MainWindow::replay() {
     if (!m_game->isGameOver()) return;
-    statusBar()->showMessage("Replaying game");
+    statusBar()->showMessage(i18n("Replaying game"));
     actionCollection()->action("replay")->setEnabled(false);
     m_scene->replay(m_game->getMoves());
     connect(m_scene, SIGNAL(replayFinished()), this, SLOT(reEnableReplay()));
@@ -151,6 +151,7 @@ void MainWindow::replay() {
 
 void MainWindow::reEnableReplay() {
   actionCollection()->action("replay")->setEnabled(true);
+  statusBar()->showMessage(i18n("Game replayed"));
 }
 
 void MainWindow::changeSkill(int skill) {

@@ -34,16 +34,6 @@ TASKS
 * "New game" doesn't mean a loss if it's just started.
 * Enable GGZ gaming (this means create a GGZ game for this as well I guess)
 * Enable LAN gaming (broadcast the local domain for other willing to participate.)
-* To be able to play O instead of X (that is, let the computer start).
- + remember this setting when program ends.
-* Replay moves
- (+) Replay action DONE!
- + Empty scene from objects
- (+) add Move* getMoves() in game DONE!
- + iterate through moves, adding them to Scene and force redraw. With 1 second intervalls.
- + Temporarily disable action replay
- + renable action replay
- + Action newGame and QuitGame should kill repaint
 * Theme support
  + Read name of files from theme file
  + Search for theme files in theme folders
@@ -53,7 +43,7 @@ TASKS
 * Kidnap an artist for some decent artworks
 * smash all svg's into one file
 * only use one KSvgRenderer
-* What we try to do every night: Go conquer the world
+* The same thing we do every night, Konqi: Try to take over the world!
 
 BUGS
 * No know bugs, Yay!
