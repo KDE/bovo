@@ -54,6 +54,8 @@ namespace gui {
     void slotGameMoveFinished();
   signals:
     void moveFinished();
+  private slots:
+    void continueReplay();
   private:
     void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );
@@ -61,6 +63,8 @@ namespace gui {
     Game *m_game;
     QSvgRenderer* m_bkgndRenderer;
     qreal m_curCellSize;
+    QList<Move> m_replayMoves;
+    QList<Move>::const_iterator m_replayIterator;
   };
 } //namespace gui
 

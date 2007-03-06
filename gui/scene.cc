@@ -169,23 +169,26 @@ void Scene::demandRepaint() {
 
 void Scene::replay(const QList<Move>& moves) {
     QList<QGraphicsItem*> allMarks = items();
+    m_replayMoves = moves;
+    m_replayIterator = moves.begin();
     foreach( QGraphicsItem* mark, allMarks ) {
         removeItem( mark );
         delete mark;
     }
-    QList<QRectF> tmp;
-    tmp.push_back(QRectF(0,0,width(),height()));
-    emit changed(tmp);
-    int counter = 0;
-    QList<Move>::const_iterator it = moves.begin();
-    while (m_game->isGameOver() && it != moves.end()) {
-      Mark* mark = new Mark(it->p, this, it->x, it->y);
+    demandRepaint();
+    QTimer::singleShot(200, this, SLOT(continueReplay()));
+}
+
+void Scene::continueReplay() {
+    if(!m_game->isGameOver())
+      return;
+    if (m_replayIterator != m_replayMoves.end()) {
+      Mark* mark = new Mark(m_replayIterator->p, this, m_replayIterator->x, m_replayIterator->y);
       addItem(mark);
       demandRepaint();
-      //wait for a sec
-      ++it;
-    }
-    if (m_game->isGameOver())
+      ++m_replayIterator;
+      QTimer::singleShot(200, this, SLOT(continueReplay()));
+    } else
       setWin();
 }
 
