@@ -167,7 +167,26 @@ void Scene::demandRepaint() {
     emit changed(tmp);
 }
 
-void Scene::replay(const Move* moves) {
+void Scene::replay(const QList<Move>& moves) {
+    QList<QGraphicsItem*> allMarks = items();
+    foreach( QGraphicsItem* mark, allMarks ) {
+        removeItem( mark );
+        delete mark;
+    }
+    QList<QRectF> tmp;
+    tmp.push_back(QRectF(0,0,width(),height()));
+    emit changed(tmp);
+    int counter = 0;
+    QList<Move>::const_iterator it = moves.begin();
+    while (m_game->isGameOver() && it != moves.end()) {
+      Mark* mark = new Mark(it->p, this, it->x, it->y);
+      addItem(mark);
+      demandRepaint();
+      //wait for a sec
+      ++it;
+    }
+    if (m_game->isGameOver())
+      setWin();
 }
 
 } //namespace gui

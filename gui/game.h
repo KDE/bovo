@@ -26,6 +26,7 @@
 
 #include <QObject>
 #include <QStack>
+#include <QList>
 
 #include "ai.h"
 #include "commondefs.h"
@@ -50,7 +51,7 @@ namespace gui {
     bool isComputersTurn() const { return m_curPlayer == m_computerMark; }
     short winDir() const {return m_board->winDir();}
     void setAiSkill(ai::Skill skill);
-    Move* getMoves() const;
+    QList<Move> getMoves() const;
   signals:
     void gameOver();
     void boardChanged();

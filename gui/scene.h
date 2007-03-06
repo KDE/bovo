@@ -26,6 +26,7 @@
 
 #include <QGraphicsScene>
 #include <QPixmap>
+#include <QList>
 
 #include "commondefs.h"
 #include "game.h"
@@ -47,7 +48,7 @@ namespace gui {
     QPointF cellCenter( int x, int y ) const;
     QPointF cellTopLeft( int x, int y ) const;
     void setWin();
-    void replay(const Move* moves);
+    void replay(const QList<Move>& moves);
   public slots:
     void updateBoard();
     void slotGameMoveFinished();
