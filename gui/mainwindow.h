@@ -52,6 +52,7 @@ namespace gui {
     int m_wins, m_losses;
     void setupActions();
     Skill m_skill;
+    QString getSkillName(Skill skill) const;
   };
 }//namespace gui
 

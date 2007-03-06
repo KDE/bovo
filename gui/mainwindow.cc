@@ -46,6 +46,7 @@ using namespace ai;
 namespace gui {
 
 MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
+    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     slotNewGame();
@@ -114,7 +115,6 @@ void MainWindow::slotNewGame() {
 }
 
 void MainWindow::slotGameOver() {
-    statusBar()->changeItem( i18n("GAME OVER."), 0 );
     QString message;
     if (m_game->lastMove().p == X) {
       statusBar()->showMessage(i18n("GAME OVER. You won!"));
@@ -158,7 +158,21 @@ void MainWindow::changeSkill(int skill) {
     case 6: m_skill = Zlatan; break;
   }
 //  m_skill = sk;
+  statusBar()->changeItem(i18n("Difficulty: %0").arg(getSkillName(m_skill)), 0);
   m_game->setAiSkill(m_skill);
+}
+
+QString MainWindow::getSkillName(Skill skill) const {
+  switch (skill) {
+    case RidiculouslyEasy: return i18n("Ridiculously Easy");
+    case VeryEasy: return i18n("Very Easy");
+    case Easy: return i18n("Easy");
+    case Normal: return i18n("Normal");
+    case Hard: return i18n("Hard");
+    case VeryHard: return i18n("Very Hard");
+    case Zlatan: return i18n("Impossible");
+    default: return i18n("Illegal skill");
+  }
 }
 
 } //namespace gui
