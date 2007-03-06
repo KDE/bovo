@@ -27,6 +27,7 @@
 #include <QObject>
 #include <QStack>
 
+#include "ai.h"
 #include "commondefs.h"
 #include "aiboard.h"
 #include "board.h"
@@ -36,7 +37,7 @@ namespace gui {
   {
     Q_OBJECT
   public:
-    Game();
+    Game(ai::Skill skill = ai::Normal);
     ~Game();
     void startNextTurn();
     void makePlayerMove(int x, int y);
@@ -48,6 +49,7 @@ namespace gui {
     Move lastMove() const {return getLastMove();}
     bool isComputersTurn() const { return m_curPlayer == m_computerMark; }
     short winDir() const {return m_board->winDir();}
+    void setAiSkill(ai::Skill skill);
   signals:
     void gameOver();
     void boardChanged();

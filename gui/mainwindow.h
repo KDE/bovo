@@ -29,6 +29,9 @@
 #include "scene.h"
 #include "game.h"
 #include "view.h"
+#include "ai.h"
+
+using namespace ai;
 
 namespace gui {
   class MainWindow : public KMainWindow
@@ -41,12 +44,14 @@ namespace gui {
     void slotMoveFinished();
     void slotGameOver();
     void replay();
+    void changeSkill(int);
   private:
-    int m_wins, m_losses;
-    void setupActions();
     Scene *m_scene;
     View  *m_view;
     Game  *m_game;
+    int m_wins, m_losses;
+    void setupActions();
+    Skill m_skill;
   };
 }//namespace gui
 

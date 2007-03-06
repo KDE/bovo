@@ -21,27 +21,31 @@
 *
 ********************************************************************/                     
 
+#include <QGridLayout>
+#include <QWidget>
+
+#include <kaction.h>
+#include <kactioncollection.h>
+#include <kmessagebox.h>
+#include <kstatusbar.h>
+#include <kstandardaction.h>
+#include <kstandarddirs.h>
+#include <kselectaction.h>
+#include <klocale.h>
+#include <kicon.h>
+
 #include "mainwindow.h"
 #include "game.h"
 #include "scene.h"
 #include "view.h"
 #include "commondefs.h"
+#include "ai.h"
 
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <kicon.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <kstatusbar.h>
-#include <kstandardaction.h>
-#include <kstandarddirs.h>
-
-#include <QGridLayout>
-#include <QWidget>
+using namespace ai;
 
 namespace gui {
 
-MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0) {
+MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     slotNewGame();
@@ -66,16 +70,24 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
 void MainWindow::setupActions() {
     QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
     QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
-    QAction *replayAct = actionCollection()->addAction(KStandardAction::Next, "go_next", this, SLOT(reload()));
-    replayAct->setText("&Replay");
-    replayAct->setIconText("&Replay");
-    replayAct->setToolTip("Replays game");
-    replayAct->setStatusTip("Replay game");
-    replayAct->setWhatsThis("Replays your last game for you to watch.");
+    QAction *replayAct = actionCollection()->addAction("replay");
+    replayAct->setText(i18n("&Replay"));
+    replayAct->setIconText(i18n("Replay"));
+    replayAct->setToolTip(i18n("Replay game"));
+//    replayAct->setStatusTip("Replay game");
+    replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
+    replayAct->setIcon(KIcon("player_play"));
+    KSelectAction* skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
+    QStringList skills;
+    skills << i18n("Ridiculously Easy") << i18n("Very Easy") << i18n("Easy") << i18n("Medium") << i18n("Hard") << i18n("Very Hard") << i18n("Impossible");
+    skillsAct->setItems(skills);
+    actionCollection()->addAction("skill", skillsAct);
+    connect(skillsAct, SIGNAL(triggered(int)), this, SLOT(changeSkill(int)));
 
     addAction(newGameAct);
     addAction(quitAct);
     addAction(replayAct);
+    addAction(skillsAct);
 }
 
 void MainWindow::slotNewGame() {
@@ -83,11 +95,9 @@ void MainWindow::slotNewGame() {
       if (!m_game->isGameOver()) statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
     }
     delete m_game;
-    m_game = new Game;
+    m_game = new Game(m_skill);
     connect( m_game, SIGNAL(gameOver()), SLOT(slotGameOver()) );
-    QAction* act = actionCollection()->action("go_next");
-    if (act == 0)
-      act = actionCollection()->action("&Replay");
+    QAction* act = actionCollection()->action("replay");
     if (act != 0) 
       act->setEnabled(false);
     qDebug() << "Replay: " << act << endl;
@@ -115,8 +125,8 @@ void MainWindow::slotGameOver() {
       message = i18n("You lost!");
     }
     m_scene->setWin();
-    actionCollection()->action("go_next")->setEnabled(true);
-    connect(actionCollection()->action("go_next"), SIGNAL(triggered()), this, SLOT(replay()));
+    actionCollection()->action("replay")->setEnabled(true);
+    connect(actionCollection()->action("replay"), SIGNAL(triggered()), this, SLOT(replay()));
     KMessageBox::information(this, message, i18n("Game over"));
 }
 
@@ -128,12 +138,26 @@ void MainWindow::slotMoveFinished() {
 void MainWindow::replay() {
     if (!m_game->isGameOver()) return;
     statusBar()->showMessage("Replaying game");
-    actionCollection()->action("go_next")->setEnabled(false);
+    actionCollection()->action("replay")->setEnabled(false);
     //clear scene
     //reinsert everything with delays
     // at the same time handle collisions with actNewGame and actQuit
     //reset actions
-    actionCollection()->action("go_next")->setEnabled(true);
+    actionCollection()->action("replay")->setEnabled(true);
+}
+
+void MainWindow::changeSkill(int skill) {
+  switch (skill) {
+    case 0: m_skill = RidiculouslyEasy; break;
+    case 1: m_skill = VeryEasy; break;
+    case 2: m_skill = Easy; break;
+    case 3: m_skill = Normal; break;
+    case 4: m_skill = Hard; break;
+    case 5: m_skill = VeryHard; break;
+    case 6: m_skill = Zlatan; break;
+  }
+//  m_skill = sk;
+  m_game->setAiSkill(m_skill);
 }
 
 } //namespace gui

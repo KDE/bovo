@@ -22,6 +22,7 @@
 ********************************************************************/                     
 
 #include "game.h"
+#include "ai.h"
 #include "commondefs.h"
 #include "aiboard.h"
 #include "board.h"
@@ -33,9 +34,9 @@ using namespace ai;
 
 namespace gui {
 
-Game::Game() : m_curPlayer(X), m_playerMark(X), m_computerMark(O) {
+Game::Game(Skill skill) : m_curPlayer(X), m_playerMark(X), m_computerMark(O) {
     m_board = new board(dim(NUMCOLS, NUMCOLS));
-    m_engine = new aiboard(dim(NUMCOLS, NUMCOLS));
+    m_engine = new aiboard(dim(NUMCOLS, NUMCOLS), skill);
 }
 
 Game::~Game() {
@@ -89,6 +90,10 @@ Player Game::playerAt( int x, int y ) const {
     if (m_board->player(coord(x, y)) == 1) return X;
     else if (m_board->player(coord(x, y)) == 2) return O;
     else return No;
+}
+
+void Game::setAiSkill(Skill skill) {
+  m_engine->setSkill(skill);
 }
 
 } //namespace gui

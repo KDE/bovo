@@ -30,7 +30,7 @@ namespace ai {
   struct outOfBounds {};
   struct gameover {};
   struct notValidPlayer {};
-  enum Skill {Rookie, Easy, Medium, Hard, Zlatan};
+  enum Skill {RidiculouslyEasy = 0, VeryEasy = 1, Easy = 2, Normal = 3, Hard = 4, VeryHard = 5, Zlatan = 6};
 }
 
 #endif

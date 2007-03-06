@@ -170,28 +170,47 @@ namespace ai {
       for (vector<pair<uli, coord> >::const_iterator it = v.begin(); it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
-          case Zlatan: case Hard: case Medium:
+          case Zlatan: case VeryHard: case Hard:
             if (it->first == max)
               v2.push_back(*it);
-            else {
+            else
               doBreak = true;
-              break;
-            }
-          case Easy:
-            if(it->first * 4 >= max)
+            break;
+          case Normal:
+            if(it->first * 1.2 >= max)
               v2.push_back(*it);
             else {
               random_shuffle(v2.begin(), v2.end());
               return v2.begin()->second;
             }               
             break;
-          case Rookie:
-            if (it->first * 10 >= max)
+          case Easy:
+            if (it->first * 2 >= max)
               v2.push_back(*it);
             else {
               random_shuffle(v2.begin(), v2.end());
               return v2.begin()->second;
             }
+            break;
+          case VeryEasy:
+            if(it->first * 4 >= max)
+              v2.push_back(*it);
+            else {
+              random_shuffle(v2.begin(), v2.end());
+              return v2.begin()->second;
+            }
+            break;
+          case RidiculouslyEasy:
+            if (it->first * 7 >= max)
+              v2.push_back(*it);
+            else {
+              random_shuffle(v2.begin(), v2.end());
+              return v2.begin()->second;
+            }
+            break;
+          default:
+//            qDebug() << "***************'ERROR!!!!!!!!!!!!!!!!!!!!!! m_skill: " << m_skill << endl;
+            throw gameover(); // just to crash the gui, cause it is missbehaving and deserves to crash!
         }
         if (doBreak) break;
       }
@@ -306,12 +325,13 @@ namespace ai {
           }
           tmpPoint = 1;
           switch (tp) {
-            case 4: tmpPoint *= 231;
-            case 3: tmpPoint *= 231;
-            case 2: tmpPoint *= 231; break;
+            case 4: tmpPoint *= (m_skill==RidiculouslyEasy?7:231);
+            case 3: tmpPoint *= (m_skill==VeryEasy?21:(m_skill==RidiculouslyEasy?12:231));
+            case 2: tmpPoint *= (m_skill==VeryEasy?21:231); break;
+            case 1: tmpPoint *= m_skill==RidiculouslyEasy?3:1; break;
             case 0: tmpPoint = 0;
           }
-          if (pl == m_player) tmpPoint *= 21;
+          if (pl == m_player && m_skill != RidiculouslyEasy && m_skill != VeryEasy) tmpPoint *= 21;
           if (empty < 2 && avvakta > 0 && vanstertom > 0) tmpPoint *= 8;
           point += tmpPoint;
         }
@@ -319,4 +339,9 @@ namespace ai {
       return point;
     }
 
+    void aiboard::setSkill(Skill skill) {
+      m_skill = skill;
+    }
+    
+    coord* aiboard::moves(const coord& c) {c;}
 }
