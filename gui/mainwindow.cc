@@ -69,15 +69,33 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
 }
 
 void MainWindow::setupActions() {
-    QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
-    QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
-    QAction *replayAct = actionCollection()->addAction("replay");
-    replayAct->setText(i18n("&Replay"));
-    replayAct->setIconText(i18n("Replay"));
+
+//    KAction *newAct = new KAction("filenew", i18n("&New"), actionCollection(), "new");
+//    newAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
+//    connect(newAct, SIGNAL(triggered(bool)), SLOT(slotGameNew()));
+    
+//    QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
+    KAction *newGameAct = new KAction(KIcon("document-new"), i18n("&New"), this);
+    actionCollection()->addAction("new_game", newGameAct);
+    newGameAct->setToolTip(i18n("New game"));
+    newGameAct->setWhatsThis(i18n("Start a new game."));
+    connect(newGameAct, SIGNAL(triggered()), this, SLOT(slotNewGame()));
+
+//    QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
+    KAction *quitAct = new KAction(KIcon("application-exit"), i18n("&Quit"), this);
+    actionCollection()->addAction("quit", quitAct);
+    connect(quitAct, SIGNAL(triggered()), this, SLOT(close()));
+    
+    KAction *replayAct = new KAction(KIcon("media-playback-start"), i18n("&Replay"), this);
+    actionCollection()->addAction("replay", replayAct);
     replayAct->setToolTip(i18n("Replay game"));
-//    replayAct->setStatusTip("Replay game");
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
-    replayAct->setIcon(KIcon("player_play"));
+
+//    QAction *replayAct = actionCollection()->addAction("replay");
+//    replayAct->setText(i18n("&Replay"));
+//    replayAct->setIconText(i18n("Replay"));
+//    replayAct->setStatusTip("Replay game");
+//    replayAct->setIcon(KIcon("media-playback-start"));
     replayAct->setEnabled(false);
     KSelectAction* skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
