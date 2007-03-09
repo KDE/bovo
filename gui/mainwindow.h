@@ -33,6 +33,10 @@
 
 using namespace ai;
 
+class QString;
+class QComboBox;
+class KSelectAction;
+
 namespace gui {
   class MainWindow : public KMainWindow
   {
@@ -54,6 +58,8 @@ namespace gui {
     void setupActions();
     Skill m_skill;
     QString getSkillName(Skill skill) const;
+    QComboBox m_sBarSkill;
+    KSelectAction* m_skillsAct;
   };
 }//namespace gui
 

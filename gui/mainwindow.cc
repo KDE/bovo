@@ -23,6 +23,7 @@
 
 #include <QGridLayout>
 #include <QWidget>
+#include <QComboBox>
 
 #include <kaction.h>
 #include <kactioncollection.h>
@@ -46,7 +47,8 @@ using namespace ai;
 namespace gui {
 
 MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
-    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
+    statusBar()->addPermanentWidget(&m_sBarSkill);
+//    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     slotNewGame();
@@ -97,18 +99,22 @@ void MainWindow::setupActions() {
 //    replayAct->setStatusTip("Replay game");
 //    replayAct->setIcon(KIcon("media-playback-start"));
     replayAct->setEnabled(false);
-    KSelectAction* skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
+    m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
     skills << i18n("Ridiculously Easy") << i18n("Very Easy") << i18n("Easy") << i18n("Medium") << i18n("Hard") << i18n("Very Hard") << i18n("Impossible");
-    skillsAct->setItems(skills);
-    skillsAct->setCurrentItem(m_skill);
-    actionCollection()->addAction("skill", skillsAct);
-    connect(skillsAct, SIGNAL(triggered(int)), this, SLOT(changeSkill(int)));
+    m_skillsAct->setItems(skills);
+    m_skillsAct->setCurrentItem(m_skill);
+    actionCollection()->addAction("skill", m_skillsAct);
+    connect(m_skillsAct, SIGNAL(triggered(int)), this, SLOT(changeSkill(int)));
+
+    m_sBarSkill.addItems(skills);
+    m_sBarSkill.setCurrentIndex(m_skill);
+    connect(&m_sBarSkill, SIGNAL(activated(int)), this, SLOT(changeSkill(int)));
 
     addAction(newGameAct);
     addAction(quitAct);
     addAction(replayAct);
-    addAction(skillsAct);
+    addAction(m_skillsAct);
 }
 
 void MainWindow::slotNewGame() {
@@ -182,8 +188,8 @@ void MainWindow::changeSkill(int skill) {
     case 5: m_skill = VeryHard; break;
     case 6: m_skill = Zlatan; break;
   }
-//  m_skill = sk;
-  statusBar()->changeItem(i18n("Difficulty: %0").arg(getSkillName(m_skill)), 0);
+  m_sBarSkill.setCurrentIndex(skill);
+  m_skillsAct->setCurrentItem(skill);
   m_game->setAiSkill(m_skill);
 }
 
