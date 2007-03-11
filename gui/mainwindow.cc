@@ -47,6 +47,7 @@ using namespace ai;
 namespace gui {
 
 MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
+    statusBar()->insertItem("            ", 0, 10);
     statusBar()->addPermanentWidget(&m_sBarSkill);
 //    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
@@ -136,17 +137,17 @@ void MainWindow::slotNewGame() {
         m_scene->setGame( m_game );
     }
     connect( m_game, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
-    statusBar()->showMessage(i18n("New game and it's your turn."));
+    statusBar()->changeItem(i18n("New game and it's your turn."), 0);
 }
 
 void MainWindow::slotGameOver() {
     QString message;
     if (m_game->lastMove().p == X) {
-      statusBar()->showMessage(i18n("GAME OVER. You won!"));
+      statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
       statusBar()->changeItem(i18n("Wins: %0").arg(++m_wins), 1);
       message = i18n("You won!");
     } else {
-      statusBar()->showMessage(i18n("GAME OVER. You lost!"));
+      statusBar()->changeItem(i18n("GAME OVER. You lost!"), 0);
       statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
       message = i18n("You lost!");
     }
@@ -158,12 +159,12 @@ void MainWindow::slotGameOver() {
 
 void MainWindow::slotMoveFinished() {
     if (!m_game->isGameOver())
-      statusBar()->showMessage( m_game->isComputersTurn() ? i18n("Waiting for computer.") : i18n("It's your turn."), 0 );
+      statusBar()->changeItem( m_game->isComputersTurn() ? i18n("Waiting for computer.") : i18n("It's your turn."), 0 );
 }
 
 void MainWindow::replay() {
     if (!m_game->isGameOver()) return;
-    statusBar()->showMessage(i18n("Replaying game"));
+    statusBar()->changeItem(i18n("Replaying game"), 0);
     actionCollection()->action("replay")->setEnabled(false);
     m_scene->replay(m_game->getMoves());
     connect(m_scene, SIGNAL(replayFinished()), this, SLOT(reEnableReplay()));
@@ -175,7 +176,7 @@ void MainWindow::replay() {
 
 void MainWindow::reEnableReplay() {
   actionCollection()->action("replay")->setEnabled(true);
-  statusBar()->showMessage(i18n("Game replayed"));
+  statusBar()->changeItem(i18n("Game replayed"), 0);
 }
 
 void MainWindow::changeSkill(int skill) {
