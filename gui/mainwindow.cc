@@ -76,7 +76,7 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
 MainWindow::~MainWindow() {
   delete m_sBarSkill;
   delete m_view;
-  delete m_scene;
+//  delete m_scene;
   delete m_game;
   delete m_skillsAct;
 }
