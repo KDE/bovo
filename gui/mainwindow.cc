@@ -48,6 +48,7 @@ namespace gui {
 
 MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
     statusBar()->insertItem("            ", 0, 10);
+    statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
     statusBar()->addPermanentWidget(m_sBarSkill);
 //    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
