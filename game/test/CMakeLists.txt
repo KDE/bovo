@@ -1,3 +1,3 @@
-add_executable (testbovo test.cpp)
+kde4_add_executable (testbovo test.cpp)
 target_link_library (testbovo game)
-install (TARGETS testbovo DESTINATION )
+install (TARGETS testbovo DESTINATION ${BIN_INSTALL_DIR})
