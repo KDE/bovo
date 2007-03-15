@@ -87,16 +87,16 @@ void MainWindow::setupActions() {
 //    newAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
 //    connect(newAct, SIGNAL(triggered(bool)), SLOT(slotGameNew()));
     
-//    QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
-    KAction *newGameAct = new KAction(KIcon("document-new"), i18n("&New"), this);
-    actionCollection()->addAction("new_game", newGameAct);
+    QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
+/*    KAction *newGameAct = new KAction(KIcon("document-new"), i18n("&New"), this);
+    actionCollection()->addAction("new_game", newGameAct);*/
     newGameAct->setToolTip(i18n("New game"));
     newGameAct->setWhatsThis(i18n("Start a new game."));
     connect(newGameAct, SIGNAL(triggered()), this, SLOT(slotNewGame()));
 
-//    QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
-    KAction *quitAct = new KAction(KIcon("application-exit"), i18n("&Quit"), this);
-    actionCollection()->addAction("quit", quitAct);
+    QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
+/*    KAction *quitAct = new KAction(KIcon("application-exit"), i18n("&Quit"), this);
+    actionCollection()->addAction("quit", quitAct);*/
     connect(quitAct, SIGNAL(triggered()), this, SLOT(close()));
     
     KAction *replayAct = new KAction(KIcon("media-playback-start"), i18n("&Replay"), this);
