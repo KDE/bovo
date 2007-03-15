@@ -21,8 +21,8 @@
 *
 ********************************************************************/                     
 
-#include <iostream>
 #include <vector>
+#include <iostream>
 
 #include "aiboard.h"
 
@@ -34,25 +34,38 @@ using namespace bovo;
 using namespace std;
 
 namespace ai {
+    aiboard::aiboard(const usi width, const usi height, Skill skill) : m_skill(skill), d(width, height), cleanBoard(true) {
+      setup();
+    }
+
+    aiboard::aiboard(const dim& dimension, Skill skill) : m_skill(skill), d(dimension), cleanBoard(true) {
+      setup();
+    }
+
+
     aiboard::~aiboard() {
       for (int x = 0; x < d.w; ++x) {
         delete[] b[x];
       }
       delete[] b;
     }
-    
+
     void aiboard::setup() {
       m_gameover = false;
       b = new aisquare*[d.w];
       for (int x = 0; x < d.w; ++x)
         b[x] = new aisquare[d.h];
     }
-    
+
     bool aiboard::empty(const coord& c) const throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
       return b[c.x][c.y].empty();
     }
-    
+
+    bool aiboard::empty(const usi x, const usi y) const throw(outOfBounds) {
+      return empty(coord(x, y));
+    }
+
     bool aiboard::setPlayer(const coord& c, const usi val) throw(busy, outOfBounds, gameover, notValidPlayer) {
       if (!d.ok(c)) throw outOfBounds();
       if (val != 1 && val != 2) throw notValidPlayer();
@@ -60,12 +73,20 @@ namespace ai {
       b[c.x][c.y].setPlayer(val);
       if (win(c)) { m_gameover = true; return true; } else return false;
     }
-    
+
+    bool aiboard::setPlayer(const usi x, const usi y, const usi p) throw(busy, outOfBounds, gameover, notValidPlayer) {
+      return setPlayer(coord(x, y), p);
+    }
+
     usi aiboard::player(const coord& c) const throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
       return b[c.x][c.y].player();
     }
-    
+
+    usi aiboard::player(const usi x, const usi y) const throw(outOfBounds) {
+      return player(coord(x, y));
+    }
+
     uli aiboard::points(const coord& c) const throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
       return b[c.x][c.y].point;
@@ -80,6 +101,14 @@ namespace ai {
     void aiboard::addPoints(const coord& c, uli p) throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
       b[c.x][c.y].point += p;
+    }
+
+    usi aiboard::width() const {
+      return d.w;
+    }
+
+    usi aiboard::height() const {
+      return d.h;
     }
 
     coord next(const coord& c, usi dir) {
@@ -343,5 +372,8 @@ namespace ai {
       m_skill = skill;
     }
     
-    coord* aiboard::moves(const coord& c) {c;}
+    coord* aiboard::moves(const coord& c) {
+      #warning Implement - coord* aiboard::moves(const coord& c)
+      return new coord(c.x, c.y);
+    }
 }

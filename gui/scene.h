@@ -25,20 +25,20 @@
 #define SCENE_H
 
 #include <QGraphicsScene>
-#include <QPixmap>
 #include <QList>
-#include <QTimer>
-
-#include "commondefs.h"
-#include "game.h"
 
 class QSvgRenderer;
 class QPainter;
+class QTimer;
 
 namespace gui {
+  class Game;
+  class Move;
+
   class Scene : public QGraphicsScene
   {
     Q_OBJECT
+
   public:
     Scene(Game* game);
     ~Scene();
@@ -50,14 +50,18 @@ namespace gui {
     QPointF cellTopLeft( int x, int y ) const;
     void setWin();
     void replay(const QList<Move>& moves);
+
   public slots:
     void updateBoard();
     void slotGameMoveFinished();
+
   signals:
     void moveFinished();
     void replayFinished();
+
   private slots:
     void continueReplay();
+
   private:
     void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );

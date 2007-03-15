@@ -21,18 +21,26 @@
 *
 ********************************************************************/                     
 
-#ifndef AISQUARE_H
-#define AISQUARE_H
-
 #include "square.h"
 
-namespace ai {
-  class aisquare : public bovo::square {
-  public:
-    aisquare();
-    unsigned long int point;
-    bool grey;
-  };
-}
+namespace bovo {
+    square::square() : m_player(0) {
+    }
 
-#endif
+    unsigned short int square::player() const {
+      return m_player;
+    }
+
+    bool square::empty() const {
+      return m_player==0;
+    }
+
+    void square::setPlayer(const unsigned short int val) throw(busy) {
+      if(m_player==0)
+        m_player = val;
+      else
+        throw busy();
+    }
+
+} // namespace bovo
+

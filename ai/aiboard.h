@@ -24,29 +24,28 @@
 #ifndef AIBOARD_H
 #define AIBOARD_H
 
-#include "ai.h"
-
-#include "aisquare.h"
-#include "square.h"
+#include "common.h"
 #include "dim.h"
 #include "coord.h"
 
 using namespace bovo;
 
 namespace ai {
+  class aisquare;
+
   class aiboard {
   public:
-    explicit aiboard(const usi width, const usi height, Skill skill = Normal) : m_skill(skill), d(width, height), cleanBoard(true) { setup(); } 
-    explicit aiboard(const dim& dimension, Skill skill = Normal) : m_skill(skill), d(dimension), cleanBoard(true) { setup(); }
+    aiboard(const usi width, const usi height, Skill skill = Normal);
+    aiboard(const dim& dimension, Skill skill = Normal);
     ~aiboard();
     bool empty(const coord&) const throw(outOfBounds);
-    bool empty(const usi x, const usi y) const throw(outOfBounds) { return empty(coord(x, y)); }
+    bool empty(const usi x, const usi y) const throw(outOfBounds);
     bool setPlayer(const coord&, const usi) throw(busy, outOfBounds, gameover, notValidPlayer);
-    bool setPlayer(const usi x, const usi y, const usi p) throw(busy, outOfBounds, gameover, notValidPlayer) { return setPlayer(coord(x, y), p); }
+    bool setPlayer(const usi x, const usi y, const usi p) throw(busy, outOfBounds, gameover, notValidPlayer);
     usi player(const coord&) const throw(outOfBounds);
-    usi player(const usi x, const usi y) const throw(outOfBounds) { return player(coord(x, y)); }
-    usi width() const { return d.w; }
-    usi height() const { return d.h; }
+    usi player(const usi x, const usi y) const throw(outOfBounds);
+    usi width() const;
+    usi height() const;
     coord move(const coord& c);
     coord* moves(const coord& c);
     void setSkill(Skill skill);

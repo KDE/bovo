@@ -29,21 +29,23 @@
 #include <kstandarddirs.h>
 
 #include "mark.h"
-#include "commondefs.h"
+#include "common.h"
 #include "scene.h"
+
+using namespace bovo;
 
 namespace gui {
   Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_player(player), m_row(y), m_col(x) {
     QString themeName = QString("themes/%1/pics/").arg("scribble"); // read scribble from some configuration, I guess
     int themeNbrX = 6; //read this from some .desktop file, I guess
     int themeNbrY = 5; //read this from some .desktop file, I guess
-    filename = KStandardDirs::locate("appdata", themeName);
+    QString filename = KStandardDirs::locate("appdata", themeName);
     filename += m_player==X?'x':'o';
     filename += m_player==X?QString::number(qrand()%themeNbrX+1):QString::number(qrand()%themeNbrY+1);
     filename += ".svg";
     m_renderer = new QSvgRenderer(filename);
     setSharedRenderer(m_renderer);
-    qreal factor = (m_scene->width() / m_renderer->defaultSize().width()) / static_cast<qreal>(NUMCOLS);
+//    qreal factor = (m_scene->width() / m_renderer->defaultSize().width()) / static_cast<qreal>(NUMCOLS);
 // What a pity! I can't use rotate() to create more individualized marks. That distorts glyphRectF into a useless state...
 //    rotate(qrand()%20-10);
   }
@@ -66,4 +68,35 @@ namespace gui {
   void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
     m_renderer->render(painter, glyphRectF());
   }
+
+  void Mark::setRowCol( int row, int col ) {
+    m_row = row;
+    m_col = col;
+  }
+
+  void Mark::setXY(int x, int y) {
+    m_col = x;
+    m_row = y;
+  }
+
+  int Mark::y() const {
+    return m_row;
+  }
+
+  int Mark::row() const {
+    return m_row;
+  }
+
+  int Mark::x() const {
+    return m_col;
+  }
+
+  int Mark::col() const {
+    return m_col;
+  }
+
+  Player Mark::player() const {
+    return m_player;
+  }
+
 } //namespace gui

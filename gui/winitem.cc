@@ -26,8 +26,8 @@
 #include <QColor>
 
 #include "winitem.h"
-#include "commondefs.h"
 #include "scene.h"
+#include "common.h"
 
 namespace gui {
   WinItem::WinItem(Scene* scene, unsigned short minX, unsigned short minY, unsigned short maxX, unsigned short maxY) : m_scene(scene) {

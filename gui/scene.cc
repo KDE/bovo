@@ -21,21 +21,20 @@
 *
 ********************************************************************/                     
 
-#include <iostream>
-
 #include <QtSvg>
 #include <QtGui>
 #include <QtGlobal>
 #include <QtCore>
 #include <QTimer>
 
-#include <kdebug.h>
-
 #include "scene.h"
 #include "game.h"
 #include "mark.h"
-#include "commondefs.h"
+#include "common.h"
 #include "winitem.h"
+#include "move.h"
+
+using namespace bovo;
 
 namespace gui {
 
@@ -49,12 +48,13 @@ Scene::Scene( Game* game ) : m_game(0) {
     setGame(game);
 }
 
-Scene::~Scene() {}
+Scene::~Scene() {
+  delete m_replayTimer; //deleteLater??
+  delete m_bkgndRenderer; //deleteLater??
+}
 
 bool isAWinner(unsigned short tmpX, unsigned short tmpY, Game* game, Player player) {
-  return tmpX >= 0 && 
-         tmpY >= 0 && 
-         tmpX < NUMCOLS && 
+  return tmpX < NUMCOLS && 
          tmpY < NUMCOLS && 
          game->playerAt(tmpX, tmpY) == player;
 }
@@ -69,7 +69,7 @@ void Scene::setWin() {
     case 0: dx = 1; dy =  0; break;
     case 1: dx = 0; dy =  1; break;
     case 2: dx = 1; dy =  1; break;
-    case 3: dx = 1; dy = -1; break;
+    default: dx = 1; dy = -1; break;
   }
   unsigned short minX = x;
   unsigned short minY = y;
@@ -173,13 +173,7 @@ void Scene::demandRepaint() {
 }
 
 void Scene::replay(const QList<Move>& moves) {
-//    if (m_replayTimer == 0) {} else {
-      //replay is already on, for some strange reason!!
-//      qDebug() << "ERROR: REPLAY SHOULDN'T RUN TWICE!!!" << endl;
-//      std::cout << m_replayTimer <<  std::endl;
       m_replayTimer->stop();
-//      delete m_replayTimer;
-//    }
     QList<QGraphicsItem*> allMarks = items();
     m_replayMoves = moves;
     m_replayIterator = moves.begin();
@@ -188,15 +182,12 @@ void Scene::replay(const QList<Move>& moves) {
         delete mark;
     }
     demandRepaint();
-//    m_replayTimer = new QTimer;
-//    m_replayTimer->setInterval(700);
     m_replayTimer->start(700);
 }
 
 void Scene::continueReplay() {
     if(!m_game->isGameOver()) {
       m_replayTimer->stop();
-//      delete m_replayTimer;
       return;
     }
     if (m_replayIterator != m_replayMoves.end()) {
@@ -207,9 +198,7 @@ void Scene::continueReplay() {
     } else {
       setWin();
       m_replayTimer->stop();
-//      delete m_replayTimer;
       emit replayFinished();
-//      reEnableReplay()
     }
 }
 

@@ -26,16 +26,13 @@
 
 #include <list>
 
-#include "square.h"
 #include "dim.h"
-#include "coord.h"
+#include "common.h"
 
 namespace bovo {
-    
-    struct outOfBounds {};
-    struct gameover {};
-    struct notValidPlayer {};
-    
+    class coord;
+    class square;
+
     class board {
     public:
         board(const unsigned short int width, const unsigned short int height);
@@ -48,15 +45,15 @@ namespace bovo {
         unsigned short int height() const;
         void echo() const;
         coord lastMove() const;
-        bool isGameOver() const {return m_gameover;}
+        bool isGameOver() const;
         std::list<coord> getHistory() const;
         /**
          * Tells in what direction the gameover was caused.
          * @return -1 if game isn't over, 0 for horizontal, 1 for vertical, 2 for diagonal upperleft downwards right, 3 for bottomleft upwards right
          */
-        short winDir() const {return win_dir;}
+        short winDir() const;
     private:
-        dim m_dimension;
+        dim* m_dimension;
         square** m_board;
         void setup();
         bool win(const coord&);

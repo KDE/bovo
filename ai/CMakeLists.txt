@@ -1,1 +1,1 @@
-add_library (ai aiboard.cc)
+add_library (ai aiboard.cc aisquare.cc)

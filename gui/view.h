@@ -25,11 +25,10 @@
 #define VIEW_H
 
 #include <QGraphicsView>
-#include <QWidget>
-
-#include "scene.h"
 
 namespace gui {
+  class Scene;
+
   class View : public QGraphicsView
   {
   public:

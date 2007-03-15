@@ -25,45 +25,58 @@
 #define GAME_H
 
 #include <QObject>
-#include <QStack>
 #include <QList>
 
-#include "ai.h"
-#include "commondefs.h"
-#include "aiboard.h"
-#include "board.h"
+#include "common.h"
+
+
+namespace ai {
+  class aiboard;
+}
+
+namespace bovo {
+  class board;
+}
+
+using namespace bovo;
+using namespace ai;
 
 namespace gui {
+  class Move;
+
   class Game : public QObject
   {
     Q_OBJECT
+
   public:
-    Game(ai::Skill skill = ai::Normal);
+    Game(Skill skill = Normal);
     ~Game();
     void startNextTurn();
     void makePlayerMove(int x, int y);
     void makeComputerMove();
     bool isGameOver() const;
-    Player currentPlayer() const { return m_curPlayer; }
+    Player currentPlayer() const;
     Player playerAt( int x, int y ) const;
     Move getLastMove() const;
-    Move lastMove() const {return getLastMove();}
-    bool isComputersTurn() const { return m_curPlayer == m_computerMark; }
-    short winDir() const {return m_board->winDir();}
-    void setAiSkill(ai::Skill skill);
+    Move lastMove() const;
+    bool isComputersTurn() const;
+    short winDir() const;
+    void setAiSkill(Skill skill);
     QList<Move> getMoves() const;
+
   signals:
     void gameOver();
     void boardChanged();
     void moveFinished();
+
   private:
     void makeMove( const Move& move );
     void setPlayer(Player type, int x, int y);
     Player m_curPlayer;
     Player m_playerMark;
     Player m_computerMark;
-    ai::aiboard *m_engine;
-    bovo::board *m_board;
+    aiboard *m_engine;
+    board *m_board;
   };
 } //namespace gui
 

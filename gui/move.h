@@ -21,18 +21,24 @@
 *
 ********************************************************************/                     
 
-#ifndef AISQUARE_H
-#define AISQUARE_H
+#ifndef MOVE_H
+#define MOVE_H
 
-#include "square.h"
+#include "common.h"
 
-namespace ai {
-  class aisquare : public bovo::square {
+using namespace bovo;
+
+class QString;
+
+namespace gui {
+  class Move {
   public:
-    aisquare();
-    unsigned long int point;
-    bool grey;
+    Move(Player player = No, int col = -1, int row = -1);
+    QString toQString() const;
+    int x; //replace with coord
+    int y; //replace with coord
+    Player p; 
   };
-}
+} // namespace gui
 
 #endif

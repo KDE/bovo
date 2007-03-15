@@ -26,23 +26,26 @@
 
 #include <kmainwindow.h>
 
-#include "scene.h"
-#include "game.h"
-#include "view.h"
-#include "ai.h"
+#include "common.h"
 
-using namespace ai;
+using namespace bovo;
 
 class QString;
 class QComboBox;
 class KSelectAction;
 
 namespace gui {
+  class Game;
+  class Scene;
+  class View;
+
   class MainWindow : public KMainWindow
   {
     Q_OBJECT
   public:
     explicit MainWindow(QWidget* parent=0);
+    ~MainWindow();
+
   public slots:
     void slotNewGame();
     void slotMoveFinished();
@@ -50,6 +53,7 @@ namespace gui {
     void replay();
     void changeSkill(int);
     void reEnableReplay();
+
   private:
     Scene *m_scene;
     View  *m_view;
@@ -58,9 +62,9 @@ namespace gui {
     void setupActions();
     Skill m_skill;
     QString getSkillName(Skill skill) const;
-    QComboBox m_sBarSkill;
+    QComboBox* m_sBarSkill;
     KSelectAction* m_skillsAct;
   };
-}//namespace gui
+} // namespace gui
 
 #endif

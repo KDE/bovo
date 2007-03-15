@@ -39,16 +39,16 @@
 #include "game.h"
 #include "scene.h"
 #include "view.h"
-#include "commondefs.h"
-#include "ai.h"
+#include "common.h"
+#include "move.h"
 
-using namespace ai;
+using namespace bovo;
 
 namespace gui {
 
 MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
     statusBar()->insertItem("            ", 0, 10);
-    statusBar()->addPermanentWidget(&m_sBarSkill);
+    statusBar()->addPermanentWidget(m_sBarSkill);
 //    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
@@ -69,6 +69,14 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
     setupActions();
     setCentralWidget(mainWid);
     setupGUI();
+}
+
+MainWindow::~MainWindow() {
+  delete m_sBarSkill;
+  delete m_view;
+  delete m_scene;
+  delete m_game;
+  delete m_skillsAct;
 }
 
 void MainWindow::setupActions() {
@@ -108,9 +116,10 @@ void MainWindow::setupActions() {
     actionCollection()->addAction("skill", m_skillsAct);
     connect(m_skillsAct, SIGNAL(triggered(int)), this, SLOT(changeSkill(int)));
 
-    m_sBarSkill.addItems(skills);
-    m_sBarSkill.setCurrentIndex(m_skill);
-    connect(&m_sBarSkill, SIGNAL(activated(int)), this, SLOT(changeSkill(int)));
+    m_sBarSkill = new QComboBox;
+    m_sBarSkill->addItems(skills);
+    m_sBarSkill->setCurrentIndex(m_skill);
+    connect(m_sBarSkill, SIGNAL(activated(int)), this, SLOT(changeSkill(int)));
 
     addAction(newGameAct);
     addAction(quitAct);
@@ -189,7 +198,7 @@ void MainWindow::changeSkill(int skill) {
     case 5: m_skill = VeryHard; break;
     case 6: m_skill = Zlatan; break;
   }
-  m_sBarSkill.setCurrentIndex(skill);
+  m_sBarSkill->setCurrentIndex(skill);
   m_skillsAct->setCurrentItem(skill);
   m_game->setAiSkill(m_skill);
 }

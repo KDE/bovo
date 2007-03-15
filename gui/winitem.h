@@ -24,19 +24,19 @@
 #ifndef WINITEM_H
 #define WINITEM_H
 
-#include <QtGui>
-
-#include "commondefs.h"
-#include "scene.h"
+#include <QGraphicsItem>
 
 namespace gui {
+  class Scene;
+
   class WinItem : public QGraphicsItem {
   public:
     WinItem(Scene *scene, unsigned short minX, unsigned short minY, unsigned short maxX, unsigned short maxY);
-    ~WinItem() {}
     QRectF boundingRect() const;
+
   protected:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);    
+
   private:
     QRectF boundingRect(unsigned short x, unsigned short y) const;
     Scene* m_scene;

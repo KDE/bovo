@@ -35,35 +35,38 @@ namespace bovo {
 
     typedef unsigned short int usi;
 
-    board::board(const unsigned short int width, const unsigned short int height) : m_dimension(width, height), win_dir(-1) {
+    board::board(const unsigned short int width, const unsigned short int height) : win_dir(-1) {
+      m_dimension = new dim(width, height);
       setup();
     }
     
-    board::board(const dim& dimension) : m_dimension(dimension), win_dir(-1) {
+    board::board(const dim& dimension) : win_dir(-1) {
+      m_dimension = new dim(dimension.w, dimension.h);
       setup();
     }
     
     board::~board() {
-      for (int x = 0; x < m_dimension.w; ++x) {
+      for (int x = 0; x < m_dimension->w; ++x) {
         delete[] m_board[x];
       }
       delete[] m_board;
+      delete m_dimension;
     }
     
     void board::setup() {
       m_gameover = false;
-      m_board = new square*[m_dimension.w];
-      for (int x = 0; x < m_dimension.w; ++x)
-        m_board[x] = new square[m_dimension.h];
+      m_board = new square*[m_dimension->w];
+      for (int x = 0; x < m_dimension->w; ++x)
+        m_board[x] = new square[m_dimension->h];
     }
     
     bool board::empty(const coord& c) const throw(outOfBounds) {
-      if (!m_dimension.ok(c)) throw outOfBounds();
+      if (!m_dimension->ok(c)) throw outOfBounds();
       return m_board[c.x][c.y].empty();
     }
     
     bool board::setPlayer(const coord& c, const unsigned short int val) throw(busy, outOfBounds, gameover, notValidPlayer) {
-      if (!m_dimension.ok(c)) throw outOfBounds();
+      if (!m_dimension->ok(c)) throw outOfBounds();
       if (val != 1 && val != 2) throw notValidPlayer();
       if (m_gameover) throw gameover();
       m_board[c.x][c.y].setPlayer(val);
@@ -72,12 +75,12 @@ namespace bovo {
     }
     
     unsigned short int board::player(const coord& c) const throw(outOfBounds) {
-      if (!m_dimension.ok(c)) throw outOfBounds();
+      if (!m_dimension->ok(c)) throw outOfBounds();
       return m_board[c.x][c.y].player();
     }
     
-    unsigned short int board::width() const { return m_dimension.w; }
-    unsigned short int board::height() const { return m_dimension.h; }
+    unsigned short int board::width() const { return m_dimension->w; }
+    unsigned short int board::height() const { return m_dimension->h; }
     
     coord next(const coord& c, usi dir) {
       usi LEFT = 1;
@@ -103,12 +106,12 @@ namespace bovo {
       for (int i = 0; i < 4; ++i) {
         usi count = 1;
         coord tmp = next(c, DIR[2*i]);
-        while (m_dimension.ok(tmp) && player(tmp) == p) {
+        while (m_dimension->ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i]);
         }
         tmp = next(c, DIR[2*i+1]);
-        while (m_dimension.ok(tmp) && player(tmp) == p) {
+        while (m_dimension->ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i+1]);
         }
@@ -122,8 +125,17 @@ namespace bovo {
         return coord(-1, -1);
       return history.back();
     }
-    
+
     std::list<coord> board::getHistory() const {
       return history;
     }
-}
+
+    bool board::isGameOver() const {
+      return m_gameover;
+    }
+    
+    short board::winDir() const {
+      return win_dir;
+    }
+
+} // namespace bovo

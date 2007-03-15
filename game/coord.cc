@@ -21,18 +21,54 @@
 *
 ********************************************************************/                     
 
-#ifndef AISQUARE_H
-#define AISQUARE_H
+#include "coord.h"
 
-#include "square.h"
+namespace bovo {
+  coord::coord(const unsigned short int _x, const unsigned short int _y): x(_x), y(_y) {
+  }
 
-namespace ai {
-  class aisquare : public bovo::square {
-  public:
-    aisquare();
-    unsigned long int point;
-    bool grey;
-  };
-}
+  coord::coord(const coord& c) : x(c.x), y(c.y) {
+  }
 
-#endif
+  unsigned short int coord::row() const {
+    return x;
+  }
+
+  unsigned short int coord::col() const {
+    return y;
+  }
+
+  coord coord::left() const {
+    return coord(x-1, y);
+  }
+
+  coord coord::right() const {
+    return coord(x+1, y);
+  }
+
+  coord coord::leftup() const {
+    return coord(x-1, y-1);
+  }
+
+  coord coord::leftdown() const {
+    return coord(x-1, y+1);
+  }
+
+  coord coord::rightup() const {
+    return coord(x+1, y-1);
+  }
+
+  coord coord::rightdown() const {
+    return coord(x+1, y+1);
+  }
+
+  coord coord::up() const {
+    return coord(x, y-1);
+  }
+
+  coord coord::down() const {
+    return coord(x, y+1);
+  }
+
+} // namespace bovo
+

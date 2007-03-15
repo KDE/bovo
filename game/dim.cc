@@ -19,18 +19,41 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
-#ifndef AI_H
-#define AI_H
+#include "dim.h"
+#include "coord.h"
 
-namespace ai {
-  typedef unsigned short int usi;
-  typedef unsigned long int uli;
-  struct outOfBounds {};
-  struct gameover {};
-  struct notValidPlayer {};
-  enum Skill {RidiculouslyEasy = 0, VeryEasy = 1, Easy = 2, Normal = 3, Hard = 4, VeryHard = 5, Zlatan = 6};
-}
+namespace bovo {
 
-#endif
+  dim::dim(const unsigned short int width, const unsigned int height) : w(width), h(height) {
+  }
+
+  dim::dim(const dim& dimension) : w(dimension.w), h(dimension.h) {
+  }
+
+  unsigned short int dim::cols() const {
+    return w;
+  }
+
+  unsigned short int dim::width() const {
+    return w;
+  }
+
+  unsigned short int dim::rows() const {
+    return h;
+  }
+
+  unsigned short int dim::height() const {
+    return h;
+  }
+
+  bool dim::ok(const coord* c) const {
+    return c->x < w && c->y < h;
+  }
+
+  bool dim::ok(const coord& c) const {
+    return c.x < w && c.y < h;
+  }
+
+} // namespace bovo

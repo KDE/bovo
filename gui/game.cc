@@ -26,12 +26,12 @@
 #include <QList>
 
 #include "game.h"
-#include "ai.h"
-#include "commondefs.h"
+#include "common.h"
 #include "aiboard.h"
 #include "board.h"
 #include "dim.h"
 #include "coord.h"
+#include "move.h"
 
 using namespace bovo;
 using namespace ai;
@@ -112,6 +112,21 @@ QList<Move> Game::getMoves() const {
     ++it;
   }    
   return moves;
+}
+
+Player Game::currentPlayer() const {
+  return m_curPlayer;
+}
+
+Move Game::lastMove() const {
+  return getLastMove();
+}
+
+bool Game::isComputersTurn() const {
+  return m_curPlayer == m_computerMark;
+}
+
+short Game::winDir() const {return m_board->winDir();
 }
 
 } //namespace gui

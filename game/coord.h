@@ -30,20 +30,20 @@ namespace bovo {
    */
   class coord {
   public:
-    coord(const unsigned short int col, const unsigned short int row) : x(col), y(row) {}
-    coord(const coord& c) : x(c.x), y(c.y) {}
+    coord(const unsigned short int col, const unsigned short int row);
+    coord(const coord& c);
     unsigned short int x, y;
-    unsigned short int row() const { return x; }
-    unsigned short int col() const { return y; }
-    coord left() const { return coord(x-1, y); }
-    coord right() const { return coord(x+1, y); }
-    coord leftup() const { return coord(x-1, y-1); }
-    coord leftdown() const { return coord(x-1, y+1); }
-    coord rightup() const { return coord(x+1, y-1); }
-    coord rightdown() const { return coord(x+1, y+1); }
-    coord up() const { return coord(x, y-1); }
-    coord down() const { return coord(x, y+1); }
+    unsigned short int row() const;
+    unsigned short int col() const;
+    coord left() const;
+    coord right() const;
+    coord leftup() const;
+    coord leftdown() const;
+    coord rightup() const;
+    coord rightdown() const;
+    coord up() const;
+    coord down() const;
   };
-}
+} // namespace bovo
 
 #endif

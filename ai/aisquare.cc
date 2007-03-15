@@ -21,18 +21,13 @@
 *
 ********************************************************************/                     
 
-#ifndef AISQUARE_H
-#define AISQUARE_H
-
+#include "aisquare.h"
 #include "square.h"
 
 namespace ai {
-  class aisquare : public bovo::square {
-  public:
-    aisquare();
-    unsigned long int point;
-    bool grey;
-  };
-}
 
-#endif
+  aisquare::aisquare() : bovo::square(), point(0), grey(true) {
+  }
+
+} // namespace ai
+
