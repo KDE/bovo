@@ -46,7 +46,7 @@ using namespace bovo;
 
 namespace gui {
 
-MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal) {
+MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0), m_skill(Normal), m_computerStarts(false) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
@@ -129,16 +129,16 @@ void MainWindow::setupActions() {
 }
 
 void MainWindow::slotNewGame() {
-    if (m_game != 0) {
-      if (!m_game->isGameOver()) statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
-    }
+
+    if (m_game != 0)
+      if (!m_game->isGameOver()) 
+        statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
     delete m_game;
-    m_game = new Game(m_skill);
+    m_game = new Game(m_skill, m_computerStarts?O:X);
     connect( m_game, SIGNAL(gameOver()), SLOT(slotGameOver()) );
     QAction* act = actionCollection()->action("replay");
-    if (act != 0) 
+    if (act != 0)
       act->setEnabled(false);
-    qDebug() << "Replay: " << act << endl;
 
     if(m_scene == 0) { //first time
         m_scene = new Scene(m_game);
@@ -147,7 +147,13 @@ void MainWindow::slotNewGame() {
         m_scene->setGame( m_game );
     }
     connect( m_game, SIGNAL(moveFinished()), SLOT(slotMoveFinished()) );
-    statusBar()->changeItem(i18n("New game and it's your turn."), 0);
+    if (m_computerStarts) {
+      m_game->startNextTurn();
+      statusBar()->changeItem(i18n("It's your turn."), 0);
+    } else {
+      statusBar()->changeItem(i18n("New game and it's your turn."), 0);    
+    }
+    m_computerStarts = !m_computerStarts;
 }
 
 void MainWindow::slotGameOver() {

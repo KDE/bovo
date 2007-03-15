@@ -1,7 +1,5 @@
 TASKS
 * Get rid of exceptions, to fit into KDE
-* Bad luck! It has been mathematically proven that whoever begins will allways win if he doesn't play bad. Rather quickly in fact.
- + IDEA: let computer and player take turn on who will begin playing.
 * Move this list to a wiki!
 * Tidy up source files, remove implemenation from *.h files, merge pointless .h files to a standard common.h
 * merge coord and Move classes, or at least bridge them together and make Move use coord internally.

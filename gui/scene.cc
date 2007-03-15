@@ -44,7 +44,7 @@ Scene::Scene( Game* game ) : m_game(0) {
     setBackgroundBrush( Qt::lightGray );
     m_replayTimer = new QTimer;
     connect(m_replayTimer, SIGNAL(timeout()), this, SLOT(continueReplay()));
-    resizeScene( (int)m_curCellSize*(NUMCOLS+2), (int)m_curCellSize*(NUMCOLS+2));
+    resizeScene( static_cast<int>(m_curCellSize*(NUMCOLS+2)), static_cast<int>(m_curCellSize*(NUMCOLS+2)));
     setGame(game);
 }
 

@@ -49,7 +49,7 @@ namespace gui {
     Q_OBJECT
 
   public:
-    Game(Skill skill = Normal);
+    Game(Skill skill = Normal, Player startingPlayer = X);
     ~Game();
     void startNextTurn();
     void makePlayerMove(int x, int y);

@@ -4,5 +4,5 @@ Standard CMake build system
 $ tar xjf bovo-X.Y-tar.bz2
 $ mkdir -p /somewhere/a/build/dir
 $ cd /somewhere/a/build/dir
-$ cmake /path/to/source/code -DCMAKE_INSTALL_DIR=/somewhere/to/install/such/as/opt/kde4
+$ cmake /path/to/source/code -DCMAKE_INSTALL_PREFIX=/somewhere/to/install/such/as/opt/kde4
 $ make install

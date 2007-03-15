@@ -38,7 +38,7 @@ using namespace ai;
 
 namespace gui {
 
-Game::Game(Skill skill) : m_curPlayer(X), m_playerMark(X), m_computerMark(O) {
+Game::Game(Skill skill, Player startingPlayer) : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
     m_board = new board(dim(NUMCOLS, NUMCOLS));
     m_engine = new aiboard(dim(NUMCOLS, NUMCOLS), skill);
 }

@@ -64,6 +64,7 @@ namespace gui {
     QString getSkillName(Skill skill) const;
     QComboBox* m_sBarSkill;
     KSelectAction* m_skillsAct;
+    bool m_computerStarts;
   };
 } // namespace gui
 
