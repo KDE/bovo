@@ -51,7 +51,6 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
     statusBar()->addPermanentWidget(m_sBarSkill);
-//    statusBar()->insertPermanentItem(i18n("Computer difficulty: %0").arg(getSkillName(m_skill)), 0);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     slotNewGame();
@@ -76,27 +75,16 @@ MainWindow::MainWindow(QWidget* parent) : KMainWindow(parent), m_scene(0), m_gam
 MainWindow::~MainWindow() {
   delete m_sBarSkill;
   delete m_view;
-//  delete m_scene;
   delete m_game;
   delete m_skillsAct;
 }
 
 void MainWindow::setupActions() {
-
-//    KAction *newAct = new KAction("filenew", i18n("&New"), actionCollection(), "new");
-//    newAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
-//    connect(newAct, SIGNAL(triggered(bool)), SLOT(slotGameNew()));
-    
     QAction *newGameAct = actionCollection()->addAction(KStandardAction::New, "new_game", this, SLOT(slotNewGame()));
-/*    KAction *newGameAct = new KAction(KIcon("document-new"), i18n("&New"), this);
-    actionCollection()->addAction("new_game", newGameAct);*/
     newGameAct->setToolTip(i18n("New game"));
     newGameAct->setWhatsThis(i18n("Start a new game."));
-//    connect(newGameAct, SIGNAL(triggered()), this, SLOT(slotNewGame()));
 
     QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
-/*    KAction *quitAct = new KAction(KIcon("application-exit"), i18n("&Quit"), this);
-    actionCollection()->addAction("quit", quitAct);*/
     connect(quitAct, SIGNAL(triggered()), this, SLOT(close()));
     
     KAction *replayAct = new KAction(KIcon("media-playback-start"), i18n("&Replay"), this);
@@ -104,11 +92,6 @@ void MainWindow::setupActions() {
     replayAct->setToolTip(i18n("Replay game"));
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
 
-//    QAction *replayAct = actionCollection()->addAction("replay");
-//    replayAct->setText(i18n("&Replay"));
-//    replayAct->setIconText(i18n("Replay"));
-//    replayAct->setStatusTip("Replay game");
-//    replayAct->setIcon(KIcon("media-playback-start"));
     replayAct->setEnabled(false);
     m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
@@ -183,10 +166,6 @@ void MainWindow::replay() {
     actionCollection()->action("replay")->setEnabled(false);
     m_scene->replay(m_game->getMoves());
     connect(m_scene, SIGNAL(replayFinished()), this, SLOT(reEnableReplay()));
-    //reinsert everything with delays
-    // at the same time handle collisions with actNewGame and actQuit
-    //reset actions
-//    actionCollection()->action("replay")->setEnabled(true);
 }
 
 void MainWindow::reEnableReplay() {

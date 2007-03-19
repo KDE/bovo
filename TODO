@@ -1,4 +1,5 @@
 TASKS
+* don't paint winning line, but paint it with svg's
 * Get rid of exceptions, to fit into KDE
 * Move this list to a wiki!
 * Tidy up source files, remove implemenation from *.h files, merge pointless .h files to a standard common.h

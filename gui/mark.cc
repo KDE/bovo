@@ -26,8 +26,6 @@
 #include <QtGlobal>
 #include <QColor>
 
-//#include <kstandarddirs.h>
-
 #include "mark.h"
 #include "common.h"
 #include "scene.h"
@@ -35,19 +33,12 @@
 using namespace bovo;
 
 namespace gui {
-  Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_player(player), m_row(y), m_col(x) {
+  Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_row(y), m_col(x) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
-    setElementId(QString(m_player==X?"x%1":"o%1").arg(QString::number(qrand()%5+1)));
-//    qreal factor = (m_scene->width() / m_renderer->defaultSize().width()) / static_cast<qreal>(NUMCOLS);
-// What a pity! I can't use rotate() to create more individualized marks. That distorts glyphRectF into a useless state...
-//    rotate(qrand()%20-10);
+    setElementId(QString(player==X?"x%1":"o%1").arg(QString::number(qrand()%5+1)));
   }
 
   Mark::~Mark() {
-  }
-
-  void Mark::setPlayer( Player player ) {
-    m_player = player;
   }
 
   QRectF Mark::glyphRectF() const {
@@ -63,35 +54,4 @@ namespace gui {
   void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
     renderer()->render(painter, elementId(), glyphRectF());
   }
-
-  void Mark::setRowCol( int row, int col ) {
-    m_row = row;
-    m_col = col;
-  }
-
-  void Mark::setXY(int x, int y) {
-    m_col = x;
-    m_row = y;
-  }
-
-  int Mark::y() const {
-    return m_row;
-  }
-
-  int Mark::row() const {
-    return m_row;
-  }
-
-  int Mark::x() const {
-    return m_col;
-  }
-
-  int Mark::col() const {
-    return m_col;
-  }
-
-  Player Mark::player() const {
-    return m_player;
-  }
-
 } //namespace gui

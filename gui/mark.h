@@ -26,8 +26,6 @@
 
 #include "common.h"
 
-//class QSvgRenderer;
-
 using namespace bovo;
 
 namespace gui {
@@ -37,15 +35,6 @@ namespace gui {
   public:
     Mark(Player player, Scene *scene, int x, int y);
     ~Mark();
-    void setPlayer( Player player );
-    void setRowCol( int row, int col );
-    void setXY(int x, int y);
-    
-    int y() const;
-    int row() const;
-    int x() const;
-    int col() const;
-    Player player() const;
 
   protected:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);    
@@ -53,10 +42,8 @@ namespace gui {
   private:
     QRectF glyphRectF() const;
     Scene* m_scene;
-    Player m_player;
     int m_row;
     int m_col;
-//    QSvgRenderer* m_renderer;
     qreal m_sizeShrink;
   };
 } // namespace gui
