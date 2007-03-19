@@ -27,6 +27,8 @@
 #include <QtCore>
 #include <QTimer>
 
+#include <kstandarddirs.h>
+
 #include "scene.h"
 #include "game.h"
 #include "mark.h"
@@ -40,6 +42,10 @@ namespace gui {
 
 Scene::Scene( Game* game ) : m_game(0) {
     m_bkgndRenderer = new QSvgRenderer(this);
+    QString themeName = QString("themes/%1/pics/").arg("scribble"); // read scribble from some configuration, I guess
+    QString filename = KStandardDirs::locate("appdata", themeName);
+            filename += "xo.svg";
+    m_renderer = new QSvgRenderer(filename);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     setBackgroundBrush( Qt::lightGray );
     m_replayTimer = new QTimer;
@@ -51,6 +57,7 @@ Scene::Scene( Game* game ) : m_game(0) {
 Scene::~Scene() {
   delete m_replayTimer; //deleteLater??
   delete m_bkgndRenderer; //deleteLater??
+  delete m_renderer;
 }
 
 bool isAWinner(unsigned short tmpX, unsigned short tmpY, Game* game, Player player) {
@@ -161,6 +168,7 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
 void Scene::slotGameMoveFinished() {
     Move move = m_game->lastMove();
     Mark* mark = new Mark(move.p, this, move.x, move.y);
+    mark->setSharedRenderer(m_renderer);
     addItem(mark);
     demandRepaint();
     m_game->startNextTurn();
@@ -193,6 +201,7 @@ void Scene::continueReplay() {
     if (m_replayIterator != m_replayMoves.end()) {
       Mark* mark = new Mark(m_replayIterator->p, this, m_replayIterator->x, m_replayIterator->y);
       ++m_replayIterator;
+      mark->setSharedRenderer(m_renderer);
       addItem(mark);
       demandRepaint();
     } else {

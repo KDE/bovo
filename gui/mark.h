@@ -26,7 +26,7 @@
 
 #include "common.h"
 
-class QSvgRenderer;
+//class QSvgRenderer;
 
 using namespace bovo;
 
@@ -56,7 +56,7 @@ namespace gui {
     Player m_player;
     int m_row;
     int m_col;
-    QSvgRenderer* m_renderer;
+//    QSvgRenderer* m_renderer;
     qreal m_sizeShrink;
   };
 } // namespace gui

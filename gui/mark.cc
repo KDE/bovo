@@ -26,7 +26,7 @@
 #include <QtGlobal>
 #include <QColor>
 
-#include <kstandarddirs.h>
+//#include <kstandarddirs.h>
 
 #include "mark.h"
 #include "common.h"
@@ -36,14 +36,7 @@ using namespace bovo;
 
 namespace gui {
   Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_player(player), m_row(y), m_col(x) {
-    QString themeName = QString("themes/%1/pics/").arg("scribble"); // read scribble from some configuration, I guess
-//    int themeNbrX = 6; //read this from some .desktop file, I guess
-//    int themeNbrY = 5; //read this from some .desktop file, I guess
-    QString filename = KStandardDirs::locate("appdata", themeName);
-    filename += "xo.svg";
     m_sizeShrink = 1.0/(qrand()%5+7.0);
-    m_renderer = new QSvgRenderer(filename);
-    setSharedRenderer(m_renderer);
     setElementId(QString(m_player==X?"x%1":"o%1").arg(QString::number(qrand()%5+1)));
 //    qreal factor = (m_scene->width() / m_renderer->defaultSize().width()) / static_cast<qreal>(NUMCOLS);
 // What a pity! I can't use rotate() to create more individualized marks. That distorts glyphRectF into a useless state...
@@ -51,7 +44,6 @@ namespace gui {
   }
 
   Mark::~Mark() {
-    delete m_renderer;
   }
 
   void Mark::setPlayer( Player player ) {
@@ -69,7 +61,7 @@ namespace gui {
   }
 
   void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
-    m_renderer->render(painter, elementId(), glyphRectF());
+    renderer()->render(painter, elementId(), glyphRectF());
   }
 
   void Mark::setRowCol( int row, int col ) {

@@ -68,6 +68,7 @@ namespace gui {
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
     Game *m_game;
     QSvgRenderer* m_bkgndRenderer;
+    QSvgRenderer* m_renderer;
     qreal m_curCellSize;
     QList<Move> m_replayMoves;
     QList<Move>::const_iterator m_replayIterator;
