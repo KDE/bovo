@@ -37,15 +37,11 @@ using namespace bovo;
 namespace gui {
   Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_player(player), m_row(y), m_col(x) {
     QString themeName = QString("themes/%1/pics/").arg("scribble"); // read scribble from some configuration, I guess
-    int themeNbrX = 6; //read this from some .desktop file, I guess
-    int themeNbrY = 5; //read this from some .desktop file, I guess
+//    int themeNbrX = 6; //read this from some .desktop file, I guess
+//    int themeNbrY = 5; //read this from some .desktop file, I guess
     QString filename = KStandardDirs::locate("appdata", themeName);
     filename += "xo.svg";
-//    QString filename = KStandardDirs::locate("appdata", themeName);
-//    filename += m_player==X?'x':'o';
-//    filename += m_player==X?QString::number(qrand()%themeNbrX+1):QString::number(qrand()%themeNbrY+1);
-//    filename += ".svg";
-//    m_sizeShrink = 1.0/(qrand()%5+7.0);
+    m_sizeShrink = 1.0/(qrand()%5+7.0);
     m_renderer = new QSvgRenderer(filename);
     setSharedRenderer(m_renderer);
     setElementId(QString(m_player==X?"x%1":"o%1").arg(QString::number(qrand()%5+1)));
@@ -63,11 +59,13 @@ namespace gui {
   }
 
   QRectF Mark::glyphRectF() const {
-//    m_scene->width() / 
-    return QRectF( (1+m_col) * (m_scene->width()  / (NUMCOLS+2)),
-                   (1+m_row) * (m_scene->height() / (NUMCOLS+2)),
-                   m_scene->width()  / (NUMCOLS+2),
-                   m_scene->height() / (NUMCOLS+2));
+    qreal width = m_scene->width() / (NUMCOLS+2);
+    qreal height = width;
+    qreal margin = m_sizeShrink * width;
+    return QRectF( (1+m_col) * width  + margin,
+                   (1+m_row) * height + margin,
+                   width  - 2.0*margin,
+                   height - 2.0*margin);
   }
 
   void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
