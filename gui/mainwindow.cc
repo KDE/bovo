@@ -92,7 +92,7 @@ void MainWindow::setupActions() {
     actionCollection()->addAction("new_game", newGameAct);*/
     newGameAct->setToolTip(i18n("New game"));
     newGameAct->setWhatsThis(i18n("Start a new game."));
-    connect(newGameAct, SIGNAL(triggered()), this, SLOT(slotNewGame()));
+//    connect(newGameAct, SIGNAL(triggered()), this, SLOT(slotNewGame()));
 
     QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit, "quit", this, SLOT(close()));
 /*    KAction *quitAct = new KAction(KIcon("application-exit"), i18n("&Quit"), this);
@@ -129,7 +129,6 @@ void MainWindow::setupActions() {
 }
 
 void MainWindow::slotNewGame() {
-
     if (m_game != 0)
       if (!m_game->isGameOver()) 
         statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
