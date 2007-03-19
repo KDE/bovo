@@ -37,7 +37,6 @@ TASKS
  + Save selected theme in configuration
  + Put theme selection in Settings menu
 * Kidnap an artist for some decent artworks
-* smash all svg's into one file
 * only use one KSvgRenderer
 * The same thing we do every night, Konqi: Try to take over the world!
 

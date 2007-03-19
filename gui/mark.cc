@@ -40,11 +40,15 @@ namespace gui {
     int themeNbrX = 6; //read this from some .desktop file, I guess
     int themeNbrY = 5; //read this from some .desktop file, I guess
     QString filename = KStandardDirs::locate("appdata", themeName);
-    filename += m_player==X?'x':'o';
-    filename += m_player==X?QString::number(qrand()%themeNbrX+1):QString::number(qrand()%themeNbrY+1);
-    filename += ".svg";
+    filename += "xo.svg";
+//    QString filename = KStandardDirs::locate("appdata", themeName);
+//    filename += m_player==X?'x':'o';
+//    filename += m_player==X?QString::number(qrand()%themeNbrX+1):QString::number(qrand()%themeNbrY+1);
+//    filename += ".svg";
+//    m_sizeShrink = 1.0/(qrand()%5+7.0);
     m_renderer = new QSvgRenderer(filename);
     setSharedRenderer(m_renderer);
+    setElementId(QString(m_player==X?"x%1":"o%1").arg(QString::number(qrand()%5+1)));
 //    qreal factor = (m_scene->width() / m_renderer->defaultSize().width()) / static_cast<qreal>(NUMCOLS);
 // What a pity! I can't use rotate() to create more individualized marks. That distorts glyphRectF into a useless state...
 //    rotate(qrand()%20-10);
@@ -59,14 +63,15 @@ namespace gui {
   }
 
   QRectF Mark::glyphRectF() const {
-      return QRectF( (1+m_col) * (m_scene->width()  / (NUMCOLS+2)),
-                     (1+m_row) * (m_scene->height() / (NUMCOLS+2)),
-                    m_scene->width()  / (NUMCOLS+2),
-                    m_scene->height() / (NUMCOLS+2));
+//    m_scene->width() / 
+    return QRectF( (1+m_col) * (m_scene->width()  / (NUMCOLS+2)),
+                   (1+m_row) * (m_scene->height() / (NUMCOLS+2)),
+                   m_scene->width()  / (NUMCOLS+2),
+                   m_scene->height() / (NUMCOLS+2));
   }
 
   void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
-    m_renderer->render(painter, glyphRectF());
+    m_renderer->render(painter, elementId(), glyphRectF());
   }
 
   void Mark::setRowCol( int row, int col ) {
