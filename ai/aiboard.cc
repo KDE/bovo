@@ -148,12 +148,6 @@ namespace ai {
       return false;
     }
 
-    /** IDÉ: ta in en koordinat som parameter och uppdatera bara de koordinater runtikkring den (4-5 i var riktning)
-      *	Då får vi också reda på vilket id vår motståndare har (player på koordinaten vi får...), 
-      *	men då måste vi även uppdatera de två senaste ändringarna från spelbrädet till AI-brädet. 
-      *	Alltså måste vi ta in två koordinater, vår senate och motståndarens senaste och uppdatera hela områdena runt dem.
-      *	Och kolla så att ingen koordinat är (-1, -1), eller till och med bägge. Och räkna ut player i så fall. 
-      */
     coord aiboard::move(const coord& in) {
       if (in.x == static_cast<unsigned short int>(-1) && in.y == static_cast<unsigned short int>(-1)) {
         m_player = 1;
@@ -239,7 +233,7 @@ namespace ai {
             break;
           default:
 //            qDebug() << "***************'ERROR!!!!!!!!!!!!!!!!!!!!!! m_skill: " << m_skill << endl;
-            throw gameover(); // just to crash the gui, cause it is missbehaving and deserves to crash!
+            throw gameover(); // just to crash the gui, because it is missbehaving and deserves to crash!
         }
         if (doBreak) break;
       }
@@ -300,7 +294,6 @@ namespace ai {
       return p;
     }
 
-    /** IDÉ: sätt till grey istf. poäng=0. När man sätter poäng avsätts alltid grey till white. Enkelt att kolla i traverseringen om en ruta behövs revalueras. */    
     void aiboard::zero(const coord& c) {
       usi minx = c.x-5 < 0 ? 0 : c.x-5;
       usi maxx = c.x+5 > d.w-1 ? d.w-1 : c.x+5;
@@ -309,13 +302,12 @@ namespace ai {
       for (int x = minx; x <= maxx; ++x)
         for (int y = miny; y <= maxy; ++y)
           b[x][y].grey = true;
-//          setPoints(coord(x, y), 0);
     }
     
     uli aiboard::value(const coord& c, const usi pl) const {
       if (!empty(c)) return 0;
       usi oppositePlayer = (pl==1?2:1);
-      usi tp, empty, avvakta, vanstertom;
+      usi tp, empty, await, leftsideEmpty;
       uli tmpPoint = 1;
       uli point = 0;
       bool enemy = false;
@@ -324,8 +316,8 @@ namespace ai {
           tp = 0;
           enemy = false;
           empty = 0;
-          avvakta = 0;
-          vanstertom = 0;
+          await = 0;
+          leftsideEmpty = 0;
           for (int diff = 5-i; diff > 0-i; --diff) {
             coord tmp = c;
             switch (dir) {
@@ -336,15 +328,15 @@ namespace ai {
             }
             if (d.ok(tmp)) {
               if (player(tmp) == pl) {
-                empty += avvakta;
-                avvakta = 0;
+                empty += await;
+                await = 0;
                 ++tp;
               } else if (player(tmp) == oppositePlayer) {
                 enemy = true;
                 tp = 0;
               } else {
-                if (tp > 0) ++avvakta;
-                else ++vanstertom;
+                if (tp > 0) ++await;
+                else ++leftsideEmpty;
               }
             } else {
               enemy = true;
@@ -361,7 +353,7 @@ namespace ai {
             case 0: tmpPoint = 0;
           }
           if (pl == m_player && m_skill != RidiculouslyEasy && m_skill != VeryEasy) tmpPoint *= 21;
-          if (empty < 2 && avvakta > 0 && vanstertom > 0) tmpPoint *= 8;
+          if (empty < 2 && await > 0 && leftsideEmpty > 0) tmpPoint *= 8;
           point += tmpPoint;
         }
       }
