@@ -1,16 +1,10 @@
 project (BOVO)
 
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-include(MacroLibrary)
-
-# Not sure how to do this, but re-enabling exceptions (turned off in KDE)
-add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS} " -fexceptions ")
-set (${CMAKE_CXX_FLAGS} "${CMAKE_CXX_FLAGS} -fexceptions ")
+# re-enabling exceptions (turned off in KDE)
+add_definitions (${KDE4_ENABLE_EXCEPTIONS})
 
 
-include_directories ( ${QDBUS_INCLUDE_DIRS}
-        ${KDE4_INCLUDES}
+include_directories (
         ${BOVO_SOURCE_DIR}/gui ${CMAKE_BINARY_DIR}/gui
 	${BOVO_SOURCE_DIR}/game ${BOVO_SOURCE_DIR}/ai
 )
