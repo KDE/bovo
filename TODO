@@ -1,3 +1,19 @@
+Things I want before KDE 4 review
+=================================
+[ ] Remove all names from source files. For copyright holders, refer to svn
+log. We want collective code ownership.
+[ ] Undo moves.
+[ ] Hint moves.
+[ ] Documentation.
+[ ] Apidox.
+[ ] Fully i18n.
+[ ] Code beautification.
+[ ] Help.
+[ ] Theme support.
+[ ] Configuration dialogue.
+[ ] Save AI level and theme from session to session.
+
+
 TASKS
 * don't paint winning line, but paint it with svg's
 * Get rid of exceptions, to fit into KDE
