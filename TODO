@@ -1,6 +1,6 @@
 Things I want before KDE 4 review
 =================================
-[ ] Remove all names from source files. For copyright holders, refer to svn
+[X] Remove all names from source files. For copyright holders, refer to svn
 log. We want collective code ownership.
 [ ] Undo moves.
 [ ] Hint moves.

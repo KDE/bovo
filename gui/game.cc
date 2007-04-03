@@ -1,7 +1,5 @@
 /*******************************************************************
 *
-* Copyright 2002,2007 Aron Boström <aron.bostrom@gmail.com>
-*
 * This file is part of the KDE project "Bovo"
 *
 * Bovo is free software; you can redistribute it and/or modify
