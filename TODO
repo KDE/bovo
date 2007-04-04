@@ -14,10 +14,10 @@ log. We want collective code ownership.
     [ ] Game strategies
     [ ] Game history (Gomoku, Connect5, ...)
 [ ] Apidox.
-    [/] Ai
+    ['] Ai
         [X] AiSquare
         [ ] AiBoard
-    [/] Game
+    ['] Game
         [X] common.h
         [X] Square
         [X] Dimension
@@ -28,7 +28,7 @@ log. We want collective code ownership.
 [ ] Fully i18n.
     [ ] Verify all strings in i18n()
     [ ] create Messages.sh
-[/] Code beautification.
+['] Code beautification.
     [X] Ai
         [X] Naming conventions
         [X] Indentation
@@ -38,7 +38,7 @@ log. We want collective code ownership.
         [X] name all #ifdefs __CLASNAME_H__
         [X] /* comment */ all private stuff
     [X] Game
-        [X] Naming conventions
+        ['] Naming conventions (Board left)
         [X] Indentation
         [X] close namespace with comments
         [X] close #endif with comments

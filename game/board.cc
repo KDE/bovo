@@ -29,6 +29,12 @@
 
 using namespace std;
 
+/** 
+ * @file file implementing class Board, 
+ * which is really not a Board but an entire game.
+ */
+
+/** namespace for game engine */
 namespace bovo {
 
 Board::Board(usi width, usi height) : win_dir(-1) {
