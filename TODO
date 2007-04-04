@@ -19,6 +19,10 @@ log. We want collective code ownership.
         [ ] AiBoard
     [ ] Game
         [X] common.h
+        [X] Square
+        [ ] Dimension
+        [ ] Coord
+        [ ] Board
     [ ] Gui
     [ ] Mainpage.dox
 [ ] Fully i18n.

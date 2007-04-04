@@ -24,16 +24,61 @@
 
 #include "common.h"
 
+/** @file file declaring the Square class */
+
+/** namespace for game engine */
 namespace bovo {
 
+/**
+ * A class representing a square in a playing board
+ *
+ * This class represents a Square in a playing board. It knows
+ * if it is empty or if it is marked by a player.
+ * You can set it to a player, if it is empty, otherwise it will
+ * throw an exceptio @c busy.
+ *
+ * @code
+ * Square square;
+ * if (square.empty()) { // <i>this will be true</i>
+ *     square.setPlayer(X);
+ * }
+ * Player player = square.player(); // <i>X</i>
+ * @endcode
+ */
 class Square {
 public:
+    /**
+     * @brief Empty constructor
+     * @description Thie constructs an empty square,
+     * occupied by no player at all.
+     */
     Square();
+
+    /**
+     * @brief Is this Square empty?
+     * @description Tells whether this square is empty (@c true)
+     * or occupied by a player (@c false)
+     * @return @c true if square is empty, @c false otherwise
+     */
     bool empty() const;
+
+    /**
+     * @brief player of this square
+     * @description tells whether this square is occupied by
+     * player 1, player 2 och no player at all (empty).
+     * @return player id or 0 if empty
+     */
     usi player() const;
+
+    /**
+     * @brief sets player id of this square
+     * @description sets the player id of this square to 1 or 2
+     * @exception throws busy exception if player id is allready set
+     */
     void setPlayer(usi player) throw(busy);
 
 private:
+    /* player property of this Square */
     usi m_player;
 };
 

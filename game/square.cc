@@ -21,6 +21,9 @@
 
 #include "square.h"
 
+/** @file file implementing the Square class */
+
+/** namespace for game engine */
 namespace bovo {
 
 Square::Square() : m_player(0) {
