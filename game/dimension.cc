@@ -28,8 +28,8 @@ Dimension::Dimension(usi width, usi height)
   : m_height(height), m_width(width) {
 }
 
-Dimension::Dimension(const Dimension& dimension) : m_height(dimension.height()),
-  m_width(dimension.width()) {
+Dimension::Dimension(const Dimension& dimension) 
+  : m_height(dimension.m_height), m_width(dimension.m_width) {
 }
 
 usi Dimension::height() const {

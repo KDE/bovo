@@ -20,13 +20,13 @@ log. We want collective code ownership.
     [ ] Game
         [X] common.h
         [X] Square
-        [ ] Dimension
+        [X] Dimension
         [ ] Coord
         [ ] Board
     [ ] Gui
     [ ] Mainpage.dox
 [ ] Fully i18n.
-[/] Code beautification.
+[ ] Code beautification.
     [X] Ai
         [X] Naming conventions
         [X] Indentation
@@ -57,6 +57,7 @@ log. We want collective code ownership.
 [ ] Save AI level and theme from session to session.
 [ ] Logic cleanups.
     [X] Allways use Player instead of int
+    [ ] Give the best AI level a different name
 
 =============================================================================
 
