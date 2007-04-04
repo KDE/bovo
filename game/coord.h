@@ -24,24 +24,100 @@
 
 #include "common.h"
 
+/** @file file declaring the Coord class */
+
+/** namespace for game engine */
 namespace bovo {
 
 /** 
- * Coordinate
+ * A coordinate
+ *
+ * This class describes a coordinate on a playing field. It is
+ * used as a cointainer of an (x, y) coordinate pair that starts to
+ * count with Origo (0, 0) in upper left corner. No negative coordinates
+ * are allowed.
+ *
+ * If both x and y coordinates are static_cast<unsigned short int>(-1),
+ * a special case is applied. Then the coordinate is invalid (all
+ * coordinates outside of playing area are invalid) but it also means
+ * that the coordinate refers to a moment before any moved has been played.
+ *
+ * @code
+ * Coord move(const Coord& coord) {
+ *     if (coord.x() == static_cast<unsigned short>(-1) &&
+ *       coord.y() == static_cast<unsigned short>(-1)) {
+ *         return computeAiTurn();
+ *     } else {
+ *         markCoordAsOpposite(coord);
+ *         return computeAiTurn();
+ *     }
+ * }
+ * @endcode
  */
 class Coord {
 public:
+    /**
+     * @brief standard constructor
+     * @description constructs a Coord with given X and Y coordinates
+     * @param x X coordinate
+     * @param y Y coordinate
+     */
     Coord(usi x, usi y);
-    Coord(const Coord& c);
-    usi x() const;
-    usi y() const;
-    Coord left() const;
-    Coord right() const;
-    Coord up() const;
+
+    /**
+     * @brief copy constructor
+     * @description constructs a Coord that is a copy of a given Coord
+     * @param coord Coord to copy
+     */
+    Coord(const Coord& coord);
+
+    /**
+     * @brief
+     * @description
+     * @return
+     */
     Coord down() const;
 
+    /**
+     * @brief
+     * @description
+     * @return
+     */
+    Coord left() const;
+
+    /**
+     * @brief
+     * @description
+     * @return
+     */
+    Coord right() const;
+
+    /**
+     * @brief
+     * @description
+     * @return
+     */
+    Coord up() const;
+
+    /**
+     * @brief
+     * @description
+     * @return
+     */
+    usi x() const;
+
+    /**
+     * @brief
+     * @description
+     * @return
+     */
+    usi y() const;
+
 private:
+    /* X coordinate property */
     usi m_x;
+
+    /* Y coordinate property */
     usi m_y;
 };
 

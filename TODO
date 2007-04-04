@@ -17,16 +17,18 @@ log. We want collective code ownership.
     [/] Ai
         [X] AiSquare
         [ ] AiBoard
-    [ ] Game
+    [/] Game
         [X] common.h
         [X] Square
         [X] Dimension
-        [ ] Coord
+        [X] Coord
         [ ] Board
     [ ] Gui
     [ ] Mainpage.dox
 [ ] Fully i18n.
-[ ] Code beautification.
+    [ ] Verify all strings in i18n()
+    [ ] create Messages.sh
+[/] Code beautification.
     [X] Ai
         [X] Naming conventions
         [X] Indentation
@@ -35,18 +37,18 @@ log. We want collective code ownership.
         [X] sort functions, methods and properties
         [X] name all #ifdefs __CLASNAME_H__
         [X] /* comment */ all private stuff
-    [ ] Game
+    [X] Game
         [X] Naming conventions
-        [ ] Indentation
+        [X] Indentation
         [X] close namespace with comments
         [X] close #endif with comments
-        [ ] sort functions, methods and properties
+        [X] sort functions, methods and properties
         [X] name all #ifdefs __CLASNAME_H__
-        [ ] /* comment */ all private stuff
+        [X] /* comment */ all private stuff
     [ ] Gui
         [ ] Naming conventions
         [ ] Indentation
-        [X] close namespace with comments
+        [ ] close namespace with comments
         [ ] close #endif with comments
         [ ] sort functions, methods and properties
         [ ] name all #ifdefs __CLASNAME_H__
@@ -62,6 +64,10 @@ log. We want collective code ownership.
 =============================================================================
 
 TASKS
+* Save a replay
+* Save an active game and open it again
+* Start with latest game when opening
+* Save stats from time to time
 * don't paint winning line, but paint it with svg's
 * Get rid of exceptions, to fit into KDE
 * Move this list to a wiki!

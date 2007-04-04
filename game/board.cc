@@ -52,16 +52,20 @@ Board::~Board() {
 void Board::setup() {
     m_gameover = false;
     m_board = new Square*[m_dimension->width()];
-    for (int x = 0; x < m_dimension->width(); ++x)
+    for (int x = 0; x < m_dimension->width(); ++x) {
         m_board[x] = new Square[m_dimension->height()];
+    }
 }
     
 bool Board::empty(const Coord& c) const throw(outOfBounds) {
-    if (!m_dimension->ok(c)) throw outOfBounds();
+    if (!m_dimension->ok(c)) {
+        throw outOfBounds();
+    }
     return m_board[c.x()][c.y()].empty();
 }
 
-bool Board::setPlayer(const Coord& c, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer) {
+bool Board::setPlayer(const Coord& c, const Player& player)
+  throw(busy, outOfBounds, gameover, notValidPlayer) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
@@ -102,10 +106,16 @@ Coord next(const Coord& c, usi dir) {
     usi RIGHT = 4;
     usi DOWN = 8;
     Coord tmp = c;
-    if (dir & LEFT) tmp = tmp.left();
-    else if (dir & RIGHT) tmp = tmp.right();
-    if (dir & UP) tmp = tmp.up();
-    else if (dir & DOWN) tmp = tmp.down();
+    if (dir & LEFT) {
+        tmp = tmp.left();
+    } else if (dir & RIGHT) {
+        tmp = tmp.right();
+    }
+    if (dir & UP) {
+        tmp = tmp.up();
+    } else if (dir & DOWN) {
+        tmp = tmp.down();
+    }
     return tmp;
 }
 
@@ -114,7 +124,16 @@ bool Board::win(const Coord& c) {
     usi UP = 2;
     usi RIGHT = 4;
     usi DOWN = 8;
-    usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
+    usi DIR[8] = {
+          LEFT,
+          RIGHT,
+          UP,
+          DOWN,
+          LEFT | UP,
+          RIGHT | DOWN,
+          LEFT | DOWN,
+          RIGHT | UP
+    };
     Player p = player(c);
     for (int i = 0; i < 4; ++i) {
         usi count = 1;
@@ -128,7 +147,10 @@ bool Board::win(const Coord& c) {
             ++count;
             tmp = next(tmp, DIR[2*i+1]);
         }
-        if (count >= 5) {win_dir=i; return true;}
+        if (count >= 5) {
+            win_dir=i;
+            return true;
+        }
     }
     return false;
 }

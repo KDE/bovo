@@ -21,6 +21,9 @@
 
 #include "coord.h"
 
+/** @file file implementing class Coord */
+
+/** namespace for game engine */
 namespace bovo {
 
 Coord::Coord(usi x, usi y): m_x(x), m_y(y) {
@@ -29,12 +32,8 @@ Coord::Coord(usi x, usi y): m_x(x), m_y(y) {
 Coord::Coord(const Coord& c) : m_x(c.m_x), m_y(c.m_y) {
 }
 
-usi Coord::x() const {
-    return m_x;
-}
-
-usi Coord::y() const {
-    return m_y;
+Coord Coord::down() const {
+    return Coord(m_x, m_y+1);
 }
 
 Coord Coord::left() const {
@@ -49,8 +48,12 @@ Coord Coord::up() const {
     return Coord(m_x, m_y-1);
 }
 
-Coord Coord::down() const {
-    return Coord(m_x, m_y+1);
+usi Coord::x() const {
+    return m_x;
+}
+
+usi Coord::y() const {
+    return m_y;
 }
 
 } /* namespace bovo */
