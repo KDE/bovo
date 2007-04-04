@@ -19,23 +19,106 @@
 *
 ********************************************************************/                     
 
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef __COMMON_H__
+#define __COMMON_H__
 
+/** @file file containing common system wide typedefs, enums and exceptions */
+
+/* Number of columns and rows (the same) */
 #define NUMCOLS 14
 
+/** namespace for game engine */
 namespace bovo {
-    typedef unsigned short int usi;
-    typedef unsigned long int uli;
 
-    struct busy {};
-    struct outOfBounds {};
-    struct gameover {};
-    struct notValidPlayer {};
+/* a very short positive natural number, such as a X or Y coordinate */
+typedef unsigned short int usi;
 
-    enum Skill { RidiculouslyEasy = 0, VeryEasy = 1, Easy = 2, Normal = 3, Hard = 4, VeryHard = 5, Zlatan = 6 };
-    enum Player { X = 1, O = 2, No = 0 };
+/* a very long positive natural number, such as score for a certain square */
+typedef unsigned long int uli;
+
+/**
+ * @brief Exception for a busy square
+ * @description Exception thrown when you tries to set a player of a square
+ * that is already occupied by a player ("X" or "O").
+ *
+ * @code
+ * try {
+ *     throw busy();
+ * } catch (busy) {
+ *     //<i> error handling code</i>
+ * }
+ * @endcode
+ */
+struct busy {
+};
+
+/**
+ * @brief Exception for a coordinate outside board
+ * @description Exception thrown when a trying to refer to a coordinate
+ * outside of playing board.
+ *
+ * @code
+ * try {
+ *     throw outOfBounds();
+ * } catch (outOfBounds) {
+ *     //<i> error handling code</i>
+ * }
+ * @endcode
+ */
+struct outOfBounds {
+};
+
+/**
+ * @brief Exception for Game Over
+ * @description Exception thrown when a Game is already over.
+ *
+ * @code
+ * try {
+ *     throw gameover();
+ * } catch (gameover) {
+ *     //<i> error handling code</i>
+ * }
+ * @endcode
+ */
+struct gameover {
+};
+
+/**
+ * Exception thrown when a player isn't valid (neither "X", "O" nor "No")
+ *
+ * @code
+ * try {
+ *     throw notValidPlayer();
+ * } catch (notValidPlayer) {
+ *     //<i> error handling code</i>
+ * }
+ * @endcode
+ */
+struct notValidPlayer {
+};
+
+/**
+ * Enum for the AI skill level
+ */
+enum Skill {
+    RidiculouslyEasy = 0, /**< Ridiculously Easy AI player */
+    VeryEasy = 1, /**< Very Easy AI player */
+    Easy = 2, /**< Easy AI player */
+    Normal = 3, /**< Normal AI player */
+    Hard = 4, /**< Hard AI player */
+    VeryHard = 5, /**< Very hard AI player */
+    Zlatan = 6 /**< The best AI player in the world */
+};
+
+/**
+ * Enum for the player id
+ */
+enum Player {
+    X = 1, /**< Player 1 */
+    O = 2, /**< Player 2 */
+    No = 0 /**< No player (empty) */
+};
 
 } /* namespace bovo */
 
-#endif
+#endif /* __COMMON_H__ */

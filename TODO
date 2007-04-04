@@ -18,7 +18,9 @@ log. We want collective code ownership.
         [X] AiSquare
         [ ] AiBoard
     [ ] Game
+        [X] common.h
     [ ] Gui
+    [ ] Mainpage.dox
 [ ] Fully i18n.
 [/] Code beautification.
     [X] Ai
@@ -45,7 +47,7 @@ log. We want collective code ownership.
         [ ] sort functions, methods and properties
         [ ] name all #ifdefs __CLASNAME_H__
         [ ] /* comment */ all private stuff
-[ ] Help.
+[ ] Tooltips.
 [ ] Theme support.
 [ ] Configuration dialogue.
 [ ] Save AI level and theme from session to session.
