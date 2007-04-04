@@ -19,6 +19,10 @@
 *
 ********************************************************************/                     
 
+/**
+ * @file
+ */
+
 #ifndef AIBOARD_H
 #define AIBOARD_H
 
@@ -28,26 +32,87 @@
 
 using namespace bovo;
 
+/** namespace for AI stuff */
 namespace ai {
-  class AiSquare;
 
-  class aiboard {
-  public:
-    aiboard(const usi width, const usi height, Skill skill = Normal);
-    aiboard(const dim& dimension, Skill skill = Normal);
-    ~aiboard();
+class AiSquare;
+
+/**
+ *
+ */
+class AiBoard {
+public:
+    /**
+     *
+     */
+    AiBoard(const usi width, const usi height, Skill skill = Normal);
+
+    /**
+     *
+     */
+    AiBoard(const dim& dimension, Skill skill = Normal);
+
+    /**
+     *
+     */
+    ~AiBoard();
+
+    /**
+     *
+     */
     bool empty(const coord&) const throw(outOfBounds);
+
+    /**
+     *
+     */
     bool empty(const usi x, const usi y) const throw(outOfBounds);
+
+    /**
+     *
+     */
     bool setPlayer(const coord&, const usi) throw(busy, outOfBounds, gameover, notValidPlayer);
+
+    /**
+     *
+     */
     bool setPlayer(const usi x, const usi y, const usi p) throw(busy, outOfBounds, gameover, notValidPlayer);
+
+    /**
+     *
+     */
     usi player(const coord&) const throw(outOfBounds);
+
+    /**
+     *
+     */
     usi player(const usi x, const usi y) const throw(outOfBounds);
+
+    /**
+     *
+     */
     usi width() const;
+
+    /**
+     *
+     */
     usi height() const;
+
+    /**
+     *
+     */
     coord move(const coord& c);
+
+    /**
+     *
+     */
     coord* moves(const coord& c);
+
+    /**
+     *
+     */
     void setSkill(Skill skill);
-  private:
+
+private:
     void zero(const coord&);
     uli points(const coord&) const throw(outOfBounds);
     void setPoints(const coord&, const uli points) throw(outOfBounds);
@@ -63,7 +128,8 @@ namespace ai {
     bool m_gameover;
     bool cleanBoard;
     usi m_player;
-  };
-}
+};
+
+} /* namespace ai */
 
 #endif
