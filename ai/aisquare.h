@@ -26,8 +26,9 @@
 #ifndef __AISQUARE_H__
 #define __AISQUARE_H__
 
-#include "common.h"
 #include "square.h"
+
+#include "common.h"
 
 using namespace bovo;
 

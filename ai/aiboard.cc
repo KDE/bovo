@@ -23,12 +23,13 @@
  * @file AiBoard implementation
  */
 
+#include "aiboard.h"
+
 #include <vector>
 #include <iostream>
 
-#include "aiboard.h"
-
 #include "aisquare.h"
+#include "coord.h"
 #include "dimension.h"
 
 using namespace bovo;

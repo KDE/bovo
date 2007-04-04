@@ -27,12 +27,12 @@
 #define __AIBOARD_H__
 
 #include "common.h"
-#include "coord.h"
 
 using namespace bovo;
 
 /** namespace for game engine */
 namespace bovo {
+    class Coord;
     class Dimension;
 } /* namespace bovo */
 
