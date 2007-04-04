@@ -27,7 +27,7 @@
 #include <QPalette>
 
 #include "board.h"
-#include "dim.h"
+#include "dimension.h"
 #include "aiboard.h"
 
 using namespace ai;
@@ -48,7 +48,7 @@ public:
 };
 
 BovoWidget::BovoWidget(QWidget *parent) : QWidget(parent) {
-  board b(dim(WIDTH, HEIGHT));
+  board b(Dimension(WIDTH, HEIGHT));
   aiboard p0(WIDTH, HEIGHT);
   aiboard p1(WIDTH, HEIGHT);
   unsigned short int player = 1;

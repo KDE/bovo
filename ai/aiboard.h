@@ -27,10 +27,14 @@
 #define __AIBOARD_H__
 
 #include "common.h"
-#include "dim.h"
 #include "coord.h"
 
 using namespace bovo;
+
+/** namespace for game engine */
+namespace bovo {
+    class Dimension;
+} /* namespace bovo */
 
 /** namespace for AI stuff */
 namespace ai {
@@ -50,7 +54,7 @@ public:
     /**
      *
      */
-    AiBoard(const dim& dimension, Skill skill = Normal);
+    AiBoard(const Dimension& dimension, Skill skill = Normal);
 
     /**
      *
@@ -120,7 +124,7 @@ private:
     bool m_cleanBoard;
 
     /* Dimension property of playing board. */
-    dim m_dimension;
+    Dimension *m_dimension;
 
     /* is Game Over? property */
     bool m_gameover;

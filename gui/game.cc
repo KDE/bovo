@@ -27,7 +27,7 @@
 #include "common.h"
 #include "aiboard.h"
 #include "board.h"
-#include "dim.h"
+#include "dimension.h"
 #include "coord.h"
 #include "move.h"
 
@@ -37,8 +37,8 @@ using namespace ai;
 namespace gui {
 
 Game::Game(Skill skill, Player startingPlayer) : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
-    m_board = new board(dim(NUMCOLS, NUMCOLS));
-    m_engine = new AiBoard(dim(NUMCOLS, NUMCOLS), skill);
+    m_board = new board(Dimension(NUMCOLS, NUMCOLS));
+    m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
 }
 
 Game::~Game() {

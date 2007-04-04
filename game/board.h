@@ -24,17 +24,17 @@
 
 #include <list>
 
-#include "dim.h"
 #include "common.h"
 
 namespace bovo {
     class coord;
     class square;
+    class Dimension;
 
     class board {
     public:
         board(const unsigned short int width, const unsigned short int height);
-        board(const dim&);
+        board(const Dimension& dimension);
         virtual ~board();
         bool empty(const coord&) const throw(outOfBounds);
         bool setPlayer(const coord&, const unsigned short int val) throw(busy, outOfBounds, gameover, notValidPlayer);
@@ -51,7 +51,7 @@ namespace bovo {
          */
         short winDir() const;
     private:
-        dim* m_dimension;
+        Dimension* m_dimension;
         square** m_board;
         void setup();
         bool win(const coord&);

@@ -22,7 +22,7 @@
 #include <iostream>
 #include <list>
 
-#include "dim.h"
+#include "dimension.h"
 #include "coord.h"
 #include "square.h"
 #include "board.h"
@@ -34,17 +34,17 @@ namespace bovo {
     typedef unsigned short int usi;
 
     board::board(const unsigned short int width, const unsigned short int height) : win_dir(-1) {
-      m_dimension = new dim(width, height);
+      m_dimension = new Dimension(width, height);
       setup();
     }
     
-    board::board(const dim& dimension) : win_dir(-1) {
-      m_dimension = new dim(dimension.w, dimension.h);
+    board::board(const Dimension& dimension) : win_dir(-1) {
+      m_dimension = new Dimension(dimension.width(), dimension.height());
       setup();
     }
     
     board::~board() {
-      for (int x = 0; x < m_dimension->w; ++x) {
+      for (int x = 0; x < m_dimension->width(); ++x) {
         delete[] m_board[x];
       }
       delete[] m_board;
@@ -53,9 +53,9 @@ namespace bovo {
     
     void board::setup() {
       m_gameover = false;
-      m_board = new square*[m_dimension->w];
-      for (int x = 0; x < m_dimension->w; ++x)
-        m_board[x] = new square[m_dimension->h];
+      m_board = new square*[m_dimension->width()];
+      for (int x = 0; x < m_dimension->width(); ++x)
+        m_board[x] = new square[m_dimension->height()];
     }
     
     bool board::empty(const coord& c) const throw(outOfBounds) {
@@ -77,8 +77,8 @@ namespace bovo {
       return m_board[c.x][c.y].player();
     }
     
-    unsigned short int board::width() const { return m_dimension->w; }
-    unsigned short int board::height() const { return m_dimension->h; }
+    unsigned short int board::width() const { return m_dimension->width(); }
+    unsigned short int board::height() const { return m_dimension->height(); }
     
     coord next(const coord& c, usi dir) {
       usi LEFT = 1;
