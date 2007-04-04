@@ -19,39 +19,33 @@
 *
 ********************************************************************/
 
-#include "dim.h"
+#include "dimension.h"
 #include "coord.h"
 
 namespace bovo {
 
-  dim::dim(const unsigned short int width, const unsigned int height) : w(width), h(height) {
-  }
+Dimension::Dimension(usi width, usi height) 
+  : m_height(height), m_width(width) {
+}
 
-  dim::dim(const dim& dimension) : w(dimension.w), h(dimension.h) {
-  }
+Dimension::Dimension(const Dimension& dimension) : m_height(dimension.height()),
+  m_width(dimension.width()) {
+}
 
-  unsigned short int dim::cols() const {
-    return w;
-  }
+usi Dimension::height() const {
+    return m_height;
+}
 
-  unsigned short int dim::width() const {
-    return w;
-  }
+usi Dimension::width() const {
+    return m_width;
+}
 
-  unsigned short int dim::rows() const {
-    return h;
-  }
+bool Dimension::ok(const coord* c) const {
+    return c->x < m_width && c->y < m_height;
+}
 
-  unsigned short int dim::height() const {
-    return h;
-  }
-
-  bool dim::ok(const coord* c) const {
-    return c->x < w && c->y < h;
-  }
-
-  bool dim::ok(const coord& c) const {
-    return c.x < w && c.y < h;
-  }
+bool Dimension::ok(const coord& c) const {
+    return c.x < m_width && c.y < m_height;
+}
 
 } /* namespace bovo */
