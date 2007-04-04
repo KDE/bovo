@@ -19,18 +19,58 @@
 *
 ********************************************************************/                     
 
+/** 
+ * @file Declares the square class used by the AI internally
+ */
+
 #ifndef AISQUARE_H
 #define AISQUARE_H
 
 #include "square.h"
 
+/** namespace for AI stuff */
 namespace ai {
-  class aisquare : public bovo::square {
-  public:
+
+/**
+ * aisquare is used by the AI to represent a square in a playing board.
+ *
+ * This class is used internally by the AI to represent a square in a 
+ * playing board. It extends the normal @c square class with possibilities
+ * to keep a point attached to the square, as well as a bool marker that
+ * tells whether this square needs a recalculation of its points.
+ *
+ * Examples construction: (create a playing board)
+ * @code
+ * aisquare** board = new aisquare*[width];
+ * for (int x = 0; x < width; ++x) {
+ *     board[x] = new aisquare[height];
+ * }
+ * @endcode
+ * 
+ * Example point use:
+ * @code
+ * board[x][y].point = point;
+ * @endcode
+ *
+ * @author bostrom (Aron Boström) <aron bostrom gmail com>
+ */
+class aisquare : public bovo::square {
+public:
+    /**
+     * @brief a game square in the AI
+     * @description this class extends the ordinary game square with the addition of a point attribute and a bool attribute, for AI purposes
+     * @param
+     * @return
+     * @exception
+     * @see
+     * @author
+     * @since
+     */
     aisquare();
     unsigned long int point;
     bool grey;
-  };
-}
+};
+
+} // namespace ai
 
 #endif

@@ -4,7 +4,10 @@ Things I want before KDE 4 review
 log. We want collective code ownership.
 [ ] Undo moves.
 [ ] Hint moves.
-[ ] Documentation.
+     [ ] implement moves() in ai.
+[ ] Documentation/Handbook.
+     [ ] Game rules.
+     [ ] Game history.
 [ ] Apidox.
 [ ] Fully i18n.
 [ ] Code beautification.
