@@ -29,11 +29,11 @@
 
 
 namespace ai {
-  class AiBoard;
+    class AiBoard;
 } /* namespace ai */
 
 namespace bovo {
-  class board;
+    class Board;
 } /* namespace ai */
 
 using namespace bovo;
@@ -74,7 +74,7 @@ namespace gui {
     Player m_playerMark;
     Player m_computerMark;
     AiBoard *m_engine;
-    board *m_board;
+    Board *m_board;
   };
 } /* namespace gui */
 

@@ -30,12 +30,12 @@ log. We want collective code ownership.
         [X] name all #ifdefs __CLASNAME_H__
         [X] /* comment */ all private stuff
     [ ] Game
-        [ ] Naming conventions
+        [X] Naming conventions
         [ ] Indentation
         [X] close namespace with comments
-        [ ] close #endif with comments
+        [X] close #endif with comments
         [ ] sort functions, methods and properties
-        [ ] name all #ifdefs __CLASNAME_H__
+        [X] name all #ifdefs __CLASNAME_H__
         [ ] /* comment */ all private stuff
     [ ] Gui
         [ ] Naming conventions

@@ -37,7 +37,7 @@ using namespace ai;
 namespace gui {
 
 Game::Game(Skill skill, Player startingPlayer) : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
-    m_board = new board(Dimension(NUMCOLS, NUMCOLS));
+    m_board = new Board(Dimension(NUMCOLS, NUMCOLS));
     m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
 }
 
@@ -121,10 +121,11 @@ Move Game::lastMove() const {
 }
 
 bool Game::isComputersTurn() const {
-  return m_curPlayer == m_computerMark;
+    return m_curPlayer == m_computerMark;
 }
 
-short Game::winDir() const {return m_board->winDir();
+short Game::winDir() const {
+    return m_board->winDir();
 }
 
 } /* namespace gui */
