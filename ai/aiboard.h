@@ -70,31 +70,6 @@ public:
     /**
      *
      */
-    bool setPlayer(const coord&, const usi) throw(busy, outOfBounds, gameover, notValidPlayer);
-
-    /**
-     *
-     */
-    bool setPlayer(const usi x, const usi y, const usi p) throw(busy, outOfBounds, gameover, notValidPlayer);
-
-    /**
-     *
-     */
-    usi player(const coord&) const throw(outOfBounds);
-
-    /**
-     *
-     */
-    usi player(const usi x, const usi y) const throw(outOfBounds);
-
-    /**
-     *
-     */
-    usi width() const;
-
-    /**
-     *
-     */
     usi height() const;
 
     /**
@@ -110,24 +85,81 @@ public:
     /**
      *
      */
+    usi player(const coord&) const throw(outOfBounds);
+
+    /**
+     *
+     */
+    usi player(const usi x, const usi y) const throw(outOfBounds);
+
+    /**
+     *
+     */
+    bool setPlayer(const coord&, const usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
+
+    /**
+     *
+     */
+    bool setPlayer(const usi x, const usi y, const usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
+
+    /**
+     *
+     */
     void setSkill(Skill skill);
 
+    /**
+     *
+     */
+    usi width() const;
+
 private:
-    void zero(const coord&);
-    uli points(const coord&) const throw(outOfBounds);
-    void setPoints(const coord&, const uli points) throw(outOfBounds);
-    void addPoints(const coord&, const uli points) throw(outOfBounds);
-    uli value(const coord&, const usi player) const;
-    uli value2(const coord&) const;
-    coord evaluate() const;
-    Skill m_skill;
-    dim d;
-    AiSquare** b;
-    void setup();
-    bool win(const coord&) const;
+    /* Playing board property. */
+    AiSquare** m_board;
+
+    /* hasn't game really started? */
+    bool m_cleanBoard;
+
+    /* Dimension property of playing board. */
+    dim m_dimension;
+
+    /* is Game Over? property */
     bool m_gameover;
-    bool cleanBoard;
+
+    /* AI player property */
     usi m_player;
+
+    /* AI Level property. */
+    Skill m_skill;
+
+    /* Return the best-fitting coordinate according to the specs.
+     * Use this when all the board has been given points. */
+    coord evaluate() const;
+
+    /* returns, adds och sets points on a given square. */
+    uli points(const coord&) const throw(outOfBounds);
+    void addPoints(const coord&, const uli points) throw(outOfBounds);
+    void setPoints(const coord&, const uli points) throw(outOfBounds);
+
+    /* initialize this class */
+    void setup();
+
+    /* Do the real calculation of points for a given square.
+     * Player is the AI player you're optimizing. */
+    uli value(const coord&, const usi player) const;
+
+    /* value2 performs a second evaluation in order to make out the tiny 
+     * differences that haven't been spotted yet. 
+     * Only run this when needed. */
+    uli value2(const coord&) const;
+
+    /* is this move (coord) a winning move? */
+    bool win(const coord&) const;
+
+    /* Marks all neighbour (5 squares in each 
+     * direction) as in need of a recalculation 
+     * of its points. */
+    void zero(const coord&); 
+
 };
 
 } /* namespace ai */

@@ -21,14 +21,14 @@ log. We want collective code ownership.
     [ ] Gui
 [ ] Fully i18n.
 [/] Code beautification.
-    [ ] Ai
+    [X] Ai
         [X] Naming conventions
         [X] Indentation
         [X] close namespace with /* comments */
         [X] close #endif with /* comments */
-        [ ] sort functions, methods and properties
+        [X] sort functions, methods and properties
         [X] name all #ifdefs __CLASNAME_H__
-        [ ] /* comment */ all private stuff
+        [X] /* comment */ all private stuff
     [ ] Game
         [ ] Naming conventions
         [ ] Indentation
