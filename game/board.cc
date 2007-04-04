@@ -58,34 +58,34 @@ namespace bovo {
         m_board[x] = new Square[m_dimension->height()];
     }
     
-    bool board::empty(const coord& c) const throw(outOfBounds) {
+    bool board::empty(const Coord& c) const throw(outOfBounds) {
       if (!m_dimension->ok(c)) throw outOfBounds();
-      return m_board[c.x][c.y].empty();
+      return m_board[c.x()][c.y()].empty();
     }
     
-    bool board::setPlayer(const coord& c, const unsigned short int val) throw(busy, outOfBounds, gameover, notValidPlayer) {
+    bool board::setPlayer(const Coord& c, const unsigned short int val) throw(busy, outOfBounds, gameover, notValidPlayer) {
       if (!m_dimension->ok(c)) throw outOfBounds();
       if (val != 1 && val != 2) throw notValidPlayer();
       if (m_gameover) throw gameover();
-      m_board[c.x][c.y].setPlayer(val);
+      m_board[c.x()][c.y()].setPlayer(val);
       history.push_back(c);
       if (win(c)) { m_gameover = true; return true; } else return false;
     }
     
-    unsigned short int board::player(const coord& c) const throw(outOfBounds) {
+    unsigned short int board::player(const Coord& c) const throw(outOfBounds) {
       if (!m_dimension->ok(c)) throw outOfBounds();
-      return m_board[c.x][c.y].player();
+      return m_board[c.x()][c.y()].player();
     }
     
     unsigned short int board::width() const { return m_dimension->width(); }
     unsigned short int board::height() const { return m_dimension->height(); }
     
-    coord next(const coord& c, usi dir) {
+    Coord next(const Coord& c, usi dir) {
       usi LEFT = 1;
       usi UP = 2;
       usi RIGHT = 4;
       usi DOWN = 8;
-      coord tmp = c;
+      Coord tmp = c;
       if (dir & LEFT) tmp = tmp.left();
       else if (dir & RIGHT) tmp = tmp.right();
       if (dir & UP) tmp = tmp.up();
@@ -94,7 +94,7 @@ namespace bovo {
     }
     
     
-    bool board::win(const coord& c) {
+    bool board::win(const Coord& c) {
       usi LEFT = 1;
       usi UP = 2;
       usi RIGHT = 4;
@@ -103,7 +103,7 @@ namespace bovo {
       usi p = player(c);
       for (int i = 0; i < 4; ++i) {
         usi count = 1;
-        coord tmp = next(c, DIR[2*i]);
+        Coord tmp = next(c, DIR[2*i]);
         while (m_dimension->ok(tmp) && player(tmp) == p) {
           ++count;
           tmp = next(tmp, DIR[2*i]);
@@ -118,13 +118,13 @@ namespace bovo {
       return false;
     }
 
-    coord board::lastMove() const {
+    Coord board::lastMove() const {
       if (history.empty())
-        return coord(-1, -1);
+        return Coord(-1, -1);
       return history.back();
     }
 
-    std::list<coord> board::getHistory() const {
+    std::list<Coord> board::getHistory() const {
       return history;
     }
 

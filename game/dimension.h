@@ -26,7 +26,7 @@
 
 namespace bovo {
 
-class coord;
+class Coord;
 
 /** 
 * Dimension
@@ -37,8 +37,8 @@ public:
     Dimension(const Dimension& dimension);
     usi height() const;
     usi width() const;
-    bool ok(const coord* c) const;
-    bool ok(const coord& c) const;
+    bool ok(const Coord* c) const;
+    bool ok(const Coord& c) const;
 
 private:
     usi m_height;

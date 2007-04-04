@@ -19,30 +19,32 @@
 *
 ********************************************************************/                     
 
-#ifndef COORD_H
-#define COORD_H
+#ifndef __COORD_H__
+#define __COORD_H__
+
+#include "common.h"
 
 namespace bovo {
-  /** 
-   * Coordinate
-   */
-  class coord {
-  public:
-    coord(const unsigned short int col, const unsigned short int row);
-    coord(const coord& c);
-    unsigned short int x, y;
-    unsigned short int row() const;
-    unsigned short int col() const;
-    coord left() const;
-    coord right() const;
-    coord leftup() const;
-    coord leftdown() const;
-    coord rightup() const;
-    coord rightdown() const;
-    coord up() const;
-    coord down() const;
-  };
+
+/** 
+ * Coordinate
+ */
+class Coord {
+public:
+    Coord(usi x, usi y);
+    Coord(const Coord& c);
+    usi x() const;
+    usi y() const;
+    Coord left() const;
+    Coord right() const;
+    Coord up() const;
+    Coord down() const;
+
+private:
+    usi m_x;
+    usi m_y;
+};
 
 } /* namespace bovo */
 
-#endif
+#endif /* __COORD_H__ */

@@ -29,7 +29,6 @@
 #include "aiboard.h"
 
 #include "aisquare.h"
-#include "coord.h"
 #include "dimension.h"
 
 using namespace bovo;
@@ -57,30 +56,30 @@ AiBoard::~AiBoard() {
     delete m_dimension;
 }
 
-bool AiBoard::empty(const coord& c) const throw(outOfBounds) {
+bool AiBoard::empty(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
-    return m_board[c.x][c.y].empty();
+    return m_board[c.x()][c.y()].empty();
 }
 
 bool AiBoard::empty(const usi x, const usi y) const throw(outOfBounds) {
-    return empty(coord(x, y));
+    return empty(Coord(x, y));
 }
 
 usi AiBoard::height() const {
     return m_dimension->height();
 }
 
-coord AiBoard::move(const coord& in) {
+Coord AiBoard::move(const Coord& in) {
     if (! m_dimension->ok(in)) {
         m_player = 1;
         m_cleanBoard = false;
         srand(static_cast<int>(time(0)));
         usi randX = rand()%(m_dimension->width()/3) + m_dimension->width()/3;
         usi randY = rand()%(m_dimension->height()/3) + m_dimension->height()/3;
-        setPlayer(coord(randX, randY), m_player);
-        return coord(randX, randY);
+        setPlayer(Coord(randX, randY), m_player);
+        return Coord(randX, randY);
     } else if (m_cleanBoard) {
         m_player = 2;
         m_cleanBoard = false;
@@ -92,35 +91,35 @@ coord AiBoard::move(const coord& in) {
     for (usi x = 0; x < m_dimension->width(); ++x) {
         for (usi y = 0; y < m_dimension->height(); ++y) {
             if (m_board[x][y].status()) {
-                coord c(x, y);
+                Coord c(x, y);
                 setPoints(c, value(c, m_player));
                 addPoints(c, value(c, m_player%2+1));
             }
         }
     }
-    coord out = evaluate();
+    Coord out = evaluate();
     setPlayer(out, m_player);
     zero(out);
     return out;
 }
 
-coord* AiBoard::moves(const coord& c) {
-#warning Implement - coord* AiBoard::moves(const coord& c)
-    return new coord(c.x, c.y);
+Coord* AiBoard::moves(const Coord& c) {
+#warning Implement - Coord* AiBoard::moves(const Coord& c)
+    return new Coord(c.x(), c.y());
 }
 
-usi AiBoard::player(const coord& c) const throw(outOfBounds) {
+usi AiBoard::player(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
-    return m_board[c.x][c.y].player();
+    return m_board[c.x()][c.y()].player();
 }
 
 usi AiBoard::player(const usi x, const usi y) const throw(outOfBounds) {
-    return player(coord(x, y));
+    return player(Coord(x, y));
 }
 
-bool AiBoard::setPlayer(const coord& c, const usi player) 
+bool AiBoard::setPlayer(const Coord& c, const usi player) 
   throw(busy, outOfBounds, gameover, notValidPlayer) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
@@ -131,7 +130,7 @@ bool AiBoard::setPlayer(const coord& c, const usi player)
     if (m_gameover) {
         throw gameover();
     }
-    m_board[c.x][c.y].setPlayer(player);
+    m_board[c.x()][c.y()].setPlayer(player);
     if (win(c)) { 
         m_gameover = true;
         return true;
@@ -141,7 +140,7 @@ bool AiBoard::setPlayer(const coord& c, const usi player)
 
 bool AiBoard::setPlayer(const usi x, const usi y, const usi player) 
   throw(busy, outOfBounds, gameover, notValidPlayer) {
-    return setPlayer(coord(x, y), player);
+    return setPlayer(Coord(x, y), player);
 }
 
 void AiBoard::setSkill(Skill skill) {
@@ -154,12 +153,12 @@ usi AiBoard::width() const {
 
 /* secret helper functions */
 
-coord next(const coord& c, usi dir) {
+Coord next(const Coord& c, usi dir) {
     usi LEFT = 1;
     usi UP = 2;
     usi RIGHT = 4;
     usi DOWN = 8;
-    coord tmp = c;
+    Coord tmp = c;
     if (dir & LEFT) {
         tmp = tmp.left();
     } else if (dir & RIGHT) {
@@ -173,22 +172,22 @@ coord next(const coord& c, usi dir) {
     return tmp;
 }
 
-bool cmp(const pair<uli, coord> a, const pair<uli, coord> b) {
+bool cmp(const pair<uli, Coord> a, const pair<uli, Coord> b) {
     return a.first > b.first;
 }
 
 /* Private methods */
 
-coord AiBoard::evaluate() const {
-    std::vector<std::pair<uli, coord> > v, v2, v3;
+Coord AiBoard::evaluate() const {
+    std::vector<std::pair<uli, Coord> > v, v2, v3;
     for (int x = 0; x < m_dimension->width(); ++x) {
         for (int y = 0; y < m_dimension->height(); ++y) {
-            v.push_back(make_pair(points(coord(x, y)), coord(x, y)));
+            v.push_back(make_pair(points(Coord(x, y)), Coord(x, y)));
         }
     }
     sort(v.begin(), v.end(), cmp);
     uli max = v.begin()->first;
-    for (vector<pair<uli, coord> >::const_iterator it = v.begin(); 
+    for (vector<pair<uli, Coord> >::const_iterator it = v.begin(); 
       it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
@@ -244,7 +243,7 @@ coord AiBoard::evaluate() const {
     } else if (v2.size() == 1) {
         return v2.begin()->second;
     }
-    for (vector<pair<uli, coord> >::const_iterator it = v2.begin(); 
+    for (vector<pair<uli, Coord> >::const_iterator it = v2.begin(); 
       it != v2.end(); ++it) {
         v3.push_back(make_pair(value2(it->second), it->second));
     }
@@ -255,26 +254,26 @@ coord AiBoard::evaluate() const {
     return v3.begin()->second;
 }
 
-uli AiBoard::points(const coord& c) const throw(outOfBounds) {
+uli AiBoard::points(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
-    return m_board[c.x][c.y].points();
+    return m_board[c.x()][c.y()].points();
 }
     
-void AiBoard::addPoints(const coord& c, uli points) throw(outOfBounds) {
+void AiBoard::addPoints(const Coord& c, uli points) throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
-    m_board[c.x][c.y].setPoints(m_board[c.x][c.y].points() + points);
+    m_board[c.x()][c.y()].setPoints(m_board[c.x()][c.y()].points() + points);
 }
 
-void AiBoard::setPoints(const coord& c, uli points) throw(outOfBounds) {
+void AiBoard::setPoints(const Coord& c, uli points) throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
-    m_board[c.x][c.y].setPoints(points);
-    m_board[c.x][c.y].setStatus(false);
+    m_board[c.x()][c.y()].setPoints(points);
+    m_board[c.x()][c.y()].setStatus(false);
 }
     
 void AiBoard::setup() {
@@ -285,7 +284,7 @@ void AiBoard::setup() {
     }
 }
 
-uli AiBoard::value(const coord& c, const usi pl) const {
+uli AiBoard::value(const Coord& c, const usi pl) const {
     if (!empty(c)) {
         return 0;
     }
@@ -305,19 +304,19 @@ uli AiBoard::value(const coord& c, const usi pl) const {
             await = 0;
             leftsideEmpty = 0;
             for (int diff = 5-i; diff > 0-i; --diff) {
-                coord tmp = c;
+                Coord tmp = c;
                 switch (dir) {
                     case 0:
-                        tmp = coord(c.x-diff, c.y);
+                        tmp = Coord(c.x()-diff, c.y());
                         break;
                     case 1:
-                        tmp = coord(c.x,      c.y-diff);
+                        tmp = Coord(c.x(),      c.y()-diff);
                         break;
                     case 2:
-                        tmp = coord(c.x-diff, c.y-diff);
+                        tmp = Coord(c.x()-diff, c.y()-diff);
                         break;
                     case 3:
-                        tmp = coord(c.x+diff, c.y-diff);
+                        tmp = Coord(c.x()+diff, c.y()-diff);
                         break;
                 }
                 if (m_dimension->ok(tmp)) {
@@ -372,27 +371,27 @@ uli AiBoard::value(const coord& c, const usi pl) const {
     return point;
 }
 
-uli AiBoard::value2(const coord& c) const {
+uli AiBoard::value2(const Coord& c) const {
     uli p = 0;
     usi lp = 0;
     usi q = 1;
-    coord tmp(c.x, c.y);
+    Coord tmp(c.x(), c.y());
     bool test = true;
     for (usi u = 1; u < 3; ++u) {
         for (usi i = 0; i < 4; ++i) {
             while (test) {
                 switch (i) {
                     case 0:
-                        tmp = coord(c.x-q, c.y);
+                        tmp = Coord(c.x()-q, c.y());
                         break;
                     case 1:
-                        tmp = coord(c.x,   c.y-q);
+                        tmp = Coord(c.x(),   c.y()-q);
                         break;
                     case 2:
-                        tmp = coord(c.x-q, c.y-q);
+                        tmp = Coord(c.x()-q, c.y()-q);
                         break;
                     case 3:
-                        tmp = coord(c.x+q, c.y-q);
+                        tmp = Coord(c.x()+q, c.y()-q);
                         break;
                 }
                 test = m_dimension->ok(tmp);
@@ -409,16 +408,16 @@ uli AiBoard::value2(const coord& c) const {
             while (test) {
                 switch (i) {
                     case 0:
-                        tmp = coord(c.x+q, c.y);
+                        tmp = Coord(c.x()+q, c.y());
                         break;
                     case 1:
-                        tmp = coord(c.x,   c.y+q);
+                        tmp = Coord(c.x(),   c.y()+q);
                         break;
                     case 2:
-                        tmp = coord(c.x+q, c.y+q);
+                        tmp = Coord(c.x()+q, c.y()+q);
                         break;
                     case 3:
-                        tmp = coord(c.x-q, c.y+q);
+                        tmp = Coord(c.x()-q, c.y()+q);
                         break;
                 }
                 test = m_dimension->ok(tmp);
@@ -452,7 +451,7 @@ uli AiBoard::value2(const coord& c) const {
     return p;
 }
 
-bool AiBoard::win(const coord& c) const {
+bool AiBoard::win(const Coord& c) const {
     usi LEFT = 1;
     usi UP = 2;
     usi RIGHT = 4;
@@ -470,7 +469,7 @@ bool AiBoard::win(const coord& c) const {
     usi p = player(c);
     for (int i = 0; i < 4; ++i) {
         usi count = 1;
-        coord tmp = next(c, DIR[2*i]);
+        Coord tmp = next(c, DIR[2*i]);
         while (m_dimension->ok(tmp) && player(tmp) == p) {
             ++count;
             tmp = next(tmp, DIR[2*i]);
@@ -487,11 +486,11 @@ bool AiBoard::win(const coord& c) const {
     return false;
 }
 
-void AiBoard::zero(const coord& c) {
-    usi minX = c.x-5 < 0 ? 0 : c.x-5;
-    usi maxX = c.x+5 > m_dimension->width()-1 ? m_dimension->width()-1 : c.x+5;
-    usi minY = c.y-5 < 0 ? 0 : c.y-5;
-    usi maxY = c.y+5 > m_dimension->height()-1 ? m_dimension->height()-1 : c.y+5;
+void AiBoard::zero(const Coord& c) {
+    usi minX = c.x()-5 < 0 ? 0 : c.x()-5;
+    usi maxX = c.x()+5 > m_dimension->width()-1 ? m_dimension->width()-1 : c.x()+5;
+    usi minY = c.y()-5 < 0 ? 0 : c.y()-5;
+    usi maxY = c.y()+5 > m_dimension->height()-1 ? m_dimension->height()-1 : c.y()+5;
     for (int x = minX; x <= maxX; ++x) {
         for (int y = minY; y <= maxY; ++y) {
             m_board[x][y].setStatus(true);

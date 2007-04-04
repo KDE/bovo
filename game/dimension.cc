@@ -40,12 +40,12 @@ usi Dimension::width() const {
     return m_width;
 }
 
-bool Dimension::ok(const coord* c) const {
-    return c->x < m_width && c->y < m_height;
+bool Dimension::ok(const Coord* c) const {
+    return c->x() < m_width && c->y() < m_height;
 }
 
-bool Dimension::ok(const coord& c) const {
-    return c.x < m_width && c.y < m_height;
+bool Dimension::ok(const Coord& c) const {
+    return c.x() < m_width && c.y() < m_height;
 }
 
 } /* namespace bovo */

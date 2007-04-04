@@ -64,7 +64,7 @@ public:
     /**
      *
      */
-    bool empty(const coord&) const throw(outOfBounds);
+    bool empty(const Coord&) const throw(outOfBounds);
 
     /**
      *
@@ -79,17 +79,17 @@ public:
     /**
      *
      */
-    coord move(const coord& c);
+    Coord move(const Coord& c);
 
     /**
      *
      */
-    coord* moves(const coord& c);
+    Coord* moves(const Coord& c);
 
     /**
      *
      */
-    usi player(const coord&) const throw(outOfBounds);
+    usi player(const Coord&) const throw(outOfBounds);
 
     /**
      *
@@ -99,7 +99,7 @@ public:
     /**
      *
      */
-    bool setPlayer(const coord&, const usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
+    bool setPlayer(const Coord&, const usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
 
     /**
      *
@@ -137,32 +137,32 @@ private:
 
     /* Return the best-fitting coordinate according to the specs.
      * Use this when all the board has been given points. */
-    coord evaluate() const;
+    Coord evaluate() const;
 
     /* returns, adds och sets points on a given square. */
-    uli points(const coord&) const throw(outOfBounds);
-    void addPoints(const coord&, const uli points) throw(outOfBounds);
-    void setPoints(const coord&, const uli points) throw(outOfBounds);
+    uli points(const Coord&) const throw(outOfBounds);
+    void addPoints(const Coord&, const uli points) throw(outOfBounds);
+    void setPoints(const Coord&, const uli points) throw(outOfBounds);
 
     /* initialize this class */
     void setup();
 
     /* Do the real calculation of points for a given square.
      * Player is the AI player you're optimizing. */
-    uli value(const coord&, const usi player) const;
+    uli value(const Coord&, const usi player) const;
 
     /* value2 performs a second evaluation in order to make out the tiny 
      * differences that haven't been spotted yet. 
      * Only run this when needed. */
-    uli value2(const coord&) const;
+    uli value2(const Coord&) const;
 
     /* is this move (coord) a winning move? */
-    bool win(const coord&) const;
+    bool win(const Coord&) const;
 
     /* Marks all neighbour (5 squares in each 
      * direction) as in need of a recalculation 
      * of its points. */
-    void zero(const coord&); 
+    void zero(const Coord&); 
 
 };
 

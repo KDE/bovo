@@ -27,7 +27,7 @@
 #include "common.h"
 
 namespace bovo {
-    class coord;
+    class Coord;
     class Square;
     class Dimension;
 
@@ -36,15 +36,15 @@ namespace bovo {
         board(const unsigned short int width, const unsigned short int height);
         board(const Dimension& dimension);
         virtual ~board();
-        bool empty(const coord&) const throw(outOfBounds);
-        bool setPlayer(const coord&, const unsigned short int val) throw(busy, outOfBounds, gameover, notValidPlayer);
-        unsigned short int player(const coord&) const throw(outOfBounds);
+        bool empty(const Coord&) const throw(outOfBounds);
+        bool setPlayer(const Coord&, const unsigned short int val) throw(busy, outOfBounds, gameover, notValidPlayer);
+        unsigned short int player(const Coord&) const throw(outOfBounds);
         unsigned short int width() const;
         unsigned short int height() const;
         void echo() const;
-        coord lastMove() const;
+        Coord lastMove() const;
         bool isGameOver() const;
-        std::list<coord> getHistory() const;
+        std::list<Coord> getHistory() const;
         /**
          * Tells in what direction the gameover was caused.
          * @return -1 if game isn't over, 0 for horizontal, 1 for vertical, 2 for diagonal upperleft downwards right, 3 for bottomleft upwards right
@@ -54,10 +54,10 @@ namespace bovo {
         Dimension* m_dimension;
         Square** m_board;
         void setup();
-        bool win(const coord&);
+        bool win(const Coord&);
         bool m_gameover;
         short win_dir;
-        std::list<coord> history;
+        std::list<Coord> history;
     };
 
 } /* namespace bovo */

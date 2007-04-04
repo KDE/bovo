@@ -22,51 +22,35 @@
 #include "coord.h"
 
 namespace bovo {
-  coord::coord(const unsigned short int _x, const unsigned short int _y): x(_x), y(_y) {
-  }
 
-  coord::coord(const coord& c) : x(c.x), y(c.y) {
-  }
+Coord::Coord(usi x, usi y): m_x(x), m_y(y) {
+}
 
-  unsigned short int coord::row() const {
-    return x;
-  }
+Coord::Coord(const Coord& c) : m_x(c.m_x), m_y(c.m_y) {
+}
 
-  unsigned short int coord::col() const {
-    return y;
-  }
+usi Coord::x() const {
+    return m_x;
+}
 
-  coord coord::left() const {
-    return coord(x-1, y);
-  }
+usi Coord::y() const {
+    return m_y;
+}
 
-  coord coord::right() const {
-    return coord(x+1, y);
-  }
+Coord Coord::left() const {
+    return Coord(m_x-1, m_y);
+}
 
-  coord coord::leftup() const {
-    return coord(x-1, y-1);
-  }
+Coord Coord::right() const {
+    return Coord(m_x+1, m_y);
+}
 
-  coord coord::leftdown() const {
-    return coord(x-1, y+1);
-  }
+Coord Coord::up() const {
+    return Coord(m_x, m_y-1);
+}
 
-  coord coord::rightup() const {
-    return coord(x+1, y-1);
-  }
-
-  coord coord::rightdown() const {
-    return coord(x+1, y+1);
-  }
-
-  coord coord::up() const {
-    return coord(x, y-1);
-  }
-
-  coord coord::down() const {
-    return coord(x, y+1);
-  }
+Coord Coord::down() const {
+    return Coord(m_x, m_y+1);
+}
 
 } /* namespace bovo */
-
