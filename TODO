@@ -3,14 +3,33 @@ Things I want before KDE 4 review
 [X] Remove all names from source files. For copyright holders, refer to svn
 log. We want collective code ownership.
 [ ] Undo moves.
+    - Don't undo if there are no moves.
+    - Don't undo if game is over.
 [ ] Hint moves.
-     [ ] implement moves() in ai.
+    - Don't hint if game is over.
+    [ ] implement moves() in ai.
 [ ] Documentation/Handbook.
-     [ ] Game rules.
-     [ ] Game history.
+    [ ] Game rules
+    [ ] Game features / "Help"
+    [ ] Game strategies
+    [ ] Game history (Gomoku, Connect5, ...)
 [ ] Apidox.
+    [/] Ai
+        [X] AiSquare
+        [ ] AiBoard
+    [ ] Game
+    [ ] Gui
 [ ] Fully i18n.
 [ ] Code beautification.
+    [X] Ai
+        [X] Naming conventions
+        [X] Indentation
+    [ ] Game
+        [ ] Naming conventions
+        [ ] Indentation
+    [ ] Gui
+        [ ] Naming conventions
+        [ ] Indentation
 [ ] Help.
 [ ] Theme support.
 [ ] Configuration dialogue.
