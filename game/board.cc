@@ -53,9 +53,9 @@ namespace bovo {
     
     void board::setup() {
       m_gameover = false;
-      m_board = new square*[m_dimension->width()];
+      m_board = new Square*[m_dimension->width()];
       for (int x = 0; x < m_dimension->width(); ++x)
-        m_board[x] = new square[m_dimension->height()];
+        m_board[x] = new Square[m_dimension->height()];
     }
     
     bool board::empty(const coord& c) const throw(outOfBounds) {

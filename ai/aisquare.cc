@@ -25,7 +25,7 @@ using namespace bovo;
 
 namespace ai {
 
-AiSquare::AiSquare() : bovo::square(), m_points(0), m_status(true) {
+AiSquare::AiSquare() : Square(), m_points(0), m_status(true) {
 }
 
 uli AiSquare::points() const {

@@ -20,7 +20,7 @@
 ********************************************************************/                     
 
 /** 
- * @file Declares the square class used by the AI internally (AiSquare)
+ * @file Declares the Square class used by the AI internally (AiSquare)
  */
 
 #ifndef __AISQUARE_H__
@@ -38,7 +38,7 @@ namespace ai {
  * AiSquare is used by the AI to represent a square in a playing board.
  *
  * This class is used internally by the AI to represent a square in a 
- * playing board. It extends the normal @c square class with possibilities
+ * playing board. It extends the normal @c Square class with possibilities
  * to keep a point attached to the square, as well as a bool marker that
  * tells whether this square needs a recalculation of its points.
  *
@@ -69,11 +69,11 @@ namespace ai {
  *
  * @author bostrom (Aron Boström) <aron bostrom gmail com>
  */
-class AiSquare : public bovo::square {
+class AiSquare : public Square {
 public:
     /**
-     * @brief constructor of this square
-     * @description this constructor creates an AI square
+     * @brief constructor of this AiSquare
+     * @description this constructor creates an AiSquare
      */
     AiSquare();
 

@@ -19,21 +19,24 @@
 *
 ********************************************************************/                     
 
-#ifndef SQUARE_H
-#define SQUARE_H
+#ifndef __SQUARE_H__
+#define __SQUARE_H__
 
 #include "common.h"
 
 namespace bovo {
-    class square {
-    public:
-        square();
-        unsigned short int player() const;
-        bool empty() const;
-        void setPlayer(const unsigned short int val) throw(busy);
-    private:
-        unsigned short int m_player;
-    };
+
+class Square {
+public:
+    Square();
+    bool empty() const;
+    usi player() const;
+    void setPlayer(usi player) throw(busy);
+
+private:
+    usi m_player;
+};
+
 } /* namespace bovo */
 
-#endif
+#endif /* __SQUARE_H__ */

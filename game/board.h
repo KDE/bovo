@@ -28,7 +28,7 @@
 
 namespace bovo {
     class coord;
-    class square;
+    class Square;
     class Dimension;
 
     class board {
@@ -52,7 +52,7 @@ namespace bovo {
         short winDir() const;
     private:
         Dimension* m_dimension;
-        square** m_board;
+        Square** m_board;
         void setup();
         bool win(const coord&);
         bool m_gameover;
