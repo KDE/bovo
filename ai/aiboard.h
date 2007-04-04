@@ -89,22 +89,22 @@ public:
     /**
      *
      */
-    usi player(const Coord&) const throw(outOfBounds);
+    Player player(const Coord&) const throw(outOfBounds);
 
     /**
      *
      */
-    usi player(const usi x, const usi y) const throw(outOfBounds);
+    Player player(const usi x, const usi y) const throw(outOfBounds);
 
     /**
      *
      */
-    bool setPlayer(const Coord&, const usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
+    bool setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer);
 
     /**
      *
      */
-    bool setPlayer(const usi x, const usi y, const usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
+    bool setPlayer(const usi x, const usi y, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer);
 
     /**
      *
@@ -130,7 +130,7 @@ private:
     bool m_gameover;
 
     /* AI player property */
-    usi m_player;
+    Player m_player;
 
     /* AI Level property. */
     Skill m_skill;

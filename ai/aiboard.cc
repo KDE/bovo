@@ -74,7 +74,7 @@ usi AiBoard::height() const {
 
 Coord AiBoard::move(const Coord& in) {
     if (! m_dimension->ok(in)) {
-        m_player = 1;
+        m_player = X;
         m_cleanBoard = false;
         srand(static_cast<int>(time(0)));
         usi randX = rand()%(m_dimension->width()/3) + m_dimension->width()/3;
@@ -82,11 +82,11 @@ Coord AiBoard::move(const Coord& in) {
         setPlayer(Coord(randX, randY), m_player);
         return Coord(randX, randY);
     } else if (m_cleanBoard) {
-        m_player = 2;
+        m_player = O;
         m_cleanBoard = false;
-        setPlayer(in, m_player%2+1);
+        setPlayer(in, m_player == X ? O : X);
     } else {
-        setPlayer(in, m_player%2+1);
+        setPlayer(in, m_player == X ? O : X);
     }
     zero(in);
     for (usi x = 0; x < m_dimension->width(); ++x) {
@@ -94,7 +94,7 @@ Coord AiBoard::move(const Coord& in) {
             if (m_board[x][y].status()) {
                 Coord c(x, y);
                 setPoints(c, value(c, m_player));
-                addPoints(c, value(c, m_player%2+1));
+                addPoints(c, value(c, m_player == X ? O : X));
             }
         }
     }
@@ -109,18 +109,18 @@ Coord* AiBoard::moves(const Coord& c) {
     return new Coord(c.x(), c.y());
 }
 
-usi AiBoard::player(const Coord& c) const throw(outOfBounds) {
+Player AiBoard::player(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
     return m_board[c.x()][c.y()].player();
 }
 
-usi AiBoard::player(const usi x, const usi y) const throw(outOfBounds) {
+Player AiBoard::player(const usi x, const usi y) const throw(outOfBounds) {
     return player(Coord(x, y));
 }
 
-bool AiBoard::setPlayer(const Coord& c, const usi player) 
+bool AiBoard::setPlayer(const Coord& c, const Player& player) 
   throw(busy, outOfBounds, gameover, notValidPlayer) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
@@ -139,7 +139,7 @@ bool AiBoard::setPlayer(const Coord& c, const usi player)
     return false;
 }
 
-bool AiBoard::setPlayer(const usi x, const usi y, const usi player) 
+bool AiBoard::setPlayer(const usi x, const usi y, const Player& player) 
   throw(busy, outOfBounds, gameover, notValidPlayer) {
     return setPlayer(Coord(x, y), player);
 }

@@ -36,7 +36,7 @@ using namespace ai;
 
 namespace gui {
 
-Game::Game(Skill skill, Player startingPlayer) : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
+Game::Game(Skill skill, const Player& startingPlayer) : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
     m_board = new Board(Dimension(NUMCOLS, NUMCOLS));
     m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
 }
@@ -83,15 +83,12 @@ Move Game::getLastMove() const {
     return Move( (m_curPlayer==X?O:X), lastCoord.x(), lastCoord.y());
 }
 
-void Game::setPlayer(Player player, int x, int y) {
-    int p = (player == X ? 1 : 2);
-    m_board->setPlayer(Coord(x, y), p);
+void Game::setPlayer(const Player& player, int x, int y) {
+    m_board->setPlayer(Coord(x, y), player);
 }
 
 Player Game::playerAt( int x, int y ) const { 
-    if (m_board->player(Coord(x, y)) == 1) return X;
-    else if (m_board->player(Coord(x, y)) == 2) return O;
-    else return No;
+    return m_board->player(Coord(x, y));
 }
 
 void Game::setAiSkill(Skill skill) {

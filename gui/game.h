@@ -47,7 +47,7 @@ namespace gui {
     Q_OBJECT
 
   public:
-    Game(Skill skill = Normal, Player startingPlayer = X);
+    Game(Skill skill = Normal, const Player& startingPlayer = X);
     ~Game();
     void startNextTurn();
     void makePlayerMove(int x, int y);
@@ -69,7 +69,7 @@ namespace gui {
 
   private:
     void makeMove( const Move& move );
-    void setPlayer(Player type, int x, int y);
+    void setPlayer(const Player& player, int x, int y);
     Player m_curPlayer;
     Player m_playerMark;
     Player m_computerMark;

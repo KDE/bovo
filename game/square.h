@@ -66,20 +66,20 @@ public:
      * @brief player of this square
      * @description tells whether this square is occupied by
      * player 1, player 2 och no player at all (empty).
-     * @return player id or 0 if empty
+     * @return player id (X or O) or (No) if empty
      */
-    usi player() const;
+    Player player() const;
 
     /**
      * @brief sets player id of this square
-     * @description sets the player id of this square to 1 or 2
+     * @description sets the player id of this square to X or O
      * @exception throws busy exception if player id is allready set
      */
-    void setPlayer(usi player) throw(busy);
+    void setPlayer(Player player) throw(busy);
 
 private:
     /* player property of this Square */
-    usi m_player;
+    Player m_player;
 };
 
 } /* namespace bovo */

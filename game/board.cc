@@ -61,11 +61,11 @@ bool Board::empty(const Coord& c) const throw(outOfBounds) {
     return m_board[c.x()][c.y()].empty();
 }
 
-bool Board::setPlayer(const Coord& c, usi player) throw(busy, outOfBounds, gameover, notValidPlayer) {
+bool Board::setPlayer(const Coord& c, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
-    if (player != 1 && player != 2) {
+    if (player != X && player != O) {
         throw notValidPlayer(); 
     }
     if (m_gameover) {
@@ -81,7 +81,7 @@ bool Board::setPlayer(const Coord& c, usi player) throw(busy, outOfBounds, gameo
     }
 }
 
-usi Board::player(const Coord& c) const throw(outOfBounds) {
+Player Board::player(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
@@ -115,7 +115,7 @@ bool Board::win(const Coord& c) {
     usi RIGHT = 4;
     usi DOWN = 8;
     usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT|UP, RIGHT|DOWN, LEFT|DOWN, RIGHT|UP};
-    usi p = player(c);
+    Player p = player(c);
     for (int i = 0; i < 4; ++i) {
         usi count = 1;
         Coord tmp = next(c, DIR[2*i]);

@@ -26,19 +26,19 @@
 /** namespace for game engine */
 namespace bovo {
 
-Square::Square() : m_player(0) {
+Square::Square() : m_player(No) {
 }
 
-usi Square::player() const {
+Player Square::player() const {
     return m_player;
 }
 
 bool Square::empty() const {
-    return m_player == 0;
+    return m_player == No;
 }
 
-void Square::setPlayer(usi player) throw(busy) {
-    if(m_player==0) {
+void Square::setPlayer(Player player) throw(busy) {
+    if (m_player == No) {
         m_player = player;
     } else {
         throw busy();

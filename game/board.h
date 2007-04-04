@@ -38,8 +38,8 @@ public:
     Board(const Dimension& dimension);
     ~Board();
     bool empty(const Coord&) const throw(outOfBounds);
-    bool setPlayer(const Coord&, usi player) throw(busy, outOfBounds, gameover, notValidPlayer);
-    usi player(const Coord&) const throw(outOfBounds);
+    bool setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer);
+    Player player(const Coord&) const throw(outOfBounds);
     usi width() const;
     usi height() const;
     void echo() const;

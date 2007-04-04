@@ -55,7 +55,10 @@ log. We want collective code ownership.
 [ ] Theme support.
 [ ] Configuration dialogue.
 [ ] Save AI level and theme from session to session.
+[ ] Logic cleanups.
+    [X] Allways use Player instead of int
 
+=============================================================================
 
 TASKS
 * don't paint winning line, but paint it with svg's
