@@ -42,6 +42,7 @@ namespace bovo {
     coord up() const;
     coord down() const;
   };
-} // namespace bovo
+
+} /* namespace bovo */
 
 #endif

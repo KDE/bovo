@@ -40,6 +40,7 @@ class coord;
     bool ok(const coord* c) const;
     bool ok(const coord& c) const;
   };
-} // namespace bovo
+
+} /* namespace bovo */
 
 #endif

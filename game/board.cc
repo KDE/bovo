@@ -136,4 +136,4 @@ namespace bovo {
       return win_dir;
     }
 
-} // namespace bovo
+} /* namespace bovo */

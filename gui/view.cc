@@ -43,4 +43,4 @@ namespace gui {
   QSize View::sizeHint() const {
     return QSize( static_cast<int>(m_scene->width()), static_cast<int>(m_scene->height()));
   }
-} //namespace gui
+} /* namespace gui */

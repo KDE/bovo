@@ -30,11 +30,11 @@
 
 namespace ai {
   class AiBoard;
-}
+} /* namespace ai */
 
 namespace bovo {
   class board;
-}
+} /* namespace ai */
 
 using namespace bovo;
 using namespace ai;
@@ -76,6 +76,6 @@ namespace gui {
     AiBoard *m_engine;
     board *m_board;
   };
-} //namespace gui
+} /* namespace gui */
 
-#endif //GAME_H
+#endif /* GAME_H */

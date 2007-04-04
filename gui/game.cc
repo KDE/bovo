@@ -127,6 +127,6 @@ bool Game::isComputersTurn() const {
 short Game::winDir() const {return m_board->winDir();
 }
 
-} //namespace gui
+} /* namespace gui */
 
 #include "game.moc"

@@ -64,6 +64,6 @@ namespace gui {
     KSelectAction* m_skillsAct;
     bool m_computerStarts;
   };
-} // namespace gui
+} /* namespace gui */
 
 #endif

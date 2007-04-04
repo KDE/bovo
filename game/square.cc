@@ -40,5 +40,5 @@ namespace bovo {
         throw busy();
     }
 
-} // namespace bovo
+} /* namespace bovo */
 

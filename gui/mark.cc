@@ -52,4 +52,4 @@ namespace gui {
   void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
     renderer()->render(painter, elementId(), glyphRectF());
   }
-} //namespace gui
+} /* namespace gui */

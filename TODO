@@ -20,16 +20,31 @@ log. We want collective code ownership.
     [ ] Game
     [ ] Gui
 [ ] Fully i18n.
-[ ] Code beautification.
-    [X] Ai
+[/] Code beautification.
+    [ ] Ai
         [X] Naming conventions
         [X] Indentation
+        [X] close namespace with /* comments */
+        [X] close #endif with /* comments */
+        [ ] sort functions, methods and properties
+        [X] name all #ifdefs __CLASNAME_H__
+        [ ] /* comment */ all private stuff
     [ ] Game
         [ ] Naming conventions
         [ ] Indentation
+        [X] close namespace with comments
+        [ ] close #endif with comments
+        [ ] sort functions, methods and properties
+        [ ] name all #ifdefs __CLASNAME_H__
+        [ ] /* comment */ all private stuff
     [ ] Gui
         [ ] Naming conventions
         [ ] Indentation
+        [X] close namespace with comments
+        [ ] close #endif with comments
+        [ ] sort functions, methods and properties
+        [ ] name all #ifdefs __CLASNAME_H__
+        [ ] /* comment */ all private stuff
 [ ] Help.
 [ ] Theme support.
 [ ] Configuration dialogue.

@@ -34,6 +34,6 @@ namespace bovo {
     private:
         unsigned short int m_player;
     };
-}
+} /* namespace bovo */
 
 #endif

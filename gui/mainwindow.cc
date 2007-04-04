@@ -199,6 +199,6 @@ QString MainWindow::getSkillName(Skill skill) const {
   }
 }
 
-} //namespace gui
+} /* namespace gui */
 
 #include "mainwindow.moc"

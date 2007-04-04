@@ -35,6 +35,7 @@ namespace bovo {
 
     enum Skill { RidiculouslyEasy = 0, VeryEasy = 1, Easy = 2, Normal = 3, Hard = 4, VeryHard = 5, Zlatan = 6 };
     enum Player { X = 1, O = 2, No = 0 };
-} // namespace bovo
+
+} /* namespace bovo */
 
 #endif

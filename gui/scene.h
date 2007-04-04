@@ -72,6 +72,6 @@ namespace gui {
     QList<Move>::const_iterator m_replayIterator;
     QTimer* m_replayTimer;
   };
-} //namespace gui
+} /* namespace gui */
 
 #endif //SCENE_H

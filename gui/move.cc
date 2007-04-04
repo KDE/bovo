@@ -40,5 +40,5 @@ namespace gui {
       return ret;
     }
 
-} // namespace gui
+} /* namespace gui */
 

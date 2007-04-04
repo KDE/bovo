@@ -44,6 +44,6 @@ namespace gui {
     int m_col;
     qreal m_sizeShrink;
   };
-} // namespace gui
+} /* namespace gui */
 
 #endif

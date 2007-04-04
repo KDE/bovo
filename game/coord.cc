@@ -68,5 +68,5 @@ namespace bovo {
     return coord(x, y+1);
   }
 
-} // namespace bovo
+} /* namespace bovo */
 

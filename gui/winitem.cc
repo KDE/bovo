@@ -62,4 +62,4 @@ namespace gui {
       tmpY += incY;
     }
   }
-} //namespace gui
+} /* namespace gui */

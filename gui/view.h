@@ -37,6 +37,6 @@ namespace gui {
 
     Scene* m_scene;
   };
-} // namespace gui
+} /* namespace gui */
 
 #endif

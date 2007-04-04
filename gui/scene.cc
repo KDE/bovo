@@ -209,6 +209,6 @@ void Scene::continueReplay() {
     }
 }
 
-} //namespace gui
+} /* namespace gui */
 
 #include "scene.moc"

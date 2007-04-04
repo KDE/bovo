@@ -54,4 +54,4 @@ namespace bovo {
     return c.x < w && c.y < h;
   }
 
-} // namespace bovo
+} /* namespace bovo */

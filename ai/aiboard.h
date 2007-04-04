@@ -23,8 +23,8 @@
  * @file
  */
 
-#ifndef AIBOARD_H
-#define AIBOARD_H
+#ifndef __AIBOARD_H__
+#define __AIBOARD_H__
 
 #include "common.h"
 #include "dim.h"
@@ -132,4 +132,4 @@ private:
 
 } /* namespace ai */
 
-#endif
+#endif /* __AIBOARD_H__ */

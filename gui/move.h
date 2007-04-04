@@ -37,6 +37,6 @@ namespace gui {
     int y; //replace with coord
     Player p; 
   };
-} // namespace gui
+} /* namespace gui */
 
 #endif

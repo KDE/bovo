@@ -43,6 +43,6 @@ namespace gui {
     unsigned short m_minX;
     unsigned short m_minY;
   };
-} // namespace gui
+} /* namespace gui */
 
 #endif

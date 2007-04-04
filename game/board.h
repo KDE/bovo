@@ -59,6 +59,7 @@ namespace bovo {
         short win_dir;
         std::list<coord> history;
     };
-}
+
+} /* namespace bovo */
 
 #endif
