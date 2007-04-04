@@ -50,9 +50,9 @@ namespace ai {
 
     void aiboard::setup() {
       m_gameover = false;
-      b = new aisquare*[d.w];
+      b = new AiSquare*[d.w];
       for (int x = 0; x < d.w; ++x)
-        b[x] = new aisquare[d.h];
+        b[x] = new AiSquare[d.h];
     }
 
     bool aiboard::empty(const coord& c) const throw(outOfBounds) {
@@ -87,18 +87,18 @@ namespace ai {
 
     uli aiboard::points(const coord& c) const throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
-      return b[c.x][c.y].point;
+      return b[c.x][c.y].points();
     }
     
     void aiboard::setPoints(const coord& c, uli p) throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
-      b[c.x][c.y].point = p;
-      b[c.x][c.y].grey = false;
+      b[c.x][c.y].setPoints(p);
+      b[c.x][c.y].setStatus(false);
     }
     
     void aiboard::addPoints(const coord& c, uli p) throw(outOfBounds) {
       if (!d.ok(c)) throw outOfBounds();
-      b[c.x][c.y].point += p;
+      b[c.x][c.y].setPoints(b[c.x][c.y].points() + p);
     }
 
     usi aiboard::width() const {
@@ -165,7 +165,7 @@ namespace ai {
       zero(in);
       for (usi x = 0; x < d.w; ++x)
         for (usi y = 0; y < d.h; ++y) {
-          if (b[x][y].grey) {
+          if (b[x][y].status()) {
             coord c(x, y);
             setPoints(c, value(c, m_player));
             addPoints(c, value(c, m_player%2+1));
@@ -299,7 +299,7 @@ namespace ai {
       usi maxy = c.y+5 > d.h-1 ? d.h-1 : c.y+5;
       for (int x = minx; x <= maxx; ++x)
         for (int y = miny; y <= maxy; ++y)
-          b[x][y].grey = true;
+          b[x][y].setStatus(true);
     }
     
     uli aiboard::value(const coord& c, const usi pl) const {

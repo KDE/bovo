@@ -20,19 +20,22 @@
 ********************************************************************/                     
 
 /** 
- * @file Declares the square class used by the AI internally
+ * @file Declares the square class used by the AI internally (AiSquare)
  */
 
 #ifndef AISQUARE_H
 #define AISQUARE_H
 
+#include "common.h"
 #include "square.h"
+
+using namespace bovo;
 
 /** namespace for AI stuff */
 namespace ai {
 
 /**
- * aisquare is used by the AI to represent a square in a playing board.
+ * AiSquare is used by the AI to represent a square in a playing board.
  *
  * This class is used internally by the AI to represent a square in a 
  * playing board. It extends the normal @c square class with possibilities
@@ -41,36 +44,78 @@ namespace ai {
  *
  * Examples construction: (create a playing board)
  * @code
- * aisquare** board = new aisquare*[width];
+ * AiSquare** board = new AiSquare*[width];
  * for (int x = 0; x < width; ++x) {
- *     board[x] = new aisquare[height];
+ *     board[x] = new AiSquare[height];
  * }
  * @endcode
  * 
- * Example point use:
+ * Example status use:
  * @code
- * board[x][y].point = point;
+ * if (board[x][y].status()) {
+ *     unsigned long points = score(board, x, y );
+ *     board[x][y].setPoints(points);
+ *     board[x][y].setStatus(false);
+ * }
+ * @endcode
+ *
+ * Example mark needs to be repainted:
+ * @code
+ * // a neighbour of (x, y) has been marked as belonging to a player,
+ * // so (x, y) needs to be recalculated.
+ * board[x][y].setPoints(0);
+ * board[x][y].setStatus(true);
  * @endcode
  *
  * @author bostrom (Aron Boström) <aron bostrom gmail com>
  */
-class aisquare : public bovo::square {
+class AiSquare : public bovo::square {
 public:
     /**
-     * @brief a game square in the AI
-     * @description this class extends the ordinary game square with the addition of a point attribute and a bool attribute, for AI purposes
-     * @param
-     * @return
-     * @exception
-     * @see
-     * @author
-     * @since
+     * @brief constructor of this square
+     * @description this constructor creates an AI square
      */
-    aisquare();
-    unsigned long int point;
-    bool grey;
+    AiSquare();
+
+    /**
+     * @brief square points
+     * @description AI points of this square
+     * @return points of this square
+     * @see setPoints
+     */
+    uli points() const;
+
+    /**
+     * @brief sets points
+     * @description sets the AI points of this square
+     * @param points the points to set
+     * @see points
+     */
+    void setPoints(unsigned long int points);
+
+    /**
+     * @brief square status
+     * @description status represents whether this square is in neef of a 
+     * recalculation of its points or not.
+     * @return @c true if this square needs a recalculation, @c false otherwise
+     * @see @c setStatus
+     */
+    bool status() const;
+
+    /**
+     * @brief set status of this square
+     * @description sets this square's need to get its score recalculated.
+     * @param status the status to set. $c true means square is in need of a 
+     * recalculation, $c false means it doesn't need to be recalculated.
+     * @see @c status
+     */
+    void setStatus(bool status);
+
+private:
+    uli m_points; /* unsigned long int points property */
+    bool m_status; /* bool status property */
 };
 
-} // namespace ai
+} /* namespace ai */
 
 #endif

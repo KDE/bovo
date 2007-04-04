@@ -29,7 +29,7 @@
 using namespace bovo;
 
 namespace ai {
-  class aisquare;
+  class AiSquare;
 
   class aiboard {
   public:
@@ -57,7 +57,7 @@ namespace ai {
     coord evaluate() const;
     Skill m_skill;
     dim d;
-    aisquare** b;
+    AiSquare** b;
     void setup();
     bool win(const coord&) const;
     bool m_gameover;

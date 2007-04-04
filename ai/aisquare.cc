@@ -20,12 +20,29 @@
 ********************************************************************/                     
 
 #include "aisquare.h"
-#include "square.h"
+
+using namespace bovo;
 
 namespace ai {
 
-  aisquare::aisquare() : bovo::square(), point(0), grey(true) {
-  }
+AiSquare::AiSquare() : bovo::square(), m_points(0), m_status(true) {
+}
 
-} // namespace ai
+uli AiSquare::points() const {
+    return m_points;
+}
+
+void AiSquare::setPoints(uli points) {
+    m_points = points;
+}
+
+bool AiSquare::status() const {
+    return m_status;
+}
+
+void AiSquare::setStatus(bool status) {
+    m_status = status;
+}
+
+} /* namespace ai */
 
