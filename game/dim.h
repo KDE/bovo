@@ -19,28 +19,32 @@
 *
 ********************************************************************/                     
 
-#ifndef DIM_H
-#define DIM_H
+#ifndef __DIMENSION_H__
+#define __DIMENSION_H__
 
+#include "common.h"
 
 namespace bovo {
+
 class coord;
-  /** 
-   * Dimension
-   */
-  class dim {
-  public:
-    dim(const unsigned short int width, const unsigned int height);
-    dim(const dim& dimension);
-    unsigned short int w, h;
-    unsigned short int cols() const;
-    unsigned short int width() const;
-    unsigned short int rows() const;
-    unsigned short int height() const;
+
+/** 
+* Dimension
+*/
+class Dimension {
+public:
+    Dimension(usi width, usi height);
+    Dimension(const Dimension& dimension);
+    usi height() const;
+    usi width() const;
     bool ok(const coord* c) const;
     bool ok(const coord& c) const;
-  };
+
+private:
+    usi m_height;
+    usi m_width;
+};
 
 } /* namespace bovo */
 
-#endif
+#endif /* __DIMENSION_H__ */
