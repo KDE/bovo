@@ -17,32 +17,38 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
-#ifndef WINITEM_H
-#define WINITEM_H
+
+#ifndef __WINITEM_H__
+#define __WINITEM_H__
 
 #include <QGraphicsItem>
 
 namespace gui {
-  class Scene;
 
-  class WinItem : public QGraphicsItem {
-  public:
-    WinItem(Scene *scene, unsigned short minX, unsigned short minY, unsigned short maxX, unsigned short maxY);
+class Scene;
+
+class WinItem : public QGraphicsItem {
+public:
+    WinItem(Scene *scene, unsigned short minX, unsigned short minY,
+            unsigned short maxX, unsigned short maxY);
+
     QRectF boundingRect() const;
 
-  protected:
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);    
+protected:
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
+               QWidget* widget = 0);
 
-  private:
+private:
     QRectF boundingRect(unsigned short x, unsigned short y) const;
     Scene* m_scene;
     unsigned short m_maxX;
     unsigned short m_maxY;
     unsigned short m_minX;
     unsigned short m_minY;
-  };
+};
+
 } /* namespace gui */
 
-#endif
+#endif /* __WINITEM_H__ */

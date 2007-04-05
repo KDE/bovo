@@ -17,33 +17,36 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
-#ifndef MARK_H
-#define MARK_H
+#ifndef __MARK_H__
+#define __MARK_H__
 
 #include "common.h"
 
 using namespace bovo;
 
 namespace gui {
-  class Scene;
 
-  class Mark : public QGraphicsSvgItem {
-  public:
+class Scene;
+
+class Mark : public QGraphicsSvgItem {
+public:
     Mark(Player player, Scene *scene, int x, int y);
     ~Mark();
 
-  protected:
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* widget=0);    
+protected:
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
+               QWidget* widget=0);
 
-  private:
+private:
     QRectF glyphRectF() const;
     Scene* m_scene;
     int m_row;
     int m_col;
     qreal m_sizeShrink;
-  };
+};
+
 } /* namespace gui */
 
-#endif
+#endif /* __MARH_H__ */

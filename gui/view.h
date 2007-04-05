@@ -19,24 +19,27 @@
 *
 ********************************************************************/                     
 
-#ifndef VIEW_H
-#define VIEW_H
+#ifndef __VIEW_H__
+#define __VIEW_H__
 
 #include <QGraphicsView>
 
 namespace gui {
-  class Scene;
 
-  class View : public QGraphicsView
-  {
-  public:
-    View( Scene* scene, QWidget *parent );
-  private:
+class Scene;
+
+class View : public QGraphicsView
+{
+public:
+    View(Scene* scene, QWidget *parent);
+
+private:
     virtual void resizeEvent( QResizeEvent* );
     virtual QSize sizeHint() const;
 
     Scene* m_scene;
-  };
+};
+
 } /* namespace gui */
 
-#endif
+#endif /* __VIEW_H__ */

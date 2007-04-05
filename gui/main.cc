@@ -17,7 +17,7 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
 #include <kapplication.h>
 #include <kcmdlineargs.h>
@@ -32,12 +32,13 @@ static const char description[] = I18N_NOOP("KDE Five in a Row Board Game");
 using namespace gui;
 
 int main(int argc, char **argv) {
-    KAboutData aboutData( "bovo", I18N_NOOP("Bovo"),
+    KAboutData aboutData("bovo", I18N_NOOP("Bovo"),
             BOVO_VERSION, description, KAboutData::License_GPL,
             "(c) 2002,2007 Aron Boström");
-    aboutData.addAuthor("Aron Boström",I18N_NOOP("Author"), "aron.bostrom@gmail.com");
+    aboutData.addAuthor("Aron Boström",I18N_NOOP("Author"),
+                        "aron.bostrom@gmail.com");
 
-    KCmdLineArgs::init( argc, argv, &aboutData );
+    KCmdLineArgs::init(argc, argv, &aboutData);
 
     KApplication application;
 
@@ -50,4 +51,3 @@ int main(int argc, char **argv) {
 
     return application.exec();
 }
-

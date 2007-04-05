@@ -17,39 +17,44 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
+
+#include "mark.h"
 
 #include <QtGui>
 #include <QtSvg>
 #include <QtGlobal>
 #include <QColor>
 
-#include "mark.h"
 #include "common.h"
 #include "scene.h"
 
 using namespace bovo;
 
 namespace gui {
-  Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(), m_scene(scene), m_row(y), m_col(x) {
+
+Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(),
+           m_scene(scene), m_row(y), m_col(x) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
-    setElementId(QString(player==X?"x%1":"o%1").arg(QString::number(qrand()%5+1)));
-  }
+    setElementId(QString(player==X ? "x%1" : "o%1")
+            .arg(QString::number(qrand() % 5 + 1)));
+}
 
-  Mark::~Mark() {
-  }
+Mark::~Mark() {
+}
 
-  QRectF Mark::glyphRectF() const {
+QRectF Mark::glyphRectF() const {
     qreal width = m_scene->width() / (NUMCOLS+2);
     qreal height = width;
     qreal margin = m_sizeShrink * width;
     return QRectF( (1+m_col) * width  + margin,
-                   (1+m_row) * height + margin,
-                   width  - 2.0*margin,
-                   height - 2.0*margin);
-  }
+                (1+m_row) * height + margin,
+                width  - 2.0*margin,
+                height - 2.0*margin);
+}
 
-  void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
+void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
     renderer()->render(painter, elementId(), glyphRectF());
-  }
+}
+
 } /* namespace gui */

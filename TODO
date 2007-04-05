@@ -2,11 +2,11 @@ Things I want before KDE 4 review
 =================================
 [X] Remove all names from source files. For copyright holders, refer to svn
 log. We want collective code ownership.
-[ ] Documentation/Handbook.
-    [ ] Game rules
-    [ ] Game features / "Help"
-    [ ] Game strategies
-    [ ] Game history (Gomoku, Connect5, ...)
+['] Documentation/Handbook.
+    ['] Game rules
+    ['] Game features / "Help"
+    ['] Game strategies
+    ['] Game history (Gomoku, Connect5, ...)
 [ ] Apidox.
     [X] Ai
     [X] Game
@@ -18,11 +18,11 @@ log. We want collective code ownership.
     [X] Game
     [ ] Gui
         [ ] Naming conventions
-        [ ] Indentation
-        [ ] close namespace with comments
-        [ ] close #endif with comments
+        [X] Indentation
+        [X] close namespace with comments
+        [X] close #endif with comments
         [ ] sort functions, methods and properties
-        [ ] name all #ifdefs __CLASNAME_H__
+        [X] name all #ifdefs __CLASNAME_H__
         [ ] /* comment */ all private stuff
 [ ] Tooltips.
 [ ] Theme support.

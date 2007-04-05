@@ -17,13 +17,14 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
+
+#include "game.h"
 
 #include <list>
 
 #include <QList>
 
-#include "game.h"
 #include "common.h"
 #include "aiboard.h"
 #include "board.h"
@@ -36,7 +37,8 @@ using namespace ai;
 
 namespace gui {
 
-Game::Game(Skill skill, const Player& startingPlayer) : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
+Game::Game(Skill skill, const Player& startingPlayer)
+  : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
     m_board = new Board(Dimension(NUMCOLS, NUMCOLS));
     m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
 }
@@ -107,25 +109,25 @@ void Game::setAiSkill(Skill skill) {
 // This is a seldom used operation. 
 // No use to make things complex by introducing pointers.
 QList<Move> Game::getMoves() const {
-  std::list<Coord> history = m_board->history();
-  int i = 0;
-  QList<Move> moves;
-  std::list<Coord>::const_iterator it = history.begin();
-  std::list<Coord>::const_iterator end = history.end();  
-  while (it != end) {
-    moves << Move(++i%2==1?X:O, it->x(), it->y());
-    ++it;
-  }
-  return moves;
+    std::list<Coord> history = m_board->history();
+    int i = 0;
+    QList<Move> moves;
+    std::list<Coord>::const_iterator it = history.begin();
+    std::list<Coord>::const_iterator end = history.end();
+    while (it != end) {
+        moves << Move(++i%2==1?X:O, it->x(), it->y());
+        ++it;
+    }
+    return moves;
 }
 
 Player Game::currentPlayer() const {
-  return m_curPlayer;
+    return m_curPlayer;
 }
 
 /* should be skipped in favour of latestMove() */
 Move Game::lastMove() const {
-  return getLastMove();
+    return getLastMove();
 }
 
 /* Drop is-part of name */

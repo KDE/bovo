@@ -19,34 +19,37 @@
 *
 ********************************************************************/                     
 
+#include "winitem.h"
+
 #include <QtGui>
 #include <QtGlobal>
 #include <QColor>
 
-#include "winitem.h"
 #include "scene.h"
 #include "common.h"
 
 namespace gui {
-  WinItem::WinItem(Scene* scene, unsigned short minX, unsigned short minY, unsigned short maxX, unsigned short maxY) : m_scene(scene) {
-    m_minY=minY;m_maxY=maxY;m_minX=minX;m_maxX=maxX;
-  }
-  
-  QRectF WinItem::boundingRect(unsigned short x, unsigned short y) const {
-      return QRectF((1+x) * (m_scene->width()  / (NUMCOLS+2)),
-                    (1+y) * (m_scene->height() / (NUMCOLS+2)),
-                    m_scene->width()  / (NUMCOLS+2),
-                    m_scene->height() / (NUMCOLS+2));
-  }
-  
-  QRectF WinItem::boundingRect() const {
-      return QRectF((1+m_minX) * (m_scene->width()  / (NUMCOLS+2)),
-                    (1+m_minY) * (m_scene->height() / (NUMCOLS+2)),
-                    (m_maxX-m_minX+1) * m_scene->width()  / (NUMCOLS+2),
-                    (m_maxY-m_minY+1) * m_scene->height() / (NUMCOLS+2));
-  }
 
-  void WinItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
+WinItem::WinItem(Scene* scene, unsigned short minX, unsigned short minY,
+unsigned short maxX, unsigned short maxY) : m_scene(scene) {
+    m_minY=minY;m_maxY=maxY;m_minX=minX;m_maxX=maxX;
+}
+
+QRectF WinItem::boundingRect() const {
+    return QRectF((1+m_minX) * (m_scene->width()  / (NUMCOLS+2)),
+                 (1+m_minY) * (m_scene->height() / (NUMCOLS+2)),
+                 (m_maxX-m_minX+1) * m_scene->width()  / (NUMCOLS+2),
+                 (m_maxY-m_minY+1) * m_scene->height() / (NUMCOLS+2));
+}
+
+QRectF WinItem::boundingRect(unsigned short x, unsigned short y) const {
+    return QRectF((1+x) * (m_scene->width()  / (NUMCOLS+2)),
+                 (1+y) * (m_scene->height() / (NUMCOLS+2)),
+                 m_scene->width()  / (NUMCOLS+2),
+                 m_scene->height() / (NUMCOLS+2));
+}
+
+void WinItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
     QBrush b = p->brush();
     b.setColor(Qt::green);
     b.setStyle(Qt::SolidPattern);
@@ -56,10 +59,11 @@ namespace gui {
     short unsigned tmpX = m_minX;
     short unsigned tmpY = m_minY;
     while (tmpX >= qMin(m_minX, m_maxX) && tmpX <= qMax(m_minX, m_maxX) &&
-           tmpY >= qMin(m_minY, m_maxY) && tmpY <= qMax(m_minY, m_maxY)) {
-      p->fillRect(boundingRect(tmpX, tmpY), b);
-      tmpX += incX;
-      tmpY += incY;
+            tmpY >= qMin(m_minY, m_maxY) && tmpY <= qMax(m_minY, m_maxY)) {
+        p->fillRect(boundingRect(tmpX, tmpY), b);
+        tmpX += incX;
+        tmpY += incY;
     }
-  }
+}
+
 } /* namespace gui */

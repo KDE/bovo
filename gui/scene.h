@@ -19,8 +19,8 @@
 *
 ********************************************************************/                     
 
-#ifndef SCENE_H
-#define SCENE_H
+#ifndef __SCENE_H__
+#define __SCENE_H__
 
 #include <QGraphicsScene>
 #include <QList>
@@ -30,14 +30,15 @@ class QPainter;
 class QTimer;
 
 namespace gui {
-  class Game;
-  class Move;
 
-  class Scene : public QGraphicsScene
-  {
+class Game;
+class Move;
+
+class Scene : public QGraphicsScene
+{
     Q_OBJECT
 
-  public:
+public:
     Scene(Game* game);
     ~Scene();
     void setGame( Game* game );
@@ -49,18 +50,18 @@ namespace gui {
     void setWin();
     void replay(const QList<Move>& moves);
 
-  public slots:
+public slots:
     void updateBoard();
     void slotGameMoveFinished();
 
-  signals:
+signals:
     void moveFinished();
     void replayFinished();
 
-  private slots:
+private slots:
     void continueReplay();
 
-  private:
+private:
     void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
@@ -71,7 +72,8 @@ namespace gui {
     QList<Move> m_replayMoves;
     QList<Move>::const_iterator m_replayIterator;
     QTimer* m_replayTimer;
-  };
+};
+
 } /* namespace gui */
 
-#endif //SCENE_H
+#endif /* __SCENE_H__ */

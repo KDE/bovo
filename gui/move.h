@@ -17,10 +17,10 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
-#ifndef MOVE_H
-#define MOVE_H
+#ifndef __MOVE_H__
+#define __MOVE_H__
 
 #include "common.h"
 
@@ -29,14 +29,16 @@ using namespace bovo;
 class QString;
 
 namespace gui {
-  class Move {
-  public:
+
+class Move {
+public:
     Move(Player player = No, int col = -1, int row = -1);
     QString toQString() const;
-    int x; //replace with coord
-    int y; //replace with coord
+    int x; /** @todo replace with coord */
+    int y; /** @todo replace with coord */
     Player p; 
-  };
+};
+
 } /* namespace gui */
 
-#endif
+#endif /* __MOVE_H__ */

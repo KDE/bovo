@@ -19,26 +19,27 @@
 *
 ********************************************************************/                     
 
+#include "move.h"
+
 #include <QString>
 
-#include "move.h"
 #include "common.h"
 
 using namespace bovo;
 
 namespace gui {
-    Move::Move(Player player, int col, int row) : x(col), y(row), p(player) {
-    }
 
-    QString Move::toQString() const {
-      QString ret;
-      ret = (p==X?"X: (":"O: (");
-      ret += QString::number(x);
-      ret += ", ";
-      ret += QString::number(y);
-      ret += ")";
-      return ret;
-    }
+Move::Move(Player player, int col, int row) : x(col), y(row), p(player) {
+}
+
+QString Move::toQString() const {
+    QString ret;
+    ret = (p==X?"X: (":"O: (");
+    ret += QString::number(x);
+    ret += ", ";
+    ret += QString::number(y);
+    ret += ")";
+    return ret;
+}
 
 } /* namespace gui */
-

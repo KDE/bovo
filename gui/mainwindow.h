@@ -17,10 +17,10 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
-#ifndef MAIN_WINDOW_H
-#define MAIN_WINDOW_H
+#ifndef __MAINWINDOW_H__
+#define __MAINWINDOW_H__
 
 #include <kmainwindow.h>
 
@@ -33,18 +33,19 @@ class QComboBox;
 class KSelectAction;
 
 namespace gui {
-  class Game;
-  class Scene;
-  class View;
 
-  class MainWindow : public KMainWindow
-  {
+class Game;
+class Scene;
+class View;
+
+class MainWindow : public KMainWindow
+{
     Q_OBJECT
-  public:
+public:
     explicit MainWindow(QWidget* parent=0);
     ~MainWindow();
 
-  public slots:
+public slots:
     void slotNewGame();
     void slotMoveFinished();
     void slotGameOver();
@@ -52,7 +53,7 @@ namespace gui {
     void changeSkill(int);
     void reEnableReplay();
 
-  private:
+private:
     Scene *m_scene;
     View  *m_view;
     Game  *m_game;
@@ -63,7 +64,8 @@ namespace gui {
     QComboBox* m_sBarSkill;
     KSelectAction* m_skillsAct;
     bool m_computerStarts;
-  };
+};
+
 } /* namespace gui */
 
-#endif
+#endif /* __MAINWINDOW_H__ */

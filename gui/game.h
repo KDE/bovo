@@ -17,10 +17,10 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef __GAME_H__
+#define __GAME_H__
 
 #include <QObject>
 #include <QList>
@@ -40,13 +40,13 @@ using namespace bovo;
 using namespace ai;
 
 namespace gui {
-  class Move;
 
-  class Game : public QObject
-  {
+class Move;
+
+class Game : public QObject
+{
     Q_OBJECT
-
-  public:
+public:
     Game(Skill skill = Normal, const Player& startingPlayer = X);
     ~Game();
     void startNextTurn();
@@ -62,12 +62,12 @@ namespace gui {
     void setAiSkill(Skill skill);
     QList<Move> getMoves() const;
 
-  signals:
+signals:
     void gameOver();
     void boardChanged();
     void moveFinished();
 
-  private:
+private:
     void makeMove( const Move& move );
     void setPlayer(const Player& player, int x, int y);
     Player m_curPlayer;
@@ -75,7 +75,8 @@ namespace gui {
     Player m_computerMark;
     AiBoard *m_engine;
     Board *m_board;
-  };
+};
+
 } /* namespace gui */
 
-#endif /* GAME_H */
+#endif /* __GAME_H__ */
