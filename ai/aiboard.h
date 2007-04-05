@@ -42,77 +42,169 @@ namespace ai {
 class AiSquare;
 
 /**
+ * An AI player
  *
+ * This class might be somewhat missnamed. It doesn't just keep track of a
+ * playing board on the behalf og the AI. It is the entire AI implementation.
+ * it implements two algorithms to calculate best moves and it selects which 
+ * move to play. It also can tell if a move is a winning move, but it doesn't
+ * track a history yet (but maybe it should?).
+ *
+ * It uses the standard stuff in common.h way to little.
+ *
+ * It is supposed to be slaughtered and split up in two, easing the
+ * implementation of AdaptingAi (the great feature to come! =P )
+ *
+ * Perhaps we want to use Qt4 rather than STL in most of these cases. When we
+ * implement AdaptingAi we have to depend on Qt4 and/or ThreadWeaver anyways.
+ *
+ * @code
+ * Dimension dimension(width, height);
+ * AiBoard ai(dimension, Easy);
+ * Coord move = getMoveFromPlayerEitherByNetworkOrGui();
+ * Coord aiMove = ai.move(move);
+ * doSomethingWithAiMoveLikeDisplayingItInTheGui(aiMove);
+ * @endcode
  */
 class AiBoard {
 public:
     /**
-     *
+     * @brief Constructs an AiBoard with width, height and Skill
+     * @description Constructs a Board object with a specified width, height and
+     * skill
+     * @param width the width
+     * @param height the height
+     * @param skill the Skill the AI player will be playing with
      */
     AiBoard(const usi width, const usi height, Skill skill = Normal);
 
     /**
-     *
+     * @brief Constructs an AiBoard with width, height and Skill
+     * @description Constructs a Board object with a specified width and height
+     * specified by a Dimension and a skill
+     * @param width the width
+     * @param height the height
+     * @param skill the Skill the AI player will be playing with
      */
     AiBoard(const Dimension& dimension, Skill skill = Normal);
 
     /**
-     *
+     * @brief destructs this AiBoard
+     * @description destructs this AiBoard object
      */
     ~AiBoard();
 
     /**
-     *
+     * @brief is a Coord empty or set?
+     * @description tells whether a given Coord is marked as empty or 
+     * marked by a player
+     * @throw outOfBounds when coord is not on playing board
+     * @param coord Coord to check
+     * @return @c true if coord is empty, @c false otherwise
      */
     bool empty(const Coord&) const throw(outOfBounds);
 
     /**
-     *
+     * @brief is a Coord empty or set?
+     * @description tells whether a given Coord is marked as empty or 
+     * marked by a player
+     * @throw outOfBounds when coord is not on playing board
+     * @param x X-part of coordinate to check
+     * @param y X-part of coordinate to check
+     * @return @c true if coord is empty, @c false otherwise
      */
     bool empty(const usi x, const usi y) const throw(outOfBounds);
 
     /**
-     *
+     * @brief height of AiBoard
+     * @description tells the number of rows in the playing board
+     * @return the number of rows
      */
     usi height() const;
 
     /**
-     *
+     * @brief get move from AI
+     * @description Feed the latest move from the player to the AI and get the
+     * move the AI wants to play in return
+     * @param coord the move the player played his latest turn
+     * @return the move the AI wants to play
      */
-    Coord move(const Coord& c);
+    Coord move(const Coord& coord);
 
     /**
-     *
+     * @brief get move from AI
+     * @description Feed the latest move from the player to the AI and get a
+     * list of suggested AI moves in return. This should be a QList\<Coord>.
+     * @param coord the move the player played his latest turn
+     * @return the moves the AI suggest to play
+     * @todo Implement!
      */
-    Coord* moves(const Coord& c);
+    Coord* moves(const Coord& coord);
 
     /**
-     *
+     * @brief the player occupying a Coord
+     * @description tells which players occupies a certain square in the board
+     * @param coord the square to check
+     * @return @c X if player 1, @c O if player 2, @c No if empty
+     * @throw outOfBounds if coord isn't on the playing board
      */
     Player player(const Coord&) const throw(outOfBounds);
 
     /**
-     *
+     * @brief the player occupying a Coord
+     * @description tells which players occupies a certain square in the board
+     * @param x the X-part of the Coord to check
+     * @param y the Y-part of the Coord to check
+     * @return @c X if player 1, @c O if player 2, @c No if empty
+     * @throw outOfBounds if coord isn't on the playing board
      */
     Player player(const usi x, const usi y) const throw(outOfBounds);
 
     /**
-     *
+     * @brief set the player of a Coord
+     * @description sets which players should occupy a certain square in the
+     * playing board. Returns whether the game ends with this move (i.e. it 
+     * was the winning move).
+     * @param coord the Coord to occupy
+     * @param player the Player to occupy with
+     * @return @c true if this move resulted in a Game Over, 
+     * @c false otherwise
+     * @throw busy if coord was allready occupied
+     * @throw outOfBounds if coord isn't on the playing board
+     * @throw gameOver if game was allready over
+     * @throw notValidPlayer if player wasn't X or O
      */
-    bool setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer);
+    bool setPlayer(const Coord&, const Player& player)
+        throw(busy, outOfBounds, gameover, notValidPlayer);
 
     /**
-     *
+     * @brief set the player of a Coord
+     * @description sets which players should occupy a certain square in the
+     * playing board. Returns whether the game ends with this move (i.e. it 
+     * was the winning move).
+     * @param x the X-part of the Coord to set
+     * @param y the Y-part of the Coord to set
+     * @param player the Player to set
+     * @return @c true if this move resulted in a Game Over, 
+     * @c false otherwise
+     * @throw busy if coord was allready occupied
+     * @throw outOfBounds if coord isn't on the playing board
+     * @throw gameOver if game was allready over
+     * @throw notValidPlayer if player wasn't X or O
      */
-    bool setPlayer(const usi x, const usi y, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer);
+    bool setPlayer(const usi x, const usi y, const Player& player)
+        throw(busy, outOfBounds, gameover, notValidPlayer);
 
     /**
-     *
+     * @brief change Skill
+     * @description changes the Skill (difficulty) of the AI player
      */
     void setSkill(Skill skill);
 
     /**
-     *
+     * @brief width of Board
+     * @description tells the number of columns in the playing board
+     * @return the number of columns
      */
     usi width() const;
 
