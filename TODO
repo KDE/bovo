@@ -17,12 +17,12 @@ log. We want collective code ownership.
     ['] Ai
         [X] AiSquare
         [ ] AiBoard
-    ['] Game
+    [X] Game
         [X] common.h
         [X] Square
         [X] Dimension
         [X] Coord
-        [ ] Board
+        [X] Board
     [ ] Gui
     [ ] Mainpage.dox
 [ ] Fully i18n.
@@ -38,7 +38,7 @@ log. We want collective code ownership.
         [X] name all #ifdefs __CLASNAME_H__
         [X] /* comment */ all private stuff
     [X] Game
-        ['] Naming conventions (Board left)
+        [X] Naming conventions (Board left)
         [X] Indentation
         [X] close namespace with comments
         [X] close #endif with comments

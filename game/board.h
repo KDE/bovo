@@ -17,7 +17,7 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
 #ifndef __BOARD_H__
 #define __BOARD_H__
@@ -36,73 +36,131 @@ class Square;
 class Dimension;
 
 /**
+ * A playing board
  *
+ * This class might be somewhat missnamed. It doesn't just keep track of a 
+ * playing board. It also keeps track of a game history, if a player has won,
+ * and in that case how it has won.
+ *
+ * Maybe this class should be renamed to Game, or a lot of its code moved into
+ * gui/Game. On the other hand, maybe gui/Game should be moved into game,
+ * making it game/Game. But as gui/Game is dependant on Qt4, which I have tried
+ * to make sure ai/ and game/ isn't, it would break that design decision.
+ *
+ * However, maybe that is a stupid design decision which deserves to be broken.
+ * After all, this is a KDE 4 project, right? Did we have in mind some other
+ * project reusing our background code?
+ *
+ * @code
+ * Dimension dimension(width, height);
+ * Board board(dimension);
+ * board.setPlayer(Coord(x, y), X);
+ * @endcode
  */
 class Board {
 public:
     /**
-     *
+     * @brief Constructs a Board with width and height
+     * @description Constructs a Board object with a specified width and height
+     * @param width the width
+     * @param height the height
      */
     Board(usi width, usi height);
 
     /**
-     *
+     * @brief Constructs a Board with width and height
+     * @description Constructs a Board object with a width and height specified
+     * by a Dimension
+     * @param dimension the Dimension containing the width and height
      */
     Board(const Dimension& dimension);
 
     /**
-     *
+     * @brief destructs this Board
+     * @description destructs this Board object
      */
     ~Board();
 
     /**
-     *
+     * @brief is a Coord empty or set?
+     * @description tells whether a given Coord is marked as empty or 
+     * marked by a player
+     * @throw outOfBounds when coord is not on playing board
+     * @param coord Coord to check
+     * @return @c true if coord is empty, @c false otherwise
      */
-    void echo() const;
+    bool empty(const Coord& coord) const throw(outOfBounds);
 
     /**
-     *
+     * @brief is Game Over?
+     * @description tells whether game is over (someone has won)
+     * @return @c true if someone has won, @c false if game is still on
      */
-    bool empty(const Coord&) const throw(outOfBounds);
+    bool gameOver() const;
 
     /**
-     *
+     * @brief height of Board
+     * @description tells the number of rows in the playing board
+     * @return the number of rows
      */
     usi height() const;
 
     /**
-     *
+     * @brief the game history
+     * @description gives the history as a linked list, starting with oldest
+     * moves first. Moves are just given as coordinates, you will have to 
+     * check which player did it by querying that Coord by yourself.
+     * @return the game history in a STL-list filled with Coords
      */
-    std::list<Coord> getHistory() const;
+    std::list<Coord> history() const;
 
     /**
-     *
+     * @brief the latest moved
+     * @description tells which Coord was the latest to be marked by a player
+     * @return the latest Coord to have been played
      */
-    bool isGameOver() const;
+    Coord latestMove() const;
 
     /**
-     *
+     * @brief the player occupying a Coord
+     * @description tells which players occupies a certain square in the board
+     * @param coord the square to check
+     * @return @c X if player 1, @c O if player 2, @c No if empty
+     * @throw outOfBounds if coord isn't on the playing board
      */
-    Coord lastMove() const;
+    Player player(const Coord& coord) const throw(outOfBounds);
 
     /**
-     *
+     * @brief set the player of a Coord
+     * @description sets which players should occupy a certain square in the
+     * playing board. Returns whether the game ends with this move (i.e. it 
+     * was the winning move).
+     * @param coord the Coord to occupy
+     * @param player the Player to occupy with
+     * @return @c true if this move resulted in a Game Over, 
+     * @c false otherwise
+     * @throw busy if coord was allready occupied
+     * @throw outOfBounds if coord isn't on the playing board
+     * @throw gameOver if game was allready over
+     * @throw notValidPlayer if player wasn't X or O
      */
-    Player player(const Coord&) const throw(outOfBounds);
+    bool setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds,
+        gameover, notValidPlayer);
 
     /**
-     *
-     */
-    bool setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds, gameover, notValidPlayer);
-
-    /**
-     *
+     * @brief width of Board
+     * @description tells the number of columns in the playing board
+     * @return the number of columns
      */
     usi width() const;
 
     /**
-     * Tells in what direction the gameover was caused.
-     * @return -1 if game isn't over, 0 for horizontal, 1 for vertical, 2 for diagonal upperleft downwards right, 3 for bottomleft upwards right
+     * @brief in which direction was the winning line?
+     * @description Tells in what direction the gameover was caused, or -1 if
+     * game is still on.
+     * @return @c -1 if game isn't over, @c 0 for horizontal, 
+     * @c 1 for vertical, @c 2 for diagonal upperleft downwards right, 
+     * @c 3 for bottomleft upwards right
      */
     short winDir() const;
 
@@ -116,18 +174,18 @@ private:
     /* property holding whether game has ended or not */
     bool m_gameover;
 
+    /* property containing in which direction the win occured, 
+     * if someone has won */
+    short m_winDir;
+
     /* Storage for game history (moves) */
-    std::list<Coord> history;
+    std::list<Coord> m_history;
 
     /* initializes the board */
     void setup();
 
     /* investigates if coord is a winning move */
     bool win(const Coord& coord);
-
-    /* property containing in which direction the win occured, 
-     * if someone has won */
-    short win_dir;
 };
 
 } /* namespace bovo */

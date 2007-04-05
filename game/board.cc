@@ -37,12 +37,12 @@ using namespace std;
 /** namespace for game engine */
 namespace bovo {
 
-Board::Board(usi width, usi height) : win_dir(-1) {
+Board::Board(usi width, usi height) : m_winDir(-1) {
     m_dimension = new Dimension(width, height);
     setup();
 }
 
-Board::Board(const Dimension& dimension) : win_dir(-1) {
+Board::Board(const Dimension& dimension) : m_winDir(-1) {
     m_dimension = new Dimension(dimension.width(), dimension.height());
     setup();
 }
@@ -55,40 +55,30 @@ Board::~Board() {
     delete m_dimension;
 }
 
-void Board::setup() {
-    m_gameover = false;
-    m_board = new Square*[m_dimension->width()];
-    for (int x = 0; x < m_dimension->width(); ++x) {
-        m_board[x] = new Square[m_dimension->height()];
-    }
-}
-    
-bool Board::empty(const Coord& c) const throw(outOfBounds) {
-    if (!m_dimension->ok(c)) {
+bool Board::empty(const Coord& coord) const throw(outOfBounds) {
+    if (!m_dimension->ok(coord)) {
         throw outOfBounds();
     }
-    return m_board[c.x()][c.y()].empty();
+    return m_board[coord.x()][coord.y()].empty();
 }
 
-bool Board::setPlayer(const Coord& c, const Player& player)
-  throw(busy, outOfBounds, gameover, notValidPlayer) {
-    if (!m_dimension->ok(c)) {
-        throw outOfBounds();
+bool Board::gameOver() const {
+    return m_gameover;
+}
+
+usi Board::height() const {
+    return m_dimension->height();
+}
+
+std::list<Coord> Board::history() const {
+    return m_history;
+}
+
+Coord Board::latestMove() const {
+    if (m_history.empty()) {
+        return Coord(-1, -1);
     }
-    if (player != X && player != O) {
-        throw notValidPlayer(); 
-    }
-    if (m_gameover) {
-        throw gameover();
-    }
-    m_board[c.x()][c.y()].setPlayer(player);
-    history.push_back(c);
-    if (win(c)) {
-        m_gameover = true;
-        return true;
-    } else {
-        return false;
-    }
+    return m_history.back();
 }
 
 Player Board::player(const Coord& c) const throw(outOfBounds) {
@@ -98,20 +88,43 @@ Player Board::player(const Coord& c) const throw(outOfBounds) {
     return m_board[c.x()][c.y()].player();
 }
 
+bool Board::setPlayer(const Coord& coord, const Player& player)
+  throw(busy, outOfBounds, gameover, notValidPlayer) {
+    if (!m_dimension->ok(coord)) {
+        throw outOfBounds();
+    }
+    if (player != X && player != O) {
+        throw notValidPlayer(); 
+    }
+    if (m_gameover) {
+        throw gameover();
+    }
+    m_board[coord.x()][coord.y()].setPlayer(player);
+    m_history.push_back(coord);
+    if (win(coord)) {
+        m_gameover = true;
+        return true;
+    } else {
+        return false;
+    }
+}
+
 usi Board::width() const {
     return m_dimension->width();
 }
 
-usi Board::height() const {
-    return m_dimension->height();
+short Board::winDir() const {
+    return m_winDir;
 }
 
-Coord next(const Coord& c, usi dir) {
+/* secret helper functions */
+
+Coord next(const Coord& coord, usi dir) {
     usi LEFT = 1;
     usi UP = 2;
     usi RIGHT = 4;
     usi DOWN = 8;
-    Coord tmp = c;
+    Coord tmp = coord;
     if (dir & LEFT) {
         tmp = tmp.left();
     } else if (dir & RIGHT) {
@@ -123,6 +136,16 @@ Coord next(const Coord& c, usi dir) {
         tmp = tmp.down();
     }
     return tmp;
+}
+
+/* private methods */
+
+void Board::setup() {
+    m_gameover = false;
+    m_board = new Square*[m_dimension->width()];
+    for (int x = 0; x < m_dimension->width(); ++x) {
+        m_board[x] = new Square[m_dimension->height()];
+    }
 }
 
 bool Board::win(const Coord& c) {
@@ -154,30 +177,11 @@ bool Board::win(const Coord& c) {
             tmp = next(tmp, DIR[2*i+1]);
         }
         if (count >= 5) {
-            win_dir=i;
+            m_winDir=i;
             return true;
         }
     }
     return false;
-}
-
-Coord Board::lastMove() const {
-    if (history.empty()) {
-        return Coord(-1, -1);
-    }
-    return history.back();
-}
-
-std::list<Coord> Board::getHistory() const {
-    return history;
-}
-
-bool Board::isGameOver() const {
-    return m_gameover;
-}
-
-short Board::winDir() const {
-    return win_dir;
 }
 
 } /* namespace bovo */

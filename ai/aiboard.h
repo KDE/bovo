@@ -20,7 +20,7 @@
 ********************************************************************/                     
 
 /**
- * @file
+ * @file file declaring the class AiBoard, which in fact is the AI
  */
 
 #ifndef __AIBOARD_H__
@@ -163,7 +163,6 @@ private:
      * direction) as in need of a recalculation 
      * of its points. */
     void zero(const Coord&); 
-
 };
 
 } /* namespace ai */
