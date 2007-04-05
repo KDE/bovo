@@ -33,7 +33,7 @@ using namespace gui;
 
 int main(int argc, char **argv) {
     KAboutData aboutData( "bovo", I18N_NOOP("Bovo"),
-            BOVOCHESS_VERSION, description, KAboutData::License_GPL,
+            BOVO_VERSION, description, KAboutData::License_GPL,
             "(c) 2002,2007 Aron Boström");
     aboutData.addAuthor("Aron Boström",I18N_NOOP("Author"), "aron.bostrom@gmail.com");
 
@@ -41,9 +41,9 @@ int main(int argc, char **argv) {
 
     KApplication application;
 
-    if( application.isSessionRestored() )
+    if( application.isSessionRestored() ) {
         RESTORE(MainWindow)
-    else {
+    } else {
         MainWindow *mainWin = new MainWindow;
         mainWin->show();
     }

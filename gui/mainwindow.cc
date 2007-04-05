@@ -155,7 +155,7 @@ void MainWindow::slotGameOver() {
 
 void MainWindow::slotMoveFinished() {
     if (!m_game->isGameOver())
-      statusBar()->changeItem( m_game->isComputersTurn() ? i18n("Waiting for computer.") : i18n("It's your turn."), 0 );
+      statusBar()->changeItem( m_game->isComputersTurn() ? i18n("Waiting for computer.") : i18n("It is your turn."), 0 );
 }
 
 void MainWindow::replay() {

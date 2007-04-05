@@ -12,9 +12,7 @@ log. We want collective code ownership.
     [X] Game
     [ ] Gui
     [ ] Mainpage.dox
-[ ] Fully i18n.
-    [ ] Verify all strings in i18n()
-    [ ] create Messages.sh
+[X] Fully i18n.
 ['] Code beautification.
     [X] Ai
     [X] Game
