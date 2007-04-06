@@ -23,6 +23,7 @@
 #define __MARK_H__
 
 #include "common.h"
+#include <QtSvg/QGraphicsSvgItem>
 
 using namespace bovo;
 
