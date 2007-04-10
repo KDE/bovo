@@ -86,9 +86,7 @@ void Game::setSkill(Skill skill) {
 }
 
 void Game::startNextTurn() {
-    if (m_gameOver) {
-        emit gameOver();
-    } else if (computerTurn()) {
+    if (computerTurn() && !m_gameOver) {
         makeComputerMove();
     }
 }
@@ -123,6 +121,9 @@ void Game::makeMove(const Move& move) {
     m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );
     emit moveFinished();
+    if (m_gameOver) {
+        emit gameOver();
+    }
 }
 
 Coord Game::next(const Coord& coord, usi dir) const {
