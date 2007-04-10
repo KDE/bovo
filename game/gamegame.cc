@@ -25,16 +25,20 @@
 
 #include <QList>
 
+#include "aiboard.h"
 #include "board.h"
 #include "dimension.h"
+
+using namespace ai;
 
 /** namespace for gui stuff */
 namespace bovo
 {
 
-Game::Game(const Dimension& dimension, Player startingPlayer)
+Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
   : m_curPlayer(startingPlayer) {
     m_board = new Board(dimension);
+    m_ai = new AiBoard(dimension, skill);
 //    m_history = new QList<Move>;
 }
 
@@ -45,6 +49,10 @@ Game::~Game() {
 
 Board* Game::board() const {
     return m_board;
+}
+
+AiBoard* Game::ai() const {
+    return m_ai;
 }
 
 }

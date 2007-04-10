@@ -28,6 +28,13 @@
 
 #include "common.h"
 
+/** namespace for ai */
+namespace ai {
+    class AiBoard;
+}
+
+using namespace ai;
+
 /** namespace for game engine */
 namespace bovo
 {
@@ -64,13 +71,15 @@ class Game: public QObject
     Q_OBJECT
 public:
     /**
-     * @brief Constructs a Game with a Dimension and a starting Player
+     * @brief Constructs a Game
      * @description Constructs a Game object with a playing board with
-     * width and height specified by a given Dimension and a starting Player
+     * width and height specified by a given Dimension, a starting Player and
+     * an AI skill level
      * @param dimension the Dimension specifying the width and height
      * @param startingPlayer the player who starts
+     * @param skill the skill of the AI
      */
-    Game(const Dimension& dimension, Player startingPlayer);
+    Game(const Dimension& dimension, Player startingPlayer, Skill skill);
 
     /**
      * @brief destructs this Game
@@ -84,6 +93,13 @@ public:
      * @return the old Board
      */
     Board* board() const;
+
+    /**
+     * @brief the AI
+     * @description returns the AI
+     * @return the AI
+     */
+    AiBoard* ai() const;
 
     Player m_curPlayer;
 
@@ -105,6 +121,7 @@ Q_SIGNALS:
 
 private:
     Board *m_board;
+    AiBoard *m_ai;
 };
 
 } /* namespace bovo */

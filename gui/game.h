@@ -27,17 +27,11 @@
 
 #include "common.h"
 
-
-namespace ai {
-    class AiBoard;
-} /* namespace ai */
-
 namespace bovo {
     class Game;
 } /* namespace bovo */
 
 using namespace bovo;
-using namespace ai;
 
 namespace gui {
 
@@ -72,7 +66,6 @@ private:
     void setPlayer(const Player& player, int x, int y);
     Player m_playerMark;
     Player m_computerMark;
-    AiBoard *m_engine;
     bovo::Game *m_board;
 };
 

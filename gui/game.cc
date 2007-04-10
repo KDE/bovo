@@ -39,15 +39,14 @@ namespace gui {
 
 Game::Game(Skill skill, const Player& startingPlayer)
   : m_playerMark(X), m_computerMark(O) {
-    m_board = new bovo::Game(Dimension(NUMCOLS, NUMCOLS), startingPlayer);
-    m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
+    Dimension dim(NUMCOLS, NUMCOLS);
+    m_board = new bovo::Game(dim, startingPlayer, skill);
     connect(m_board, SIGNAL(gameOver()), this, SIGNAL(gameOver()));
     connect(m_board, SIGNAL(boardChanged()),this, SIGNAL(boardChanged()));
     connect(m_board, SIGNAL(moveFinished()),this, SIGNAL(moveFinished()));
 }
 
 Game::~Game() {
-    delete m_engine;
     delete m_board;
 }
 
@@ -71,7 +70,7 @@ void Game::startNextTurn() {
 void Game::makeComputerMove() {
     m_board->m_curPlayer = m_computerMark;
     Coord lastCoord = m_board->board()->latestMove();
-    Coord suggestedCoord = m_engine->move(lastCoord);
+    Coord suggestedCoord = m_board->ai()->move(lastCoord);
     Move move(m_computerMark, suggestedCoord.x(), suggestedCoord.y());
     makeMove(move);
 }
@@ -107,7 +106,7 @@ Player Game::playerAt( int x, int y ) const {
 }
 
 void Game::setAiSkill(Skill skill) {
-    m_engine->setSkill(skill);
+    m_board->ai()->setSkill(skill);
 }
 
 // This is a seldom used operation. 
