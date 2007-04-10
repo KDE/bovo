@@ -72,7 +72,7 @@ Player Game::playerAt( int x, int y ) const {
 }
 
 void Game::setAiSkill(Skill skill) {
-    m_board->ai()->setSkill(skill);
+    m_board->setSkill(skill);
 }
 
 // This is a seldom used operation. 
@@ -83,7 +83,7 @@ QList<Move> Game::getMoves() const {
 
 /* should be skipped in favour of latestMove() */
 Move Game::lastMove() const {
-    return getLastMove();
+    return m_board->latestMove();
 }
 
 /* Drop is-part of name */

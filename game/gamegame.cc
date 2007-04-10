@@ -93,6 +93,10 @@ void Game::makePlayerMove(const Coord& coord) {
     makeMove(move);
 }
 
+void Game::setSkill(Skill skill) {
+    m_ai->setSkill(skill);
+}
+
 void Game::startNextTurn() {
     if (m_board->gameOver()) {
         emit gameOver();

@@ -139,6 +139,13 @@ public:
     void makePlayerMove(const Coord& coord);
 
     /**
+     * @brief sets the AI skill
+     * @description sets the skill level of the AI
+     * @param skill new skill for the AI
+     */
+    void setSkill(Skill skill);
+
+    /**
      * @brief starts a new turn
      * @description starts a new turn
      */
