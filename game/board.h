@@ -97,13 +97,6 @@ public:
     bool gameOver() const;
 
     /**
-     * @brief height of Board
-     * @description tells the number of rows in the playing board
-     * @return the number of rows
-     */
-    usi height() const;
-
-    /**
      * @brief the player occupying a Coord
      * @description tells which players occupies a certain square in the board
      * @param coord the square to check
@@ -130,13 +123,6 @@ public:
         gameover, notValidPlayer);
 
     /**
-     * @brief width of Board
-     * @description tells the number of columns in the playing board
-     * @return the number of columns
-     */
-    usi width() const;
-
-    /**
      * @brief in which direction was the winning line?
      * @description Tells in what direction the gameover was caused, or -1 if
      * game is still on.
@@ -160,8 +146,22 @@ private:
      * if someone has won */
     short m_winDir;
 
+    /**
+     * @brief height of Board
+     * @description tells the number of rows in the playing board
+     * @return the number of rows
+     */
+    usi height() const;
+
     /* initializes the board */
     void setup();
+
+    /**
+     * @brief width of Board
+     * @description tells the number of columns in the playing board
+     * @return the number of columns
+     */
+    usi width() const;
 
     /* investigates if coord is a winning move */
     bool win(const Coord& coord);

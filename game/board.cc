@@ -66,10 +66,6 @@ bool Board::gameOver() const {
     return m_gameover;
 }
 
-usi Board::height() const {
-    return m_dimension->height();
-}
-
 Player Board::player(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
@@ -95,10 +91,6 @@ bool Board::setPlayer(const Coord& coord, const Player& player)
     } else {
         return false;
     }
-}
-
-usi Board::width() const {
-    return m_dimension->width();
 }
 
 short Board::winDir() const {
@@ -128,12 +120,20 @@ Coord next(const Coord& coord, usi dir) {
 
 /* private methods */
 
+usi Board::height() const {
+    return m_dimension->height();
+}
+
 void Board::setup() {
     m_gameover = false;
     m_board = new Square*[m_dimension->width()];
     for (int x = 0; x < m_dimension->width(); ++x) {
         m_board[x] = new Square[m_dimension->height()];
     }
+}
+
+usi Board::width() const {
+    return m_dimension->width();
 }
 
 bool Board::win(const Coord& c) {
