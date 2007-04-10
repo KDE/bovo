@@ -21,12 +21,6 @@
 
 #include "game.h"
 
-#include <list>
-
-#include <QList>
-
-#include "aiboard.h"
-#include "board.h"
 #include "common.h"
 #include "coord.h"
 #include "dimension.h"
