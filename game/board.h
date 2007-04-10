@@ -97,6 +97,15 @@ public:
     bool gameOver() const;
 
     /**
+     * @brief is a coord in board?
+     * @description tells whether a given coordinate is within the limits of
+     * this playing board.
+     * @param coord coordinate to verify
+     * @return \c true if coord exist, \c false otherwise
+     */
+    bool ok(const Coord& coord) const;
+
+    /**
      * @brief the player occupying a Coord
      * @description tells which players occupies a certain square in the board
      * @param coord the square to check
@@ -117,17 +126,7 @@ public:
      * @throw notValidPlayer if player wasn't X or O
      */
     void setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds,
-        gameover, notValidPlayer);
-
-    /**
-     * @brief in which direction was the winning line?
-     * @description Tells in what direction the gameover was caused, or -1 if
-     * game is still on.
-     * @return @c -1 if game isn't over, @c 0 for horizontal, 
-     * @c 1 for vertical, @c 2 for diagonal upperleft downwards right, 
-     * @c 3 for bottomleft upwards right
-     */
-    short winDir() const;
+        notValidPlayer);
 
 private:
     /* property holding the actual playing board */
@@ -135,13 +134,6 @@ private:
 
     /* property containing the dimension of the actual playing board */
     Dimension *m_dimension;
-
-    /* property holding whether game has ended or not */
-    bool m_gameover;
-
-    /* property containing in which direction the win occured, 
-     * if someone has won */
-    short m_winDir;
 
     /**
      * @brief height of Board
@@ -159,9 +151,6 @@ private:
      * @return the number of columns
      */
     usi width() const;
-
-    /* investigates if coord is a winning move */
-    bool win(const Coord& coord);
 };
 
 } /* namespace bovo */

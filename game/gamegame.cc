@@ -39,6 +39,8 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
   : m_curPlayer(startingPlayer), m_computerMark(O), m_playerMark(X) {
     m_board = new Board(dimension);
     m_ai = new AiBoard(dimension, skill);
+    m_winDir = -1;
+    m_gameOver = false;
 }
 
 Game::~Game() {
@@ -51,7 +53,7 @@ bool Game::computerTurn() const {
 }
 
 bool Game::isGameOver() const {
-    return m_board->gameOver();
+    return m_gameOver;
 }
 
 QList<Move> Game::history() const {
@@ -80,7 +82,7 @@ void Game::setSkill(Skill skill) {
 }
 
 void Game::startNextTurn() {
-    if (m_board->gameOver()) {
+    if (m_gameOver) {
         emit gameOver();
     } else if (computerTurn()) {
         makeComputerMove();
@@ -92,7 +94,7 @@ Player Game::player(const Coord& coord) const {
 }
 
 short Game::winDir() const {
-    return m_board->winDir();
+    return m_winDir;
 }
 
 /* private methods */
@@ -110,9 +112,59 @@ void Game::makeComputerMove() {
 
 void Game::makeMove(const Move& move) {
     m_board->setPlayer(move.coord(), move.player());
+    m_winDir = win(move.coord());
+    if (m_winDir != -1) {
+        m_gameOver = true;
+    }
     m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );
     emit moveFinished();
+}
+
+Coord Game::next(const Coord& coord, usi dir) const {
+    usi LEFT = 1;
+    usi UP = 2;
+    usi RIGHT = 4;
+    usi DOWN = 8;
+    Coord tmp = coord;
+    if (dir & LEFT) {
+        tmp = tmp.left();
+    } else if (dir & RIGHT) {
+        tmp = tmp.right();
+    }
+    if (dir & UP) {
+        tmp = tmp.up();
+    } else if (dir & DOWN) {
+        tmp = tmp.down();
+    }
+    return tmp;
+}
+
+short Game::win(const Coord& c) const {
+    usi LEFT = 1;
+    usi UP = 2;
+    usi RIGHT = 4;
+    usi DOWN = 8;
+    usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT | UP, RIGHT | DOWN,
+                  LEFT | DOWN, RIGHT | UP};
+    Player p = player(c);
+    for (int i = 0; i < 4; ++i) {
+        usi count = 1;
+        Coord tmp = next(c, DIR[2*i]);
+        while (m_board->ok(tmp) && player(tmp) == p) {
+            ++count;
+            tmp = next(tmp, DIR[2*i]);
+        }
+        tmp = next(c, DIR[2*i+1]);
+        while (m_board->ok(tmp) && player(tmp) == p) {
+            ++count;
+            tmp = next(tmp, DIR[2*i+1]);
+        }
+        if (count >= 5) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 }

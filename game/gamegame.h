@@ -187,6 +187,12 @@ private:
      */
     void makeMove(const Move& move);
 
+    /* get a neighbour coord in a given direction */
+    Coord next(const Coord& coord, usi direction) const;
+
+    /* calculates if a coord is part of a winning line */
+    short win(const Coord& coord) const;
+
     /* AI */
     AiBoard *m_ai;
 
@@ -199,11 +205,17 @@ private:
     /* computer player id */
     Player m_computerMark;
 
+    /* is game over */
+    bool m_gameOver;
+
     /* game history */
     QList<Move> m_history;
 
     /* user player id */
     Player m_playerMark;
+
+    /* winning direction, or -1 if game isn't won */
+    short m_winDir;
 };
 
 } /* namespace bovo */
