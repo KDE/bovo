@@ -37,14 +37,12 @@ using namespace std;
 /** namespace for game engine */
 namespace bovo {
 
-Board::Board(usi width, usi height) {
-    m_dimension = new Dimension(width, height);
-    setup();
-}
-
 Board::Board(const Dimension& dimension) {
     m_dimension = new Dimension(dimension.width(), dimension.height());
-    setup();
+    m_board = new Square*[m_dimension->width()];
+    for (int x = 0; x < m_dimension->width(); ++x) {
+        m_board[x] = new Square[m_dimension->height()];
+    }
 }
 
 Board::~Board() {
@@ -78,23 +76,6 @@ void Board::setPlayer(const Coord& coord, const Player& player) {
         return;
     }
     m_board[coord.x()][coord.y()].setPlayer(player);
-}
-
-/* private methods */
-
-usi Board::height() const {
-    return m_dimension->height();
-}
-
-void Board::setup() {
-    m_board = new Square*[m_dimension->width()];
-    for (int x = 0; x < m_dimension->width(); ++x) {
-        m_board[x] = new Square[m_dimension->height()];
-    }
-}
-
-usi Board::width() const {
-    return m_dimension->width();
 }
 
 } /* namespace bovo */

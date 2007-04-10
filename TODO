@@ -58,14 +58,14 @@ FEATURES (4.0)
 
 REDESIGN (4.1?)
 ===============
-[ ] Clean up Board and Game into a Board which is exactly that (a wrapper
+['] Clean up Board and Game into a Board which is exactly that (a wrapper
     around a Square**) and a Game : public QObject that emits signals and
     features slots to communicate with its surroundings.
 [ ] Make AiBoard split up into Ai and AiBoard.
 [ ] Make the new Ai class use the Game class, connecting it's signals
     playerOneTurn(Coord) and playerTwoTurn(Coord)
 [ ] Add an isNull() in Coord
-[ ] Get rid of exceptions, to fit into KDE
+['] Get rid of exceptions, to fit into KDE
 [X] merge coord and Move classes, or at least bridge them together and make Move
     use coord internally.
 

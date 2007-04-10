@@ -59,14 +59,6 @@ class Board {
 public:
     /**
      * @brief Constructs a Board with width and height
-     * @description Constructs a Board object with a specified width and height
-     * @param width the width
-     * @param height the height
-     */
-    Board(usi width, usi height);
-
-    /**
-     * @brief Constructs a Board with width and height
      * @description Constructs a Board object with a width and height specified
      * by a Dimension
      * @param dimension the Dimension containing the width and height
@@ -127,23 +119,6 @@ private:
 
     /* property containing the dimension of the actual playing board */
     Dimension *m_dimension;
-
-    /**
-     * @brief height of Board
-     * @description tells the number of rows in the playing board
-     * @return the number of rows
-     */
-    usi height() const;
-
-    /* initializes the board */
-    void setup();
-
-    /**
-     * @brief width of Board
-     * @description tells the number of columns in the playing board
-     * @return the number of columns
-     */
-    usi width() const;
 };
 
 } /* namespace bovo */
