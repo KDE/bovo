@@ -26,6 +26,8 @@
 
 #include <QObject>
 
+#include "common.h"
+
 /** namespace for game engine */
 namespace bovo
 {
@@ -81,6 +83,8 @@ public:
      * @return the old Board
      */
     Board* board() const;
+
+    Player m_curPlayer;
 
 Q_SIGNALS:
     /**

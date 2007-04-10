@@ -38,9 +38,10 @@ using namespace ai;
 namespace gui {
 
 Game::Game(Skill skill, const Player& startingPlayer)
-  : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
+  : m_playerMark(X), m_computerMark(O) {
     m_board = new bovo::Game(Dimension(NUMCOLS, NUMCOLS));
     m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
+    m_board->m_curPlayer = startingPlayer;
     connect(m_board, SIGNAL(gameOver()), this, SIGNAL(gameOver()));
     connect(m_board, SIGNAL(boardChanged()),this, SIGNAL(boardChanged()));
     connect(m_board, SIGNAL(moveFinished()),this, SIGNAL(moveFinished()));
@@ -52,7 +53,7 @@ Game::~Game() {
 }
 
 void Game::makePlayerMove( int x, int y) {
-    m_curPlayer = m_playerMark;
+    m_board->m_curPlayer = m_playerMark;
     Move move(m_playerMark, x, y);
     if (!m_board->board()->empty(Coord(move.x(), move.y()))) {
         return; // this spot is already marked by a player
@@ -69,7 +70,7 @@ void Game::startNextTurn() {
 }
 
 void Game::makeComputerMove() {
-    m_curPlayer = m_computerMark;
+    m_board->m_curPlayer = m_computerMark;
     Coord lastCoord = m_board->board()->latestMove();
     Coord suggestedCoord = m_engine->move(lastCoord);
     Move move(m_computerMark, suggestedCoord.x(), suggestedCoord.y());
@@ -78,7 +79,7 @@ void Game::makeComputerMove() {
 
 void Game::makeMove( const Move& move ) {
     setPlayer(move.player(), move.x(), move.y());
-    m_curPlayer = (m_curPlayer == X ? O : X );
+    m_board->m_curPlayer = (m_board->m_curPlayer == X ? O : X );
     emit moveFinished();
 }
 
@@ -94,7 +95,8 @@ Move Game::getLastMove() const {
         latestCoord.y() == static_cast<unsigned short>(-1)) {
         return Move();
     }
-    return Move( (m_curPlayer==X?O:X), latestCoord.x(), latestCoord.y());
+    return Move( (m_board->m_curPlayer==X?O:X), latestCoord.x(),
+latestCoord.y());
 }
 
 void Game::setPlayer(const Player& player, int x, int y) {
@@ -125,7 +127,7 @@ QList<Move> Game::getMoves() const {
 }
 
 Player Game::currentPlayer() const {
-    return m_curPlayer;
+    return m_board->m_curPlayer;
 }
 
 /* should be skipped in favour of latestMove() */
@@ -135,7 +137,7 @@ Move Game::lastMove() const {
 
 /* Drop is-part of name */
 bool Game::isComputersTurn() const {
-    return m_curPlayer == m_computerMark;
+    return m_board->m_curPlayer == m_computerMark;
 }
 
 short Game::winDir() const {

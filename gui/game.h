@@ -70,7 +70,6 @@ signals:
 private:
     void makeMove( const Move& move );
     void setPlayer(const Player& player, int x, int y);
-    Player m_curPlayer;
     Player m_playerMark;
     Player m_computerMark;
     AiBoard *m_engine;
