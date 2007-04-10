@@ -36,83 +36,134 @@ log. We want collective code ownership.
 
 FEATURES (4.0)
 ==============
-* don't paint winning line, but paint it with svg's
-* Implement draws (yes, it have never ever happened to me in real life, but it is not impossible in theory, ...right?)
-* "New game" doesn't mean a loss if it's just started. (isn't this fixed?)
-* Theme support -- look into what our fellow devs have come up with
- + Read name of files from theme file
- + Search for theme files in theme folders
- + Save selected theme in configuration
- + Put theme selection in Settings menu
- + KNewsStuff2
+[ ] don't paint winning line, but paint it with svg's
+[ ] Implement draws (yes, it have never ever happened to me in real life, but it
+    is not impossible in theory, ...right?)
+[ ] "New game" doesn't mean a loss if it's just started. (isn't this fixed?)
+[ ] Theme support -- look into what our fellow devs have come up with
+    [ ] Read name of files from theme file
+    [ ] Search for theme files in theme folders
+    [ ] Save selected theme in configuration
+    [ ] Put theme selection in Settings menu
+    [ ] KNewsStuff2
 [ ] Undo moves.
     - Don't undo if there are no moves.
     - Don't undo if game is over.
+    - Only allow undo if it is a "Player vs. AI" Game
 [ ] Hint moves.
     - Don't hint if game is over.
     [ ] implement moves() in ai.
+[ ] Changing AI level means restarting game OR setting AI for next game
+    (dialog?)
 
 REDESIGN (4.1?)
 ===============
-* Clean up Board and Game into a Board which is exactly that (a wrapper
-around a Square**) and a Game : public QObject that emits signals and
-features slots to communicate with its surroundings.
-* Make AiBoard split up into Ai and AiBoard.
-* Make the new Ai class use the Game class, connecting it's signals
-playerOneTurn(Coord) and playerTwoTurn(Coord)
-* Add an isNull() in Coord
-* Get rid of exceptions, to fit into KDE
-* merge coord and Move classes, or at least bridge them together and make Move use coord internally.
+[ ] Clean up Board and Game into a Board which is exactly that (a wrapper
+    around a Square**) and a Game : public QObject that emits signals and
+    features slots to communicate with its surroundings.
+[ ] Make AiBoard split up into Ai and AiBoard.
+[ ] Make the new Ai class use the Game class, connecting it's signals
+    playerOneTurn(Coord) and playerTwoTurn(Coord)
+[ ] Add an isNull() in Coord
+[ ] Get rid of exceptions, to fit into KDE
+[X] merge coord and Move classes, or at least bridge them together and make Move
+    use coord internally.
 
 FEATURES (4.1)
 ==============
-* Save a replay
-* View a replay
-* Save an active game and open it again
-* Start with latest game when opening
-* Save stats from time to time
-* View history in a right or left pane, where previous moves are displayed.
-* Enable GGZ gaming (this means create a GGZ game for this as well I guess)
-* Enable LAN gaming (broadcast the local domain for other willing to participate.)
-Look into kgamelib or what it is called. Create XML-like open protocol for
-Bovo friends, letting Gnomes play with us (is it possible to add a feature
-to the protocol that allways makes them loose? =P )
-* Kidnap an artist for some decent artworks
+[ ] Save a replay
+[ ] View a replay
+[ ] Save an active game and open it again
+[ ] Start with latest game when opening
+[ ] Save stats from time to time
+[ ] View history in a right or left pane, where previous moves are displayed.
+[ ] Enable GGZ gaming (this means create a GGZ game for this as well I guess)
+[ ] Enable LAN gaming (broadcast the local domain for other willing to
+    participate.)
+    Look into kgamelib or what it is called. Create XML-like open protocol for
+    Bovo friends, letting Gnomes play with us (is it possible to add a feature
+    to the protocol that allways makes them loose? =P )
+[ ] Kidnap an artist for some decent artworks
 
 ADAPTING AI
 ===========
-* Changing AI level means restarting game OR setting AI for next game (dialog?)
-* ADAPTING AI: AI skill starts at Normal, and then it gets reevaluated after every gameover. The reevaluation takes into account the last 10 games played (if 10 games hasn't been played yet it's a new user and special rules will apply). However, this 10 latest games is "evaluated" (who won the most, the player or the AI?). If AI wins more than 4 out of 10 games, lower the difficulty by a few points on a 100-level scale. If player wins more than half 7 games out of 10 games, make the AI slightly more challenging. This will mean that the player (as he/she) gets better will start facing more challenging opponents, but still they won't be disshearteningly hard. The algorithm is meant to mean that a balance will occure were the player allways faces an opponent he will win ~60% of the games against, making him feel good about him/herself, lowering his/her blood pressure and making him/her like this game. :P
- + Implement background cogitating in AI (thinking over possible plays in a separate thread while player is thinking).
- + Implement forsight in AI (AI guesses what moves the player might attempt)
- + Implement depth searching in AI (If player plays this, then I could play this and the player could do this and I can do this...).
- + Implement width searching in AI (AI evaluates many possible moves; multiple depths)
- + Make sure width+depth searches is reflected in the "root" of the AI, so the AI chooses the path that seems like the best one. AI will be able to deselect entirely paths it discovers leads to losses or strong playerpositions.
- + Implement a board vurdering (count offensive and defensive points appart and see which points is valued the most, to guess which player is most likely to like a given board).
- + When a move is made by the player, drop all know redundant paths from the strategy and focus on the ones left.
- + Make the AI cogitating thread do multi-tasking. That is, all depth-width-searches gets added to a wait list, and the AI will in turn vurdere them. Removes from this list should be easy as well (certain losses, we want to avoid if the player is not of the weaker kind AND when the player plays a move, all children to other moves must be removed -- Actually it's better if we just clear eveything specified to be not in a certain path.)
- + Make the aiboard reversable (return a copy and change the playedID) so it is easy to alter between player and AI "thinking".
- + Make this super-AI adjustable, by making miss-calculations (only in AI-thinking -- it has to presume player is allways a mastermidn) and by selecting weaker moves (unless they are extremely obvious, like four-in-a-row). Also make the AI weaker by limiting how deep and wide it is allowed to calculate.
- + Make the width of paths adjustable by how likely they are. If there are many similarly pointed moves to make, explore them all, but if there is only a few great only evaluate those.
- + Set max depth and width. The closer to the root, the "wider" path is allowed, and the better paths can also be explored wider and deeper.
- + Allow the AI a few seconds of cogitating before forcing it to make a move.
- + Find a nice balancing algorithm that ensures the player will face slightly-easier opponents.
- + If 10 games hasn't been played yet, start with a random difficulty. If that proves to be to hard, back down by half (and so on) or double the difficulty, until the players starts loosing/winning. Then back down halfways to the last value and continue to do so whenever the winning/loosing situation changes but keep making it harder/easier if the situation doesn't change. When 10 games has passed, start playing with normal adaption.
- + Turn on highscore and connect that between adapted difficulty of AI and time of play.
- + Turn on global highscore. Send in exceptionally great levels of difficulty a player has reached to an Internet server, so a top-100 masterminds of the KDE world list is created. :)
- + If window gets inactive, pause the AI cogitating thread.
- + Refactor out this cooooool adapting AI into a lib, which all KDE Board games could use! (GSoC idea?)
+ADAPTING AI: AI skill starts at Normal, and then it gets reevaluated after
+every gameover. The reevaluation takes into account the last 10 games played (if
+10 games hasn't been played yet it's a new user and special rules will apply).
+However, this 10 latest games is "evaluated" (who won the most, the player or
+the AI?). If AI wins more than 4 out of 10 games, lower the difficulty by a few
+points on a 100-level scale. If player wins more than half 7 games out of 10
+games, make the AI slightly more challenging. This will mean that the player (as
+he/she) gets better will start facing more challenging opponents, but still they
+won't be disshearteningly hard. The algorithm is meant to mean that a balance
+will occure were the player allways faces an opponent he will win ~60% of the
+games against, making him feel good about him/herself, lowering his/her blood
+pressure and making him/her like this game. :P
+[ ] Implement background cogitating in AI (thinking over possible plays in a
+    separate thread while player is thinking).
+[ ] Implement forsight in AI (AI guesses what moves the player might attempt)
+[ ] Implement depth searching in AI (If player plays this, then I could play
+    this and the player could do this and I can do this...).
+[ ] Implement width searching in AI (AI evaluates many possible moves; multiple
+    depths)
+[ ] Make sure width+depth searches is reflected in the "root" of the AI, so the
+    AI chooses the path that seems like the best one. AI will be able to
+    deselect entirely paths it discovers leads to losses or strong
+    playerpositions.
+[ ] Implement a board vurdering (count offensive and defensive points appart and
+    see which points is valued the most, to guess which player is most likely to
+    like a given board).
+[ ] When a move is made by the player, drop all know redundant paths from the
+    strategy and focus on the ones left.
+[ ] Make the AI cogitating thread do multi-tasking. That is, all
+    depth-width-searches gets added to a wait list, and the AI will in turn
+    vurdere them. Removes from this list should be easy as well (certain losses,
+    we want to avoid if the player is not of the weaker kind AND when the player
+    plays a move, all children to other moves must be removed -- Actually
+    it's better if we just clear eveything specified to be not in a certain
+    path.)
+[ ] Make the aiboard reversable (return a copy and change the playedID) so it is
+    easy to alter between player and AI "thinking".
+[ ] Make this super-AI adjustable, by making miss-calculations (only in
+    AI-thinking -- it has to presume player is allways a mastermidn) and by
+    selecting weaker moves (unless they are extremely obvious, like
+    four-in-a-row). Also make the AI weaker by limiting how deep and wide it is
+    allowed to calculate.
+[ ] Make the width of paths adjustable by how likely they are. If there are many
+    similarly pointed moves to make, explore them all, but if there is only a
+    few great only evaluate those.
+[ ] Set max depth and width. The closer to the root, the "wider" path is
+    allowed, and the better paths can also be explored wider and deeper.
+[ ] Allow the AI a few seconds of cogitating before forcing it to make a move.
+[ ] Find a nice balancing algorithm that ensures the player will face
+    slightly-easier opponents.
+[ ] If 10 games hasn't been played yet, start with a random difficulty. If that
+    proves to be to hard, back down by half (and so on) or double the
+    difficulty, until the players starts loosing/winning. Then back down
+    halfways to the last value and continue to do so whenever the
+    winning/loosing situation changes but keep making it harder/easier if the
+    situation doesn't change. When 10 games has passed, start playing with
+    normal adaption.
+[ ] Turn on highscore and connect that between adapted difficulty of AI and time
+    of play.
+[ ] Turn on global highscore. Send in exceptionally great levels of difficulty a
+    player has reached to an Internet server, so a top-100 masterminds of the
+    KDE world list is created. :)
+[ ] If window gets inactive, pause the AI cogitating thread.
+[ ] Refactor out this cooooool adapting AI into a lib, which all KDE Board games
+    could use! (GSoC idea?)
 
 BUGS
 ====
-* No know bugs, Yay!
-* Resizing the application quickly will cause it to crash, but the backtrace indicates it's not our fault, but KDE's.
-* Program crashes when showing dialog box in a full-blown KDE 4 environment,
-but not over an SSH-X-tunnel
+[ ] Several marks are lost when winning line is painted in replay mode. Odd..
+[ ] Resizing the application quickly will cause it to crash, but the backtrace
+    indicates it's not our fault, but KDE's.
+[ ] Program crashes when showing dialog box in a full-blown KDE 4 environment,
+    but not over an SSH-X-tunnel
 
 OTHER
 =====
-* Move this list to a wiki!
-* Clean up the namespace mess.
-* THE SAME THING WE DO EVERY NIGHT, KONQI: TRY TO TAKE OVER THE WORLD!
+[ ] Move this list to a wiki!
+[X] Clean up the namespace mess.
+[ ] THE SAME THING WE DO EVERY NIGHT, KONQI: TRY TO TAKE OVER THE WORLD!
 
