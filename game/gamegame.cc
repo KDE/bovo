@@ -46,14 +46,6 @@ Game::~Game() {
     delete m_ai;
 }
 
-AiBoard* Game::ai() const {
-    return m_ai;
-}
-
-Board* Game::board() const {
-    return m_board;
-}
-
 bool Game::computerTurn() const {
     return m_curPlayer == m_computerMark;
 }

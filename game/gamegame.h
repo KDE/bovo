@@ -90,21 +90,6 @@ public:
      */
     ~Game();
 
-
-    /**
-     * @brief the AI
-     * @description returns the AI
-     * @return the AI
-     */
-    AiBoard* ai() const;
-
-    /**
-     * @brief the old Board
-     * @description returns the old Board
-     * @return the old Board
-     */
-    Board* board() const;
-
     /**
      * @brief is it the computer's turn?
      * @description tells whether the computer is the one with the current turn
