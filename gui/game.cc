@@ -96,10 +96,6 @@ QList<Move> Game::getMoves() const {
     return moves;
 }
 
-Player Game::currentPlayer() const {
-    return m_board->m_curPlayer;
-}
-
 /* should be skipped in favour of latestMove() */
 Move Game::lastMove() const {
     return getLastMove();
