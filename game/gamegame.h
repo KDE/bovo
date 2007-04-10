@@ -49,7 +49,7 @@ namespace bovo
  *
  * @code
  * Dimension dimension(width, height);
- * Game game(dimension);
+ * Game game(dimension, X);
  * MoveStatus status = game.move(Coord(x, y));
  * if (status.error()) {
  *     qDebug() << status.toQString() << endl;
@@ -64,12 +64,13 @@ class Game: public QObject
     Q_OBJECT
 public:
     /**
-     * @brief Constructs a Game with a Dimension
+     * @brief Constructs a Game with a Dimension and a starting Player
      * @description Constructs a Game object with a playing board with
-     * width and height specified by a given Dimension
+     * width and height specified by a given Dimension and a starting Player
      * @param dimension the Dimension specifying the width and height
+     * @param startingPlayer the player who starts
      */
-    Game(const Dimension& dimension);
+    Game(const Dimension& dimension, Player startingPlayer);
 
     /**
      * @brief destructs this Game

@@ -39,9 +39,8 @@ namespace gui {
 
 Game::Game(Skill skill, const Player& startingPlayer)
   : m_playerMark(X), m_computerMark(O) {
-    m_board = new bovo::Game(Dimension(NUMCOLS, NUMCOLS));
+    m_board = new bovo::Game(Dimension(NUMCOLS, NUMCOLS), startingPlayer);
     m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
-    m_board->m_curPlayer = startingPlayer;
     connect(m_board, SIGNAL(gameOver()), this, SIGNAL(gameOver()));
     connect(m_board, SIGNAL(boardChanged()),this, SIGNAL(boardChanged()));
     connect(m_board, SIGNAL(moveFinished()),this, SIGNAL(moveFinished()));

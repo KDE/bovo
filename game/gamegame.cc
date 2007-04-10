@@ -32,7 +32,8 @@
 namespace bovo
 {
 
-Game::Game(const Dimension& dimension) : m_curPlayer(X) {
+Game::Game(const Dimension& dimension, Player startingPlayer)
+  : m_curPlayer(startingPlayer) {
     m_board = new Board(dimension);
 //    m_history = new QList<Move>;
 }
