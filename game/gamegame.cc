@@ -62,6 +62,19 @@ bool Game::computerTurn() const {
     return m_curPlayer == m_computerMark;
 }
 
+QList<Move> Game::history() const {
+    std::list<Coord> history = m_board->history();
+    int i = 0;
+    QList<Move> moves;
+    std::list<Coord>::const_iterator it = history.begin();
+    std::list<Coord>::const_iterator end = history.end();
+    while (it != end) {
+        moves << Move(++i%2==1?X:O, it->x(), it->y());
+        ++it;
+    }
+    return moves;
+}
+
 Move Game::latestMove() const {
     Coord latestCoord = m_board->latestMove();
     if (latestCoord.x() == static_cast<unsigned short>(-1) &&

@@ -78,16 +78,7 @@ void Game::setAiSkill(Skill skill) {
 // This is a seldom used operation. 
 // No use to make things complex by introducing pointers.
 QList<Move> Game::getMoves() const {
-    std::list<Coord> history = m_board->board()->history();
-    int i = 0;
-    QList<Move> moves;
-    std::list<Coord>::const_iterator it = history.begin();
-    std::list<Coord>::const_iterator end = history.end();
-    while (it != end) {
-        moves << Move(++i%2==1?X:O, it->x(), it->y());
-        ++it;
-    }
-    return moves;
+    return m_board->history();
 }
 
 /* should be skipped in favour of latestMove() */

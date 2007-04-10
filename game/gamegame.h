@@ -117,6 +117,14 @@ public:
     bool computerTurn() const;
 
     /**
+     * @brief the game history
+     * @description gives the history as a linked list, starting with oldest
+     * moves first.
+     * @return the game history
+     */
+    QList<Move> history() const;
+
+    /**
      * @brief the latest move
      * @description returns the latest move that has been performed
      * @return the latest move performed
