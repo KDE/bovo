@@ -124,7 +124,7 @@ Move Game::lastMove() const {
 
 /* Drop is-part of name */
 bool Game::isComputersTurn() const {
-    return m_board->m_curPlayer == m_board->m_computerMark;
+    return m_board->computerTurn();
 }
 
 short Game::winDir() const {

@@ -109,6 +109,13 @@ public:
     Board* board() const;
 
     /**
+     * @brief is it the computer's turn?
+     * @description tells whether the computer is the one with the current turn
+     * @return \c true if computer is at turn, \c false otherwise
+     */
+    bool computerTurn() const;
+
+    /**
      * @brief make a move
      * @description performs the specified move. Should be private later on.
      * @param move move to make

@@ -58,6 +58,10 @@ Board* Game::board() const {
     return m_board;
 }
 
+bool Game::computerTurn() const {
+    return m_curPlayer == m_computerMark;
+}
+
 void Game::makeMove(const Move& move) {
     m_board->setPlayer(move.coord(), move.player());
     m_curPlayer = (m_curPlayer == X ? O : X );
