@@ -223,10 +223,6 @@ void Scene::continueReplay() {
         return;
     }
     if (m_replayIterator != m_replayEnd) {
-        qDebug() << m_replayIterator->valid();
-        qDebug() << m_replayIterator->player();
-        qDebug() << m_replayIterator->x();
-        qDebug() << m_replayIterator->y();
         Mark* mark = new Mark(m_replayIterator->player(), this,
                               m_replayIterator->x(), m_replayIterator->y());
         ++m_replayIterator;
