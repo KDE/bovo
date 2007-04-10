@@ -82,6 +82,22 @@ public:
      */
     Board* board() const;
 
+Q_SIGNALS:
+    /**
+     * @brief emitted at game over
+     */
+    void gameOver();
+
+    /**
+     * @brief emitted when board has changed (needs repainting)
+     */
+    void boardChanged();
+
+    /**
+     * @brief emitted when a move has finished (players turn again)
+     */
+    void moveFinished();
+
 private:
     Board *m_board;
 };
