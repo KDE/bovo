@@ -67,8 +67,8 @@ Move Game::getLastMove() const {
     return m_board->latestMove();
 }
 
-Player Game::playerAt( int x, int y ) const {
-    return m_board->board()->player(Coord(x, y));
+Player Game::playerAt(int x, int y) const {
+    return m_board->player(Coord(x, y));
 }
 
 void Game::setAiSkill(Skill skill) {
@@ -92,7 +92,7 @@ bool Game::isComputersTurn() const {
 }
 
 short Game::winDir() const {
-    return m_board->board()->winDir();
+    return m_board->winDir();
 }
 
 } /* namespace gui */

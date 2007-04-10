@@ -158,6 +158,24 @@ public:
      */
     void startNextTurn();
 
+    /**
+     * @brief gets the player of a coordinate
+     * @description returns the player id of a coordinate in the playing board
+     * @param coord coordinate to query
+     * @return \c X, \c O, or \c No
+     */
+    Player player(const Coord& coord) const;
+
+    /**
+     * @brief in which direction was the winning line?
+     * @description tells in what direction the gameover was caused, or -1 if
+     * game is still on.
+     * @return @c -1 if game isn't over, @c 0 for horizontal,
+     * @c 1 for vertical, @c 2 for diagonal upperleft downwards right,
+     * @c 3 for bottomleft upwards right
+     */
+    short winDir() const;
+
 Q_SIGNALS:
     /**
      * @brief emitted at game over

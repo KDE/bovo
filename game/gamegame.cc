@@ -109,6 +109,14 @@ void Game::startNextTurn() {
     }
 }
 
+Player Game::player(const Coord& coord) const {
+    return m_board->player(coord);
+}
+
+short Game::winDir() const {
+    return m_board->winDir();
+}
+
 /* private methods */
 
 void Game::makeComputerMove() {
