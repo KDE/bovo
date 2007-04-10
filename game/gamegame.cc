@@ -21,7 +21,7 @@
 
 /** @file game.cc implements class Game in namespace bovo */
 
-#include "game.h"
+#include "gamegame.h"
 
 #include <QList>
 
@@ -48,4 +48,4 @@ Board* Game::board() const {
 
 }
 
-#include "game.moc"
+#include "gamegame.moc"

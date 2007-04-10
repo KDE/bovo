@@ -33,8 +33,8 @@ namespace ai {
 } /* namespace ai */
 
 namespace bovo {
-    class Board;
-} /* namespace ai */
+    class Game;
+} /* namespace bovo */
 
 using namespace bovo;
 using namespace ai;
@@ -74,7 +74,7 @@ private:
     Player m_playerMark;
     Player m_computerMark;
     AiBoard *m_engine;
-    Board *m_board;
+    bovo::Game *m_board;
 };
 
 } /* namespace gui */

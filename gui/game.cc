@@ -25,21 +25,21 @@
 
 #include <QList>
 
-#include "common.h"
 #include "aiboard.h"
 #include "board.h"
-#include "dimension.h"
+#include "common.h"
 #include "coord.h"
+#include "dimension.h"
+#include "gamegame.h"
 #include "move.h"
 
-using namespace bovo;
 using namespace ai;
 
 namespace gui {
 
 Game::Game(Skill skill, const Player& startingPlayer)
   : m_curPlayer(startingPlayer), m_playerMark(X), m_computerMark(O) {
-    m_board = new Board(Dimension(NUMCOLS, NUMCOLS));
+    m_board = new bovo::Game(Dimension(NUMCOLS, NUMCOLS));
     m_engine = new AiBoard(Dimension(NUMCOLS, NUMCOLS), skill);
 }
 
@@ -51,7 +51,7 @@ Game::~Game() {
 void Game::makePlayerMove( int x, int y) {
     m_curPlayer = m_playerMark;
     Move move(m_playerMark, x, y);
-    if (!m_board->empty(Coord(move.x(), move.y()))) {
+    if (!m_board->board()->empty(Coord(move.x(), move.y()))) {
         return; // this spot is already marked by a player
     }
     makeMove(move);
@@ -67,7 +67,7 @@ void Game::startNextTurn() {
 
 void Game::makeComputerMove() {
     m_curPlayer = m_computerMark;
-    Coord lastCoord = m_board->latestMove();
+    Coord lastCoord = m_board->board()->latestMove();
     Coord suggestedCoord = m_engine->move(lastCoord);
     Move move(m_computerMark, suggestedCoord.x(), suggestedCoord.y());
     makeMove(move);
@@ -81,12 +81,12 @@ void Game::makeMove( const Move& move ) {
 
 /* rename to gameOver() */
 bool Game::isGameOver() const {
-    return m_board->gameOver();
+    return m_board->board()->gameOver();
 }
 
 /* Should be renamed to latestMove() )*/
 Move Game::getLastMove() const {
-    Coord latestCoord = m_board->latestMove();
+    Coord latestCoord = m_board->board()->latestMove();
     if (latestCoord.x() == static_cast<unsigned short>(-1) &&
         latestCoord.y() == static_cast<unsigned short>(-1)) {
         return Move();
@@ -95,11 +95,11 @@ Move Game::getLastMove() const {
 }
 
 void Game::setPlayer(const Player& player, int x, int y) {
-    m_board->setPlayer(Coord(x, y), player);
+    m_board->board()->setPlayer(Coord(x, y), player);
 }
 
 Player Game::playerAt( int x, int y ) const { 
-    return m_board->player(Coord(x, y));
+    return m_board->board()->player(Coord(x, y));
 }
 
 void Game::setAiSkill(Skill skill) {
@@ -109,7 +109,7 @@ void Game::setAiSkill(Skill skill) {
 // This is a seldom used operation. 
 // No use to make things complex by introducing pointers.
 QList<Move> Game::getMoves() const {
-    std::list<Coord> history = m_board->history();
+    std::list<Coord> history = m_board->board()->history();
     int i = 0;
     QList<Move> moves;
     std::list<Coord>::const_iterator it = history.begin();
@@ -136,7 +136,7 @@ bool Game::isComputersTurn() const {
 }
 
 short Game::winDir() const {
-    return m_board->winDir();
+    return m_board->board()->winDir();
 }
 
 } /* namespace gui */
