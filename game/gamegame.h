@@ -127,6 +127,15 @@ public:
     void makePlayerMove(const Coord& coord);
 
     /**
+     * @brief is this coordinate on board?
+     * @description tells whether this coordinate is within the limits of the
+     * playing board.
+     * @param coord coordinate to verify
+     * @return \c true if coordinate is ok, \c false otherwise
+     */
+    bool ok(const Coord& coord) const;
+
+    /**
      * @brief sets the AI skill
      * @description sets the skill level of the AI
      * @param skill new skill for the AI

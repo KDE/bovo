@@ -26,6 +26,10 @@
 
 #include "common.h"
 
+namespace bovo {
+    class Game;
+}
+
 using namespace bovo;
 
 class QString;
@@ -34,7 +38,6 @@ class KSelectAction;
 
 namespace gui {
 
-class Game;
 class Scene;
 class View;
 

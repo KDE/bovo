@@ -19,6 +19,8 @@
 *
 ********************************************************************/
 
+#include "mainwindow.h"
+
 #include <QGridLayout>
 #include <QWidget>
 #include <QComboBox>
@@ -33,12 +35,12 @@
 #include <klocale.h>
 #include <kicon.h>
 
-#include "mainwindow.h"
-#include "game.h"
+#include "common.h"
+#include "dimension.h"
+#include "gamegame.h"
+#include "move.h"
 #include "scene.h"
 #include "view.h"
-#include "common.h"
-#include "move.h"
 
 using namespace bovo;
 
@@ -126,7 +128,8 @@ void MainWindow::slotNewGame() {
         }
     }
     delete m_game;
-    m_game = new Game(m_skill, m_computerStarts ? O : X);
+    Dimension dimension(NUMCOLS, NUMCOLS);
+    m_game = new Game(dimension, m_computerStarts ? O : X, m_skill);
     connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
     QAction* act = actionCollection()->action("replay");
     if (act != 0) {
@@ -150,7 +153,7 @@ void MainWindow::slotNewGame() {
 
 void MainWindow::slotGameOver() {
     QString message;
-    if (m_game->lastMove().player() == X) {
+    if (m_game->latestMove().player() == X) {
         statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
         statusBar()->changeItem(i18n("Wins: %0").arg(++m_wins), 1);
         message = i18n("You won!");
@@ -168,7 +171,7 @@ void MainWindow::slotGameOver() {
 
 void MainWindow::slotMoveFinished() {
     if (!m_game->isGameOver()) {
-      statusBar()->changeItem( m_game->isComputersTurn() ?
+      statusBar()->changeItem( m_game->computerTurn() ?
               i18n("Waiting for computer.") : i18n("It is your turn."), 0 );
     }
 }
@@ -179,7 +182,7 @@ void MainWindow::replay() {
     }
     statusBar()->changeItem(i18n("Replaying game"), 0);
     actionCollection()->action("replay")->setEnabled(false);
-    m_scene->replay(m_game->getMoves());
+    m_scene->replay(m_game->history());
     connect(m_scene, SIGNAL(replayFinished()),
             this, SLOT(reEnableReplay()));
 }
@@ -201,7 +204,7 @@ void MainWindow::changeSkill(int skill) {
     }
     m_sBarSkill->setCurrentIndex(skill);
     m_skillsAct->setCurrentItem(skill);
-    m_game->setAiSkill(m_skill);
+    m_game->setSkill(m_skill);
 }
 
 QString MainWindow::getSkillName(Skill skill) const {

@@ -31,13 +31,12 @@ class QTimer;
 
 namespace bovo {
     class Move;
+    class Game;
 }
 
 using namespace bovo;
 
 namespace gui {
-
-class Game;
 
 class Scene : public QGraphicsScene
 {

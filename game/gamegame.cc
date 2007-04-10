@@ -77,6 +77,10 @@ void Game::makePlayerMove(const Coord& coord) {
     makeMove(move);
 }
 
+bool Game::ok(const Coord& coord) const {
+    return m_board->ok(coord);
+}
+
 void Game::setSkill(Skill skill) {
     m_ai->setSkill(skill);
 }

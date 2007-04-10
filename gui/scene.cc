@@ -29,11 +29,12 @@
 
 #include <kstandarddirs.h>
 
-#include "game.h"
-#include "mark.h"
 #include "common.h"
-#include "winitem.h"
+#include "coord.h"
+#include "gamegame.h"
+#include "mark.h"
 #include "move.h"
+#include "winitem.h"
 
 using namespace bovo;
 
@@ -62,19 +63,19 @@ Scene::~Scene() {
     delete m_renderer;
 }
 
-bool isAWinner(unsigned short tmpX, unsigned short tmpY, Game* game,
-               Player player) {
-    return tmpX < NUMCOLS && tmpY < NUMCOLS &&
-            game->playerAt(tmpX, tmpY) == player;
+bool isAWinner(unsigned short x, unsigned short y, Game* game, Player player) {
+    Move tmp(player, x, y);
+    return game->ok(tmp.coord()) && game->player(tmp.coord()) == tmp.player();
+    /** @TODO skip ok(coord) if possible */
 }
 
 void Scene::setWin() {
     if (!m_game->isGameOver()) {
         return;
     }
-    Player player = m_game->lastMove().player();
-    unsigned short x = m_game->lastMove().x();
-    unsigned short y = m_game->lastMove().y();
+    Player player = m_game->latestMove().player();
+    unsigned short x = m_game->latestMove().x();
+    unsigned short y = m_game->latestMove().y();
     short dy, dx;
     switch (m_game->winDir()) {
         case 0: dx = 1; dy =  0; break;
@@ -159,7 +160,7 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     if (m_game->isGameOver()) {
         return;
     }
-    if (m_game->isComputersTurn()) {
+    if (m_game->computerTurn()) {
         return;
     }
     QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
@@ -184,11 +185,11 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     if (col > NUMCOLS-1) {
         col = NUMCOLS-1;
     }
-    m_game->makePlayerMove(col, row);
+    m_game->makePlayerMove(Coord(col, row));
 }
 
 void Scene::slotGameMoveFinished() {
-    Move move = m_game->lastMove();
+    Move move = m_game->latestMove();
     Mark* mark = new Mark(move.player(), this, move.x(), move.y());
     mark->setSharedRenderer(m_renderer);
     addItem(mark);
