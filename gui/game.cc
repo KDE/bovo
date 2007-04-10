@@ -59,7 +59,7 @@ void Game::startNextTurn() {
 
 /* rename to gameOver() */
 bool Game::isGameOver() const {
-    return m_board->board()->gameOver();
+    return m_board->isGameOver();
 }
 
 /* Should be renamed to latestMove() )*/

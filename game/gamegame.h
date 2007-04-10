@@ -117,6 +117,13 @@ public:
     bool computerTurn() const;
 
     /**
+     * @brief is Game Over?
+     * @description tells whether game is over (someone has won) or not
+     * @return \c true if game has ended, \c false if game is still on
+     */
+    bool isGameOver() const;
+
+    /**
      * @brief the game history
      * @description gives the history as a linked list, starting with oldest
      * moves first.

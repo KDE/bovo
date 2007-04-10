@@ -62,6 +62,10 @@ bool Game::computerTurn() const {
     return m_curPlayer == m_computerMark;
 }
 
+bool Game::isGameOver() const {
+    return m_board->gameOver();
+}
+
 QList<Move> Game::history() const {
     std::list<Coord> history = m_board->history();
     int i = 0;
