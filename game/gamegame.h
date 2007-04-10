@@ -128,6 +128,12 @@ public:
      */
     void makeMove(const Move& move);
 
+    /**
+     * @brief starts a new turn
+     * @description starts a new turn
+     */
+    void startNextTurn();
+
     /* Current player */
     Player m_curPlayer;
 

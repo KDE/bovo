@@ -59,11 +59,7 @@ void Game::makePlayerMove( int x, int y) {
 }
 
 void Game::startNextTurn() {
-    if (isGameOver()) {
-        emit gameOver();
-    } else if (isComputersTurn()) {
-        m_board->makeComputerMove();
-    }
+    m_board->startNextTurn();
 }
 
 /* rename to gameOver() */

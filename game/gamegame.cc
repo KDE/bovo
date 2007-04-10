@@ -76,6 +76,14 @@ void Game::makeMove(const Move& move) {
     emit moveFinished();
 }
 
+void Game::startNextTurn() {
+    if (m_board->gameOver()) {
+        emit gameOver();
+    } else if (computerTurn()) {
+        makeComputerMove();
+    }
+}
+
 }
 
 #include "gamegame.moc"
