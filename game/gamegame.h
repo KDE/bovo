@@ -116,6 +116,12 @@ public:
     bool computerTurn() const;
 
     /**
+     * @brief make an AI move
+     * @description performs an AI move. Should be private later on.
+     */
+    void makeComputerMove();
+
+    /**
      * @brief make a move
      * @description performs the specified move. Should be private later on.
      * @param move move to make

@@ -62,16 +62,8 @@ void Game::startNextTurn() {
     if (isGameOver()) {
         emit gameOver();
     } else if (isComputersTurn()) {
-        makeComputerMove();
+        m_board->makeComputerMove();
     }
-}
-
-void Game::makeComputerMove() {
-    m_board->m_curPlayer = m_board->m_computerMark;
-    Coord lastCoord = m_board->board()->latestMove();
-    Coord suggestedCoord = m_board->ai()->move(lastCoord);
-    Move move(m_board->m_computerMark, suggestedCoord.x(), suggestedCoord.y());
-    m_board->makeMove(move);
 }
 
 /* rename to gameOver() */

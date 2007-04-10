@@ -45,7 +45,6 @@ public:
     ~Game();
     void startNextTurn();
     void makePlayerMove(int x, int y);
-    void makeComputerMove();
     bool isGameOver() const;
     Player currentPlayer() const;
     Player playerAt( int x, int y ) const;

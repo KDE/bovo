@@ -62,6 +62,14 @@ bool Game::computerTurn() const {
     return m_curPlayer == m_computerMark;
 }
 
+void Game::makeComputerMove() {
+    m_curPlayer = m_computerMark;
+    Coord lastCoord = m_board->latestMove();
+    Coord suggestedCoord = m_ai->move(lastCoord);
+    Move move(m_computerMark, suggestedCoord);
+    makeMove(move);
+}
+
 void Game::makeMove(const Move& move) {
     m_board->setPlayer(move.coord(), move.player());
     m_curPlayer = (m_curPlayer == X ? O : X );
