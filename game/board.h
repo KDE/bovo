@@ -83,11 +83,10 @@ public:
      * @brief is a Coord empty or set?
      * @description tells whether a given Coord is marked as empty or 
      * marked by a player
-     * @throw outOfBounds when coord is not on playing board
      * @param coord Coord to check
      * @return @c true if coord is empty, @c false otherwise
      */
-    bool empty(const Coord& coord) const throw(outOfBounds);
+    bool empty(const Coord& coord) const;
 
     /**
      * @brief is Game Over?
@@ -110,9 +109,8 @@ public:
      * @description tells which players occupies a certain square in the board
      * @param coord the square to check
      * @return @c X if player 1, @c O if player 2, @c No if empty
-     * @throw outOfBounds if coord isn't on the playing board
      */
-    Player player(const Coord& coord) const throw(outOfBounds);
+    Player player(const Coord& coord) const;
 
     /**
      * @brief set the player of a Coord
@@ -120,13 +118,8 @@ public:
      * playing board.
      * @param coord the Coord to occupy
      * @param player the Player to occupy with
-     * @throw busy if coord was allready occupied
-     * @throw outOfBounds if coord isn't on the playing board
-     * @throw gameOver if game was allready over
-     * @throw notValidPlayer if player wasn't X or O
      */
-    void setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds,
-        notValidPlayer);
+    void setPlayer(const Coord&, const Player& player);
 
 private:
     /* property holding the actual playing board */

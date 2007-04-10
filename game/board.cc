@@ -55,9 +55,9 @@ Board::~Board() {
     delete m_dimension;
 }
 
-bool Board::empty(const Coord& coord) const throw(outOfBounds) {
+bool Board::empty(const Coord& coord) const {
     if (!ok(coord)) {
-        throw outOfBounds();
+        return false;
     }
     return m_board[coord.x()][coord.y()].empty();
 }
@@ -66,20 +66,16 @@ bool Board::ok(const Coord& coord) const {
     return m_dimension->ok(coord);
 }
 
-Player Board::player(const Coord& c) const throw(outOfBounds) {
+Player Board::player(const Coord& c) const {
     if (!ok(c)) {
-        throw outOfBounds();
+        return No;
     }
     return m_board[c.x()][c.y()].player();
 }
 
-void Board::setPlayer(const Coord& coord, const Player& player)
-  throw(busy, outOfBounds, notValidPlayer) {
+void Board::setPlayer(const Coord& coord, const Player& player) {
     if (!ok(coord)) {
-        throw outOfBounds();
-    }
-    if (player != X && player != O) {
-        throw notValidPlayer();
+        return;
     }
     m_board[coord.x()][coord.y()].setPlayer(player);
 }
