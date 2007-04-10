@@ -62,6 +62,15 @@ bool Game::computerTurn() const {
     return m_curPlayer == m_computerMark;
 }
 
+Move Game::latestMove() const {
+    Coord latestCoord = m_board->latestMove();
+    if (latestCoord.x() == static_cast<unsigned short>(-1) &&
+        latestCoord.y() == static_cast<unsigned short>(-1)) {
+        return Move();
+    }
+    return Move(m_curPlayer == X ? O : X, latestCoord);
+}
+
 void Game::makePlayerMove(const Coord& coord) {
     m_curPlayer = m_playerMark;
     Move move(m_playerMark, coord);

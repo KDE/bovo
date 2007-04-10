@@ -117,6 +117,13 @@ public:
     bool computerTurn() const;
 
     /**
+     * @brief the latest move
+     * @description returns the latest move that has been performed
+     * @return the latest move performed
+     */
+    Move latestMove() const;
+
+    /**
      * @brief make a player move
      * @description performs the specified move by the player
      * @param coord coordinate played by player

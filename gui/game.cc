@@ -64,13 +64,7 @@ bool Game::isGameOver() const {
 
 /* Should be renamed to latestMove() )*/
 Move Game::getLastMove() const {
-    Coord latestCoord = m_board->board()->latestMove();
-    if (latestCoord.x() == static_cast<unsigned short>(-1) &&
-        latestCoord.y() == static_cast<unsigned short>(-1)) {
-        return Move();
-    }
-    return Move( (m_board->m_curPlayer==X?O:X), latestCoord.x(),
-latestCoord.y());
+    return m_board->latestMove();
 }
 
 Player Game::playerAt( int x, int y ) const {
