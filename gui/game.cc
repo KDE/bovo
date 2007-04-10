@@ -91,11 +91,7 @@ Move Game::getLastMove() const {
 latestCoord.y());
 }
 
-void Game::setPlayer(const Player& player, int x, int y) {
-    m_board->board()->setPlayer(Coord(x, y), player);
-}
-
-Player Game::playerAt( int x, int y ) const { 
+Player Game::playerAt( int x, int y ) const {
     return m_board->board()->player(Coord(x, y));
 }
 

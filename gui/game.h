@@ -62,7 +62,6 @@ signals:
     void moveFinished();
 
 private:
-    void setPlayer(const Player& player, int x, int y);
     Player m_playerMark;
     Player m_computerMark;
     bovo::Game *m_board;
