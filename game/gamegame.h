@@ -136,15 +136,6 @@ public:
      */
     void startNextTurn();
 
-    /* Current player */
-    Player m_curPlayer;
-
-    /* computer player id */
-    Player m_computerMark;
-
-    /* user player id */
-    Player m_playerMark;
-
 Q_SIGNALS:
     /**
      * @brief emitted at game over
@@ -180,6 +171,15 @@ private:
 
     /* playing board */
     Board *m_board;
+
+    /* Current player */
+    Player m_curPlayer;
+
+    /* computer player id */
+    Player m_computerMark;
+
+    /* user player id */
+    Player m_playerMark;
 };
 
 } /* namespace bovo */
