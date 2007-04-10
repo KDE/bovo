@@ -3,7 +3,6 @@
 set(bovogui 
     winitem.cc
     mark.cc
-    game.cc
     scene.cc
     view.cc
     mainwindow.cc

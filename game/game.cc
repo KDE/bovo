@@ -21,7 +21,7 @@
 
 /** @file game.cc implements class Game in namespace bovo */
 
-#include "gamegame.h"
+#include "game.h"
 
 #include "aiboard.h"
 #include "board.h"
@@ -173,4 +173,4 @@ short Game::win(const Coord& c) const {
 
 }
 
-#include "gamegame.moc"
+#include "game.moc"

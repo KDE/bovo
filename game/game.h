@@ -21,8 +21,8 @@
 
 /** @file game.h declares class Game in namespace bovo */
 
-#ifndef __BOVOGAME_H__
-#define __BOVOGAME_H__
+#ifndef __GAME_H__
+#define __GAME_H__
 
 #include <QObject>
 #include <QList>
@@ -32,7 +32,7 @@
 /** namespace for ai */
 namespace ai {
     class AiBoard;
-}
+} /* namespace ai */
 
 using namespace ai;
 
@@ -229,4 +229,4 @@ private:
 
 } /* namespace bovo */
 
-#endif /* __BOVOGAME_H__ */
+#endif /* __GAME_H__ */

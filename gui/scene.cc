@@ -31,7 +31,7 @@
 
 #include "common.h"
 #include "coord.h"
-#include "gamegame.h"
+#include "game.h"
 #include "mark.h"
 #include "move.h"
 #include "winitem.h"

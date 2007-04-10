@@ -37,7 +37,7 @@
 
 #include "common.h"
 #include "dimension.h"
-#include "gamegame.h"
+#include "game.h"
 #include "move.h"
 #include "scene.h"
 #include "view.h"
