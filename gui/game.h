@@ -62,8 +62,6 @@ signals:
     void moveFinished();
 
 private:
-    Player m_playerMark;
-    Player m_computerMark;
     bovo::Game *m_board;
 };
 

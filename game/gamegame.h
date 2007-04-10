@@ -118,6 +118,12 @@ public:
     /* Current player */
     Player m_curPlayer;
 
+    /* computer player id */
+    Player m_computerMark;
+
+    /* user player id */
+    Player m_playerMark;
+
 Q_SIGNALS:
     /**
      * @brief emitted at game over
@@ -135,8 +141,11 @@ Q_SIGNALS:
     void moveFinished();
 
 private:
-    Board *m_board;
+    /* AI */
     AiBoard *m_ai;
+
+    /* playing board */
+    Board *m_board;
 };
 
 } /* namespace bovo */

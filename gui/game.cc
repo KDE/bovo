@@ -37,8 +37,7 @@ using namespace ai;
 
 namespace gui {
 
-Game::Game(Skill skill, const Player& startingPlayer)
-  : m_playerMark(X), m_computerMark(O) {
+Game::Game(Skill skill, const Player& startingPlayer) {
     Dimension dim(NUMCOLS, NUMCOLS);
     m_board = new bovo::Game(dim, startingPlayer, skill);
     connect(m_board, SIGNAL(gameOver()), this, SIGNAL(gameOver()));
@@ -51,8 +50,8 @@ Game::~Game() {
 }
 
 void Game::makePlayerMove( int x, int y) {
-    m_board->m_curPlayer = m_playerMark;
-    Move move(m_playerMark, x, y);
+    m_board->m_curPlayer = m_board->m_playerMark;
+    Move move(m_board->m_playerMark, x, y);
     if (!m_board->board()->empty(Coord(move.x(), move.y()))) {
         return; // this spot is already marked by a player
     }
@@ -68,10 +67,10 @@ void Game::startNextTurn() {
 }
 
 void Game::makeComputerMove() {
-    m_board->m_curPlayer = m_computerMark;
+    m_board->m_curPlayer = m_board->m_computerMark;
     Coord lastCoord = m_board->board()->latestMove();
     Coord suggestedCoord = m_board->ai()->move(lastCoord);
-    Move move(m_computerMark, suggestedCoord.x(), suggestedCoord.y());
+    Move move(m_board->m_computerMark, suggestedCoord.x(), suggestedCoord.y());
     m_board->makeMove(move);
 }
 
@@ -125,7 +124,7 @@ Move Game::lastMove() const {
 
 /* Drop is-part of name */
 bool Game::isComputersTurn() const {
-    return m_board->m_curPlayer == m_computerMark;
+    return m_board->m_curPlayer == m_board->m_computerMark;
 }
 
 short Game::winDir() const {

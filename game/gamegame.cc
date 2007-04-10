@@ -39,7 +39,7 @@ namespace bovo
 {
 
 Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
-  : m_curPlayer(startingPlayer) {
+  : m_curPlayer(startingPlayer), m_computerMark(O), m_playerMark(X) {
     m_board = new Board(dimension);
     m_ai = new AiBoard(dimension, skill);
 //    m_history = new QList<Move>;
