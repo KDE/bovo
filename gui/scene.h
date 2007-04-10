@@ -74,7 +74,7 @@ private:
     QSvgRenderer* m_bkgndRenderer;
     QSvgRenderer* m_renderer;
     qreal m_curCellSize;
-    QList<Move> m_replayMoves;
+    QList<Move>::const_iterator m_replayEnd;
     QList<Move>::const_iterator m_replayIterator;
     QTimer* m_replayTimer;
 };

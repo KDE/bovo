@@ -23,8 +23,6 @@
 
 #include "gamegame.h"
 
-#include <QList>
-
 #include "aiboard.h"
 #include "board.h"
 #include "coord.h"
@@ -41,12 +39,11 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
   : m_curPlayer(startingPlayer), m_computerMark(O), m_playerMark(X) {
     m_board = new Board(dimension);
     m_ai = new AiBoard(dimension, skill);
-//    m_history = new QList<Move>;
 }
 
 Game::~Game() {
-//    delete m_history;
     delete m_board;
+    delete m_ai;
 }
 
 AiBoard* Game::ai() const {
@@ -66,25 +63,15 @@ bool Game::isGameOver() const {
 }
 
 QList<Move> Game::history() const {
-    std::list<Coord> history = m_board->history();
-    int i = 0;
-    QList<Move> moves;
-    std::list<Coord>::const_iterator it = history.begin();
-    std::list<Coord>::const_iterator end = history.end();
-    while (it != end) {
-        moves << Move(++i%2==1?X:O, it->x(), it->y());
-        ++it;
-    }
-    return moves;
+    return m_history;
 }
 
 Move Game::latestMove() const {
-    Coord latestCoord = m_board->latestMove();
-    if (latestCoord.x() == static_cast<unsigned short>(-1) &&
-        latestCoord.y() == static_cast<unsigned short>(-1)) {
+    if (m_history.empty()) {
         return Move();
+    } else {
+        return m_history.back();
     }
-    return Move(m_curPlayer == X ? O : X, latestCoord);
 }
 
 void Game::makePlayerMove(const Coord& coord) {
@@ -120,7 +107,7 @@ short Game::winDir() const {
 
 void Game::makeComputerMove() {
     m_curPlayer = m_computerMark;
-    Coord lastCoord = m_board->latestMove();
+    Coord lastCoord = m_history.back().coord();
     Coord suggestedCoord = m_ai->move(lastCoord);
     Move move(m_computerMark, suggestedCoord);
     makeMove(move);
@@ -128,6 +115,7 @@ void Game::makeComputerMove() {
 
 void Game::makeMove(const Move& move) {
     m_board->setPlayer(move.coord(), move.player());
+    m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );
     emit moveFinished();
 }

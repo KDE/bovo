@@ -22,8 +22,6 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
-#include <list>
-
 #include "common.h"
 
 /** @file file declaring class Board */
@@ -106,22 +104,6 @@ public:
     usi height() const;
 
     /**
-     * @brief the game history
-     * @description gives the history as a linked list, starting with oldest
-     * moves first. Moves are just given as coordinates, you will have to 
-     * check which player did it by querying that Coord by yourself.
-     * @return the game history in a STL-list filled with Coords
-     */
-    std::list<Coord> history() const;
-
-    /**
-     * @brief the latest moved
-     * @description tells which Coord was the latest to be marked by a player
-     * @return the latest Coord to have been played
-     */
-    Coord latestMove() const;
-
-    /**
      * @brief the player occupying a Coord
      * @description tells which players occupies a certain square in the board
      * @param coord the square to check
@@ -177,9 +159,6 @@ private:
     /* property containing in which direction the win occured, 
      * if someone has won */
     short m_winDir;
-
-    /* Storage for game history (moves) */
-    std::list<Coord> m_history;
 
     /* initializes the board */
     void setup();

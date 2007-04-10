@@ -25,6 +25,7 @@
 #define __BOVOGAME_H__
 
 #include <QObject>
+#include <QList>
 
 #include "common.h"
 
@@ -212,6 +213,9 @@ private:
 
     /* computer player id */
     Player m_computerMark;
+
+    /* game history */
+    QList<Move> m_history;
 
     /* user player id */
     Player m_playerMark;

@@ -29,7 +29,7 @@
 
 using namespace std;
 
-/** 
+/**
  * @file file implementing class Board, 
  * which is really not a Board but an entire game.
  */
@@ -70,17 +70,6 @@ usi Board::height() const {
     return m_dimension->height();
 }
 
-std::list<Coord> Board::history() const {
-    return m_history;
-}
-
-Coord Board::latestMove() const {
-    if (m_history.empty()) {
-        return Coord(-1, -1);
-    }
-    return m_history.back();
-}
-
 Player Board::player(const Coord& c) const throw(outOfBounds) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
@@ -100,7 +89,6 @@ bool Board::setPlayer(const Coord& coord, const Player& player)
         throw gameover();
     }
     m_board[coord.x()][coord.y()].setPlayer(player);
-    m_history.push_back(coord);
     if (win(coord)) {
         m_gameover = true;
         return true;
