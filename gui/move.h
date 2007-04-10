@@ -44,6 +44,7 @@ public:
     Move(Player player = No, int col = -1, int row = -1);
     Move(Player player, const Coord& coord);
 
+    Coord coord() const;
     Player player() const;
     bool valid() const;
     usi x() const;

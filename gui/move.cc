@@ -40,6 +40,10 @@ Move::Move(Player player, const Coord& coord)
     m_coord = new Coord(coord);
 }
 
+Coord Move::coord() const {
+    return *m_coord;
+}
+
 Player Move::player() const {
     return m_player;
 }

@@ -33,7 +33,13 @@ namespace ai {
     class AiBoard;
 }
 
+/** namespace for ui stuff */
+namespace gui {
+    class Move;
+}
+
 using namespace ai;
+using namespace gui;
 
 /** namespace for game engine */
 namespace bovo
@@ -87,12 +93,6 @@ public:
      */
     ~Game();
 
-    /**
-     * @brief the old Board
-     * @description returns the old Board
-     * @return the old Board
-     */
-    Board* board() const;
 
     /**
      * @brief the AI
@@ -101,6 +101,21 @@ public:
      */
     AiBoard* ai() const;
 
+    /**
+     * @brief the old Board
+     * @description returns the old Board
+     * @return the old Board
+     */
+    Board* board() const;
+
+    /**
+     * @brief make a move
+     * @description performs the specified move. Should be private later on.
+     * @param move move to make
+     */
+    void makeMove(const Move& move);
+
+    /* Current player */
     Player m_curPlayer;
 
 Q_SIGNALS:

@@ -56,7 +56,7 @@ void Game::makePlayerMove( int x, int y) {
     if (!m_board->board()->empty(Coord(move.x(), move.y()))) {
         return; // this spot is already marked by a player
     }
-    makeMove(move);
+    m_board->makeMove(move);
 }
 
 void Game::startNextTurn() {
@@ -72,13 +72,7 @@ void Game::makeComputerMove() {
     Coord lastCoord = m_board->board()->latestMove();
     Coord suggestedCoord = m_board->ai()->move(lastCoord);
     Move move(m_computerMark, suggestedCoord.x(), suggestedCoord.y());
-    makeMove(move);
-}
-
-void Game::makeMove( const Move& move ) {
-    setPlayer(move.player(), move.x(), move.y());
-    m_board->m_curPlayer = (m_board->m_curPlayer == X ? O : X );
-    emit moveFinished();
+    m_board->makeMove(move);
 }
 
 /* rename to gameOver() */

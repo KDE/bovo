@@ -27,9 +27,12 @@
 
 #include "aiboard.h"
 #include "board.h"
+#include "coord.h"
 #include "dimension.h"
+#include "move.h"
 
 using namespace ai;
+using namespace gui;
 
 /** namespace for gui stuff */
 namespace bovo
@@ -47,12 +50,18 @@ Game::~Game() {
     delete m_board;
 }
 
+AiBoard* Game::ai() const {
+    return m_ai;
+}
+
 Board* Game::board() const {
     return m_board;
 }
 
-AiBoard* Game::ai() const {
-    return m_ai;
+void Game::makeMove(const Move& move) {
+    m_board->setPlayer(move.coord(), move.player());
+    m_curPlayer = (m_curPlayer == X ? O : X );
+    emit moveFinished();
 }
 
 }
