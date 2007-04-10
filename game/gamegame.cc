@@ -99,8 +99,11 @@ short Game::winDir() const {
 
 void Game::makeComputerMove() {
     m_curPlayer = m_computerMark;
-    Coord lastCoord = m_history.back().coord();
-    Coord suggestedCoord = m_ai->move(lastCoord);
+    Coord latestCoord = Coord(-1, -1);
+    if (!m_history.empty()) {
+        latestCoord = m_history.back().coord();
+    }
+    Coord suggestedCoord = m_ai->move(latestCoord);
     Move move(m_computerMark, suggestedCoord);
     makeMove(move);
 }

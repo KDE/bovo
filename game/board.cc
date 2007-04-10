@@ -73,13 +73,13 @@ Player Board::player(const Coord& c) const throw(outOfBounds) {
     return m_board[c.x()][c.y()].player();
 }
 
-bool Board::setPlayer(const Coord& coord, const Player& player)
+void Board::setPlayer(const Coord& coord, const Player& player)
   throw(busy, outOfBounds, gameover, notValidPlayer) {
     if (!m_dimension->ok(coord)) {
         throw outOfBounds();
     }
     if (player != X && player != O) {
-        throw notValidPlayer(); 
+        throw notValidPlayer();
     }
     if (m_gameover) {
         throw gameover();
@@ -87,9 +87,6 @@ bool Board::setPlayer(const Coord& coord, const Player& player)
     m_board[coord.x()][coord.y()].setPlayer(player);
     if (win(coord)) {
         m_gameover = true;
-        return true;
-    } else {
-        return false;
     }
 }
 

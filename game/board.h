@@ -108,18 +108,15 @@ public:
     /**
      * @brief set the player of a Coord
      * @description sets which players should occupy a certain square in the
-     * playing board. Returns whether the game ends with this move (i.e. it 
-     * was the winning move).
+     * playing board.
      * @param coord the Coord to occupy
      * @param player the Player to occupy with
-     * @return @c true if this move resulted in a Game Over, 
-     * @c false otherwise
      * @throw busy if coord was allready occupied
      * @throw outOfBounds if coord isn't on the playing board
      * @throw gameOver if game was allready over
      * @throw notValidPlayer if player wasn't X or O
      */
-    bool setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds,
+    void setPlayer(const Coord&, const Player& player) throw(busy, outOfBounds,
         gameover, notValidPlayer);
 
     /**
