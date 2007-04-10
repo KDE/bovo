@@ -1,7 +1,6 @@
 # Graphical User Interface
 
 set(bovogui 
-    move.cc
     winitem.cc
     mark.cc
     game.cc
