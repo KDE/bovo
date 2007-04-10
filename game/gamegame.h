@@ -117,19 +117,6 @@ public:
     bool computerTurn() const;
 
     /**
-     * @brief make an AI move
-     * @description performs an AI move. Should be private later on.
-     */
-    void makeComputerMove();
-
-    /**
-     * @brief make a move
-     * @description performs the specified move. Should be private later on.
-     * @param move move to make
-     */
-    void makeMove(const Move& move);
-
-    /**
      * @brief make a player move
      * @description performs the specified move by the player
      * @param coord coordinate played by player
@@ -168,6 +155,19 @@ Q_SIGNALS:
     void moveFinished();
 
 private:
+    /**
+     * @brief make an AI move
+     * @description performs an AI move. Should be private later on.
+     */
+    void makeComputerMove();
+
+    /**
+     * @brief make a move
+     * @description performs the specified move. Should be private later on.
+     * @param move move to make
+     */
+    void makeMove(const Move& move);
+
     /* AI */
     AiBoard *m_ai;
 
