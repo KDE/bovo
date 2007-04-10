@@ -50,12 +50,7 @@ Game::~Game() {
 }
 
 void Game::makePlayerMove( int x, int y) {
-    m_board->m_curPlayer = m_board->m_playerMark;
-    Move move(m_board->m_playerMark, x, y);
-    if (!m_board->board()->empty(Coord(move.x(), move.y()))) {
-        return; // this spot is already marked by a player
-    }
-    m_board->makeMove(move);
+    m_board->makePlayerMove(Coord(x, y));
 }
 
 void Game::startNextTurn() {

@@ -76,6 +76,15 @@ void Game::makeMove(const Move& move) {
     emit moveFinished();
 }
 
+void Game::makePlayerMove(const Coord& coord) {
+    m_curPlayer = m_playerMark;
+    Move move(m_playerMark, coord);
+    if (!m_board->empty(move.coord())) {
+        return; // this spot is already marked by a player
+    }
+    makeMove(move);
+}
+
 void Game::startNextTurn() {
     if (m_board->gameOver()) {
         emit gameOver();

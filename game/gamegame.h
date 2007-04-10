@@ -46,6 +46,7 @@ namespace bovo
 {
     class Board;
     class Dimension;
+    class Coord;
 
 /**
  * The Game engine
@@ -127,6 +128,13 @@ public:
      * @param move move to make
      */
     void makeMove(const Move& move);
+
+    /**
+     * @brief make a player move
+     * @description performs the specified move by the player
+     * @param coord coordinate played by player
+     */
+    void makePlayerMove(const Coord& coord);
 
     /**
      * @brief starts a new turn
