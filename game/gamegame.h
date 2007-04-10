@@ -33,13 +33,7 @@ namespace ai {
     class AiBoard;
 }
 
-/** namespace for ui stuff */
-namespace gui {
-    class Move;
-}
-
 using namespace ai;
-using namespace gui;
 
 /** namespace for game engine */
 namespace bovo
@@ -47,6 +41,7 @@ namespace bovo
     class Board;
     class Dimension;
     class Coord;
+    class Move;
 
 /**
  * The Game engine

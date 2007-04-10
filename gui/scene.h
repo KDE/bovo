@@ -29,10 +29,15 @@ class QSvgRenderer;
 class QPainter;
 class QTimer;
 
+namespace bovo {
+    class Move;
+}
+
+using namespace bovo;
+
 namespace gui {
 
 class Game;
-class Move;
 
 class Scene : public QGraphicsScene
 {

@@ -29,13 +29,13 @@
 
 namespace bovo {
     class Game;
+    class Move;
 } /* namespace bovo */
 
 using namespace bovo;
 
 namespace gui {
 
-class Move;
 
 class Game : public QObject
 {

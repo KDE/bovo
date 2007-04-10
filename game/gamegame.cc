@@ -32,7 +32,6 @@
 #include "move.h"
 
 using namespace ai;
-using namespace gui;
 
 /** namespace for gui stuff */
 namespace bovo

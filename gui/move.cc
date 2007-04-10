@@ -19,6 +19,8 @@
 *
 ********************************************************************/
 
+/** @file move.cc implements Move */
+
 #include "move.h"
 
 #include <QString>
@@ -26,9 +28,8 @@
 #include "common.h"
 #include "coord.h"
 
-using namespace bovo;
-
-namespace gui {
+/** namespace for game engine */
+namespace bovo {
 
 Move::Move(Player player, int col, int row)
   : m_player(player) {
@@ -60,4 +61,4 @@ usi Move::y() const {
     return m_coord->y();
 }
 
-} /* namespace gui */
+} /* namespace bovo */
