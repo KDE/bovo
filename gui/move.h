@@ -24,19 +24,34 @@
 
 #include "common.h"
 
+/** namespace for game engine */
+namespace bovo {
+    class Coord;
+}
+
 using namespace bovo;
 
 class QString;
 
+/** namespace for user interface */
 namespace gui {
 
+/**
+ *
+ */
 class Move {
 public:
     Move(Player player = No, int col = -1, int row = -1);
-    QString toQString() const;
-    int x; /** @todo replace with coord */
-    int y; /** @todo replace with coord */
-    Player p; 
+    Move(Player player, const Coord& coord);
+
+    Player player() const;
+    bool valid() const;
+    usi x() const;
+    usi y() const;
+
+private:
+    Coord* m_coord;
+    Player m_player;
 };
 
 } /* namespace gui */

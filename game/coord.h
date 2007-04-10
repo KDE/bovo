@@ -17,7 +17,7 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/                     
+********************************************************************/
 
 #ifndef __COORD_H__
 #define __COORD_H__
@@ -29,7 +29,7 @@
 /** namespace for game engine */
 namespace bovo {
 
-/** 
+/**
  * A coordinate
  *
  * This class describes a coordinate on a playing field. It is
@@ -62,7 +62,7 @@ public:
      * @param x X coordinate
      * @param y Y coordinate
      */
-    Coord(usi x, usi y);
+    Coord(usi x = -1, usi y = -1);
 
     /**
      * @brief copy constructor

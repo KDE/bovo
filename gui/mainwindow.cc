@@ -150,7 +150,7 @@ void MainWindow::slotNewGame() {
 
 void MainWindow::slotGameOver() {
     QString message;
-    if (m_game->lastMove().p == X) {
+    if (m_game->lastMove().player() == X) {
         statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
         statusBar()->changeItem(i18n("Wins: %0").arg(++m_wins), 1);
         message = i18n("You won!");

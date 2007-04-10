@@ -24,22 +24,36 @@
 #include <QString>
 
 #include "common.h"
+#include "coord.h"
 
 using namespace bovo;
 
 namespace gui {
 
-Move::Move(Player player, int col, int row) : x(col), y(row), p(player) {
+Move::Move(Player player, int col, int row)
+  : m_player(player) {
+    m_coord = new Coord(col, row);
 }
 
-QString Move::toQString() const {
-    QString ret;
-    ret = (p==X?"X: (":"O: (");
-    ret += QString::number(x);
-    ret += ", ";
-    ret += QString::number(y);
-    ret += ")";
-    return ret;
+Move::Move(Player player, const Coord& coord)
+  : m_player(player) {
+    m_coord = new Coord(coord);
+}
+
+Player Move::player() const {
+    return m_player;
+}
+
+bool Move::valid() const {
+    return m_player != No && m_coord->x() < NUMCOLS && m_coord->y() < NUMCOLS;
+}
+
+usi Move::x() const {
+    return m_coord->x();
+}
+
+usi Move::y() const {
+    return m_coord->y();
 }
 
 } /* namespace gui */

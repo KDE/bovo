@@ -51,7 +51,7 @@ Game::~Game() {
 void Game::makePlayerMove( int x, int y) {
     m_curPlayer = m_playerMark;
     Move move(m_playerMark, x, y);
-    if (!m_board->empty(Coord(move.x, move.y))) {
+    if (!m_board->empty(Coord(move.x(), move.y()))) {
         return; // this spot is already marked by a player
     }
     makeMove(move);
@@ -74,7 +74,7 @@ void Game::makeComputerMove() {
 }
 
 void Game::makeMove( const Move& move ) {
-    setPlayer(move.p, move.x, move.y);
+    setPlayer(move.player(), move.x(), move.y());
     m_curPlayer = (m_curPlayer == X ? O : X );
     emit moveFinished();
 }

@@ -72,9 +72,9 @@ void Scene::setWin() {
     if (!m_game->isGameOver()) {
         return;
     }
-    Player player = m_game->lastMove().p;
-    unsigned short x = m_game->lastMove().x;
-    unsigned short y = m_game->lastMove().y;
+    Player player = m_game->lastMove().player();
+    unsigned short x = m_game->lastMove().x();
+    unsigned short y = m_game->lastMove().y();
     short dy, dx;
     switch (m_game->winDir()) {
         case 0: dx = 1; dy =  0; break;
@@ -164,23 +164,24 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     }
     QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
                      m_curCellSize * NUMCOLS));
-    if( !boardRect.contains(ev->scenePos()) )
+    if (!boardRect.contains(ev->scenePos())) {
         return;
+    }
     int row = static_cast<int>((-boardRect.y() + ev->scenePos().y()) /
             m_curCellSize);
     int col = static_cast<int>((-boardRect.x() + ev->scenePos().x()) /
             m_curCellSize);
 
-    if( row < 0 ) {
+    if (row < 0) {
         row = 0;
     }
-    if( row > NUMCOLS-1 ) {
+    if (row > NUMCOLS-1) {
         row = NUMCOLS-1;
     }
-    if( col < 0 ) {
+    if (col < 0) {
         col = 0;
     }
-    if( col > NUMCOLS-1 ) {
+    if (col > NUMCOLS-1) {
         col = NUMCOLS-1;
     }
     m_game->makePlayerMove(col, row);
@@ -188,7 +189,7 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
 
 void Scene::slotGameMoveFinished() {
     Move move = m_game->lastMove();
-    Mark* mark = new Mark(move.p, this, move.x, move.y);
+    Mark* mark = new Mark(move.player(), this, move.x(), move.y());
     mark->setSharedRenderer(m_renderer);
     addItem(mark);
     demandRepaint();
@@ -222,8 +223,8 @@ void Scene::continueReplay() {
         return;
     }
     if (m_replayIterator != m_replayMoves.end()) {
-        Mark* mark = new Mark(m_replayIterator->p, this,
-                              m_replayIterator->x, m_replayIterator->y);
+        Mark* mark = new Mark(m_replayIterator->player(), this,
+                              m_replayIterator->x(), m_replayIterator->y());
         ++m_replayIterator;
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
