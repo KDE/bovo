@@ -23,6 +23,8 @@
 
 #include "game.h"
 
+#include <QtDebug>
+
 #include "aiboard.h"
 #include "board.h"
 #include "coord.h"
@@ -41,6 +43,7 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
     m_ai = new AiBoard(dimension, skill);
     m_winDir = -1;
     m_gameOver = false;
+    connect(this,SIGNAL(playerTurn(Player)),SLOT(slotPlayerTurn(Player)));
 }
 
 Game::~Game() {
@@ -69,7 +72,6 @@ Move Game::latestMove() const {
 }
 
 void Game::makePlayerMove(const Coord& coord) {
-    m_curPlayer = m_playerMark;
     Move move(m_playerMark, coord);
     if (!m_board->empty(move.coord())) {
         return; // this spot is already marked by a player
@@ -85,9 +87,11 @@ void Game::setSkill(Skill skill) {
     m_ai->setSkill(skill);
 }
 
-void Game::startNextTurn() {
-    if (computerTurn() && !m_gameOver) {
+void Game::start() {
+    if (computerTurn()) {
         makeComputerMove();
+    } else {
+        emit playerTurn(m_curPlayer);
     }
 }
 
@@ -102,7 +106,6 @@ short Game::winDir() const {
 /* private methods */
 
 void Game::makeComputerMove() {
-    m_curPlayer = m_computerMark;
     Coord latestCoord = Coord(-1, -1);
     if (!m_history.empty()) {
         latestCoord = m_history.back().coord();
@@ -113,6 +116,9 @@ void Game::makeComputerMove() {
 }
 
 void Game::makeMove(const Move& move) {
+    if (move.player() != m_curPlayer) {
+        return;
+    }
     m_board->setPlayer(move.coord(), move.player());
     m_winDir = win(move.coord());
     if (m_winDir != -1) {
@@ -120,12 +126,15 @@ void Game::makeMove(const Move& move) {
     }
     m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );
-    emit boardChanged();
-    emit playerTurn(m_curPlayer);
+    emit boardChanged(move);
     if (m_gameOver) {
         emit gameOver();
-    } else if (m_curPlayer == O) {
-        makeComputerMove();
+    } else {
+        if (computerTurn()) {
+            makeComputerMove();
+        } else {
+            emit playerTurn(m_curPlayer);
+        }
     }
 }
 

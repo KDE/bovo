@@ -123,7 +123,8 @@ void Scene::resizeScene(int width, int height) {
 
 void Scene::setGame( Game* game ) {
     m_game = game;
-    connect(m_game, SIGNAL(boardChanged()), SLOT(updateBoard()));
+    connect(m_game, SIGNAL(boardChanged(const Move&)),
+            SLOT(updateBoard(const Move&)));
     connect(m_game, SIGNAL(playerTurn(Player)),
             SLOT(slotGameMoveFinished(Player)));
 
@@ -137,7 +138,14 @@ void Scene::setGame( Game* game ) {
     emit changed(tmp);
 }
 
-void Scene::updateBoard() {
+void Scene::updateBoard(const Move& move) {
+//    Move move = m_game->latestMove();
+    if (move.valid()) {
+        Mark* mark = new Mark(move.player(), this, move.x(), move.y());
+        mark->setSharedRenderer(m_renderer);
+        addItem(mark);
+        demandRepaint();
+    }
 }
 
 QPointF Scene::cellCenter(int x, int y) const {
@@ -191,11 +199,7 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
 }
 
 void Scene::slotGameMoveFinished(Player newPlayer) {
-    Move move = m_game->latestMove();
-    Mark* mark = new Mark(move.player(), this, move.x(), move.y());
-    mark->setSharedRenderer(m_renderer);
-    addItem(mark);
-    demandRepaint();
+    activate(newPlayer == X);
 }
 
 void Scene::demandRepaint() {

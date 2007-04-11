@@ -58,7 +58,7 @@ public:
     void replay(const QList<Move>& moves);
 
 public slots:
-    void updateBoard();
+    void updateBoard(const Move& move);
     void slotGameMoveFinished(Player newPlayer);
 
 signals:

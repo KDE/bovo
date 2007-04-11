@@ -146,7 +146,7 @@ public:
      * @brief starts a new turn
      * @description starts a new turn
      */
-    void startNextTurn();
+    void start();
 
     /**
      * @brief gets the player of a coordinate
@@ -174,8 +174,9 @@ Q_SIGNALS:
 
     /**
      * @brief emitted when board has changed (needs repainting)
+     * @param move the Move that has changed the board
      */
-    void boardChanged();
+    void boardChanged(const Move& move);
 
     /**
      * @brief emitted when a move has finished (players turn again)

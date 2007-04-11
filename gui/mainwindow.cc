@@ -142,14 +142,8 @@ void MainWindow::slotNewGame() {
     }
     connect(m_game, SIGNAL(playerTurn(Player)),
             this, SLOT(slotMoveFinished(Player)));
-    if (m_computerStarts) {
-        m_game->startNextTurn();
-        statusBar()->changeItem(i18n("It's your turn."), 0);
-    } else {
-        m_scene->activate(true);
-        statusBar()->changeItem(i18n("New game and it's your turn."), 0);
-    }
     m_computerStarts = !m_computerStarts;
+    m_game->start();
 }
 
 void MainWindow::slotGameOver() {
@@ -175,7 +169,6 @@ void MainWindow::slotMoveFinished(Player newPlayer) {
     if (!m_game->isGameOver()) {
         statusBar()->changeItem(newPlayer==X?i18n("It is your turn.")
                                             :i18n("Waiting for computer."), 0);
-        m_scene->activate(newPlayer == X);
     }
 }
 
