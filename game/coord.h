@@ -41,11 +41,11 @@ namespace bovo {
  * a special case is applied. Then the coordinate is invalid (all
  * coordinates outside of playing area are invalid) but it also means
  * that the coordinate refers to a moment before any moved has been played.
+ * This can be queried with null().
  *
  * @code
  * Coord move(const Coord& coord) {
- *     if (coord.x() == static_cast<unsigned short>(-1) &&
- *       coord.y() == static_cast<unsigned short>(-1)) {
+ *     if (coord.null()) {
  *         return computeAiTurn();
  *     } else {
  *         markCoordAsOpposite(coord);
