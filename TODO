@@ -71,6 +71,12 @@ REDESIGN (4.1?)
 
 FEATURES (4.1)
 ==============
+[ ] Change replay speed
+[ ] Change board size
+[ ] Gomoku theme
+[ ] "Natural paper" whith coffee stains, etc.
+[ ] Demo mode, two AI players face each other.
+    [ ] Change Demo playback speed
 [ ] Save a replay
 [ ] View a replay
 [ ] Save an active game and open it again
