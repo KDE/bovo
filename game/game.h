@@ -182,6 +182,12 @@ Q_SIGNALS:
      */
     void moveFinished();
 
+    /**
+     * @brief emitted when a move has finished (players turn again)
+     * @param newPlayer whoms turn it is
+     */
+    void playerTurn(Player newPlayer);
+
 private:
     /**
      * @brief make an AI move

@@ -120,9 +120,12 @@ void Game::makeMove(const Move& move) {
     }
     m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );
-    emit moveFinished();
+    emit boardChanged();
+    emit playerTurn(m_curPlayer);
     if (m_gameOver) {
         emit gameOver();
+    } else if (m_curPlayer == O) {
+        makeComputerMove();
     }
 }
 

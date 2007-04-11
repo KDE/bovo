@@ -25,6 +25,8 @@
 #include <QGraphicsScene>
 #include <QList>
 
+#include "common.h"
+
 class QSvgRenderer;
 class QPainter;
 class QTimer;
@@ -45,6 +47,7 @@ class Scene : public QGraphicsScene
 public:
     Scene(Game* game);
     ~Scene();
+    void activate(bool activate);
     void setGame( Game* game );
     void setBackground( const QString& bkgndPath);
     void resizeScene( int width, int height );
@@ -56,7 +59,7 @@ public:
 
 public slots:
     void updateBoard();
-    void slotGameMoveFinished();
+    void slotGameMoveFinished(Player newPlayer);
 
 signals:
     void moveFinished();
@@ -69,6 +72,7 @@ private:
     void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
+    bool m_activate;
     Game *m_game;
     QSvgRenderer* m_bkgndRenderer;
     QSvgRenderer* m_renderer;

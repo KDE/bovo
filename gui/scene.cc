@@ -40,7 +40,7 @@ using namespace bovo;
 
 namespace gui {
 
-Scene::Scene( Game* game ) : m_game(0) {
+Scene::Scene( Game* game ) : m_activate(false), m_game(0) {
     m_bkgndRenderer = new QSvgRenderer(this);
     /** @todo read theme from some configuration, I guess */
     QString themeName = QString("themes/%1/pics/").arg("scribble");
@@ -61,6 +61,10 @@ Scene::~Scene() {
     delete m_replayTimer; //deleteLater??
     delete m_bkgndRenderer; //deleteLater??
     delete m_renderer;
+}
+
+void Scene::activate(bool activate) {
+    m_activate = activate;
 }
 
 bool isAWinner(unsigned short x, unsigned short y, Game* game, Player player) {
@@ -119,8 +123,9 @@ void Scene::resizeScene(int width, int height) {
 
 void Scene::setGame( Game* game ) {
     m_game = game;
-    connect( m_game, SIGNAL(boardChanged()), SLOT(updateBoard()) );
-    connect( m_game, SIGNAL(moveFinished()), SLOT(slotGameMoveFinished()));
+    connect(m_game, SIGNAL(boardChanged()), SLOT(updateBoard()));
+    connect(m_game, SIGNAL(playerTurn(Player)),
+            SLOT(slotGameMoveFinished(Player)));
 
     QList<QGraphicsItem*> allMarks = items();
     foreach (QGraphicsItem* mark, allMarks) {
@@ -157,10 +162,7 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
 }
 
 void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
-    if (m_game->isGameOver()) {
-        return;
-    }
-    if (m_game->computerTurn()) {
+    if (m_game->isGameOver() || m_game->computerTurn() || !m_activate) {
         return;
     }
     QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
@@ -188,13 +190,12 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     m_game->makePlayerMove(Coord(col, row));
 }
 
-void Scene::slotGameMoveFinished() {
+void Scene::slotGameMoveFinished(Player newPlayer) {
     Move move = m_game->latestMove();
     Mark* mark = new Mark(move.player(), this, move.x(), move.y());
     mark->setSharedRenderer(m_renderer);
     addItem(mark);
     demandRepaint();
-    m_game->startNextTurn();
 }
 
 void Scene::demandRepaint() {
