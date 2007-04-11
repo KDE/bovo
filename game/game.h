@@ -179,15 +179,14 @@ Q_SIGNALS:
     void boardChanged(const Move& move);
 
     /**
-     * @brief emitted when a move has finished (players turn again)
+     * @brief emitted when it is the player's turn
      */
-    void moveFinished();
+    void playerTurn();
 
     /**
-     * @brief emitted when a move has finished (players turn again)
-     * @param newPlayer whoms turn it is
+     * @brief emitted when it is the player's turn
      */
-    void playerTurn(Player newPlayer);
+    void oposerTurn();
 
 private:
     /**

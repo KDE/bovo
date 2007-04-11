@@ -59,7 +59,9 @@ public:
 
 public slots:
     void updateBoard(const Move& move);
-    void slotGameMoveFinished(Player newPlayer);
+    void slotPlayerTurn();
+    void slotOposerTurn();
+    void slotGameOver();
 
 signals:
     void moveFinished();

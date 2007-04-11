@@ -50,7 +50,8 @@ public:
 
 public slots:
     void slotNewGame();
-    void slotMoveFinished(Player newPlayer);
+    void slotPlayerTurn();
+    void slotOposerTurn();
     void slotGameOver();
     void replay();
     void changeSkill(int);

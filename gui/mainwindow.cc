@@ -140,15 +140,14 @@ void MainWindow::slotNewGame() {
     } else {
         m_scene->setGame(m_game);
     }
-    connect(m_game, SIGNAL(playerTurn(Player)),
-            this, SLOT(slotMoveFinished(Player)));
+    connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
+    connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
     m_computerStarts = !m_computerStarts;
     m_game->start();
 }
 
 void MainWindow::slotGameOver() {
     QString message;
-    m_scene->activate(false);
     if (m_game->latestMove().player() == X) {
         statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
         statusBar()->changeItem(i18n("Wins: %0").arg(++m_wins), 1);
@@ -165,11 +164,12 @@ void MainWindow::slotGameOver() {
     KMessageBox::information(this, message, i18n("Game over"));
 }
 
-void MainWindow::slotMoveFinished(Player newPlayer) {
-    if (!m_game->isGameOver()) {
-        statusBar()->changeItem(newPlayer==X?i18n("It is your turn.")
-                                            :i18n("Waiting for computer."), 0);
-    }
+void MainWindow::slotPlayerTurn() {
+    statusBar()->changeItem(i18n("It is your turn."), 0);
+}
+
+void MainWindow::slotOposerTurn() {
+    statusBar()->changeItem(i18n("Waiting for computer."), 0);
 }
 
 void MainWindow::replay() {

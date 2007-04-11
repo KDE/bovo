@@ -43,7 +43,6 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
     m_ai = new AiBoard(dimension, skill);
     m_winDir = -1;
     m_gameOver = false;
-    connect(this,SIGNAL(playerTurn(Player)),SLOT(slotPlayerTurn(Player)));
 }
 
 Game::~Game() {
@@ -89,9 +88,10 @@ void Game::setSkill(Skill skill) {
 
 void Game::start() {
     if (computerTurn()) {
+        emit oposerTurn();
         makeComputerMove();
     } else {
-        emit playerTurn(m_curPlayer);
+        emit playerTurn();
     }
 }
 
@@ -131,9 +131,10 @@ void Game::makeMove(const Move& move) {
         emit gameOver();
     } else {
         if (computerTurn()) {
+            emit oposerTurn();
             makeComputerMove();
         } else {
-            emit playerTurn(m_curPlayer);
+            emit playerTurn();
         }
     }
 }

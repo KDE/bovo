@@ -125,8 +125,9 @@ void Scene::setGame( Game* game ) {
     m_game = game;
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             SLOT(updateBoard(const Move&)));
-    connect(m_game, SIGNAL(playerTurn(Player)),
-            SLOT(slotGameMoveFinished(Player)));
+    connect(m_game, SIGNAL(playerTurn()), SLOT(slotPlayerTurn()));
+    connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
+    connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
 
     QList<QGraphicsItem*> allMarks = items();
     foreach (QGraphicsItem* mark, allMarks) {
@@ -198,8 +199,16 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     m_game->makePlayerMove(Coord(col, row));
 }
 
-void Scene::slotGameMoveFinished(Player newPlayer) {
-    activate(newPlayer == X);
+void Scene::slotPlayerTurn() {
+    activate(true);
+}
+
+void Scene::slotOposerTurn() {
+    activate(false);
+}
+
+void Scene::slotGameOver() {
+    activate(false);
 }
 
 void Scene::demandRepaint() {
