@@ -25,7 +25,7 @@
 /** @file file containing common system wide typedefs, enums and exceptions */
 
 /* Number of columns and rows (the same) */
-#define NUMCOLS 14
+#define NUMCOLS 22
 
 /** namespace for game engine */
 namespace bovo {
