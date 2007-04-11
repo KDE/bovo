@@ -26,7 +26,10 @@
 
 #include "ai.h"
 
+#include <QTimer>
+
 #include "aiboard.h"
+#include "coord.h"
 #include "dimension.h"
 #include "move.h"
 
@@ -35,8 +38,9 @@ using namespace bovo;
 /** namespace for AI stuff */
 namespace ai {
 
-Ai::Ai(const Dimension& dimension, Skill skill = Normal, Player player = X) {
-    m_board = new AiBoard(dimension, skill);
+Ai::Ai(const Dimension& dimension, Skill skill, Player player) {
+    m_board = new AiBoard(dimension, skill, player);
+    m_player = player;
 }
 
 Ai::~Ai() {
@@ -45,13 +49,24 @@ Ai::~Ai() {
 
 /* public slots */
 
-void changeBoard(const Move& move) {
+void Ai::changeBoard(const Move& move) {
+    m_board->setPlayer(move);
 }
 
-void gameOver() {
+void Ai::gameOver() {
 }
 
-void slotMove() {
+void Ai::setSkill(Skill skill) {
+    m_board->setSkill(skill);
+}
+
+void Ai::slotMove() {
+    QTimer::singleShot(200, this, SLOT(tmpSlot()));
+}
+
+void Ai::tmpSlot() {
+    Coord tmp = m_board->move();
+    emit move(Move(m_player, tmp));
 }
 
 } /* namespace ai */

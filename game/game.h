@@ -31,7 +31,7 @@
 
 /** namespace for ai */
 namespace ai {
-    class AiBoard;
+    class Ai;
 } /* namespace ai */
 
 using namespace ai;
@@ -166,7 +166,15 @@ public:
      */
     short winDir() const;
 
-Q_SIGNALS:
+public slots:
+    /**
+     * @brief make an AI move
+     * @param move move from ai
+     */
+    void aiMove(const Move& move);
+
+
+signals:
     /**
      * @brief emitted at game over
      */
@@ -209,7 +217,7 @@ private:
     short win(const Coord& coord) const;
 
     /* AI */
-    AiBoard *m_ai;
+    Ai *m_ai;
 
     /* playing board */
     Board *m_board;

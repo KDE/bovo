@@ -31,20 +31,21 @@
 #include "aisquare.h"
 #include "coord.h"
 #include "dimension.h"
+#include "move.h"
 
 using namespace bovo;
 using namespace std;
 
 namespace ai {
 
-AiBoard::AiBoard(const usi width, const usi height, Skill skill)
-  : m_cleanBoard(true), m_skill(skill) {
+AiBoard::AiBoard(const usi width, const usi height, Skill skill, Player player)
+  : m_cleanBoard(true), m_player(player), m_skill(skill) {
     m_dimension = new Dimension(width, height);
     setup();
 }
 
-AiBoard::AiBoard(const Dimension& dimension, Skill skill) 
-  : m_cleanBoard(true), m_skill(skill)  {
+AiBoard::AiBoard(const Dimension& dimension, Skill skill, Player player) 
+  : m_cleanBoard(true), m_player(player), m_skill(skill) {
     m_dimension = new Dimension(dimension.width(), dimension.height());
     setup();
 }
@@ -72,23 +73,13 @@ usi AiBoard::height() const {
     return m_dimension->height();
 }
 
-Coord AiBoard::move(const Coord& in) {
-    if (! m_dimension->ok(in)) {
-        m_player = X;
-        m_cleanBoard = false;
+Coord AiBoard::move() {
+    if (m_cleanBoard) {
         srand(static_cast<int>(time(0)));
         usi randX = rand()%(m_dimension->width()/3) + m_dimension->width()/3;
         usi randY = rand()%(m_dimension->height()/3) + m_dimension->height()/3;
-        setPlayer(Coord(randX, randY), m_player);
         return Coord(randX, randY);
-    } else if (m_cleanBoard) {
-        m_player = O;
-        m_cleanBoard = false;
-        setPlayer(in, m_player == X ? O : X);
-    } else {
-        setPlayer(in, m_player == X ? O : X);
     }
-    zero(in);
     for (usi x = 0; x < m_dimension->width(); ++x) {
         for (usi y = 0; y < m_dimension->height(); ++y) {
             if (m_board[x][y].status()) {
@@ -99,14 +90,12 @@ Coord AiBoard::move(const Coord& in) {
         }
     }
     Coord out = evaluate();
-    setPlayer(out, m_player);
-    zero(out);
     return out;
 }
 
-Coord* AiBoard::moves(const Coord& c) {
+Coord* AiBoard::moves() {
 #warning Implement - Coord* AiBoard::moves(const Coord& c)
-    return new Coord(c.x(), c.y());
+    return new Coord();
 }
 
 Player AiBoard::player(const Coord& c) const throw(outOfBounds) {
@@ -120,28 +109,16 @@ Player AiBoard::player(const usi x, const usi y) const throw(outOfBounds) {
     return player(Coord(x, y));
 }
 
-bool AiBoard::setPlayer(const Coord& c, const Player& player) 
-  throw(busy, outOfBounds, gameover, notValidPlayer) {
-    if (!m_dimension->ok(c)) {
-        throw outOfBounds();
-    }
-    if (player != 1 && player != 2) {
-        throw notValidPlayer();
-    }
-    if (m_gameover) {
-        throw gameover();
-    }
-    m_board[c.x()][c.y()].setPlayer(player);
-    if (win(c)) { 
+bool AiBoard::setPlayer(const Move& move)
+  throw(busy, gameover, notValidPlayer) {
+    m_cleanBoard = false;
+    zero(move.coord());
+    m_board[move.coord().x()][move.coord().y()].setPlayer(move.player());
+    if (win(move.coord())) {
         m_gameover = true;
         return true;
     }
     return false;
-}
-
-bool AiBoard::setPlayer(const usi x, const usi y, const Player& player) 
-  throw(busy, outOfBounds, gameover, notValidPlayer) {
-    return setPlayer(Coord(x, y), player);
 }
 
 void AiBoard::setSkill(Skill skill) {

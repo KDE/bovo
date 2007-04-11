@@ -78,7 +78,9 @@ public:
 public slots:
     void changeBoard(const Move& move);
     void gameOver();
+    void setSkill(Skill skill);
     void slotMove();
+    void tmpSlot();
 
 signals:
     void move(const Move& move);
@@ -86,6 +88,9 @@ signals:
 private:
     /* Playing board  */
     AiBoard *m_board;
+
+    /* AI Player id */
+    Player m_player;
 };
 
 } /* namespace ai */

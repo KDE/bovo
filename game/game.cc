@@ -25,7 +25,7 @@
 
 #include <QtDebug>
 
-#include "aiboard.h"
+#include "ai.h"
 #include "board.h"
 #include "coord.h"
 #include "dimension.h"
@@ -40,9 +40,14 @@ namespace bovo
 Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
   : m_curPlayer(startingPlayer), m_computerMark(O), m_playerMark(X) {
     m_board = new Board(dimension);
-    m_ai = new AiBoard(dimension, skill);
+    m_ai = new Ai(dimension, skill, m_computerMark);
     m_winDir = -1;
     m_gameOver = false;
+    connect(this, SIGNAL(boardChanged(const Move&)),
+            m_ai, SLOT(changeBoard(const Move&)));
+    connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()));
+    connect(m_ai, SIGNAL(move(const Move&)),
+            this,  SLOT(aiMove(const Move&)));
 }
 
 Game::~Game() {
@@ -89,7 +94,6 @@ void Game::setSkill(Skill skill) {
 void Game::start() {
     if (computerTurn()) {
         emit oposerTurn();
-        makeComputerMove();
     } else {
         emit playerTurn();
     }
@@ -103,6 +107,13 @@ short Game::winDir() const {
     return m_winDir;
 }
 
+void Game::aiMove(const Move& move) {
+    if (!m_board->empty(move.coord()) && move.player() == m_computerMark) {
+        return;
+    }
+    makeMove(move);
+}
+
 /* private methods */
 
 void Game::makeComputerMove() {
@@ -110,9 +121,9 @@ void Game::makeComputerMove() {
     if (!m_history.empty()) {
         latestCoord = m_history.back().coord();
     }
-    Coord suggestedCoord = m_ai->move(latestCoord);
-    Move move(m_computerMark, suggestedCoord);
-    makeMove(move);
+//    Coord suggestedCoord = m_ai->move(latestCoord);
+//    Move move(m_computerMark, suggestedCoord);
+//    makeMove(move);
 }
 
 void Game::makeMove(const Move& move) {
@@ -132,7 +143,6 @@ void Game::makeMove(const Move& move) {
     } else {
         if (computerTurn()) {
             emit oposerTurn();
-            makeComputerMove();
         } else {
             emit playerTurn();
         }

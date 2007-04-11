@@ -34,6 +34,7 @@ using namespace bovo;
 namespace bovo {
     class Coord;
     class Dimension;
+    class Move;
 } /* namespace bovo */
 
 /** namespace for AI stuff */
@@ -76,7 +77,8 @@ public:
      * @param height the height
      * @param skill the Skill the AI player will be playing with
      */
-    AiBoard(const usi width, const usi height, Skill skill = Normal);
+    AiBoard(const usi width, const usi height, Skill skill = Normal,
+           Player player = O);
 
     /**
      * @brief Constructs an AiBoard with width, height and Skill
@@ -86,7 +88,7 @@ public:
      * @param height the height
      * @param skill the Skill the AI player will be playing with
      */
-    AiBoard(const Dimension& dimension, Skill skill = Normal);
+    AiBoard(const Dimension& dimension, Skill skill = Normal, Player player=O);
 
     /**
      * @brief destructs this AiBoard
@@ -124,12 +126,10 @@ public:
 
     /**
      * @brief get move from AI
-     * @description Feed the latest move from the player to the AI and get the
-     * move the AI wants to play in return
-     * @param coord the move the player played his latest turn
+     * @description get the move the AI wants to play
      * @return the move the AI wants to play
      */
-    Coord move(const Coord& coord);
+    Coord move();
 
     /**
      * @brief get move from AI
@@ -139,7 +139,7 @@ public:
      * @return the moves the AI suggest to play
      * @todo Implement!
      */
-    Coord* moves(const Coord& coord);
+    Coord* moves();
 
     /**
      * @brief the player occupying a Coord
@@ -165,35 +165,14 @@ public:
      * @description sets which players should occupy a certain square in the
      * playing board. Returns whether the game ends with this move (i.e. it 
      * was the winning move).
-     * @param coord the Coord to occupy
-     * @param player the Player to occupy with
-     * @return @c true if this move resulted in a Game Over, 
+     * @param move the Move to place
+     * @return @c true if this move resulted in a Game Over,
      * @c false otherwise
      * @throw busy if coord was allready occupied
-     * @throw outOfBounds if coord isn't on the playing board
      * @throw gameOver if game was allready over
      * @throw notValidPlayer if player wasn't X or O
      */
-    bool setPlayer(const Coord&, const Player& player)
-        throw(busy, outOfBounds, gameover, notValidPlayer);
-
-    /**
-     * @brief set the player of a Coord
-     * @description sets which players should occupy a certain square in the
-     * playing board. Returns whether the game ends with this move (i.e. it 
-     * was the winning move).
-     * @param x the X-part of the Coord to set
-     * @param y the Y-part of the Coord to set
-     * @param player the Player to set
-     * @return @c true if this move resulted in a Game Over, 
-     * @c false otherwise
-     * @throw busy if coord was allready occupied
-     * @throw outOfBounds if coord isn't on the playing board
-     * @throw gameOver if game was allready over
-     * @throw notValidPlayer if player wasn't X or O
-     */
-    bool setPlayer(const usi x, const usi y, const Player& player)
-        throw(busy, outOfBounds, gameover, notValidPlayer);
+    bool setPlayer(const Move& move) throw(busy, gameover, notValidPlayer);
 
     /**
      * @brief change Skill
