@@ -86,6 +86,13 @@ public:
     Coord left() const;
 
     /**
+     * @brief is null?
+     * @description tells if this coord is a null coordinate (-1, -1)
+     * @return \c true if x == -1 and y == -1, \c false otherwise
+     */
+    bool null() const;
+
+    /**
      * @brief
      * @description
      * @return

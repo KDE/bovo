@@ -40,6 +40,10 @@ Coord Coord::left() const {
     return Coord(m_x-1, m_y);
 }
 
+bool Coord::null() const {
+    return m_x == static_cast<usi>(-1) && m_y == static_cast<usi>(-1);
+}
+
 Coord Coord::right() const {
     return Coord(m_x+1, m_y);
 }
