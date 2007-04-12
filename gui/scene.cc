@@ -40,7 +40,8 @@ using namespace bovo;
 
 namespace gui {
 
-Scene::Scene( Game* game ) : m_activate(false), m_game(0) {
+Scene::Scene(Game* game, Player player)
+  : m_activate(false), m_game(0), m_player(player) {
     m_bkgndRenderer = new QSvgRenderer(this);
     /** @todo read theme from some configuration, I guess */
     QString themeName = QString("themes/%1/pics/").arg("scribble");
@@ -55,6 +56,8 @@ Scene::Scene( Game* game ) : m_activate(false), m_game(0) {
     resizeScene(static_cast<int>(m_curCellSize*(NUMCOLS+2)),
                 static_cast<int>(m_curCellSize*(NUMCOLS+2)));
     setGame(game);
+    connect(this, SIGNAL(move(const Move&)),
+            m_game, SLOT(move(const Move&)));
 }
 
 Scene::~Scene() {
@@ -196,7 +199,7 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     if (col > NUMCOLS-1) {
         col = NUMCOLS-1;
     }
-    m_game->makePlayerMove(Coord(col, row));
+    emit move(Move(m_player, Coord(col, row)));
 }
 
 void Scene::slotPlayerTurn() {

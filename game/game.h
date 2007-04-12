@@ -120,13 +120,6 @@ public:
     Move latestMove() const;
 
     /**
-     * @brief make a player move
-     * @description performs the specified move by the player
-     * @param coord coordinate played by player
-     */
-    void makePlayerMove(const Coord& coord);
-
-    /**
      * @brief is this coordinate on board?
      * @description tells whether this coordinate is within the limits of the
      * playing board.
@@ -168,11 +161,10 @@ public:
 
 public slots:
     /**
-     * @brief make an AI move
-     * @param move move from ai
+     * @brief make a move
+     * @param move move to make
      */
-    void aiMove(const Move& move);
-
+    void move(const Move& move);
 
 signals:
     /**

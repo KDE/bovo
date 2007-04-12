@@ -45,7 +45,7 @@ class Scene : public QGraphicsScene
     Q_OBJECT
 
 public:
-    Scene(Game* game);
+    Scene(Game* game, Player player = X);
     ~Scene();
     void activate(bool activate);
     void setGame( Game* game );
@@ -64,7 +64,7 @@ public slots:
     void slotGameOver();
 
 signals:
-    void moveFinished();
+    void move(const Move&);
     void replayFinished();
 
 private slots:
@@ -82,6 +82,7 @@ private:
     QList<Move>::const_iterator m_replayEnd;
     QList<Move>::const_iterator m_replayIterator;
     QTimer* m_replayTimer;
+    Player m_player;
 };
 
 } /* namespace gui */

@@ -47,7 +47,7 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
             m_ai, SLOT(changeBoard(const Move&)));
     connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()));
     connect(m_ai, SIGNAL(move(const Move&)),
-            this,  SLOT(aiMove(const Move&)));
+            this,  SLOT(move(const Move&)));
 }
 
 Game::~Game() {
@@ -75,14 +75,6 @@ Move Game::latestMove() const {
     }
 }
 
-void Game::makePlayerMove(const Coord& coord) {
-    Move move(m_playerMark, coord);
-    if (!m_board->empty(move.coord())) {
-        return; // this spot is already marked by a player
-    }
-    makeMove(move);
-}
-
 bool Game::ok(const Coord& coord) const {
     return m_board->ok(coord);
 }
@@ -107,24 +99,16 @@ short Game::winDir() const {
     return m_winDir;
 }
 
-void Game::aiMove(const Move& move) {
-    if (!m_board->empty(move.coord()) && move.player() == m_computerMark) {
+/* public slots */
+
+void Game::move(const Move& move) {
+    if (!m_board->empty(move.coord()) || move.player() != m_curPlayer) {
         return;
     }
     makeMove(move);
 }
 
 /* private methods */
-
-void Game::makeComputerMove() {
-    Coord latestCoord = Coord(-1, -1);
-    if (!m_history.empty()) {
-        latestCoord = m_history.back().coord();
-    }
-//    Coord suggestedCoord = m_ai->move(latestCoord);
-//    Move move(m_computerMark, suggestedCoord);
-//    makeMove(move);
-}
 
 void Game::makeMove(const Move& move) {
     if (move.player() != m_curPlayer) {
