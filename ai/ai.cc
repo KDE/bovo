@@ -61,7 +61,7 @@ void Ai::setSkill(Skill skill) {
 }
 
 void Ai::slotMove() {
-    QTimer::singleShot(15, this, SLOT(tmpSlot()));
+    QTimer::singleShot(0, this, SLOT(tmpSlot()));
 }
 
 void Ai::tmpSlot() {
