@@ -34,6 +34,7 @@
 #include <kstandardaction.h>
 #include <kstandarddirs.h>
 #include <kselectaction.h>
+#include <ktoggleaction.h>
 #include <klocale.h>
 #include <kicon.h>
 
@@ -85,18 +86,25 @@ void MainWindow::setupActions() {
                             "quit", this, SLOT(close()));
     connect(quitAct, SIGNAL(triggered()), this, SLOT(close()));
 
-    KAction *replayAct = new KAction(KIcon("media-playback-start"),
+    QAction *replayAct = new KAction(KIcon("media-playback-start"),
                             i18n("&Replay"), this);
     actionCollection()->addAction("replay", replayAct);
     replayAct->setToolTip(i18n("Replay game"));
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
     replayAct->setEnabled(false);
 
-    KAction *hintAct = new KAction(KIcon("idea"), i18n("&Hint"), this);
+    QAction *hintAct = new KAction(KIcon("idea"), i18n("&Hint"), this);
     actionCollection()->addAction("hint", hintAct);
     hintAct->setToolTip(i18n("Hint a move"));
     hintAct->setWhatsThis(i18n("This gives hints on a good move."));
     hintAct->setEnabled(false);
+
+    KToggleAction *animAct = new KToggleAction(i18n("&Disable animation"),this);
+    actionCollection()->addAction("animation", animAct);
+    animAct->setChecked(true);
+    connect(animAct, SIGNAL(triggered(bool)),
+            m_scene, SLOT(enableAnimation(bool)));
+    animAct->setCheckedState(KGuiItem(i18n("Enable animation")));
 
     m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
@@ -118,6 +126,7 @@ void MainWindow::setupActions() {
     addAction(quitAct);
     addAction(replayAct);
     addAction(hintAct);
+    addAction(animAct);
     addAction(m_skillsAct);
 }
 

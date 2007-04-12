@@ -64,6 +64,7 @@ public slots:
     void slotGameOver();
     void hint(const Move& hint);
     void hintTimeout();
+    void enableAnimation(bool enabled);
 
 signals:
     void move(const Move&);
@@ -76,6 +77,7 @@ private:
     void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
+    void killAnimations();
     bool m_activate;
     Game *m_game;
     QSvgRenderer* m_bkgndRenderer;
@@ -88,6 +90,7 @@ private:
 //    int m_hintCounter;
     HintItem *m_hintItem;
     Player m_player;
+    bool m_animation;
 };
 
 } /* namespace gui */

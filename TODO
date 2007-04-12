@@ -71,6 +71,10 @@ FEATURES (4.0)
 [X] Hint moves.
 [ ] Changing AI level means restarting game OR setting AI for next game
     (dialog?)
+[ ] Animation support
+    [ ] Marks fade in
+    [ ] Hints fade in-fade out
+    [ ] Winning line fades in, move by move
 
 THEMES (4.0)
 ============

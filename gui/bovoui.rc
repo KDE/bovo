@@ -8,6 +8,7 @@
 		</Menu>
 		<Menu name="settings"><text>&amp;Settings</text>
 			<Action name="skill" />
+            <Action name="animation" />
 		</Menu>
         <Menu name="help"><text>&amp;Help</text>
             <Action name="hint" />

@@ -42,7 +42,7 @@ using namespace bovo;
 namespace gui {
 
 Scene::Scene(const QString& theme)
-  : m_activate(false), m_game(0), m_player(No) {
+  : m_activate(false), m_game(0), m_player(No), m_animation(true) {
 //    m_bkgndRenderer = new QSvgRenderer(this);
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
@@ -279,6 +279,17 @@ void Scene::hintTimeout() {
         m_hintItem = 0;
         demandRepaint();
     }
+}
+
+void Scene::enableAnimation(bool enabled) {
+    m_animation = enabled;
+    if (!m_animation) {
+        killAnimations();
+    }
+}
+
+void Scene::killAnimations() {
+    /** @TODO implement killAnimations() */
 }
 
 } /* namespace gui */
