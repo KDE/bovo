@@ -1,6 +1,6 @@
 # Graphical User Interface
 
-set(bovogui 
+set(bovogui
     winitem.cc
     hintitem.cc
     mark.cc

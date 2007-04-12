@@ -25,6 +25,8 @@
 
 #include <QtSvg/QGraphicsSvgItem>
 
+class QTimer;
+
 namespace bovo {
     class Move;
 }
@@ -36,20 +38,29 @@ namespace gui {
 class Scene;
 
 class HintItem : public QGraphicsSvgItem {
+    Q_OBJECT
 public:
-    HintItem(Scene *scene, const Move& move);
+    HintItem(Scene *scene, const Move& move, bool animate = true);
     ~HintItem();
+    void killAnimation();
+
+public slots:
+    void tick();
 
 protected:
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
-               QWidget* widget = 0);
+    void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=0);
 
 private:
     QRectF glyphRectF() const;
     Scene* m_scene;
     int m_row;
     int m_col;
+    int m_tick;
+    bool m_animate;
+    qreal m_opacity;
+    bool m_tickUp;
     qreal m_sizeShrink;
+    QTimer *m_ticker;
 };
 
 } /* namespace gui */

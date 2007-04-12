@@ -54,10 +54,10 @@ Scene::Scene(const QString& theme)
             filename += "theme.svg";
     m_renderer = new QSvgRenderer(filename);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    m_replayTimer = new QTimer;
+    m_replayTimer = new QTimer(this);
     m_hintTimer = new QTimer(this);
     m_hintTimer->setSingleShot(true);
-        m_hintItem = 0;
+    m_hintItem = 0;
     connect(m_replayTimer, SIGNAL(timeout()),
             this, SLOT(continueReplay()));
     resizeScene(static_cast<int>(m_curCellSize*(NUMCOLS+2)),
@@ -263,7 +263,7 @@ void Scene::continueReplay() {
 
 void Scene::hint(const Move& hint) {
     hintTimeout();
-    m_hintItem = new HintItem(this, hint);
+    m_hintItem = new HintItem(this, hint, m_animation);
     m_hintItem->setSharedRenderer(m_renderer);
     addItem(m_hintItem);
     connect(m_hintTimer, SIGNAL(timeout()), this, SLOT(hintTimeout()));
@@ -274,6 +274,8 @@ void Scene::hint(const Move& hint) {
 void Scene::hintTimeout() {
     if (m_hintItem != 0) {
         m_hintTimer->disconnect();
+        m_hintTimer->stop();
+        m_hintItem->killAnimation();
         removeItem(m_hintItem);
         m_hintItem->deleteLater();
         m_hintItem = 0;
@@ -289,7 +291,9 @@ void Scene::enableAnimation(bool enabled) {
 }
 
 void Scene::killAnimations() {
-    /** @TODO implement killAnimations() */
+    if (m_hintItem != 0) {
+        m_hintItem->killAnimation();
+    }
 }
 
 } /* namespace gui */

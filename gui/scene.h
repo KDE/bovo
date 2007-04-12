@@ -65,6 +65,7 @@ public slots:
     void hint(const Move& hint);
     void hintTimeout();
     void enableAnimation(bool enabled);
+    void demandRepaint();
 
 signals:
     void move(const Move&);
@@ -74,7 +75,6 @@ private slots:
     void continueReplay();
 
 private:
-    void demandRepaint();
     virtual void drawBackground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
     void killAnimations();

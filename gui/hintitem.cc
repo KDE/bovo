@@ -24,7 +24,8 @@
 #include <QtGui>
 #include <QtSvg>
 #include <QtGlobal>
-#include <QColor>
+#include <QtGui/QColor>
+#include <QtCore/QTimer>
 
 #include "common.h"
 #include "coord.h"
@@ -35,15 +36,58 @@ using namespace bovo;
 
 namespace gui {
 
-HintItem::HintItem(Scene* scene, const Move& hint)
+HintItem::HintItem(Scene* scene, const Move& hint, bool animate)
   : QGraphicsSvgItem(), m_scene(scene), m_row(hint.coord().y()),
   m_col(hint.coord().x()) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
     setElementId(QString(hint.player() == X ? "x%1" : "o%1")
             .arg(QString::number(qrand() % 5 + 1)));
+    m_tick = 16;
+    m_tickUp = true;
+    m_animate = animate;
+    m_ticker = 0;
+    if (m_animate) {
+        m_ticker = new QTimer(this);
+        m_opacity = 0.0;
+        connect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        m_ticker->start(30);
+    } else {
+        m_opacity = 0.4;
+    }
 }
 
 HintItem::~HintItem() {
+    if (m_ticker != 0) {
+        m_ticker->stop();
+        disconnect(m_ticker, 0, this, 0);
+        m_ticker->deleteLater();
+        m_ticker = 0;
+    }
+}
+
+void HintItem::killAnimation() {
+    if (m_animate) {
+        m_opacity = 0.4;
+        m_scene->demandRepaint();
+        m_animate = false;
+    }
+}
+
+void HintItem::tick() {
+    m_tick--;
+    if (m_tick == 0) {
+        killAnimation();
+    } else if (m_animate) {
+        if (m_tickUp && m_tick > 5) {
+            m_opacity += 0.1;
+        } else if (m_tickUp) {
+            m_opacity -= 0.1;
+            m_tickUp = false;
+        } else {
+            m_opacity -= 0.1;
+        }
+        m_scene->demandRepaint();
+    }
 }
 
 // HintItem::setEnabled(enabled) {
@@ -61,8 +105,10 @@ QRectF HintItem::glyphRectF() const {
 }
 
 void HintItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
-    p->setOpacity(0.4);
+    p->setOpacity(m_opacity);
     renderer()->render(p, elementId(), glyphRectF());
 }
 
 } /* namespace gui */
+
+#include "hintitem.moc"
