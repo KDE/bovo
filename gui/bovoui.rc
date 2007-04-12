@@ -9,11 +9,15 @@
 		<Menu name="settings"><text>&amp;Settings</text>
 			<Action name="skill" />
 		</Menu>
+        <Menu name="help"><text>&amp;Help</text>
+            <Action name="hint" />
+        </Menu>
 	</MenuBar>
 
 	<ToolBar name="mainToolBar"><text>Main Toolbar</text>
 		<Action name="new_game" />
 		<Action name="quit" />
 		<Action name="replay" />
+        <Action name="hint" />
 	</ToolBar>
 </kpartgui>

@@ -39,6 +39,7 @@ namespace bovo {
 using namespace bovo;
 
 namespace gui {
+    class HintItem;
 
 class Scene : public QGraphicsScene
 {
@@ -61,6 +62,8 @@ public slots:
     void slotPlayerTurn();
     void slotOposerTurn();
     void slotGameOver();
+    void hint(const Move& hint);
+    void hintTimeout();
 
 signals:
     void move(const Move&);
@@ -80,7 +83,10 @@ private:
     qreal m_curCellSize;
     QList<Move>::const_iterator m_replayEnd;
     QList<Move>::const_iterator m_replayIterator;
-    QTimer* m_replayTimer;
+    QTimer *m_replayTimer;
+    QTimer *m_hintTimer;
+//    int m_hintCounter;
+    HintItem *m_hintItem;
     Player m_player;
 };
 

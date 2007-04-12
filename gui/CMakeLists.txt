@@ -2,6 +2,7 @@
 
 set(bovogui 
     winitem.cc
+    hintitem.cc
     mark.cc
     scene.cc
     view.cc
@@ -11,7 +12,7 @@ set(bovogui
 
 kde4_automoc(${bovogui})
 kde4_add_executable(bovo ${bovogui})
-target_link_libraries(bovo ${KDE4_KDEUI_LIBS} game ai)
+target_link_libraries(bovo ${KDE4_KDEUI_LIBS} ${KDE4_} game ai)
 
 install (TARGETS bovo RUNTIME DESTINATION ${BIN_INSTALL_DIR})
 install (FILES bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo )

@@ -90,8 +90,14 @@ void MainWindow::setupActions() {
     actionCollection()->addAction("replay", replayAct);
     replayAct->setToolTip(i18n("Replay game"));
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
-
     replayAct->setEnabled(false);
+
+    KAction *hintAct = new KAction(KIcon("idea"), i18n("&Hint"), this);
+    actionCollection()->addAction("hint", hintAct);
+    hintAct->setToolTip(i18n("Hint a move"));
+    hintAct->setWhatsThis(i18n("This gives hints on a good move."));
+    hintAct->setEnabled(false);
+
     m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
     skills << i18n("Ridiculously Easy") << i18n("Very Easy") << i18n("Easy")
@@ -111,7 +117,11 @@ void MainWindow::setupActions() {
     addAction(newGameAct);
     addAction(quitAct);
     addAction(replayAct);
+    addAction(hintAct);
     addAction(m_skillsAct);
+}
+
+void MainWindow::hint() {
 }
 
 void MainWindow::slotNewGame() {
@@ -136,11 +146,21 @@ void MainWindow::slotNewGame() {
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
         m_game = new Game(dimension, m_computerStarts ? O : X, m_skill);
+        m_demoAi = new Ai(dimension, Zlatan, X);
         m_scene->setGame(m_game, X, NotDemo);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
         connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
         connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
+        connect(m_game, SIGNAL(boardChanged(const Move&)),
+                m_demoAi, SLOT(changeBoard(const Move&)));
+        connect(m_demoAi, SIGNAL(move(const Move&)),
+                m_scene,  SLOT(hint(const Move&)));
+        disconnect(m_game, SIGNAL(gameOver()),
+                   this, SLOT(slotNewDemoWait()));
+        actionCollection()->action("hint")->setEnabled(true);
+        connect(actionCollection()->action("hint"), SIGNAL(triggered()),
+                m_demoAi, SLOT(slotMove()));
         m_game->start();
     }
 }
@@ -186,6 +206,7 @@ void MainWindow::slotGameOver() {
         message = i18n("You lost!");
     }
     m_scene->setWin();
+    actionCollection()->action("hint")->setEnabled(false);
     actionCollection()->action("replay")->setEnabled(true);
     connect(actionCollection()->action("replay"), SIGNAL(triggered()),
             this, SLOT(replay()));

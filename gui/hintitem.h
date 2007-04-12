@@ -19,68 +19,39 @@
 *
 ********************************************************************/
 
-#ifndef __MAINWINDOW_H__
-#define __MAINWINDOW_H__
 
-#include <QString>
+#ifndef __HINTITEM_H__
+#define __HINTITEM_H__
 
-#include <kmainwindow.h>
-
-#include "common.h"
-
-namespace ai {
-    class Ai;
-}
+#include <QtSvg/QGraphicsSvgItem>
 
 namespace bovo {
-    class Game;
+    class Move;
 }
 
 using namespace bovo;
-using namespace ai;
-
-class QComboBox;
-class KSelectAction;
 
 namespace gui {
 
 class Scene;
-class View;
 
-class MainWindow : public KMainWindow
-{
-    Q_OBJECT
+class HintItem : public QGraphicsSvgItem {
 public:
-    explicit MainWindow(const QString& theme = "scribble", QWidget* parent=0);
-    ~MainWindow();
+    HintItem(Scene *scene, const Move& move);
+    ~HintItem();
 
-public slots:
-    void hint();
-    void slotNewGame();
-    void slotPlayerTurn();
-    void slotOposerTurn();
-    void slotGameOver();
-    void slotNewDemo();
-    void slotNewDemoWait();
-    void replay();
-    void changeSkill(int);
-    void reEnableReplay();
+protected:
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
+               QWidget* widget = 0);
 
 private:
-    Scene *m_scene;
-    View  *m_view;
-    Game  *m_game;
-    QString m_theme;
-    int m_wins, m_losses;
-    void setupActions();
-    Skill m_skill;
-    QString getSkillName(Skill skill) const;
-    QComboBox* m_sBarSkill;
-    KSelectAction* m_skillsAct;
-    bool m_computerStarts;
-    Ai *m_demoAi;
+    QRectF glyphRectF() const;
+    Scene* m_scene;
+    int m_row;
+    int m_col;
+    qreal m_sizeShrink;
 };
 
 } /* namespace gui */
 
-#endif /* __MAINWINDOW_H__ */
+#endif /* __HINTITEM_H__ */

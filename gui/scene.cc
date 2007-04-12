@@ -32,6 +32,7 @@
 #include "common.h"
 #include "coord.h"
 #include "game.h"
+#include "hintitem.h"
 #include "mark.h"
 #include "move.h"
 #include "winitem.h"
@@ -54,6 +55,9 @@ Scene::Scene(const QString& theme)
     m_renderer = new QSvgRenderer(filename);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_replayTimer = new QTimer;
+    m_hintTimer = new QTimer(this);
+    m_hintTimer->setSingleShot(true);
+        m_hintItem = 0;
     connect(m_replayTimer, SIGNAL(timeout()),
             this, SLOT(continueReplay()));
     resizeScene(static_cast<int>(m_curCellSize*(NUMCOLS+2)),
@@ -145,7 +149,7 @@ void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
 }
 
 void Scene::updateBoard(const Move& move) {
-//    Move move = m_game->latestMove();
+    hintTimeout();
     if (move.valid()) {
         Mark* mark = new Mark(move.player(), this, move.x(), move.y());
         mark->setSharedRenderer(m_renderer);
@@ -254,6 +258,26 @@ void Scene::continueReplay() {
         setWin();
         m_replayTimer->stop();
         emit replayFinished();
+    }
+}
+
+void Scene::hint(const Move& hint) {
+    hintTimeout();
+    m_hintItem = new HintItem(this, hint);
+    m_hintItem->setSharedRenderer(m_renderer);
+    addItem(m_hintItem);
+    connect(m_hintTimer, SIGNAL(timeout()), this, SLOT(hintTimeout()));
+    m_hintTimer->start(2000);
+    demandRepaint();
+}
+
+void Scene::hintTimeout() {
+    if (m_hintItem != 0) {
+        m_hintTimer->disconnect();
+        removeItem(m_hintItem);
+        m_hintItem->deleteLater();
+        m_hintItem = 0;
+        demandRepaint();
     }
 }
 
