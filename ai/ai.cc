@@ -61,12 +61,7 @@ void Ai::setSkill(Skill skill) {
 }
 
 void Ai::slotMove() {
-    QTimer::singleShot(0, this, SLOT(tmpSlot()));
-}
-
-void Ai::tmpSlot() {
-    Coord tmp = m_board->move();
-    emit move(Move(m_player, tmp));
+    emit move(Move(m_player, m_board->move()));
 }
 
 } /* namespace ai */

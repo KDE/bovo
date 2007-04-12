@@ -45,7 +45,8 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
     m_gameOver = false;
     connect(this, SIGNAL(boardChanged(const Move&)),
             m_ai, SLOT(changeBoard(const Move&)));
-    connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()));
+    connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
+            Qt::QueuedConnection);
     connect(m_ai, SIGNAL(move(const Move&)),
             this,  SLOT(move(const Move&)));
 }

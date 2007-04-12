@@ -80,7 +80,6 @@ public slots:
     void gameOver();
     void setSkill(Skill skill);
     void slotMove();
-    void tmpSlot();
 
 signals:
     void move(const Move& move);
