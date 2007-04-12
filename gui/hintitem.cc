@@ -65,11 +65,11 @@ HintItem::~HintItem() {
 
 void HintItem::killAnimation() {
     if (m_animate) {
-        m_opacity = 0.4;
-        m_scene->demandRepaint();
         m_ticker->stop();
         disconnect(m_ticker, 0, this, 0);
         m_animate = false;
+        m_opacity = 0.4;
+        m_scene->demandRepaint();
     }
 }
 

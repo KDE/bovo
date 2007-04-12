@@ -284,7 +284,9 @@ void Scene::destroyHint() {
 }
 
 void Scene::hintTimeout() {
-    if (m_hintItem != 0) {
+    if (!m_animation) {
+        destroyHint();
+    } else if (m_hintItem != 0) {
         connect(m_hintItem, SIGNAL(killed()), this, SLOT(destroyHint()));
         m_hintItem->kill();
     }
