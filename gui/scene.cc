@@ -50,7 +50,7 @@ Scene::Scene(const QString& theme)
 //    m_bkgndRenderer->load(bgFilename);
     QString themePath = QString("themes/%1/pics/").arg(theme);
     QString filename = KStandardDirs::locate("appdata", themePath);
-            filename += "xo.svg"; //theme.svg!!!
+            filename += "theme.svg";
     m_renderer = new QSvgRenderer(filename);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_replayTimer = new QTimer;
