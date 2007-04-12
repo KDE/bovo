@@ -64,6 +64,7 @@ public slots:
     void slotGameOver();
     void hint(const Move& hint);
     void hintTimeout();
+    void destroyHint();
     void enableAnimation(bool enabled);
     void demandRepaint();
 

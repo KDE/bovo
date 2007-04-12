@@ -43,9 +43,14 @@ public:
     HintItem(Scene *scene, const Move& move, bool animate = true);
     ~HintItem();
     void killAnimation();
+    void kill();
 
 public slots:
     void tick();
+    void killTick();
+
+signals:
+    void killed();
 
 protected:
     void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=0);

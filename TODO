@@ -74,7 +74,7 @@ FEATURES (4.0)
 [X] Animation support
     [ ] Marks fade in
     [X] Hints fade in-fade out
-        [ ] Fade out when dying
+        [X] Fade out when dying of age, but not when killed
     [ ] Winning line fades in, move by move
 
 THEMES (4.0)

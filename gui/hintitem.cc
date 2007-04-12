@@ -58,8 +58,6 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate)
 
 HintItem::~HintItem() {
     if (m_ticker != 0) {
-        m_ticker->stop();
-        disconnect(m_ticker, 0, this, 0);
         m_ticker->deleteLater();
         m_ticker = 0;
     }
@@ -69,15 +67,31 @@ void HintItem::killAnimation() {
     if (m_animate) {
         m_opacity = 0.4;
         m_scene->demandRepaint();
+        m_ticker->stop();
+        disconnect(m_ticker, 0, this, 0);
         m_animate = false;
     }
 }
 
+void HintItem::kill() {
+    connect(m_ticker, SIGNAL(timeout()), this, SLOT(killTick()));
+    m_ticker->start();
+}
+
+void HintItem::killTick() {
+    m_opacity -= 0.05;
+    m_scene->demandRepaint();
+    if (m_opacity <= 0.05) {
+        m_ticker->stop();
+        emit killed();
+    }
+}
+
 void HintItem::tick() {
-    m_tick--;
+    --m_tick;
     if (m_tick == 0) {
         killAnimation();
-    } else if (m_animate) {
+    } else {
         if (m_tickUp && m_tick > 5) {
             m_opacity += 0.1;
         } else if (m_tickUp) {

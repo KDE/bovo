@@ -149,7 +149,7 @@ void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
 }
 
 void Scene::updateBoard(const Move& move) {
-    hintTimeout();
+    destroyHint();
     if (move.valid()) {
         Mark* mark = new Mark(move.player(), this, move.x(), move.y());
         mark->setSharedRenderer(m_renderer);
@@ -262,7 +262,7 @@ void Scene::continueReplay() {
 }
 
 void Scene::hint(const Move& hint) {
-    hintTimeout();
+    destroyHint();
     m_hintItem = new HintItem(this, hint, m_animation);
     m_hintItem->setSharedRenderer(m_renderer);
     addItem(m_hintItem);
@@ -271,7 +271,7 @@ void Scene::hint(const Move& hint) {
     demandRepaint();
 }
 
-void Scene::hintTimeout() {
+void Scene::destroyHint() {
     if (m_hintItem != 0) {
         m_hintTimer->disconnect();
         m_hintTimer->stop();
@@ -280,6 +280,13 @@ void Scene::hintTimeout() {
         m_hintItem->deleteLater();
         m_hintItem = 0;
         demandRepaint();
+    }
+}
+
+void Scene::hintTimeout() {
+    if (m_hintItem != 0) {
+        connect(m_hintItem, SIGNAL(killed()), this, SLOT(destroyHint()));
+        m_hintItem->kill();
     }
 }
 
