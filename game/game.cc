@@ -23,7 +23,8 @@
 
 #include "game.h"
 
-#include <QtDebug>
+#include <QtCore/QtDebug>
+#include <QtCore/QTimer>
 
 #include "ai.h"
 #include "board.h"
@@ -37,8 +38,9 @@ using namespace ai;
 namespace bovo
 {
 
-Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill)
-  : m_curPlayer(startingPlayer), m_computerMark(O), m_playerMark(X) {
+Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
+           DemoMode demoMode) : m_curPlayer(startingPlayer), m_computerMark(O),
+                                m_demoMode(demoMode), m_playerMark(X) {
     m_board = new Board(dimension);
     m_ai = new Ai(dimension, skill, m_computerMark);
     m_winDir = -1;
@@ -127,9 +129,17 @@ void Game::makeMove(const Move& move) {
         emit gameOver();
     } else {
         if (computerTurn()) {
-            emit oposerTurn();
+            if (m_demoMode) {
+                QTimer::singleShot(300, this, SIGNAL(oposerTurn()));
+            } else {
+                emit oposerTurn();
+            }
         } else {
-            emit playerTurn();
+            if (m_demoMode) {
+                QTimer::singleShot(300, this, SIGNAL(playerTurn()));
+            } else {
+                emit playerTurn();
+            }
         }
     }
 }

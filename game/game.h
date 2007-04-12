@@ -81,8 +81,10 @@ public:
      * @param dimension the Dimension specifying the width and height
      * @param startingPlayer the player who starts
      * @param skill the skill of the AI
+     * @param demoMode whether this game is a demo or not
      */
-    Game(const Dimension& dimension, Player startingPlayer, Skill skill);
+    Game(const Dimension& dimension, Player startingPlayer = X,
+         Skill skill = Normal, DemoMode demoMode = NotDemo);
 
     /**
      * @brief destructs this Game
@@ -219,6 +221,9 @@ private:
 
     /* computer player id */
     Player m_computerMark;
+
+    /* Whether this is a demo game or not */
+    DemoMode m_demoMode;
 
     /* is game over */
     bool m_gameOver;

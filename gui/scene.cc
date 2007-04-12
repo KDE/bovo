@@ -40,8 +40,8 @@ using namespace bovo;
 
 namespace gui {
 
-Scene::Scene(Game* game, Player player)
-  : m_activate(false), m_game(0), m_player(player) {
+Scene::Scene()
+  : m_activate(false), m_game(0), m_player(No) {
     m_bkgndRenderer = new QSvgRenderer(this);
     /** @todo read theme from some configuration, I guess */
     QString themeName = QString("themes/%1/pics/").arg("scribble");
@@ -55,9 +55,6 @@ Scene::Scene(Game* game, Player player)
             this, SLOT(continueReplay()));
     resizeScene(static_cast<int>(m_curCellSize*(NUMCOLS+2)),
                 static_cast<int>(m_curCellSize*(NUMCOLS+2)));
-    setGame(game);
-    connect(this, SIGNAL(move(const Move&)),
-            m_game, SLOT(move(const Move&)));
 }
 
 Scene::~Scene() {
@@ -124,13 +121,18 @@ void Scene::resizeScene(int width, int height) {
             (NUMCOLS+2);
 }
 
-void Scene::setGame( Game* game ) {
+void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
     m_game = game;
+    m_player = player;
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             SLOT(updateBoard(const Move&)));
-    connect(m_game, SIGNAL(playerTurn()), SLOT(slotPlayerTurn()));
-    connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
+    if (!demoMode) {
+        connect(m_game, SIGNAL(playerTurn()), SLOT(slotPlayerTurn()));
+        connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
+    }
     connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
+    connect(this, SIGNAL(move(const Move&)),
+            m_game, SLOT(move(const Move&)));
 
     QList<QGraphicsItem*> allMarks = items();
     foreach (QGraphicsItem* mark, allMarks) {

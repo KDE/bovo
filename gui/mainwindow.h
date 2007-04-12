@@ -26,11 +26,16 @@
 
 #include "common.h"
 
+namespace ai {
+    class Ai;
+}
+
 namespace bovo {
     class Game;
 }
 
 using namespace bovo;
+using namespace ai;
 
 class QString;
 class QComboBox;
@@ -53,6 +58,8 @@ public slots:
     void slotPlayerTurn();
     void slotOposerTurn();
     void slotGameOver();
+    void slotNewDemo();
+    void slotNewDemoWait();
     void replay();
     void changeSkill(int);
     void reEnableReplay();
@@ -68,6 +75,7 @@ private:
     QComboBox* m_sBarSkill;
     KSelectAction* m_skillsAct;
     bool m_computerStarts;
+    Ai *m_demoAi;
 };
 
 } /* namespace gui */

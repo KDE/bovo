@@ -119,6 +119,15 @@ enum Player {
     No = 0 /**< No player (empty) */
 };
 
+/**
+ * Enum for whether a game is in demo mode or playing mode
+ */
+enum DemoMode {
+    Demo = true,    /**< Game is a demo */
+    NotDemo = false /**< Game is not a demo */
+};
+
+
 } /* namespace bovo */
 
 #endif /* __COMMON_H__ */

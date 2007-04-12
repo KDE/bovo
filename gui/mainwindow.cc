@@ -24,6 +24,7 @@
 #include <QGridLayout>
 #include <QWidget>
 #include <QComboBox>
+#include <QTimer>
 
 #include <kaction.h>
 #include <kactioncollection.h>
@@ -35,6 +36,7 @@
 #include <klocale.h>
 #include <kicon.h>
 
+#include "ai.h"
 #include "common.h"
 #include "dimension.h"
 #include "game.h"
@@ -43,12 +45,13 @@
 #include "view.h"
 
 using namespace bovo;
+using namespace ai;
 
 namespace gui {
 
 MainWindow::MainWindow(QWidget* parent)
   : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0),
-  m_skill(Normal), m_computerStarts(false) {
+  m_skill(Normal), m_computerStarts(false), m_demoAi(0) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
@@ -126,24 +129,59 @@ void MainWindow::slotNewGame() {
         if (!m_game->isGameOver()) {
             statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
         }
+        m_game->deleteLater();
+        m_game = 0;
     }
-    delete m_game;
-    Dimension dimension(NUMCOLS, NUMCOLS);
-    m_game = new Game(dimension, m_computerStarts ? O : X, m_skill);
-    connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
+    if (m_demoAi != 0) {
+        m_demoAi->deleteLater();
+        m_demoAi = 0;
+    }
     QAction* act = actionCollection()->action("replay");
     if (act != 0) {
         act->setEnabled(false);
     }
-    if(m_scene == 0) { //first time
-        m_scene = new Scene(m_game);
+    if(m_scene == 0) { //first time, demo time
+        m_scene = new Scene();
+        slotNewDemo();
     } else {
-        m_scene->setGame(m_game);
+        Dimension dimension(NUMCOLS, NUMCOLS);
+        m_game = new Game(dimension, m_computerStarts ? O : X, m_skill);
+        m_scene->setGame(m_game, X, NotDemo);
+        m_computerStarts = !m_computerStarts;
+        connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
+        connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
+        connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
+        m_game->start();
     }
-    connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
-    connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
-    m_computerStarts = !m_computerStarts;
+}
+
+void MainWindow::slotNewDemo() {
+    if (m_game != 0) {
+        m_game->deleteLater();
+        m_game = 0;
+    }
+    if (m_demoAi != 0) {
+        m_demoAi->deleteLater();
+        m_demoAi = 0;
+    }
+    Dimension dimension(NUMCOLS, NUMCOLS);
+    m_game = new Game(dimension, O, m_skill, Demo);
+    m_demoAi = new Ai(dimension, m_skill, X);
+    m_scene->setGame(m_game, No, Demo);
+    connect(m_game, SIGNAL(boardChanged(const Move&)),
+            m_demoAi, SLOT(changeBoard(const Move&)));
+    connect(m_game, SIGNAL(playerTurn()), m_demoAi, SLOT(slotMove()),
+            Qt::QueuedConnection);
+    connect(m_demoAi, SIGNAL(move(const Move&)),
+            m_game,  SLOT(move(const Move&)));
+    connect(m_game, SIGNAL(gameOver()), this, SLOT(slotNewDemoWait()));
+    statusBar()->changeItem(i18n("Start a new Game to play"), 0);
     m_game->start();
+}
+
+void MainWindow::slotNewDemoWait() {
+    m_scene->setWin();
+    QTimer::singleShot(2000, this, SLOT(slotNewDemo()));
 }
 
 void MainWindow::slotGameOver() {

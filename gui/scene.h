@@ -45,10 +45,10 @@ class Scene : public QGraphicsScene
     Q_OBJECT
 
 public:
-    Scene(Game* game, Player player = X);
+    Scene();
     ~Scene();
     void activate(bool activate);
-    void setGame( Game* game );
+    void setGame(Game* game, Player player = X, DemoMode demoMode = NotDemo);
     void setBackground( const QString& bkgndPath);
     void resizeScene( int width, int height );
     bool isBusy() const;

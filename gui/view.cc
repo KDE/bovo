@@ -33,7 +33,7 @@ View::View(Scene* scene, QWidget *parent) : QGraphicsView(scene, parent),
     setCacheMode( QGraphicsView::CacheBackground );
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    setMinimumSize( sizeHint() );
+    setMinimumSize(sizeHint());
     resize( sizeHint() );
 }
 
