@@ -21,10 +21,11 @@
 
 #include "mainwindow.h"
 
-#include <QGridLayout>
+#include <QVBoxLayout>
 #include <QWidget>
 #include <QComboBox>
 #include <QTimer>
+#include <QBrush>
 
 #include <kaction.h>
 #include <kactioncollection.h>
@@ -49,9 +50,9 @@ using namespace ai;
 
 namespace gui {
 
-MainWindow::MainWindow(QWidget* parent)
-  : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0), m_losses(0),
-  m_skill(Normal), m_computerStarts(false), m_demoAi(0) {
+MainWindow::MainWindow(const QString& theme, QWidget* parent)
+  : KMainWindow(parent), m_scene(0), m_game(0), m_theme(theme), m_wins(0),
+    m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
@@ -60,21 +61,10 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     slotNewGame();
 
-    QWidget *mainWid = new QWidget;
-    QGridLayout *lay = new QGridLayout(mainWid);
-    lay->setColumnStretch( 0, 1 );
-    lay->setMargin(1);
-    m_view = new View(m_scene, mainWid);
+    m_view = new View(m_scene, this);
     m_view->show();
-    lay->addWidget(m_view, 0, 0, 2, 1);
-
-    /** @todo read file names from from some configuration, I guess */
-    QString bgFilename = KStandardDirs::locate("appdata",
-                QString("themes/%1/pics/%2").arg("scribble").arg("bg.svg"));
-    m_scene->setBackground(bgFilename);
-
     setupActions();
-    setCentralWidget(mainWid);
+    setCentralWidget(m_view);
     setupGUI();
 }
 
@@ -141,7 +131,7 @@ void MainWindow::slotNewGame() {
         act->setEnabled(false);
     }
     if(m_scene == 0) { //first time, demo time
-        m_scene = new Scene();
+        m_scene = new Scene(m_theme);
         slotNewDemo();
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);

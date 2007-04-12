@@ -40,16 +40,19 @@ using namespace bovo;
 
 namespace gui {
 
-Scene::Scene()
+Scene::Scene(const QString& theme)
   : m_activate(false), m_game(0), m_player(No) {
-    m_bkgndRenderer = new QSvgRenderer(this);
+//    m_bkgndRenderer = new QSvgRenderer(this);
     /** @todo read theme from some configuration, I guess */
-    QString themeName = QString("themes/%1/pics/").arg("scribble");
-    QString filename = KStandardDirs::locate("appdata", themeName);
-            filename += "xo.svg";
+    /** @todo read file names from from some configuration, I guess */
+//    QString bgFilename = KStandardDirs::locate("appdata",
+//            QString("themes/%1/pics/%2").arg("spacy").arg("bg.svg"));
+//    m_bkgndRenderer->load(bgFilename);
+    QString themePath = QString("themes/%1/pics/").arg(theme);
+    QString filename = KStandardDirs::locate("appdata", themePath);
+            filename += "xo.svg"; //theme.svg!!!
     m_renderer = new QSvgRenderer(filename);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    setBackgroundBrush( Qt::lightGray );
     m_replayTimer = new QTimer;
     connect(m_replayTimer, SIGNAL(timeout()),
             this, SLOT(continueReplay()));
@@ -58,9 +61,8 @@ Scene::Scene()
 }
 
 Scene::~Scene() {
-    delete m_replayTimer; //deleteLater??
-    delete m_bkgndRenderer; //deleteLater??
-    delete m_renderer;
+    m_replayTimer->deleteLater();
+    m_renderer->deleteLater();
 }
 
 void Scene::activate(bool activate) {
@@ -115,10 +117,8 @@ void Scene::setWin() {
 void Scene::resizeScene(int width, int height) {
     int size = qMin(width, height);
     setSceneRect( 0, 0, size, size );
-    qreal scale = static_cast<qreal>(size) /
-            m_bkgndRenderer->defaultSize().width();
-    m_curCellSize = m_bkgndRenderer->defaultSize().width() * scale /
-            (NUMCOLS+2);
+    m_curCellSize = static_cast<qreal>(size) /
+                    static_cast<qreal>(NUMCOLS+2);
 }
 
 void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
@@ -155,24 +155,27 @@ void Scene::updateBoard(const Move& move) {
 }
 
 QPointF Scene::cellCenter(int x, int y) const {
-    return cellTopLeft(x, y) + QPointF(m_curCellSize / 2, m_curCellSize / 2);
+    return cellTopLeft(x, y) + QPointF(m_curCellSize/2.0, m_curCellSize/2.0);
 }
 
 QPointF Scene::cellTopLeft(int x, int y) const {
     return QPointF((x+1) * m_curCellSize, (y+1) * m_curCellSize);
 }
 
-void Scene::setBackground(const QString& bkgndPath) {
-    m_bkgndRenderer->load( bkgndPath );
-}
-
 void Scene::drawBackground(QPainter *p, const QRectF&) {
     QRectF sRect = sceneRect();
     int minSize = qMin(static_cast<int>(sRect.width()),
-                       static_cast<int>(sRect.height()) );
-    sRect.setWidth(minSize);
-    sRect.setHeight(minSize);
-    m_bkgndRenderer->render(p, sRect);
+                       static_cast<int>(sRect.height()));
+    qreal shrinkSize = static_cast<qreal>(NUMCOLS) /
+                       static_cast<qreal>(NUMCOLS+2);
+    qreal size = static_cast<qreal>(minSize) /
+                 static_cast<qreal>(NUMCOLS+2);
+/*    sRect.setWidth(minSize*cellSize);
+    sRect.setHeight(minSize*cellSize);
+    sRect.setLeft(cellSize);*/
+    QRectF tmpRect(size, size, minSize*shrinkSize, minSize*shrinkSize);
+    m_renderer->render(p, "background");
+    m_renderer->render(p, "grid", tmpRect);
 }
 
 void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
@@ -184,10 +187,8 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     if (!boardRect.contains(ev->scenePos())) {
         return;
     }
-    int row = static_cast<int>((-boardRect.y() + ev->scenePos().y()) /
-            m_curCellSize);
-    int col = static_cast<int>((-boardRect.x() + ev->scenePos().x()) /
-            m_curCellSize);
+    int row = ((ev->scenePos().y()-boardRect.y()) / m_curCellSize) / 1;
+    int col = ((ev->scenePos().x()-boardRect.x()) / m_curCellSize) / 1;
 
     if (row < 0) {
         row = 0;

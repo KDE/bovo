@@ -23,6 +23,7 @@
 
 #include <QGraphicsScene>
 #include <QResizeEvent>
+#include <QPalette>
 
 #include "scene.h"
 
@@ -30,11 +31,12 @@ namespace gui {
 
 View::View(Scene* scene, QWidget *parent) : QGraphicsView(scene, parent),
            m_scene(scene) {
-    setCacheMode( QGraphicsView::CacheBackground );
+    setCacheMode(QGraphicsView::CacheBackground);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setMinimumSize(sizeHint());
-    resize( sizeHint() );
+    resize(sizeHint());
+    setAlignment(Qt::AlignLeft | Qt::AlignTop);
 }
 
 void View::resizeEvent( QResizeEvent* ev ) {

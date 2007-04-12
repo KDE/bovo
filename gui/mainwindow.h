@@ -22,6 +22,8 @@
 #ifndef __MAINWINDOW_H__
 #define __MAINWINDOW_H__
 
+#include <QString>
+
 #include <kmainwindow.h>
 
 #include "common.h"
@@ -37,7 +39,6 @@ namespace bovo {
 using namespace bovo;
 using namespace ai;
 
-class QString;
 class QComboBox;
 class KSelectAction;
 
@@ -50,7 +51,7 @@ class MainWindow : public KMainWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget* parent=0);
+    explicit MainWindow(const QString& theme = "scribble", QWidget* parent=0);
     ~MainWindow();
 
 public slots:
@@ -68,6 +69,7 @@ private:
     Scene *m_scene;
     View  *m_view;
     Game  *m_game;
+    QString m_theme;
     int m_wins, m_losses;
     void setupActions();
     Skill m_skill;

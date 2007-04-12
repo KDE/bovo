@@ -45,11 +45,10 @@ class Scene : public QGraphicsScene
     Q_OBJECT
 
 public:
-    Scene();
+    Scene(const QString& theme);
     ~Scene();
     void activate(bool activate);
     void setGame(Game* game, Player player = X, DemoMode demoMode = NotDemo);
-    void setBackground( const QString& bkgndPath);
     void resizeScene( int width, int height );
     bool isBusy() const;
     QPointF cellCenter( int x, int y ) const;
