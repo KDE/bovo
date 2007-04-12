@@ -72,8 +72,8 @@ FEATURES (4.0)
 [ ] Changing AI level means restarting game OR setting AI for next game
     (dialog?)
 [X] Animation support
-    [ ] Marks fade in
-    [X] Hints fade in-fade out
+    [X] Marks fades in
+    [X] Hints fades in and fades out
         [X] Fade out when dying of age, but not when killed
     [ ] Winning line fades in, move by move
 

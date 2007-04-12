@@ -27,20 +27,73 @@
 #include <QColor>
 
 #include "common.h"
+#include "coord.h"
+#include "move.h"
 #include "scene.h"
 
 using namespace bovo;
 
 namespace gui {
 
-Mark::Mark(Player player, Scene* scene, int x, int y ) : QGraphicsSvgItem(),
-           m_scene(scene), m_row(y), m_col(x) {
+Mark::Mark(Scene* scene, const Move& move, bool animate) : QGraphicsSvgItem(),
+  m_scene(scene), m_row(move.y()), m_col(move.x()) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
-    setElementId(QString(player==X ? "x%1" : "o%1")
+    setElementId(QString(move.player() == X ? "x%1" : "o%1")
             .arg(QString::number(qrand() % 5 + 1)));
+    m_tick = 20;
+    m_ticker = 0;
+    if (animate) {
+        m_ticker = new QTimer(this);
+        m_opacity = 0.0;
+        connect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        m_ticker->start(30);
+    } else {
+        m_opacity = 1.0;
+    }
 }
 
 Mark::~Mark() {
+    if (m_ticker != 0) {
+        m_ticker->deleteLater();
+        m_ticker = 0;
+    }
+}
+
+void Mark::killAnimation() {
+    if (m_ticker != 0) {
+        m_ticker->stop();
+        disconnect(m_ticker, 0, this, 0);
+        m_ticker->deleteLater();
+        m_ticker = 0;
+        m_opacity = 1.0;
+        m_scene->demandRepaint();
+    }
+}
+
+void Mark::kill() {
+    disconnect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+    m_ticker->stop();
+    connect(m_ticker, SIGNAL(timeout()), this, SLOT(killTick()));
+    m_ticker->start();
+}
+
+void Mark::killTick() {
+    m_opacity -= 0.1;
+    m_scene->demandRepaint();
+    if (m_opacity <= 0.1) {
+        m_ticker->stop();
+        emit killed();
+    }
+}
+
+void Mark::tick() {
+    --m_tick;
+    if (m_tick == 0) {
+        killAnimation();
+    } else {
+        m_opacity += 0.1;
+        m_scene->demandRepaint();
+    }
 }
 
 QRectF Mark::glyphRectF() const {
@@ -53,8 +106,11 @@ QRectF Mark::glyphRectF() const {
                 height - 2.0*margin);
 }
 
-void Mark::paint(QPainter *painter, const QStyleOptionGraphicsItem*, QWidget*) {
-    renderer()->render(painter, elementId(), glyphRectF());
+void Mark::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
+    p->setOpacity(m_opacity);
+    renderer()->render(p, elementId(), glyphRectF());
 }
 
 } /* namespace gui */
+
+#include "mark.moc"

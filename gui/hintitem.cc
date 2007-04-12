@@ -37,16 +37,15 @@ using namespace bovo;
 namespace gui {
 
 HintItem::HintItem(Scene* scene, const Move& hint, bool animate)
-  : QGraphicsSvgItem(), m_scene(scene), m_row(hint.coord().y()),
-  m_col(hint.coord().x()) {
+  : QGraphicsSvgItem(), m_scene(scene), m_row(hint.y()),
+  m_col(hint.x()) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
     setElementId(QString(hint.player() == X ? "x%1" : "o%1")
             .arg(QString::number(qrand() % 5 + 1)));
     m_tick = 16;
     m_tickUp = true;
-    m_animate = animate;
     m_ticker = 0;
-    if (m_animate) {
+    if (animate) {
         m_ticker = new QTimer(this);
         m_opacity = 0.0;
         connect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
@@ -64,10 +63,9 @@ HintItem::~HintItem() {
 }
 
 void HintItem::killAnimation() {
-    if (m_animate) {
+    if (m_ticker != 0) {
         m_ticker->stop();
         disconnect(m_ticker, 0, this, 0);
-        m_animate = false;
         m_opacity = 0.4;
         m_scene->demandRepaint();
     }

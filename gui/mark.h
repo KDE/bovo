@@ -22,19 +22,36 @@
 #ifndef __MARK_H__
 #define __MARK_H__
 
-#include "common.h"
 #include <QtSvg/QGraphicsSvgItem>
 
+#include "common.h"
+
+namespace bovo {
+    class Move;
+}
+
 using namespace bovo;
+
+class QTimer;
 
 namespace gui {
 
 class Scene;
 
 class Mark : public QGraphicsSvgItem {
+    Q_OBJECT
 public:
-    Mark(Player player, Scene *scene, int x, int y);
+    Mark(Scene *scene, const Move& move, bool animate = true);
     ~Mark();
+    void killAnimation();
+    void kill();
+
+public slots:
+    void tick();
+    void killTick();
+
+signals:
+    void killed();
 
 protected:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
@@ -46,6 +63,10 @@ private:
     int m_row;
     int m_col;
     qreal m_sizeShrink;
+    int m_tick;
+    bool m_animate;
+    qreal m_opacity;
+    QTimer *m_ticker;
 };
 
 } /* namespace gui */

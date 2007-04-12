@@ -150,11 +150,13 @@ void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
 
 void Scene::updateBoard(const Move& move) {
     destroyHint();
-    if (move.valid()) {
-        Mark* mark = new Mark(move.player(), this, move.x(), move.y());
+    if (move.valid() && move.player() != No) {
+        Mark* mark = new Mark(this, move, m_animation);
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
         demandRepaint();
+    } else if (move.player() == No && move.valid()) {
+        // remove the item at this coord.
     }
 }
 
@@ -248,8 +250,7 @@ void Scene::continueReplay() {
         return;
     }
     if (m_replayIterator != m_replayEnd) {
-        Mark* mark = new Mark(m_replayIterator->player(), this,
-                              m_replayIterator->x(), m_replayIterator->y());
+        Mark* mark = new Mark(this, *m_replayIterator, m_animation);
         ++m_replayIterator;
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
