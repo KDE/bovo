@@ -52,7 +52,6 @@ public:
     void setGame(Game* game, Player player = X, DemoMode demoMode = NotDemo);
     void resizeScene( int width, int height );
     bool isBusy() const;
-    void replay(const QList<Move>& moves);
     void setTheme(const QString& theme);
 
 public slots:
@@ -66,14 +65,9 @@ public slots:
     void enableAnimation(bool enabled);
     void demandRepaint();
     void setWin();
-    void replay();
 
 signals:
     void move(const Move&);
-    void replayFinished();
-
-private slots:
-    void continueReplay();
 
 private:
     virtual void drawBackground( QPainter *p, const QRectF& rect );
