@@ -77,6 +77,7 @@ private slots:
 
 private:
     virtual void drawBackground( QPainter *p, const QRectF& rect );
+    virtual void drawForeground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
     QPointF cellCenter( int x, int y ) const;
     QPointF cellTopLeft( int x, int y ) const;

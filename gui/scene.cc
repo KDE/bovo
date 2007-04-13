@@ -193,6 +193,11 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
     m_renderer->render(p, "grid", tmpRect);
 }
 
+void Scene::drawForeground(QPainter *p, const QRectF&) {
+    // for each winning move
+    //     m_renderer->render(p, "win", rect(move));
+}
+
 void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     if (m_game->isGameOver() || m_game->computerTurn() || !m_activate) {
         return;
