@@ -22,6 +22,7 @@
 #include "winitem.h"
 
 #include <QtGui>
+#include <QtSvg/QSvgRenderer>
 #include <QtGlobal>
 #include <QColor>
 
@@ -33,6 +34,7 @@ namespace gui {
 WinItem::WinItem(Scene* scene, unsigned short minX, unsigned short minY,
 unsigned short maxX, unsigned short maxY) : m_scene(scene) {
     m_minY=minY;m_maxY=maxY;m_minX=minX;m_maxX=maxX;
+    setElementId("win");
 }
 
 QRectF WinItem::boundingRect() const {
@@ -50,17 +52,18 @@ QRectF WinItem::boundingRect(unsigned short x, unsigned short y) const {
 }
 
 void WinItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
-    QBrush b = p->brush();
-    b.setColor(Qt::green);
-    b.setStyle(Qt::SolidPattern);
-    p->setOpacity(0.2);
+//    QBrush b = p->brush();
+//    b.setColor(Qt::green);
+//    b.setStyle(Qt::SolidPattern);
+//    p->setOpacity(0.2);
     short incX = m_maxX-m_minX == 0 ? 0 : m_maxX-m_minX > 0 ? 1: -1;
     short incY = m_maxY-m_minY == 0 ? 0 : m_maxY-m_minY > 0 ? 1: -1;
     short unsigned tmpX = m_minX;
     short unsigned tmpY = m_minY;
     while (tmpX >= qMin(m_minX, m_maxX) && tmpX <= qMax(m_minX, m_maxX) &&
             tmpY >= qMin(m_minY, m_maxY) && tmpY <= qMax(m_minY, m_maxY)) {
-        p->fillRect(boundingRect(tmpX, tmpY), b);
+//        p->fillRect(pm boundingRect(tmpX, tmpY), b);
+        renderer()->render(p, elementId(), boundingRect(tmpX, tmpY));
         tmpX += incX;
         tmpY += incY;
     }

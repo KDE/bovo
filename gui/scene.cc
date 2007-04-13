@@ -122,6 +122,7 @@ void Scene::setWin(const QList<Move>& moves) {
         tmpY += -1*dy;
     }
     WinItem* item = new WinItem(this, minX, minY, maxX, maxY);
+    item->setSharedRenderer(m_renderer);
     addItem(item);
     demandRepaint();
 }

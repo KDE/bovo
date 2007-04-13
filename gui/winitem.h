@@ -23,13 +23,13 @@
 #ifndef __WINITEM_H__
 #define __WINITEM_H__
 
-#include <QGraphicsItem>
+#include <QGraphicsSvgItem>
 
 namespace gui {
 
 class Scene;
 
-class WinItem : public QGraphicsItem {
+class WinItem : public QGraphicsSvgItem {
 public:
     WinItem(Scene *scene, unsigned short minX, unsigned short minY,
             unsigned short maxX, unsigned short maxY);

@@ -51,6 +51,9 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+
+  <rect id="win" x="1" y="1" width="1" height="1" fill="lime" stroke-width="0.05" stroke="black" fill-opacity="0.4" />
+
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"

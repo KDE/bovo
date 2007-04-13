@@ -25,7 +25,7 @@ log. We want collective code ownership.
         [X] name all #ifdefs __CLASNAME_H__
         [ ] /* comment */ all private stuff
 [ ] Tooltips.
-[~] Theme support.
+[X] Theme support.
 [ ] Configuration dialogue.
 [ ] Save AI level and theme from session to session.
 [ ] Logic cleanups.
@@ -174,11 +174,9 @@ pressure and making him/her like this game. :P
 
 BUGS
 ====
-[ ] Several marks are lost when winning line is painted in replay mode. Odd..
-[ ] Resizing the application quickly will cause it to crash, but the backtrace
-    indicates it's not our fault, but KDE's.
+[X] Several marks are lost when winning line is painted in replay mode. Odd..
 [ ] Program crashes when showing dialog box in a full-blown KDE 4 environment,
-    but not over an SSH-X-tunnel
+    but not over an SSH-X-tunnel. Seem to be a problem with KDialog.
 
 OTHER
 =====
