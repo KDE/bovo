@@ -74,7 +74,7 @@ void Scene::setTheme(const QString& theme) {
     QString filename = KStandardDirs::locate("appdata", themePath);
     filename += "theme.svg";
     m_renderer->load(filename);
-    invalidate(0.0, 0.0, width(), height(), QGraphicsScene::BackgroundLayer);
+    invalidate(0.0, 0.0, width(), height());
 }
 
 void Scene::activate(bool activate) {
@@ -87,44 +87,11 @@ bool isAWinner(unsigned short x, unsigned short y, Game* game, Player player) {
     /** @TODO skip ok(coord) if possible */
 }
 
-void Scene::setWin(const QList<Move>& moves) {
+void Scene::setWin() {
     if (!m_game->isGameOver()) {
         return;
     }
-    Player player = m_game->latestMove().player();
-    unsigned short x = m_game->latestMove().x();
-    unsigned short y = m_game->latestMove().y();
-    short dy, dx;
-    switch (m_game->winDir()) {
-        case 0: dx = 1; dy =  0; break;
-        case 1: dx = 0; dy =  1; break;
-        case 2: dx = 1; dy =  1; break;
-        default: dx = 1; dy = -1; break;
-    }
-    unsigned short minX = x;
-    unsigned short minY = y;
-    unsigned short tmpX = x + dx;
-    unsigned short tmpY = y + dy;
-    while (isAWinner(tmpX, tmpY, m_game, player)) {
-        minX = tmpX;
-        minY = tmpY;
-        tmpX += dx;
-        tmpY += dy;
-    }
-    tmpX = x - dx;
-    tmpY = y - dy;
-    unsigned short maxX = x;
-    unsigned short maxY = y;
-    while (isAWinner(tmpX, tmpY, m_game, player)) {
-        maxX = tmpX;
-        maxY = tmpY;
-        tmpX += -1*dx;
-        tmpY += -1*dy;
-    }
-    WinItem* item = new WinItem(this, minX, minY, maxX, maxY);
-    item->setSharedRenderer(m_renderer);
-    addItem(item);
-    demandRepaint();
+    invalidate(0, 0, width(), height());
 }
 
 void Scene::resizeScene(int width, int height) {
@@ -135,6 +102,7 @@ void Scene::resizeScene(int width, int height) {
 }
 
 void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
+    m_winningMoves = QList<Move>();
     m_game = game;
     m_player = player;
     connect(m_game, SIGNAL(boardChanged(const Move&)),
@@ -143,7 +111,8 @@ void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
         connect(m_game, SIGNAL(playerTurn()), SLOT(slotPlayerTurn()));
         connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
     }
-    connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
+    connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
+SLOT(slotGameOver(const QList<Move>&)));
     connect(this, SIGNAL(move(const Move&)),
             m_game, SLOT(move(const Move&)));
 
@@ -194,8 +163,17 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
 }
 
 void Scene::drawForeground(QPainter *p, const QRectF&) {
-    // for each winning move
-    //     m_renderer->render(p, "win", rect(move));
+    if (m_winningMoves.empty()) {
+        return;
+    }
+    QList<Move>::const_iterator it = m_winningMoves.begin();
+    QList<Move>::const_iterator end = m_winningMoves.end();
+    while (it != end) {
+        QRectF tmpRect(cellTopLeft(it->x(), it->y()), QSizeF(m_curCellSize,
+m_curCellSize));
+        m_renderer->render(p, "win", tmpRect);
+        ++it;
+    }
 }
 
 void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
@@ -233,7 +211,9 @@ void Scene::slotOposerTurn() {
     activate(false);
 }
 
-void Scene::slotGameOver() {
+void Scene::slotGameOver(const QList<Move>& win) {
+    m_winningMoves = win;
+    setWin();
     activate(false);
 }
 
@@ -265,7 +245,8 @@ void Scene::replay() {
         removeItem(mark);
         delete mark;
     }
-    demandRepaint();
+    m_winningMoves = QList<Move>();
+    invalidate(0, 0, width(), height());
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             this, SLOT(updateBoard(const Move&)));
 }

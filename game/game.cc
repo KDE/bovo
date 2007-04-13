@@ -131,7 +131,7 @@ void Game::replayNext() {
         ++m_replayIterator;
     } else {
         m_replaying = false;
-        emit replayEnd(m_history); // FIX:!!!!!!!
+        emit replayEnd(winningMoves()); // FIX:!!!!!!!
     }
 }
 
@@ -150,7 +150,8 @@ void Game::makeMove(const Move& move) {
     m_curPlayer = (m_curPlayer == X ? O : X );
     emit boardChanged(move);
     if (m_gameOver) {
-        emit gameOver();
+        QList<Move> moves = winningMoves();
+        emit gameOver(moves);
         this->disconnect(m_ai);
     } else {
         if (computerTurn()) {
@@ -213,6 +214,37 @@ short Game::win(const Coord& c) const {
         }
     }
     return -1;
+}
+
+QList<Move> Game::winningMoves() const {
+    if (m_winDir == -1) {
+        return QList<Move>();
+    }
+    QList<Move> moves;
+    short dy, dx;
+    switch (m_winDir) {
+        case 0: dx = 1; dy =  0; break;
+        case 1: dx = 0; dy =  1; break;
+        case 2: dx = 1; dy =  1; break;
+        default: dx = 1; dy = -1; break;
+    }
+    usi x = latestMove().x();
+    usi y = latestMove().y();
+    Player winner = player(Coord(x, y));
+    Player tmp;
+    while ((tmp = player(Coord(x, y))) == winner) {
+        moves << Move(player(Coord(x, y)), Coord(x, y));
+        x += dx;
+        y += dy;
+    }
+    x = latestMove().x() - dx;
+    y = latestMove().y() - dy;
+    while ((tmp = player(Coord(x, y))) == winner) {
+        moves << Move(player(Coord(x, y)), Coord(x, y));
+        x -= dx;
+        y -= dy;
+    }
+    return moves;
 }
 
 }

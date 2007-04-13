@@ -177,8 +177,9 @@ public slots:
 signals:
     /**
      * @brief emitted at game over
+     * @param moves Winning moves (winning line)
      */
-    void gameOver();
+    void gameOver(const QList<Move>& moves);
 
     /**
      * @brief emitted when board has changed (needs repainting)
@@ -229,6 +230,9 @@ private:
 
     /* calculates if a coord is part of a winning line */
     short win(const Coord& coord) const;
+
+    /* returns the winning line */
+    QList<Move> winningMoves() const;
 
     /* AI */
     Ai *m_ai;

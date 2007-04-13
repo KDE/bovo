@@ -178,12 +178,13 @@ void MainWindow::slotNewGame() {
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
         connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
-        connect(m_game, SIGNAL(gameOver()), SLOT(slotGameOver()));
+        connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
+                this, SLOT(slotGameOver()));
         connect(m_game, SIGNAL(boardChanged(const Move&)),
                 m_demoAi, SLOT(changeBoard(const Move&)));
         connect(m_demoAi, SIGNAL(move(const Move&)),
                 m_scene,  SLOT(hint(const Move&)));
-        disconnect(m_game, SIGNAL(gameOver()),
+        disconnect(m_game, SIGNAL(gameOver(const QList<Move>&)),
                    this, SLOT(slotNewDemoWait()));
         actionCollection()->action("hint")->setEnabled(true);
         connect(actionCollection()->action("hint"), SIGNAL(triggered()),
@@ -211,13 +212,14 @@ void MainWindow::slotNewDemo() {
             Qt::QueuedConnection);
     connect(m_demoAi, SIGNAL(move(const Move&)),
             m_game,  SLOT(move(const Move&)));
-    connect(m_game, SIGNAL(gameOver()), this, SLOT(slotNewDemoWait()));
+    connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
+            this, SLOT(slotNewDemoWait()));
     statusBar()->changeItem(i18n("Start a new Game to play"), 0);
     m_game->start();
 }
 
 void MainWindow::slotNewDemoWait() {
-    m_scene->setWin(m_game->history());
+//    m_scene->setWin(m_game->history());
     QTimer::singleShot(2000, this, SLOT(slotNewDemo()));
 }
 
@@ -232,7 +234,7 @@ void MainWindow::slotGameOver() {
         statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
         message = i18n("You lost!");
     }
-    m_scene->setWin(m_game->history());
+//    m_scene->setWin(m_game->history());
     disconnect(m_game, 0, m_demoAi, 0);
     actionCollection()->action("hint")->setEnabled(false);
     actionCollection()->action("replay")->setEnabled(true);
@@ -263,7 +265,7 @@ void MainWindow::replay() {
     disconnect(m_game, 0, m_scene, 0);
     connect(m_game, SIGNAL(replayBegin()), m_scene, SLOT(replay()));
     connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
-            m_scene, SLOT(setWin(const QList<Move>&)));
+            m_scene, SLOT(slotGameOver(const QList<Move>&)));
     m_game->replay();
 }
 

@@ -59,13 +59,13 @@ public slots:
     void updateBoard(const Move& move);
     void slotPlayerTurn();
     void slotOposerTurn();
-    void slotGameOver();
+    void slotGameOver(const QList<Move>& winningMoves);
     void hint(const Move& hint);
     void hintTimeout();
     void destroyHint();
     void enableAnimation(bool enabled);
     void demandRepaint();
-    void setWin(const QList<Move>& moves);
+    void setWin();
     void replay();
 
 signals:
@@ -95,6 +95,7 @@ private:
     HintItem *m_hintItem;
     Player m_player;
     bool m_animation;
+    QList<Move> m_winningMoves;
 };
 
 } /* namespace gui */
