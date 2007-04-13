@@ -168,6 +168,12 @@ public slots:
      */
     void move(const Move& move);
 
+    /**
+     * @brief start replaying game
+     * Starts the replay of this game, emitting the signal \c replayBegin()
+     */
+    void replay();
+
 signals:
     /**
      * @brief emitted at game over
@@ -189,6 +195,20 @@ signals:
      * @brief emitted when it is the player's turn
      */
     void oposerTurn();
+
+    /**
+     * @brief emitted at replay, signalling the UI to clear itself
+     */
+    void replayBegin();
+
+    /**
+     * @brief emitted when replay ends
+     * @param moves winning line
+     */
+    void replayEnd(const QList<Move>& moves);
+
+private slots:
+    void replayNext();
 
 private:
     /**
@@ -225,7 +245,7 @@ private:
     /* Whether this is a demo game or not */
     DemoMode m_demoMode;
 
-    /* is game over */
+    /* is game over? */
     bool m_gameOver;
 
     /* game history */
@@ -233,6 +253,18 @@ private:
 
     /* user player id */
     Player m_playerMark;
+
+    /* time in between two moves in replay and demo mode, in milliseconds */
+    int m_playTime;
+
+    /* is game in replay mode? */
+    bool m_replaying;
+
+    /* replay iterator for history list */
+    QList<Move>::const_iterator m_replayIterator;
+
+    /* replay iterator for the end of the history */
+    QList<Move>::const_iterator m_replayIteratorEnd;
 
     /* winning direction, or -1 if game isn't won */
     short m_winDir;

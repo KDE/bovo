@@ -122,12 +122,30 @@ void MainWindow::setupActions() {
     connect(m_sBarSkill, SIGNAL(activated(int)),
             this, SLOT(changeSkill(int)));
 
+    m_themeAct = new KSelectAction(i18n("Theme"), this);
+    QStringList themes;
+    themes << i18n("Scribble") << i18n("Spacy") << i18n("Gomoku")
+           << i18n("High Contrast");
+    m_themeAct->setItems(themes);
+    if (m_theme == "scribble") {
+        m_themeAct->setCurrentItem(0);
+    } else if (m_theme == "spacy") {
+        m_themeAct->setCurrentItem(1);
+    } else if (m_theme == "gomoku") {
+        m_themeAct->setCurrentItem(2);
+    } else if (m_theme == "highcontrast") {
+        m_themeAct->setCurrentItem(3);
+    }
+    actionCollection()->addAction("themes", m_themeAct);
+    connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
+
     addAction(newGameAct);
     addAction(quitAct);
     addAction(replayAct);
     addAction(hintAct);
     addAction(animAct);
     addAction(m_skillsAct);
+    addAction(m_themeAct);
 }
 
 void MainWindow::hint() {
@@ -199,7 +217,7 @@ void MainWindow::slotNewDemo() {
 }
 
 void MainWindow::slotNewDemoWait() {
-    m_scene->setWin();
+    m_scene->setWin(m_game->history());
     QTimer::singleShot(2000, this, SLOT(slotNewDemo()));
 }
 
@@ -214,7 +232,8 @@ void MainWindow::slotGameOver() {
         statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
         message = i18n("You lost!");
     }
-    m_scene->setWin();
+    m_scene->setWin(m_game->history());
+    disconnect(m_game, 0, m_demoAi, 0);
     actionCollection()->action("hint")->setEnabled(false);
     actionCollection()->action("replay")->setEnabled(true);
     connect(actionCollection()->action("replay"), SIGNAL(triggered()),
@@ -236,14 +255,23 @@ void MainWindow::replay() {
     }
     statusBar()->changeItem(i18n("Replaying game"), 0);
     actionCollection()->action("replay")->setEnabled(false);
-    m_scene->replay(m_game->history());
-    connect(m_scene, SIGNAL(replayFinished()),
+    disconnect(actionCollection()->action("replay"), SIGNAL(triggered()),
+            this, SLOT(replay()));
+    disconnect(m_game, 0, this, 0);
+    connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
             this, SLOT(reEnableReplay()));
+    disconnect(m_game, 0, m_scene, 0);
+    connect(m_game, SIGNAL(replayBegin()), m_scene, SLOT(replay()));
+    connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
+            m_scene, SLOT(setWin(const QList<Move>&)));
+    m_game->replay();
 }
 
 void MainWindow::reEnableReplay() {
     actionCollection()->action("replay")->setEnabled(true);
-    statusBar()->changeItem(i18n("Game replayed"), 0);
+    statusBar()->changeItem(i18n("Game replayed."), 0);
+    connect(actionCollection()->action("replay"), SIGNAL(triggered()),
+               this, SLOT(replay()));
 }
 
 void MainWindow::changeSkill(int skill) {
@@ -259,6 +287,16 @@ void MainWindow::changeSkill(int skill) {
     m_sBarSkill->setCurrentIndex(skill);
     m_skillsAct->setCurrentItem(skill);
     m_game->setSkill(m_skill);
+}
+
+void MainWindow::changeTheme(int theme) {
+    switch (theme) {
+        case 0: m_theme = "scribble"; break;
+        case 1: m_theme = "spacy"; break;
+        case 2: m_theme = "gomoku"; break;
+        case 3: m_theme = "highcontrast"; break;
+    }
+    m_scene->setTheme(m_theme);
 }
 
 QString MainWindow::getSkillName(Skill skill) const {

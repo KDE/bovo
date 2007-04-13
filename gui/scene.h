@@ -52,10 +52,8 @@ public:
     void setGame(Game* game, Player player = X, DemoMode demoMode = NotDemo);
     void resizeScene( int width, int height );
     bool isBusy() const;
-    QPointF cellCenter( int x, int y ) const;
-    QPointF cellTopLeft( int x, int y ) const;
-    void setWin();
     void replay(const QList<Move>& moves);
+    void setTheme(const QString& theme);
 
 public slots:
     void updateBoard(const Move& move);
@@ -67,6 +65,8 @@ public slots:
     void destroyHint();
     void enableAnimation(bool enabled);
     void demandRepaint();
+    void setWin(const QList<Move>& moves);
+    void replay();
 
 signals:
     void move(const Move&);
@@ -78,6 +78,8 @@ private slots:
 private:
     virtual void drawBackground( QPainter *p, const QRectF& rect );
     virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
+    QPointF cellCenter( int x, int y ) const;
+    QPointF cellTopLeft( int x, int y ) const;
     void killAnimations();
     bool m_activate;
     Game *m_game;

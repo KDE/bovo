@@ -1,0 +1,72 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+          "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="2cm" height="3cm" viewBox="0 0 24 24"
+xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+  <circle id="x1" cx="2" cy="2" r="1" fill="black" stroke="none" />
+  <circle id="x2" cx="2" cy="2" r="1" fill="black" stroke="none" />
+  <circle id="x3" cx="2" cy="2" r="1" fill="black" stroke="none" />
+  <circle id="x4" cx="2" cy="2" r="1" fill="black" stroke="none" />
+  <circle id="x5" cx="2" cy="2" r="1" fill="black" stroke="none" />
+
+  <circle id="o1" cx="2" cy="4" r="1" fill="white" stroke="none" />
+  <circle id="o2" cx="2" cy="4" r="1" fill="white" stroke="none" />
+  <circle id="o3" cx="2" cy="4" r="1" fill="white" stroke="none" />
+  <circle id="o4" cx="2" cy="4" r="1" fill="white" stroke="none" />
+  <circle id="o5" cx="2" cy="4" r="1" fill="white" stroke="none" />
+
+  <rect id="background" x="0" y="0" width="24" height="24" fill="brown"
+        stroke="none" />
+
+  <g id="grid" stroke="black" stroke-width="0.05" >
+      <rect x="1" y="1" width="22" height="22" stroke="none" fill="none" stroke-width="0" />
+
+      <line x1="1" y1="1.5" x2="23" y2="1.5"   />
+      <line x1="1" y1="2.5" x2="23" y2="2.5"   />
+      <line x1="1" y1="3.5" x2="23" y2="3.5"   />
+      <line x1="1" y1="4.5" x2="23" y2="4.5"   />
+      <line x1="1" y1="5.5" x2="23" y2="5.5"   />
+      <line x1="1" y1="6.5" x2="23" y2="6.5"   />
+      <line x1="1" y1="7.5" x2="23" y2="7.5"   />
+      <line x1="1" y1="8.5" x2="23" y2="8.5"   />
+      <line x1="1" y1="9.5" x2="23" y2="9.5"   />
+      <line x1="1" y1="10.5" x2="23" y2="10.5"   />
+      <line x1="1" y1="11.5" x2="23" y2="11.5"   />
+      <line x1="1" y1="12.5" x2="23" y2="12.5"   />
+      <line x1="1" y1="13.5" x2="23" y2="13.5"   />
+      <line x1="1" y1="14.5" x2="23" y2="14.5"   />
+      <line x1="1" y1="15.5" x2="23" y2="15.5"   />
+      <line x1="1" y1="16.5" x2="23" y2="16.5"   />
+      <line x1="1" y1="17.5" x2="23" y2="17.5"   />
+      <line x1="1" y1="18.5" x2="23" y2="18.5"   />
+      <line x1="1" y1="19.5" x2="23" y2="19.5"   />
+      <line x1="1" y1="20.5" x2="23" y2="20.5"   />
+      <line x1="1" y1="21.5" x2="23" y2="21.5"   />
+      <line x1="1" y1="22.5" x2="23" y2="22.5"   />
+
+      <line x1="1.5" y1="1" x2="1.5" y2="23"   />
+      <line x1="2.5" y1="1" x2="2.5" y2="23"   />
+      <line x1="3.5" y1="1" x2="3.5" y2="23"   />
+      <line x1="4.5" y1="1" x2="4.5" y2="23"   />
+      <line x1="5.5" y1="1" x2="5.5" y2="23"   />
+      <line x1="6.5" y1="1" x2="6.5" y2="23"   />
+      <line x1="7.5" y1="1" x2="7.5" y2="23"   />
+      <line x1="8.5" y1="1" x2="8.5" y2="23"   />
+      <line x1="9.5" y1="1" x2="9.5" y2="23"   />
+      <line x1="10.5" y1="1" x2="10.5" y2="23"   />
+      <line x1="11.5" y1="1" x2="11.5" y2="23"   />
+      <line x1="12.5" y1="1" x2="12.5" y2="23"   />
+      <line x1="13.5" y1="1" x2="13.5" y2="23"   />
+      <line x1="14.5" y1="1" x2="14.5" y2="23"   />
+      <line x1="15.5" y1="1" x2="15.5" y2="23"   />
+      <line x1="16.5" y1="1" x2="16.5" y2="23"   />
+      <line x1="17.5" y1="1" x2="17.5" y2="23"   />
+      <line x1="18.5" y1="1" x2="18.5" y2="23"   />
+      <line x1="19.5" y1="1" x2="19.5" y2="23"   />
+      <line x1="20.5" y1="1" x2="20.5" y2="23"   />
+      <line x1="21.5" y1="1" x2="21.5" y2="23"   />
+      <line x1="22.5" y1="1" x2="22.5" y2="23"   />
+  </g>
+
+</svg>

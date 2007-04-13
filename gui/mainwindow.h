@@ -64,6 +64,7 @@ public slots:
     void slotNewDemoWait();
     void replay();
     void changeSkill(int);
+    void changeTheme(int);
     void reEnableReplay();
 
 private:
@@ -77,6 +78,7 @@ private:
     QString getSkillName(Skill skill) const;
     QComboBox* m_sBarSkill;
     KSelectAction* m_skillsAct;
+    KSelectAction* m_themeAct;
     bool m_computerStarts;
     Ai *m_demoAi;
 };

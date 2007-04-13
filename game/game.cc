@@ -40,7 +40,8 @@ namespace bovo
 
 Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
            DemoMode demoMode) : m_curPlayer(startingPlayer), m_computerMark(O),
-                                m_demoMode(demoMode), m_playerMark(X) {
+                                m_demoMode(demoMode), m_playerMark(X),
+                                m_playTime(400), m_replaying(false) {
     m_board = new Board(dimension);
     m_ai = new Ai(dimension, skill, m_computerMark);
     m_winDir = -1;
@@ -63,7 +64,7 @@ bool Game::computerTurn() const {
 }
 
 bool Game::isGameOver() const {
-    return m_gameOver;
+    return m_gameOver || m_demoMode;
 }
 
 QList<Move> Game::history() const {
@@ -111,6 +112,29 @@ void Game::move(const Move& move) {
     makeMove(move);
 }
 
+void Game::replay() {
+    m_replayIterator = m_history.begin();
+    m_replayIteratorEnd = m_history.end();
+    if (m_gameOver && !m_replaying) {
+        disconnect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
+        connect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
+        emit replayBegin();
+    }
+}
+
+/* private slots */
+
+void Game::replayNext() {
+    if (m_replayIterator != m_replayIteratorEnd) {
+        QTimer::singleShot(m_playTime, this, SLOT(replayNext()));
+        emit boardChanged(*m_replayIterator);
+        ++m_replayIterator;
+    } else {
+        m_replaying = false;
+        emit replayEnd(m_history); // FIX:!!!!!!!
+    }
+}
+
 /* private methods */
 
 void Game::makeMove(const Move& move) {
@@ -127,16 +151,17 @@ void Game::makeMove(const Move& move) {
     emit boardChanged(move);
     if (m_gameOver) {
         emit gameOver();
+        this->disconnect(m_ai);
     } else {
         if (computerTurn()) {
             if (m_demoMode) {
-                QTimer::singleShot(300, this, SIGNAL(oposerTurn()));
+                QTimer::singleShot(m_playTime, this, SIGNAL(oposerTurn()));
             } else {
                 emit oposerTurn();
             }
         } else {
             if (m_demoMode) {
-                QTimer::singleShot(300, this, SIGNAL(playerTurn()));
+                QTimer::singleShot(m_playTime, this, SIGNAL(playerTurn()));
             } else {
                 emit playerTurn();
             }

@@ -69,6 +69,14 @@ Scene::~Scene() {
     m_renderer->deleteLater();
 }
 
+void Scene::setTheme(const QString& theme) {
+    QString themePath = QString("themes/%1/pics/").arg(theme);
+    QString filename = KStandardDirs::locate("appdata", themePath);
+    filename += "theme.svg";
+    m_renderer->load(filename);
+    invalidate(0.0, 0.0, width(), height(), QGraphicsScene::BackgroundLayer);
+}
+
 void Scene::activate(bool activate) {
     m_activate = activate;
 }
@@ -79,7 +87,7 @@ bool isAWinner(unsigned short x, unsigned short y, Game* game, Player player) {
     /** @TODO skip ok(coord) if possible */
 }
 
-void Scene::setWin() {
+void Scene::setWin(const QList<Move>& moves) {
     if (!m_game->isGameOver()) {
         return;
     }
@@ -244,6 +252,18 @@ void Scene::replay(const QList<Move>& moves) {
     m_replayTimer->start(700);
 }
 
+/* It would be nice if this faded out all marks if animations is enabled... */
+void Scene::replay() {
+    QList<QGraphicsItem*> allMarks = items();
+    foreach (QGraphicsItem* mark, allMarks) {
+        removeItem(mark);
+        delete mark;
+    }
+    demandRepaint();
+    connect(m_game, SIGNAL(boardChanged(const Move&)),
+            this, SLOT(updateBoard(const Move&)));
+}
+
 void Scene::continueReplay() {
     if(!m_game->isGameOver()) {
         m_replayTimer->stop();
@@ -256,7 +276,7 @@ void Scene::continueReplay() {
         addItem(mark);
         demandRepaint();
     } else {
-        setWin();
+//        setWin();
         m_replayTimer->stop();
         emit replayFinished();
     }

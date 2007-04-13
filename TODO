@@ -47,7 +47,7 @@ REDESIGN (4.0)
 [X] merge coord and Move classes, or at least bridge them together and make Move
     use coord internally.
 [ ] Clean up the winning mess -> Game::SIGNAL(gameOver(const QList<Move>&))
-[ ] Redesign replay -> Game::SLOT(replay()) (bC(Move), gO(..))
+[X] Redesign replay -> Game::SLOT(replay()) (bC(Move), gO(..))
 
 FEATURES (4.0)
 ==============
@@ -58,7 +58,7 @@ FEATURES (4.0)
 [ ] Implement draws (yes, it have never ever happened to me in real life, but it
     is not impossible in theory, ...right?)
 [ ] "New game" doesn't mean a loss if it's just started. (isn't this fixed?)
-[~] Theme support -- look into what our fellow devs have come up with
+[X] Theme support -- look into what our fellow devs have come up with
     [ ] Read name of files from theme file
     [ ] Search for theme files in theme folders
     [ ] Save selected theme in configuration
@@ -76,24 +76,23 @@ FEATURES (4.0)
     [X] Hints fades in and fades out
         [X] Fade out when dying of age, but not when killed
     [ ] Winning line fades in, move by move
+[ ] Kidnap an artist for some decent artworks
 
 THEMES (4.0)
 ============
 [X] scribble (pen on paper)
 [X] spacy
-[ ] gomoku
+[X] gomoku
 [ ] KDE vs Gnome
-[ ] high contrast
+[X] high contrast
 
 FEATURES (4.1)
 ==============
-[ ] Change replay speed
+[ ] Change replay & demo playback speed
 [ ] Change board size
-[ ] Gomoku theme
 [ ] "Natural paper" whith coffee stains, etc.
-[ ] Change Demo playback speed
 [ ] Save a replay
-[ ] View a replay
+[ ] Open a replay
 [ ] Save an active game and open it again
 [ ] Start with latest game when opening
 [ ] Save stats from time to time
@@ -104,7 +103,6 @@ FEATURES (4.1)
     Look into kgamelib or what it is called. Create XML-like open protocol for
     Bovo friends, letting Gnomes play with us (is it possible to add a feature
     to the protocol that allways makes them loose? =P )
-[ ] Kidnap an artist for some decent artworks
 
 ADAPTING AI
 ===========

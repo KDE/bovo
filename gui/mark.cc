@@ -37,7 +37,7 @@ namespace gui {
 
 Mark::Mark(Scene* scene, const Move& move, bool animate) : QGraphicsSvgItem(),
   m_scene(scene), m_row(move.y()), m_col(move.x()) {
-    m_sizeShrink = 1.0/(qrand()%5+7.0);
+    m_sizeShrink = 1.0/12.0; //1.0/(qrand()%5+7.0);
     setElementId(QString(move.player() == X ? "x%1" : "o%1")
             .arg(QString::number(qrand() % 5 + 1)));
     m_tick = 20;
