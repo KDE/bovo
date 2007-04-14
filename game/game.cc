@@ -122,6 +122,15 @@ void Game::replay() {
     }
 }
 
+void Game::undoLatest() {
+    if (m_history.empty()) {
+        return;
+    }
+    Move move(No, m_history.last().coord());
+    m_history.removeLast();
+    emit undo(move);
+}
+
 /* private slots */
 
 void Game::replayNext() {

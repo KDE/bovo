@@ -68,6 +68,7 @@ FEATURES (4.0)
     - Don't undo if there are no moves.
     - Don't undo if game is over.
     - Only allow undo if it is a "Player vs. AI" Game
+[ ] Redo moves.
 [X] Hint moves.
 [ ] Changing AI level means restarting game OR setting AI for next game
     (dialog?)

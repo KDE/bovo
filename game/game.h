@@ -174,6 +174,11 @@ public slots:
      */
     void replay();
 
+    /**
+     * @brief undo the latest move in the history
+     */
+    void undoLatest();
+
 signals:
     /**
      * @brief emitted at game over
@@ -207,6 +212,12 @@ signals:
      * @param moves winning line
      */
     void replayEnd(const QList<Move>& moves);
+
+    /**
+     * @brief emitted when a move is undoed
+     * @param move move that has been deleted (move.player() == No)
+     */
+    void undo(const Move&);
 
 private slots:
     void replayNext();
