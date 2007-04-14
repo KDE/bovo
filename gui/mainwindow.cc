@@ -19,32 +19,39 @@
 *
 ********************************************************************/
 
+// Class declaration
 #include "mainwindow.h"
 
+// Qt includes
 #include <QVBoxLayout>
 #include <QWidget>
 #include <QComboBox>
 #include <QTimer>
 #include <QBrush>
 
+// KDE includes
 #include <kaction.h>
 #include <kactioncollection.h>
-#include <kmessagebox.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
-#include <kstandarddirs.h>
+/*#include <kstandarddirs.h>*/
 #include <kselectaction.h>
 #include <ktoggleaction.h>
 #include <klocale.h>
 #include <kicon.h>
 
+// Bovo includes
 #include "ai.h"
 #include "common.h"
 #include "dimension.h"
 #include "game.h"
 #include "move.h"
 #include "scene.h"
+#include "theme.h"
 #include "view.h"
+
+// KConfig XT includes
+#include "settings.h"
 
 using namespace bovo;
 using namespace ai;
@@ -53,13 +60,15 @@ namespace gui {
 
 MainWindow::MainWindow(const QString& theme, QWidget* parent)
   : KMainWindow(parent), m_scene(0), m_game(0), m_theme(theme), m_wins(0),
-    m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0) {
+    m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0),
+    m_playbackSpeed(4) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
     statusBar()->addPermanentWidget(m_sBarSkill);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
+    readConfig();
     slotNewGame();
 
     m_view = new View(m_scene, this);
@@ -75,6 +84,20 @@ MainWindow::~MainWindow() {
     delete m_game;
     delete m_skillsAct;
 }
+
+void MainWindow::readConfig() {
+    m_theme         = Settings::theme();
+    m_skill         = idToSkill(Settings::skill());
+    m_playbackSpeed = Settings::playbackSpeed();
+}
+
+void MainWindow::saveSettings() {
+    Settings::setTheme(m_theme);
+    Settings::setSkill(skillToId(m_skill));
+    Settings::setPlaybackSpeed(m_playbackSpeed);
+    Settings::writeConfig();
+}
+//KGlobal::dirs() -> findAllResources("appdata", "*.themerc");
 
 void MainWindow::setupActions() {
     QAction *newGameAct = actionCollection()->addAction(KStandardAction::New,
@@ -123,19 +146,23 @@ void MainWindow::setupActions() {
             this, SLOT(changeSkill(int)));
 
     m_themeAct = new KSelectAction(i18n("Theme"), this);
+    m_themes << Theme("Scribble", "scribble", 0)
+             << Theme("Spacy", "spacy", 1)
+             << Theme("Gomoku", "gomoku", 2)
+             << Theme("High Contrast", "highcontrast", 3);
     QStringList themes;
-    themes << i18n("Scribble") << i18n("Spacy") << i18n("Gomoku")
-           << i18n("High Contrast");
-    m_themeAct->setItems(themes);
-    if (m_theme == "scribble") {
-        m_themeAct->setCurrentItem(0);
-    } else if (m_theme == "spacy") {
-        m_themeAct->setCurrentItem(1);
-    } else if (m_theme == "gomoku") {
-        m_themeAct->setCurrentItem(2);
-    } else if (m_theme == "highcontrast") {
-        m_themeAct->setCurrentItem(3);
+    foreach (Theme theme, m_themes) {
+        themes << theme.name();
     }
+    m_themeAct->setItems(themes);
+    int themeId = 0;
+    foreach (Theme theme, m_themes) {
+        if (theme.path() == m_theme) {
+            themeId = theme.id();
+            break;
+        }
+    }
+    m_themeAct->setCurrentItem(themeId);
     actionCollection()->addAction("themes", m_themeAct);
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
@@ -284,28 +311,46 @@ void MainWindow::reEnableReplay() {
 }
 
 void MainWindow::changeSkill(int skill) {
-    switch (skill) {
-        case 0: m_skill = RidiculouslyEasy; break;
-        case 1: m_skill = VeryEasy; break;
-        case 2: m_skill = Easy; break;
-        case 3: m_skill = Normal; break;
-        case 4: m_skill = Hard; break;
-        case 5: m_skill = VeryHard; break;
-        case 6: m_skill = Zlatan; break;
-    }
+    m_skill = idToSkill(skill);
     m_sBarSkill->setCurrentIndex(skill);
     m_skillsAct->setCurrentItem(skill);
     m_game->setSkill(m_skill);
+    saveSettings();
 }
 
-void MainWindow::changeTheme(int theme) {
-    switch (theme) {
-        case 0: m_theme = "scribble"; break;
-        case 1: m_theme = "spacy"; break;
-        case 2: m_theme = "gomoku"; break;
-        case 3: m_theme = "highcontrast"; break;
+void MainWindow::changeTheme(int themeId) {
+    foreach (Theme theme, m_themes) {
+        if (themeId == theme.id()) {
+            m_theme = theme.path();
+            m_scene->setTheme(m_theme);
+            saveSettings();
+            return;
+        }
     }
-    m_scene->setTheme(m_theme);
+}
+
+int MainWindow::skillToId(Skill skill) const {
+    switch (skill) {
+        case RidiculouslyEasy: return 0;
+        case VeryEasy: return 1;
+        case Easy: return 2;
+        case Normal: return 3;
+        case Hard: return 4;
+        case VeryHard: return 5;
+        case Zlatan: return 6;
+    }
+}
+
+Skill MainWindow::idToSkill(int id) const {
+    switch (id) {
+        case 0: return RidiculouslyEasy; break;
+        case 1: return VeryEasy; break;
+        case 2: return Easy; break;
+        case 3: return Normal; break;
+        case 4: return Hard; break;
+        case 5: return VeryHard; break;
+        case 6: return Zlatan; break;
+    }
 }
 
 QString MainWindow::getSkillName(Skill skill) const {
@@ -317,7 +362,6 @@ QString MainWindow::getSkillName(Skill skill) const {
         case Hard: return i18n("Hard");
         case VeryHard: return i18n("Very Hard");
         case Zlatan: return i18n("Impossible");
-        default: return i18n("Illegal skill");
     }
 }
 
@@ -335,4 +379,5 @@ void MainWindow::disableUndo() {
 
 } /* namespace gui */
 
+// Class moc
 #include "mainwindow.moc"

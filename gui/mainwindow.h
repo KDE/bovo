@@ -45,6 +45,7 @@ class KSelectAction;
 namespace gui {
 
 class Scene;
+class Theme;
 class View;
 
 class MainWindow : public KMainWindow
@@ -74,6 +75,7 @@ private:
     View  *m_view;
     Game  *m_game;
     QString m_theme;
+    QList<Theme> m_themes;
     int m_wins, m_losses;
     void setupActions();
     Skill m_skill;
@@ -83,6 +85,11 @@ private:
     KSelectAction* m_themeAct;
     bool m_computerStarts;
     Ai *m_demoAi;
+    void readConfig();
+    void saveSettings();
+    Skill idToSkill(int id) const;
+    int skillToId(Skill skill) const;
+    int m_playbackSpeed;
 };
 
 } /* namespace gui */
