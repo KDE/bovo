@@ -114,25 +114,29 @@ SLOT(slotGameOver(const QList<Move>&)));
 
 void Scene::updateBoard(const Move& move) {
     destroyHint();
-    if (move.valid() && move.player() != No) {
+    if (move.valid()) {
         Mark* mark = new Mark(this, move, m_animation);
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
         demandRepaint();
-    } else if (move.player() == No && move.valid()) {
-        QList<QGraphicsItem*> allMarks = items(cellCenter(move.x(), move.y()));
+    } else if (move.player() == No) {
+        qDebug() << "Here";
+        QList<QGraphicsItem*> allMarks = items();
         QList<QGraphicsItem*>::iterator it = allMarks.begin();
         QList<QGraphicsItem*>::iterator end = allMarks.end();
         for (; it != end; ++it) {
             if (Mark* mark = qgraphicsitem_cast<Mark *>(*it)) {
-                if (m_animation) {
-                    connect(mark, SIGNAL(killed(Mark*)),
-                            this, SLOT(killMark(Mark*)));
-                } else {
-                    removeItem(mark);
-                    delete mark;
-                    demandRepaint();
-                    return;
+                if (mark->x() == move.x() && mark->y() == move.y()) {
+                    if (m_animation) {
+                        connect(mark, SIGNAL(killed(Mark*)),
+                                this, SLOT(killMark(Mark*)));
+                        mark->kill();
+                    } else {
+                        removeItem(mark);
+                        delete mark;
+                        demandRepaint();
+                        return;
+                    }
                 }
             }
         }

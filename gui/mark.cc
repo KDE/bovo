@@ -71,16 +71,23 @@ void Mark::killAnimation() {
 }
 
 void Mark::kill() {
-    disconnect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
-    m_ticker->stop();
+    qDebug() << "Killing";
+    if (m_ticker != 0) {
+        disconnect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        m_ticker->stop();
+    } else {
+        m_ticker = new QTimer(this);
+    }
     connect(m_ticker, SIGNAL(timeout()), this, SLOT(killTick()));
-    m_ticker->start();
+    m_ticker->start(30);
 }
 
 void Mark::killTick() {
+    qDebug() << ".";
     m_opacity -= 0.1;
     m_scene->demandRepaint();
     if (m_opacity <= 0.1) {
+        qDebug() << "Done!";
         m_ticker->stop();
         emit killed(this);
     }

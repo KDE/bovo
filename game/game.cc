@@ -40,8 +40,9 @@ namespace bovo
 
 Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
            DemoMode demoMode) : m_curPlayer(startingPlayer), m_computerMark(O),
-                                m_demoMode(demoMode), m_playerMark(X),
-                                m_playTime(400), m_replaying(false) {
+                                m_demoMode(demoMode), m_inUndoState(false),
+                                m_playerMark(X), m_playTime(400),
+                                m_replaying(false) {
     m_board = new Board(dimension);
     m_ai = new Ai(dimension, skill, m_computerMark);
     m_winDir = -1;
@@ -106,10 +107,15 @@ short Game::winDir() const {
 /* public slots */
 
 void Game::move(const Move& move) {
-    if (!m_board->empty(move.coord()) || move.player() != m_curPlayer) {
+    bool tmp_emptyHistory = m_history.empty();
+    if (!m_board->empty(move.coord()) || move.player() != m_curPlayer
+         || m_inUndoState) {
         return;
     }
     makeMove(move);
+    if (tmp_emptyHistory && !m_history.empty() && !m_demoMode) {
+        emit undoAble();
+    }
 }
 
 void Game::replay() {
@@ -123,12 +129,39 @@ void Game::replay() {
 }
 
 void Game::undoLatest() {
-    if (m_history.empty()) {
+    m_inUndoState = true;
+    if (m_history.empty() ||  m_demoMode || m_gameOver) {
+        m_inUndoState = false;
         return;
+    } else if (m_curPlayer == m_computerMark) {
+        Move move(No, m_history.last().coord());
+        m_history.removeLast();
+        m_board->setPlayer(move.coord(), move.player());
+        emit boardChanged(move);
+        m_curPlayer = m_playerMark;
+        emit playerTurn();
+    } else if (m_curPlayer == m_playerMark && m_history.count() == 1) {
+        Move move(No, m_history.last().coord());
+        m_history.removeLast();
+        m_board->setPlayer(move.coord(), move.player());
+        emit boardChanged(move);
+        m_curPlayer = m_computerMark;
+        emit oposerTurn();
+    } else if (m_curPlayer == m_playerMark && m_history.count() > 1 ) {
+        Move move(No, m_history.last().coord());
+        m_history.removeLast();
+        m_board->setPlayer(move.coord(), move.player());
+        emit boardChanged(move);
+        move = Move(No, m_history.last().coord());
+        m_history.removeLast();
+        m_board->setPlayer(move.coord(), move.player());
+        emit boardChanged(move);
+        emit playerTurn();
     }
-    Move move(No, m_history.last().coord());
-    m_history.removeLast();
-    emit undo(move);
+    if (m_history.empty() && !m_demoMode) {
+        emit undoNotAble();
+    }
+    m_inUndoState = false;
 }
 
 /* private slots */
@@ -160,6 +193,7 @@ void Game::makeMove(const Move& move) {
     emit boardChanged(move);
     if (m_gameOver) {
         QList<Move> moves = winningMoves();
+        emit undoNotAble();
         emit gameOver(moves);
         this->disconnect(m_ai);
     } else {

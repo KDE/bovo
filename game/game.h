@@ -188,7 +188,7 @@ signals:
 
     /**
      * @brief emitted when board has changed (needs repainting)
-     * @param move the Move that has changed the board
+     * @param move the Move that has changed the board, player()==No means undo
      */
     void boardChanged(const Move& move);
 
@@ -214,10 +214,14 @@ signals:
     void replayEnd(const QList<Move>& moves);
 
     /**
-     * @brief emitted when a move is undoed
-     * @param move move that has been deleted (move.player() == No)
+     * @brief emitted once this game is allowed to be undoed
      */
-    void undo(const Move&);
+    void undoAble();
+
+    /**
+     * @brief emitted once this game no longer is allowed to be undoed
+     */
+    void undoNotAble();
 
 private slots:
     void replayNext();
@@ -265,6 +269,9 @@ private:
 
     /* game history */
     QList<Move> m_history;
+
+    /* if game is in Undo state */
+    bool m_inUndoState;
 
     /* user player id */
     Player m_playerMark;

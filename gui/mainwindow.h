@@ -66,6 +66,8 @@ public slots:
     void changeSkill(int);
     void changeTheme(int);
     void reEnableReplay();
+    void enableUndo();
+    void disableUndo();
 
 private:
     Scene *m_scene;

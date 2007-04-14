@@ -37,12 +37,8 @@ bool Square::empty() const {
     return m_player == No;
 }
 
-void Square::setPlayer(Player player) throw(busy) {
-    if (m_player == No) {
-        m_player = player;
-    } else {
-        throw busy();
-    }
+void Square::setPlayer(Player player) {
+    m_player = player;
 }
 
 } /* namespace bovo */

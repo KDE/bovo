@@ -73,9 +73,8 @@ public:
     /**
      * @brief sets player id of this square
      * @description sets the player id of this square to X or O
-     * @exception throws busy exception if player id is allready set
      */
-    void setPlayer(Player player) throw(busy);
+    void setPlayer(Player player);
 
 private:
     /* player property of this Square */

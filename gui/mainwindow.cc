@@ -139,6 +139,12 @@ void MainWindow::setupActions() {
     actionCollection()->addAction("themes", m_themeAct);
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
+    QAction *undoAct = actionCollection()->addAction(KStandardAction::Undo,
+                                        "undo", this);
+    undoAct->setToolTip(i18n("Undo your latest move."));
+    undoAct->setWhatsThis(i18n("This will undo the latest turn."));
+    undoAct->setEnabled(false);
+
     addAction(newGameAct);
     addAction(quitAct);
     addAction(replayAct);
@@ -146,6 +152,7 @@ void MainWindow::setupActions() {
     addAction(animAct);
     addAction(m_skillsAct);
     addAction(m_themeAct);
+    addAction(undoAct);
 }
 
 void MainWindow::hint() {
@@ -176,6 +183,8 @@ void MainWindow::slotNewGame() {
         m_demoAi = new Ai(dimension, Zlatan, X);
         m_scene->setGame(m_game, X, NotDemo);
         m_computerStarts = !m_computerStarts;
+        connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
+        connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
         connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
         connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
         connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
@@ -184,8 +193,6 @@ void MainWindow::slotNewGame() {
                 m_demoAi, SLOT(changeBoard(const Move&)));
         connect(m_demoAi, SIGNAL(move(const Move&)),
                 m_scene,  SLOT(hint(const Move&)));
-        disconnect(m_game, SIGNAL(gameOver(const QList<Move>&)),
-                   this, SLOT(slotNewDemoWait()));
         actionCollection()->action("hint")->setEnabled(true);
         connect(actionCollection()->action("hint"), SIGNAL(triggered()),
                 m_demoAi, SLOT(slotMove()));
@@ -312,6 +319,18 @@ QString MainWindow::getSkillName(Skill skill) const {
         case Zlatan: return i18n("Impossible");
         default: return i18n("Illegal skill");
     }
+}
+
+void MainWindow::enableUndo() {
+    connect(actionCollection()->action("undo"), SIGNAL(triggered()),
+           m_game, SLOT(undoLatest()));
+    actionCollection()->action("undo")->setEnabled(true);
+}
+
+void MainWindow::disableUndo() {
+    disconnect(actionCollection()->action("undo"), SIGNAL(triggered()),
+               m_game, SLOT(undoLatest()));
+    actionCollection()->action("undo")->setEnabled(false);
 }
 
 } /* namespace gui */
