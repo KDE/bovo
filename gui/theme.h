@@ -28,6 +28,7 @@ namespace gui {
 
 class Theme {
 public:
+    Theme();
     Theme(const QString& name, const QString& path, int id);
     QString name() const;
     QString path() const;

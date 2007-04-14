@@ -23,6 +23,9 @@
 
 namespace gui {
 
+Theme::Theme() : m_id(0) {
+}
+
 Theme::Theme(const QString& name, const QString& path, int id)
   : m_name(name), m_path(path), m_id(id) {
 }

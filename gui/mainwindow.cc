@@ -60,7 +60,7 @@ using namespace ai;
 namespace gui {
 
 MainWindow::MainWindow(const QString& theme, QWidget* parent)
-  : KMainWindow(parent), m_scene(0), m_game(0), m_theme(theme), m_wins(0),
+  : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0),
     m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0),
     m_playbackSpeed(4) {
     statusBar()->insertItem("            ", 0, 10);
@@ -69,12 +69,12 @@ MainWindow::MainWindow(const QString& theme, QWidget* parent)
     statusBar()->addPermanentWidget(m_sBarSkill);
     statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
+    setupThemes();
     readConfig();
     slotNewGame();
 
     m_view = new View(m_scene, this);
     m_view->show();
-    setupThemes();
     setupActions();
     setCentralWidget(m_view);
     setupGUI();
@@ -104,13 +104,19 @@ void MainWindow::setupThemes() {
 }
 
 void MainWindow::readConfig() {
-    m_theme         = Settings::theme();
+    QString themePath = Settings::theme();
+    foreach (Theme tmpTheme, m_themes) {
+        if (tmpTheme.path() == themePath) {
+            m_theme = tmpTheme;
+            break;
+        }
+    }
     m_skill         = idToSkill(Settings::skill());
     m_playbackSpeed = Settings::playbackSpeed();
 }
 
 void MainWindow::saveSettings() {
-    Settings::setTheme(m_theme);
+    Settings::setTheme(m_theme.path());
     Settings::setSkill(skillToId(m_skill));
     Settings::setPlaybackSpeed(m_playbackSpeed);
     Settings::writeConfig();
@@ -170,7 +176,7 @@ void MainWindow::setupActions() {
     m_themeAct->setItems(themes);
     int themeId = 0;
     foreach (Theme theme, m_themes) {
-        if (theme.path() == m_theme) {
+        if (theme.path() == m_theme.path()) {
             themeId = theme.id();
             break;
         }
@@ -337,7 +343,7 @@ void MainWindow::changeSkill(int skill) {
 void MainWindow::changeTheme(int themeId) {
     foreach (Theme theme, m_themes) {
         if (themeId == theme.id()) {
-            m_theme = theme.path();
+            m_theme = theme;
             m_scene->setTheme(m_theme);
             saveSettings();
             return;

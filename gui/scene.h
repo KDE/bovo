@@ -41,19 +41,20 @@ using namespace bovo;
 namespace gui {
     class HintItem;
     class Mark;
+    class Theme;
 
 class Scene : public QGraphicsScene
 {
     Q_OBJECT
 
 public:
-    Scene(const QString& theme);
+    Scene(const Theme& theme);
     ~Scene();
     void activate(bool activate);
     void setGame(Game* game, Player player = X, DemoMode demoMode = NotDemo);
     void resizeScene( int width, int height );
     bool isBusy() const;
-    void setTheme(const QString& theme);
+    void setTheme(const Theme& theme);
 
 public slots:
     void updateBoard(const Move& move);

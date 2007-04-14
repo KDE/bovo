@@ -36,16 +36,17 @@
 #include "hintitem.h"
 #include "mark.h"
 #include "move.h"
+#include "theme.h"
 
 using namespace bovo;
 
 namespace gui {
 
-Scene::Scene(const QString& theme)
+Scene::Scene(const Theme& theme)
   : m_activate(false), m_game(0), m_player(No), m_animation(true) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
-    QString themePath = QString("themes/%1/").arg(theme);
+    QString themePath = QString("themes/%1/").arg(theme.path());
     QString filename = KStandardDirs::locate("appdata", themePath);
             filename += "theme.svg";
     m_renderer = new QSvgRenderer(filename);
@@ -61,12 +62,12 @@ Scene::~Scene() {
     m_renderer->deleteLater();
 }
 
-void Scene::setTheme(const QString& theme) {
-    QString themePath = QString("themes/%1/pics/").arg(theme);
+void Scene::setTheme(const Theme& theme) {
+    QString themePath = QString("themes/%1/").arg(theme.path());
     QString filename = KStandardDirs::locate("appdata", themePath);
     filename += "theme.svg";
     m_renderer->load(filename);
-    invalidate(0.0, 0.0, width(), height());
+    invalidate(0.0, 0.0, width()*10, height());
 }
 
 void Scene::activate(bool activate) {

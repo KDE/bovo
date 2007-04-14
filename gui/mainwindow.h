@@ -27,6 +27,7 @@
 #include <kmainwindow.h>
 
 #include "common.h"
+#include "theme.h"
 
 namespace ai {
     class Ai;
@@ -45,7 +46,6 @@ class KSelectAction;
 namespace gui {
 
 class Scene;
-class Theme;
 class View;
 
 class MainWindow : public KMainWindow
@@ -75,7 +75,7 @@ private:
     Scene *m_scene;
     View  *m_view;
     Game  *m_game;
-    QString m_theme;
+    Theme  m_theme;
     QList<Theme> m_themes;
     int m_wins, m_losses;
     void setupActions();
