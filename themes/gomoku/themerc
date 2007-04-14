@@ -1,3 +1,6 @@
-[Theme Specification]
-Path=gomoku
+[Desktop Entry]
 Name=Gomoku
+Comment=A classic japanese theme
+
+[Config]
+Path=gomoku

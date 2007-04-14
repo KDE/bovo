@@ -39,6 +39,7 @@
 #include <ktoggleaction.h>
 #include <klocale.h>
 #include <kicon.h>
+#include <kdesktopfile.h>
 
 // Bovo includes
 #include "ai.h"
@@ -91,23 +92,12 @@ void MainWindow::setupThemes() {
                            "themes/*/themerc");
     int i = 0;
     foreach (QString themerc, themercs) {
-        KConfig themeConfig(themerc);
-        KConfigGroup specification(&themeConfig, "Theme Specification");
-        QStringList languages = KGlobal::locale()->languageList();
-        languages << KGlobal::locale()->languagesTwoAlpha();
-        QString themeName;
-        foreach (QString language, languages) {
-            qDebug() << language;
-            QString format = QString("Name[%1]").arg(language);
-            themeName = specification.readEntry(format, QString());
-            if (!themeName.isEmpty()) {
-                break;
-            }
-        }
-        if (themeName.isEmpty()) {
-            themeName = specification.readEntry("Name", QString());
-        }
-        QString pathName = specification.readEntry("Path", QString());
+        KDesktopFile themeConfig(themerc);
+        QString themeName(themeConfig.readName());
+        QString themeComment(themeConfig.readComment());
+        KConfig config(themerc);
+        KConfigGroup configGroup(&config, "Config");
+        QString pathName = configGroup.readEntry("Path", QString());
         m_themes << Theme(themeName, pathName, i);
         ++i;
     }
@@ -210,6 +200,9 @@ void MainWindow::hint() {
 
 void MainWindow::slotNewGame() {
     if (m_game != 0) {
+        if (m_scene != 0) {
+            disconnect(m_game, 0, m_scene, 0);
+        }
         if (!m_game->isGameOver()) {
             statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
         }

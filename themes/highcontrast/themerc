@@ -1,3 +1,6 @@
-[Theme Specification]
-Path=highcontrast
+[Desktop Entry]
 Name=High Contrast
+Comment=A theme with a lot of contrast
+
+[Config]
+Path=highcontrast

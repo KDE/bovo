@@ -1,3 +1,8 @@
-[Theme Specification]
-Path=spacy
+[Desktop Entry]
 Name=Spacy
+Name[en_US]=Spacy
+Name[en]=Spacy
+Comment=A theme from outer space
+
+[Config]
+Path=spacy
