@@ -26,6 +26,7 @@
 #include <QtGlobal>
 #include <QtCore>
 #include <QTimer>
+#include <QtCore/QObject>
 
 #include <kstandarddirs.h>
 
@@ -119,7 +120,22 @@ void Scene::updateBoard(const Move& move) {
         addItem(mark);
         demandRepaint();
     } else if (move.player() == No && move.valid()) {
-        // remove the item at this coord.
+        QList<QGraphicsItem*> allMarks = items(cellCenter(move.x(), move.y()));
+        QList<QGraphicsItem*>::iterator it = allMarks.begin();
+        QList<QGraphicsItem*>::iterator end = allMarks.end();
+        for (; it != end; ++it) {
+            if (Mark* mark = qgraphicsitem_cast<Mark *>(*it)) {
+                if (m_animation) {
+                    connect(mark, SIGNAL(killed(Mark*)),
+                            this, SLOT(killMark(Mark*)));
+                } else {
+                    removeItem(mark);
+                    delete mark;
+                    demandRepaint();
+                    return;
+                }
+            }
+        }
     }
 }
 
@@ -252,6 +268,12 @@ void Scene::killAnimations() {
     if (m_hintItem != 0) {
         m_hintItem->killAnimation();
     }
+}
+
+void Scene::killMark(Mark* mark) {
+    removeItem(mark);
+    mark->deleteLater();
+    demandRepaint();
 }
 
 void Scene::replay() {

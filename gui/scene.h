@@ -40,6 +40,7 @@ using namespace bovo;
 
 namespace gui {
     class HintItem;
+    class Mark;
 
 class Scene : public QGraphicsScene
 {
@@ -66,6 +67,7 @@ public slots:
     void demandRepaint();
     void setWin();
     void replay();
+    void killMark(Mark*);
 
 signals:
     void move(const Move&);

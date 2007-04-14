@@ -45,13 +45,15 @@ public:
     ~Mark();
     void killAnimation();
     void kill();
+    usi x() const;
+    usi y() const;
 
 public slots:
     void tick();
     void killTick();
 
 signals:
-    void killed();
+    void killed(Mark* thisMark);
 
 protected:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*,

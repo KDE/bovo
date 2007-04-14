@@ -82,7 +82,7 @@ void Mark::killTick() {
     m_scene->demandRepaint();
     if (m_opacity <= 0.1) {
         m_ticker->stop();
-        emit killed();
+        emit killed(this);
     }
 }
 
@@ -109,6 +109,14 @@ QRectF Mark::glyphRectF() const {
 void Mark::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
     p->setOpacity(m_opacity);
     renderer()->render(p, elementId(), glyphRectF());
+}
+
+usi Mark::x() const {
+    return m_col;
+}
+
+usi Mark::y() const {
+    return m_row;
 }
 
 } /* namespace gui */
