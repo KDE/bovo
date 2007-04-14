@@ -93,8 +93,20 @@ void MainWindow::setupThemes() {
     foreach (QString themerc, themercs) {
         KConfig themeConfig(themerc);
         KConfigGroup specification(&themeConfig, "Theme Specification");
-        //KGlobal::locale()->languageList() -> QStringList with pref. lang codes
-        QString themeName = specification.readEntry("Name", QString());
+        QStringList languages = KGlobal::locale()->languageList();
+        languages << KGlobal::locale()->languagesTwoAlpha();
+        QString themeName;
+        foreach (QString language, languages) {
+            qDebug() << language;
+            QString format = QString("Name[%1]").arg(language);
+            themeName = specification.readEntry(format, QString());
+            if (!themeName.isEmpty()) {
+                break;
+            }
+        }
+        if (themeName.isEmpty()) {
+            themeName = specification.readEntry("Name", QString());
+        }
         QString pathName = specification.readEntry("Path", QString());
         m_themes << Theme(themeName, pathName, i);
         ++i;

@@ -1,3 +1,5 @@
 [Theme Specification]
 Path=scribble
 Name=Scribble
+Name[en_US]=Scribble
+Name[en]=Scribble
