@@ -98,7 +98,7 @@ void MainWindow::setupThemes() {
         KConfig config(themerc);
         KConfigGroup configGroup(&config, "Config");
         QString pathName = configGroup.readEntry("Path", QString());
-        m_themes << Theme(themeName, pathName, i);
+        m_themes << Theme(themeName, pathName, i, themeComment);
         ++i;
     }
 }

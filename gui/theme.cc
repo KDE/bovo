@@ -26,8 +26,17 @@ namespace gui {
 Theme::Theme() : m_id(0) {
 }
 
-Theme::Theme(const QString& name, const QString& path, int id)
-  : m_name(name), m_path(path), m_id(id) {
+Theme::Theme(const QString& name, const QString& path, int id,
+             const QString& comment)
+  : m_comment(comment), m_id(id), m_name(name), m_path(path) {
+}
+
+QString Theme::comment() const {
+    return m_comment;
+}
+
+int Theme::id() const {
+    return m_id;
 }
 
 QString Theme::name() const {
@@ -36,10 +45,6 @@ QString Theme::name() const {
 
 QString Theme::path() const {
     return m_path;
-}
-
-int Theme::id() const {
-    return m_id;
 }
 
 } /* namespace gui */

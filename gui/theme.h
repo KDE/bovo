@@ -29,15 +29,18 @@ namespace gui {
 class Theme {
 public:
     Theme();
-    Theme(const QString& name, const QString& path, int id);
+    Theme(const QString& name, const QString& path, int id,
+          const QString& comment = "");
+    QString comment() const;
+    int id() const;
     QString name() const;
     QString path() const;
-    int id() const;
 
 private:
+    QString m_comment;
+    int m_id;
     QString m_name;
     QString m_path;
-    int m_id;
 };
 
 } /* namespace gui */
