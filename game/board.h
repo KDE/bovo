@@ -30,8 +30,9 @@
 namespace bovo {
 
 class Coord;
-class Square;
 class Dimension;
+class Move;
+class Square;
 
 /**
  * A playing board
@@ -106,12 +107,11 @@ public:
 
     /**
      * @brief set the player of a Coord
-     * @description sets which players should occupy a certain square in the
+     * @description sets which player should occupy a certain square in the
      * playing board.
-     * @param coord the Coord to occupy
-     * @param player the Player to occupy with
+     * @param move the move to perform
      */
-    void setPlayer(const Coord&, const Player& player);
+    void setPlayer(const Move&);
 
 private:
     /* property holding the actual playing board */

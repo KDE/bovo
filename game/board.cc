@@ -19,15 +19,12 @@
 *
 ********************************************************************/                     
 
-#include <iostream>
-#include <list>
-
-#include "dimension.h"
-#include "coord.h"
-#include "square.h"
 #include "board.h"
 
-using namespace std;
+#include "coord.h"
+#include "dimension.h"
+#include "move.h"
+#include "square.h"
 
 /**
  * @file file implementing class Board, 
@@ -71,11 +68,11 @@ Player Board::player(const Coord& c) const {
     return m_board[c.x()][c.y()].player();
 }
 
-void Board::setPlayer(const Coord& coord, const Player& player) {
-    if (!ok(coord)) {
+void Board::setPlayer(const Move& move) {
+    if (!ok(move.coord())) {
         return;
     }
-    m_board[coord.x()][coord.y()].setPlayer(player);
+    m_board[move.x()][move.y()].setPlayer(move.player());
 }
 
 } /* namespace bovo */

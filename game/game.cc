@@ -136,25 +136,25 @@ void Game::undoLatest() {
     } else if (m_curPlayer == m_computerMark) {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
-        m_board->setPlayer(move.coord(), move.player());
+        m_board->setPlayer(move);
         emit boardChanged(move);
         m_curPlayer = m_playerMark;
         emit playerTurn();
     } else if (m_curPlayer == m_playerMark && m_history.count() == 1) {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
-        m_board->setPlayer(move.coord(), move.player());
+        m_board->setPlayer(move);
         emit boardChanged(move);
         m_curPlayer = m_computerMark;
         emit oposerTurn();
     } else if (m_curPlayer == m_playerMark && m_history.count() > 1 ) {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
-        m_board->setPlayer(move.coord(), move.player());
+        m_board->setPlayer(move);
         emit boardChanged(move);
         move = Move(No, m_history.last().coord());
         m_history.removeLast();
-        m_board->setPlayer(move.coord(), move.player());
+        m_board->setPlayer(move);
         emit boardChanged(move);
         emit playerTurn();
     }
@@ -183,7 +183,7 @@ void Game::makeMove(const Move& move) {
     if (move.player() != m_curPlayer) {
         return;
     }
-    m_board->setPlayer(move.coord(), move.player());
+    m_board->setPlayer(move);
     m_winDir = win(move.coord());
     if (m_winDir != -1) {
         m_gameOver = true;
