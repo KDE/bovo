@@ -34,7 +34,7 @@
 #include <kactioncollection.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
-/*#include <kstandarddirs.h>*/
+#include <kstandarddirs.h>
 #include <kselectaction.h>
 #include <ktoggleaction.h>
 #include <klocale.h>
@@ -73,6 +73,7 @@ MainWindow::MainWindow(const QString& theme, QWidget* parent)
 
     m_view = new View(m_scene, this);
     m_view->show();
+    setupThemes();
     setupActions();
     setCentralWidget(m_view);
     setupGUI();
@@ -83,6 +84,21 @@ MainWindow::~MainWindow() {
     delete m_view;
     delete m_game;
     delete m_skillsAct;
+}
+
+void MainWindow::setupThemes() {
+    QStringList themercs = KGlobal::dirs()->findAllResources("appdata",
+                           "themes/*/themerc");
+    int i = 0;
+    foreach (QString themerc, themercs) {
+        KConfig themeConfig(themerc);
+        KConfigGroup specification(&themeConfig, "Theme Specification");
+        //KGlobal::locale()->languageList() -> QStringList with pref. lang codes
+        QString themeName = specification.readEntry("Name", QString());
+        QString pathName = specification.readEntry("Path", QString());
+        m_themes << Theme(themeName, pathName, i);
+        ++i;
+    }
 }
 
 void MainWindow::readConfig() {
@@ -97,7 +113,6 @@ void MainWindow::saveSettings() {
     Settings::setPlaybackSpeed(m_playbackSpeed);
     Settings::writeConfig();
 }
-//KGlobal::dirs() -> findAllResources("appdata", "*.themerc");
 
 void MainWindow::setupActions() {
     QAction *newGameAct = actionCollection()->addAction(KStandardAction::New,
@@ -146,10 +161,6 @@ void MainWindow::setupActions() {
             this, SLOT(changeSkill(int)));
 
     m_themeAct = new KSelectAction(i18n("Theme"), this);
-    m_themes << Theme("Scribble", "scribble", 0)
-             << Theme("Spacy", "spacy", 1)
-             << Theme("Gomoku", "gomoku", 2)
-             << Theme("High Contrast", "highcontrast", 3);
     QStringList themes;
     foreach (Theme theme, m_themes) {
         themes << theme.name();

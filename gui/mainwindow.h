@@ -69,6 +69,7 @@ public slots:
     void reEnableReplay();
     void enableUndo();
     void disableUndo();
+    void setupThemes();
 
 private:
     Scene *m_scene;

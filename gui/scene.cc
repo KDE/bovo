@@ -45,7 +45,7 @@ Scene::Scene(const QString& theme)
   : m_activate(false), m_game(0), m_player(No), m_animation(true) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
-    QString themePath = QString("themes/%1/pics/").arg(theme);
+    QString themePath = QString("themes/%1/").arg(theme);
     QString filename = KStandardDirs::locate("appdata", themePath);
             filename += "theme.svg";
     m_renderer = new QSvgRenderer(filename);
