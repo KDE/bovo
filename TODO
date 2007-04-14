@@ -46,7 +46,7 @@ REDESIGN (4.0)
 [/] Get rid of exceptions, to fit into KDE (AI left)
 [X] merge coord and Move classes, or at least bridge them together and make Move
     use coord internally.
-[ ] Clean up the winning mess -> Game::SIGNAL(gameOver(const QList<Move>&))
+[X] Clean up the winning mess -> Game::SIGNAL(gameOver(const QList<Move>&))
 [X] Redesign replay -> Game::SLOT(replay()) (bC(Move), gO(..))
 
 FEATURES (4.0)
@@ -54,7 +54,7 @@ FEATURES (4.0)
 [X] Demo mode, two AI players face each other.
 [ ] "Stains" support
     [ ] Rotate Stains by 90, 180 and 270 degrees
-[ ] don't paint() winning line, but render it with svg's
+[X] don't paint() winning line, but render it with svg's
 [ ] Implement draws (yes, it have never ever happened to me in real life, but it
     is not impossible in theory, ...right?)
 [ ] "New game" doesn't mean a loss if it's just started. (isn't this fixed?)

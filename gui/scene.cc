@@ -255,6 +255,19 @@ void Scene::killAnimations() {
     }
 }
 
+void Scene::replay() {
+    QList<QGraphicsItem*> allMarks = items();
+    foreach (QGraphicsItem* mark, allMarks) {
+        removeItem(mark);
+        delete mark;
+    }
+    m_winningMoves = QList<Move>();
+    invalidate(0, 0, width(), height());
+    connect(m_game, SIGNAL(boardChanged(const Move&)),
+            this, SLOT(updateBoard(const Move&)));
+}
+
+
 } /* namespace gui */
 
 #include "scene.moc"

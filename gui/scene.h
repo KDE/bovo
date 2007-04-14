@@ -65,6 +65,7 @@ public slots:
     void enableAnimation(bool enabled);
     void demandRepaint();
     void setWin();
+    void replay();
 
 signals:
     void move(const Move&);
