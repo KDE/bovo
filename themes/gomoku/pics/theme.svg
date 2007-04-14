@@ -5,7 +5,7 @@
 xmlns="http://www.w3.org/2000/svg" version="1.1">
 
   <g id="win">
-    <rect x="0" y="0" width="1" height="1" fill="white" stroke="none" />
+    <rect x="0" y="0" width="1" height="1" fill="none" stroke="none" />
     <polygon fill="black" stroke="white" stroke-width="0.02" points="0.25,0.4 0.4,0.4 0.4,0.25 0.6,0.25 0.6,0.4 0.75,0.4 0.75,0.6 0.6,0.6 0.6,0.75 0.4,0.75 0.4,0.6 0.25,0.6 0.25,0.4" />
   </g>
 
