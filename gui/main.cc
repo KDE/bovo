@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     args->clear(); // Free up some memory.
 
     if( application.isSessionRestored() ) {
-        RESTORE(MainWindow)
+        RESTORE(MainWindow);
     } else {
         MainWindow *mainWin = new MainWindow(theme);
         mainWin->show();

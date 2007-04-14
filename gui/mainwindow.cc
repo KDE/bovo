@@ -247,7 +247,7 @@ void MainWindow::slotGameOver() {
     actionCollection()->action("replay")->setEnabled(true);
     connect(actionCollection()->action("replay"), SIGNAL(triggered()),
             this, SLOT(replay()));
-    KMessageBox::information(this, message, i18n("Game over"));
+//     KMessageBox::information(this, message, i18n("Game over"));
 }
 
 void MainWindow::slotPlayerTurn() {
