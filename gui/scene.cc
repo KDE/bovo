@@ -35,7 +35,6 @@
 #include "hintitem.h"
 #include "mark.h"
 #include "move.h"
-#include "winitem.h"
 
 using namespace bovo;
 

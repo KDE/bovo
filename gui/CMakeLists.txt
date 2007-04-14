@@ -1,7 +1,6 @@
 # Graphical User Interface
 
 set(bovogui
-    winitem.cc
     hintitem.cc
     mark.cc
     scene.cc
