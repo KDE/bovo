@@ -71,7 +71,6 @@ void Mark::killAnimation() {
 }
 
 void Mark::kill() {
-    qDebug() << "Killing";
     if (m_ticker != 0) {
         disconnect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
         m_ticker->stop();
@@ -83,11 +82,9 @@ void Mark::kill() {
 }
 
 void Mark::killTick() {
-    qDebug() << ".";
     m_opacity -= 0.1;
     m_scene->demandRepaint();
     if (m_opacity <= 0.1) {
-        qDebug() << "Done!";
         m_ticker->stop();
         emit killed(this);
     }
