@@ -113,6 +113,15 @@ bool Game::save(const QString& filename) const {
     return false;
 }
 
+QString Game::saveLast() const {
+    QString fileContent;
+    foreach (Move move, m_history) {
+       fileContent.append(QString("%1:%2,%3;").
+               arg(move.player()).arg(move.x()).arg(move.y()));
+    }
+    return false;
+}
+
 short Game::winDir() const {
     return m_winDir;
 }

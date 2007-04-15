@@ -160,6 +160,14 @@ public:
     bool save(const QString& filename) const;
 
     /**
+     * @brief return game history if it is not over yet
+     * This is used for saving an unfinished game upon quitting bovo,
+     * so we can continue this game next time.
+     * @return formatted savefile without line breaks
+     */
+    QString saveLast() const;
+
+    /**
      * @brief in which direction was the winning line?
      * @description tells in what direction the gameover was caused, or -1 if
      * game is still on.
