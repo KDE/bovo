@@ -276,7 +276,7 @@ void MainWindow::slotNewDemo() {
 
 void MainWindow::slotNewDemoWait() {
 //    m_scene->setWin(m_game->history());
-    QTimer::singleShot(2000, this, SLOT(slotNewDemo()));
+    QTimer::singleShot(8*m_playbackSpeed, this, SLOT(slotNewDemo()));
 }
 
 void MainWindow::slotGameOver() {
