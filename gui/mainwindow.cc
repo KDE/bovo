@@ -88,12 +88,15 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::save() const {
-    if (m_game != 0 && !m_game->isGameOver() && m_game->demoMode() == NotDemo) {
+    if (m_game != 0) {
         m_scene->activate(false);
-        QStringList lastGame = m_game->saveLast();
         QString rc = KGlobal::dirs()->locate("config", "bovorc");
         KConfig savegame(rc);
         KConfigGroup lastGroup(&savegame, "Game");
+        QStringList lastGame;
+        if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
+            lastGame = m_game->saveLast();
+        }
         lastGroup.writeEntry("Unfinished", lastGame, ';');
         lastGroup.writeEntry("Wins", m_wins);
         lastGroup.writeEntry("Losses", m_losses);
