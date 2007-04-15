@@ -169,7 +169,7 @@ Coord AiBoard::evaluate() const {
       it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
-            case Zlatan:
+            case Impossible:
             case VeryHard:
             case Hard:
                 if (it->first == max) {

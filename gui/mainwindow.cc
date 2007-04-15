@@ -229,7 +229,7 @@ void MainWindow::slotNewGame() {
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
         m_game = new Game(dimension, m_computerStarts ? O : X, m_skill);
-        m_demoAi = new Ai(dimension, Zlatan, X);
+        m_demoAi = new Ai(dimension, Impossible, X);
         m_scene->setGame(m_game, X, NotDemo);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
@@ -359,7 +359,7 @@ int MainWindow::skillToId(Skill skill) const {
         case Normal: return 3;
         case Hard: return 4;
         case VeryHard: return 5;
-        case Zlatan: return 6;
+        case Impossible: return 6;
     }
 }
 
@@ -371,7 +371,7 @@ Skill MainWindow::idToSkill(int id) const {
         case 3: return Normal; break;
         case 4: return Hard; break;
         case 5: return VeryHard; break;
-        case 6: return Zlatan; break;
+        case 6: return Impossible; break;
     }
 }
 
@@ -383,7 +383,7 @@ QString MainWindow::getSkillName(Skill skill) const {
         case Normal: return i18n("Normal");
         case Hard: return i18n("Hard");
         case VeryHard: return i18n("Very Hard");
-        case Zlatan: return i18n("Impossible");
+        case Impossible: return i18n("Impossible");
     }
 }
 

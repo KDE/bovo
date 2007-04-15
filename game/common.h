@@ -107,7 +107,7 @@ enum Skill {
     Normal = 3, /**< Normal AI player */
     Hard = 4, /**< Hard AI player */
     VeryHard = 5, /**< Very hard AI player */
-    Zlatan = 6 /**< The best AI player in the world */
+    Impossible = 6 /**< The best AI player in the world */
 };
 
 /**
