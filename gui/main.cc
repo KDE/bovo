@@ -29,11 +29,6 @@
 
 static const char description[] = I18N_NOOP("KDE Five in a Row Board Game");
 
-static KCmdLineOptions options[] = {
-    {"theme <theme>", I18N_NOOP("Name of theme."), "scribble"},
-    KCmdLineLastOption
-};
-
 using namespace gui;
 
 int main(int argc, char **argv) {
@@ -44,18 +39,13 @@ int main(int argc, char **argv) {
                         "aron.bostrom@gmail.com");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
-    KCmdLineArgs::addCmdLineOptions(options);
 
     KApplication application;
-
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-    QByteArray theme = args->getOption("theme");
-    args->clear(); // Free up some memory.
 
     if( application.isSessionRestored() ) {
         RESTORE(MainWindow);
     } else {
-        MainWindow *mainWin = new MainWindow(theme);
+        MainWindow *mainWin = new MainWindow();
         mainWin->show();
     }
 

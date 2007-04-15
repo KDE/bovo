@@ -59,7 +59,7 @@ using namespace ai;
 
 namespace gui {
 
-MainWindow::MainWindow(const QString& theme, QWidget* parent)
+MainWindow::MainWindow(QWidget* parent)
   : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0),
     m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0),
     m_playbackSpeed(4) {
