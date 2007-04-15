@@ -70,11 +70,13 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
     setupThemes();
     readConfig();
+    statusBar()->changeItem(i18n("Losses: %0").arg(m_losses), 2);
+    statusBar()->changeItem(i18n("Wins: %0").arg(m_wins), 1);
+    setupActions();
     slotNewGame();
 
     m_view = new View(m_scene, this);
     m_view->show();
-    setupActions();
     setCentralWidget(m_view);
     setupGUI();
 }
@@ -93,11 +95,13 @@ void MainWindow::save() const {
         QString rc = KGlobal::dirs()->locate("config", "bovorc");
         KConfig savegame(rc);
         KConfigGroup lastGroup(&savegame, "Game");
-        QStringList lastGame;
         if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
+            QStringList lastGame;
             lastGame = m_game->saveLast();
+            lastGroup.writeEntry("Unfinished", lastGame, ';');
+        } else {
+            lastGroup.deleteEntry("Unfinished");
         }
-        lastGroup.writeEntry("Unfinished", lastGame, ';');
         lastGroup.writeEntry("Wins", m_wins);
         lastGroup.writeEntry("Losses", m_losses);
     }
@@ -127,8 +131,22 @@ void MainWindow::readConfig() {
             break;
         }
     }
-    m_skill         = idToSkill(Settings::skill());
+    m_skill = idToSkill(Settings::skill());
     m_playbackSpeed = Settings::playbackSpeed();
+    QString rc = KGlobal::dirs()->locate("config", "bovorc");
+    KConfig savegame(rc);
+    KConfigGroup lastGroup(&savegame, "Game");
+    m_lastGame = lastGroup.readEntry("Unfinished", QStringList(), ';');
+    QString wins = lastGroup.readEntry("Wins", QString());
+    if (!wins.isEmpty()) {
+        bool ok;
+        m_wins = wins.toUInt(&ok);
+    }
+    QString losses = lastGroup.readEntry("Losses", QString());
+    if (!losses.isEmpty()) {
+        bool ok;
+        m_losses = losses.toUInt(&ok);
+    }
 }
 
 void MainWindow::saveSettings() {
@@ -239,15 +257,20 @@ void MainWindow::slotNewGame() {
     if (act != 0) {
         act->setEnabled(false);
     }
-    if(m_scene == 0) { //first time, demo time
+    if (m_scene == 0 && (m_lastGame.isEmpty())) { //first time, demo time
         m_scene = new Scene(m_theme);
         slotNewDemo();
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
-        m_game = new Game(dimension, m_computerStarts ? O : X, m_skill,
-                          NotDemo, m_playbackSpeed);
-        m_demoAi = new Ai(dimension, Impossible, X);
-        m_scene->setGame(m_game, X, NotDemo);
+        if (m_scene == 0) {
+            m_scene = new Scene(m_theme);
+            m_game = new Game(dimension, m_lastGame, m_skill, m_playbackSpeed);
+        } else {
+            m_game = new Game(dimension, m_computerStarts ? O : X, m_skill,
+                              NotDemo, m_playbackSpeed);
+        }
+        m_demoAi = new Ai(dimension, Impossible, m_game->player());
+        m_scene->setGame(m_game, m_game->player(), NotDemo);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
         connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
@@ -259,10 +282,17 @@ void MainWindow::slotNewGame() {
                 m_demoAi, SLOT(changeBoard(const Move&)));
         connect(m_demoAi, SIGNAL(move(const Move&)),
                 m_scene,  SLOT(hint(const Move&)));
-        actionCollection()->action("hint")->setEnabled(true);
-        connect(actionCollection()->action("hint"), SIGNAL(triggered()),
-                m_demoAi, SLOT(slotMove()));
-        m_game->start();
+        if (actionCollection()->action("hint") != 0) {
+            actionCollection()->action("hint")->setEnabled(true);
+            connect(actionCollection()->action("hint"), SIGNAL(triggered()),
+                    m_demoAi, SLOT(slotMove()));
+        }
+        if (m_lastGame.isEmpty()) {
+            m_game->start();
+        } else {
+            m_lastGame.clear();
+            m_game->startRestored();
+        }
     }
 }
 

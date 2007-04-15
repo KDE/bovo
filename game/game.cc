@@ -57,6 +57,43 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
             this,  SLOT(move(const Move&)));
 }
 
+Game::Game(const Dimension& dimension, QStringList restoreGame, Skill skill,
+           unsigned int playTime)
+  : m_computerMark(O), m_demoMode(NotDemo), m_inUndoState(false),
+  m_playerMark(X), m_playTime(playTime), m_replaying(false) {
+    m_board = new Board(dimension);
+    m_ai = new Ai(dimension, skill, m_computerMark);
+    m_winDir = -1;
+    m_gameOver = false;
+    m_curPlayer = No;
+    foreach (QString turn, restoreGame) {
+        QStringList tmp = turn.split(':');
+        if (tmp.count() != 2) {
+            qFatal("Wrong save file format!");
+        }
+        Player tmpPlayer = (tmp[0] == "1") ? X : O;
+        if (m_curPlayer == No) {
+            m_curPlayer = tmpPlayer;
+        }
+        tmp = tmp[1].split(',');
+        if (tmp.count() != 2) {
+            qFatal("Wrong save file format!");
+        }
+        bool ok;
+        uint x = tmp[0].toUInt(&ok);
+        if (!ok) {
+            qFatal("Wrong save file format!");
+        }
+        uint y = tmp[1].toUInt(&ok);
+        if (!ok) {
+            qFatal("Wrong save file format!");
+        }
+        Move tmpMove(tmpPlayer, Coord(x, y));
+        m_board->setPlayer(tmpMove);
+        m_history << tmpMove;
+    }
+}
+
 Game::~Game() {
     delete m_board;
     delete m_ai;
@@ -90,16 +127,8 @@ bool Game::ok(const Coord& coord) const {
     return m_board->ok(coord);
 }
 
-void Game::setSkill(Skill skill) {
-    m_ai->setSkill(skill);
-}
-
-void Game::start() {
-    if (computerTurn()) {
-        emit oposerTurn();
-    } else {
-        emit playerTurn();
-    }
+Player Game::player() const {
+    return m_playerMark;
 }
 
 Player Game::player(const Coord& coord) const {
@@ -121,10 +150,44 @@ bool Game::save(const QString& filename) const {
 QStringList Game::saveLast() const {
     QStringList save;
     foreach (Move move, m_history) {
-       save << QString("%1:%2,%3").arg(move.player())
-               .arg(move.x()).arg(move.y());
+        save << QString("%1:%2,%3").arg(move.player())
+                .arg(move.x()).arg(move.y());
     }
     return save;
+}
+
+void Game::setSkill(Skill skill) {
+    m_ai->setSkill(skill);
+}
+
+void Game::start() {
+    if (computerTurn()) {
+        emit oposerTurn();
+    } else {
+        emit playerTurn();
+    }
+}
+
+void Game::startRestored() {
+    connect(this, SIGNAL(boardChanged(const Move&)),
+            m_ai, SLOT(changeBoard(const Move&)));
+    foreach (Move move, m_history) {
+        emit boardChanged(move);
+    }
+    connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
+            Qt::QueuedConnection);
+    connect(m_ai, SIGNAL(move(const Move&)),
+            this,  SLOT(move(const Move&)));
+    if (!m_history.isEmpty() && m_history.last().player() == X) {
+        m_curPlayer = O;
+        emit oposerTurn();
+    } else {
+        m_curPlayer = X;
+        emit playerTurn();
+    }
+    if (!m_history.isEmpty()) {
+        emit undoAble();
+    }
 }
 
 short Game::winDir() const {

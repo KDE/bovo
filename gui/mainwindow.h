@@ -23,6 +23,7 @@
 #define __MAINWINDOW_H__
 
 #include <QString>
+#include <QStringList>
 
 #include <kmainwindow.h>
 
@@ -92,6 +93,7 @@ private:
     Skill idToSkill(int id) const;
     int skillToId(Skill skill) const;
     int m_playbackSpeed;
+    QStringList m_lastGame;
 };
 
 } /* namespace gui */

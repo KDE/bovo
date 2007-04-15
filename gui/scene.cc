@@ -99,7 +99,7 @@ void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
         connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
     }
     connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
-SLOT(slotGameOver(const QList<Move>&)));
+            this, SLOT(slotGameOver(const QList<Move>&)));
     connect(this, SIGNAL(move(const Move&)),
             m_game, SLOT(move(const Move&)));
 
@@ -121,7 +121,6 @@ void Scene::updateBoard(const Move& move) {
         addItem(mark);
         demandRepaint();
     } else if (move.player() == No) {
-        qDebug() << "Here";
         QList<QGraphicsItem*> allMarks = items();
         QList<QGraphicsItem*>::iterator it = allMarks.begin();
         QList<QGraphicsItem*>::iterator end = allMarks.end();

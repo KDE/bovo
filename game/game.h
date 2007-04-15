@@ -84,9 +84,23 @@ public:
      * @param startingPlayer the player who starts
      * @param skill the skill of the AI
      * @param demoMode whether this game is a demo or not
+     * @param playTime time in ms for space between turns in demo and replay
      */
     Game(const Dimension& dimension, Player startingPlayer,
          Skill skill, DemoMode demoMode, unsigned int playTime);
+
+    /**
+     * @brief Re-Constructs a saved Game
+     * @description Constructs a Game object with a playing board with
+     * width and height specified by a given Dimension, a game history and
+     * an AI skill level
+     * @param dimension the Dimension specifying the width and height
+     * @param restoreGame the game history to restore
+     * @param skill the skill of the AI
+     * @param playTime time in ms for space between turns in demo and replay
+     */
+    Game(const Dimension& dimension, QStringList restoreGame,
+         Skill skill, unsigned int playTime);
 
     /**
      * @brief destructs this Game
@@ -139,6 +153,12 @@ public:
     bool ok(const Coord& coord) const;
 
     /**
+     * @brief the player id
+     * @return the player id
+     */
+    Player player() const;
+
+    /**
      * @brief sets the AI skill
      * @description sets the skill level of the AI
      * @param skill new skill for the AI
@@ -174,6 +194,11 @@ public:
      * @return formatted savefile without line breaks
      */
     QStringList saveLast() const;
+
+    /**
+     * @brief start a game that have been restored.
+     */
+    void startRestored();
 
     /**
      * @brief in which direction was the winning line?
