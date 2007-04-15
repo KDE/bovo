@@ -29,6 +29,8 @@
 
 #include "common.h"
 
+class QStringList;
+
 /** namespace for ai */
 namespace ai {
     class Ai;
@@ -100,6 +102,12 @@ public:
     bool computerTurn() const;
 
     /**
+     * @brief is game in demo mode?
+     * @return \c Demo if game is in demo mode, \c NotDemo otherwise
+     */
+    DemoMode demoMode() const;
+
+    /**
      * @brief is Game Over?
      * @description tells whether game is over (someone has won) or not
      * @return \c true if game has ended, \c false if game is still on
@@ -165,7 +173,7 @@ public:
      * so we can continue this game next time.
      * @return formatted savefile without line breaks
      */
-    QString saveLast() const;
+    QStringList saveLast() const;
 
     /**
      * @brief in which direction was the winning line?

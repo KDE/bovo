@@ -70,6 +70,7 @@ public slots:
     void enableUndo();
     void disableUndo();
     void setupThemes();
+    void save() const;
 
 private:
     Scene *m_scene;

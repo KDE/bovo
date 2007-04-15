@@ -26,6 +26,7 @@
 #include <QtCore/QtDebug>
 #include <QtCore/QTimer>
 #include <QtCore/QString>
+#include <QtCore/QStringList>
 
 #include "ai.h"
 #include "board.h"
@@ -63,6 +64,10 @@ Game::~Game() {
 
 bool Game::computerTurn() const {
     return m_curPlayer == m_computerMark;
+}
+
+DemoMode Game::demoMode() const {
+    return m_demoMode;
 }
 
 bool Game::isGameOver() const {
@@ -113,13 +118,13 @@ bool Game::save(const QString& filename) const {
     return false;
 }
 
-QString Game::saveLast() const {
-    QString fileContent;
+QStringList Game::saveLast() const {
+    QStringList save;
     foreach (Move move, m_history) {
-       fileContent.append(QString("%1:%2,%3;").
-               arg(move.player()).arg(move.x()).arg(move.y()));
+       save << QString("%1:%2,%3").arg(move.player())
+               .arg(move.x()).arg(move.y());
     }
-    return false;
+    return save;
 }
 
 short Game::winDir() const {

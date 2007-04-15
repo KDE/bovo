@@ -80,10 +80,24 @@ MainWindow::MainWindow(QWidget* parent)
 }
 
 MainWindow::~MainWindow() {
+    save();
     delete m_sBarSkill;
     delete m_view;
     delete m_game;
     delete m_skillsAct;
+}
+
+void MainWindow::save() const {
+    if (m_game != 0 && !m_game->isGameOver() && m_game->demoMode() == NotDemo) {
+        m_scene->activate(false);
+        QStringList lastGame = m_game->saveLast();
+        QString rc = KGlobal::dirs()->locate("config", "bovorc");
+        KConfig savegame(rc);
+        KConfigGroup lastGroup(&savegame, "Game");
+        lastGroup.writeEntry("Unfinished", lastGame, ';');
+        lastGroup.writeEntry("Wins", m_wins);
+        lastGroup.writeEntry("Losses", m_losses);
+    }
 }
 
 void MainWindow::setupThemes() {
