@@ -39,10 +39,11 @@ namespace bovo
 {
 
 Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
-           DemoMode demoMode) : m_curPlayer(startingPlayer), m_computerMark(O),
-                                m_demoMode(demoMode), m_inUndoState(false),
-                                m_playerMark(X), m_playTime(400),
-                                m_replaying(false) {
+           DemoMode demoMode, unsigned int playTime)
+  : m_curPlayer(startingPlayer),m_computerMark(O), m_demoMode(demoMode),
+  m_inUndoState(false), m_playerMark(X), m_playTime(playTime),
+  m_replaying(false) {
+      qDebug() << m_playTime;
     m_board = new Board(dimension);
     m_ai = new Ai(dimension, skill, m_computerMark);
     m_winDir = -1;

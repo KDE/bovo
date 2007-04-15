@@ -61,8 +61,7 @@ namespace gui {
 
 MainWindow::MainWindow(QWidget* parent)
   : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0),
-    m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0),
-    m_playbackSpeed(4) {
+    m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
@@ -228,7 +227,8 @@ void MainWindow::slotNewGame() {
         slotNewDemo();
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
-        m_game = new Game(dimension, m_computerStarts ? O : X, m_skill);
+        m_game = new Game(dimension, m_computerStarts ? O : X, m_skill,
+                          NotDemo, m_playbackSpeed);
         m_demoAi = new Ai(dimension, Impossible, X);
         m_scene->setGame(m_game, X, NotDemo);
         m_computerStarts = !m_computerStarts;
@@ -259,7 +259,7 @@ void MainWindow::slotNewDemo() {
         m_demoAi = 0;
     }
     Dimension dimension(NUMCOLS, NUMCOLS);
-    m_game = new Game(dimension, O, m_skill, Demo);
+    m_game = new Game(dimension, O, m_skill, Demo, m_playbackSpeed);
     m_demoAi = new Ai(dimension, m_skill, X);
     m_scene->setGame(m_game, No, Demo);
     connect(m_game, SIGNAL(boardChanged(const Move&)),

@@ -83,8 +83,8 @@ public:
      * @param skill the skill of the AI
      * @param demoMode whether this game is a demo or not
      */
-    Game(const Dimension& dimension, Player startingPlayer = X,
-         Skill skill = Normal, DemoMode demoMode = NotDemo);
+    Game(const Dimension& dimension, Player startingPlayer,
+         Skill skill, DemoMode demoMode, unsigned int playTime);
 
     /**
      * @brief destructs this Game
@@ -277,7 +277,7 @@ private:
     Player m_playerMark;
 
     /* time in between two moves in replay and demo mode, in milliseconds */
-    int m_playTime;
+    unsigned int m_playTime;
 
     /* is game in replay mode? */
     bool m_replaying;
