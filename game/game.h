@@ -152,6 +152,14 @@ public:
     Player player(const Coord& coord) const;
 
     /**
+     * @brief save game
+     * Saves this game to a file
+     * @param filename savegame file
+     * @return \c true if game was saved successfully, \c false otherwise
+     */
+    bool save(const QString& filename) const;
+
+    /**
      * @brief in which direction was the winning line?
      * @description tells in what direction the gameover was caused, or -1 if
      * game is still on.

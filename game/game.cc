@@ -25,6 +25,7 @@
 
 #include <QtCore/QtDebug>
 #include <QtCore/QTimer>
+#include <QtCore/QString>
 
 #include "ai.h"
 #include "board.h"
@@ -43,7 +44,6 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
   : m_curPlayer(startingPlayer),m_computerMark(O), m_demoMode(demoMode),
   m_inUndoState(false), m_playerMark(X), m_playTime(playTime),
   m_replaying(false) {
-      qDebug() << m_playTime;
     m_board = new Board(dimension);
     m_ai = new Ai(dimension, skill, m_computerMark);
     m_winDir = -1;
@@ -99,6 +99,18 @@ void Game::start() {
 
 Player Game::player(const Coord& coord) const {
     return m_board->player(coord);
+}
+
+bool Game::save(const QString& filename) const {
+    QString fileContent;
+    fileContent.append(QString("<bovo width=\"%1\" height=\"%2\">")
+            .arg("").arg(""));
+    foreach (Move move, m_history) {
+        fileContent.append(QString("<move player=\"%1\" x=\"%2\" y=\"%3\" />").
+                arg(move.player()).arg(move.x()).arg(move.y()));
+    }
+    fileContent.append("</bovo>");
+    return false;
 }
 
 short Game::winDir() const {

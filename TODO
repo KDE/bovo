@@ -28,7 +28,7 @@ log. We want collective code ownership.
 [X] Theme support.
 [ ] Configuration dialogue.
 [X] Save AI level and theme from session to session.
-[ ] Logic cleanups.
+[X] Logic cleanups.
     [X] Allways use Player instead of int
     [X] Give the best AI level a different name
 
@@ -85,12 +85,12 @@ THEMES (4.0)
 
 FEATURES (4.1)
 ==============
-[ ] Change replay & demo playback speed
+[X] Change replay & demo playback speed
 [ ] Change board size
 [ ] "Natural paper" whith coffee stains, etc.
-[ ] Save a replay
+[-] Save a replay
 [ ] Open a replay
-[ ] Save an active game and open it again
+[-] Save an active game and open it again
 [ ] Start with latest game when opening
 [ ] Save stats from time to time
 [ ] View history in a right or left pane, where previous moves are displayed.
