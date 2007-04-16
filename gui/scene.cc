@@ -68,7 +68,7 @@ void Scene::setTheme(const Theme& theme) {
     QString filename = KStandardDirs::locate("appdata", themePath);
     filename += "theme.svg";
     m_renderer->load(filename);
-    invalidate(0.0, 0.0, width()*10, height());
+    invalidate(0.0, 0.0, width(), height());
 }
 
 void Scene::activate(bool activate) {
@@ -172,8 +172,9 @@ void Scene::drawForeground(QPainter *p, const QRectF&) {
     if (m_paintMarker) {
         QRectF rect(cellTopLeft(m_col, m_row), QSizeF(m_curCellSize,
                        m_curCellSize));
-        // remove 20-30 % of rect!
-        p->setOpacity(0.2);
+        qreal adjusting(m_curCellSize/10.0);
+        rect.adjust(adjusting, adjusting, -adjusting, -adjusting);
+        p->setOpacity(0.4);
         m_renderer->render(p, "x1", rect);
         p->setOpacity(1);
     }
