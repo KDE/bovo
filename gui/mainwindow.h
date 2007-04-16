@@ -72,6 +72,7 @@ public slots:
     void disableUndo();
     void setupThemes();
     void save() const;
+    void setAnimation(bool enabled);
 
 private:
     Scene *m_scene;

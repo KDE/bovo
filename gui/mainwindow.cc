@@ -132,8 +132,10 @@ void MainWindow::readConfig() {
             break;
         }
     }
-    m_skill = idToSkill(Settings::skill());
+    m_skill         = idToSkill(Settings::skill());
     m_playbackSpeed = Settings::playbackSpeed();
+    m_animate       = Settings::animation();
+
     QString rc = KGlobal::dirs()->locate("config", "bovorc");
     KConfig savegame(rc);
     KConfigGroup lastGroup(&savegame, "Game");
@@ -154,6 +156,7 @@ void MainWindow::saveSettings() {
     Settings::setTheme(m_theme.path());
     Settings::setSkill(skillToId(m_skill));
     Settings::setPlaybackSpeed(m_playbackSpeed);
+    Settings::setAnimation(m_animate);
     Settings::writeConfig();
 }
 
@@ -183,6 +186,7 @@ void MainWindow::setupActions() {
     KToggleAction *animAct = new KToggleAction(i18n("&Animation"),this);
     actionCollection()->addAction("animation", animAct);
     animAct->setChecked(m_animate);
+    connect(animAct, SIGNAL(toggled(bool)), this, SLOT(setAnimation(bool)));
 
     m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
@@ -236,6 +240,16 @@ void MainWindow::setupActions() {
 void MainWindow::hint() {
 }
 
+void MainWindow::setAnimation(bool enabled) {
+    if (m_scene != 0) {
+        if (enabled != m_animate) {
+            m_scene->enableAnimation(enabled);
+        }
+    }
+    m_animate = enabled;
+    saveSettings();
+}
+
 void MainWindow::slotNewGame() {
     if (m_game != 0) {
         if (m_scene != 0) {
@@ -257,16 +271,11 @@ void MainWindow::slotNewGame() {
     }
     if (m_scene == 0 && (m_lastGame.isEmpty())) { //first time, demo time
         m_scene = new Scene(m_theme, m_animate);
-        connect(actionCollection()->action("animation"),
-                SIGNAL(triggered(bool)), m_scene, SLOT(enableAnimation(bool)));
         slotNewDemo();
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
         if (m_scene == 0) {
             m_scene = new Scene(m_theme, m_animate);
-            connect(actionCollection()->action("animation"),
-                    SIGNAL(triggered(bool)), m_scene,
-                    SLOT(enableAnimation(bool)));
             m_game = new Game(dimension, m_lastGame, m_skill, m_playbackSpeed);
         } else {
             m_game = new Game(dimension, m_computerStarts ? O : X, m_skill,
