@@ -270,7 +270,7 @@ void MainWindow::slotNewGame() {
                               NotDemo, m_playbackSpeed);
         }
         m_demoAi = new Ai(dimension, Impossible, m_game->player());
-        m_scene->setGame(m_game, m_game->player(), NotDemo);
+        m_scene->setGame(m_game);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
         connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
@@ -308,7 +308,7 @@ void MainWindow::slotNewDemo() {
     Dimension dimension(NUMCOLS, NUMCOLS);
     m_game = new Game(dimension, O, m_skill, Demo, m_playbackSpeed);
     m_demoAi = new Ai(dimension, m_skill, X);
-    m_scene->setGame(m_game, No, Demo);
+    m_scene->setGame(m_game);
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             m_demoAi, SLOT(changeBoard(const Move&)));
     connect(m_game, SIGNAL(playerTurn()), m_demoAi, SLOT(slotMove()),

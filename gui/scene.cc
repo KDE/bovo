@@ -43,7 +43,8 @@ using namespace bovo;
 namespace gui {
 
 Scene::Scene(const Theme& theme)
-  : m_activate(false), m_game(0), m_player(No), m_animation(true) {
+  : m_activate(false), m_game(0), m_player(No), m_animation(true),
+  m_paintMarker(false) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
     QString themePath = QString("themes/%1/").arg(theme.path());
@@ -88,13 +89,13 @@ void Scene::resizeScene(int width, int height) {
                     static_cast<qreal>(NUMCOLS+2);
 }
 
-void Scene::setGame(Game* game, Player player, DemoMode demoMode) {
+void Scene::setGame(Game* game) {
     m_winningMoves = QList<Move>();
     m_game = game;
-    m_player = player;
+    m_player = m_game->player();
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             SLOT(updateBoard(const Move&)));
-    if (!demoMode) {
+    if (!m_game->demoMode()) {
         connect(m_game, SIGNAL(playerTurn()), SLOT(slotPlayerTurn()));
         connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
     }
@@ -168,16 +169,45 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
 }
 
 void Scene::drawForeground(QPainter *p, const QRectF&) {
-    if (m_winningMoves.empty()) {
-        return;
+    if (m_paintMarker) {
+        QRectF rect(cellTopLeft(m_col, m_row), QSizeF(m_curCellSize,
+                       m_curCellSize));
+        // remove 20-30 % of rect!
+        p->setOpacity(0.2);
+        m_renderer->render(p, "x1", rect);
+        p->setOpacity(1);
     }
-    QList<Move>::const_iterator it = m_winningMoves.begin();
-    QList<Move>::const_iterator end = m_winningMoves.end();
-    while (it != end) {
-        QRectF tmpRect(cellTopLeft(it->x(), it->y()), QSizeF(m_curCellSize,
-m_curCellSize));
-        m_renderer->render(p, "win", tmpRect);
-        ++it;
+    if (!m_winningMoves.empty()) {
+        QList<Move>::const_iterator it = m_winningMoves.begin();
+        QList<Move>::const_iterator end = m_winningMoves.end();
+        while (it != end) {
+            QRectF tmpRect(cellTopLeft(it->x(), it->y()), QSizeF(m_curCellSize,
+                           m_curCellSize));
+            m_renderer->render(p, "win", tmpRect);
+            ++it;
+        }
+    }
+}
+
+void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *ev) {
+    if (!m_game->isGameOver() && !m_game->computerTurn() && m_activate) {
+        QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
+                         m_curCellSize * NUMCOLS));
+        if (!boardRect.contains(ev->scenePos())) {
+            setPaintMarker(false);
+        } else {
+            uint row = ((ev->scenePos().y()-boardRect.y()) / m_curCellSize) / 1;
+            uint col = ((ev->scenePos().x()-boardRect.x()) / m_curCellSize) / 1;
+            row = qMax(row, static_cast<uint>(0));
+            row = qMin(static_cast<uint>(NUMCOLS-1), row);
+            col = qMax(col, static_cast<uint>(0));
+            col = qMin(static_cast<uint>(NUMCOLS-1), col);
+            if (m_row != row || m_col != col || !m_paintMarker) {
+                m_col = col;
+                m_row = row;
+                setPaintMarker(m_game->player(Coord(col, row)) == No);
+            }
+        }
     }
 }
 
@@ -192,20 +222,22 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     }
     int row = ((ev->scenePos().y()-boardRect.y()) / m_curCellSize) / 1;
     int col = ((ev->scenePos().x()-boardRect.x()) / m_curCellSize) / 1;
-
-    if (row < 0) {
-        row = 0;
-    }
-    if (row > NUMCOLS-1) {
-        row = NUMCOLS-1;
-    }
-    if (col < 0) {
-        col = 0;
-    }
-    if (col > NUMCOLS-1) {
-        col = NUMCOLS-1;
-    }
+    row = qMax(row, 0);
+    row = qMin(NUMCOLS-1, row);
+    col = qMax(col, 0);
+    col = qMin(NUMCOLS-1, col);
     emit move(Move(m_player, Coord(col, row)));
+}
+
+void Scene::setPaintMarker(bool enabled) {
+    if (m_paintMarker || enabled) {
+        m_paintMarker = enabled;
+        QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
+                         m_curCellSize * NUMCOLS));
+        // I really only want to repaint this and the old square!
+        demandRepaint();
+    }
+    m_paintMarker = enabled;
 }
 
 void Scene::slotPlayerTurn() {
@@ -213,10 +245,12 @@ void Scene::slotPlayerTurn() {
 }
 
 void Scene::slotOposerTurn() {
+    setPaintMarker(false);
     activate(false);
 }
 
 void Scene::slotGameOver(const QList<Move>& win) {
+    setPaintMarker(false);
     m_winningMoves = win;
     setWin();
     activate(false);

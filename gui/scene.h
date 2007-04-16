@@ -51,8 +51,8 @@ public:
     Scene(const Theme& theme);
     ~Scene();
     void activate(bool activate);
-    void setGame(Game* game, Player player = X, DemoMode demoMode = NotDemo);
-    void resizeScene( int width, int height );
+    void setGame(Game* game);
+    void resizeScene(int width, int height);
     bool isBusy() const;
     void setTheme(const Theme& theme);
 
@@ -74,9 +74,10 @@ signals:
     void move(const Move&);
 
 private:
-    virtual void drawBackground( QPainter *p, const QRectF& rect );
-    virtual void drawForeground( QPainter *p, const QRectF& rect );
-    virtual void mousePressEvent( QGraphicsSceneMouseEvent* );
+    virtual void drawBackground(QPainter *p, const QRectF& rect);
+    virtual void drawForeground(QPainter *p, const QRectF& rect);
+    virtual void mousePressEvent(QGraphicsSceneMouseEvent*);
+    virtual void mouseMoveEvent(QGraphicsSceneMouseEvent*);
     QPointF cellCenter( int x, int y ) const;
     QPointF cellTopLeft( int x, int y ) const;
     void killAnimations();
@@ -94,6 +95,10 @@ private:
     Player m_player;
     bool m_animation;
     QList<Move> m_winningMoves;
+    uint m_row;
+    uint m_col;
+    bool m_paintMarker;
+    void setPaintMarker(bool enabled);
 };
 
 } /* namespace gui */

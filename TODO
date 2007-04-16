@@ -7,6 +7,7 @@ log. We want collective code ownership.
     ['] Game features / "Help"
     ['] Game strategies
     ['] Game history (Gomoku, Connect5, ...)
+    [ ] Theme creation
 [ ] Apidox.
     [X] Ai
     [X] Game
@@ -52,17 +53,18 @@ REDESIGN (4.0)
 FEATURES (4.0)
 ==============
 [X] Demo mode, two AI players face each other.
+[X] "Highlight Follow Mouse"
 [ ] "Stains" support
     [ ] Rotate Stains by 90, 180 and 270 degrees
 [X] don't paint() winning line, but render it with svg's
 [ ] Implement draws (yes, it have never ever happened to me in real life, but it
     is not impossible in theory, ...right?)
-[ ] "New game" doesn't mean a loss if it's just started. (isn't this fixed?)
+[ ] "New game" doesn't mean a loss if it's just started.
 [X] Theme support -- look into what our fellow devs have come up with
-    [ ] Read name of files from theme file
-    [ ] Search for theme files in theme folders
-    [ ] Save selected theme in configuration
-    [ ] Put theme selection in Settings menu
+    [X] Read name of files from theme file
+    [X] Search for theme files in theme folders
+    [X] Save selected theme in configuration
+    [X] Put theme selection in Settings menu
     [ ] KNewsStuff2
 [X] Undo moves.
 [X] Hint moves.
@@ -91,8 +93,8 @@ FEATURES (4.1)
 [-] Save a replay
 [ ] Open a replay
 [-] Save an active game and open it again
-[ ] Start with latest game when opening
-[ ] Save stats from time to time
+[X] Start with latest game when opening
+[X] Save stats from time to time
 [ ] View history in a right or left pane, where previous moves are displayed.
 [ ] Enable GGZ gaming (this means create a GGZ game for this as well I guess)
 [ ] Enable LAN gaming (broadcast the local domain for other willing to
@@ -173,8 +175,10 @@ pressure and making him/her like this game. :P
 BUGS
 ====
 [X] Several marks are lost when winning line is painted in replay mode. Odd..
-[ ] Program crashes when showing dialog box in a full-blown KDE 4 environment,
-    but not over an SSH-X-tunnel. Seem to be a problem with KDialog.
+[ ] This might be buggy, haven't checked: when starting an autosaved game;
+continue the computerbegins-playerbegins sequence (who made the first move in
+the history?)
+[ ] Area outside of scene isn't updated correctly when switching theme.
 
 OTHER
 =====
