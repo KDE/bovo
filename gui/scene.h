@@ -48,7 +48,7 @@ class Scene : public QGraphicsScene
     Q_OBJECT
 
 public:
-    Scene(const Theme& theme);
+    Scene(const Theme& theme, bool animation = true);
     ~Scene();
     void activate(bool activate);
     void setGame(Game* game);

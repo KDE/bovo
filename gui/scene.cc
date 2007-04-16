@@ -42,8 +42,8 @@ using namespace bovo;
 
 namespace gui {
 
-Scene::Scene(const Theme& theme)
-  : m_activate(false), m_game(0), m_player(No), m_animation(true),
+Scene::Scene(const Theme& theme, bool animation)
+  : m_activate(false), m_game(0), m_player(No), m_animation(animation),
   m_paintMarker(false) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */

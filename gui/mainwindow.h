@@ -94,6 +94,7 @@ private:
     int skillToId(Skill skill) const;
     int m_playbackSpeed;
     QStringList m_lastGame;
+    bool m_animate;
 };
 
 } /* namespace gui */

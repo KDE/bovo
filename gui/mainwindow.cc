@@ -61,7 +61,8 @@ namespace gui {
 
 MainWindow::MainWindow(QWidget* parent)
   : KMainWindow(parent), m_scene(0), m_game(0), m_wins(0),
-    m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0) {
+  m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0),
+  m_animate(true) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
@@ -179,12 +180,9 @@ void MainWindow::setupActions() {
     hintAct->setWhatsThis(i18n("This gives hints on a good move."));
     hintAct->setEnabled(false);
 
-    KToggleAction *animAct = new KToggleAction(i18n("&Disable animation"),this);
+    KToggleAction *animAct = new KToggleAction(i18n("&Animation"),this);
     actionCollection()->addAction("animation", animAct);
-    animAct->setChecked(true);
-    connect(animAct, SIGNAL(triggered(bool)),
-            m_scene, SLOT(enableAnimation(bool)));
-    animAct->setCheckedState(KGuiItem(i18n("Enable animation")));
+    animAct->setChecked(m_animate);
 
     m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
     QStringList skills;
@@ -258,12 +256,17 @@ void MainWindow::slotNewGame() {
         act->setEnabled(false);
     }
     if (m_scene == 0 && (m_lastGame.isEmpty())) { //first time, demo time
-        m_scene = new Scene(m_theme);
+        m_scene = new Scene(m_theme, m_animate);
+        connect(actionCollection()->action("animation"),
+                SIGNAL(triggered(bool)), m_scene, SLOT(enableAnimation(bool)));
         slotNewDemo();
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
         if (m_scene == 0) {
-            m_scene = new Scene(m_theme);
+            m_scene = new Scene(m_theme, m_animate);
+            connect(actionCollection()->action("animation"),
+                    SIGNAL(triggered(bool)), m_scene,
+                    SLOT(enableAnimation(bool)));
             m_game = new Game(dimension, m_lastGame, m_skill, m_playbackSpeed);
         } else {
             m_game = new Game(dimension, m_computerStarts ? O : X, m_skill,
