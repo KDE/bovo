@@ -25,7 +25,7 @@
 #include <QString>
 #include <QStringList>
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 
 #include "common.h"
 #include "theme.h"
@@ -49,7 +49,7 @@ namespace gui {
 class Scene;
 class View;
 
-class MainWindow : public KMainWindow
+class MainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 public:
