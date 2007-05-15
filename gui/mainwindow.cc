@@ -67,12 +67,12 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     m_sBarSkill = new QComboBox();
     statusBar()->addPermanentWidget(m_sBarSkill);
-    statusBar()->insertPermanentItem(i18n("Wins: %0").arg(m_wins), 1);
-    statusBar()->insertPermanentItem(i18n("Losses: %0").arg(m_losses), 2);
+    statusBar()->insertPermanentItem(i18n("Wins: %1",m_wins), 1);
+    statusBar()->insertPermanentItem(i18n("Losses: %1",m_losses), 2);
     setupThemes();
     readConfig();
-    statusBar()->changeItem(i18n("Losses: %0").arg(m_losses), 2);
-    statusBar()->changeItem(i18n("Wins: %0").arg(m_wins), 1);
+    statusBar()->changeItem(i18n("Losses: %1",m_losses), 2);
+    statusBar()->changeItem(i18n("Wins: %1",m_wins), 1);
     setupActions();
     slotNewGame();
 
@@ -256,7 +256,7 @@ void MainWindow::slotNewGame() {
             disconnect(m_game, 0, m_scene, 0);
         }
         if (!m_game->isGameOver()) {
-            statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
+            statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
         }
         m_game->deleteLater();
         m_game = 0;
@@ -342,11 +342,11 @@ void MainWindow::slotGameOver() {
     QString message;
     if (m_game->latestMove().player() == X) {
         statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
-        statusBar()->changeItem(i18n("Wins: %0").arg(++m_wins), 1);
+        statusBar()->changeItem(i18n("Wins: %1",++m_wins), 1);
         message = i18n("You won!");
     } else {
         statusBar()->changeItem(i18n("GAME OVER. You lost!"), 0);
-        statusBar()->changeItem(i18n("Losses: %0").arg(++m_losses), 2);
+        statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
         message = i18n("You lost!");
     }
 //    m_scene->setWin(m_game->history());
@@ -420,6 +420,7 @@ int MainWindow::skillToId(Skill skill) const {
         case VeryHard: return 5;
         case Impossible: return 6;
     }
+    return 0;
 }
 
 Skill MainWindow::idToSkill(int id) const {
@@ -432,6 +433,7 @@ Skill MainWindow::idToSkill(int id) const {
         case 5: return VeryHard; break;
         case 6: return Impossible; break;
     }
+    return RidiculouslyEasy;
 }
 
 QString MainWindow::getSkillName(Skill skill) const {
@@ -444,6 +446,7 @@ QString MainWindow::getSkillName(Skill skill) const {
         case VeryHard: return i18n("Very Hard");
         case Impossible: return i18n("Impossible");
     }
+    return QString();
 }
 
 void MainWindow::enableUndo() {
