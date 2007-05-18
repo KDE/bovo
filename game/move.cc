@@ -41,6 +41,11 @@ Move::Move(Player player, const Coord& coord)
     m_coord = new Coord(coord);
 }
 
+Move::~Move()
+{
+    delete m_coord;
+}
+
 Coord Move::coord() const {
     return *m_coord;
 }

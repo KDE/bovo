@@ -66,6 +66,8 @@ public:
      */
     Move(Player player, const Coord& coord);
 
+    ~Move();
+
     /**
      * @brief returns the Coord
      * @return the coordinate
