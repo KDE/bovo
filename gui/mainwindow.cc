@@ -157,7 +157,7 @@ void MainWindow::saveSettings() {
     Settings::setSkill(skillToId(m_skill));
     Settings::setPlaybackSpeed(m_playbackSpeed);
     Settings::setAnimation(m_animate);
-    Settings::writeConfig();
+    Settings::self()->writeConfig();
 }
 
 void MainWindow::setupActions() {
