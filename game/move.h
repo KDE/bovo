@@ -66,6 +66,12 @@ public:
      */
     Move(Player player, const Coord& coord);
 
+    /**
+     * @brief constructs Move
+     * @description copy constructor for Move 
+     */
+    Move(const Move &m);
+
     ~Move();
 
     /**
