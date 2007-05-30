@@ -28,6 +28,7 @@
 #include <QComboBox>
 #include <QTimer>
 #include <QBrush>
+#include <QLabel>
 
 // KDE includes
 #include <kaction.h>
@@ -40,6 +41,7 @@
 #include <klocale.h>
 #include <kicon.h>
 #include <kdesktopfile.h>
+#include <kiconloader.h>
 
 // Bovo includes
 #include "ai.h"
@@ -65,14 +67,17 @@ MainWindow::MainWindow(QWidget* parent)
   m_animate(true) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
+    statusBar()->insertPermanentItem(i18n("Wins: %1",m_wins), 1);
+    statusBar()->insertPermanentItem(i18n("Losses: %1",m_losses), 2, 1);
+
+    QLabel *labelGameDiff = new QLabel();
+    labelGameDiff->setPixmap(KIconLoader::global()->loadIcon("games-difficult.png", K3Icon::Small));
+    statusBar()->addPermanentWidget(labelGameDiff);
     m_sBarSkill = new QComboBox();
     statusBar()->addPermanentWidget(m_sBarSkill);
-    statusBar()->insertPermanentItem(i18n("Wins: %1",m_wins), 1);
-    statusBar()->insertPermanentItem(i18n("Losses: %1",m_losses), 2);
     setupThemes();
     readConfig();
-    statusBar()->changeItem(i18n("Losses: %1",m_losses), 2);
-    statusBar()->changeItem(i18n("Wins: %1",m_wins), 1);
+
     setupActions();
     slotNewGame();
 
