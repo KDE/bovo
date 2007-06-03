@@ -26,7 +26,6 @@
 
 #include "common.h"
 
-class QString;
 
 /** namespace for game engine */
 namespace bovo {
