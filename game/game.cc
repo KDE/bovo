@@ -136,6 +136,8 @@ Player Game::player(const Coord& coord) const {
 }
 
 bool Game::save(const QString& filename) const {
+    Q_UNUSED( filename );
+
     QString fileContent;
     fileContent.append(QString("<bovo width=\"%1\" height=\"%2\">")
             .arg("").arg(""));
