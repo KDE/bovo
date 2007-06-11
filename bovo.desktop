@@ -5,6 +5,7 @@ Name=Bovo
 Type=Application
 DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
+GenericName[es]=Juego de tablero cinco en línea
 GenericName[ja]=五目並べ
 Terminal=false
 X-KDE-StartupNotify=true
