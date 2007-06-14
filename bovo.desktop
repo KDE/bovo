@@ -7,6 +7,7 @@ DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
 GenericName[es]=Juego de tablero cinco en línea
 GenericName[ja]=五目並べ
+GenericName[zh_TW]=五子棋棋盤遊戲
 Terminal=false
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
