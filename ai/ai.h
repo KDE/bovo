@@ -67,7 +67,7 @@ public:
      * @param skill the Skill the AI player will be playing with
      * @param player player id of this AI
      */
-    Ai(const Dimension& dimension, Skill skill = Normal, Player player = X);
+    explicit Ai(const Dimension& dimension, Skill skill = Normal, Player player = X);
 
     /**
      * @brief destructs this Ai

@@ -88,7 +88,7 @@ public:
      * @param height the height
      * @param skill the Skill the AI player will be playing with
      */
-    AiBoard(const Dimension& dimension, Skill skill = Normal, Player player=O);
+    explicit AiBoard(const Dimension& dimension, Skill skill = Normal, Player player=O);
 
     /**
      * @brief destructs this AiBoard

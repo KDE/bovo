@@ -55,7 +55,7 @@ public:
      * @param col x-coordinate
      * @param row y-coordinate
      */
-    Move(Player player = No, int col = -1, int row = -1);
+    explicit Move(Player player = No, int col = -1, int row = -1);
 
     /**
      * @brief constucts Move

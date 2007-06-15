@@ -62,7 +62,7 @@ public:
      * @param x X coordinate
      * @param y Y coordinate
      */
-    Coord(usi x = -1, usi y = -1);
+    explicit Coord(usi x = -1, usi y = -1);
 
     /**
      * @brief copy constructor
