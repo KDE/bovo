@@ -21,12 +21,12 @@
 
 #include "scene.h"
 
-#include <QtSvg>
-#include <QtGui>
-#include <QtGlobal>
-#include <QtCore>
-#include <QTimer>
 #include <QtCore/QObject>
+#include <QtCore/QTime>
+#include <QtCore/QTimer>
+#include <QtGui/QPainter>
+#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QtSvg/QSvgRenderer>
 
 #include <kstandarddirs.h>
 
@@ -197,8 +197,8 @@ void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *ev) {
         if (!boardRect.contains(ev->scenePos())) {
             setPaintMarker(false);
         } else {
-            uint row = ((ev->scenePos().y()-boardRect.y()) / m_curCellSize) / 1;
-            uint col = ((ev->scenePos().x()-boardRect.x()) / m_curCellSize) / 1;
+            uint row = (uint)((ev->scenePos().y()-boardRect.y()) / m_curCellSize);
+            uint col = (uint)((ev->scenePos().x()-boardRect.x()) / m_curCellSize);
             row = qMax(row, static_cast<uint>(0));
             row = qMin(static_cast<uint>(NUMCOLS-1), row);
             col = qMax(col, static_cast<uint>(0));
@@ -221,8 +221,8 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     if (!boardRect.contains(ev->scenePos())) {
         return;
     }
-    int row = ((ev->scenePos().y()-boardRect.y()) / m_curCellSize) / 1;
-    int col = ((ev->scenePos().x()-boardRect.x()) / m_curCellSize) / 1;
+    int row = (int)((ev->scenePos().y()-boardRect.y()) / m_curCellSize);
+    int col = (int)((ev->scenePos().x()-boardRect.x()) / m_curCellSize);
     row = qMax(row, 0);
     row = qMin(NUMCOLS-1, row);
     col = qMax(col, 0);

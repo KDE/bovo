@@ -21,10 +21,10 @@
 
 #include "mark.h"
 
-#include <QtGui>
-#include <QtSvg>
-#include <QtGlobal>
-#include <QColor>
+#include <QtCore/QTimer>
+#include <QtGui/QColor>
+#include <QtGui/QPainter>
+#include <QtSvg/QSvgRenderer>
 
 #include "common.h"
 #include "coord.h"
