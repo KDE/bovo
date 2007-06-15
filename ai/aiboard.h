@@ -168,8 +168,8 @@ public:
      * @param move the Move to place
      * @return @c true if this move resulted in a Game Over,
      * @c false otherwise
-     * @throw busy if coord was allready occupied
-     * @throw gameOver if game was allready over
+     * @throw busy if coord was already occupied
+     * @throw gameOver if game was already over
      * @throw notValidPlayer if player wasn't X or O
      */
     bool setPlayer(const Move& move) throw(busy, gameover, notValidPlayer);

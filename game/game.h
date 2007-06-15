@@ -66,8 +66,8 @@ namespace bovo
  * if (status.error()) {
  *     qDebug() << status.toQString() << endl;
  *     // status.turn() == true => not your turn
- *     // status.busy() == true => tried to play an allready busy coordinate
- *     // status.gameOver() == true => game is allready over
+ *     // status.busy() == true => tried to play an already busy coordinate
+ *     // status.gameOver() == true => game is already over
  * }
  * @endcode
  */
