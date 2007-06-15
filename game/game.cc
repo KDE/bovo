@@ -57,8 +57,8 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
             this,  SLOT(move(const Move&)));
 }
 
-Game::Game(const Dimension& dimension, QStringList restoreGame, Skill skill,
-           unsigned int playTime)
+Game::Game(const Dimension& dimension, const QStringList &restoreGame, 
+	   Skill skill, unsigned int playTime)
   : m_computerMark(O), m_demoMode(NotDemo), m_inUndoState(false),
   m_playerMark(X), m_playTime(playTime), m_replaying(false) {
     m_board = new Board(dimension);

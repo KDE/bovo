@@ -99,7 +99,7 @@ public:
      * @param skill the skill of the AI
      * @param playTime time in ms for space between turns in demo and replay
      */
-    Game(const Dimension& dimension, QStringList restoreGame,
+    Game(const Dimension& dimension, const QStringList &restoreGame,
          Skill skill, unsigned int playTime);
 
     /**
