@@ -25,8 +25,11 @@
 
 #include "aiboard.h"
 
+#include <time.h>
+
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 #include "aisquare.h"
 #include "coord.h"
@@ -94,7 +97,9 @@ Coord AiBoard::move() {
 }
 
 Coord* AiBoard::moves() {
+#ifdef __GNUC__
 #warning Implement - Coord* AiBoard::moves(const Coord& c)
+#endif
     return new Coord();
 }
 
