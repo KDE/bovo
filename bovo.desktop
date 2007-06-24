@@ -6,6 +6,7 @@ Type=Application
 DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
 GenericName[es]=Juego de tablero cinco en línea
+GenericName[fa]=بازی Five-in-a-row Board
 GenericName[ja]=五目並べ
 GenericName[pt]=Jogo de Tabuleiro Cinco-em-Linha
 GenericName[pt_BR]=Jogo de Tabuleiro Cinco-em-Linha
