@@ -29,6 +29,7 @@
 
 #include <vector>
 #include <iostream>
+#include <stdlib.h>
 #include <algorithm>
 
 #include "aisquare.h"
