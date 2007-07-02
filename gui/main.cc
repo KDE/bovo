@@ -32,10 +32,10 @@ static const char description[] = I18N_NOOP("KDE Five in a Row Board Game");
 using namespace gui;
 
 int main(int argc, char **argv) {
-    KAboutData aboutData("bovo", I18N_NOOP("Bovo"),
-            BOVO_VERSION, description, KAboutData::License_GPL,
-            "(c) 2002,2007 Aron Boström");
-    aboutData.addAuthor("Aron Boström",I18N_NOOP("Author"),
+    KAboutData aboutData("bovo", 0, ki18n("Bovo"),
+            BOVO_VERSION, ki18n(description), KAboutData::License_GPL,
+            ki18n("(c) 2002,2007 Aron Boström"));
+    aboutData.addAuthor(ki18n("Aron Boström"),ki18n("Author"),
                         "aron.bostrom@gmail.com");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
