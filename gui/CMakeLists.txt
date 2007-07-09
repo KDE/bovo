@@ -11,7 +11,6 @@ set(bovogui
 )
 
 kde4_add_kcfg_files(bovogui settings.kcfgc)
-kde4_automoc(${bovogui})
 kde4_add_executable(bovo ${bovogui})
 target_link_libraries(bovo ${KDE4_KDEUI_LIBS} ${KDE4_} game ai)
 
