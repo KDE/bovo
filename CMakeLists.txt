@@ -15,4 +15,4 @@ add_subdirectory (ai)
 add_subdirectory (gui)
 add_subdirectory (themes)
 
-install (FILES bovo.desktop DESTINATION ${XDG_APPS_DIR})
+install (FILES bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
