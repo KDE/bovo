@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<gui name="bovo" version="3">
+<gui name="bovo" version="4">
 	<MenuBar>
 		<Menu name="game"><text>&amp;Game</text>
 			<Action name="new_game" />
@@ -11,7 +11,6 @@
             <Action name="undo" />
         </Menu>
 		<Menu name="settings"><text>&amp;Settings</text>
-			<Action name="skill" />
             <Action name="themes" />
             <Action name="animation" />
 		</Menu>
