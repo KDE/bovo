@@ -5,7 +5,6 @@ add_definitions (${KDE4_ENABLE_EXCEPTIONS})
 
 
 include_directories (
-        ${CMAKE_SOURCE_DIR}/libkdegames
         ${BOVO_SOURCE_DIR}/gui ${CMAKE_BINARY_DIR}/gui
 	${BOVO_SOURCE_DIR}/game ${BOVO_SOURCE_DIR}/ai
 )
