@@ -38,7 +38,8 @@ using namespace bovo;
 /** namespace for AI stuff */
 namespace ai {
 
-Ai::Ai(const Dimension& dimension, Skill skill, Player player) {
+Ai::Ai(const Dimension& dimension, KGameDifficulty::standardLevel skill, 
+       Player player) {
     m_board = new AiBoard(dimension, skill, player);
     m_player = player;
 }
@@ -56,7 +57,7 @@ void Ai::changeBoard(const Move& move) {
 void Ai::gameOver() {
 }
 
-void Ai::setSkill(Skill skill) {
+void Ai::setSkill(KGameDifficulty::standardLevel skill) {
     m_board->setSkill(skill);
 }
 

@@ -23,7 +23,6 @@
 
 #include "game.h"
 
-#include <QtCore/QtDebug>
 #include <QtCore/QTimer>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
@@ -40,8 +39,9 @@ using namespace ai;
 namespace bovo
 {
 
-Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
-           DemoMode demoMode, unsigned int playTime)
+Game::Game(const Dimension& dimension, Player startingPlayer, 
+           KGameDifficulty::standardLevel skill, DemoMode demoMode, 
+           unsigned int playTime)
   : m_curPlayer(startingPlayer),m_computerMark(O), m_demoMode(demoMode),
   m_inUndoState(false), m_playerMark(X), m_playTime(playTime),
   m_replaying(false) {
@@ -58,7 +58,7 @@ Game::Game(const Dimension& dimension, Player startingPlayer, Skill skill,
 }
 
 Game::Game(const Dimension& dimension, const QStringList &restoreGame, 
-	   Skill skill, unsigned int playTime)
+	   KGameDifficulty::standardLevel skill, unsigned int playTime)
   : m_computerMark(O), m_demoMode(NotDemo), m_inUndoState(false),
   m_playerMark(X), m_playTime(playTime), m_replaying(false) {
     m_board = new Board(dimension);
@@ -158,8 +158,9 @@ QStringList Game::saveLast() const {
     return save;
 }
 
-void Game::setSkill(Skill skill) {
-    m_ai->setSkill(skill);
+void Game::setSkill(KGameDifficulty::standardLevel skill) {
+    if (m_ai!=0)
+        m_ai->setSkill(skill);
 }
 
 void Game::start() {

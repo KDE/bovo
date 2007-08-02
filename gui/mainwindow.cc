@@ -33,6 +33,7 @@
 // KDE includes
 #include <kaction.h>
 #include <kactioncollection.h>
+#include <kgamedifficulty.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
 #include <kstandarddirs.h>
@@ -63,18 +64,23 @@ namespace gui {
 
 MainWindow::MainWindow(QWidget* parent)
   : KXmlGuiWindow(parent), m_scene(0), m_game(0), m_wins(0),
-  m_losses(0), m_skill(Normal), m_computerStarts(false), m_demoAi(0),
+  m_losses(0), m_computerStarts(false), m_demoAi(0),
   m_animate(true) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     statusBar()->insertPermanentItem(i18n("Wins: %1",m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %1",m_losses), 2, 1);
 
-    QLabel *labelGameDiff = new QLabel();
-    labelGameDiff->setPixmap(KIconLoader::global()->loadIcon("games-difficult.png", K3Icon::Small));
-    statusBar()->addPermanentWidget(labelGameDiff);
-    m_sBarSkill = new QComboBox();
-    statusBar()->addPermanentWidget(m_sBarSkill);
+    KGameDifficulty::init(this, this, SLOT(changeSkill()));
+    KGameDifficulty::addStandardLevel(KGameDifficulty::ridiculouslyEasy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::veryEasy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::easy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::medium);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::hard);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::veryHard);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::impossible);
+    KGameDifficulty::setRestartOnChange(KGameDifficulty::noRestartOnChange);
+
     setupThemes();
     readConfig();
 
@@ -89,10 +95,8 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow() {
     save();
-    delete m_sBarSkill;
     delete m_view;
     delete m_game;
-    delete m_skillsAct;
 }
 
 void MainWindow::save() const {
@@ -137,7 +141,10 @@ void MainWindow::readConfig() {
             break;
         }
     }
-    m_skill         = idToSkill(Settings::skill());
+
+    KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (Settings::skill()));
+    changeSkill();
+
     m_playbackSpeed = Settings::playbackSpeed();
     m_animate       = Settings::animation();
 
@@ -159,7 +166,7 @@ void MainWindow::readConfig() {
 
 void MainWindow::saveSettings() {
     Settings::setTheme(m_theme.path());
-    Settings::setSkill(skillToId(m_skill));
+    Settings::setSkill((int)(KGameDifficulty::level()));
     Settings::setPlaybackSpeed(m_playbackSpeed);
     Settings::setAnimation(m_animate);
     Settings::self()->writeConfig();
@@ -193,22 +200,6 @@ void MainWindow::setupActions() {
     animAct->setChecked(m_animate);
     connect(animAct, SIGNAL(toggled(bool)), this, SLOT(setAnimation(bool)));
 
-    m_skillsAct = new KSelectAction(i18n("Computer Difficulty"), this);
-    QStringList skills;
-    skills << i18n("Ridiculously Easy") << i18n("Very Easy") << i18n("Easy")
-           << i18n("Medium") << i18n("Hard") << i18n("Very Hard")
-           << i18n("Impossible");
-    m_skillsAct->setItems(skills);
-    m_skillsAct->setCurrentItem(m_skill);
-    actionCollection()->addAction("skill", m_skillsAct);
-    connect(m_skillsAct, SIGNAL(triggered(int)),
-            this, SLOT(changeSkill(int)));
-
-    m_sBarSkill->addItems(skills);
-    m_sBarSkill->setCurrentIndex(m_skill);
-    connect(m_sBarSkill, SIGNAL(activated(int)),
-            this, SLOT(changeSkill(int)));
-
     m_themeAct = new KSelectAction(i18n("Theme"), this);
     QStringList themes;
     foreach (Theme theme, m_themes) {
@@ -237,7 +228,6 @@ void MainWindow::setupActions() {
     addAction(replayAct);
     addAction(hintAct);
     addAction(animAct);
-    addAction(m_skillsAct);
     addAction(m_themeAct);
     addAction(undoAct);
 }
@@ -281,12 +271,13 @@ void MainWindow::slotNewGame() {
         Dimension dimension(NUMCOLS, NUMCOLS);
         if (m_scene == 0) {
             m_scene = new Scene(m_theme, m_animate);
-            m_game = new Game(dimension, m_lastGame, m_skill, m_playbackSpeed);
+            m_game = new Game(dimension, m_lastGame, KGameDifficulty::level(),
+                              m_playbackSpeed);
         } else {
-            m_game = new Game(dimension, m_computerStarts ? O : X, m_skill,
-                              NotDemo, m_playbackSpeed);
+            m_game = new Game(dimension, m_computerStarts ? O : X, 
+                              KGameDifficulty::level(), NotDemo, m_playbackSpeed);
         }
-        m_demoAi = new Ai(dimension, Impossible, m_game->player());
+        m_demoAi = new Ai(dimension, KGameDifficulty::impossible, m_game->player());
         m_scene->setGame(m_game);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
@@ -323,8 +314,8 @@ void MainWindow::slotNewDemo() {
         m_demoAi = 0;
     }
     Dimension dimension(NUMCOLS, NUMCOLS);
-    m_game = new Game(dimension, O, m_skill, Demo, m_playbackSpeed);
-    m_demoAi = new Ai(dimension, m_skill, X);
+    m_game = new Game(dimension, O, KGameDifficulty::level(), Demo, m_playbackSpeed);
+    m_demoAi = new Ai(dimension, KGameDifficulty::level(), X);
     m_scene->setGame(m_game);
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             m_demoAi, SLOT(changeBoard(const Move&)));
@@ -396,11 +387,11 @@ void MainWindow::reEnableReplay() {
                this, SLOT(replay()));
 }
 
-void MainWindow::changeSkill(int skill) {
-    m_skill = idToSkill(skill);
-    m_sBarSkill->setCurrentIndex(skill);
-    m_skillsAct->setCurrentItem(skill);
-    m_game->setSkill(m_skill);
+void MainWindow::changeSkill() {
+    if (KGameDifficulty::level()==KGameDifficulty::noLevel)
+        KGameDifficulty::setLevel(KGameDifficulty::medium); // default
+    if (m_game!=0)
+        m_game->setSkill(KGameDifficulty::level());
     saveSettings();
 }
 
@@ -413,45 +404,6 @@ void MainWindow::changeTheme(int themeId) {
             return;
         }
     }
-}
-
-int MainWindow::skillToId(Skill skill) const {
-    switch (skill) {
-        case RidiculouslyEasy: return 0;
-        case VeryEasy: return 1;
-        case Easy: return 2;
-        case Normal: return 3;
-        case Hard: return 4;
-        case VeryHard: return 5;
-        case Impossible: return 6;
-    }
-    return 0;
-}
-
-Skill MainWindow::idToSkill(int id) const {
-    switch (id) {
-        case 0: return RidiculouslyEasy; break;
-        case 1: return VeryEasy; break;
-        case 2: return Easy; break;
-        case 3: return Normal; break;
-        case 4: return Hard; break;
-        case 5: return VeryHard; break;
-        case 6: return Impossible; break;
-    }
-    return RidiculouslyEasy;
-}
-
-QString MainWindow::getSkillName(Skill skill) const {
-    switch (skill) {
-        case RidiculouslyEasy: return i18n("Ridiculously Easy");
-        case VeryEasy: return i18n("Very Easy");
-        case Easy: return i18n("Easy");
-        case Normal: return i18n("Normal");
-        case Hard: return i18n("Hard");
-        case VeryHard: return i18n("Very Hard");
-        case Impossible: return i18n("Impossible");
-    }
-    return QString();
 }
 
 void MainWindow::enableUndo() {

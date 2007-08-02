@@ -65,7 +65,7 @@ public slots:
     void slotNewDemo();
     void slotNewDemoWait();
     void replay();
-    void changeSkill(int);
+    void changeSkill();
     void changeTheme(int);
     void reEnableReplay();
     void enableUndo();
@@ -82,17 +82,11 @@ private:
     QList<Theme> m_themes;
     int m_wins, m_losses;
     void setupActions();
-    Skill m_skill;
-    QString getSkillName(Skill skill) const;
-    QComboBox* m_sBarSkill;
-    KSelectAction* m_skillsAct;
     KSelectAction* m_themeAct;
     bool m_computerStarts;
     Ai *m_demoAi;
     void readConfig();
     void saveSettings();
-    Skill idToSkill(int id) const;
-    int skillToId(Skill skill) const;
     int m_playbackSpeed;
     QStringList m_lastGame;
     bool m_animate;

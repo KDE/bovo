@@ -29,6 +29,8 @@
 
 #include <QObject>
 
+#include <kgamedifficulty.h>
+
 #include "common.h"
 
 using namespace bovo;
@@ -64,10 +66,10 @@ public:
      * @description Constructs an AI player with a specified width, height and
      * skill as well as player id
      * @param dimension the dimension controlling width and height
-     * @param skill the Skill the AI player will be playing with
+     * @param skill the skill (difficulty level) the AI player will be playing with
      * @param player player id of this AI
      */
-    explicit Ai(const Dimension& dimension, Skill skill = Normal, Player player = X);
+    explicit Ai(const Dimension& dimension, KGameDifficulty::standardLevel skill = KGameDifficulty::medium, Player player = X);
 
     /**
      * @brief destructs this Ai
@@ -78,7 +80,7 @@ public:
 public slots:
     void changeBoard(const Move& move);
     void gameOver();
-    void setSkill(Skill skill);
+    void setSkill(KGameDifficulty::standardLevel skill);
     void slotMove();
 
 signals:

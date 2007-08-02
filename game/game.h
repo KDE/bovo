@@ -27,6 +27,8 @@
 #include <QObject>
 #include <QList>
 
+#include <kgamedifficulty.h>
+
 #include "common.h"
 
 class QStringList;
@@ -82,12 +84,12 @@ public:
      * an AI skill level
      * @param dimension the Dimension specifying the width and height
      * @param startingPlayer the player who starts
-     * @param skill the skill of the AI
+     * @param skill the skill (difficulty level) of the AI
      * @param demoMode whether this game is a demo or not
      * @param playTime time in ms for space between turns in demo and replay
      */
     Game(const Dimension& dimension, Player startingPlayer,
-         Skill skill, DemoMode demoMode, unsigned int playTime);
+         KGameDifficulty::standardLevel skill, DemoMode demoMode, unsigned int playTime);
 
     /**
      * @brief Re-Constructs a saved Game
@@ -96,11 +98,11 @@ public:
      * an AI skill level
      * @param dimension the Dimension specifying the width and height
      * @param restoreGame the game history to restore
-     * @param skill the skill of the AI
+     * @param skill the skill (difficulty level) of the AI
      * @param playTime time in ms for space between turns in demo and replay
      */
     Game(const Dimension& dimension, const QStringList &restoreGame,
-         Skill skill, unsigned int playTime);
+         KGameDifficulty::standardLevel skill, unsigned int playTime);
 
     /**
      * @brief destructs this Game
@@ -161,9 +163,9 @@ public:
     /**
      * @brief sets the AI skill
      * @description sets the skill level of the AI
-     * @param skill new skill for the AI
+     * @param skill new skill (difficulty level) for the AI
      */
-    void setSkill(Skill skill);
+    void setSkill(KGameDifficulty::standardLevel skill);
 
     /**
      * @brief starts a new turn

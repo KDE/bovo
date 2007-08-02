@@ -98,19 +98,6 @@ struct notValidPlayer {
 };
 
 /**
- * Enum for the AI skill level
- */
-enum Skill {
-    RidiculouslyEasy = 0, /**< Ridiculously Easy AI player */
-    VeryEasy = 1, /**< Very Easy AI player */
-    Easy = 2, /**< Easy AI player */
-    Normal = 3, /**< Normal AI player */
-    Hard = 4, /**< Hard AI player */
-    VeryHard = 5, /**< Very hard AI player */
-    Impossible = 6 /**< The best AI player in the world */
-};
-
-/**
  * Enum for the player id
  */
 enum Player {

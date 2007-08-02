@@ -12,7 +12,7 @@ set(bovogui
 
 kde4_add_kcfg_files(bovogui settings.kcfgc)
 kde4_add_executable(bovo ${bovogui})
-target_link_libraries(bovo ${KDE4_KDEUI_LIBS} ${KDE4_} game ai)
+target_link_libraries(bovo ${KDE4_KDEUI_LIBS} kdegames ${KDE4_} game ai)
 
 install (TARGETS bovo RUNTIME DESTINATION ${BIN_INSTALL_DIR})
 install (FILES bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo )
