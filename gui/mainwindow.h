@@ -82,6 +82,10 @@ private:
     QList<Theme> m_themes;
     int m_wins, m_losses;
     void setupActions();
+    void increaseWins();
+    void updateWins(const int wins);
+    void increaseLosses();
+    void updateLosses(const int losses);
     KSelectAction* m_themeAct;
     bool m_computerStarts;
     Ai *m_demoAi;

@@ -179,6 +179,10 @@ BUGS
 continue the computerbegins-playerbegins sequence (who made the first move in
 the history?)
 [ ] Area outside of scene isn't updated correctly when switching theme.
+[X] Wins vs. Losses is not updated on startup, but at first when one both has won 
+    and lost.
+[X] At startup, playbackSpeed is reset to 2000, due to it beeing to big. Why?????
+[ ] Undo crashes.
 
 OTHER
 =====

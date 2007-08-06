@@ -15,9 +15,9 @@
     </entry>
     <entry name="playbackSpeed" type="Int">
       <label>Speed of demo and replay playback.</label>
-      <default>400</default>
       <min>150</min>
       <max>2000</max>
+      <default>400</default>
     </entry>
     <entry name="animation" type="Bool">
       <label>Whether moves should be animated or not.</label>

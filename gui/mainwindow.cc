@@ -68,8 +68,8 @@ MainWindow::MainWindow(QWidget* parent)
   m_animate(true) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
-    statusBar()->insertPermanentItem(i18n("Wins: %1",m_wins), 1);
-    statusBar()->insertPermanentItem(i18n("Losses: %1",m_losses), 2, 1);
+    statusBar()->insertPermanentItem(i18n("Wins: %1", m_wins), 1);
+    statusBar()->insertPermanentItem(i18n("Losses: %1", m_losses), 2, 1);
 
     KGameDifficulty::init(this, this, SLOT(changeSkill()));
     KGameDifficulty::addStandardLevel(KGameDifficulty::ridiculouslyEasy);
@@ -142,9 +142,6 @@ void MainWindow::readConfig() {
         }
     }
 
-    KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (Settings::skill()));
-    changeSkill();
-
     m_playbackSpeed = Settings::playbackSpeed();
     m_animate       = Settings::animation();
 
@@ -155,13 +152,20 @@ void MainWindow::readConfig() {
     QString wins = lastGroup.readEntry("Wins", QString());
     if (!wins.isEmpty()) {
         bool ok;
-        m_wins = wins.toUInt(&ok);
+        updateWins(wins.toUInt(&ok));
+        
     }
     QString losses = lastGroup.readEntry("Losses", QString());
     if (!losses.isEmpty()) {
         bool ok;
-        m_losses = losses.toUInt(&ok);
+        updateLosses(losses.toUInt(&ok));
     }
+
+    // changeSkill() has to be called last of all, as it causes the settings to be saved, 
+    // and if the settings isn't fully initialized the unread settings are overwritten with 
+    // really odd values, causing annoying bugs.
+    KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (Settings::skill()));
+    changeSkill();
 }
 
 void MainWindow::saveSettings() {
@@ -334,15 +338,33 @@ void MainWindow::slotNewDemoWait() {
     QTimer::singleShot(8*m_playbackSpeed, this, SLOT(slotNewDemo()));
 }
 
+void MainWindow::increaseWins() {
+    statusBar()->changeItem(i18n("Wins: %1", ++m_wins), 1);
+}
+
+void MainWindow::updateWins(const int wins) {
+    m_wins = wins;
+    statusBar()->changeItem(i18n("Wins: %1", m_wins), 1);
+}
+
+void MainWindow::increaseLosses() {
+    statusBar()->changeItem(i18n("Losses: %1", ++m_losses), 2);
+}
+
+void MainWindow::updateLosses(const int losses) {
+    m_losses = losses;
+    statusBar()->changeItem(i18n("Losses: %1", m_losses), 2);
+}
+
 void MainWindow::slotGameOver() {
     QString message;
     if (m_game->latestMove().player() == X) {
         statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
-        statusBar()->changeItem(i18n("Wins: %1",++m_wins), 1);
+        increaseWins();
         message = i18n("You won!");
     } else {
         statusBar()->changeItem(i18n("GAME OVER. You lost!"), 0);
-        statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
+        increaseLosses();
         message = i18n("You lost!");
     }
 //    m_scene->setWin(m_game->history());
