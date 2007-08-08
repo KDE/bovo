@@ -245,10 +245,10 @@ void Game::undoLatest() {
         m_history.removeLast();
         m_board->setPlayer(move);
         emit boardChanged(move);
-        move = Move(No, m_history.last().coord());
+        Move move2(No, m_history.last().coord());
         m_history.removeLast();
-        m_board->setPlayer(move);
-        emit boardChanged(move);
+        m_board->setPlayer(move2);
+        emit boardChanged(move2);
         emit playerTurn();
     }
     if (m_history.empty() && !m_demoMode) {
