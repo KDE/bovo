@@ -35,7 +35,7 @@
 #include <kactioncollection.h>
 #include <kgamedifficulty.h>
 #include <kstatusbar.h>
-#include <kstandardaction.h>
+#include <kstandardgameaction.h>
 #include <kstandarddirs.h>
 #include <kselectaction.h>
 #include <ktoggleaction.h>
@@ -177,14 +177,8 @@ void MainWindow::saveSettings() {
 }
 
 void MainWindow::setupActions() {
-    QAction *newGameAct = actionCollection()->addAction(KStandardAction::New,
-                            "new_game", this, SLOT(slotNewGame()));
-    newGameAct->setToolTip(i18n("New game"));
-    newGameAct->setWhatsThis(i18n("Start a new game."));
-
-    QAction *quitAct = actionCollection()->addAction(KStandardAction::Quit,
-                            "quit", this, SLOT(close()));
-    connect(quitAct, SIGNAL(triggered()), this, SLOT(close()));
+    KStandardGameAction::gameNew(this, SLOT(slotNewGame()), actionCollection());
+    KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
     QAction *replayAct = new KAction(KIcon("media-playback-start"),
                             i18n("&Replay"), this);
@@ -193,11 +187,8 @@ void MainWindow::setupActions() {
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
     replayAct->setEnabled(false);
 
-    QAction *hintAct = new KAction(KIcon("idea"), i18n("&Hint"), this);
-    actionCollection()->addAction("hint", hintAct);
-    hintAct->setToolTip(i18n("Hint a move"));
-    hintAct->setWhatsThis(i18n("This gives hints on a good move."));
-    hintAct->setEnabled(false);
+    m_hintAct = KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
+    m_hintAct->setEnabled(false);
 
     KToggleAction *animAct = new KToggleAction(i18n("&Animation"),this);
     actionCollection()->addAction("animation", animAct);
@@ -221,22 +212,17 @@ void MainWindow::setupActions() {
     actionCollection()->addAction("themes", m_themeAct);
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
-    QAction *undoAct = actionCollection()->addAction(KStandardAction::Undo,
-                                        "undo", this);
-    undoAct->setToolTip(i18n("Undo your latest move."));
-    undoAct->setWhatsThis(i18n("This will undo the latest turn."));
-    undoAct->setEnabled(false);
+    m_undoAct = KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection());
+    m_undoAct->setEnabled(false);
 
-    addAction(newGameAct);
-    addAction(quitAct);
     addAction(replayAct);
-    addAction(hintAct);
     addAction(animAct);
     addAction(m_themeAct);
-    addAction(undoAct);
 }
 
 void MainWindow::hint() {
+    if (m_demoAi != 0)
+        m_demoAi->slotMove();
 }
 
 void MainWindow::setAnimation(bool enabled) {
@@ -294,11 +280,7 @@ void MainWindow::slotNewGame() {
                 m_demoAi, SLOT(changeBoard(const Move&)));
         connect(m_demoAi, SIGNAL(move(const Move&)),
                 m_scene,  SLOT(hint(const Move&)));
-        if (actionCollection()->action("hint") != 0) {
-            actionCollection()->action("hint")->setEnabled(true);
-            connect(actionCollection()->action("hint"), SIGNAL(triggered()),
-                    m_demoAi, SLOT(slotMove()));
-        }
+        m_hintAct->setEnabled(true);
         if (m_lastGame.isEmpty()) {
             m_game->start();
         } else {
@@ -369,7 +351,7 @@ void MainWindow::slotGameOver() {
     }
 //    m_scene->setWin(m_game->history());
     disconnect(m_game, 0, m_demoAi, 0);
-    actionCollection()->action("hint")->setEnabled(false);
+    m_hintAct->setEnabled(false);
     actionCollection()->action("replay")->setEnabled(true);
     connect(actionCollection()->action("replay"), SIGNAL(triggered()),
             this, SLOT(replay()));
@@ -382,6 +364,11 @@ void MainWindow::slotPlayerTurn() {
 
 void MainWindow::slotOposerTurn() {
     statusBar()->changeItem(i18n("Waiting for computer."), 0);
+}
+
+void MainWindow::slotUndo() {
+    if (m_game != 0)
+        m_game->undoLatest();
 }
 
 void MainWindow::replay() {
@@ -429,15 +416,11 @@ void MainWindow::changeTheme(int themeId) {
 }
 
 void MainWindow::enableUndo() {
-    connect(actionCollection()->action("undo"), SIGNAL(triggered()),
-           m_game, SLOT(undoLatest()));
-    actionCollection()->action("undo")->setEnabled(true);
+    m_undoAct->setEnabled(true);
 }
 
 void MainWindow::disableUndo() {
-    disconnect(actionCollection()->action("undo"), SIGNAL(triggered()),
-               m_game, SLOT(undoLatest()));
-    actionCollection()->action("undo")->setEnabled(false);
+    m_undoAct->setEnabled(false);
 }
 
 } /* namespace gui */

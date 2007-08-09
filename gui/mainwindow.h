@@ -64,6 +64,7 @@ public slots:
     void slotGameOver();
     void slotNewDemo();
     void slotNewDemoWait();
+    void slotUndo();
     void replay();
     void changeSkill();
     void changeTheme(int);
@@ -86,6 +87,8 @@ private:
     void updateWins(const int wins);
     void increaseLosses();
     void updateLosses(const int losses);
+    QAction* m_hintAct;
+    QAction* m_undoAct;
     KSelectAction* m_themeAct;
     bool m_computerStarts;
     Ai *m_demoAi;

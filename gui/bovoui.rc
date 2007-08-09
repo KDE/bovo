@@ -1,26 +1,21 @@
-<!DOCTYPE kpartgui>
-<gui name="bovo" version="4">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="bovo" version="5">
 	<MenuBar>
-		<Menu name="game"><text>&amp;Game</text>
-			<Action name="new_game" />
+		<Menu name="game">
 			<Action name="replay" />
-			<Action name="quit" />
 		</Menu>
-        <Menu name="edit"><text>&amp;Edit</text>
-            <Action name="hint" />
-            <Action name="undo" />
-        </Menu>
-		<Menu name="settings"><text>&amp;Settings</text>
-            <Action name="themes" />
-            <Action name="animation" />
+		<Menu name="settings">
+			<Action name="themes" />
+			<Action name="animation" />
 		</Menu>
 	</MenuBar>
 
-	<ToolBar name="mainToolBar"><text>Main Toolbar</text>
-		<Action name="new_game" />
-		<Action name="quit" />
+	<ToolBar name="mainToolBar">
+		<Action name="game_new" />
 		<Action name="replay" />
-        <Action name="undo" />
-        <Action name="hint" />
+		<Separator />
+		<Action name="move_undo" />
+		<Action name="move_hint" />
 	</ToolBar>
 </gui>
