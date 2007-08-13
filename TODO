@@ -1,4 +1,4 @@
-Things I want before KDE 4 review
+Things I want before KDE 4 beta 2
 =================================
 [X] Remove all names from source files. For copyright holders, refer to svn
 log. We want collective code ownership.
@@ -32,62 +32,33 @@ log. We want collective code ownership.
 [X] Logic cleanups.
     [X] Allways use Player instead of int
     [X] Give the best AI level a different name
-
-=============================================================================
-
-REDESIGN (4.0)
-===============
-[X] Clean up Board and Game into a Board which is exactly that (a wrapper
-    around a Square**) and a Game : public QObject that emits signals and
-    features slots to communicate with its surroundings.
-[X] Make AiBoard split up into Ai and AiBoard.
-[X] Make the new Ai class use the Game class, connecting it's signals
-    playerOneTurn(Coord) and playerTwoTurn(Coord)
-[X] Add an isNull() in Coord
 [/] Get rid of exceptions, to fit into KDE (AI left)
-[X] merge coord and Move classes, or at least bridge them together and make Move
-    use coord internally.
-[X] Clean up the winning mess -> Game::SIGNAL(gameOver(const QList<Move>&))
-[X] Redesign replay -> Game::SLOT(replay()) (bC(Move), gO(..))
-
-FEATURES (4.0)
-==============
-[X] Demo mode, two AI players face each other.
-[X] "Highlight Follow Mouse"
-[ ] "Stains" support
-    [ ] Rotate Stains by 90, 180 and 270 degrees
-[X] don't paint() winning line, but render it with svg's
 [ ] Implement draws (yes, it have never ever happened to me in real life, but it
     is not impossible in theory, ...right?)
 [ ] "New game" doesn't mean a loss if it's just started.
-[X] Theme support -- look into what our fellow devs have come up with
-    [X] Read name of files from theme file
-    [X] Search for theme files in theme folders
-    [X] Save selected theme in configuration
-    [X] Put theme selection in Settings menu
-    [ ] KNewsStuff2
-[X] Undo moves.
-[X] Hint moves.
-[ ] Changing AI level means restarting game OR setting AI for next game
-    (dialog?)
-[X] Animation support
-    [X] Marks fades in
-    [X] Hints fades in and fades out
-        [X] Fade out when dying of age, but not when killed
-    [ ] Winning line fades in, move by move
 [ ] Kidnap an artist for some decent artworks
+
+=============================================================================
 
 THEMES (4.0)
 ============
-[X] scribble (pen on paper)
+[ ] scribble (pen on paper) [IMPROVE]
 [X] spacy
 [X] gomoku
 [ ] KDE vs Gnome
 [X] high contrast
 
+=============================================================================
+
 FEATURES (4.1)
 ==============
-[X] Change replay & demo playback speed
+[ ] That nice new AI...
+[ ] KNewsStuff2 for themes
+[ ] Winning line fades in, move by move
+[ ] "Stains" support
+    [ ] Rotate Stains by 90, 180 and 270 degrees
+[ ] "Stains" extended (paint all buttons, menus etc in pen-on-paper style)
+[-] Change replay & demo playback speed
 [ ] Change board size
 [ ] "Natural paper" whith coffee stains, etc.
 [-] Save a replay
@@ -102,7 +73,6 @@ FEATURES (4.1)
     Look into kgamelib or what it is called. Create XML-like open protocol for
     Bovo friends, letting Gnomes play with us (is it possible to add a feature
     to the protocol that allways makes them loose? =P )
-[ ] Redo moves.
 
 ADAPTING AI
 ===========
