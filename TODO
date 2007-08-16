@@ -1,5 +1,8 @@
 Things I want before KDE 4 beta 2
 =================================
+[ ] Board is way to small at first startup.
+[ ] There is no indication the game starts in a demo mode
+[ ] Game over message is displayed in status bar. Not nice.
 [X] Remove all names from source files. For copyright holders, refer to svn
 log. We want collective code ownership.
 ['] Documentation/Handbook.
@@ -52,6 +55,9 @@ THEMES (4.0)
 
 FEATURES (4.1)
 ==============
+[ ] Status message and game events printed "onboard"
+[ ] configure dialogue
+[ ] keyboard navigation ("no mouse" gameplay)
 [ ] That nice new AI...
 [ ] KNewsStuff2 for themes
 [ ] Winning line fades in, move by move
