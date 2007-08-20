@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Exec=bovo -caption "%c"
 Name=Bovo
+Name[ne]=बोभो
 Type=Application
 DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
@@ -9,6 +10,7 @@ GenericName[el]=Επιτραπέζιο παιχνίδι Πέντε στη σει
 GenericName[es]=Juego de tablero cinco en línea
 GenericName[fa]=بازی تخته پنج در یک سطر
 GenericName[ja]=五目並べ
+GenericName[ne]=एक पङ्क्तिमा पाँच बोर्ड खेल
 GenericName[pt]=Jogo de Tabuleiro Cinco-em-Linha
 GenericName[pt_BR]=Jogo de Tabuleiro Cinco-em-Linha
 GenericName[sv]=Fem-i-rad brädspel
