@@ -177,16 +177,16 @@ Coord AiBoard::evaluate() const {
       it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
-            case KGameDifficulty::impossible:
-            case KGameDifficulty::veryHard:
-            case KGameDifficulty::hard:
+            case KGameDifficulty::Impossible:
+            case KGameDifficulty::VeryHard:
+            case KGameDifficulty::Hard:
                 if (it->first == max) {
                     v2.push_back(*it);
                 } else {
                     doBreak = true;
                 }
                 break;
-            case KGameDifficulty::medium:
+            case KGameDifficulty::Medium:
                 if (it->first * 1.2 >= max) {
                     v2.push_back(*it);
                 } else {
@@ -194,7 +194,7 @@ Coord AiBoard::evaluate() const {
                     return v2.begin()->second;
                 }
                 break;
-            case KGameDifficulty::easy:
+            case KGameDifficulty::Easy:
                 if (it->first * 2 >= max) {
                     v2.push_back(*it);
                 } else {
@@ -202,7 +202,7 @@ Coord AiBoard::evaluate() const {
                     return v2.begin()->second;
                 }
                 break;
-            case KGameDifficulty::veryEasy:
+            case KGameDifficulty::VeryEasy:
                 if (it->first * 4 >= max) {
                     v2.push_back(*it);
                 } else {
@@ -210,7 +210,7 @@ Coord AiBoard::evaluate() const {
                     return v2.begin()->second;
                 }
                 break;
-            case KGameDifficulty::ridiculouslyEasy:
+            case KGameDifficulty::RidiculouslyEasy:
             default: // in case the gui sets the level to an illegal value
                 if (it->first * 7 >= max) {
                     v2.push_back(*it);
@@ -331,21 +331,21 @@ uli AiBoard::value(const Coord& c, const usi pl) const {
             tmpPoint = 1;
             switch (tp) {
                 case 4:
-                    tmpPoint *= (m_skill == KGameDifficulty::ridiculouslyEasy ? 7 : 231);
+                    tmpPoint *= (m_skill == KGameDifficulty::RidiculouslyEasy ? 7 : 231);
                 case 3:
-                    tmpPoint *= (m_skill == KGameDifficulty::veryEasy ? 21 : 
-                        (m_skill == KGameDifficulty::ridiculouslyEasy ? 12 : 231));
+                    tmpPoint *= (m_skill == KGameDifficulty::VeryEasy ? 21 : 
+                        (m_skill == KGameDifficulty::RidiculouslyEasy ? 12 : 231));
                 case 2:
-                    tmpPoint *= (m_skill == KGameDifficulty::veryEasy ? 21 : 231 );
+                    tmpPoint *= (m_skill == KGameDifficulty::VeryEasy ? 21 : 231 );
                     break;
                 case 1:
-                    tmpPoint *= m_skill == KGameDifficulty::ridiculouslyEasy ? 3 : 1;
+                    tmpPoint *= m_skill == KGameDifficulty::RidiculouslyEasy ? 3 : 1;
                     break;
                 case 0:
                     tmpPoint = 0;
             }
-            if (pl == m_player && m_skill != KGameDifficulty::ridiculouslyEasy 
-                               && m_skill != KGameDifficulty::veryEasy) {
+            if (pl == m_player && m_skill != KGameDifficulty::RidiculouslyEasy 
+                               && m_skill != KGameDifficulty::VeryEasy) {
                 tmpPoint *= 21;
             }
             if (empty < 2 && await > 0 && leftsideEmpty > 0) {

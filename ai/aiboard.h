@@ -80,7 +80,7 @@ public:
      * @param skill the skill (difficulty level) the AI player will be playing with
      */
     AiBoard(const usi width, const usi height,
-            KGameDifficulty::standardLevel skill = KGameDifficulty::medium,
+            KGameDifficulty::standardLevel skill = KGameDifficulty::Medium,
             Player player = O);
 
     /**
@@ -92,7 +92,7 @@ public:
      * @param skill the skill (difficulty level) the AI player will be playing with
      */
     explicit AiBoard(const Dimension& dimension,
-                     KGameDifficulty::standardLevel skill = KGameDifficulty::medium,
+                     KGameDifficulty::standardLevel skill = KGameDifficulty::Medium,
                      Player player=O);
 
     /**

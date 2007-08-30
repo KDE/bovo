@@ -72,14 +72,14 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->insertPermanentItem(i18n("Losses: %1", m_losses), 2, 1);
 
     KGameDifficulty::init(this, this, SLOT(changeSkill()));
-    KGameDifficulty::addStandardLevel(KGameDifficulty::ridiculouslyEasy);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::veryEasy);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::easy);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::medium);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::hard);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::veryHard);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::impossible);
-    KGameDifficulty::setRestartOnChange(KGameDifficulty::noRestartOnChange);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::RidiculouslyEasy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
+    KGameDifficulty::setRestartOnChange(KGameDifficulty::NoRestartOnChange);
 
     setupThemes();
     readConfig();
@@ -267,7 +267,7 @@ void MainWindow::slotNewGame() {
             m_game = new Game(dimension, m_computerStarts ? O : X, 
                               KGameDifficulty::level(), NotDemo, m_playbackSpeed);
         }
-        m_demoAi = new Ai(dimension, KGameDifficulty::impossible, m_game->player());
+        m_demoAi = new Ai(dimension, KGameDifficulty::Impossible, m_game->player());
         m_scene->setGame(m_game);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
@@ -397,8 +397,8 @@ void MainWindow::reEnableReplay() {
 }
 
 void MainWindow::changeSkill() {
-    if (KGameDifficulty::level()==KGameDifficulty::noLevel)
-        KGameDifficulty::setLevel(KGameDifficulty::medium); // default
+    if (KGameDifficulty::level()==KGameDifficulty::NoLevel)
+        KGameDifficulty::setLevel(KGameDifficulty::Medium); // default
     if (m_game!=0)
         m_game->setSkill(KGameDifficulty::level());
     saveSettings();

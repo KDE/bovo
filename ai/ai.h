@@ -69,7 +69,7 @@ public:
      * @param skill the skill (difficulty level) the AI player will be playing with
      * @param player player id of this AI
      */
-    explicit Ai(const Dimension& dimension, KGameDifficulty::standardLevel skill = KGameDifficulty::medium, Player player = X);
+    explicit Ai(const Dimension& dimension, KGameDifficulty::standardLevel skill = KGameDifficulty::Medium, Player player = X);
 
     /**
      * @brief destructs this Ai
