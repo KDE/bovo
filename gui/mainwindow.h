@@ -41,7 +41,6 @@ namespace bovo {
 using namespace bovo;
 using namespace ai;
 
-class QComboBox;
 class KSelectAction;
 
 namespace gui {
