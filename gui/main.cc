@@ -41,6 +41,7 @@ int main(int argc, char **argv) {
     KCmdLineArgs::init(argc, argv, &aboutData);
 
     KApplication application;
+    KGlobal::locale()->insertCatalog("libkdegames");
 
     if( application.isSessionRestored() ) {
         RESTORE(MainWindow);
