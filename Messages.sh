@@ -1,2 +1,2 @@
 #! /bin/sh
-$XGETTEXT `find . -name '*.cc'` -o $podir/bovo.pot
+$XGETTEXT rc.cpp `find . -name '*.cc'` -o $podir/bovo.pot
