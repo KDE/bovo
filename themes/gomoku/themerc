@@ -1,6 +1,11 @@
 [Desktop Entry]
 Name=Gomoku
+Name[ja]=五目並べ
 Comment=A classic japanese theme
+Comment[ja]=伝統的な日本の五目並べのテーマ
+Comment[pt]=Um tema clássico Japonês
+Comment[pt_BR]=Um tema clássico Japonês
+Comment[sv]=Ett klassiskt japanskt tema
 
 [Config]
 Path=gomoku

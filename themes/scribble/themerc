@@ -1,6 +1,12 @@
 [Desktop Entry]
 Name=Scribble
+Name[ja]=落書き
+Name[sv]=Alfapet
 Comment=A pen and paper theme
+Comment[ja]=ペンと紙のテーマ
+Comment[pt]=Um tema de papel e caneta
+Comment[pt_BR]=Um tema de papel e caneta
+Comment[sv]=Ett penna och papper-tema
 
 [Config]
 Path=scribble

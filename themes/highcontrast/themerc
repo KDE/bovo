@@ -1,6 +1,14 @@
 [Desktop Entry]
 Name=High Contrast
+Name[ja]=ハイコントラスト
+Name[pt]=Alto Contraste
+Name[pt_BR]=Alto Contraste
+Name[sv]=Hög kontrast
 Comment=A theme with a lot of contrast
+Comment[ja]=高コントラストのテーマ
+Comment[pt]=Um tema com bastante contraste
+Comment[pt_BR]=Um tema com bastante contraste
+Comment[sv]=Ett tema med mycket kontrast
 
 [Config]
 Path=highcontrast
