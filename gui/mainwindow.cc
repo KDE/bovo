@@ -97,6 +97,7 @@ MainWindow::~MainWindow() {
     save();
     delete m_view;
     delete m_game;
+    delete m_demoAi;
 }
 
 void MainWindow::save() const {
