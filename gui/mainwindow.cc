@@ -77,8 +77,8 @@ MainWindow::MainWindow(QWidget* parent)
     KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
-    KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
+//    KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
+//    KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
     KGameDifficulty::setRestartOnChange(KGameDifficulty::NoRestartOnChange);
 
     setupThemes();
@@ -268,7 +268,7 @@ void MainWindow::slotNewGame() {
             m_game = new Game(dimension, m_computerStarts ? O : X, 
                               KGameDifficulty::level(), NotDemo, m_playbackSpeed);
         }
-        m_demoAi = new Ai(dimension, KGameDifficulty::Impossible, m_game->player());
+        m_demoAi = new Ai(dimension, KGameDifficulty::Hard, m_game->player());
         m_scene->setGame(m_game);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));

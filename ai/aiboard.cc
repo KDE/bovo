@@ -177,8 +177,8 @@ Coord AiBoard::evaluate() const {
       it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
-            case KGameDifficulty::Impossible:
-            case KGameDifficulty::VeryHard:
+            case KGameDifficulty::Impossible: // @TODO: Implement Impossible
+            case KGameDifficulty::VeryHard: //@TODO: Implement Very Hard
             case KGameDifficulty::Hard:
                 if (it->first == max) {
                     v2.push_back(*it);
