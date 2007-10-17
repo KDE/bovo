@@ -1,50 +1,12 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY bovo "<application>bovo 1.0</application>">
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&bovo;"><!-- Do *not* replace kappname-->
   <!ENTITY package "kdegames"><!-- kdebase, kdeadmin, etc -->
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"><!-- change language only here -->
-
-	<!ENTITY Aron.Bostrom '<personname><firstname>Aron</firstname><surname>Boström</surname></personname>'>
-	<!ENTITY Aron.Bostrom.mail '<email>aron.bostrom@gmail.com</email>'>
-  
-  
-  <!-- Do not define any other entities; instead, use the entities
-       from kde-genent.entities and $LANG/user.entities. -->
 ]>
-<!-- kdoctemplate v0.8 October 1 1999 
-     Minor update to "Credits and Licenses" section on August 24, 2000
-     Removed "Revision history" section on 22 January 2001
-     Changed to Installation/Help menu entities 18 October 2001
-     Other minor cleanup and changes 18 October 2001 -->
-
-
-<!--
-This template was designed by: David Rugge davidrugge@mindspring.com
-with lots of help from: Eric Bischoff ebisch@cybercable.tm.fr
-and Frederik Fouvry fouvry@sfs.nphil.uni-tuebingen.de
-of the KDE DocBook team.
-
-You may freely use this template for writing any sort of KDE documentation.
-If you have any changes or improvements, please let us know.
-
-Remember:
-- in XML, the case of the <tags> and attributes is relevant ;
-- also, quote all attributes.
-
-Please don't forget to remove all these comments in your final documentation,
-thanks ;-).
--->
-
-<!-- ................................................................ -->
-
-<!-- The language must NOT be changed here. -->
 
 <book lang="&language;">
-
-<!-- This header contains all of the meta-information for the document such
-as Authors, publish date, the abstract, and Keywords -->
 
 <bookinfo>
 <title>The &bovo; Handbook</title>
@@ -55,30 +17,20 @@ as Authors, publish date, the abstract, and Keywords -->
 <affiliation><address>&Aron.Bostrom.mail;</address></affiliation>
 </author>
 
-
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
 <year>2007</year>
-<holder>Aron Boström, KDE</holder>
+<holder>Aron Boström</holder>
 </copyright>
 <!-- Translators: put here the copyright notice of the translation -->
 <!-- Put here the FDL notice.  Read the explanation in fdl-notice.docbook
      and in the FDL itself on how to use it. -->
 <legalnotice>&FDLNotice;</legalnotice>
 
-<!-- Date and version information of the documentation
-Don't forget to include this last date and this last revision number, we
-need them for translation coordination !
-Please respect the format of the date (YYYY-MM-DD) and of the version
-(V.MM.LL), it could be used by automation scripts.
-Do NOT change these in the translation. -->
-
 <date>2007-10-16</date>
 <releaseinfo>1.00.00</releaseinfo>
-
-<!-- Abstract about this handbook -->
 
 <abstract>
 <para>
@@ -106,38 +58,24 @@ Please at least include KDE, the KDE package it is in, the name
 
 </bookinfo>
 
-<!-- The contents of the documentation begin here.  Label
-each chapter so with the id attribute. This is necessary for two reasons: it
-allows you to easily reference the chapter from other chapters of your
-document, and if there is no ID, the name of the generated HTML files will vary
-from time to time making it hard to manage for maintainers and for the CVS
-system. Any chapter labelled (OPTIONAL) may be left out at the author's
-discretion. Other chapters should not be left out in order to maintain a
-consistent documentation style across all KDE apps. -->
-
 <chapter id="introduction">
 <title>Introduction</title>
 
-<!-- The introduction chapter contains a brief introduction for the
-application that explains what it does and where to report
-problems. Basically a long version of the abstract.  Don't include a
-revision history. (see installation appendix comment) -->
-
 <para>
-Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game for KDE. The purpose of this game is to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. The two participating players alternate on placing their marks on the playing board.
+&bovo; is a Gomoku (Connect Five, Five in a row, X and O, etc) game for &kde;. The purpose of this game is to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. The two participating players alternate on placing their marks on the playing board.
 </para>
 </chapter>
 
 <chapter id="history">
 <title>History</title>
-<para>Gomoku, from Japanese 五目並べ, gomoku narabe, "line up five", is a traditional oriental board game, dating back to the 8th century. It is played with black and white Go pieces on a Go board, where black takes the first turn.</para>
-<para>It was soon discovered that black had a huge advantage over white, so a lot of variations have developed. The most commen variation is that only five in a row counts as a win, i.e. six in a row (called an overline) does not count. However, Bovo doesn't use any of these added rules.</para>
+<para>Gomoku, from Japanese 五目並べ, gomoku narabe, <quote>line up five</quote>, is a traditional oriental board game, dating back to the 8th century. It is played with black and white Go pieces on a Go board, where black takes the first turn.</para>
+<para>It was soon discovered that black had a huge advantage over white, so a lot of variations have been developed. The most common variation is that only five in a row counts as a win, &ie; six in a row (called an overline) does not count. However, &bovo; doesn't use any of these additional rules.</para>
 <para>In Europe the game is traditionally played on a piece of paper, with the first player drawing X's and the second player drawing O's.</para>
 </chapter>
 
 <chapter id="bovo-rules">
 <title>Rules</title>
-<para>Bovo rules are equal to the traditional free-style Gomoku rules, with no added extra rules. However, the playing board is 22×22, instead of 19×19 as in the traditional Gomoku game.</para>
+<para>&bovo; rules are equal to the traditional free-style Gomoku rules, with no additional extra rules. However, the playing board is 22×22, instead of 19×19 as in the traditional Gomoku game.</para>
 
 <para>For a more fair game, the two players alternate on who begins. The player who begins does so by placing an X anywhere on the playing field. The players will thereafter alternate in placing their marks on the board.</para>
 <para>The game is over when one of the player gets at least 5 marks in a row vertically, horizontally or diagonal.</para>
@@ -146,51 +84,52 @@ Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game for KDE. The p
 <chapter id="bovo-help">
 <title>Help for &bovo;</title>
 <sect1 id="bovo-help-first-startup">
-<title>First startup</title>
-<para>When Bovo is started its first, it needs resizing. Resize the game window to desired size, and Bovo will scale up the playing board.</para>
-<para>The first time Bovo is started it is launched in demo mode, where to AI players battle each other.</para>
+<title>First Startup</title>
+<para>When &bovo; is started the first time, it needs resizing. Resize the game window to desired size, and &bovo; will scale up the playing board.</para>
+<para>The first time &bovo; is started it is launched in demo mode, where two AI players battle each other.</para>
 </sect1>
 <sect1 id="bovo-help-auto-saving">
-<title>Auto save</title>
-<para>When Bovo is exited prior to game over, the active game is auto saved. If Bovo detects an auto saved game at startup, it is restored. If not, Bovo launches demo mode.</para>
+<title>Auto Save</title>
+<para>When &bovo; is exited prior to game over, the active game is auto saved. If &bovo; detects an auto saved game at startup, it is restored. If not, &bovo; launches a demo mode.</para>
 </sect1>
 
 <sect1 id="bovo-help-starting-new-game">
-<title>Starting new game</title>
-<para>You can allways start a new game with the New button in the toolbar, the Game -> New menu entry in the menubar or the standard "New" shortcut, most oftenly Ctrl+N</para>
-<para>If a new game is started when a game is allready active, it is counted as a loss.</para>
+<title>Starting a New Game</title>
+<para>You can allways start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice>
+<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para>
+<para>If a new game is started when a game is already active, it is counted as a loss.</para>
 </sect1>
 
 <sect1 id="bovo-help-changing-difficulty">
-<title>Changing difficulty</title>
-<para>Changing the difficulty can be done with the Difficulty box in the right end of the status bar, of from the Settings -> Difficulty menu in the menu bar.</para>
+<title>Changing Difficulty</title>
+<para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, of from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para>
 <para>The effect of changing difficulty takes place immediately.</para>
 </sect1>
 
 <sect1 id="bovo-help-switching-theme">
-<title>Switching theme</title>
-<para>You can switch the theme of Bovo from the Settings -> Theme menu in the menu bar. The theme is then switched immediately.</para>
+<title>Switching Theme</title>
+<para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Theme</guimenuitem></menuchoice> menu in the menubar. The theme is then switched immediately.</para>
 </sect1>
 
 <sect1 id="bovo-help-animation">
 <title>Animation</title>
-<para>Animation can be switched on or off as you like from the Settings -> Animation menu in the menubar.</para>
+<para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para>
 </sect1>
 
 <sect1 id="bovo-help-undo">
 <title>Undo</title>
-<para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut (most oftenly Ctrl+Z). </para>
+<para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>. </para>
 <para>You can keep on undoing moves until you reaches the beginning of the game.</para>
 </sect1>
 
 <sect1 id="bovo-help-get-a-hint">
-<title>Get a hint</title>
-<para>If you don't know what move to make, you can get a hint from the computer player with the Hint button. The game piece suggested by the Bovo AI then flashes for a brief period of time.</para>
+<title>Get a Hint</title>
+<para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para>
 </sect1>
 
 <sect1 id="bovo-help-replay">
-<title>Replay mode</title>
-<para>When a game is over, the Replay action is enabled, which starts a replay of the last game.</para>
+<title>Replay Mode</title>
+<para>When a game is over, the <guibutton>Replay</guibutton> action is enabled, which starts a replay of the last game.</para>
 </sect1>
 
 </chapter>
@@ -200,14 +139,9 @@ Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game for KDE. The p
 application windows and their menubar and toolbar commands for easy reference.
 Also include any keys that have a special function but have no equivalent in the
 menus or toolbars. This may not be necessary for small apps or apps with no tool
-or menu bars. -->
+or menubars. -->
 
 <chapter id="credits">
-
-<!-- Include credits for the programmers, documentation writers, and
-contributors here. The license for your software should then be included below
-the credits with a reference to the appropriate license file included in the KDE
-distribution. -->
 
 <title>Credits and License</title>
 
@@ -215,28 +149,15 @@ distribution. -->
 &bovo;
 </para>
 <para>
-Program copyright 2002, 2007 Aron Boström <email>aron.bostrom@gmail.com</email>
+Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail;
 </para>
 
 <para>
-Documentation copyright 2007 Aron Boström <email>aron.bostrom@gmail.com</email>
-</para>
+Documentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
-&underFDL;               <!-- FDL: do not remove -->
-
-<!-- Determine which license your application is licensed under, 
-     and delete all the remaining licenses below:
-
-     (NOTE:  All documentation are licensed under the FDL, 
-     regardless of what license the application uses) -->
-
-&underGPL;        	 <!-- GPL License -->
-<!-- &underBSDLicense; -->        <!-- BSD License -->
-<!-- &underArtisticLicense; -->   <!-- BSD Artistic License -->
-<!-- &underX11License; -->        <!-- X11 License  -->
-
+&underFDL;&underGPL;
 </chapter>
 
 
