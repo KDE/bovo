@@ -4,10 +4,7 @@
 <svg width="2cm" height="3cm" viewBox="0 0 24 24"
 xmlns="http://www.w3.org/2000/svg" version="1.1">
 
-  <g id="win">
-    <rect x="0.5" y="0.5" width="0.05" height="0.05" fill="none" opacity="0" stroke="brown" />
-    <polygon fill="black" stroke="white" stroke-width="0.06" points="0.25,0.4 0.4,0.4 0.4,0.25 0.6,0.25 0.6,0.4 0.75,0.4 0.75,0.6 0.6,0.6 0.6,0.75 0.4,0.75 0.4,0.6 0.25,0.6 0.25,0.4" />
-  </g>
+  <polygon id="win" fill="#00892c" stroke="none" points="0.1,0.35 0.35,0.35 0.35,0.1 0.65,0.15 0.65,0.35 0.9,0.35 0.9,0.65 0.65,0.65 0.65,0.9 0.35,0.9 0.35,0.65 0.1,0.65 0.1,0.35" />
 
   <circle id="x1" cx="2" cy="2" r="1" fill="black" stroke="none" />
   <circle id="x2" cx="2" cy="2" r="1" fill="black" stroke="none" />
