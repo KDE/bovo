@@ -12,3 +12,12 @@ Comment[zh_TW]=傳統的日式主題
 
 [Config]
 Path=gomoku
+Fill=1.4
+NbrX=1
+NbrY=1
+BgType=fill #fill,svg,gradient
+BgColor=a52a2a
+GridType=Intersect #intersect,svg,squares
+GridColor=000000
+GridWidth=1
+GridFrameWidth=0

@@ -41,12 +41,13 @@ class Scene;
 class Mark : public QGraphicsSvgItem {
     Q_OBJECT
 public:
-    Mark(Scene *scene, const Move& move, bool animate = true);
+    Mark(Scene *scene, const Move& move, bool animate = true, qreal fill = 0.75);
     ~Mark();
     void killAnimation();
     void kill();
     usi x() const;
     usi y() const;
+    void setFill(qreal fill);
 
 public slots:
     void tick();
@@ -64,7 +65,7 @@ private:
     Scene* m_scene;
     int m_row;
     int m_col;
-    qreal m_sizeShrink;
+    qreal m_sizeShrink, m_fill;
     int m_tick;
     bool m_animate;
     qreal m_opacity;

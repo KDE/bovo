@@ -35,9 +35,9 @@ using namespace bovo;
 
 namespace gui {
 
-HintItem::HintItem(Scene* scene, const Move& hint, bool animate)
+HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
   : QGraphicsSvgItem(), m_scene(scene), m_row(hint.y()),
-  m_col(hint.x()) {
+  m_col(hint.x()), m_fill(fill) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
     setElementId(QString(hint.player() == X ? "x%1" : "o%1")
             .arg(QString::number(qrand() % 5 + 1)));
@@ -108,7 +108,8 @@ void HintItem::tick() {
 QRectF HintItem::glyphRectF() const {
     qreal width = m_scene->width() / (NUMCOLS+2);
     qreal height = width;
-    qreal margin = m_sizeShrink * width;
+    qreal margin = (1.0-m_fill) * width / 2.0;
+    //    qreal margin = m_sizeShrink * width;
     return QRectF( (1+m_col) * width  + margin,
                     (1+m_row) * height + margin,
                     width  - 2.0*margin,
@@ -118,6 +119,10 @@ QRectF HintItem::glyphRectF() const {
 void HintItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
     p->setOpacity(m_opacity);
     renderer()->render(p, elementId(), glyphRectF());
+}
+
+void HintItem::setFill(qreal fill) {
+    m_fill = fill;
 }
 
 } /* namespace gui */

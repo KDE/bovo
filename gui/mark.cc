@@ -35,8 +35,8 @@ using namespace bovo;
 
 namespace gui {
 
-Mark::Mark(Scene* scene, const Move& move, bool animate) : QGraphicsSvgItem(),
-  m_scene(scene), m_row(move.y()), m_col(move.x()) {
+Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphicsSvgItem(),
+  m_scene(scene), m_row(move.y()), m_col(move.x()), m_fill(fill) {
     m_sizeShrink = 1.0/12.0; //1.0/(qrand()%5+7.0);
     setElementId(QString(move.player() == X ? "x%1" : "o%1")
             .arg(QString::number(qrand() % 5 + 1)));
@@ -101,9 +101,14 @@ void Mark::tick() {
 }
 
 QRectF Mark::glyphRectF() const {
+//    m_sS = 1/12
+//    m_fill = 1 || 0.75
+//    marg = 1 - m_fill / 3
+//    totalMarg = 3/12 = 1/4
+//    
     qreal width = m_scene->width() / (NUMCOLS+2);
     qreal height = width;
-    qreal margin = m_sizeShrink * width;
+    qreal margin = (1.0-m_fill) * width / 2.0;
     return QRectF( (1+m_col) * width  + margin,
                 (1+m_row) * height + margin,
                 width  - 2.0*margin,
@@ -113,6 +118,10 @@ QRectF Mark::glyphRectF() const {
 void Mark::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
     p->setOpacity(m_opacity);
     renderer()->render(p, elementId(), glyphRectF());
+}
+
+void Mark::setFill(qreal fill) {
+    m_fill = fill;
 }
 
 usi Mark::x() const {

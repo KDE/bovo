@@ -5,8 +5,8 @@
 xmlns="http://www.w3.org/2000/svg" version="1.1">
 
   <g id="win">
-    <rect x="0" y="0" width="1" height="1" fill="none" stroke="none" />
-    <polygon fill="black" stroke="white" stroke-width="0.02" points="0.25,0.4 0.4,0.4 0.4,0.25 0.6,0.25 0.6,0.4 0.75,0.4 0.75,0.6 0.6,0.6 0.6,0.75 0.4,0.75 0.4,0.6 0.25,0.6 0.25,0.4" />
+    <rect x="0.5" y="0.5" width="0.05" height="0.05" fill="none" opacity="0" stroke="brown" />
+    <polygon fill="black" stroke="white" stroke-width="0.06" points="0.25,0.4 0.4,0.4 0.4,0.25 0.6,0.25 0.6,0.4 0.75,0.4 0.75,0.6 0.6,0.6 0.6,0.75 0.4,0.75 0.4,0.6 0.25,0.6 0.25,0.4" />
   </g>
 
   <circle id="x1" cx="2" cy="2" r="1" fill="black" stroke="none" />
@@ -26,7 +26,7 @@ xmlns="http://www.w3.org/2000/svg" version="1.1">
 
 
   <g id="grid" stroke="black" stroke-width="0.05" >
-      <rect x="1" y="1" width="22" height="22" stroke="none" fill="none" stroke-width="0" />
+      <rect x="1" y="1" width="22" height="22" stroke="brown" fill="none" stroke-width="0.1" />
 
       <line x1="1" y1="1.5" x2="23" y2="1.5"   />
       <line x1="1" y1="2.5" x2="23" y2="2.5"   />

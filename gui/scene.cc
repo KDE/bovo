@@ -27,8 +27,12 @@
 #include <QtGui/QPainter>
 #include <QtGui/QGraphicsSceneMouseEvent>
 #include <QtSvg/QSvgRenderer>
+#include <QtDebug>
 
 #include <kstandarddirs.h>
+#include <kconfig.h>
+#include <kconfiggroup.h>
+#include <kdesktopfile.h>
 
 #include "common.h"
 #include "coord.h"
@@ -47,10 +51,8 @@ Scene::Scene(const Theme& theme, bool animation)
   m_paintMarker(false) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
-    QString themePath = QString("themes/%1/").arg(theme.path());
-    QString filename = KStandardDirs::locate("appdata", themePath);
-            filename += "theme.svg";
-    m_renderer = new QSvgRenderer(filename);
+    m_renderer = 0;
+    loadTheme(theme);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_hintTimer = new QTimer(this);
     m_hintTimer->setSingleShot(true);
@@ -60,14 +62,39 @@ Scene::Scene(const Theme& theme, bool animation)
 }
 
 Scene::~Scene() {
-    m_renderer->deleteLater();
+    if (m_renderer != 0)
+        m_renderer->deleteLater();
+}
+
+void Scene::loadTheme(const Theme& theme) {
+    QString themePath = QString("themes/%1/").arg(theme.path());
+    QString filename = KStandardDirs::locate("appdata", themePath);
+    QString filenameSvg = filename + "theme.svg";
+    QString filenameRc  = filename + "themerc";
+    KDesktopFile themeConfig(filenameRc);
+    QString themeName(themeConfig.readName());
+    QString themeComment(themeConfig.readComment());
+    KConfig config(filenameRc);
+    KConfigGroup configGroup(&config, "Config");
+    m_fill = configGroup.readEntry("Fill", 0.75);
+    qDebug() << m_fill;
+    if (m_renderer == 0)
+        m_renderer = new QSvgRenderer(filenameSvg);
+    else
+        m_renderer->load(filenameSvg);
+    QList<QGraphicsItem*> allMarks = items();
+    QList<QGraphicsItem*>::iterator it = allMarks.begin();
+    QList<QGraphicsItem*>::iterator end = allMarks.end();
+    for (; it != end; ++it) {
+        if (Mark* mark = qgraphicsitem_cast<Mark *>(*it))
+            mark->setFill(m_fill);
+        else if (HintItem* hintItem = qgraphicsitem_cast<HintItem *>(*it)) 
+            hintItem->setFill(m_fill);
+    }
 }
 
 void Scene::setTheme(const Theme& theme) {
-    QString themePath = QString("themes/%1/").arg(theme.path());
-    QString filename = KStandardDirs::locate("appdata", themePath);
-    filename += "theme.svg";
-    m_renderer->load(filename);
+    loadTheme(theme);
     invalidate(0.0, 0.0, width(), height());
 }
 
@@ -117,7 +144,7 @@ void Scene::setGame(Game* game) {
 void Scene::updateBoard(const Move& move) {
     destroyHint();
     if (move.valid()) {
-        Mark* mark = new Mark(this, move, m_animation);
+        Mark* mark = new Mark(this, move, m_animation, m_fill);
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
         demandRepaint();
@@ -172,7 +199,7 @@ void Scene::drawForeground(QPainter *p, const QRectF&) {
     if (m_paintMarker) {
         QRectF rect(cellTopLeft(m_col, m_row), QSizeF(m_curCellSize,
                        m_curCellSize));
-        qreal adjusting(m_curCellSize/10.0);
+        qreal adjusting((1.0-m_fill)*m_curCellSize/2.0);
         rect.adjust(adjusting, adjusting, -adjusting, -adjusting);
         p->setOpacity(0.4);
         m_renderer->render(p, "x1", rect);
@@ -267,7 +294,7 @@ void Scene::demandRepaint() {
 
 void Scene::hint(const Move& hint) {
     destroyHint();
-    m_hintItem = new HintItem(this, hint, m_animation);
+    m_hintItem = new HintItem(this, hint, m_animation, m_fill);
     m_hintItem->setSharedRenderer(m_renderer);
     addItem(m_hintItem);
     connect(m_hintTimer, SIGNAL(timeout()), this, SLOT(hintTimeout()));

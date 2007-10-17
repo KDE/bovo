@@ -99,6 +99,8 @@ private:
     uint m_col;
     bool m_paintMarker;
     void setPaintMarker(bool enabled);
+    qreal m_fill;
+    void loadTheme(const Theme& theme);
 };
 
 } /* namespace gui */

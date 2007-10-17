@@ -40,10 +40,11 @@ class Scene;
 class HintItem : public QGraphicsSvgItem {
     Q_OBJECT
 public:
-    HintItem(Scene *scene, const Move& move, bool animate = true);
+    HintItem(Scene *scene, const Move& move, bool animate = true, qreal fill = 0.75);
     ~HintItem();
     void killAnimation();
     void kill();
+    void setFill(qreal fill);
 
 public slots:
     void tick();
@@ -64,7 +65,7 @@ private:
     bool m_animate;
     qreal m_opacity;
     bool m_tickUp;
-    qreal m_sizeShrink;
+    qreal m_sizeShrink, m_fill;
     QTimer *m_ticker;
 };
 
