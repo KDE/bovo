@@ -33,6 +33,8 @@
 // KDE includes
 #include <kaction.h>
 #include <kactioncollection.h>
+#include <kconfig.h>
+#include <kconfiggroup.h>
 #include <kgamedifficulty.h>
 #include <kstatusbar.h>
 #include <kstandardgameaction.h>
@@ -41,7 +43,6 @@
 #include <ktoggleaction.h>
 #include <klocale.h>
 #include <kicon.h>
-#include <kdesktopfile.h>
 #include <kiconloader.h>
 
 // Bovo includes
@@ -87,9 +88,9 @@ MainWindow::MainWindow(QWidget* parent)
     setupActions();
     slotNewGame();
 
-    m_view = new View(m_scene, this);
-    m_view->show();
+    m_view = new View(m_scene, m_theme.backgroundColor(), this);
     setCentralWidget(m_view);
+    m_view->show();
     setupGUI();
 }
 
@@ -123,13 +124,10 @@ void MainWindow::setupThemes() {
                            "themes/*/themerc");
     int i = 0;
     foreach (QString themerc, themercs) {
-        KDesktopFile themeConfig(themerc);
-        QString themeName(themeConfig.readName());
-        QString themeComment(themeConfig.readComment());
         KConfig config(themerc);
         KConfigGroup configGroup(&config, "Config");
         QString pathName = configGroup.readEntry("Path", QString());
-        m_themes << Theme(themeName, pathName, i, themeComment);
+        m_themes << Theme(pathName, i);
         ++i;
     }
 }

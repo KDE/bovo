@@ -19,19 +19,27 @@
 *
 ********************************************************************/
 
+// Declaration include
 #include "view.h"
 
-#include <QGraphicsScene>
+// Qt Includes
+#include <QtGui/QColor>
+#include <QtGui/QGraphicsScene>
+#include <QtGui/QPalette>
 #include <QResizeEvent>
-#include <QPalette>
 
+// Bovo includes
 #include "scene.h"
 
 namespace gui {
 
-View::View(Scene* scene, QWidget *parent) : QGraphicsView(scene, parent),
+View::View(Scene* scene, const QColor& bgColor, QWidget *parent) : QGraphicsView(scene, parent),
            m_scene(scene) {
-    setCacheMode(QGraphicsView::CacheBackground);
+//    setCacheMode(QGraphicsView::CacheBackground);
+    QPalette bgPal;
+    bgPal.setColor(backgroundRole(), bgColor);
+    setPalette(bgPal);
+    setAutoFillBackground(true);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setMinimumSize(sizeHint());

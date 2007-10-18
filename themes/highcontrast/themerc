@@ -19,3 +19,4 @@ Comment[zh_TW]=高對比主題
 
 [Config]
 Path=highcontrast
+BackgroundColor=yellow

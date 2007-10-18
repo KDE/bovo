@@ -27,11 +27,12 @@
 namespace gui {
 
 class Scene;
+class bgColor;
 
 class View : public QGraphicsView
 {
 public:
-    View(Scene* scene, QWidget *parent);
+    View(Scene* scene, const QColor& bgColor, QWidget *parent);
 
 private:
     virtual void resizeEvent( QResizeEvent* );

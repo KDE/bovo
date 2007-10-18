@@ -17,3 +17,4 @@ Comment[zh_TW]=外太空式的主題
 [Config]
 Path=spacy
 Fill=1.2
+BackgroundColor=black

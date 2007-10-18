@@ -22,25 +22,39 @@
 #ifndef __THEME_H__
 #define __THEME_H__
 
+// Qt includes
+#include <QtGui/QColor>
 #include <QtCore/QString>
 
 namespace gui {
 
+enum GridType {SvgGrid, GomokuGrid, SquaresGrid};
+
 class Theme {
 public:
     Theme();
-    Theme(const QString& name, const QString& path, int id,
-          const QString& comment = "");
+    Theme(const QString& path, const int id);
+
+    QColor backgroundColor() const;
     QString comment() const;
+    qreal fill() const;
+    QColor gridColor() const;
+    GridType gridType() const;
     int id() const;
     QString name() const;
     QString path() const;
+    QString svg() const;
 
 private:
+    QColor m_backgroundColor;
     QString m_comment;
+    qreal m_fill;
+    QColor m_gridColor;
+    GridType m_gridType;
     int m_id;
     QString m_name;
     QString m_path;
+    QString m_svg;
 };
 
 } /* namespace gui */

@@ -17,6 +17,7 @@ NbrX=1
 NbrY=1
 BgType=fill #fill,svg,gradient
 BgColor=a52a2a
+BackgroundColor=brown
 GridType=Intersect #intersect,svg,squares
 GridColor=000000
 GridWidth=1

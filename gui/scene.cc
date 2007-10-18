@@ -26,6 +26,7 @@
 #include <QtCore/QTimer>
 #include <QtGui/QPainter>
 #include <QtGui/QGraphicsSceneMouseEvent>
+#include <QtGui/QGraphicsView>
 #include <QtSvg/QSvgRenderer>
 #include <QtDebug>
 
@@ -67,21 +68,18 @@ Scene::~Scene() {
 }
 
 void Scene::loadTheme(const Theme& theme) {
-    QString themePath = QString("themes/%1/").arg(theme.path());
-    QString filename = KStandardDirs::locate("appdata", themePath);
-    QString filenameSvg = filename + "theme.svg";
-    QString filenameRc  = filename + "themerc";
-    KDesktopFile themeConfig(filenameRc);
-    QString themeName(themeConfig.readName());
-    QString themeComment(themeConfig.readComment());
-    KConfig config(filenameRc);
-    KConfigGroup configGroup(&config, "Config");
-    m_fill = configGroup.readEntry("Fill", 0.75);
-    qDebug() << m_fill;
+    m_fill = theme.fill();
+    QColor color(theme.backgroundColor());
+    QPalette bgPal;
+    foreach (QGraphicsView* view, views()) {
+        bgPal.setColor(view->backgroundRole(), color.isValid() ? color : Qt::white);
+        view->setPalette(bgPal);
+    }
+//    qDebug() << m_fill;
     if (m_renderer == 0)
-        m_renderer = new QSvgRenderer(filenameSvg);
+        m_renderer = new QSvgRenderer(theme.svg());
     else
-        m_renderer->load(filenameSvg);
+        m_renderer->load(theme.svg());
     QList<QGraphicsItem*> allMarks = items();
     QList<QGraphicsItem*>::iterator it = allMarks.begin();
     QList<QGraphicsItem*>::iterator end = allMarks.end();
@@ -95,7 +93,7 @@ void Scene::loadTheme(const Theme& theme) {
 
 void Scene::setTheme(const Theme& theme) {
     loadTheme(theme);
-    invalidate(0.0, 0.0, width(), height());
+    invalidate(0.0, 0.0, width()*4, height()*4);
 }
 
 void Scene::activate(bool activate) {
