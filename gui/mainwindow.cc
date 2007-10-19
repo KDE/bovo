@@ -241,6 +241,8 @@ void MainWindow::slotNewGame() {
         }
         if (!m_game->isGameOver() && m_game->history().size() > 1) {
             statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
+        } else {
+            m_computerStarts = !m_computerStarts;
         }
         m_game->deleteLater();
         m_game = 0;
@@ -260,6 +262,10 @@ void MainWindow::slotNewGame() {
         Dimension dimension(NUMCOLS, NUMCOLS);
         if (m_scene == 0) {
             m_scene = new Scene(m_theme, m_animate);
+            if (!m_lastGame.empty()) {
+                QString tmp = m_lastGame.first();
+                m_computerStarts = tmp.startsWith('2') ? true : false;
+            }
             m_game = new Game(dimension, m_lastGame, KGameDifficulty::level(),
                               m_playbackSpeed);
         } else {
