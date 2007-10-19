@@ -239,7 +239,7 @@ void MainWindow::slotNewGame() {
         if (m_scene != 0) {
             disconnect(m_game, 0, m_scene, 0);
         }
-        if (!m_game->isGameOver()) {
+        if (!m_game->isGameOver() && m_game->history().size() > 1) {
             statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
         }
         m_game->deleteLater();
