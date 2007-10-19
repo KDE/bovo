@@ -63,8 +63,17 @@ Scene::Scene(const Theme& theme, bool animation)
 }
 
 Scene::~Scene() {
-    if (m_renderer != 0)
+    if (m_renderer) {
         m_renderer->deleteLater();
+    }
+    if (m_hintItem) {
+        m_hintItem->deleteLater();
+    }
+    if (m_hintTimer) {
+        m_hintTimer->disconnect();
+        m_hintTimer->stop();
+        m_hintTimer->deleteLater();
+    }
 }
 
 void Scene::loadTheme(const Theme& theme) {

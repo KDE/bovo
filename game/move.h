@@ -25,12 +25,10 @@
 #define __MOVE_H__
 
 #include "common.h"
-
+#include "coord.h"
 
 /** namespace for game engine */
 namespace bovo {
-
-class Coord;
 
 /**
  * @brief class representing a move (a Coord and a Player id)
@@ -107,7 +105,7 @@ public:
 
 private:
     /* the coordinate */
-    Coord* m_coord;
+    Coord m_coord;
 
     /* the player */
     Player m_player;

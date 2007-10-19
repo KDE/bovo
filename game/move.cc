@@ -26,33 +26,28 @@
 #include <QString>
 
 #include "common.h"
-#include "coord.h"
 
 /** namespace for game engine */
 namespace bovo {
 
 Move::Move(Player player, int col, int row)
   : m_player(player) {
-    m_coord = new Coord(col, row);
+    m_coord = Coord(col, row);
 }
 
 Move::Move(Player player, const Coord& coord)
-  : m_player(player) {
-    m_coord = new Coord(coord);
+  : m_player(player), m_coord(coord) {
 }
 
 Move::Move(const Move &m)
- : m_player(m.m_player) {
-    m_coord = new Coord(*m.m_coord);
+ : m_player(m.m_player), m_coord(m.m_coord) {
 }
 
-Move::~Move()
-{
-    delete m_coord;
+Move::~Move() {
 }
 
 Coord Move::coord() const {
-    return *m_coord;
+    return m_coord;
 }
 
 Player Move::player() const {
@@ -60,15 +55,15 @@ Player Move::player() const {
 }
 
 bool Move::valid() const {
-    return m_player != No && m_coord->x() < NUMCOLS && m_coord->y() < NUMCOLS;
+    return m_player != No && m_coord.x() < NUMCOLS && m_coord.y() < NUMCOLS;
 }
 
 usi Move::x() const {
-    return m_coord->x();
+    return m_coord.x();
 }
 
 usi Move::y() const {
-    return m_coord->y();
+    return m_coord.y();
 }
 
 } /* namespace bovo */

@@ -53,9 +53,10 @@ Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphics
 }
 
 Mark::~Mark() {
-    if (m_ticker != 0) {
+    if (m_ticker) {
+        m_ticker->disconnect();
+        m_ticker->stop();
         m_ticker->deleteLater();
-        m_ticker = 0;
     }
 }
 
@@ -64,7 +65,6 @@ void Mark::killAnimation() {
         m_ticker->stop();
         disconnect(m_ticker, 0, this, 0);
         m_ticker->deleteLater();
-        m_ticker = 0;
         m_opacity = 1.0;
         m_scene->demandRepaint();
     }
