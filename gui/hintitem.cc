@@ -55,15 +55,15 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
 }
 
 HintItem::~HintItem() {
-    if (m_ticker != 0) {
-        m_ticker->disconnect();
+    if (m_ticker) {
+        disconnect(m_ticker, 0, this, 0);
         m_ticker->stop();
         m_ticker->deleteLater();
     }
 }
 
 void HintItem::killAnimation() {
-    if (m_ticker != 0) {
+    if (m_ticker) {
         m_ticker->stop();
         disconnect(m_ticker, 0, this, 0);
         m_opacity = 0.4;
