@@ -3,6 +3,7 @@ Name=Scribble
 Name[es]=Garabatos
 Name[ja]=落書き
 Name[sv]=Alfapet
+Name[x-test]=xxScribblexx
 Comment=A pen and paper theme
 Comment[es]=Un tema de lápiz y papel
 Comment[ja]=ペンと紙のテーマ
@@ -10,6 +11,7 @@ Comment[nl]=Een pen-en-papier-thema
 Comment[pt]=Um tema de papel e caneta
 Comment[pt_BR]=Um tema de papel e caneta
 Comment[sv]=Ett penna och papper-tema
+Comment[x-test]=xxA pen and paper themexx
 Comment[zh_TW]=紙筆式的主題
 
 [Config]
