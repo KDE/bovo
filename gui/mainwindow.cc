@@ -110,7 +110,7 @@ void MainWindow::save() const {
         if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
             QStringList lastGame;
             lastGame = m_game->saveLast();
-            lastGroup.writeEntry("Unfinished", lastGame, ';');
+            lastGroup.writeXdgListEntry("Unfinished", lastGame); // XXX this is bogus
         } else {
             lastGroup.deleteEntry("Unfinished");
         }
@@ -147,7 +147,7 @@ void MainWindow::readConfig() {
     QString rc = KGlobal::dirs()->locate("config", "bovorc");
     KConfig savegame(rc);
     KConfigGroup lastGroup(&savegame, "Game");
-    m_lastGame = lastGroup.readEntry("Unfinished", QStringList(), ';');
+    m_lastGame = lastGroup.readXdgListEntry("Unfinished", QStringList()); // XXX this is bogus
     QString wins = lastGroup.readEntry("Wins", QString());
     if (!wins.isEmpty()) {
         bool ok;
