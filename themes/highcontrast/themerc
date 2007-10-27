@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=High Contrast
 Name[br]=Dargemm huel
+Name[el]=Υψηλή αντίθεση
 Name[es]=Alto contraste
 Name[ja]=ハイコントラスト
 Name[nl]=Hoog contrast
@@ -10,6 +11,7 @@ Name[sv]=Hög kontrast
 Name[x-test]=xxHigh Contrastxx
 Name[zh_TW]=高對比
 Comment=A theme with a lot of contrast
+Comment[el]=Ένα θέμα μεγάλης αντίθεσης
 Comment[es]=Un tema con un contraste grande
 Comment[ja]=高コントラストのテーマ
 Comment[nl]=Een thema met veel contrast
