@@ -1,152 +1,208 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kappname "&bovo;"><!-- Do *not* replace kappname-->
-  <!ENTITY package "kdegames"><!-- kdebase, kdeadmin, etc -->
-  <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE"><!-- change language only here -->
+
+  <!ENTITY kapp-name "&bovo;">
+  <!ENTITY kappversion "1.00.00"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-10-16"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
-
-<book lang="&language;">
-
+ 
+<book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-<title>The &bovo; Handbook</title>
+	<title>&kapp-name; Handbook</title>
 
 <authorgroup>
 <author>
-<firstname>Aron</firstname><surname>Boström</surname>
+<firstname>Aron</firstname><surname>Bostrom</surname>
 <affiliation><address>&Aron.Bostrom.mail;</address></affiliation>
 </author>
-
+<author>
+<firstname>Eugene</firstname><surname>Trounev</surname>
+<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
+</author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
 <year>2007</year>
-<holder>Aron Boström</holder>
+<holder>Aron Bostrom</holder>
 </copyright>
 <!-- Translators: put here the copyright notice of the translation -->
 <!-- Put here the FDL notice.  Read the explanation in fdl-notice.docbook
      and in the FDL itself on how to use it. -->
 <legalnotice>&FDLNotice;</legalnotice>
-
-<date>2007-10-16</date>
-<releaseinfo>1.00.00</releaseinfo>
-
+ 
+<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-<para>
-&bovo; is a game designed to waste your time.
-</para>
+	<para>This documentation describes the game of &kapp-name; version &kappversion;</para>
 </abstract>
-
-<!-- This is a set of Keywords for indexing by search engines.
-Please at least include KDE, the KDE package it is in, the name
- of your application, and a few relevant keywords. -->
-
+ 
+<!--List of relevan keywords-->
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>bovo</keyword>
-<keyword>Gomoku</keyword>
-<keyword>Connect Five</keyword>
-<keyword>Connect5</keyword>
-<keyword>Board game</keyword>
-<keyword>X and O</keyword>
-<keyword>Five in a row</keyword>
-<keyword>kdegames</keyword>
-<keyword>KDE Game</keyword>
-<keyword>Puzzle</keyword>
+	<keyword>KDE</keyword> <!-- do not change this! -->
+	<keyword>kdegames</keyword> <!-- do not change this! -->
+	<keyword>game</keyword> <!-- do not change this! -->
+	<keyword>&kapp-name;</keyword><!--Application name goes here-->
+<!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword>arcade</keyword>
+	<keyword>board</keyword>
+	<keyword>noughts and crosses</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword>two players</keyword>
+<!--All other relevant keywords-->
+	<keyword>noughts</keyword>
+	<keyword>crosses</keyword>
+	<keyword>Gomoku</keyword>
+	<keyword>Connect Five</keyword>
+	<keyword>Connect5</keyword>
+	<keyword>Board game</keyword>
+	<keyword>X and O</keyword>
+	<keyword>Five in a row</keyword>
+	<keyword>Puzzle</keyword>
 </keywordset>
-
 </bookinfo>
-
-<chapter id="introduction">
-<title>Introduction</title>
-
+<!--Content begins here: -->
+<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
+	<note><title>Gametype:</title><para>Arcade, Board</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para>
+	&kapp-name; is a Gomoku (from Japanese <foreignphrase lang="ja">五目並べ</foreignphrase>lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board.
+	The aim of this game is to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally.
+	</para>
+	<note><title>Note:</title><para>Also known as: Connect Five, Five in a row, X and O, Noughts and Crosses</para></note>
+</chapter>
+ 
+<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note><title>Objective:</title><para>Connect five of your own pieces in an unbroken row vertically, horizontally or diagonally.</para></note>
+	<para>
+	The first time &kapp-name; is started it is launched in demo mode where two AI players battle each other. You can always start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.
+	</para>
+	<note><title>Note:</title><para>
+	Because the first player always has an advantage over the second player, &kapp-name; will alternate the players, switching them every new game.
+	</para></note>
+	<para>
+If you are the first player - start the game by placing your pictogram anywhere on the playing field. If you are the second player wait until the first player places the pictogram and then do the same yourself. You can place your mark into any square on the field, unless it’s already occupied by another game piece (regardless of whether it’s your pictogram or that of your opponent’s).
+	</para>
+	<para>
+You have to place your pieces is a way that prevents your opponent from connecting five marks in an unbroken row vertically, horizontally or diagonally. In the same time you have to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. Whoever succeeds in doing so first – wins the round.
+	</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title>Game Rules</title>
+		<itemizedlist>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+			<listitem><para></para></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title>Game Tips</title>
+		<itemizedlist>
+			<listitem><para>When &kapp-name; is started the first time, it needs resizing. Resize the game window to desired size, and &kapp-name; will scale up the playing board.</para></listitem>
+			<listitem><para>The first time &kapp-name; is started it is launched in demo mode, where two AI players battle each other.</para></listitem>
+			<listitem><para>When &kapp-name; is exited prior to game over, the active game is auto saved. If &kapp-name; detects an auto saved game at startup, it is restored. If not, &kapp-name; launches a demo mode.</para></listitem>
+			<listitem><para>You can allways start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></listitem>
+			<listitem><para>If a new game is started when a game is already active, it is counted as a loss.</para></listitem>
+			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, of from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
+			<listitem><para>The effect of changing difficulty takes place immediately.</para></listitem>
+			<listitem><para>You can switch the theme of &kapp-name; from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Theme</guimenuitem></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
+			<listitem><para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
+			<listitem><para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>.</para><para>You can keep on undoing moves until you reaches the beginning of the game.</para></listitem>
+			<listitem><para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &kapp-name; AI then flashes for a brief period of time.</para></listitem>
+			<listitem><para>When a game is over, the <guibutton>Replay</guibutton> action is enabled, which starts a replay of the last game.</para></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+ 
+ 
+<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+ 
+<sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+&help.menu.documentation;
+</sect1>
+</chapter>
+ 
+ 
+<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+<question><para>Who made this game?</para></question>
+ <answer><para>The kdegames team. You can find their website here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where can I get cheatcodes? </para></question>
+ <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I start a new game? </para></question>
+ <answer><para>Explain how to start a new game here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I pause the game? </para></question>
+ <answer><para>Explain how to pause game here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the way this game looks. Can I? </para></question>
+ <answer><para>Explain how the theme selector works.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have made a mistake. Can I undo? </para></question>
+ <answer><para>Explain how to undo here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can I use keyboard? </para></question>
+ <answer><para>Answer Yes/No and explain how if positive.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <answer><para>Explain how to use feature if exists. If not, write: '&kapp-name; does not have this feature.', but do not remove the question.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+  <answer><para>Explain how to use feature if exists. If not, write: '&kapp-name; does not have this feature.', but do not remove the question.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where are the highscores?</para></question>
+ <answer><para>Explain how to use feature if exists. If not, write: '&kapp-name; does not have this feature.', but do not remove the question.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the game configuration. Where do I go? </para></question>
+ <answer><para>Refer to <!--<link linkend="menu-settings">this</link> uncomment when needed--> section of 'Interface Overview' for details.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the toolbar layout. What do I do?</para></question>
+ <answer><para>Refer to <!--<link linkend="menu-settings">this</link> uncomment when needed--> section of 'Interface Overview' for details.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
 <para>
-&bovo; is a Gomoku (Connect Five, Five in a row, X and O, etc) game for &kde;. The purpose of this game is to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. The two participating players alternate on placing their marks on the playing board.
-</para>
-</chapter>
-
-<chapter id="history">
-<title>History</title>
-<para>Gomoku, from Japanese 五目並べ, gomoku narabe, <quote>line up five</quote>, is a traditional oriental board game, dating back to the 8th century. It is played with black and white Go pieces on a Go board, where black takes the first turn.</para>
-<para>It was soon discovered that black had a huge advantage over white, so a lot of variations have been developed. The most common variation is that only five in a row counts as a win, &ie; six in a row (called an overline) does not count. However, &bovo; doesn't use any of these additional rules.</para>
-<para>In Europe the game is traditionally played on a piece of paper, with the first player drawing X's and the second player drawing O's.</para>
-</chapter>
-
-<chapter id="bovo-rules">
-<title>Rules</title>
-<para>&bovo; rules are equal to the traditional free-style Gomoku rules, with no additional extra rules. However, the playing board is 22×22, instead of 19×19 as in the traditional Gomoku game.</para>
-
-<para>For a more fair game, the two players alternate on who begins. The player who begins does so by placing an X anywhere on the playing field. The players will thereafter alternate in placing their marks on the board.</para>
-<para>The game is over when one of the player gets at least 5 marks in a row vertically, horizontally or diagonal.</para>
-</chapter>
-
-<chapter id="bovo-help">
-<title>Help for &bovo;</title>
-<sect1 id="bovo-help-first-startup">
-<title>First Startup</title>
-<para>When &bovo; is started the first time, it needs resizing. Resize the game window to desired size, and &bovo; will scale up the playing board.</para>
-<para>The first time &bovo; is started it is launched in demo mode, where two AI players battle each other.</para>
-</sect1>
-<sect1 id="bovo-help-auto-saving">
-<title>Auto Save</title>
-<para>When &bovo; is exited prior to game over, the active game is auto saved. If &bovo; detects an auto saved game at startup, it is restored. If not, &bovo; launches a demo mode.</para>
-</sect1>
-
-<sect1 id="bovo-help-starting-new-game">
-<title>Starting a New Game</title>
-<para>You can allways start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice>
-<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para>
-<para>If a new game is started when a game is already active, it is counted as a loss.</para>
-</sect1>
-
-<sect1 id="bovo-help-changing-difficulty">
-<title>Changing Difficulty</title>
-<para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, of from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para>
-<para>The effect of changing difficulty takes place immediately.</para>
-</sect1>
-
-<sect1 id="bovo-help-switching-theme">
-<title>Switching Theme</title>
-<para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Theme</guimenuitem></menuchoice> menu in the menubar. The theme is then switched immediately.</para>
-</sect1>
-
-<sect1 id="bovo-help-animation">
-<title>Animation</title>
-<para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para>
-</sect1>
-
-<sect1 id="bovo-help-undo">
-<title>Undo</title>
-<para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>. </para>
-<para>You can keep on undoing moves until you reaches the beginning of the game.</para>
-</sect1>
-
-<sect1 id="bovo-help-get-a-hint">
-<title>Get a Hint</title>
-<para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para>
-</sect1>
-
-<sect1 id="bovo-help-replay">
-<title>Replay Mode</title>
-<para>When a game is over, the <guibutton>Replay</guibutton> action is enabled, which starts a replay of the last game.</para>
-</sect1>
-
-</chapter>
-
-
-<!-- (OPTIONAL, BUT RECOMMENDED) This chapter should list all of the
-application windows and their menubar and toolbar commands for easy reference.
-Also include any keys that have a special function but have no equivalent in the
-menus or toolbars. This may not be necessary for small apps or apps with no tool
-or menubars. -->
-
-<chapter id="credits">
-
-<title>Credits and License</title>
-
-<para>
-&bovo;
+&kapp-name;
 </para>
 <para>
 Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail;
@@ -156,11 +212,45 @@ Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail;
 Documentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;&underGPL;
+ 
+ 
+<!-- !!!do not change ANYTHING after this line!!!! -->
+&underFDL;
+&underGPL;
+ 
 </chapter>
-
-
-&documentation.index;
+ 
+ 
+<appendix id="installation">
+<title>Installation</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title>Compilation and Installation</title>
+ 
+&install.compile.documentation;
+ 
+</sect1>
+</appendix>
+ 
+&documentation.index; 
 </book>
-
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
