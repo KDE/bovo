@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 
-  <!ENTITY kapp-name "&bovo;">
+  <!ENTITY kappname "&bovo;">
   <!ENTITY kappversion "1.00.00"><!--Applicaion version. Use this variable everywhere it's needed.-->
   <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY docupdate "2007-10-16"><!--Document version. Use this variable everywhere it's needed.-->
@@ -12,7 +12,7 @@
  
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title>&kapp-name; Handbook</title>
+	<title>&bovo; Handbook</title>
 
 <authorgroup>
 <author>
@@ -40,7 +40,7 @@
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kapp-name; version &kappversion;</para>
+	<para>This documentation describes the game of &bovo; version &kappversion;</para>
 </abstract>
  
 <!--List of relevan keywords-->
@@ -48,7 +48,7 @@
 	<keyword>KDE</keyword> <!-- do not change this! -->
 	<keyword>kdegames</keyword> <!-- do not change this! -->
 	<keyword>game</keyword> <!-- do not change this! -->
-	<keyword>&kapp-name;</keyword><!--Application name goes here-->
+	<keyword>bovo</keyword><!--Application name goes here-->
 <!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<keyword>arcade</keyword>
 	<keyword>board</keyword>
@@ -74,7 +74,7 @@
  
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para>
-	&kapp-name; is a Gomoku (from Japanese <foreignphrase lang="ja">五目並べ</foreignphrase>lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board.
+	&bovo; is a Gomoku (from Japanese <foreignphrase lang="ja">五目並べ</foreignphrase>lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board.
 	The aim of this game is to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally.
 	</para>
 	<note><title>Note:</title><para>Also known as: Connect Five, Five in a row, X and O, Noughts and Crosses</para></note>
@@ -84,10 +84,10 @@
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Connect five of your own pieces in an unbroken row vertically, horizontally or diagonally.</para></note>
 	<para>
-	The first time &kapp-name; is started it is launched in demo mode where two AI players battle each other. You can always start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.
+	The first time &bovo; is started it is launched in demo mode where two AI players battle each other. You can always start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.
 	</para>
 	<note><title>Note:</title><para>
-	Because the first player always has an advantage over the second player, &kapp-name; will alternate the players, switching them every new game.
+	Because the first player always has an advantage over the second player, &bovo; will alternate the players, switching them every new game.
 	</para></note>
 	<para>
 If you are the first player - start the game by placing your pictogram anywhere on the playing field. If you are the second player wait until the first player places the pictogram and then do the same yourself. You can place your mark into any square on the field, unless it’s already occupied by another game piece (regardless of whether it’s your pictogram or that of your opponent’s).
@@ -114,17 +114,17 @@ You have to place your pieces is a way that prevents your opponent from connecti
 	<sect1 id="tips">
 		<title>Game Tips</title>
 		<itemizedlist>
-			<listitem><para>When &kapp-name; is started the first time, it needs resizing. Resize the game window to desired size, and &kapp-name; will scale up the playing board.</para></listitem>
-			<listitem><para>The first time &kapp-name; is started it is launched in demo mode, where two AI players battle each other.</para></listitem>
-			<listitem><para>When &kapp-name; is exited prior to game over, the active game is auto saved. If &kapp-name; detects an auto saved game at startup, it is restored. If not, &kapp-name; launches a demo mode.</para></listitem>
+			<listitem><para>When &bovo; is started the first time, it needs resizing. Resize the game window to desired size, and &bovo; will scale up the playing board.</para></listitem>
+			<listitem><para>The first time &bovo; is started it is launched in demo mode, where two AI players battle each other.</para></listitem>
+			<listitem><para>When &bovo; is exited prior to game over, the active game is auto saved. If &bovo; detects an auto saved game at startup, it is restored. If not, &bovo; launches a demo mode.</para></listitem>
 			<listitem><para>You can allways start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></listitem>
 			<listitem><para>If a new game is started when a game is already active, it is counted as a loss.</para></listitem>
 			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, of from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
 			<listitem><para>The effect of changing difficulty takes place immediately.</para></listitem>
-			<listitem><para>You can switch the theme of &kapp-name; from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Theme</guimenuitem></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
+			<listitem><para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Theme</guimenuitem></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
 			<listitem><para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
 			<listitem><para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>.</para><para>You can keep on undoing moves until you reaches the beginning of the game.</para></listitem>
-			<listitem><para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &kapp-name; AI then flashes for a brief period of time.</para></listitem>
+			<listitem><para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para></listitem>
 			<listitem><para>When a game is over, the <guibutton>Replay</guibutton> action is enabled, which starts a replay of the last game.</para></listitem>
 		</itemizedlist>
 	</sect1>
@@ -175,15 +175,15 @@ You have to place your pieces is a way that prevents your opponent from connecti
 </qandaentry>
 <qandaentry>
  <question><para>I can't figure out what to do here! Are there hints? </para></question>
- <answer><para>Explain how to use feature if exists. If not, write: '&kapp-name; does not have this feature.', but do not remove the question.</para></answer>
+ <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
-  <answer><para>Explain how to use feature if exists. If not, write: '&kapp-name; does not have this feature.', but do not remove the question.</para></answer>
+  <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the highscores?</para></question>
- <answer><para>Explain how to use feature if exists. If not, write: '&kapp-name; does not have this feature.', but do not remove the question.</para></answer>
+ <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
@@ -202,7 +202,7 @@ You have to place your pieces is a way that prevents your opponent from connecti
 <!--This chapter is for credits and licenses.-->
  
 <para>
-&kapp-name;
+&bovo;
 </para>
 <para>
 Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail;
