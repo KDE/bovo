@@ -31,16 +31,15 @@
 namespace bovo {
 
 Move::Move(Player player, int col, int row)
-  : m_player(player) {
-    m_coord = Coord(col, row);
+  : m_coord(col, row), m_player(player) {
 }
 
 Move::Move(Player player, const Coord& coord)
-  : m_player(player), m_coord(coord) {
+  : m_coord(coord), m_player(player) {
 }
 
 Move::Move(const Move &m)
- : m_player(m.m_player), m_coord(m.m_coord) {
+ : m_coord(m.m_coord), m_player(m.m_player) {
 }
 
 Move::~Move() {
