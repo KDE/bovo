@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+﻿<?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 
   <!ENTITY kappname "&bovo;">
@@ -102,13 +102,10 @@ You have to place your pieces is a way that prevents your opponent from connecti
 	<sect1 id="rules">
 		<title>Game Rules</title>
 		<itemizedlist>
-			<listitem><para></para></listitem>
-			<listitem><para></para></listitem>
-			<listitem><para></para></listitem>
-			<listitem><para></para></listitem>
-			<listitem><para></para></listitem>
-			<listitem><para></para></listitem>
-			<listitem><para></para></listitem>
+			<listitem><para>Players take turn to place their respective marks on the playing board.</para></listitem>
+			<listitem><para>A player cannot move their already placed mark or put their mark upon an already placed mark.</para></listitem>
+			<listitem><para>Players cannot forfeit their turns.</para></listitem>
+			<listitem><para>Player who reaches five marks connected in a straight line (be it vertical, horizontal or diagonal) wins the game.</para></listitem>
 		</itemizedlist>
 	</sect1>
 	<sect1 id="tips">
@@ -117,11 +114,11 @@ You have to place your pieces is a way that prevents your opponent from connecti
 			<listitem><para>When &bovo; is started the first time, it needs resizing. Resize the game window to desired size, and &bovo; will scale up the playing board.</para></listitem>
 			<listitem><para>The first time &bovo; is started it is launched in demo mode, where two AI players battle each other.</para></listitem>
 			<listitem><para>When &bovo; is exited prior to game over, the active game is auto saved. If &bovo; detects an auto saved game at startup, it is restored. If not, &bovo; launches a demo mode.</para></listitem>
-			<listitem><para>You can allways start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></listitem>
+			<listitem><para>You can always start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></listitem>
 			<listitem><para>If a new game is started when a game is already active, it is counted as a loss.</para></listitem>
 			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, of from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
 			<listitem><para>The effect of changing difficulty takes place immediately.</para></listitem>
-			<listitem><para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Theme</guimenuitem></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
+			<listitem><para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guisubmenu>Theme</guisubmenu></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
 			<listitem><para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
 			<listitem><para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>.</para><para>You can keep on undoing moves until you reaches the beginning of the game.</para></listitem>
 			<listitem><para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para></listitem>
@@ -129,33 +126,154 @@ You have to place your pieces is a way that prevents your opponent from connecti
 		</itemizedlist>
 	</sect1>
 </chapter>
- 
- 
+  
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
- 
+
+<sect1 id="game-menu">
+<title>The <guimenu>Game</guimenu> Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem></menuchoice></term>
+<listitem><para>Starts a new game.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Replay</guimenuitem></menuchoice></term>
+<listitem><para></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem></menuchoice></term>
+<listitem><para>Selecting this item will end your current game, and exit
+&bovo;.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="move-menu">
+<title>The <guimenu>Move</guimenu> Menu</title>
+
+<variablelist>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Z</keycap>
+</keycombo>
+</shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Undo</guimenuitem>
+</menuchoice>
+</term>
+<listitem>
+<para><action>Undo the last move you made.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycap>H</keycap>
+</shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Hint</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action></action></para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu></menuchoice></term>
+<listitem><para>Choose one of the themes  <guimenuitem>Scribble</guimenuitem>, <guimenuitem>High Contrast</guimenuitem>,
+<guimenuitem>Spacy</guimenuitem> or <guimenuitem>Gomoku</guimenuitem> for the game.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Animation
+</guimenuitem></menuchoice></term>
+<listitem><para>.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show/Hide
+Toolbar</guimenuitem></menuchoice></term>
+<listitem><para><action>Toggles</action> display of the toolbar below the menu bar.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show/Hide
+Statusbar</guimenuitem></menuchoice></term>
+<listitem><para>Toggle the display of the status bar at the bottom of the main window.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guisubmenu>Difficulty</guisubmenu></menuchoice></term>
+<listitem><para>Choose the game difficulty from <guimenuitem>Ridiculously easy</guimenuitem>, 
+<guimenuitem>Easy</guimenuitem>, <guimenuitem>Very easy</guimenuitem>, <guimenuitem>Medium</guimenuitem> 
+to <guimenuitem>Hard</guimenuitem>.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure
+Shortcuts...</guimenuitem></menuchoice></term>
+<listitem><para>This item lets you change the key settings of
+&bovo;.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem></menuchoice></term>
+<listitem><para>Displays the &kde; standard dialog to customize
+the toolbars.</para></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
 <title>The <guimenuitem>Help</guimenuitem> Menu</title>
 &help.menu.documentation;
 </sect1>
 </chapter>
- 
- 
+  
 <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
 <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
 <question><para>Who made this game?</para></question>
- <answer><para>The kdegames team. You can find their website here.</para></answer>
+ <answer><para>The kdegames team. You can find their website <ulink url="http://games.kde.org">here</ulink>.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where can I get cheatcodes? </para></question>
- <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+ <answer><para>You cannot get cheatcodes for &kde; games.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new game? </para></question>
- <answer><para>Explain how to start a new game here.</para></answer>
+ <answer><para>You can start a new game using the <guibutton>New</guibutton> button on the toolbar,
+the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the 
+menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
@@ -174,11 +292,11 @@ You have to place your pieces is a way that prevents your opponent from connecti
  <answer><para>Answer Yes/No and explain how if positive.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <question><para>I cannot figure out what to do here! Are there hints? </para></question>
  <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+ <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
   <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
 </qandaentry>
 <qandaentry>
@@ -212,15 +330,11 @@ Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail;
 Documentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
- 
- 
-<!-- !!!do not change ANYTHING after this line!!!! -->
 &underFDL;
 &underGPL;
  
 </chapter>
- 
- 
+  
 <appendix id="installation">
 <title>Installation</title>
  
