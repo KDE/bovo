@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Gomoku
 Name[ja]=五目並べ
+Name[ko]=고모쿠
 Name[x-test]=xxGomokuxx
 Name[zh_CN]=五目连珠
 Comment=A classic japanese theme
@@ -8,6 +9,7 @@ Comment[de]=Ein klassiches japanisches Design
 Comment[el]=Ένα κλασικό ιαπωνικό παιχνίδι
 Comment[es]=Un tema japonés clásico
 Comment[ja]=伝統的な日本の五目並べのテーマ
+Comment[ko]=일본 전통 테마
 Comment[nl]=Een klassiek japans thema
 Comment[pt]=Um tema clássico Japonês
 Comment[pt_BR]=Um tema clássico Japonês
