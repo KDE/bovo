@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Exec=bovo -caption "%c"
 Name=Bovo
 Name[ne]=बोभो
