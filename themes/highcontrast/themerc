@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=High Contrast
 Name[br]=Dargemm huel
+Name[ca]=Contrast alt
 Name[de]=Hoher Kontrast
 Name[el]=Υψηλή αντίθεση
 Name[es]=Alto contraste
@@ -14,6 +15,7 @@ Name[x-test]=xxHigh Contrastxx
 Name[zh_CN]=高对比
 Name[zh_TW]=高對比
 Comment=A theme with a lot of contrast
+Comment[ca]=Un tema amb molt contrast
 Comment[de]=Ein Design mit Farben mit starkem Kontrast
 Comment[el]=Ένα θέμα μεγάλης αντίθεσης
 Comment[es]=Un tema con un contraste grande

@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Spacy
+Name[ca]=Espai
 Name[es]=Espacio
 Name[ja]=宇宙
 Name[ko]=우주
@@ -9,6 +10,7 @@ Name[sv]=Rymd
 Name[x-test]=xxSpacyxx
 Name[zh_CN]=空间
 Comment=A theme from outer space
+Comment[ca]=Un tema de l'espai exterior
 Comment[de]=Ein Design aus den Tiefen des Weltraums
 Comment[el]=Ένα διαστημικό θέμα
 Comment[es]=Un tema del espacio exterior
