@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 
   <!ENTITY kappname "&bovo;">
@@ -211,17 +211,17 @@ You have to place your pieces is a way that prevents your opponent from connecti
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Animation
 </guimenuitem></menuchoice></term>
-<listitem><para>.</para></listitem>
+<listitem><para>Switch the animation on or off.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show/Hide
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
 Toolbar</guimenuitem></menuchoice></term>
 <listitem><para><action>Toggles</action> display of the toolbar below the menu bar.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show/Hide
+<term><menuchoice><guimenu>Settings</guimenu><guimenuitem>Show
 Statusbar</guimenuitem></menuchoice></term>
 <listitem><para>Toggle the display of the status bar at the bottom of the main window.</para></listitem>
 </varlistentry>
@@ -277,39 +277,42 @@ menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
- <answer><para>Explain how to pause game here.</para></answer>
+ <answer><para>&kappname; does not have a <quote>Pause</quote> feature, as it does not require one.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Explain how the theme selector works.</para></answer>
+ <answer><para>Yes. To change &kappname; visual theme you can use <menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu>
+</menuchoice> option on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have made a mistake. Can I undo? </para></question>
- <answer><para>Explain how to undo here.</para></answer>
+ <answer><para>Yes. To undo your last move you can use <menuchoice><shortcut><keycombo 
+action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
+<guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use keyboard? </para></question>
- <answer><para>Answer Yes/No and explain how if positive.</para></answer>
+ <answer><para>No. The game of &kappname; cannot be played using keyboard.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
+ <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keysym>H</keysym></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
-  <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
+  <answer><para>No. There is no <quote>Save</quote> feature in &kappname;.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the highscores?</para></question>
- <answer><para>Explain how to use feature if exists. If not, write: '&bovo; does not have this feature.', but do not remove the question.</para></answer>
+ <answer><para>&kappname; does not have this feature.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
- <answer><para>Refer to <!--<link linkend="menu-settings">this</link> uncomment when needed--> section of 'Interface Overview' for details.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+ <answer><para>All of the possible &kappname;'s settings are located under the <menuchoice><guimenu>Settings</guimenu></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the toolbar layout. What do I do?</para></question>
- <answer><para>Refer to <!--<link linkend="menu-settings">this</link> uncomment when needed--> section of 'Interface Overview' for details.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
+ <answer><para>To change the toolbar layout please use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure Toolbars...</guimenuitem></menuchoice> on the menubar.</para></answer><!--IMPORTANT!: this link has to send user to 'Interface Overview' section. So please setup the link structure accordingly.-->
 </qandaentry>
 <!--Please add more Q&As if needed-->
  
