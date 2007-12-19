@@ -26,7 +26,6 @@
 
 #include "ai.h"
 
-#include <QTimer>
 
 #include "aiboard.h"
 #include "coord.h"

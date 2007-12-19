@@ -23,12 +23,9 @@
 #include "mainwindow.h"
 
 // Qt includes
-#include <QVBoxLayout>
 #include <QWidget>
-#include <QComboBox>
 #include <QTimer>
 #include <QBrush>
-#include <QLabel>
 
 // KDE includes
 #include <kaction.h>

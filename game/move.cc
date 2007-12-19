@@ -23,7 +23,6 @@
 
 #include "move.h"
 
-#include <QString>
 
 #include "common.h"
 
