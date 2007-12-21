@@ -2,6 +2,7 @@
 Name=Gomoku
 Name[ja]=五目並べ
 Name[ko]=고모쿠
+Name[uk]=Гомоку
 Name[x-test]=xxGomokuxx
 Name[zh_CN]=五目连珠
 Comment=A classic japanese theme
@@ -20,6 +21,7 @@ Comment[pt]=Um tema clássico Japonês
 Comment[pt_BR]=Um tema clássico Japonês
 Comment[sl]=Klasična japonska tema
 Comment[sv]=Ett klassiskt japanskt tema
+Comment[uk]=Класична японська тема
 Comment[x-test]=xxA classic japanese themexx
 Comment[zh_CN]=经典的和风主题
 Comment[zh_TW]=傳統的日式主題
