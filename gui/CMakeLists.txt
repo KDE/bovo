@@ -12,11 +12,11 @@ set(bovogui
 
 kde4_add_kcfg_files(bovogui settings.kcfgc)
 set(bovogui_icons
-    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/16x16/apps/bovo.png
-    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/32x32/apps/bovo.png
-    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/48x48/apps/bovo.png
-    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/64x64/apps/bovo.png
-    ${CMAKE_INSTALL_PREFIX}/share/icons/oxygen/128x128/apps/bovo.png
+    ${KDE4_ICON_DIR}/oxygen/16x16/apps/bovo.png
+    ${KDE4_ICON_DIR}/oxygen/32x32/apps/bovo.png
+    ${KDE4_ICON_DIR}/oxygen/48x48/apps/bovo.png
+    ${KDE4_ICON_DIR}/oxygen/64x64/apps/bovo.png
+    ${KDE4_ICON_DIR}/oxygen/128x128/apps/bovo.png
 )
 kde4_add_win32_app_icon(bovogui ${bovogui_icons})
 kde4_add_executable(bovo ${bovogui})
