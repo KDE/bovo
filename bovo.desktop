@@ -2,6 +2,7 @@
 Exec=bovo -caption "%c"
 Name=Bovo
 Name[ne]=बोभो
+Name[uk]=Бово
 Name[x-test]=xxBovoxx
 Type=Application
 X-DocPath=bovo/index.html
