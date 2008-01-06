@@ -66,7 +66,7 @@ Game::Game(const Dimension& dimension, const QStringList &restoreGame,
     m_winDir = -1;
     m_gameOver = false;
     m_curPlayer = No;
-    foreach (QString turn, restoreGame) {
+    foreach (const QString &turn, restoreGame) {
         QStringList tmp = turn.split(':');
         if (tmp.count() != 2) {
             qFatal("Wrong save file format!");
@@ -141,7 +141,7 @@ bool Game::save(const QString& filename) const {
     QString fileContent;
     fileContent.append(QString("<bovo width=\"%1\" height=\"%2\">")
             .arg("").arg(""));
-    foreach (Move move, m_history) {
+    foreach (const Move &move, m_history) {
         fileContent.append(QString("<move player=\"%1\" x=\"%2\" y=\"%3\" />").
                 arg(move.player()).arg(move.x()).arg(move.y()));
     }
@@ -151,7 +151,7 @@ bool Game::save(const QString& filename) const {
 
 QStringList Game::saveLast() const {
     QStringList save;
-    foreach (Move move, m_history) {
+    foreach (const Move &move, m_history) {
         save << QString("%1:%2,%3").arg(move.player())
                 .arg(move.x()).arg(move.y());
     }
@@ -174,7 +174,7 @@ void Game::start() {
 void Game::startRestored() {
     connect(this, SIGNAL(boardChanged(const Move&)),
             m_ai, SLOT(changeBoard(const Move&)));
-    foreach (Move move, m_history) {
+    foreach (const Move &move, m_history) {
         emit boardChanged(move);
     }
     connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),

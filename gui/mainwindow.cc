@@ -120,7 +120,7 @@ void MainWindow::setupThemes() {
     QStringList themercs = KGlobal::dirs()->findAllResources("appdata",
                            "themes/*/themerc");
     int i = 0;
-    foreach (QString themerc, themercs) {
+    foreach (const QString &themerc, themercs) {
         KConfig config(themerc);
         KConfigGroup configGroup(&config, "Config");
         QString pathName = configGroup.readEntry("Path", QString());
@@ -131,7 +131,7 @@ void MainWindow::setupThemes() {
 
 void MainWindow::readConfig() {
     QString themePath = Settings::theme();
-    foreach (Theme tmpTheme, m_themes) {
+    foreach (const Theme &tmpTheme, m_themes) {
         if (tmpTheme.path() == themePath) {
             m_theme = tmpTheme;
             break;
@@ -193,12 +193,12 @@ void MainWindow::setupActions() {
 
     m_themeAct = new KSelectAction(i18n("Theme"), this);
     QStringList themes;
-    foreach (Theme theme, m_themes) {
+    foreach (const Theme &theme, m_themes) {
         themes << theme.name();
     }
     m_themeAct->setItems(themes);
     int themeId = 0;
-    foreach (Theme theme, m_themes) {
+    foreach (const Theme &theme, m_themes) {
         if (theme.path() == m_theme.path()) {
             themeId = theme.id();
             break;
@@ -407,7 +407,7 @@ void MainWindow::changeSkill() {
 }
 
 void MainWindow::changeTheme(int themeId) {
-    foreach (Theme theme, m_themes) {
+    foreach (const Theme &theme, m_themes) {
         if (themeId == theme.id()) {
             m_theme = theme;
             m_scene->setTheme(m_theme);
