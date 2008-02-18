@@ -252,7 +252,7 @@ the toolbars.</para></listitem>
 </sect1>
 
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 &help.menu.documentation;
 </sect1>
 </chapter>
@@ -296,7 +296,7 @@ action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
 </qandaentry>
 <qandaentry>
  <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keysym>H</keysym></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keycap>H</keycap></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
