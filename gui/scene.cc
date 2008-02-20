@@ -124,6 +124,7 @@ void Scene::resizeScene(int width, int height) {
 }
 
 void Scene::setGame(Game* game) {
+    destroyHint();
     m_winningMoves = QList<Move>();
     m_game = game;
     m_player = m_game->player();
