@@ -228,8 +228,8 @@ Statusbar</guimenuitem></menuchoice></term>
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guisubmenu>Difficulty</guisubmenu></menuchoice></term>
-<listitem><para>Choose the game difficulty from <guimenuitem>Ridiculously easy</guimenuitem>, 
-<guimenuitem>Easy</guimenuitem>, <guimenuitem>Very easy</guimenuitem>, <guimenuitem>Medium</guimenuitem> 
+<listitem><para>Choose the game difficulty from <guimenuitem>Ridiculously Easy</guimenuitem>, 
+<guimenuitem>Very Easy</guimenuitem>, <guimenuitem>Easy</guimenuitem>, <guimenuitem>Medium</guimenuitem> 
 to <guimenuitem>Hard</guimenuitem>.</para></listitem>
 </varlistentry>
 
