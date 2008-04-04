@@ -206,6 +206,7 @@ void MainWindow::setupActions() {
     }
     m_themeAct->setCurrentItem(themeId);
     actionCollection()->addAction("themes", m_themeAct);
+    m_themeAct->setIcon(KIcon("games-config-theme"));
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
     m_undoAct = KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection());
