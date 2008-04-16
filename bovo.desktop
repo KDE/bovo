@@ -1,6 +1,7 @@
 [Desktop Entry]
 Exec=bovo -caption "%c"
 Name=Bovo
+Name[fa]=بُوُ
 Name[ne]=बोभो
 Name[pa]=ਬੋਵੋ
 Name[uk]=Бово
