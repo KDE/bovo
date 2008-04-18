@@ -34,7 +34,7 @@ using namespace gui;
 int main(int argc, char **argv) {
     KAboutData aboutData("bovo", 0, ki18n("Bovo"),
             BOVO_VERSION, ki18n(description), KAboutData::License_GPL,
-            ki18n("(c) 2002,2007 Aron Boström"));
+            ki18n("(c) 2002,2007 Aron Boström"), KLocalizedString(), "http://games.kde.org/bovo" );
     aboutData.addAuthor(ki18n("Aron Boström"),ki18n("Author"),
                         "aron.bostrom@gmail.com");
 
