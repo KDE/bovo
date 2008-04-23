@@ -277,11 +277,11 @@ menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
- <answer><para>&kappname; does not have a <quote>Pause</quote> feature, as it does not require one.</para></answer>
+ <answer><para>""&kappname;"" does not have a <quote>Pause</quote> feature, as it does not require one.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Yes. To change &kappname; visual theme you can use <menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu>
+ <answer><para>Yes. To change "&kappname;" visual theme you can use <menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu>
 </menuchoice> option on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
@@ -292,7 +292,7 @@ action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use keyboard? </para></question>
- <answer><para>No. The game of &kappname; cannot be played using keyboard.</para></answer>
+ <answer><para>No. The game of "&kappname;" cannot be played using keyboard.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I cannot figure out what to do here! Are there hints? </para></question>
@@ -300,15 +300,15 @@ action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
-  <answer><para>No. There is no <quote>Save</quote> feature in &kappname;.</para></answer>
+  <answer><para>No. There is no <quote>Save</quote> feature in "&kappname;".</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the highscores?</para></question>
- <answer><para>&kappname; does not have this feature.</para></answer>
+ <answer><para>"&kappname;" does not have this feature.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
- <answer><para>All of the possible &kappname;'s settings are located under the <menuchoice><guimenu>Settings</guimenu></menuchoice> on the menubar.</para></answer>
+ <answer><para>All of the possible "&kappname;"'s settings are located under the <menuchoice><guimenu>Settings</guimenu></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the toolbar layout. What do I do?</para></question>
