@@ -1,10 +1,7 @@
 project (BOVO)
 
 # re-enabling exceptions (turned off in KDE)
-if(NOT MSVC)
-  # cmake bug - RC_FLAGS for rc.exe is wrong
-  add_definitions (${KDE4_ENABLE_EXCEPTIONS})
-endif(NOT MSVC)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
 
 include_directories (
         ${BOVO_SOURCE_DIR}/gui ${CMAKE_BINARY_DIR}/gui
