@@ -2,6 +2,7 @@
 Name=Scribble
 Name[es]=Garabatos
 Name[fr]=Crayonné
+Name[gl]=Manuscrito
 Name[it]=Scarabocchio
 Name[ja]=落書き
 Name[ko]=낙서
@@ -25,6 +26,7 @@ Comment[et]=Pliiatsi ja paberi teema
 Comment[fi]=Kynä ja paperia -teema
 Comment[fr]=Un thème papier et crayon
 Comment[ga]=Téama: peann agus pár
+Comment[gl]=Un tema de lapis e papel
 Comment[hu]=Téma tollal és papírral
 Comment[it]=Un tema che simula carta e penna
 Comment[ja]=ペンと紙のテーマ
