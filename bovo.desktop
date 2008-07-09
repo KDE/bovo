@@ -8,6 +8,7 @@ Name[x-test]=xxBovoxx
 Type=Application
 X-DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
+GenericName[ar]=- خمسة في صف واحد  لوح لعبة
 GenericName[ca]=Joc de cinc en fila
 GenericName[cs]=Desková hra "pět v řadě"
 GenericName[da]=Fem-på-række-brætspil
