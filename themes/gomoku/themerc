@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Gomoku
 Name[ko]=고모쿠
+Name[ru]=Гомоку
 Name[te]=గొమొకు
 Name[uk]=Гомоку
 Name[x-test]=xxGomokuxx
@@ -31,6 +32,7 @@ Comment[nn]=Eit klassisk japansk tema
 Comment[pl]=Klasyczny motyw japoński
 Comment[pt]=Um tema clássico Japonês
 Comment[pt_BR]=Um tema japonês clássico
+Comment[ru]=Классическое японское оформление
 Comment[sl]=Klasična japonska tema
 Comment[sv]=Ett klassiskt japanskt tema
 Comment[tr]=Klasik Japonca teması
