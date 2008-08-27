@@ -52,6 +52,8 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
     } else {
         m_opacity = 0.4;
     }
+
+    setPos(m_scene->cellCenter(m_col, m_row));
 }
 
 HintItem::~HintItem() {
@@ -62,12 +64,23 @@ HintItem::~HintItem() {
     }
 }
 
+QRectF HintItem::boundingRect() const {
+    qreal width = m_scene->squareSize();
+    qreal height = width;
+    qreal margin = (1.0-m_fill) * width / 2.0;
+    return QRectF( -width / 2.0  + margin,
+                -height / 2.0 + margin,
+                width  - 2.0*margin,
+                height - 2.0*margin);
+}
+
+
 void HintItem::killAnimation() {
     if (m_ticker) {
         m_ticker->stop();
         disconnect(m_ticker, 0, this, 0);
         m_opacity = 0.4;
-        m_scene->demandRepaint();
+        update();
     }
 }
 
@@ -78,7 +91,7 @@ void HintItem::kill() {
 
 void HintItem::killTick() {
     m_opacity -= 0.05;
-    m_scene->demandRepaint();
+    update();
     if (m_opacity <= 0.05) {
         m_ticker->stop();
         emit killed();
@@ -98,7 +111,7 @@ void HintItem::tick() {
         } else {
             m_opacity -= 0.1;
         }
-        m_scene->demandRepaint();
+        update();
     }
 }
 
@@ -106,20 +119,9 @@ void HintItem::tick() {
 //     m_enabled = enabled;
 // }
 
-QRectF HintItem::glyphRectF() const {
-    qreal width = m_scene->width() / (NUMCOLS+2);
-    qreal height = width;
-    qreal margin = (1.0-m_fill) * width / 2.0;
-    //    qreal margin = m_sizeShrink * width;
-    return QRectF( (1+m_col) * width  + margin,
-                    (1+m_row) * height + margin,
-                    width  - 2.0*margin,
-                    height - 2.0*margin);
-}
-
 void HintItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
     p->setOpacity(m_opacity);
-    renderer()->render(p, elementId(), glyphRectF());
+    renderer()->render(p, elementId(), boundingRect());
 }
 
 void HintItem::setFill(qreal fill) {

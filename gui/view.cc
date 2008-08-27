@@ -48,7 +48,7 @@ View::View(Scene* scene, const QColor& bgColor, QWidget *parent) : QGraphicsView
 }
 
 void View::resizeEvent( QResizeEvent* ev ) {
-    m_scene->resizeScene( ev->size().width(), ev->size().height() );
+    fitInView(sceneRect(), Qt::KeepAspectRatio);
     QGraphicsView::resizeEvent(ev);
 }
 

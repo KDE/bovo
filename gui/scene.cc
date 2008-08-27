@@ -48,7 +48,7 @@ using namespace bovo;
 namespace gui {
 
 Scene::Scene(const Theme& theme, bool animation)
-  : m_activate(false), m_game(0), m_player(No), m_animation(animation),
+  : m_activate(false), m_game(0), m_curCellSize(10.0), m_player(No), m_animation(animation),
   m_paintMarker(false) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
@@ -58,8 +58,7 @@ Scene::Scene(const Theme& theme, bool animation)
     m_hintTimer = new QTimer(this);
     m_hintTimer->setSingleShot(true);
     m_hintItem = 0;
-    resizeScene(static_cast<int>(m_curCellSize*(NUMCOLS+2)),
-                static_cast<int>(m_curCellSize*(NUMCOLS+2)));
+    setSceneRect( 0, 0, m_curCellSize*(NUMCOLS+2), m_curCellSize*(NUMCOLS+2) );
 }
 
 Scene::~Scene() {
@@ -76,6 +75,10 @@ Scene::~Scene() {
     }
 }
 
+qreal Scene::squareSize() const {
+    return m_curCellSize;
+}
+
 void Scene::loadTheme(const Theme& theme) {
     m_fill = theme.fill();
     QColor color(theme.backgroundColor());
@@ -90,12 +93,10 @@ void Scene::loadTheme(const Theme& theme) {
     else
         m_renderer->load(theme.svg());
     QList<QGraphicsItem*> allMarks = items();
-    QList<QGraphicsItem*>::iterator it = allMarks.begin();
-    QList<QGraphicsItem*>::iterator end = allMarks.end();
-    for (; it != end; ++it) {
-        if (Mark* mark = qgraphicsitem_cast<Mark *>(*it))
+    foreach (QGraphicsItem* item, allMarks) {
+        if (Mark* mark = qgraphicsitem_cast<Mark *>(item))
             mark->setFill(m_fill);
-        else if (HintItem* hintItem = qgraphicsitem_cast<HintItem *>(*it)) 
+        else if (HintItem* hintItem = qgraphicsitem_cast<HintItem *>(item)) 
             hintItem->setFill(m_fill);
     }
 }
@@ -114,13 +115,6 @@ void Scene::setWin() {
         return;
     }
     invalidate(0, 0, width(), height());
-}
-
-void Scene::resizeScene(int width, int height) {
-    int size = qMin(width, height);
-    setSceneRect( 0, 0, size, size );
-    m_curCellSize = static_cast<qreal>(size) /
-                    static_cast<qreal>(NUMCOLS+2);
 }
 
 void Scene::setGame(Game* game) {
@@ -155,14 +149,11 @@ void Scene::updateBoard(const Move& move) {
         Mark* mark = new Mark(this, move, m_animation, m_fill);
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
-        demandRepaint();
     } else if (move.player() == No) {
         QList<QGraphicsItem*> allMarks = items();
-        QList<QGraphicsItem*>::iterator it = allMarks.begin();
-        QList<QGraphicsItem*>::iterator end = allMarks.end();
-        for (; it != end; ++it) {
-            if (Mark* mark = qgraphicsitem_cast<Mark *>(*it)) {
-                if (mark->x() == move.x() && mark->y() == move.y()) {
+        foreach (QGraphicsItem* item, allMarks) {
+            if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
+                if (mark->row() == move.x() && mark->col() == move.y()) {
                     if (m_animation) {
                         connect(mark, SIGNAL(killed(Mark*)),
                                 this, SLOT(killMark(Mark*)));
@@ -170,8 +161,6 @@ void Scene::updateBoard(const Move& move) {
                     } else {
                         removeItem(mark);
                         delete mark;
-                        demandRepaint();
-                        return;
                     }
                 }
             }
@@ -203,15 +192,17 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
     m_renderer->render(p, "grid", tmpRect);
 }
 
-void Scene::drawForeground(QPainter *p, const QRectF&) {
+void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
     if (m_paintMarker) {
         QRectF rect(cellTopLeft(m_col, m_row), QSizeF(m_curCellSize,
                        m_curCellSize));
         qreal adjusting((1.0-m_fill)*m_curCellSize/2.0);
         rect.adjust(adjusting, adjusting, -adjusting, -adjusting);
-        p->setOpacity(0.4);
-        m_renderer->render(p, "x1", rect);
-        p->setOpacity(1);
+        if (bounds.intersects(rect)) {
+            p->setOpacity(0.4);
+            m_renderer->render(p, "x1", rect);
+            p->setOpacity(1);
+        }
     }
     if (!m_winningMoves.empty()) {
         QList<Move>::const_iterator it = m_winningMoves.begin();
@@ -219,7 +210,9 @@ void Scene::drawForeground(QPainter *p, const QRectF&) {
         while (it != end) {
             QRectF tmpRect(cellTopLeft(it->x(), it->y()), QSizeF(m_curCellSize,
                            m_curCellSize));
-            m_renderer->render(p, "win", tmpRect);
+            if (bounds.intersects(tmpRect)) {
+                m_renderer->render(p, "win", tmpRect);
+            }
             ++it;
         }
     }
@@ -307,7 +300,6 @@ void Scene::hint(const Move& hint) {
     addItem(m_hintItem);
     connect(m_hintTimer, SIGNAL(timeout()), this, SLOT(hintTimeout()));
     m_hintTimer->start(2000);
-    demandRepaint();
 }
 
 void Scene::destroyHint() {
@@ -318,7 +310,6 @@ void Scene::destroyHint() {
         removeItem(m_hintItem);
         m_hintItem->deleteLater();
         m_hintItem = 0;
-        demandRepaint();
     }
 }
 
@@ -347,7 +338,6 @@ void Scene::killAnimations() {
 void Scene::killMark(Mark* mark) {
     removeItem(mark);
     mark->deleteLater();
-    demandRepaint();
 }
 
 void Scene::replay() {
