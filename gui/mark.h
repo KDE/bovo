@@ -45,9 +45,10 @@ public:
     ~Mark();
     void killAnimation();
     void kill();
-    usi x() const;
-    usi y() const;
+    usi row() const;
+    usi col() const;
     void setFill(qreal fill);
+    QRectF boundingRect() const;
 
 public slots:
     void tick();
@@ -61,7 +62,6 @@ protected:
                QWidget* widget=0);
 
 private:
-    QRectF glyphRectF() const;
     Scene* m_scene;
     int m_row;
     int m_col;

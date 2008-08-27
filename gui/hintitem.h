@@ -45,6 +45,7 @@ public:
     void killAnimation();
     void kill();
     void setFill(qreal fill);
+    QRectF boundingRect() const;
 
 public slots:
     void tick();
@@ -57,7 +58,6 @@ protected:
     void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=0);
 
 private:
-    QRectF glyphRectF() const;
     Scene* m_scene;
     int m_row;
     int m_col;

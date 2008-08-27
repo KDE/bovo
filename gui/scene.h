@@ -52,9 +52,11 @@ public:
     ~Scene();
     void activate(bool activate);
     void setGame(Game* game);
-    void resizeScene(int width, int height);
     bool isBusy() const;
     void setTheme(const Theme& theme);
+    qreal squareSize() const;
+    QPointF cellCenter( int x, int y ) const;
+    QPointF cellTopLeft( int x, int y ) const;
 
 public slots:
     void updateBoard(const Move& move);
@@ -78,8 +80,6 @@ private:
     virtual void drawForeground(QPainter *p, const QRectF& rect);
     virtual void mousePressEvent(QGraphicsSceneMouseEvent*);
     virtual void mouseMoveEvent(QGraphicsSceneMouseEvent*);
-    QPointF cellCenter( int x, int y ) const;
-    QPointF cellTopLeft( int x, int y ) const;
     void killAnimations();
     bool m_activate;
     Game *m_game;

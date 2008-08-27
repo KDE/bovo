@@ -50,6 +50,8 @@ Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphics
     } else {
         m_opacity = 1.0;
     }
+
+    setPos(m_scene->cellCenter(m_col, m_row));
 }
 
 Mark::~Mark() {
@@ -60,6 +62,16 @@ Mark::~Mark() {
     }
 }
 
+QRectF Mark::boundingRect() const {
+    qreal width = m_scene->squareSize();
+    qreal height = width;
+    qreal margin = (1.0-m_fill) * width / 2.0;
+    return QRectF( -width / 2.0  + margin,
+                -height / 2.0 + margin,
+                width  - 2.0*margin,
+                height - 2.0*margin);
+}
+
 void Mark::killAnimation() {
     if (m_ticker != 0) {
         m_ticker->stop();
@@ -67,7 +79,7 @@ void Mark::killAnimation() {
         m_ticker->deleteLater();
         m_ticker = 0;
         m_opacity = 1.0;
-        m_scene->demandRepaint();
+        update();
     }
 }
 
@@ -84,7 +96,7 @@ void Mark::kill() {
 
 void Mark::killTick() {
     m_opacity -= 0.1;
-    m_scene->demandRepaint();
+    update();
     if (m_opacity <= 0.1) {
         m_ticker->stop();
         emit killed(this);
@@ -97,39 +109,25 @@ void Mark::tick() {
         killAnimation();
     } else {
         m_opacity += 0.1;
-        m_scene->demandRepaint();
+        update();
     }
-}
-
-QRectF Mark::glyphRectF() const {
-//    m_sS = 1/12
-//    m_fill = 1 || 0.75
-//    marg = 1 - m_fill / 3
-//    totalMarg = 3/12 = 1/4
-//    
-    qreal width = m_scene->width() / (NUMCOLS+2);
-    qreal height = width;
-    qreal margin = (1.0-m_fill) * width / 2.0;
-    return QRectF( (1+m_col) * width  + margin,
-                (1+m_row) * height + margin,
-                width  - 2.0*margin,
-                height - 2.0*margin);
 }
 
 void Mark::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
     p->setOpacity(m_opacity);
-    renderer()->render(p, elementId(), glyphRectF());
+    renderer()->render(p, elementId(), boundingRect());
 }
 
 void Mark::setFill(qreal fill) {
     m_fill = fill;
+    prepareGeometryChange();
 }
 
-usi Mark::x() const {
+usi Mark::col() const {
     return m_col;
 }
 
-usi Mark::y() const {
+usi Mark::row() const {
     return m_row;
 }
 
