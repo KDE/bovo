@@ -147,7 +147,7 @@ You have to place your pieces in a way that prevents your opponent from connecti
 <menuchoice>
 <guimenu>Game</guimenu>
 <guimenuitem>Replay</guimenuitem></menuchoice></term>
-<listitem><para></para></listitem>
+<listitem><para>Play the last game again.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -191,7 +191,7 @@ You have to place your pieces in a way that prevents your opponent from connecti
 <guimenuitem>Hint</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action></action></para>
+<para><action>Display</action> a hint for the next move. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para>
 </listitem>
 </varlistentry>
 
