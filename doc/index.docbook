@@ -147,7 +147,7 @@ You have to place your pieces in a way that prevents your opponent from connecti
 <menuchoice>
 <guimenu>Game</guimenu>
 <guimenuitem>Replay</guimenuitem></menuchoice></term>
-<listitem><para>Play the last game again.</para></listitem>
+<listitem><para>Replay the last game.</para></listitem>
 </varlistentry>
 
 <varlistentry>
