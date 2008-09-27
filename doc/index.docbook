@@ -93,7 +93,7 @@
 If you are the first player - start the game by placing your pictogram anywhere on the playing field. If you are the second player wait until the first player places the pictogram and then do the same yourself. You can place your mark into any square on the field, unless it’s already occupied by another game piece (regardless of whether it’s your pictogram or that of your opponent’s).
 	</para>
 	<para>
-You have to place your pieces is a way that prevents your opponent from connecting five marks in an unbroken row vertically, horizontally or diagonally. In the same time you have to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. Whoever succeeds in doing so first – wins the round.
+You have to place your pieces in a way that prevents your opponent from connecting five marks in an unbroken row vertically, horizontally or diagonally. In the same time you have to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. Whoever succeeds in doing so first – wins the round.
 	</para>
 </chapter>
  
@@ -116,7 +116,7 @@ You have to place your pieces is a way that prevents your opponent from connecti
 			<listitem><para>When &bovo; is exited prior to game over, the active game is auto saved. If &bovo; detects an auto saved game at startup, it is restored. If not, &bovo; launches a demo mode.</para></listitem>
 			<listitem><para>You can always start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></listitem>
 			<listitem><para>If a new game is started when a game is already active, it is counted as a loss.</para></listitem>
-			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, of from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
+			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, or from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
 			<listitem><para>The effect of changing difficulty takes place immediately.</para></listitem>
 			<listitem><para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guisubmenu>Theme</guisubmenu></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
 			<listitem><para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
@@ -147,7 +147,7 @@ You have to place your pieces is a way that prevents your opponent from connecti
 <menuchoice>
 <guimenu>Game</guimenu>
 <guimenuitem>Replay</guimenuitem></menuchoice></term>
-<listitem><para></para></listitem>
+<listitem><para>Replay the last game.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -191,7 +191,7 @@ You have to place your pieces is a way that prevents your opponent from connecti
 <guimenuitem>Hint</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action></action></para>
+<para><action>Display</action> a hint for the next move. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para>
 </listitem>
 </varlistentry>
 
