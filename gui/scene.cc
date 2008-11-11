@@ -205,8 +205,8 @@ void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
         }
     }
     if (!m_winningMoves.empty()) {
-        QList<Move>::const_iterator it = m_winningMoves.begin();
-        QList<Move>::const_iterator end = m_winningMoves.end();
+        QList<Move>::const_iterator it = m_winningMoves.constBegin();
+        QList<Move>::const_iterator end = m_winningMoves.constEnd();
         while (it != end) {
             QRectF tmpRect(cellTopLeft(it->x(), it->y()), QSizeF(m_curCellSize,
                            m_curCellSize));

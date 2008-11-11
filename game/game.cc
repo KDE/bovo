@@ -212,8 +212,8 @@ void Game::move(const Move& move) {
 }
 
 void Game::replay() {
-    m_replayIterator = m_history.begin();
-    m_replayIteratorEnd = m_history.end();
+    m_replayIterator = m_history.constBegin();
+    m_replayIteratorEnd = m_history.constEnd();
     if (m_gameOver && !m_replaying) {
         disconnect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
         connect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
