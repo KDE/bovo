@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Gomoku
+Name[hne]=गोमोकु
 Name[ko]=고모쿠
 Name[ru]=Рэндзю
 Name[te]=గొమొకు
@@ -20,6 +21,7 @@ Comment[fi]=Perinteinen japanilainen teema
 Comment[fr]=Un jeu classique japonais
 Comment[ga]=Téama clasaiceach Seapánach
 Comment[gl]=Un tema xaponés clásico
+Comment[hne]=क्लासिक जापानी प्रसंग
 Comment[hu]=Klasszikus japán téma
 Comment[it]=Un tema giapponese classico
 Comment[ja]=伝統的な日本の五目並べのテーマ

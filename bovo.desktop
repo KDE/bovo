@@ -2,6 +2,7 @@
 Exec=bovo -caption "%c"
 Name=Bovo
 Name[fa]=بُوُ
+Name[hne]=बोवो
 Name[ne]=बोभो
 Name[pa]=ਬੋਵੋ
 Name[te]=బొవొ
@@ -24,6 +25,7 @@ GenericName[fi]=Viiden suora
 GenericName[fr]=Jeu de plateau cinq-en-ligne
 GenericName[ga]=Cluiche boird cúig-cinn-as-a-chéile
 GenericName[gl]=Xogo de taboleiro de cinco en liña
+GenericName[hne]=बोर्ड मं एक लकीर मं पांच वाले खेल
 GenericName[hu]=Táblás játék
 GenericName[it]=Forza 5, gioco da tavolo
 GenericName[ja]=五目並べ
