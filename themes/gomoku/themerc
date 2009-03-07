@@ -7,6 +7,12 @@ Name[uk]=Гомоку
 Name[x-test]=xxGomokuxx
 Name[zh_CN]=五目连珠
 Comment=A classic Japanese theme
+Comment[ga]=Téama clasaiceach Seapánach
+Comment[nds]=En klass'sch japaansch Muster
+Comment[pt]=Um tema clássico Japonês
+Comment[pt_BR]=Um tema clássico Japonês
+Comment[sv]=Ett klassiskt japanskt tema
+Comment[uk]=Класична японська тема
 
 [Config]
 Path=gomoku
