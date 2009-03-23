@@ -23,5 +23,13 @@
       <label>Whether moves should be animated or not.</label>
       <default>true</default>
     </entry>
+    <entry name="ai" type="Enum">
+      <label>AI engine to use.</label>
+      <choices>
+        <choice name="Gabor" />
+        <choice name="Aron" />
+      </choices>
+      <default>Gabor</default>
+    </entry>
   </group>
 </kcfg>

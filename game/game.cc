@@ -28,6 +28,7 @@
 #include <QtCore/QStringList>
 
 #include "ai.h"
+#include "aifactory.h"
 #include "board.h"
 #include "coord.h"
 #include "dimension.h"
@@ -41,12 +42,12 @@ namespace bovo
 
 Game::Game(const Dimension& dimension, Player startingPlayer, 
            KGameDifficulty::standardLevel skill, DemoMode demoMode, 
-           unsigned int playTime)
-  : m_curPlayer(startingPlayer),m_computerMark(O), m_demoMode(demoMode),
-  m_inUndoState(false), m_playerMark(X), m_playTime(playTime),
-  m_replaying(false) {
+           unsigned int playTime, AiFactory* aiFactory)
+  : m_aiFactory(aiFactory), m_curPlayer(startingPlayer),m_computerMark(O),
+  m_demoMode(demoMode), m_inUndoState(false), m_playerMark(X),
+  m_playTime(playTime), m_replaying(false) {
     m_board = new Board(dimension);
-    m_ai = new Ai(dimension, skill, m_computerMark);
+    m_ai = m_aiFactory->createAi(dimension, skill, m_computerMark, demoMode);
     m_winDir = -1;
     m_gameOver = false;
     connect(this, SIGNAL(boardChanged(const Move&)),
@@ -58,11 +59,13 @@ Game::Game(const Dimension& dimension, Player startingPlayer,
 }
 
 Game::Game(const Dimension& dimension, const QStringList &restoreGame, 
-	   KGameDifficulty::standardLevel skill, unsigned int playTime)
-  : m_computerMark(O), m_demoMode(NotDemo), m_inUndoState(false),
-  m_playerMark(X), m_playTime(playTime), m_replaying(false) {
+	   KGameDifficulty::standardLevel skill, unsigned int playTime,
+           AiFactory* aiFactory)
+  : m_aiFactory(aiFactory), m_computerMark(O), m_demoMode(NotDemo),
+  m_inUndoState(false), m_playerMark(X), m_playTime(playTime),
+  m_replaying(false) {
     m_board = new Board(dimension);
-    m_ai = new Ai(dimension, skill, m_computerMark);
+    m_ai = m_aiFactory->createAi(dimension, skill, m_computerMark, NotDemo);
     m_winDir = -1;
     m_gameOver = false;
     m_curPlayer = No;

@@ -21,10 +21,11 @@
 
 
 /**
- * @file ai.cc implementing the Ai class
+ * @file aifactory.cc implementing the AiFactory class
  */
 
 #include "ai.h"
+#include "aifactory.h"
 #include "aron/aiaron.h"
 #include "gabor/aigabor.h"
 
@@ -32,9 +33,45 @@
 /** namespace for AI stuff */
 namespace ai {
 
-Ai::~Ai() {
+AiFactory::AiFactory() {
+    m_aiList.append("Gabor");
+    m_aiList.append("Aron");
+    m_ai = 0;
+}
+
+AiFactory::~AiFactory() {
+}
+
+Ai* AiFactory::createAi(const Dimension& dimension, KGameDifficulty::standardLevel skill, 
+       Player player, DemoMode demoMode) const {
+    if (demoMode == Demo) {
+        return new AiAron(dimension, skill, player);
+    } else {
+        if (m_ai == 0) {
+            return new AiGabor(dimension, skill, player);
+        } else if (m_ai == 1) {
+            return new AiAron(dimension, skill, player);
+        } else {
+            qFatal("Invalid AI!");
+            return 0;
+        }
+    }
+}
+
+const QStringList& AiFactory::aiList() const {
+    return m_aiList;
+}
+
+int AiFactory::ai() const {
+    return m_ai;
+}
+
+void AiFactory::changeAi(int ai) {
+    if (0 <= ai && ai < m_aiList.size()) {
+        m_ai = ai;
+    }
 }
 
 } /* namespace ai */
 
-#include "ai.moc"
+#include "aifactory.moc"

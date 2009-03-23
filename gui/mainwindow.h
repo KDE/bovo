@@ -32,6 +32,7 @@
 
 namespace ai {
     class Ai;
+    class AiFactory;
 }
 
 namespace bovo {
@@ -91,6 +92,7 @@ private:
     KSelectAction* m_themeAct;
     bool m_computerStarts;
     Ai *m_demoAi;
+    AiFactory *m_aiFactory;
     void readConfig();
     void saveSettings();
     int m_playbackSpeed;

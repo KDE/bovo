@@ -44,6 +44,7 @@
 
 // Bovo includes
 #include "ai.h"
+#include "aifactory.h"
 #include "common.h"
 #include "dimension.h"
 #include "game.h"
@@ -63,21 +64,24 @@ namespace gui {
 MainWindow::MainWindow(QWidget* parent)
   : KXmlGuiWindow(parent), m_scene(0), m_game(0), m_wins(0),
   m_losses(0), m_computerStarts(false), m_demoAi(0),
-  m_animate(true) {
+  m_aiFactory(0), m_animate(true) {
     statusBar()->insertItem("            ", 0, 10);
     statusBar()->setItemAlignment(0, Qt::AlignLeft);
     statusBar()->insertPermanentItem(i18n("Wins: %1", m_wins), 1);
     statusBar()->insertPermanentItem(i18n("Losses: %1", m_losses), 2, 1);
 
+    m_aiFactory = new AiFactory();
     KGameDifficulty::init(this, this, SLOT(changeSkill()));
     KGameDifficulty::addStandardLevel(KGameDifficulty::RidiculouslyEasy);
     KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-//    KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
-//    KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
-    KGameDifficulty::setRestartOnChange(KGameDifficulty::NoRestartOnChange);
+    // Bad user experience until background cogitation is implemented
+    //KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
+    //KGameDifficulty::addStandardLevel(KGameDifficulty::ExtremelyHard);
+    //KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
+    KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
 
     setupThemes();
     readConfig();
@@ -96,6 +100,7 @@ MainWindow::~MainWindow() {
     delete m_view;
     delete m_game;
     delete m_demoAi;
+    delete m_aiFactory;
 }
 
 void MainWindow::save() const {
@@ -140,6 +145,7 @@ void MainWindow::readConfig() {
 
     m_playbackSpeed = Settings::playbackSpeed();
     m_animate       = Settings::animation();
+    m_aiFactory->changeAi(Settings::ai());
 
     QString rc = KGlobal::dirs()->locate("config", "bovorc");
     KConfig savegame(rc);
@@ -169,6 +175,7 @@ void MainWindow::saveSettings() {
     Settings::setSkill((int)(KGameDifficulty::level()));
     Settings::setPlaybackSpeed(m_playbackSpeed);
     Settings::setAnimation(m_animate);
+    Settings::setAi(m_aiFactory->ai());
     Settings::self()->writeConfig();
 }
 
@@ -265,12 +272,13 @@ void MainWindow::slotNewGame() {
                 m_computerStarts = tmp.startsWith('2') ? true : false;
             }
             m_game = new Game(dimension, m_lastGame, KGameDifficulty::level(),
-                              m_playbackSpeed);
+                              m_playbackSpeed, m_aiFactory);
         } else {
             m_game = new Game(dimension, m_computerStarts ? O : X, 
-                              KGameDifficulty::level(), NotDemo, m_playbackSpeed);
+                              KGameDifficulty::level(), NotDemo, m_playbackSpeed,
+                              m_aiFactory);
         }
-        m_demoAi = new Ai(dimension, KGameDifficulty::Hard, m_game->player());
+        m_demoAi = m_aiFactory->createAi(dimension, KGameDifficulty::Easy, m_game->player(), NotDemo);
         m_scene->setGame(m_game);
         m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
@@ -303,8 +311,9 @@ void MainWindow::slotNewDemo() {
         m_demoAi = 0;
     }
     Dimension dimension(NUMCOLS, NUMCOLS);
-    m_game = new Game(dimension, O, KGameDifficulty::level(), Demo, m_playbackSpeed);
-    m_demoAi = new Ai(dimension, KGameDifficulty::level(), X);
+    m_game = new Game(dimension, O, KGameDifficulty::level(), Demo, m_playbackSpeed,
+                      m_aiFactory);
+    m_demoAi = m_aiFactory->createAi(dimension, KGameDifficulty::level(), X, Demo);
     m_scene->setGame(m_game);
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             m_demoAi, SLOT(changeBoard(const Move&)));

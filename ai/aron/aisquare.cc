@@ -17,24 +17,32 @@
 * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301, USA.
 *
-********************************************************************/
+********************************************************************/                     
 
+#include "aisquare.h"
 
-/**
- * @file ai.cc implementing the Ai class
- */
+using namespace bovo;
 
-#include "ai.h"
-#include "aron/aiaron.h"
-#include "gabor/aigabor.h"
-
-
-/** namespace for AI stuff */
 namespace ai {
 
-Ai::~Ai() {
+AiSquare::AiSquare() : Square(), m_points(0), m_status(true) {
+}
+
+uli AiSquare::points() const {
+    return m_points;
+}
+
+void AiSquare::setPoints(uli points) {
+    m_points = points;
+}
+
+bool AiSquare::status() const {
+    return m_status;
+}
+
+void AiSquare::setStatus(bool status) {
+    m_status = status;
 }
 
 } /* namespace ai */
 
-#include "ai.moc"

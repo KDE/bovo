@@ -18,8 +18,15 @@ set( bovogame_SRCS
 
 set( bovoai_SRCS 
 	ai/ai.cc 
-	ai/aiboard.cc 
-	ai/aisquare.cc )
+	ai/aifactory.cc 
+	ai/aron/aiaron.cc 
+	ai/aron/aiboard.cc 
+	ai/aron/aisquare.cc 
+	ai/gabor/aigabor.cc 
+	ai/gabor/standing.cpp 
+	ai/gabor/node.cpp 
+	ai/gabor/ai_interface.cpp 
+	ai/gabor/ai_impl.cpp )
 
 set(bovogui_SRCS
     gui/hintitem.cc

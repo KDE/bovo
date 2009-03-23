@@ -45,16 +45,14 @@ namespace bovo {
 /** namespace for AI stuff */
 namespace ai {
 
-    class AiBoard;
-
 /**
  * An AI player
  *
  * @code
  * Dimension dimension(width, height);
- * Ai ai(dimension, Easy);
+ * Ai* ai = aiFactory->createAi(dimension, easy, X, NotDemo);
  * Coord move = getMoveFromPlayerEitherByNetworkOrGui();
- * Coord aiMove = ai.move(move);
+ * Coord aiMove = ai->move(move);
  * doSomethingWithAiMoveLikeDisplayingItInTheGui(aiMove);
  * @endcode
  */
@@ -62,36 +60,19 @@ class Ai : public QObject {
     Q_OBJECT
 public:
     /**
-     * @brief Constructs an Ai with width, height, player and Skill
-     * @description Constructs an AI player with a specified width, height and
-     * skill as well as player id
-     * @param dimension the dimension controlling width and height
-     * @param skill the skill (difficulty level) the AI player will be playing with
-     * @param player player id of this AI
-     */
-    explicit Ai(const Dimension& dimension, KGameDifficulty::standardLevel skill = KGameDifficulty::Medium, Player player = X);
-
-    /**
      * @brief destructs this Ai
-     * @description destructs this AiBoard object
+     * @description destructs this Ai object
      */
-    ~Ai();
+    virtual ~Ai();
 
 public slots:
-    void changeBoard(const Move& move);
-    void gameOver();
-    void setSkill(KGameDifficulty::standardLevel skill);
-    void slotMove();
+    virtual void changeBoard(const Move& move) = 0;
+    virtual void gameOver() = 0;
+    virtual void setSkill(KGameDifficulty::standardLevel skill) = 0;
+    virtual void slotMove() = 0;
 
 signals:
     void move(const Move& move);
-
-private:
-    /* Playing board  */
-    AiBoard *m_board;
-
-    /* AI Player id */
-    Player m_player;
 };
 
 } /* namespace ai */

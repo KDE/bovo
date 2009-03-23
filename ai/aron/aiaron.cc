@@ -21,20 +21,49 @@
 
 
 /**
- * @file ai.cc implementing the Ai class
+ * @file aiaron.cc implementing the AiAron class
  */
 
-#include "ai.h"
-#include "aron/aiaron.h"
-#include "gabor/aigabor.h"
+#include "aiaron.h"
 
+
+#include "aiboard.h"
+#include "coord.h"
+#include "dimension.h"
+#include "move.h"
+
+using namespace bovo;
 
 /** namespace for AI stuff */
 namespace ai {
 
-Ai::~Ai() {
+AiAron::AiAron(const Dimension& dimension, KGameDifficulty::standardLevel skill, 
+       Player player) {
+    m_board = new AiBoard(dimension, skill, player);
+    m_player = player;
+}
+
+AiAron::~AiAron() {
+    delete m_board;
+}
+
+/* public slots */
+
+void AiAron::changeBoard(const Move& move) {
+    m_board->setPlayer(move);
+}
+
+void AiAron::gameOver() {
+}
+
+void AiAron::setSkill(KGameDifficulty::standardLevel skill) {
+    m_board->setSkill(skill);
+}
+
+void AiAron::slotMove() {
+    emit move(Move(m_player, m_board->move()));
 }
 
 } /* namespace ai */
 
-#include "ai.moc"
+#include "aiaron.moc"

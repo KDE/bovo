@@ -21,20 +21,48 @@
 
 
 /**
- * @file ai.cc implementing the Ai class
+ * @file aigabor.h declaring the AiGabor class
  */
 
-#include "ai.h"
-#include "aron/aiaron.h"
-#include "gabor/aigabor.h"
+#ifndef __AIGABOR_H__
+#define __AIGABOR_H__
 
+#include <QObject>
+
+#include "../ai.h"
+
+class AiInterface;
 
 /** namespace for AI stuff */
 namespace ai {
 
-Ai::~Ai() {
-}
+/**
+ * Gabor's implementation of the AI player
+ */
+class AiGabor : public Ai {
+    Q_OBJECT
+public:
+    explicit AiGabor(const Dimension& dimension, KGameDifficulty::standardLevel skill, Player player);
+
+    virtual ~AiGabor();
+
+public slots:
+    virtual void changeBoard(const Move& move);
+    virtual void gameOver();
+    virtual void setSkill(KGameDifficulty::standardLevel skill);
+    virtual void slotMove();
+
+signals:
+    void move(const Move& move);
+
+private:
+    /* AI brain */
+    AiInterface *m_ai;
+
+    /* AI Player id */
+    Player m_player;
+};
 
 } /* namespace ai */
 
-#include "ai.moc"
+#endif /* __AIGABOR_H__ */

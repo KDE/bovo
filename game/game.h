@@ -36,6 +36,7 @@ class QStringList;
 /** namespace for ai */
 namespace ai {
     class Ai;
+    class AiFactory;
 } /* namespace ai */
 
 using namespace ai;
@@ -87,9 +88,11 @@ public:
      * @param skill the skill (difficulty level) of the AI
      * @param demoMode whether this game is a demo or not
      * @param playTime time in ms for space between turns in demo and replay
+     * @param aiFactory provider of AI implementations
      */
     Game(const Dimension& dimension, Player startingPlayer,
-         KGameDifficulty::standardLevel skill, DemoMode demoMode, unsigned int playTime);
+         KGameDifficulty::standardLevel skill, DemoMode demoMode, unsigned int playTime,
+         AiFactory* aiFactory);
 
     /**
      * @brief Re-Constructs a saved Game
@@ -100,9 +103,11 @@ public:
      * @param restoreGame the game history to restore
      * @param skill the skill (difficulty level) of the AI
      * @param playTime time in ms for space between turns in demo and replay
+     * @param aiFactory provider of AI implementations
      */
     Game(const Dimension& dimension, const QStringList &restoreGame,
-         KGameDifficulty::standardLevel skill, unsigned int playTime);
+         KGameDifficulty::standardLevel skill, unsigned int playTime,
+         AiFactory* aiFactory);
 
     /**
      * @brief destructs this Game
@@ -302,6 +307,9 @@ private:
 
     /* AI */
     Ai *m_ai;
+
+    /* AI factory */
+    AiFactory *m_aiFactory;
 
     /* playing board */
     Board *m_board;
