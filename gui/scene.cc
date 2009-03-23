@@ -28,7 +28,6 @@
 #include <QtGui/QGraphicsSceneMouseEvent>
 #include <QtGui/QGraphicsView>
 #include <QtSvg/QSvgRenderer>
-#include <QtDebug>
 
 #include <kstandarddirs.h>
 #include <kconfig.h>
@@ -87,7 +86,6 @@ void Scene::loadTheme(const Theme& theme) {
         bgPal.setColor(view->backgroundRole(), color.isValid() ? color : Qt::white);
         view->setPalette(bgPal);
     }
-//    qDebug() << m_fill;
     if (m_renderer == 0)
         m_renderer = new QSvgRenderer(theme.svg());
     else
@@ -138,9 +136,7 @@ void Scene::setGame(Game* game) {
         removeItem( mark );
         delete mark;
     }
-    QList<QRectF> tmp;
-    tmp.push_back(QRectF(0,0,width(),height()));
-    emit changed(tmp);
+    invalidate(0, 0, width(), height());
 }
 
 void Scene::updateBoard(const Move& move) {
