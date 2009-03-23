@@ -246,7 +246,8 @@ void MainWindow::slotNewGame() {
         }
         if (!m_game->isGameOver() && m_game->history().size() > 1) {
             statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
-        } else {
+        }
+        if (m_game->history().size() > 1) {
             m_computerStarts = !m_computerStarts;
         }
         m_game->deleteLater();
@@ -280,7 +281,6 @@ void MainWindow::slotNewGame() {
         }
         m_demoAi = m_aiFactory->createAi(dimension, KGameDifficulty::Easy, m_game->player(), NotDemo);
         m_scene->setGame(m_game);
-        m_computerStarts = !m_computerStarts;
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
         connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
         connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
