@@ -163,11 +163,9 @@ void MainWindow::readConfig() {
         updateLosses(losses.toUInt(&ok));
     }
 
-    // changeSkill() has to be called last of all, as it causes the settings to be saved, 
-    // and if the settings isn't fully initialized the unread settings are overwritten with 
-    // really odd values, causing annoying bugs.
     KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (Settings::skill()));
-    changeSkill();
+    if (KGameDifficulty::level()==KGameDifficulty::NoLevel)
+        KGameDifficulty::setLevel(KGameDifficulty::Medium); // default
 }
 
 void MainWindow::saveSettings() {
