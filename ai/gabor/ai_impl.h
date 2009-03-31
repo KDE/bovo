@@ -76,12 +76,6 @@ private:
 	Standing rememberedStanding;
 	// the game history for undo
 	previous_standings_T previousStandings;
-	// steps made in the current game
-	int stepCount;
-	// step suggestion in the current depth limit
-	pos_T suggestedX, suggestedY;
-	// heuristic value of the search tree root
-	heur_T rootValue;
 	// suggest a move for the current player from the opening book
 	Field openingBook();
 };

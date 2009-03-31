@@ -149,8 +149,8 @@ void Standing::initRefresh() {
 }
 
 Standing::Standing(pos_T _table_size_x, pos_T _table_size_y) :
-	table_size_x(_table_size_x), table_size_y(_table_size_y),
-	hval(0), heur_seed(normal_heur_seed), target(false), current(0), lastx(0), lasty(0)
+	table_size_x(_table_size_x), table_size_y(_table_size_y), hval(0),
+	heur_seed(normal_heur_seed), target(false), stepCount(0), current(0), lastx(0), lasty(0)
 {
 	memset(table, 0, sizeof(table));
 	memset(suggest, 0, sizeof(suggest));
@@ -175,12 +175,14 @@ void Standing::step(pos_T x, pos_T y) {
 	current = 1 - current;
 	lastx = x;
 	lasty = y;
+	stepCount++;
 	evaluate();
 }
 
 void Standing::step_server(pos_T x, pos_T y) {
 	assert(x < table_size_x && y < table_size_y);
 	table[x][y] = mark[2];
+	stepCount++;
 	evaluate();
 }
 
@@ -373,6 +375,8 @@ void Standing::decide() {
 	if (matchCount[  current][0]) {target = true; hval = MaxHeur; return;}
 	// the opponent has a 5
 	if (matchCount[1-current][0]) {target = true; hval = MinHeur; return;}
+	// the table is full
+	if (stepCount >= table_size_x * table_size_y) {target = true; hval = 0; return;}
 	// I have an open or a closed 4
 	if (matchCount[  current][1] || matchCount[  current][2])      {hval = MaxHeur - depth_decay; return;}
 	// the opponent has an open 4 or two closed 4-s

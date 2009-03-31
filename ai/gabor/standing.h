@@ -46,6 +46,9 @@ typedef count_T suggest_T[2][max_table_size][max_table_size];
 // heuristic type
 typedef signed short heur_T;
 
+// type for total number of marks on the table
+typedef unsigned short stepCount_T;
+
 // maximal and minimal value of the heuristic function
 const heur_T MaxHeur = 10000;
 const heur_T MinHeur = -MaxHeur;
@@ -85,6 +88,8 @@ public:
 	heur_T heur_seed;
 	// true if a player has won
 	bool target;
+	// total number of marks on the table
+	stepCount_T stepCount;
 	// the player on turn
 	index_T current;
 	// the move that created this standing

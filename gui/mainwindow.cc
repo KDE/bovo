@@ -355,23 +355,22 @@ void MainWindow::updateLosses(const int losses) {
 }
 
 void MainWindow::slotGameOver() {
-    QString message;
-    if (m_game->latestMove().player() == X) {
-        statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
-        increaseWins();
-        message = i18n("You won!");
+    if (m_game->boardFull()) {
+        statusBar()->changeItem(i18n("GAME OVER. Tie!"), 0);
     } else {
-        statusBar()->changeItem(i18n("GAME OVER. You lost!"), 0);
-        increaseLosses();
-        message = i18n("You lost!");
+        if (m_game->latestMove().player() == X) {
+            statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
+            increaseWins();
+        } else {
+            statusBar()->changeItem(i18n("GAME OVER. You lost!"), 0);
+            increaseLosses();
+        }
     }
-//    m_scene->setWin(m_game->history());
     disconnect(m_game, 0, m_demoAi, 0);
     m_hintAct->setEnabled(false);
     actionCollection()->action("replay")->setEnabled(true);
     connect(actionCollection()->action("replay"), SIGNAL(triggered()),
             this, SLOT(replay()));
-//     KMessageBox::information(this, message, i18n("Game over"));
 }
 
 void MainWindow::slotPlayerTurn() {

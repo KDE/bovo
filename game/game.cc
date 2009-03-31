@@ -50,6 +50,7 @@ Game::Game(const Dimension& dimension, Player startingPlayer,
     m_ai = m_aiFactory->createAi(dimension, skill, m_computerMark, demoMode);
     m_winDir = -1;
     m_gameOver = false;
+    m_stepCount = 0;
     connect(this, SIGNAL(boardChanged(const Move&)),
             m_ai, SLOT(changeBoard(const Move&)));
     connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
@@ -68,6 +69,7 @@ Game::Game(const Dimension& dimension, const QStringList &restoreGame,
     m_ai = m_aiFactory->createAi(dimension, skill, m_computerMark, NotDemo);
     m_winDir = -1;
     m_gameOver = false;
+    m_stepCount = 0;
     m_curPlayer = No;
     foreach (const QString &turn, restoreGame) {
         QStringList tmp = turn.split(':');
@@ -93,6 +95,7 @@ Game::Game(const Dimension& dimension, const QStringList &restoreGame,
         }
         Move tmpMove(tmpPlayer, Coord(x, y));
         m_board->setPlayer(tmpMove);
+        m_stepCount++;
         m_history << tmpMove;
     }
 }
@@ -200,6 +203,10 @@ short Game::winDir() const {
     return m_winDir;
 }
 
+bool Game::boardFull() const {
+    return m_stepCount >= NUMCOLS * NUMCOLS;
+}
+
 void Game::cancelAndWait() {
     m_ai->cancelAndWait();
 }
@@ -238,6 +245,7 @@ void Game::undoLatest() {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move);
+        m_stepCount--;
         emit boardChanged(move);
         m_curPlayer = m_playerMark;
         emit playerTurn();
@@ -245,6 +253,7 @@ void Game::undoLatest() {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move);
+        m_stepCount--;
         emit boardChanged(move);
         m_curPlayer = m_computerMark;
         emit oposerTurn();
@@ -252,10 +261,12 @@ void Game::undoLatest() {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move);
+        m_stepCount--;
         emit boardChanged(move);
         Move move2(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move2);
+        m_stepCount--;
         emit boardChanged(move2);
         emit playerTurn();
     }
@@ -285,9 +296,14 @@ void Game::makeMove(const Move& move) {
         return;
     }
     m_board->setPlayer(move);
+    m_stepCount++;
     m_winDir = win(move.coord());
     if (m_winDir != -1) {
         m_gameOver = true;
+    } else {
+        if (boardFull()) {
+            m_gameOver = true;
+        }
     }
     m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );

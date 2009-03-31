@@ -218,6 +218,12 @@ public:
     short winDir() const;
 
     /**
+     * @brief returns if the board is full
+     * @description returns true if every field on the table is occupied
+     */
+    bool boardFull() const;
+
+    /**
      * @brief cancel the AI if it is thinking and wait for actual cancellation
      * @description interrupts the thinking of the AI if it is thinking, and
      * does not return until the AI thread has really finished
@@ -350,6 +356,9 @@ private:
 
     /* winning direction, or -1 if game isn't won */
     short m_winDir;
+
+    /* the number of marks on the board */
+    short m_stepCount;
 };
 
 } /* namespace bovo */

@@ -55,14 +55,12 @@ AiImpl::~AiImpl() {
 
 void AiImpl::newGame() {
 	Standing::initRefresh();
-	stepCount = 0;
 	previousStandings.clear();
 	rememberedStanding = Standing(table_size_x, table_size_y);
 }
 
 void AiImpl::step(pos_T x, pos_T y) {
 	previousStandings.push_back(rememberedStanding);
-	stepCount++;
 	rememberedStanding.step(x, y);
 	if (print_info) {
 		printf("hval = %d\n", rememberedStanding.hval);
@@ -76,7 +74,6 @@ void AiImpl::stepServer(pos_T x, pos_T y) {
 
 void AiImpl::undo() {
 	assert(!previousStandings.empty());
-	stepCount--;
 	rememberedStanding = previousStandings.last();
 	previousStandings.removeLast();
 }
@@ -98,6 +95,11 @@ Field AiImpl::think() {
 	Node* root;
 	hash_T currentHash;
 	NodeHashData currentHashData;
+
+	// step suggestion in the current depth limit
+	pos_T suggestedX, suggestedY;
+	// heuristic value of the search tree root
+	heur_T rootValue;
 
 	// do a very fast initial search
 	depth_limit = 1;
@@ -248,7 +250,7 @@ Field AiImpl::think() {
 }
 
 Field AiImpl::openingBook() {
-	if (stepCount == 0) {
+	if (rememberedStanding.stepCount == 0) {
 		pos_T x, y;
 		x = table_size_x / 2;
 		y = table_size_y / 2;
@@ -256,7 +258,7 @@ Field AiImpl::openingBook() {
 		y += rand() % 5 - 2;
 		while (rememberedStanding.table[x][y]) x++;
 		return Field(x, y);
-	} else if (stepCount == 1) {
+	} else if (rememberedStanding.stepCount == 1) {
 		pos_T x, y;
 		x = rememberedStanding.lastx;
 		y = rememberedStanding.lasty;
@@ -276,7 +278,7 @@ Field AiImpl::openingBook() {
 			}
 		}
 		return Field(x, y);
-	} else if (stepCount == 2) {
+	} else if (rememberedStanding.stepCount == 2) {
 		pos_T x1, y1, x2, y2;
 		int dx, dy;
 		x1 = previousStandings.last().lastx;
