@@ -200,6 +200,10 @@ short Game::winDir() const {
     return m_winDir;
 }
 
+void Game::cancelAndWait() {
+    m_ai->cancelAndWait();
+}
+
 /* public slots */
 
 void Game::move(const Move& move) {
@@ -230,6 +234,7 @@ void Game::undoLatest() {
         m_inUndoState = false;
         return;
     } else if (m_curPlayer == m_computerMark) {
+        m_ai->cancelAndWait();
         Move move(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move);

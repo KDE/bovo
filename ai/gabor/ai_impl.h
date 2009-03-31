@@ -55,8 +55,8 @@ public:
 	// limits the amount of following steps to be investigated from a standing
 	unsigned int max_branch;
 
-	// interrupt function, returns true if time is over
-	time_over_T timeOverFunc;
+	// interrupt class, returns true if time is over
+	AiTimeOver* timeOver;
 
 	// current search depth limit
 	int depth_limit;

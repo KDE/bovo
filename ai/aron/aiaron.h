@@ -43,8 +43,8 @@ class AiAron : public Ai {
     Q_OBJECT
 public:
     explicit AiAron(const Dimension& dimension, KGameDifficulty::standardLevel skill, Player player);
-
     virtual ~AiAron();
+    virtual void cancelAndWait();
 
 public slots:
     virtual void changeBoard(const Move& move);

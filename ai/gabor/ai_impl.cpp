@@ -36,16 +36,12 @@ static NodeHashData hashData[nodeHashSize];
 const int hashMaxDepth = 8;
 const int hashMinRemainingDepth = 2;
 
-bool defTimeOverFunc() {
-	return false;
-}
-
 bool rand_inited = false;
 
 AiImpl::AiImpl() : table_size_x(20), table_size_y(20),
 	start_depth(6), max_depth(6), depth_increment(2),
 	force_thinking(false), heur_seed(normal_heur_seed), print_info(true), max_branch(100),
-	timeOverFunc(defTimeOverFunc), rememberedStanding(table_size_x, table_size_y)
+	timeOver(NULL), rememberedStanding(table_size_x, table_size_y)
 {
 	if (!rand_inited) {
 		rand_inited = true;
@@ -118,7 +114,7 @@ Field AiImpl::think() {
 			act = NULL;
 		}
 
-		while (act && !timeOverFunc()) {
+		while (act && (timeOver == NULL || !timeOver->isTimeOver())) {
 			// if this is a parent whose child has just been evaluated
 			if (act->child) {
 				if (act->signum > 0) {
@@ -245,9 +241,9 @@ Field AiImpl::think() {
 		} else {
 			depth_limit += depth_increment;
 		}
-	} while (depth_limit <= max_depth && !timeOverFunc());
+	} while (depth_limit <= max_depth && (timeOver == NULL || !timeOver->isTimeOver()));
 	
-	assert(timeOverFunc() || !rememberedStanding.table[bestX][bestY]);
+	assert((timeOver == NULL || !timeOver->isTimeOver()) || !rememberedStanding.table[bestX][bestY]);
 	return Field(bestX, bestY);
 }
 

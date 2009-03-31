@@ -28,10 +28,10 @@
 #define __AIGABOR_H__
 
 #include <QObject>
+#include <QFuture>
 
 #include "../ai.h"
-
-class AiInterface;
+#include "ai_interface.h"
 
 /** namespace for AI stuff */
 namespace ai {
@@ -39,12 +39,13 @@ namespace ai {
 /**
  * Gabor's implementation of the AI player
  */
-class AiGabor : public Ai {
+class AiGabor : public Ai, public AiTimeOver {
     Q_OBJECT
 public:
     explicit AiGabor(const Dimension& dimension, KGameDifficulty::standardLevel skill, Player player);
-
     virtual ~AiGabor();
+    virtual void cancelAndWait();
+    virtual bool isTimeOver();
 
 public slots:
     virtual void changeBoard(const Move& move);
@@ -60,7 +61,18 @@ private:
     AiInterface *m_ai;
 
     /* AI Player id */
-    Player m_player;
+    const Player m_player;
+
+    /* minimum thinking time in milliseconds */
+    const int m_minThink;
+
+    /* for getting information about the thinking thread */
+    QFuture<void> m_future;
+
+    /* should the thinking thead try to cancel */
+    bool m_canceling;
+
+    void slotMoveImpl();
 };
 
 } /* namespace ai */

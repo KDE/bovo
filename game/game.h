@@ -217,6 +217,13 @@ public:
      */
     short winDir() const;
 
+    /**
+     * @brief cancel the AI if it is thinking and wait for actual cancellation
+     * @description interrupts the thinking of the AI if it is thinking, and
+     * does not return until the AI thread has really finished
+     */
+    void cancelAndWait();
+
 public slots:
     /**
      * @brief make a move
@@ -284,14 +291,8 @@ private slots:
 
 private:
     /**
-     * @brief make an AI move
-     * @description performs an AI move. Should be private later on.
-     */
-    void makeComputerMove();
-
-    /**
      * @brief make a move
-     * @description performs the specified move. Should be private later on.
+     * @description performs the specified move.
      * @param move move to make
      */
     void makeMove(const Move& move);

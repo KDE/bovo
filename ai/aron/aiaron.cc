@@ -47,6 +47,9 @@ AiAron::~AiAron() {
     delete m_board;
 }
 
+void AiAron::cancelAndWait() {
+}
+
 /* public slots */
 
 void AiAron::changeBoard(const Move& move) {

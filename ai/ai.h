@@ -64,6 +64,7 @@ public:
      * @description destructs this Ai object
      */
     virtual ~Ai();
+    virtual void cancelAndWait() = 0;
 
 public slots:
     virtual void changeBoard(const Move& move) = 0;

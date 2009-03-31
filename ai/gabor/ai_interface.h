@@ -26,7 +26,7 @@
 // a coordinate of the table
 typedef unsigned char pos_T;
 // memory allocated for a standing
-const pos_T max_table_size = 50;
+const pos_T max_table_size = 22;
 
 // a pair of coordinates
 struct Field {
@@ -39,8 +39,11 @@ struct Field {
 class AiInterface;
 class AiImpl;
 
-// callback function to interrupt thinking
-typedef bool (*time_over_T)();
+class AiTimeOver {
+public:
+    virtual ~AiTimeOver() {}
+    virtual bool isTimeOver() = 0;
+};
 
 class AiInterface {
 public:
@@ -70,7 +73,7 @@ public:
 	// if set, the ai will print information on the standard output
 	void setPrintInfo(bool printInfo);
 	// interrupt function, returns true if time is over
-	void setTimeOver(time_over_T timeOver);
+	void setTimeOver(AiTimeOver* timeOver);
 	
 	// a new game has started
 	void newGame();

@@ -85,9 +85,9 @@ void AiInterface::setPrintInfo(bool printInfo) {
 	aiImpl->print_info = printInfo;
 }
 
-void AiInterface::setTimeOver(time_over_T timeOver) {
+void AiInterface::setTimeOver(AiTimeOver* timeOver) {
 	assert(timeOver);
-	aiImpl->timeOverFunc = timeOver;
+	aiImpl->timeOver = timeOver;
 }
 
 void AiInterface::newGame() {

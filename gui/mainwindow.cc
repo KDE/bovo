@@ -77,10 +77,9 @@ MainWindow::MainWindow(QWidget* parent)
     KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
     KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-    // Bad user experience until background cogitation is implemented
-    //KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
-    //KGameDifficulty::addStandardLevel(KGameDifficulty::ExtremelyHard);
-    //KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::ExtremelyHard);
+    KGameDifficulty::addStandardLevel(KGameDifficulty::Impossible);
     KGameDifficulty::setRestartOnChange(KGameDifficulty::RestartOnChange);
 
     setupThemes();
@@ -223,8 +222,13 @@ void MainWindow::setupActions() {
 }
 
 void MainWindow::hint() {
-    if (m_demoAi != 0)
-        m_demoAi->slotMove();
+    if (m_game != 0) {
+        if (!m_game->computerTurn()) {
+            if (m_demoAi != 0) {
+                m_demoAi->slotMove();
+            }
+        }
+    }
 }
 
 void MainWindow::setAnimation(bool enabled) {
@@ -239,6 +243,7 @@ void MainWindow::setAnimation(bool enabled) {
 
 void MainWindow::slotNewGame() {
     if (m_game != 0) {
+        m_game->cancelAndWait();
         if (m_scene != 0) {
             disconnect(m_game, 0, m_scene, 0);
         }
@@ -252,6 +257,7 @@ void MainWindow::slotNewGame() {
         m_game = 0;
     }
     if (m_demoAi != 0) {
+        m_demoAi->cancelAndWait();
         m_demoAi->deleteLater();
         m_demoAi = 0;
     }
@@ -277,7 +283,7 @@ void MainWindow::slotNewGame() {
                               KGameDifficulty::level(), NotDemo, m_playbackSpeed,
                               m_aiFactory);
         }
-        m_demoAi = m_aiFactory->createAi(dimension, KGameDifficulty::Easy, m_game->player(), NotDemo);
+        m_demoAi = m_aiFactory->createAi(dimension, KGameDifficulty::Easy, m_game->player(), Demo);
         m_scene->setGame(m_game);
         connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
         connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
