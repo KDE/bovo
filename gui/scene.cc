@@ -149,7 +149,7 @@ void Scene::updateBoard(const Move& move) {
         QList<QGraphicsItem*> allMarks = items();
         foreach (QGraphicsItem* item, allMarks) {
             if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
-                if (mark->row() == move.x() && mark->col() == move.y()) {
+                if (mark->row() == move.y() && mark->col() == move.x()) {
                     if (m_animation) {
                         connect(mark, SIGNAL(killed(Mark*)),
                                 this, SLOT(killMark(Mark*)));
