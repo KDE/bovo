@@ -20,6 +20,7 @@
 ********************************************************************/
 
 
+#include <cstdlib>
 #include <memory.h>
 #include <assert.h>
 #include <time.h>
@@ -39,12 +40,17 @@ bool defTimeOverFunc() {
 	return false;
 }
 
+bool rand_inited = false;
+
 AiImpl::AiImpl() : table_size_x(20), table_size_y(20),
 	start_depth(6), max_depth(6), depth_increment(2),
 	force_thinking(false), heur_seed(normal_heur_seed), print_info(true), max_branch(100),
 	timeOverFunc(defTimeOverFunc), rememberedStanding(table_size_x, table_size_y)
 {
-	srand((unsigned int) time(NULL));
+	if (!rand_inited) {
+		rand_inited = true;
+		srand((unsigned int) time(NULL));
+	}
 	memset(hashData, 0, sizeof(hashData));
 }
 
@@ -54,12 +60,12 @@ AiImpl::~AiImpl() {
 void AiImpl::newGame() {
 	Standing::initRefresh();
 	stepCount = 0;
-	while (!previousStandings.empty()) previousStandings.pop();
+	previousStandings.clear();
 	rememberedStanding = Standing(table_size_x, table_size_y);
 }
 
 void AiImpl::step(pos_T x, pos_T y) {
-	previousStandings.push(rememberedStanding);
+	previousStandings.push_back(rememberedStanding);
 	stepCount++;
 	rememberedStanding.step(x, y);
 	if (print_info) {
@@ -75,38 +81,21 @@ void AiImpl::stepServer(pos_T x, pos_T y) {
 void AiImpl::undo() {
 	assert(!previousStandings.empty());
 	stepCount--;
-	rememberedStanding = previousStandings.top();
-	previousStandings.pop();
+	rememberedStanding = previousStandings.last();
+	previousStandings.removeLast();
 }
 
 Field AiImpl::think() {
 	rememberedStanding.heur_seed = heur_seed;
 
 	// opening book
-	if (stepCount == 0) {
-		pos_T x, y;
-		x = table_size_x / 2;
-		y = table_size_y / 2;
-		while (rememberedStanding.table[x][y]) x++;
-		return Field(x, y);
-	} else if (stepCount == 1) {
-		pos_T x, y;
-		x = rememberedStanding.lastx;
-		y = rememberedStanding.lasty;
-		if (x < table_size_x / 2) {
-			x++;
-		} else {
-			x--;
-		}
-		if (y < table_size_y / 2) {
-			y++;
-		} else {
-			y--;
-		}
-		while (rememberedStanding.table[x][y]) x++;
-		assert(x < table_size_x);
-		return Field(x, y);
+	Field f = openingBook();
+	if (f.x < table_size_x && f.y < table_size_y && !rememberedStanding.table[f.x][f.y]) {
+		return f;
 	}
+	// global best step
+	pos_T bestX, bestY;
+	bestX = bestY = max_table_size;
 
 	// alpha-beta pruning
 	Node* act;
@@ -260,4 +249,70 @@ Field AiImpl::think() {
 	
 	assert(timeOverFunc() || !rememberedStanding.table[bestX][bestY]);
 	return Field(bestX, bestY);
+}
+
+Field AiImpl::openingBook() {
+	if (stepCount == 0) {
+		pos_T x, y;
+		x = table_size_x / 2;
+		y = table_size_y / 2;
+		x += rand() % 5 - 2;
+		y += rand() % 5 - 2;
+		while (rememberedStanding.table[x][y]) x++;
+		return Field(x, y);
+	} else if (stepCount == 1) {
+		pos_T x, y;
+		x = rememberedStanding.lastx;
+		y = rememberedStanding.lasty;
+		int r = rand() % 100;
+		if (r >= 20) {
+			if (x < table_size_x / 2) {
+				x++;
+			} else {
+				x--;
+			}
+		}
+		if (r < 80) {
+			if (y < table_size_y / 2) {
+				y++;
+			} else {
+				y--;
+			}
+		}
+		return Field(x, y);
+	} else if (stepCount == 2) {
+		pos_T x1, y1, x2, y2;
+		int dx, dy;
+		x1 = previousStandings.last().lastx;
+		y1 = previousStandings.last().lasty;
+		if (!(1 <= x1 && x1 < table_size_x - 1 && 1 <= y1 && y1 < table_size_y - 1)) {
+			return Field(max_table_size, max_table_size);
+		}
+		x2 = rememberedStanding.lastx;
+		y2 = rememberedStanding.lasty;
+		dx = (int) x1 - (int) x2;
+		dy = (int) y1 - (int) y2;
+		if (-1 <= dx && dx <= 1 && -1 <= dy && dy <= 1) {
+			if (dx == 0) {
+				return Field((int) x1 + (rand() % 2) * 2 - 1, (int) y1 + rand() % 3 - 1);
+			}
+			if (dy == 0) {
+				return Field((int) x1 + rand() % 3 - 1, (int) y1 + (rand() % 2) * 2 - 1);
+			}
+			if (rand() % 2) {
+				if (rand() % 2) {
+					return Field((int) x1 + dx, y1);
+				} else {
+					return Field(x1, (int) y1 + dy);
+				}
+			} else {
+				if (rand() % 2) {
+					return Field((int) x1 - dx, (int) y1 + dy);
+				} else {
+					return Field((int) x1 + dx, (int) y1 - dy);
+				}
+			}
+		}
+	}
+	return Field(max_table_size, max_table_size);
 }

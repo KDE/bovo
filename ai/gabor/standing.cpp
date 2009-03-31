@@ -23,10 +23,11 @@
 #include <cstdlib>
 #include <memory.h>
 #include <assert.h>
-#include <vector>
-#include <string>
+#include <QString>
 
 #include "standing.h"
+
+typedef QString string;
 
 // these are used by refresh() and getSuggestions()
 const static PatternCount suggestValues = { {0, 8, 8, 6, 5, 3}, {0, 7, 7, 4, 2, 1} };
@@ -39,14 +40,14 @@ const static index_T suggestValueCount = 9;
 // '-' : free cell, where the enemy can block the position
 // '.' : free cell, but nobody should place here
 // '?' : everything but player's mark, ie. wall, enemy or empty
-const static std::string level0[] = {"00000"};
-const static std::string level1[] = {".0000+"};
-const static std::string level2[] = {"@0000+", "+0000@", "00+00", "?000+0?", "?0+000?"};
-const static std::string level3[] = {".-000+.", "-+000-@", "@-000+-", "?-00+0-", "@0-00+0.", "-0+00-?", ".0+00-0@", ".0-00+0."};
-const static std::string level4[] = {"@000++", "++000@", "@0+00+0@", "@0+00+?", "?+00+0@", "@00+0+", "+0+00@", "@+000+@", "@00++0", "0++00@", "?.00++0?", "?0++00.?", "?.00++00.?", "?0+0+0?"};
-const static std::string level5[] = {"?++00++?", "@-00++.", ".++00-@", ".+0+0+.", "@-0+0+.", ".+0+0-@", "@0-0++0-0@", "@0-0++0-?", "?-0++0-0@", "?-0++0-?"};
+const static string level0[] = {"00000"};
+const static string level1[] = {".0000+"};
+const static string level2[] = {"@0000+", "+0000@", "00+00", "?000+0?", "?0+000?"};
+const static string level3[] = {".-000+.", "-+000-@", "@-000+-", "?-00+0-", "@0-00+0.", "-0+00-?", ".0+00-0@", ".0-00+0."};
+const static string level4[] = {"@000++", "++000@", "@0+00+0@", "@0+00+?", "?+00+0@", "@00+0+", "+0+00@", "@+000+@", "@00++0", "0++00@", "?.00++0?", "?0++00.?", "?.00++00.?", "?0+0+0?"};
+const static string level5[] = {"?++00++?", "@-00++.", ".++00-@", ".+0+0+.", "@-0+0+.", ".+0+0-@", "@0-0++0-0@", "@0-0++0-?", "?-0++0-0@", "?-0++0-?"};
 const static index_T patternTotals[heurLevels] = {1, 1, 5, 8, 14, 10};
-const static std::string* patterns[heurLevels] = {level0, level1, level2, level3, level4, level5};
+const static string* patterns[heurLevels] = {level0, level1, level2, level3, level4, level5};
 
 static bool refresh_inited = false;
 const static index_T max_pattern_length = 10;
@@ -106,7 +107,7 @@ void Standing::initRefresh() {
 			for (index_T patternIndex = 0; patternIndex < patternTotals[level]; patternIndex++) {
 				patternData[patternDataIndex].length = (index_T) patterns[level][patternIndex].size();
 				assert(patternData[patternDataIndex].length <= max_pattern_length);
-				memcpy(&patternData[patternDataIndex].mark[0], patterns[level][patternIndex].c_str(), patternData[patternDataIndex].length);
+				memcpy(&patternData[patternDataIndex].mark[0], patterns[level][patternIndex].toLatin1().data(), patternData[patternDataIndex].length);
 				patternData[patternDataIndex].level = level;
 
 				for (index_T q = 0; q <= patternData[patternDataIndex].length; q++) {

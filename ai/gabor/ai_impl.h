@@ -23,10 +23,12 @@
 #ifndef __AI_IMPL_H__
 #define __AI_IMPL_H__
 
-#include <stack>
+#include <QLinkedList>
 
 #include "ai_interface.h"
 #include "standing.h"
+
+typedef QLinkedList<Standing> previous_standings_T;
 
 class AiImpl {
 public:
@@ -72,16 +74,16 @@ public:
 private:
 	// the standing persisted across steps
 	Standing rememberedStanding;
-	// the standing persisted across steps
-	std::stack<Standing> previousStandings;
+	// the game history for undo
+	previous_standings_T previousStandings;
 	// steps made in the current game
 	int stepCount;
 	// step suggestion in the current depth limit
 	pos_T suggestedX, suggestedY;
-	// global best step
-	pos_T bestX, bestY;
 	// heuristic value of the search tree root
 	heur_T rootValue;
+	// suggest a move for the current player from the opening book
+	Field openingBook();
 };
 
 #endif /* __AI_IMPL_H__ */
