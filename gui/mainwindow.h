@@ -98,6 +98,7 @@ private:
     int m_playbackSpeed;
     QStringList m_lastGame;
     bool m_animate;
+    bool m_demoMode;
 };
 
 } /* namespace gui */

@@ -242,6 +242,7 @@ void MainWindow::setAnimation(bool enabled) {
 }
 
 void MainWindow::slotNewGame() {
+    m_demoMode = false;
     if (m_game != 0) {
         m_game->cancelAndWait();
         if (m_scene != 0) {
@@ -267,6 +268,7 @@ void MainWindow::slotNewGame() {
     }
     if (m_scene == 0 && (m_lastGame.isEmpty())) { //first time, demo time
         m_scene = new Scene(m_theme, m_animate);
+        m_demoMode = true;
         slotNewDemo();
     } else {
         Dimension dimension(NUMCOLS, NUMCOLS);
@@ -306,6 +308,10 @@ void MainWindow::slotNewGame() {
 }
 
 void MainWindow::slotNewDemo() {
+    if (!m_demoMode) {
+        // a new game already started, do not start demo
+        return;
+    }
     if (m_game != 0) {
         m_game->deleteLater();
         m_game = 0;
