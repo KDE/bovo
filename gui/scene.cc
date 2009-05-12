@@ -219,7 +219,7 @@ void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *ev) {
         QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
                          m_curCellSize * NUMCOLS));
         if (!boardRect.contains(ev->scenePos())) {
-            setPaintMarker(false);
+            removePaintMarker();
         } else {
             uint row = (uint)((ev->scenePos().y()-boardRect.y()) / m_curCellSize);
             uint col = (uint)((ev->scenePos().x()-boardRect.x()) / m_curCellSize);
@@ -228,9 +228,11 @@ void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *ev) {
             col = qMax(col, static_cast<uint>(0));
             col = qMin(static_cast<uint>(NUMCOLS-1), col);
             if (m_row != row || m_col != col || !m_paintMarker) {
-                m_col = col;
-                m_row = row;
-                setPaintMarker(m_game->player(Coord(col, row)) == No);
+                if (m_game->player(Coord(col, row)) == No) {
+                    setPaintMarker(col, row);
+                } else {
+                    removePaintMarker();
+                }
             }
         }
     }
@@ -254,15 +256,32 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     emit move(Move(m_player, Coord(col, row)));
 }
 
-void Scene::setPaintMarker(bool enabled) {
-    if (m_paintMarker || enabled) {
-        m_paintMarker = enabled;
-        QRectF boardRect(cellTopLeft(0, 0), QSizeF(m_curCellSize * NUMCOLS,
-                         m_curCellSize * NUMCOLS));
-        // I really only want to repaint this and the old square!
-        demandRepaint();
+void Scene::removePaintMarker() {
+    if (m_paintMarker) {
+        m_paintMarker = false;
+        QPointF topLeftOld = cellTopLeft(m_col, m_row);
+        // because Gomoku theme has larger marks than the cell
+        qreal exrtaMargin = m_curCellSize / 2.0;
+        invalidate(topLeftOld.x() - exrtaMargin, topLeftOld.y() - exrtaMargin,
+                m_curCellSize + 2 * exrtaMargin, m_curCellSize + 2 * exrtaMargin);
     }
-    m_paintMarker = enabled;
+}
+
+void Scene::setPaintMarker(uint col, uint row) {
+    bool paintMarkerOld = m_paintMarker;
+    QPointF topLeftOld = cellTopLeft(m_col, m_row);
+    m_paintMarker = true;
+    m_col = col;
+    m_row = row;
+    QPointF topLeftNew = cellTopLeft(m_col, m_row);
+    // because Gomoku theme has larger marks than the cell
+    qreal exrtaMargin = m_curCellSize / 2.0;
+    invalidate(topLeftNew.x() - exrtaMargin, topLeftNew.y() - exrtaMargin,
+            m_curCellSize + 2 * exrtaMargin, m_curCellSize + 2 * exrtaMargin);
+    if (paintMarkerOld) {
+        invalidate(topLeftOld.x() - exrtaMargin, topLeftOld.y() - exrtaMargin,
+                m_curCellSize + 2 * exrtaMargin, m_curCellSize + 2 * exrtaMargin);
+    }
 }
 
 void Scene::slotPlayerTurn() {
@@ -270,23 +289,15 @@ void Scene::slotPlayerTurn() {
 }
 
 void Scene::slotOposerTurn() {
-    setPaintMarker(false);
+    removePaintMarker();
     activate(false);
 }
 
 void Scene::slotGameOver(const QList<Move>& win) {
-    setPaintMarker(false);
+    removePaintMarker();
     m_winningMoves = win;
     setWin();
     activate(false);
-}
-
-void Scene::demandRepaint() {
-    QList<QRectF> tmp;
-/** @TODO only update this square. Possible,
- * given the fact that we have x and y :) */
-    tmp.push_back(QRectF(0, 0, width(), height()));
-    emit changed(tmp);
 }
 
 void Scene::hint(const Move& hint) {

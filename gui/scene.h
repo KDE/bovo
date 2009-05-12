@@ -67,7 +67,6 @@ public slots:
     void hintTimeout();
     void destroyHint();
     void enableAnimation(bool enabled);
-    void demandRepaint();
     void setWin();
     void replay();
     void killMark(Mark*);
@@ -98,7 +97,8 @@ private:
     uint m_row;
     uint m_col;
     bool m_paintMarker;
-    void setPaintMarker(bool enabled);
+    void removePaintMarker();
+    void setPaintMarker(uint col, uint row);
     qreal m_fill;
     void loadTheme(const Theme& theme);
 };
