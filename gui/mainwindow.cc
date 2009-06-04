@@ -109,8 +109,7 @@ void MainWindow::save() const {
         KConfig savegame(rc);
         KConfigGroup lastGroup(&savegame, "Game");
         if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
-            QStringList lastGame;
-            lastGame = m_game->saveLast();
+            const QStringList lastGame = m_game->saveLast();
             lastGroup.writeXdgListEntry("Unfinished", lastGame); // XXX this is bogus
         } else {
             lastGroup.deleteEntry("Unfinished");
@@ -127,14 +126,14 @@ void MainWindow::setupThemes() {
     foreach (const QString &themerc, themercs) {
         KConfig config(themerc);
         KConfigGroup configGroup(&config, "Config");
-        QString pathName = configGroup.readEntry("Path", QString());
+        const QString pathName = configGroup.readEntry("Path", QString());
         m_themes << Theme(pathName, i);
         ++i;
     }
 }
 
 void MainWindow::readConfig() {
-    QString themePath = Settings::theme();
+    const QString themePath = Settings::theme();
     foreach (const Theme &tmpTheme, m_themes) {
         if (tmpTheme.path() == themePath) {
             m_theme = tmpTheme;
@@ -146,17 +145,17 @@ void MainWindow::readConfig() {
     m_animate       = Settings::animation();
     m_aiFactory->changeAi(Settings::ai());
 
-    QString rc = KGlobal::dirs()->locate("config", "bovorc");
+    const QString rc = KGlobal::dirs()->locate("config", "bovorc");
     KConfig savegame(rc);
     KConfigGroup lastGroup(&savegame, "Game");
     m_lastGame = lastGroup.readXdgListEntry("Unfinished", QStringList()); // XXX this is bogus
-    QString wins = lastGroup.readEntry("Wins", QString());
+    const QString wins = lastGroup.readEntry("Wins", QString());
     if (!wins.isEmpty()) {
         bool ok;
         updateWins(wins.toUInt(&ok));
         
     }
-    QString losses = lastGroup.readEntry("Losses", QString());
+    const QString losses = lastGroup.readEntry("Losses", QString());
     if (!losses.isEmpty()) {
         bool ok;
         updateLosses(losses.toUInt(&ok));
