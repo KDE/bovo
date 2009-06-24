@@ -87,8 +87,7 @@ Field AiImpl::think() {
 		return f;
 	}
 	// global best step
-	pos_T bestX, bestY;
-	bestX = bestY = max_table_size;
+	pos_T bestX = max_table_size, bestY = max_table_size;
 
 	// alpha-beta pruning
 	Node* act;
@@ -97,9 +96,9 @@ Field AiImpl::think() {
 	NodeHashData currentHashData;
 
 	// step suggestion in the current depth limit
-	pos_T suggestedX, suggestedY;
+	pos_T suggestedX = max_table_size, suggestedY = max_table_size;
 	// heuristic value of the search tree root
-	heur_T rootValue;
+	heur_T rootValue = 0.0;
 
 	// do a very fast initial search
 	depth_limit = 1;

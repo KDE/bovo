@@ -54,6 +54,8 @@
 
   <rect id="win" x="1" y="1" width="1" height="1" fill="lime" stroke-width="0.05" stroke="black" fill-opacity="0.4" />
 
+  <rect id="last" x="1" y="1" width="1" height="1" fill="lime" stroke-width="0" fill-opacity="0.2" />
+
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"

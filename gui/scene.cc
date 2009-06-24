@@ -48,7 +48,7 @@ namespace gui {
 
 Scene::Scene(const Theme& theme, bool animation)
   : m_activate(false), m_game(0), m_curCellSize(10.0), m_player(No), m_animation(animation),
-  m_paintMarker(false) {
+  m_paintMarker(false), m_showLast(false) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
     m_renderer = 0;
@@ -92,16 +92,20 @@ void Scene::loadTheme(const Theme& theme) {
         m_renderer->load(theme.svg());
     QList<QGraphicsItem*> allMarks = items();
     foreach (QGraphicsItem* item, allMarks) {
-        if (Mark* mark = qgraphicsitem_cast<Mark *>(item))
+        if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
             mark->setFill(m_fill);
-        else if (HintItem* hintItem = qgraphicsitem_cast<HintItem *>(item)) 
+            mark->update(mark->boundingRect());
+        }
+        else if (HintItem* hintItem = qgraphicsitem_cast<HintItem *>(item)) {
             hintItem->setFill(m_fill);
+            hintItem->update(hintItem->boundingRect());
+        }
     }
 }
 
 void Scene::setTheme(const Theme& theme) {
     loadTheme(theme);
-    invalidate(0.0, 0.0, width()*4, height()*4);
+    invalidate(0, 0, width(), height());
 }
 
 void Scene::activate(bool activate) {
@@ -136,16 +140,20 @@ void Scene::setGame(Game* game) {
         removeItem( mark );
         delete mark;
     }
+    m_paintMarker = false;
+    m_showLast = false;
     invalidate(0, 0, width(), height());
 }
 
 void Scene::updateBoard(const Move& move) {
     destroyHint();
     if (move.valid()) {
+        setShowLast(move.x(), move.y());
         Mark* mark = new Mark(this, move, m_animation, m_fill);
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
     } else if (move.player() == No) {
+        removeShowLast();
         QList<QGraphicsItem*> allMarks = items();
         foreach (QGraphicsItem* item, allMarks) {
             if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
@@ -198,6 +206,13 @@ void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
             p->setOpacity(0.4);
             m_renderer->render(p, "x1", rect);
             p->setOpacity(1);
+        }
+    }
+    if (m_showLast) {
+        QRectF rect(cellTopLeft(m_lastCol, m_lastRow), QSizeF(m_curCellSize,
+                       m_curCellSize));
+        if (bounds.intersects(rect)) {
+            m_renderer->render(p, "last", rect);
         }
     }
     if (!m_winningMoves.empty()) {
@@ -257,31 +272,53 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
 }
 
 void Scene::removePaintMarker() {
-    if (m_paintMarker) {
-        m_paintMarker = false;
-        QPointF topLeftOld = cellTopLeft(m_col, m_row);
-        // because Gomoku theme has larger marks than the cell
-        qreal exrtaMargin = m_curCellSize / 2.0;
-        invalidate(topLeftOld.x() - exrtaMargin, topLeftOld.y() - exrtaMargin,
-                m_curCellSize + 2 * exrtaMargin, m_curCellSize + 2 * exrtaMargin);
+    if (!m_paintMarker) {
+        return;
     }
+    m_paintMarker = false;
+    QRectF rectOld(cellTopLeft(m_col, m_row), QSizeF(m_curCellSize,
+                   m_curCellSize));
+    qreal adjusting((1.0-m_fill)*m_curCellSize/2.0);
+    rectOld.adjust(adjusting, adjusting, -adjusting, -adjusting);
+    invalidate(rectOld, ForegroundLayer);
 }
 
 void Scene::setPaintMarker(uint col, uint row) {
-    bool paintMarkerOld = m_paintMarker;
-    QPointF topLeftOld = cellTopLeft(m_col, m_row);
+    if (m_paintMarker == true && m_col == col && m_row == row) {
+        return;
+    }
+    removePaintMarker();
     m_paintMarker = true;
     m_col = col;
     m_row = row;
-    QPointF topLeftNew = cellTopLeft(m_col, m_row);
-    // because Gomoku theme has larger marks than the cell
-    qreal exrtaMargin = m_curCellSize / 2.0;
-    invalidate(topLeftNew.x() - exrtaMargin, topLeftNew.y() - exrtaMargin,
-            m_curCellSize + 2 * exrtaMargin, m_curCellSize + 2 * exrtaMargin);
-    if (paintMarkerOld) {
-        invalidate(topLeftOld.x() - exrtaMargin, topLeftOld.y() - exrtaMargin,
-                m_curCellSize + 2 * exrtaMargin, m_curCellSize + 2 * exrtaMargin);
+    QRectF rect(cellTopLeft(m_col, m_row), QSizeF(m_curCellSize,
+                   m_curCellSize));
+    qreal adjusting((1.0-m_fill)*m_curCellSize/2.0);
+    rect.adjust(adjusting, adjusting, -adjusting, -adjusting);
+    invalidate(rect, ForegroundLayer);
+}
+
+void Scene::removeShowLast() {
+    if (!m_showLast) {
+        return;
     }
+    m_showLast = false;
+    QRectF rectOld(cellTopLeft(m_lastCol, m_lastRow), QSizeF(m_curCellSize,
+                   m_curCellSize));
+    invalidate(rectOld, ForegroundLayer);
+}
+
+void Scene::setShowLast(uint col, uint row) {
+    if (m_showLast == true && m_lastCol == col && m_lastRow == row) {
+        return;
+    }
+    removeShowLast();
+    m_showLast = true;
+    m_lastCol = col;
+    m_lastRow = row;
+    QRectF rect(cellTopLeft(m_lastCol, m_lastRow), QSizeF(m_curCellSize,
+                   m_curCellSize));
+    invalidate(rect, ForegroundLayer);
 }
 
 void Scene::slotPlayerTurn() {
@@ -295,6 +332,7 @@ void Scene::slotOposerTurn() {
 
 void Scene::slotGameOver(const QList<Move>& win) {
     removePaintMarker();
+    removeShowLast();
     m_winningMoves = win;
     setWin();
     activate(false);

@@ -97,8 +97,13 @@ private:
     uint m_row;
     uint m_col;
     bool m_paintMarker;
+    uint m_lastRow;
+    uint m_lastCol;
+    bool m_showLast;
     void removePaintMarker();
     void setPaintMarker(uint col, uint row);
+    void removeShowLast();
+    void setShowLast(uint col, uint row);
     qreal m_fill;
     void loadTheme(const Theme& theme);
 };

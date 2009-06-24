@@ -119,8 +119,10 @@ void Mark::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
 }
 
 void Mark::setFill(qreal fill) {
-    m_fill = fill;
-    prepareGeometryChange();
+    if (m_fill != fill) {
+        m_fill = fill;
+        prepareGeometryChange();
+    }
 }
 
 usi Mark::col() const {

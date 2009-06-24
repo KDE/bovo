@@ -18,6 +18,8 @@ xmlns="http://www.w3.org/2000/svg" version="1.1">
 
   <rect id="win" x="1" y="1" width="1" height="1" fill="red" stroke-width="0.15" stroke="black" fill-opacity="0.4" />
 
+  <rect id="last" x="1" y="1" width="1" height="1" fill="red" stroke-width="0.10" stroke="black" fill-opacity="0.1" />
+
   <rect id="background" x="0" y="0" width="24" height="24" fill="yellow"
         stroke="none" />
 
