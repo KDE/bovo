@@ -37,7 +37,12 @@ typedef unsigned long long hash_T;
 typedef index_T entry_type_T;
 enum { exact = 1, lower_bound = 2, upper_bound = 3 };
 
-#pragma pack(push, 1)
+//pragmas are not in the C++ standard and Sun Studio does not support the pack(x, y) one
+#if defined(__SUNPRO_CC) || defined(__SUNPRO_C)
+ #pragma pack()
+#else
+ #pragma pack(push, 1)
+#endif
 // a hash table entry
 struct NodeHashData {
 	// is this data for the current position?
@@ -49,7 +54,11 @@ struct NodeHashData {
 	// type of the entry
 	entry_type_T entry_type;
 };
-#pragma pack(pop)
+#if defined(__SUNPRO_CC) || defined(__SUNPRO_C)
+ #pragma (pack)
+#else
+ #pragma pack(pop)
+#endif
 
 // hash table maximum memory
 const hash_T nodeHashMem = 16 * 1024 * 1024;
