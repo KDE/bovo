@@ -397,6 +397,13 @@ void Scene::replay() {
             this, SLOT(updateBoard(const Move&)));
 }
 
+bool Scene::event(QEvent *event) {
+    bool ret = QGraphicsScene::event(event);
+    if (event->type() == QEvent::Leave) {
+        removePaintMarker();
+    }
+    return ret;
+}
 
 } /* namespace gui */
 

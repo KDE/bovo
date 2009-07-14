@@ -71,6 +71,9 @@ public slots:
     void replay();
     void killMark(Mark*);
 
+protected:
+    bool event(QEvent *event);
+
 signals:
     void move(const Move&);
 
