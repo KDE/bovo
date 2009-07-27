@@ -1,4 +1,5 @@
 project (BOVO)
+KDE4_NO_ENABLE_FINAL(bovo)
 
 # re-enabling exceptions (turned off in KDE)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
