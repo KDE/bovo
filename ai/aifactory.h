@@ -39,8 +39,6 @@ using namespace bovo;
 
 /** namespace for game engine */
 namespace bovo {
-    class Move;
-    class Coord;
     class Dimension;
 } /* namespace bovo */
 
