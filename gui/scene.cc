@@ -153,6 +153,10 @@ void Scene::updateBoard(const Move& move) {
         mark->setSharedRenderer(m_renderer);
         addItem(mark);
     } else if (move.player() == No) {
+        if (!m_game->isGameOver() && !m_winningMoves.empty()) {
+            m_winningMoves = QList<Move>();
+            invalidate(0, 0, width(), height());
+        }
         removeShowLast();
         QList<QGraphicsItem*> allMarks = items();
         foreach (QGraphicsItem* item, allMarks) {

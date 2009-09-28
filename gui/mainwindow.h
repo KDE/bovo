@@ -84,8 +84,10 @@ private:
     int m_wins, m_losses;
     void setupActions();
     void increaseWins();
+    void decreaseWins();
     void updateWins(const int wins);
     void increaseLosses();
+    void decreaseLosses();
     void updateLosses(const int losses);
     QAction* m_hintAct;
     QAction* m_undoAct;

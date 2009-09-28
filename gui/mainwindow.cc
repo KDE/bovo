@@ -342,7 +342,11 @@ void MainWindow::slotNewDemoWait() {
 }
 
 void MainWindow::increaseWins() {
-    statusBar()->changeItem(i18n("Wins: %1", ++m_wins), 1);
+    updateWins(m_wins + 1);
+}
+
+void MainWindow::decreaseWins() {
+    updateWins(m_wins > 0 ? m_wins - 1 : 0);
 }
 
 void MainWindow::updateWins(const int wins) {
@@ -351,7 +355,11 @@ void MainWindow::updateWins(const int wins) {
 }
 
 void MainWindow::increaseLosses() {
-    statusBar()->changeItem(i18n("Losses: %1", ++m_losses), 2);
+    updateLosses(m_losses + 1);
+}
+
+void MainWindow::decreaseLosses() {
+    updateLosses(m_losses > 0 ? m_losses - 1 : 0);
 }
 
 void MainWindow::updateLosses(const int losses) {
@@ -387,8 +395,24 @@ void MainWindow::slotOposerTurn() {
 }
 
 void MainWindow::slotUndo() {
-    if (m_game != 0)
-        m_game->undoLatest();
+    if (m_game == 0)
+        return;
+    if (m_game->isGameOver()) {
+        if (!m_game->boardFull()) {
+            if (m_game->latestMove().player() == X) {
+                decreaseWins();
+            } else {
+                decreaseLosses();
+            }
+        }
+        connect(m_game, SIGNAL(boardChanged(const Move&)),
+                m_demoAi, SLOT(changeBoard(const Move&)));
+        m_hintAct->setEnabled(true);
+        actionCollection()->action("replay")->setEnabled(false);
+        disconnect(actionCollection()->action("replay"), SIGNAL(triggered()),
+                this, SLOT(replay()));
+    }
+    m_game->undoLatest();
 }
 
 void MainWindow::replay() {
@@ -397,6 +421,7 @@ void MainWindow::replay() {
     }
     statusBar()->changeItem(i18n("Replaying game"), 0);
     actionCollection()->action("replay")->setEnabled(false);
+    disableUndo();
     disconnect(actionCollection()->action("replay"), SIGNAL(triggered()),
             this, SLOT(replay()));
     disconnect(m_game, 0, this, 0);

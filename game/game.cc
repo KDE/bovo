@@ -226,9 +226,10 @@ void Game::move(const Move& move) {
 }
 
 void Game::replay() {
-    m_replayIterator = m_history.constBegin();
-    m_replayIteratorEnd = m_history.constEnd();
     if (m_gameOver && !m_replaying) {
+        m_replaying = true;
+        m_replayIterator = m_history.constBegin();
+        m_replayIteratorEnd = m_history.constEnd();
         disconnect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
         connect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
         emit replayBegin();
@@ -237,10 +238,21 @@ void Game::replay() {
 
 void Game::undoLatest() {
     m_inUndoState = true;
-    if (m_history.empty() ||  m_demoMode || m_gameOver) {
+    if (m_history.empty() || m_demoMode) {
         m_inUndoState = false;
         return;
-    } else if (m_curPlayer == m_computerMark) {
+    }
+    if (m_gameOver) {
+        m_gameOver = false;
+        m_winDir = -1;
+        connect(this, SIGNAL(boardChanged(const Move&)),
+                m_ai, SLOT(changeBoard(const Move&)));
+        connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
+                Qt::QueuedConnection);
+        connect(m_ai, SIGNAL(move(const Move&)),
+                this,  SLOT(move(const Move&)));
+    }
+    if (m_curPlayer == m_computerMark) {
         m_ai->cancelAndWait();
         Move move(No, m_history.last().coord());
         m_history.removeLast();
@@ -249,26 +261,23 @@ void Game::undoLatest() {
         emit boardChanged(move);
         m_curPlayer = m_playerMark;
         emit playerTurn();
-    } else if (m_curPlayer == m_playerMark && m_history.count() == 1) {
+    } else if (m_curPlayer == m_playerMark) {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move);
         m_stepCount--;
         emit boardChanged(move);
-        m_curPlayer = m_computerMark;
-        emit oposerTurn();
-    } else if (m_curPlayer == m_playerMark && m_history.count() > 1 ) {
-        Move move(No, m_history.last().coord());
-        m_history.removeLast();
-        m_board->setPlayer(move);
-        m_stepCount--;
-        emit boardChanged(move);
-        Move move2(No, m_history.last().coord());
-        m_history.removeLast();
-        m_board->setPlayer(move2);
-        m_stepCount--;
-        emit boardChanged(move2);
-        emit playerTurn();
+        if (m_history.count() == 1) {
+            m_curPlayer = m_computerMark;
+            emit oposerTurn();
+        } else {
+            Move move2(No, m_history.last().coord());
+            m_history.removeLast();
+            m_board->setPlayer(move2);
+            m_stepCount--;
+            emit boardChanged(move2);
+            emit playerTurn();
+        }
     }
     if (m_history.empty() && !m_demoMode) {
         emit undoNotAble();
@@ -310,7 +319,6 @@ void Game::makeMove(const Move& move) {
     emit boardChanged(move);
     if (m_gameOver) {
         QList<Move> moves = winningMoves();
-        emit undoNotAble();
         emit gameOver(moves);
         this->disconnect(m_ai);
     } else {
