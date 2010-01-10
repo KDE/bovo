@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Scribble
 Name[ca]=Scribble
+Name[ca@valencia]=Scribble
 Name[cs]=Scribble
 Name[da]=Scribble
 Name[de]=Scribble
@@ -46,6 +47,7 @@ Name[zh_CN]=涂鸦
 Name[zh_TW]=Scribble
 Comment=A pen and paper theme
 Comment[ca]=Un tema de paper i llapis
+Comment[ca@valencia]=Un tema de paper i llapis
 Comment[cs]=Motiv s papírem a perem
 Comment[da]=Et papir og blyant-tema
 Comment[de]=Ein Stift-und-Papier-Design.

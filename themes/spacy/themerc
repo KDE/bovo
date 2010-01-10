@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Spacy
 Name[ca]=Espai
+Name[ca@valencia]=Espai
 Name[cs]=Vesmír
 Name[da]=Spacy
 Name[de]=Spacy
@@ -45,6 +46,7 @@ Name[zh_CN]=空间
 Name[zh_TW]=Spacy
 Comment=A theme from outer space
 Comment[ca]=Un tema de l'espai exterior
+Comment[ca@valencia]=Un tema de l'espai exterior
 Comment[cs]=Motiv z vesmíru
 Comment[da]=Et tema fra det ydre rum
 Comment[de]=Ein Design aus den Tiefen des Weltraums.
