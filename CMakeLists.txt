@@ -5,7 +5,7 @@ KDE4_NO_ENABLE_FINAL(bovo)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
 
 include_directories (
-        ${BOVO_SOURCE_DIR}/gui ${CMAKE_BINARY_DIR}/gui
+	${BOVO_SOURCE_DIR}/gui ${CMAKE_BINARY_DIR}/gui
 	${BOVO_SOURCE_DIR}/game ${BOVO_SOURCE_DIR}/ai
 )
 
@@ -30,22 +30,29 @@ set( bovoai_SRCS
 	ai/gabor/ai_impl.cpp )
 
 set(bovogui_SRCS
-    gui/hintitem.cc
-    gui/mark.cc
-    gui/theme.cc
-    gui/scene.cc
-    gui/view.cc
-    gui/mainwindow.cc
-    gui/main.cc
+	gui/hintitem.cc
+	gui/mark.cc
+	gui/theme.cc
+	gui/scene.cc
+	gui/view.cc
+	gui/mainwindow.cc
+	gui/main.cc
 )
 
-kde4_add_kcfg_files(bovogui_SRCS gui/settings.kcfgc)
-kde4_add_app_icon(bovogui_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/bovo.png")
-kde4_add_executable(bovo ${bovogui_SRCS} ${bovoai_SRCS} ${bovogame_SRCS})
+set(bovo_SRCS
+	${bovogui_SRCS}
+	${bovoai_SRCS}
+	${bovogame_SRCS}
+)
+
+kde4_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
+kde4_add_app_icon(bovo_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-app-bovo.png") 
+kde4_add_executable(bovo ${bovo_SRCS})
 
 target_link_libraries(bovo kdegames ${KDE4_KDEUI_LIBS} )
 
 add_subdirectory (themes)
+add_subdirectory (icons)
 
 install (TARGETS bovo ${INSTALL_TARGETS_DEFAULT_ARGS})
 install (FILES gui/bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo )
