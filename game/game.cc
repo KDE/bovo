@@ -267,7 +267,7 @@ void Game::undoLatest() {
         m_board->setPlayer(move);
         m_stepCount--;
         emit boardChanged(move);
-        if (m_history.count() == 1) {
+        if (m_history.count() == 0) {
             m_curPlayer = m_computerMark;
             emit oposerTurn();
         } else {
