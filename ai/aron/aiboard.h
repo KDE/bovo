@@ -23,8 +23,8 @@
  * @file file declaring the class AiBoard, which in fact is the AI
  */
 
-#ifndef __AIBOARD_H__
-#define __AIBOARD_H__
+#ifndef BOVO_AIBOARD_H
+#define BOVO_AIBOARD_H
 
 #include <kgamedifficulty.h>
 
@@ -243,4 +243,4 @@ private:
 
 } /* namespace ai */
 
-#endif /* __AIBOARD_H__ */
+#endif // BOVO_AIBOARD_H

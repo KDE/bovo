@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __COORD_H__
-#define __COORD_H__
+#ifndef BOVO_COORD_H
+#define BOVO_COORD_H
 
 #include "common.h"
 
@@ -130,4 +130,4 @@ private:
 
 } /* namespace bovo */
 
-#endif /* __COORD_H__ */
+#endif // BOVO_COORD_H

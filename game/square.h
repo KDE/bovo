@@ -19,8 +19,8 @@
 *
 ********************************************************************/                     
 
-#ifndef __SQUARE_H__
-#define __SQUARE_H__
+#ifndef BOVO_SQUARE_H
+#define BOVO_SQUARE_H
 
 #include "common.h"
 
@@ -83,4 +83,4 @@ private:
 
 } /* namespace bovo */
 
-#endif /* __SQUARE_H__ */
+#endif // BOVO_SQUARE_H

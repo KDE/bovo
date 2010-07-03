@@ -24,8 +24,8 @@
  * @file aiaron.h declaring the AiAron class
  */
 
-#ifndef __AIARON_H__
-#define __AIARON_H__
+#ifndef BOVO_AIARON_H
+#define BOVO_AIARON_H
 
 #include <QObject>
 
@@ -65,4 +65,4 @@ private:
 
 } /* namespace ai */
 
-#endif /* __AIARON_H__ */
+#endif // BOVO_AIARON_H

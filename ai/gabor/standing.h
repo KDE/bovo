@@ -20,8 +20,8 @@
 ********************************************************************/
 
 
-#ifndef __STANDING_H__
-#define __STANDING_H__
+#ifndef BOVO_STANDING_H
+#define BOVO_STANDING_H
 
 #include <QLinkedList>
 #include <QVector>
@@ -154,4 +154,4 @@ private:
 	void decide();
 };
 
-#endif /* __STANDING_H__ */
+#endif // BOVO_STANDING_H

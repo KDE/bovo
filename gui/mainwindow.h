@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __MAINWINDOW_H__
-#define __MAINWINDOW_H__
+#ifndef BOVO_MAINWINDOW_H
+#define BOVO_MAINWINDOW_H
 
 #include <QString>
 #include <QStringList>
@@ -105,4 +105,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __MAINWINDOW_H__ */
+#endif // BOVO_MAINWINDOW_H

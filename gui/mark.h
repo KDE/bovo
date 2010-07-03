@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __MARK_H__
-#define __MARK_H__
+#ifndef BOVO_MARK_H
+#define BOVO_MARK_H
 
 #include <QtSvg/QGraphicsSvgItem>
 
@@ -74,4 +74,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __MARH_H__ */
+#endif // BOVO_MARH_H

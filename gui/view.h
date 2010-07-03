@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __VIEW_H__
-#define __VIEW_H__
+#ifndef BOVO_VIEW_H
+#define BOVO_VIEW_H
 
 #include <QGraphicsView>
 
@@ -43,4 +43,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __VIEW_H__ */
+#endif // BOVO_VIEW_H

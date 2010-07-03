@@ -20,8 +20,8 @@
 ********************************************************************/
 
 
-#ifndef __AI_IMPL_H__
-#define __AI_IMPL_H__
+#ifndef BOVO_AI_IMPL_H
+#define BOVO_AI_IMPL_H
 
 #include <QLinkedList>
 
@@ -80,4 +80,4 @@ private:
 	Field openingBook();
 };
 
-#endif /* __AI_IMPL_H__ */
+#endif // BOVO_AI_IMPL_H

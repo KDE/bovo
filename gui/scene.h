@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __SCENE_H__
-#define __SCENE_H__
+#ifndef BOVO_SCENE_H
+#define BOVO_SCENE_H
 
 #include <QGraphicsScene>
 #include <QList>
@@ -113,4 +113,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __SCENE_H__ */
+#endif // BOVO_SCENE_H

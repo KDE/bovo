@@ -23,8 +23,8 @@
  * @file Declares the Square class used by the AI internally (AiSquare)
  */
 
-#ifndef __AISQUARE_H__
-#define __AISQUARE_H__
+#ifndef BOVO_AISQUARE_H
+#define BOVO_AISQUARE_H
 
 #include "square.h"
 
@@ -119,4 +119,4 @@ private:
 
 } /* namespace ai */
 
-#endif /* __AISQUARE_H__ */
+#endif // BOVO_AISQUARE_H

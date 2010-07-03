@@ -20,8 +20,8 @@
 ********************************************************************/
 
 
-#ifndef __HINTITEM_H__
-#define __HINTITEM_H__
+#ifndef BOVO_HINTITEM_H
+#define BOVO_HINTITEM_H
 
 #include <QtSvg/QGraphicsSvgItem>
 
@@ -71,4 +71,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __HINTITEM_H__ */
+#endif // BOVO_HINTITEM_H

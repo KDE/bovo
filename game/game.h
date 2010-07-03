@@ -21,8 +21,8 @@
 
 /** @file game.h declares class Game in namespace bovo */
 
-#ifndef __GAME_H__
-#define __GAME_H__
+#ifndef BOVO_GAME_H
+#define BOVO_GAME_H
 
 #include <QObject>
 #include <QList>
@@ -363,4 +363,4 @@ private:
 
 } /* namespace bovo */
 
-#endif /* __GAME_H__ */
+#endif // BOVO_GAME_H

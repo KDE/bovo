@@ -19,8 +19,8 @@
 *
 ********************************************************************/                     
 
-#ifndef __COMMON_H__
-#define __COMMON_H__
+#ifndef BOVO_COMMON_H
+#define BOVO_COMMON_H
 
 /** @file file containing common system wide typedefs, enums and exceptions */
 
@@ -117,4 +117,4 @@ enum DemoMode {
 
 } /* namespace bovo */
 
-#endif /* __COMMON_H__ */
+#endif // BOVO_COMMON_H

@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __THEME_H__
-#define __THEME_H__
+#ifndef BOVO_THEME_H
+#define BOVO_THEME_H
 
 // Qt includes
 #include <QtGui/QColor>
@@ -59,4 +59,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __THEME_H__ */
+#endif // BOVO_THEME_H

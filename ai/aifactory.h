@@ -24,8 +24,8 @@
  * @file aifactory.h declaring the AiFactory class
  */
 
-#ifndef __AIFACTORY_H__
-#define __AIFACTORY_H__
+#ifndef BOVO_AIFACTORY_H
+#define BOVO_AIFACTORY_H
 
 #include <QObject>
 #include <QString>
@@ -101,4 +101,4 @@ private:
 
 } /* namespace ai */
 
-#endif /* __AIFACTORY_H__ */
+#endif // BOVO_AIFACTORY_H

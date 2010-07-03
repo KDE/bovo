@@ -20,8 +20,8 @@
 ********************************************************************/
 
 
-#ifndef __NODE_H__
-#define __NODE_H__
+#ifndef BOVO_NODE_H
+#define BOVO_NODE_H
 
 #include <QLinkedList>
 
@@ -112,4 +112,4 @@ public:
 	void calcHash(hash_T* hash, NodeHashData* data);
 };
 
-#endif /* __NODE_H__ */
+#endif // BOVO_NODE_H

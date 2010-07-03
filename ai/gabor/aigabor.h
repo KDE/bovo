@@ -24,8 +24,8 @@
  * @file aigabor.h declaring the AiGabor class
  */
 
-#ifndef __AIGABOR_H__
-#define __AIGABOR_H__
+#ifndef BOVO_AIGABOR_H
+#define BOVO_AIGABOR_H
 
 #include <QObject>
 #include <QFuture>
@@ -77,4 +77,4 @@ private:
 
 } /* namespace ai */
 
-#endif /* __AIGABOR_H__ */
+#endif // BOVO_AIGABOR_H

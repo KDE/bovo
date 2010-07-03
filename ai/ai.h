@@ -24,8 +24,8 @@
  * @file ai.h declaring the Ai class
  */
 
-#ifndef __AI_H__
-#define __AI_H__
+#ifndef BOVO_AI_H
+#define BOVO_AI_H
 
 #include <QObject>
 
@@ -78,4 +78,4 @@ signals:
 
 } /* namespace ai */
 
-#endif /* __AI_H__ */
+#endif // BOVO_AI_H

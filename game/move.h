@@ -21,8 +21,8 @@
 
 /** @file move.h declares Move */
 
-#ifndef __MOVE_H__
-#define __MOVE_H__
+#ifndef BOVO_MOVE_H
+#define BOVO_MOVE_H
 
 #include "common.h"
 #include "coord.h"
@@ -113,4 +113,4 @@ private:
 
 } /* namespace gui */
 
-#endif /* __MOVE_H__ */
+#endif // BOVO_MOVE_H

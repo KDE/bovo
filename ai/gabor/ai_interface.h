@@ -20,8 +20,8 @@
 ********************************************************************/
 
 
-#ifndef __AI_INTERFACE_H__
-#define __AI_INTERFACE_H__
+#ifndef BOVO_AI_INTERFACE_H
+#define BOVO_AI_INTERFACE_H
 
 // a coordinate of the table
 typedef unsigned char pos_T;
@@ -90,4 +90,4 @@ private:
 	AiImpl* aiImpl;
 };
 
-#endif /* __AI_INTERFACE_H__ */
+#endif // BOVO_AI_INTERFACE_H

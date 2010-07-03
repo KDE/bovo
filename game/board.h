@@ -19,8 +19,8 @@
 *
 ********************************************************************/
 
-#ifndef __BOARD_H__
-#define __BOARD_H__
+#ifndef BOVO_BOARD_H
+#define BOVO_BOARD_H
 
 #include "common.h"
 
@@ -123,4 +123,4 @@ private:
 
 } /* namespace bovo */
 
-#endif /* __BOARD_H__ */
+#endif // BOVO_BOARD_H

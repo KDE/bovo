@@ -19,8 +19,8 @@
 *
 ********************************************************************/                     
 
-#ifndef __DIMENSION_H__
-#define __DIMENSION_H__
+#ifndef BOVO_DIMENSION_H
+#define BOVO_DIMENSION_H
 
 #include "common.h"
 
@@ -108,4 +108,4 @@ private:
 
 } /* namespace bovo */
 
-#endif /* __DIMENSION_H__ */
+#endif // BOVO_DIMENSION_H
