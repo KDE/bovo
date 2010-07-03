@@ -46,9 +46,9 @@ Node::Node(Standing* _standing, Node* _parent):
 }
 
 Node::~Node() {
-	if (child) delete child;
-	if (standing) delete standing;
-	for (steps_T::iterator i = steps.begin(); i != steps.end(); i++) delete (*i);
+	delete child;
+	delete standing;
+	qDeleteAll(steps);
 }
 
 void Node::generateSteps() {

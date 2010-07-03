@@ -135,11 +135,7 @@ void Scene::setGame(Game* game) {
     connect(this, SIGNAL(move(const Move&)),
             m_game, SLOT(move(const Move&)));
 
-    QList<QGraphicsItem*> allMarks = items();
-    foreach (QGraphicsItem* mark, allMarks) {
-        removeItem( mark );
-        delete mark;
-    }
+    qDeleteAll(items()); //remove all marks
     m_paintMarker = false;
     m_showLast = false;
     invalidate(0, 0, width(), height());
