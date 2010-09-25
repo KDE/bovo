@@ -179,9 +179,9 @@ void MainWindow::setupActions() {
     KStandardGameAction::gameNew(this, SLOT(slotNewGame()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-    QAction *replayAct = new KAction(KIcon("media-playback-start"),
+    QAction *replayAct = new KAction(KIcon( QLatin1String( "media-playback-start" )),
                             i18n("&Replay"), this);
-    actionCollection()->addAction("replay", replayAct);
+    actionCollection()->addAction( QLatin1String( "replay" ), replayAct);
     replayAct->setToolTip(i18n("Replay game"));
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
     replayAct->setEnabled(false);
@@ -190,7 +190,7 @@ void MainWindow::setupActions() {
     m_hintAct->setEnabled(false);
 
     KToggleAction *animAct = new KToggleAction(i18n("&Animation"),this);
-    actionCollection()->addAction("animation", animAct);
+    actionCollection()->addAction( QLatin1String( "animation" ), animAct);
     animAct->setChecked(m_animate);
     connect(animAct, SIGNAL(toggled(bool)), this, SLOT(setAnimation(bool)));
 
@@ -208,8 +208,8 @@ void MainWindow::setupActions() {
         }
     }
     m_themeAct->setCurrentItem(themeId);
-    actionCollection()->addAction("themes", m_themeAct);
-    m_themeAct->setIcon(KIcon("games-config-theme"));
+    actionCollection()->addAction( QLatin1String( "themes" ), m_themeAct);
+    m_themeAct->setIcon(KIcon( QLatin1String( "games-config-theme" )));
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
     m_undoAct = KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection());
