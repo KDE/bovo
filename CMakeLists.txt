@@ -56,4 +56,4 @@ add_subdirectory (icons)
 
 install (TARGETS bovo ${INSTALL_TARGETS_DEFAULT_ARGS})
 install (FILES gui/bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo )
-install (FILES bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install (PROGRAMS bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
