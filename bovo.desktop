@@ -1,6 +1,7 @@
 [Desktop Entry]
 Exec=bovo -caption "%c"
 Name=Bovo
+Name[ast]=Bovo
 Name[ca]=Bovo
 Name[ca@valencia]=Bovo
 Name[cs]=Bovo
@@ -57,6 +58,7 @@ Icon=bovo
 Type=Application
 X-DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
+GenericName[ast]=Xuegu de tableru cinco en llinia
 GenericName[ca]=Joc de cinc en fila
 GenericName[ca@valencia]=Joc de cinc en fila
 GenericName[cs]=Desková hra "pět v řadě"

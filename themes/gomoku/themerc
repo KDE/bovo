@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Gomoku
+Name[ast]=Gomoku
 Name[ca]=Gomoku
 Name[ca@valencia]=Gomoku
 Name[cs]=Gomoku
@@ -48,6 +49,7 @@ Name[x-test]=xxGomokuxx
 Name[zh_CN]=五目连珠
 Name[zh_TW]=Gomoku
 Comment=A classic Japanese theme
+Comment[ast]=Un tema xaponés clásicu
 Comment[ca]=Un tema japonès clàssic
 Comment[ca@valencia]=Un tema japonés clàssic
 Comment[cs]=Klasický japonský motiv
