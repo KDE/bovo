@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Spacy
 Name[ast]=Espaciu
+Name[bs]=Svemirsko
 Name[ca]=Espai
 Name[ca@valencia]=Espai
 Name[cs]=Vesmír
@@ -49,6 +50,7 @@ Name[zh_CN]=空间
 Name[zh_TW]=Spacy
 Comment=A theme from outer space
 Comment[ast]=Un tema del espaciu esterior
+Comment[bs]=Tema iz svemira
 Comment[ca]=Un tema de l'espai exterior
 Comment[ca@valencia]=Un tema de l'espai exterior
 Comment[cs]=Motiv z vesmíru
