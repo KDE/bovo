@@ -72,8 +72,6 @@ public slots:
     virtual void setSkill(KGameDifficulty::standardLevel skill) = 0;
     virtual void slotMove() = 0;
 
-signals:
-    void move(const Move& move);
 };
 
 } /* namespace ai */
