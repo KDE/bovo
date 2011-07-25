@@ -67,7 +67,7 @@ void Node::generateSteps() {
 	suggestions_T suggestions;
 	standing->getSuggestions(suggestions);
 
-	for (suggestions_T::iterator s = suggestions.begin(); s != suggestions.end(); s++) {
+	for (suggestions_T::iterator s = suggestions.begin(); s != suggestions.end(); ++s) {
 		pos_T x = s->x;
 		pos_T y = s->y;
 		assert(!standing->table[x][y]);
@@ -76,7 +76,7 @@ void Node::generateSteps() {
 
 		heur_T pv = p->hval * signum;
 		steps_T::iterator i;
-		for (i = steps.begin(); i != steps.end() && signum * (*i)->hval > pv; i++) ;
+		for (i = steps.begin(); i != steps.end() && signum * (*i)->hval > pv; ++i) ;
 		steps.insert(i, p);
 
 		// we only keep the best looking positions

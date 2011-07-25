@@ -224,7 +224,7 @@ Coord AiBoard::evaluate() const {
             break;
         }
     }
-    if (v2.size() == 0) {
+    if (v2.empty()) {
         throw gameover();
     } else if (v2.size() == 1) {
         return v2.begin()->second;
@@ -474,9 +474,9 @@ bool AiBoard::win(const Coord& c) const {
 
 void AiBoard::zero(const Coord& c) {
     usi minX = c.x()-5 < 0 ? 0 : c.x()-5;
-    usi maxX = c.x()+5 > m_dimension->width()-1 ? m_dimension->width()-1 : c.x()+5;
+    usi maxX = (c.x()+5 > m_dimension->width()-1) ? (m_dimension->width()-1) : c.x()+5;
     usi minY = c.y()-5 < 0 ? 0 : c.y()-5;
-    usi maxY = c.y()+5 > m_dimension->height()-1 ? m_dimension->height()-1 : c.y()+5;
+    usi maxY = (c.y()+5 > m_dimension->height()-1) ? (m_dimension->height()-1) : c.y()+5;
     for (int x = minX; x <= maxX; ++x) {
         for (int y = minY; y <= maxY; ++y) {
             m_board[x][y].setStatus(true);
