@@ -37,7 +37,7 @@ using namespace bovo;
 /** namespace for AI stuff */
 namespace ai {
 
-AiAron::AiAron(const Dimension& dimension, KGameDifficulty::standardLevel skill, 
+AiAron::AiAron(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, 
        Player player) {
     m_board = new AiBoard(dimension, skill, player);
     m_player = player;
@@ -59,7 +59,7 @@ void AiAron::changeBoard(const Move& move) {
 void AiAron::gameOver() {
 }
 
-void AiAron::setSkill(KGameDifficulty::standardLevel skill) {
+void AiAron::setSkill(KgDifficultyLevel::StandardLevel skill) {
     m_board->setSkill(skill);
 }
 

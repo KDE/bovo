@@ -31,7 +31,7 @@
 #include <QString>
 #include <QStringList>
 
-#include <kgamedifficulty.h>
+#include <kgdifficulty.h>
 
 #include "common.h"
 
@@ -74,7 +74,7 @@ public:
      * @param player player id of this AI
      * @param demoMode indicates the current game mode
      */
-    Ai* createAi(const Dimension& dimension, KGameDifficulty::standardLevel skill, Player player, DemoMode demoMode) const;
+    Ai* createAi(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, Player player, DemoMode demoMode) const;
 
     /**
      * @brief returns the available AI-s

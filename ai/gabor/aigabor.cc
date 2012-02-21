@@ -39,7 +39,7 @@ using namespace bovo;
 /** namespace for AI stuff */
 namespace ai {
 
-AiGabor::AiGabor(const Dimension& dimension, KGameDifficulty::standardLevel skill, 
+AiGabor::AiGabor(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, 
        Player player) : m_player(player), m_minThink(200) {
     m_ai = new AiInterface();
     m_ai->setTableSizeX(dimension.width());
@@ -78,16 +78,16 @@ void AiGabor::changeBoard(const Move& move) {
 void AiGabor::gameOver() {
 }
 
-void AiGabor::setSkill(KGameDifficulty::standardLevel skill) {
+void AiGabor::setSkill(KgDifficultyLevel::StandardLevel skill) {
     switch (skill) {
-        case KGameDifficulty::RidiculouslyEasy: m_ai->setDepth(1); m_ai->setRandomAmount(10000); break;
-        case KGameDifficulty::VeryEasy: m_ai->setDepth(1); m_ai->setRandomAmount(9000); break;
-        case KGameDifficulty::Easy: m_ai->setDepth(1); m_ai->setRandomAmount(2000); break;
-        case KGameDifficulty::Medium: m_ai->setDepth(1); m_ai->setRandomAmount(2); break;
-        case KGameDifficulty::Hard: m_ai->setDepth(2); m_ai->setRandomAmount(2); break;
-        case KGameDifficulty::VeryHard: m_ai->setDepth(3); m_ai->setRandomAmount(2); break;
-        case KGameDifficulty::ExtremelyHard: m_ai->setDepth(6); m_ai->setRandomAmount(2); break;
-        case KGameDifficulty::Impossible: m_ai->setDepth(10); m_ai->setRandomAmount(2); break;
+        case KgDifficultyLevel::RidiculouslyEasy: m_ai->setDepth(1); m_ai->setRandomAmount(10000); break;
+        case KgDifficultyLevel::VeryEasy: m_ai->setDepth(1); m_ai->setRandomAmount(9000); break;
+        case KgDifficultyLevel::Easy: m_ai->setDepth(1); m_ai->setRandomAmount(2000); break;
+        case KgDifficultyLevel::Medium: m_ai->setDepth(1); m_ai->setRandomAmount(2); break;
+        case KgDifficultyLevel::Hard: m_ai->setDepth(2); m_ai->setRandomAmount(2); break;
+        case KgDifficultyLevel::VeryHard: m_ai->setDepth(3); m_ai->setRandomAmount(2); break;
+        case KgDifficultyLevel::ExtremelyHard: m_ai->setDepth(6); m_ai->setRandomAmount(2); break;
+        case KgDifficultyLevel::Impossible: m_ai->setDepth(10); m_ai->setRandomAmount(2); break;
         default: break;
     }
 }

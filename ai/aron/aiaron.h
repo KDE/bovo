@@ -42,14 +42,14 @@ namespace ai {
 class AiAron : public Ai {
     Q_OBJECT
 public:
-    explicit AiAron(const Dimension& dimension, KGameDifficulty::standardLevel skill, Player player);
+    explicit AiAron(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, Player player);
     virtual ~AiAron();
     virtual void cancelAndWait();
 
 public slots:
     virtual void changeBoard(const Move& move);
     virtual void gameOver();
-    virtual void setSkill(KGameDifficulty::standardLevel skill);
+    virtual void setSkill(KgDifficultyLevel::StandardLevel skill);
     virtual void slotMove();
 
 signals:

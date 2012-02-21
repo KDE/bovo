@@ -26,7 +26,7 @@
 #ifndef BOVO_AIBOARD_H
 #define BOVO_AIBOARD_H
 
-#include <kgamedifficulty.h>
+#include <kgdifficulty.h>
 
 #include "common.h"
 
@@ -80,7 +80,7 @@ public:
      * @param skill the skill (difficulty level) the AI player will be playing with
      */
     AiBoard(const usi width, const usi height,
-            KGameDifficulty::standardLevel skill = KGameDifficulty::Medium,
+            KgDifficultyLevel::StandardLevel skill = KgDifficultyLevel::Medium,
             Player player = O);
 
     /**
@@ -92,7 +92,7 @@ public:
      * @param skill the skill (difficulty level) the AI player will be playing with
      */
     explicit AiBoard(const Dimension& dimension,
-                     KGameDifficulty::standardLevel skill = KGameDifficulty::Medium,
+                     KgDifficultyLevel::StandardLevel skill = KgDifficultyLevel::Medium,
                      Player player=O);
 
     /**
@@ -183,7 +183,7 @@ public:
      * @brief change Skill
      * @description changes the Skill (difficulty level) of the AI player
      */
-    void setSkill(KGameDifficulty::standardLevel skill);
+    void setSkill(KgDifficultyLevel::StandardLevel skill);
 
     /**
      * @brief width of Board
@@ -209,7 +209,7 @@ private:
     Player m_player;
 
     /* AI Level property. */
-    KGameDifficulty::standardLevel m_skill;
+    KgDifficultyLevel::StandardLevel m_skill;
 
     /* Return the best-fitting coordinate according to the specs.
      * Use this when all the board has been given points. */

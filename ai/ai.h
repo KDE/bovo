@@ -29,7 +29,7 @@
 
 #include <QObject>
 
-#include <kgamedifficulty.h>
+#include <kgdifficulty.h>
 
 #include "common.h"
 
@@ -69,7 +69,7 @@ public:
 public slots:
     virtual void changeBoard(const Move& move) = 0;
     virtual void gameOver() = 0;
-    virtual void setSkill(KGameDifficulty::standardLevel skill) = 0;
+    virtual void setSkill(KgDifficultyLevel::StandardLevel skill) = 0;
     virtual void slotMove() = 0;
 
 };

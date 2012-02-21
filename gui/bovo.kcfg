@@ -9,10 +9,6 @@
       <label>Theme</label>
       <default>scribble</default>
     </entry>
-    <entry name="skill" type="Int">
-      <label>Difficulty level: strength of the computer player.</label>
-      <default>40</default>
-    </entry>
     <entry name="playbackSpeed" type="Int">
       <label>Speed of demo and replay playback.</label>
       <min>150</min>

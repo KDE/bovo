@@ -42,7 +42,7 @@ AiFactory::AiFactory() {
 AiFactory::~AiFactory() {
 }
 
-Ai* AiFactory::createAi(const Dimension& dimension, KGameDifficulty::standardLevel skill, 
+Ai* AiFactory::createAi(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, 
        Player player, DemoMode demoMode) const {
     if (demoMode == Demo) {
         return new AiAron(dimension, skill, player);

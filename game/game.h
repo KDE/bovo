@@ -27,7 +27,7 @@
 #include <QObject>
 #include <QList>
 
-#include <kgamedifficulty.h>
+#include <kgdifficulty.h>
 
 #include "common.h"
 
@@ -91,7 +91,7 @@ public:
      * @param aiFactory provider of AI implementations
      */
     Game(const Dimension& dimension, Player startingPlayer,
-         KGameDifficulty::standardLevel skill, DemoMode demoMode, unsigned int playTime,
+         KgDifficultyLevel::StandardLevel skill, DemoMode demoMode, unsigned int playTime,
          AiFactory* aiFactory);
 
     /**
@@ -106,7 +106,7 @@ public:
      * @param aiFactory provider of AI implementations
      */
     Game(const Dimension& dimension, const QStringList &restoreGame,
-         KGameDifficulty::standardLevel skill, unsigned int playTime,
+         KgDifficultyLevel::StandardLevel skill, unsigned int playTime,
          AiFactory* aiFactory);
 
     /**
@@ -170,7 +170,7 @@ public:
      * @description sets the skill level of the AI
      * @param skill new skill (difficulty level) for the AI
      */
-    void setSkill(KGameDifficulty::standardLevel skill);
+    void setSkill(KgDifficultyLevel::StandardLevel skill);
 
     /**
      * @brief starts a new turn

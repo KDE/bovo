@@ -42,7 +42,7 @@ namespace ai {
 class AiGabor : public Ai, public AiTimeOver {
     Q_OBJECT
 public:
-    explicit AiGabor(const Dimension& dimension, KGameDifficulty::standardLevel skill, Player player);
+    explicit AiGabor(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, Player player);
     virtual ~AiGabor();
     virtual void cancelAndWait();
     virtual bool isTimeOver();
@@ -50,7 +50,7 @@ public:
 public slots:
     virtual void changeBoard(const Move& move);
     virtual void gameOver();
-    virtual void setSkill(KGameDifficulty::standardLevel skill);
+    virtual void setSkill(KgDifficultyLevel::StandardLevel skill);
     virtual void slotMove();
 
 signals:
