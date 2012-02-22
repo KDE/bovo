@@ -77,6 +77,7 @@ MainWindow::MainWindow(QWidget* parent)
         KgDifficultyLevel::Medium //default level
     );
     connect(&m_difficulty, SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(changeSkill()));
+    KgDifficultyGUI::init(&m_difficulty, this);
     m_difficulty.setGameRunning(true);
 
     setupThemes();
