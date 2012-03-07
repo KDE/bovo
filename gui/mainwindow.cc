@@ -71,14 +71,15 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->insertPermanentItem(i18n("Losses: %1", m_losses), 2, 1);
 
     m_aiFactory = new AiFactory();
-    m_difficulty.addStandardLevelRange(
+    KgDifficulty* diff = Kg::difficulty();
+    diff->addStandardLevelRange(
         KgDifficultyLevel::RidiculouslyEasy,
         KgDifficultyLevel::Impossible,
         KgDifficultyLevel::Medium //default level
     );
-    connect(&m_difficulty, SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(changeSkill()));
-    KgDifficultyGUI::init(&m_difficulty, this);
-    m_difficulty.setGameRunning(true);
+    connect(diff, SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(changeSkill()));
+    KgDifficultyGUI::init(this);
+    diff->setGameRunning(true);
 
     setupThemes();
     readConfig();
@@ -270,11 +271,11 @@ void MainWindow::slotNewGame() {
                 QString tmp = m_lastGame.first();
                 m_computerStarts = tmp.startsWith('2') ? true : false;
             }
-            m_game = new Game(dimension, m_lastGame, m_difficulty.currentLevel()->standardLevel(),
+            m_game = new Game(dimension, m_lastGame, Kg::difficultyLevel(),
                               m_playbackSpeed, m_aiFactory);
         } else {
             m_game = new Game(dimension, m_computerStarts ? O : X, 
-                              m_difficulty.currentLevel()->standardLevel(), NotDemo, m_playbackSpeed,
+                              Kg::difficultyLevel(), NotDemo, m_playbackSpeed,
                               m_aiFactory);
         }
         m_demoAi = m_aiFactory->createAi(dimension, KgDifficultyLevel::Easy, m_game->player(), Demo);
@@ -313,9 +314,9 @@ void MainWindow::slotNewDemo() {
         m_demoAi = 0;
     }
     Dimension dimension(NUMCOLS, NUMCOLS);
-    m_game = new Game(dimension, O, m_difficulty.currentLevel()->standardLevel(), Demo, m_playbackSpeed,
+    m_game = new Game(dimension, O, Kg::difficultyLevel(), Demo, m_playbackSpeed,
                       m_aiFactory);
-    m_demoAi = m_aiFactory->createAi(dimension, m_difficulty.currentLevel()->standardLevel(), X, Demo);
+    m_demoAi = m_aiFactory->createAi(dimension, Kg::difficultyLevel(), X, Demo);
     m_scene->setGame(m_game);
     connect(m_game, SIGNAL(boardChanged(const Move&)),
             m_demoAi, SLOT(changeBoard(const Move&)));
@@ -436,7 +437,7 @@ void MainWindow::reEnableReplay() {
 
 void MainWindow::changeSkill() {
     if (m_game!=0)
-        m_game->setSkill(m_difficulty.currentLevel()->standardLevel());
+        m_game->setSkill(Kg::difficultyLevel());
 }
 
 void MainWindow::changeTheme(int themeId) {

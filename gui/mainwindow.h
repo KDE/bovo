@@ -26,7 +26,6 @@
 #include <QStringList>
 
 #include <kxmlguiwindow.h>
-#include <kgdifficulty.h>
 
 #include "common.h"
 #include "theme.h"
@@ -102,7 +101,6 @@ private:
     QStringList m_lastGame;
     bool m_animate;
     bool m_demoMode;
-    KgDifficulty m_difficulty;
 };
 
 } /* namespace gui */
