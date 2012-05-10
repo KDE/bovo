@@ -1,6 +1,19 @@
 project (BOVO)
+
+if(NOT COMPILING_KDEGAMES)
+	find_package(KDE4 REQUIRED)
+	include(KDE4Defaults)
+	include(MacroLibrary)
+	find_package(KDEGames REQUIRED)
+
+	add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
+	add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+	include_directories(${QDBUS_INCLUDE_DIRS} ${KDE4_INCLUDES} ${KDEGAMES_INCLUDE_DIRS})
+endif(NOT COMPILING_KDEGAMES)
+
 KDE4_NO_ENABLE_FINAL(bovo)
 
+add_subdirectory( themes ) 
 # re-enabling exceptions (turned off in KDE)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
 
