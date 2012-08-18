@@ -65,6 +65,7 @@ target_link_libraries(bovo kdegames ${KDE4_KDEUI_LIBS} )
 
 add_subdirectory (themes)
 add_subdirectory (icons)
+add_subdirectory (doc)
 
 install (TARGETS bovo ${INSTALL_TARGETS_DEFAULT_ARGS})
 install (FILES gui/bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo )
