@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=Spacy
+Name[uk]=Космічна
+Name[x-test]=xxSpacyxx
 Comment=A theme from outer space
+Comment[uk]=Космічна тема
+Comment[x-test]=xxA theme from outer spacexx
 
 [Config]
 Path=spacy

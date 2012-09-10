@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=High Contrast
+Name[uk]=Висока контрастність
+Name[x-test]=xxHigh Contrastxx
 Comment=A theme with a lot of contrast
+Comment[uk]=Тема з високою контрастністю
+Comment[x-test]=xxA theme with a lot of contrastxx
 
 [Config]
 Path=highcontrast

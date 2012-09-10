@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=Scribble
+Name[uk]=Шкрябанина
+Name[x-test]=xxScribblexx
 Comment=A pen and paper theme
+Comment[uk]=Тема паперу і ручки
+Comment[x-test]=xxA pen and paper themexx
 
 [Config]
 Path=scribble

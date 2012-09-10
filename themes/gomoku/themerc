@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=Gomoku
+Name[uk]=Гомоку
+Name[x-test]=xxGomokuxx
 Comment=A classic Japanese theme
+Comment[uk]=Класична японська тема
+Comment[x-test]=xxA classic Japanese themexx
 
 [Config]
 Path=gomoku

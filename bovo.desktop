@@ -1,10 +1,15 @@
 [Desktop Entry]
 Exec=bovo -caption "%c"
 Name=Bovo
+Name[ms]=Bovo
+Name[uk]=Бово
+Name[x-test]=xxBovoxx
 Icon=bovo
 Type=Application
 X-DocPath=bovo/index.html
 GenericName=Five-in-a-row Board Game
+GenericName[uk]=Гра на дошці (п'ять-в-рядку)
+GenericName[x-test]=xxFive-in-a-row Board Gamexx
 Terminal=false
 X-KDE-StartupNotify=true
 X-DBUS-StartupType=Multi
