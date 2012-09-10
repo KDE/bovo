@@ -9,7 +9,7 @@
 ]>
  
 <book id="bovo" lang="&language;"> <!-- do not change this! -->
-<book id="bovo"info>
+<bookinfo>
 	<title>The &bovo; Handbook</title>
 
 <authorgroup>
