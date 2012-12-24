@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Scribble
 Name[ast]=Garabatos
+Name[bs]=Piskaranje
 Name[ca]=Scribble
 Name[ca@valencia]=Scribble
 Name[cs]=Scribble
@@ -52,6 +53,7 @@ Name[zh_CN]=涂鸦
 Name[zh_TW]=Scribble
 Comment=A pen and paper theme
 Comment[ast]=Un tema de llápiz y papel
+Comment[bs]=Tema olovke i papira
 Comment[ca]=Un tema de paper i llapis
 Comment[ca@valencia]=Un tema de paper i llapis
 Comment[cs]=Motiv s papírem a perem
