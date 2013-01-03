@@ -73,7 +73,6 @@ FEATURES (4.1)
 [X] Start with latest game when opening
 [X] Save stats from time to time
 [ ] View history in a right or left pane, where previous moves are displayed.
-[ ] Enable GGZ gaming (this means create a GGZ game for this as well I guess)
 [ ] Enable LAN gaming (broadcast the local domain for other willing to
     participate.)
     Look into kgamelib or what it is called. Create XML-like open protocol for
