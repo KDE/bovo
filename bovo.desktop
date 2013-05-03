@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=bovo -caption "%c"
+Exec=bovo -caption %c
 Name=Bovo
 Name[ast]=Bovo
 Name[bs]=Bovo
