@@ -22,23 +22,23 @@ include_directories (
 )
 
 set( bovogame_SRCS
-	game/game.cc 
-	game/board.cc 
-	game/dimension.cc 
-	game/coord.cc 
-	game/square.cc 
+	game/game.cc
+	game/board.cc
+	game/dimension.cc
+	game/coord.cc
+	game/square.cc
 	game/move.cc )
 
-set( bovoai_SRCS 
-	ai/ai.cc 
-	ai/aifactory.cc 
-	ai/aron/aiaron.cc 
-	ai/aron/aiboard.cc 
-	ai/aron/aisquare.cc 
-	ai/gabor/aigabor.cc 
-	ai/gabor/standing.cpp 
-	ai/gabor/node.cpp 
-	ai/gabor/ai_interface.cpp 
+set( bovoai_SRCS
+	ai/ai.cc
+	ai/aifactory.cc
+	ai/aron/aiaron.cc
+	ai/aron/aiboard.cc
+	ai/aron/aisquare.cc
+	ai/gabor/aigabor.cc
+	ai/gabor/standing.cpp
+	ai/gabor/node.cpp
+	ai/gabor/ai_interface.cpp
 	ai/gabor/ai_impl.cpp )
 
 set(bovogui_SRCS
@@ -58,7 +58,7 @@ set(bovo_SRCS
 )
 
 kde4_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
-kde4_add_app_icon(bovo_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-app-bovo.png") 
+kde4_add_app_icon(bovo_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-app-bovo.png")
 kde4_add_executable(bovo ${bovo_SRCS})
 
 target_link_libraries(bovo kdegames ${KDE4_KDEUI_LIBS} )
@@ -68,5 +68,6 @@ add_subdirectory (icons)
 add_subdirectory (doc)
 
 install (TARGETS bovo ${INSTALL_TARGETS_DEFAULT_ARGS})
-install (FILES gui/bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo )
+install (FILES gui/bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo)
 install (PROGRAMS bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install (FILES bovo.appdata.xml DESTINATION  ${DATA_INSTALL_DIR}/appdata)

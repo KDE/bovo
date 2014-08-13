@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<component type="desktop">
+  <id>bovo.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Bovo</name>
+  <description>
+    <p>
+      Bovo is a Gomoku (from Japanese 五目並べ - lit. &quot;five points&quot;) like game for two players, where the opponents
+      alternate in placing their respective pictogram on the game board. (Also known as: Connect Five, Five in a row, X and O,
+      Naughts and Crosses)
+    </p>
+  </description>
+  <url type="homepage">http://games.kde.org/</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=bovo</url>
+  <url type="help">http://docs.kde.org/stable/en/kdegames/bovo/index.html</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://kde.org/images/screenshots/bovo.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>bovo</binary>
+  </provides>
+</component>
