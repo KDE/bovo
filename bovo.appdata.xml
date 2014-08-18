@@ -5,24 +5,38 @@
   <project_license>GPL-2.0+</project_license>
   <name>Bovo</name>
   <name xml:lang="cs">Bovo</name>
+  <name xml:lang="en-GB">Bovo</name>
   <name xml:lang="nds">Bovo</name>
   <name xml:lang="nl">Bovo</name>
   <name xml:lang="pl">Bovo</name>
   <name xml:lang="sk">Bovo</name>
+  <name xml:lang="sr">Бово</name>
+  <name xml:lang="sr-Latn">Bovo</name>
+  <name xml:lang="sr-ijekavian">Бово</name>
+  <name xml:lang="sr-ijekavianlatin">Bovo</name>
   <name xml:lang="sv">Bovo</name>
   <name xml:lang="uk">Bovo</name>
   <name xml:lang="x-test">xxBovoxx</name>
+  <name xml:lang="zh-TW">五子棋_Bovo</name>
   <description>
     <p>
       Bovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents
       alternate in placing their respective pictogram on the game board. (Also known as: Connect Five, Five in a row, X and O,
       Naughts and Crosses)
     </p>
+    <p xml:lang="en-GB">Bovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board. (Also known as: Connect Five, Five in a row, X and O, Naughts and Crosses)</p>
     <p xml:lang="nds">Bovo is en Speel as Gomoku (ut japaansch 五目並べ“ - „fief Pünkt“) för twee Spelers. De Twee wesselt sik af un leggt ehr Piktogramm op't Speelbrett. (Warrt ok „Fief verbinnen“, „Fief in de Reeg“, „X un O“ oder „Nixen un Nullen“ nöömt.)</p>
     <p xml:lang="nl">Bovo is een Gomoku (uit het Japans 五目並べ - letterlijk "vijf punten")-achtig spel voor twee spelers, waar de opponenten afwisselen in het plaatsen van hun respectievelijke pictogram op het spelbord. (Ook bekend als: Boter-Kaas-en-Eieren, Vijf verbinden, Vijf op een rij, X en O, Naughts and Crosses)</p>
     <p xml:lang="pl">Bovo to gra dla dwóch graczy w rodzaju Gomoku (z japońskiego 五目並べ - lit. "pięć punktów"), gdzie gracze na zmianę umieszczają odpowiadające im piktogramy na planszy. (Gra znana również jako: Połącz piątkę, Piątka w rzędzie, X i O, Kółko i krzyżyk)</p>
+    <p xml:lang="sk">Bovo je Gomoku (z japonského 五目並べ - "päť bodov") hra pre dvoch hráčov, kde protivníci sa striedajú v umiestňovaní ich piktogramov na hraciu plochu. (Známe aj ako: Connect Five, Päť v rade, X a O, Naughts and Crosses)</p>
+    <p xml:lang="sr">Бово је игра налик на гомоку (од јапанског 五目並べ, буквално „пет тачака“) за два играча, где противници наизменично смештају свој пиктограм на играчку таблу. Проширена верзија икс‑окса.</p>
+    <p xml:lang="sr-Latn">Bovo je igra nalik na gomoku (od japanskog 五目並べ, bukvalno „pet tačaka“) za dva igrača, gde protivnici naizmenično smeštaju svoj piktogram na igračku tablu. Proširena verzija iks‑oksa.</p>
+    <p xml:lang="sr-ijekavian">Бово је игра налик на гомоку (од јапанског 五目並べ, буквално „пет тачака“) за два играча, где противници наизменично смештају свој пиктограм на играчку таблу. Проширена верзија икс‑окса.</p>
+    <p xml:lang="sr-ijekavianlatin">Bovo je igra nalik na gomoku (od japanskog 五目並べ, bukvalno „pet tačaka“) za dva igrača, gde protivnici naizmenično smeštaju svoj piktogram na igračku tablu. Proširena verzija iks‑oksa.</p>
+    <p xml:lang="sv">Bovo är ett spel för två spelare som liknar Gomoku (från japanska 五目並べ, ordagrant "fem poäng"), där motståndarna omväxlande placerar sina respektive symboler på spelbrädet (också känt som luffarschack, fem-i-rad, kryss och ringar).</p>
     <p xml:lang="uk">Bovo — гра, подібна до гомоку (від японського 五目並べ — букв. «п’ять точок»), розрахована на двох гравців. У грі суперники почергово малюють власні значки на ігровій дошці. Інші назви гри: з’єднай п’ять, п’ять у рядок, хрестики-нулики.</p>
     <p xml:lang="x-test">xxBovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board. (Also known as: Connect Five, Five in a row, X and O, Naughts and Crosses)xx</p>
+    <p xml:lang="zh-TW">Bovo 是一套五子棋遊戲，兩個玩家誰先形成五個子連在一起就獲勝。</p>
   </description>
   <url type="homepage">http://games.kde.org/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=bovo</url>
