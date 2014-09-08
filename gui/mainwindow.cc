@@ -26,6 +26,8 @@
 #include <QWidget>
 #include <QTimer>
 #include <QBrush>
+#include <QDir>
+#include <QLabel>
 
 // KDE includes
 #include <kaction.h>
@@ -64,11 +66,12 @@ namespace gui {
 MainWindow::MainWindow(QWidget* parent)
   : KXmlGuiWindow(parent), m_scene(0), m_game(0), m_wins(0),
   m_losses(0), m_computerStarts(false), m_demoAi(0),
-  m_aiFactory(0), m_animate(true) {
-    statusBar()->insertItem("            ", 0, 10);
-    statusBar()->setItemAlignment(0, Qt::AlignLeft);
-    statusBar()->insertPermanentItem(i18n("Wins: %1", m_wins), 1);
-    statusBar()->insertPermanentItem(i18n("Losses: %1", m_losses), 2, 1);
+  m_aiFactory(0), m_animate(true),
+  m_winsLabel (new QLabel(i18n("Wins: %1", m_wins))),
+  m_lossesLabel (new QLabel(i18n("Losses: %1", m_losses))) {
+    statusBar()->showMessage("            ");
+    statusBar()->insertPermanentWidget(0, m_winsLabel);
+    statusBar()->insertPermanentWidget(1, m_lossesLabel);
 
     m_aiFactory = new AiFactory();
     KgDifficulty* diff = Kg::difficulty();
@@ -104,7 +107,7 @@ MainWindow::~MainWindow() {
 void MainWindow::save() const {
     if (m_game != 0) {
         m_scene->activate(false);
-        QString rc = KGlobal::dirs()->locate("config", "bovorc");
+        QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, "bovorc");
         KConfig savegame(rc);
         KConfigGroup lastGroup(&savegame, "Game");
         if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
@@ -119,8 +122,17 @@ void MainWindow::save() const {
 }
 
 void MainWindow::setupThemes() {
-    QStringList themercs = KGlobal::dirs()->findAllResources("appdata",
-                           "themes/*/themerc");
+    QStringList themercs;
+    const QStringList themeDirs = QStandardPaths::locateAll(QStandardPaths::DataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
+    Q_FOREACH (const QString &themeDir, themeDirs) {
+	const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
+        Q_FOREACH(const QString &d, entries) {
+            QString themeFile = themeDir + '/' + d + "/themerc";
+	    if (QFile::exists(themeFile))
+	        themercs.append(themeFile);
+        }
+    }
+
     int i = 0;
     foreach (const QString &themerc, themercs) {
         KConfig config(themerc);
@@ -144,7 +156,7 @@ void MainWindow::readConfig() {
     m_animate       = Settings::animation();
     m_aiFactory->changeAi(Settings::ai());
 
-    const QString rc = KGlobal::dirs()->locate("config", "bovorc");
+    const QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, "bovorc");
     KConfig savegame(rc);
     KConfigGroup lastGroup(&savegame, "Game");
     m_lastGame = lastGroup.readXdgListEntry("Unfinished", QStringList()); // XXX this is bogus
@@ -173,7 +185,7 @@ void MainWindow::setupActions() {
     KStandardGameAction::gameNew(this, SLOT(slotNewGame()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-    QAction *replayAct = new KAction(KIcon( QLatin1String( "media-playback-start" )),
+    QAction *replayAct = new QAction(KIcon( QLatin1String( "media-playback-start" )),
                             i18n("&Replay"), this);
     actionCollection()->addAction( QLatin1String( "replay" ), replayAct);
     replayAct->setToolTip(i18n("Replay game"));
@@ -242,7 +254,7 @@ void MainWindow::slotNewGame() {
             disconnect(m_game, 0, m_scene, 0);
         }
         if (!m_game->isGameOver() && m_game->history().size() > 1) {
-            statusBar()->changeItem(i18n("Losses: %1",++m_losses), 2);
+            m_lossesLabel->setText(i18n("Losses: %1",++m_losses));
         }
         if (m_game->history().size() > 1) {
             m_computerStarts = !m_computerStarts;
@@ -326,7 +338,7 @@ void MainWindow::slotNewDemo() {
             m_game,  SLOT(move(const Move&)));
     connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
             this, SLOT(slotNewDemoWait()));
-    statusBar()->changeItem(i18n("Start a new Game to play"), 0);
+    statusBar()->showMessage(i18n("Start a new Game to play"));
     m_game->start();
 }
 
@@ -345,7 +357,7 @@ void MainWindow::decreaseWins() {
 
 void MainWindow::updateWins(const int wins) {
     m_wins = wins;
-    statusBar()->changeItem(i18n("Wins: %1", m_wins), 1);
+    m_winsLabel->setText(i18n("Wins: %1", m_wins));
 }
 
 void MainWindow::increaseLosses() {
@@ -358,18 +370,18 @@ void MainWindow::decreaseLosses() {
 
 void MainWindow::updateLosses(const int losses) {
     m_losses = losses;
-    statusBar()->changeItem(i18n("Losses: %1", m_losses), 2);
+    m_lossesLabel->setText(i18n("Losses: %1", m_losses));
 }
 
 void MainWindow::slotGameOver() {
     if (m_game->boardFull()) {
-        statusBar()->changeItem(i18n("GAME OVER. Tie!"), 0);
+        statusBar()->showMessage(i18n("GAME OVER. Tie!"));
     } else {
         if (m_game->latestMove().player() == X) {
-            statusBar()->changeItem(i18n("GAME OVER. You won!"), 0);
+            statusBar()->showMessage(i18n("GAME OVER. You won!"));
             increaseWins();
         } else {
-            statusBar()->changeItem(i18n("GAME OVER. You lost!"), 0);
+            statusBar()->showMessage(i18n("GAME OVER. You lost!"));
             increaseLosses();
         }
     }
@@ -381,11 +393,11 @@ void MainWindow::slotGameOver() {
 }
 
 void MainWindow::slotPlayerTurn() {
-    statusBar()->changeItem(i18n("It is your turn."), 0);
+    statusBar()->showMessage(i18n("It is your turn."));
 }
 
 void MainWindow::slotOposerTurn() {
-    statusBar()->changeItem(i18n("Waiting for computer."), 0);
+    statusBar()->showMessage(i18n("Waiting for computer."));
 }
 
 void MainWindow::slotUndo() {
@@ -413,7 +425,7 @@ void MainWindow::replay() {
     if (!m_game->isGameOver()) {
         return;
     }
-    statusBar()->changeItem(i18n("Replaying game"), 0);
+    statusBar()->showMessage(i18n("Replaying game"));
     actionCollection()->action("replay")->setEnabled(false);
     disableUndo();
     disconnect(actionCollection()->action("replay"), SIGNAL(triggered()),
@@ -430,7 +442,7 @@ void MainWindow::replay() {
 
 void MainWindow::reEnableReplay() {
     actionCollection()->action("replay")->setEnabled(true);
-    statusBar()->changeItem(i18n("Game replayed."), 0);
+    statusBar()->showMessage(i18n("Game replayed."));
     connect(actionCollection()->action("replay"), SIGNAL(triggered()),
                this, SLOT(replay()));
 }

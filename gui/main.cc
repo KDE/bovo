@@ -27,28 +27,40 @@
 #include "mainwindow.h"
 #include "version.h"
 
+#include <klocalizedstring.h>
+
 static const char description[] = I18N_NOOP("KDE Five in a Row Board Game");
+static const char copyleft[] = I18N_NOOP("(c) 2002-2007, Aron Boström");
 
 using namespace gui;
 
 int main(int argc, char **argv) {
-    KAboutData aboutData("bovo", 0, ki18n("Bovo"),
-            BOVO_VERSION, ki18n(description), KAboutData::License_GPL,
-            ki18n("(c) 2002,2007 Aron Boström"), KLocalizedString(), "http://games.kde.org/bovo" );
-    aboutData.addAuthor(ki18n("Aron Boström"),ki18n("Author"),
+    QApplication app(argc, argv);
+
+    KLocalizedString::setApplicationDomain("bovo");
+
+    KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
+            QStringLiteral("BOVO_VERSION"), i18n(description), KAboutLicense::GPL,
+            i18n(copyleft), QString(), QStringLiteral("http://games.kde.org/bovo"));
+    aboutData.addAuthor(i18n("Aron Boström"),i18n("Author"),
                         "aron.bostrom@gmail.com");
 
-    KCmdLineArgs::init(argc, argv, &aboutData);
-
-    KApplication application;
-    KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
-
-    if( application.isSessionRestored() ) {
+    aboutData.setOrganizationDomain(QByteArray("kde.org"));
+    aboutData.setProgramIconName(QStringLiteral("bovo"));
+    aboutData.setProductName(QByteArray("bovo"));
+	    
+    KAboutData::setApplicationData(aboutData);
+	     
+    app.setApplicationDisplayName(aboutData.displayName());
+    app.setOrganizationDomain(aboutData.organizationDomain());
+    app.setApplicationVersion(aboutData.version());
+		      
+    if( app.isSessionRestored() ) {
         RESTORE(MainWindow);
     } else {
         MainWindow *mainWin = new MainWindow();
         mainWin->show();
     }
 
-    return application.exec();
+    return app.exec();
 }

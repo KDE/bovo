@@ -35,6 +35,7 @@ namespace gui {
 
 View::View(Scene* scene, const QColor& bgColor, QWidget *parent) : QGraphicsView(scene, parent),
            m_scene(scene) {
+    Q_UNUSED(bgColor);
     setFrameStyle(QFrame::NoFrame);
 //    setCacheMode(QGraphicsView::CacheBackground);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

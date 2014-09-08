@@ -1,25 +1,30 @@
 project (BOVO)
 
-if(NOT COMPILING_KDEGAMES)
-	find_package(KDE4 REQUIRED)
-	include(KDE4Defaults)
-	include(MacroLibrary)
-	find_package(KDEGames 4.9.0 REQUIRED)
+cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
+set (QT_MIN_VERSION "5.2.0")
 
-	add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-	add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-	include_directories(${KDEGAMES_INCLUDE_DIRS} ${KDE4_INCLUDES} ${QDBUS_INCLUDE_DIRS})
-endif(NOT COMPILING_KDEGAMES)
+find_package(ECM 0.0.9 REQUIRED CONFIG)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-KDE4_NO_ENABLE_FINAL(bovo)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent Qml Quick QuickWidgets)
+find_package(KF5 REQUIRED COMPONENTS 
+	    CoreAddons
+	    XmlGui
+            NewStuff
+            Declarative
+	    KDELibs4Support
+	    )
+find_package(KDEGames 4.9.0 REQUIRED)
+
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings)
+include(FeatureSummary)
+include(KDECoreMacros)
+include(ECMInstallIcons)
 
 # re-enabling exceptions (turned off in KDE)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
-
-include_directories (
-	${BOVO_SOURCE_DIR}/gui ${CMAKE_BINARY_DIR}/gui
-	${BOVO_SOURCE_DIR}/game ${BOVO_SOURCE_DIR}/ai
-)
 
 set( bovogame_SRCS
 	game/game.cc
@@ -57,17 +62,24 @@ set(bovo_SRCS
 	${bovogame_SRCS}
 )
 
-kde4_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
-kde4_add_app_icon(bovo_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-app-bovo.png")
-kde4_add_executable(bovo ${bovo_SRCS})
+include_directories(
+	${CMAKE_SOURCE_DIR}/game
+	${CMAKE_SOURCE_DIR}/gui
+	${CMAKE_SOURCE_DIR}/ai
+	${Qt5Concurrent_INCLUDE_DIRS}
+	)
 
-target_link_libraries(bovo kdegames ${KDE4_KDEUI_LIBS} )
+kconfig_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
+kde4_add_app_icon(bovo_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-app-bovo.png")
+add_executable(bovo ${bovo_SRCS})
+
+target_link_libraries(bovo Qt5::Svg ${KDE4_KDEUI_LIBS} kdegames)
 
 add_subdirectory (themes)
 add_subdirectory (icons)
 add_subdirectory (doc)
 
 install (TARGETS bovo ${INSTALL_TARGETS_DEFAULT_ARGS})
-install (FILES gui/bovoui.rc  DESTINATION  ${DATA_INSTALL_DIR}/bovo)
+install (FILES gui/bovoui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/bovo)
 install (PROGRAMS bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install (FILES bovo.appdata.xml DESTINATION  ${DATA_INSTALL_DIR}/appdata)

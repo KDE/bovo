@@ -30,6 +30,8 @@
 #include "common.h"
 #include "theme.h"
 
+class QLabel;
+
 namespace ai {
     class Ai;
     class AiFactory;
@@ -101,6 +103,8 @@ private:
     QStringList m_lastGame;
     bool m_animate;
     bool m_demoMode;
+    QLabel *m_winsLabel;
+    QLabel *m_lossesLabel;
 };
 
 } /* namespace gui */
