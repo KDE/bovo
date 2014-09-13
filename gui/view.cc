@@ -24,7 +24,7 @@
 
 // Qt Includes
 #include <QtGui/QColor>
-#include <QtGui/QGraphicsScene>
+#include <QGraphicsScene>
 #include <QtGui/QPalette>
 #include <QResizeEvent>
 

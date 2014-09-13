@@ -25,8 +25,8 @@
 #include <QtCore/QTime>
 #include <QtCore/QTimer>
 #include <QtGui/QPainter>
-#include <QtGui/QGraphicsSceneMouseEvent>
-#include <QtGui/QGraphicsView>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsView>
 #include <QtSvg/QSvgRenderer>
 
 #include <kstandarddirs.h>
