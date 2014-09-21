@@ -339,10 +339,10 @@ void Game::makeMove(const Move& move) {
 }
 
 Coord Game::next(const Coord& coord, usi dir) const {
-    usi LEFT = 1;
-    usi UP = 2;
-    usi RIGHT = 4;
-    usi DOWN = 8;
+    const usi LEFT = 1;
+    const usi UP = 2;
+    const usi RIGHT = 4;
+    const usi DOWN = 8;
     Coord tmp = coord;
     if (dir & LEFT) {
         tmp = tmp.left();
@@ -358,10 +358,10 @@ Coord Game::next(const Coord& coord, usi dir) const {
 }
 
 short Game::win(const Coord& c) const {
-    usi LEFT = 1;
-    usi UP = 2;
-    usi RIGHT = 4;
-    usi DOWN = 8;
+    const usi LEFT = 1;
+    const usi UP = 2;
+    const usi RIGHT = 4;
+    const usi DOWN = 8;
     usi DIR[8] = {LEFT, RIGHT, UP, DOWN, LEFT | UP, RIGHT | DOWN,
                   LEFT | DOWN, RIGHT | UP};
     Player p = player(c);

@@ -140,10 +140,10 @@ usi AiBoard::width() const {
 /* secret helper functions */
 
 Coord next(const Coord& c, usi dir) {
-    usi LEFT = 1;
-    usi UP = 2;
-    usi RIGHT = 4;
-    usi DOWN = 8;
+    const usi LEFT = 1;
+    const usi UP = 2;
+    const usi RIGHT = 4;
+    const usi DOWN = 8;
     Coord tmp = c;
     if (dir & LEFT) {
         tmp = tmp.left();
@@ -438,10 +438,10 @@ uli AiBoard::value2(const Coord& c) const {
 }
 
 bool AiBoard::win(const Coord& c) const {
-    usi LEFT = 1;
-    usi UP = 2;
-    usi RIGHT = 4;
-    usi DOWN = 8;
+    const usi LEFT = 1;
+    const usi UP = 2;
+    const usi RIGHT = 4;
+    const usi DOWN = 8;
     usi DIR[8] = {
           LEFT,
           RIGHT,
