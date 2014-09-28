@@ -15,7 +15,6 @@ find_package(KF5 REQUIRED COMPONENTS
 	    KDELibs4Support
 	    )
 find_package(KF5KDEGames 4.9.0 REQUIRED)
-find_package(Phonon4Qt5)
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
