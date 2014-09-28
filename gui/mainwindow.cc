@@ -28,6 +28,7 @@
 #include <QBrush>
 #include <QDir>
 #include <QLabel>
+#include <QIcon>
 
 // KDE includes
 #include <kaction.h>
@@ -37,12 +38,10 @@
 #include <kgdifficulty.h>
 #include <kstatusbar.h>
 #include <kstandardgameaction.h>
-#include <kstandarddirs.h>
 #include <kselectaction.h>
 #include <ktoggleaction.h>
-#include <klocale.h>
-#include <kicon.h>
 #include <kiconloader.h>
+#include <klocalizedstring.h>
 
 // Bovo includes
 #include "ai.h"
@@ -178,14 +177,14 @@ void MainWindow::saveSettings() {
     Settings::setPlaybackSpeed(m_playbackSpeed);
     Settings::setAnimation(m_animate);
     Settings::setAi(m_aiFactory->ai());
-    Settings::self()->writeConfig();
+    Settings::self()->save();
 }
 
 void MainWindow::setupActions() {
     KStandardGameAction::gameNew(this, SLOT(slotNewGame()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-    QAction *replayAct = new QAction(KIcon( QLatin1String( "media-playback-start" )),
+    QAction *replayAct = new QAction(QIcon( QLatin1String( "media-playback-start" )),
                             i18n("&Replay"), this);
     actionCollection()->addAction( QLatin1String( "replay" ), replayAct);
     replayAct->setToolTip(i18n("Replay game"));
@@ -215,7 +214,7 @@ void MainWindow::setupActions() {
     }
     m_themeAct->setCurrentItem(themeId);
     actionCollection()->addAction( QLatin1String( "themes" ), m_themeAct);
-    m_themeAct->setIcon(KIcon( QLatin1String( "games-config-theme" )));
+    m_themeAct->setIcon(QIcon( QLatin1String( "games-config-theme" )));
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
     m_undoAct = KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection());

@@ -19,15 +19,14 @@
 *
 ********************************************************************/
 
-#include <kapplication.h>
+#include <QApplication>
+
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
-#include <klocale.h>
+#include <klocalizedstring.h>
 
 #include "mainwindow.h"
 #include "version.h"
-
-#include <klocalizedstring.h>
 
 static const char description[] = I18N_NOOP("KDE Five in a Row Board Game");
 static const char copyleft[] = I18N_NOOP("(c) 2002-2007, Aron Boström");

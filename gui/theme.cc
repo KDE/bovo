@@ -19,6 +19,9 @@
 *
 ********************************************************************/
 
+// Qt includes
+#include <QStandardPaths>
+
 // Selc include
 #include "theme.h"
 
@@ -26,7 +29,6 @@
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kdesktopfile.h>
-#include <kstandarddirs.h>
 
 // KConfig XT includes
 #include "settings.h"
@@ -39,7 +41,7 @@ Theme::Theme() {
 Theme::Theme(const QString& path, const int id) 
   : m_id(id), m_path(path) {
     QString themePath = QString("themes/%1/").arg(m_path);
-            themePath = KStandardDirs::locate("appdata", themePath);
+            themePath = QStandardPaths::locate(QStandardPaths::DataLocation, themePath);
     QString themerc = themePath + "themerc"; 
     KDesktopFile themeConfig(themerc);
     m_name = themeConfig.readName();

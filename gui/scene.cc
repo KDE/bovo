@@ -29,7 +29,6 @@
 #include <QGraphicsView>
 #include <QtSvg/QSvgRenderer>
 
-#include <kstandarddirs.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kdesktopfile.h>
