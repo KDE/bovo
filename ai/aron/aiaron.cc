@@ -69,4 +69,4 @@ void AiAron::slotMove() {
 
 } /* namespace ai */
 
-#include "aiaron.moc"
+

@@ -3,7 +3,7 @@ project (BOVO)
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.2.0")
 
-find_package(ECM 0.0.9 REQUIRED CONFIG)
+find_package(ECM 1.3.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent Qml Quick QuickWidgets)
@@ -81,5 +81,5 @@ add_subdirectory (doc)
 
 install (TARGETS bovo ${INSTALL_TARGETS_DEFAULT_ARGS})
 install (FILES gui/bovoui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/bovo)
-install (PROGRAMS bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install (PROGRAMS org.kde.bovo.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install (FILES bovo.appdata.xml DESTINATION  ${DATA_INSTALL_DIR}/appdata)

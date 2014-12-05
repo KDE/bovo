@@ -37,4 +37,4 @@ Ai::~Ai() {
 
 } /* namespace ai */
 
-#include "ai.moc"
+

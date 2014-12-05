@@ -406,4 +406,4 @@ bool Scene::event(QEvent *event) {
 
 } /* namespace gui */
 
-#include "scene.moc"
+

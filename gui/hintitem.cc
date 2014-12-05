@@ -130,4 +130,4 @@ void HintItem::setFill(qreal fill) {
 
 } /* namespace gui */
 
-#include "hintitem.moc"
+

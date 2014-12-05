@@ -433,9 +433,8 @@ void MainWindow::replay() {
     connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
             this, SLOT(reEnableReplay()));
     disconnect(m_game, 0, m_scene, 0);
-    connect(m_game, SIGNAL(replayBegin()), m_scene, SLOT(replay()));
-    connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
-            m_scene, SLOT(slotGameOver(const QList<Move>&)));
+    connect(m_game, &Game::replayBegin, m_scene, &Scene::replay);
+    connect(m_game, &Game::replayEnd, m_scene, &Scene::slotGameOver);
     m_game->replay();
 }
 
@@ -473,4 +472,4 @@ void MainWindow::disableUndo() {
 } /* namespace gui */
 
 // Class moc
-#include "mainwindow.moc"
+
