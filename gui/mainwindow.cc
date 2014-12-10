@@ -31,12 +31,11 @@
 #include <QIcon>
 
 // KDE includes
-#include <kaction.h>
 #include <kactioncollection.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kgdifficulty.h>
-#include <kstatusbar.h>
+#include <qstatusbar.h>
 #include <kstandardgameaction.h>
 #include <kselectaction.h>
 #include <ktoggleaction.h>

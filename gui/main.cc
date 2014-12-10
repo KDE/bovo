@@ -21,7 +21,6 @@
 
 #include <QApplication>
 
-#include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocalizedstring.h>
 
@@ -45,7 +44,7 @@ int main(int argc, char **argv) {
                         "aron.bostrom@gmail.com");
 
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
-    aboutData.setProgramIconName(QStringLiteral("bovo"));
+    app.setWindowIcon(QIcon::fromTheme(QLatin1String("bovo")));
     aboutData.setProductName(QByteArray("bovo"));
 	    
     KAboutData::setApplicationData(aboutData);
