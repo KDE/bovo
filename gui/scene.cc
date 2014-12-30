@@ -123,16 +123,13 @@ void Scene::setGame(Game* game) {
     m_winningMoves = QList<Move>();
     m_game = game;
     m_player = m_game->player();
-    connect(m_game, SIGNAL(boardChanged(const Move&)),
-            SLOT(updateBoard(const Move&)));
+    connect(m_game, &Game::boardChanged, this, &Scene::updateBoard);
     if (!m_game->demoMode()) {
-        connect(m_game, SIGNAL(playerTurn()), SLOT(slotPlayerTurn()));
-        connect(m_game, SIGNAL(oposerTurn()), SLOT(slotOposerTurn()));
+        connect(m_game, &Game::playerTurn, this, &Scene::slotPlayerTurn);
+        connect(m_game, &Game::oposerTurn, this, &Scene::slotOposerTurn);
     }
-    connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
-            this, SLOT(slotGameOver(const QList<Move>&)));
-    connect(this, SIGNAL(move(const Move&)),
-            m_game, SLOT(move(const Move&)));
+    connect(m_game, &Game::gameOver, this, &Scene::slotGameOver);
+    connect(this, &Scene::move, m_game, &Game::move);
 
     qDeleteAll(items()); //remove all marks
     m_paintMarker = false;
@@ -158,8 +155,7 @@ void Scene::updateBoard(const Move& move) {
             if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
                 if (mark->row() == move.y() && mark->col() == move.x()) {
                     if (m_animation) {
-                        connect(mark, SIGNAL(killed(Mark*)),
-                                this, SLOT(killMark(Mark*)));
+                        connect(mark, &Mark::killed, this, &Scene::killMark);
                         mark->kill();
                     } else {
                         removeItem(mark);
@@ -342,7 +338,7 @@ void Scene::hint(const Move& hint) {
     m_hintItem = new HintItem(this, hint, m_animation, m_fill);
     m_hintItem->setSharedRenderer(m_renderer);
     addItem(m_hintItem);
-    connect(m_hintTimer, SIGNAL(timeout()), this, SLOT(hintTimeout()));
+    connect(m_hintTimer, &QTimer::timeout, this, &Scene::hintTimeout);
     m_hintTimer->start(2000);
 }
 
@@ -361,7 +357,7 @@ void Scene::hintTimeout() {
     if (!m_animation) {
         destroyHint();
     } else if (m_hintItem != 0) {
-        connect(m_hintItem, SIGNAL(killed()), this, SLOT(destroyHint()));
+        connect(m_hintItem, &HintItem::killed, this, &Scene::destroyHint);
         m_hintItem->kill();
     }
 }
@@ -392,8 +388,7 @@ void Scene::replay() {
     }
     m_winningMoves = QList<Move>();
     invalidate(0, 0, width(), height());
-    connect(m_game, SIGNAL(boardChanged(const Move&)),
-            this, SLOT(updateBoard(const Move&)));
+    connect(m_game, &Game::boardChanged, this, &Scene::updateBoard);
 }
 
 bool Scene::event(QEvent *event) {

@@ -47,7 +47,7 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
     if (animate) {
         m_ticker = new QTimer(this);
         m_opacity = 0.0;
-        connect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        connect(m_ticker, &QTimer::timeout, this, &HintItem::tick);
         m_ticker->start(30);
     } else {
         m_opacity = 0.4;
@@ -85,7 +85,7 @@ void HintItem::killAnimation() {
 }
 
 void HintItem::kill() {
-    connect(m_ticker, SIGNAL(timeout()), this, SLOT(killTick()));
+    connect(m_ticker, &QTimer::timeout, this, &HintItem::killTick);
     m_ticker->start();
 }
 

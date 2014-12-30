@@ -45,7 +45,7 @@ Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphics
     if (animate) {
         m_ticker = new QTimer(this);
         m_opacity = 0.0;
-        connect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        connect(m_ticker, &QTimer::timeout, this, &Mark::tick);
         m_ticker->start(30);
     } else {
         m_opacity = 1.0;
@@ -56,7 +56,7 @@ Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphics
 
 Mark::~Mark() {
     if (m_ticker) {
-        disconnect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        disconnect(m_ticker, &QTimer::timeout, this, &Mark::tick);
         m_ticker->stop();
         m_ticker->deleteLater();
     }
@@ -85,12 +85,12 @@ void Mark::killAnimation() {
 
 void Mark::kill() {
     if (m_ticker) {
-        disconnect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        disconnect(m_ticker, &QTimer::timeout, this, &Mark::tick);
         m_ticker->stop();
     } else {
         m_ticker = new QTimer(this);
     }
-    connect(m_ticker, SIGNAL(timeout()), this, SLOT(killTick()));
+    connect(m_ticker, &QTimer::timeout, this, &Mark::killTick);
     m_ticker->start(30);
 }
 
