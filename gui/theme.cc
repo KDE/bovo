@@ -41,7 +41,7 @@ Theme::Theme() {
 Theme::Theme(const QString& path, const int id) 
   : m_id(id), m_path(path) {
     QString themePath = QString("themes/%1/").arg(m_path);
-            themePath = QStandardPaths::locate(QStandardPaths::DataLocation, themePath);
+            themePath = QStandardPaths::locate(QStandardPaths::DataLocation, themePath, QStandardPaths::LocateDirectory);
     QString themerc = themePath + "themerc"; 
     KDesktopFile themeConfig(themerc);
     m_name = themeConfig.readName();
