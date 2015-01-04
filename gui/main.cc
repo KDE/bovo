@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
     KLocalizedString::setApplicationDomain("bovo");
 
     KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
-            QStringLiteral("BOVO_VERSION"), i18n(description), KAboutLicense::GPL,
+            BOVO_VERSION, i18n(description), KAboutLicense::GPL,
             i18n(copyleft), QString(), QStringLiteral("http://games.kde.org/bovo"));
     aboutData.addAuthor(i18n("Aron Boström"),i18n("Author"),
                         "aron.bostrom@gmail.com");
