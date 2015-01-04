@@ -183,7 +183,7 @@ void MainWindow::setupActions() {
     KStandardGameAction::gameNew(this, SLOT(slotNewGame()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-    QAction *replayAct = new QAction(QIcon( QLatin1String( "media-playback-start" )),
+    QAction *replayAct = new QAction(QIcon::fromTheme( QLatin1String( "media-playback-start" )),
                             i18n("&Replay"), this);
     actionCollection()->addAction( QLatin1String( "replay" ), replayAct);
     replayAct->setToolTip(i18n("Replay game"));
