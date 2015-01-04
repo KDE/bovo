@@ -213,7 +213,7 @@ void MainWindow::setupActions() {
     }
     m_themeAct->setCurrentItem(themeId);
     actionCollection()->addAction( QLatin1String( "themes" ), m_themeAct);
-    m_themeAct->setIcon(QIcon( QLatin1String( "games-config-theme" )));
+    m_themeAct->setIcon(QIcon::fromTheme( QLatin1String( "games-config-theme" )));
     connect(m_themeAct,SIGNAL(triggered(int)),this,SLOT(changeTheme(int)));
 
     m_undoAct = KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection());
