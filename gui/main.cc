@@ -20,7 +20,7 @@
 ********************************************************************/
 
 #include <QApplication>
-
+#include <QCommandLineParser>
 #include <kaboutdata.h>
 #include <kdelibs4configmigrator.h>
 #include <klocalizedstring.h>
@@ -54,11 +54,14 @@ int main(int argc, char **argv) {
     aboutData.setProductName(QByteArray("bovo"));
 	    
     KAboutData::setApplicationData(aboutData);
+
+    QCommandLineParser parser;
+    parser.addVersionOption();
+    parser.addHelpOption();
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 	     
-    app.setApplicationDisplayName(aboutData.displayName());
-    app.setOrganizationDomain(aboutData.organizationDomain());
-    app.setApplicationVersion(aboutData.version());
-		      
     if( app.isSessionRestored() ) {
         RESTORE(MainWindow);
     } else {
