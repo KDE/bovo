@@ -73,7 +73,7 @@ kconfig_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
 #kde4_add_app_icon(bovo_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-app-bovo.png")
 add_executable(bovo ${bovo_SRCS})
 
-target_link_libraries(bovo KF5::XmlGui KF5::I18n KF5::IconThemes Qt5::Svg KF5KDEGames)
+target_link_libraries(bovo KF5::XmlGui KF5::I18n KF5::IconThemes Qt5::Svg KF5KDEGames KF5::DBusAddons)
 
 add_subdirectory (themes)
 add_subdirectory (icons)

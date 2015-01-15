@@ -24,6 +24,7 @@
 #include <kaboutdata.h>
 #include <kdelibs4configmigrator.h>
 #include <klocalizedstring.h>
+#include <KDBusService>
 
 #include "mainwindow.h"
 #include "version.h"
@@ -61,7 +62,7 @@ int main(int argc, char **argv) {
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-	     
+    KDBusService service;	     
     if( app.isSessionRestored() ) {
         RESTORE(MainWindow);
     } else {
