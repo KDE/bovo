@@ -27,7 +27,6 @@
 #ifndef BOVO_AIARON_H
 #define BOVO_AIARON_H
 
-#include <QObject>
 
 #include "../ai.h"
 

@@ -27,7 +27,6 @@
 #ifndef BOVO_AIGABOR_H
 #define BOVO_AIGABOR_H
 
-#include <QObject>
 #include <QFuture>
 
 #include "../ai.h"

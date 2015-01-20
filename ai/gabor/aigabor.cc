@@ -24,10 +24,8 @@
  * @file aigabor.cc implementing the AiGabor class
  */
 
-#include <QMetaType>
 #include <QTime>
-#include <QtConcurrentRun>
-
+#include <QtConcurrent>
 #include "aigabor.h"
 
 #include "coord.h"
