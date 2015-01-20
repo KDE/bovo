@@ -34,8 +34,8 @@
 namespace ai {
 
 AiFactory::AiFactory() {
-    m_aiList.append("Gabor");
-    m_aiList.append("Aron");
+    m_aiList.append(QStringLiteral("Gabor"));
+    m_aiList.append(QStringLiteral("Aron"));
     m_ai = 0;
 }
 

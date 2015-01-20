@@ -24,7 +24,7 @@ include(ECMInstallIcons)
 
 # re-enabling exceptions (turned off in KDE)
 kde_enable_exceptions()
-
+#add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 
 set( bovogame_SRCS
 	game/game.cc

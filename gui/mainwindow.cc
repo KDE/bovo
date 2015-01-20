@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget* parent)
   m_aiFactory(0), m_animate(true),
   m_winsLabel (new QLabel(i18n("Wins: %1", m_wins))),
   m_lossesLabel (new QLabel(i18n("Losses: %1", m_losses))) {
-    statusBar()->showMessage("            ");
+    statusBar()->showMessage(QStringLiteral("            "));
     statusBar()->insertPermanentWidget(0, m_winsLabel);
     statusBar()->insertPermanentWidget(1, m_lossesLabel);
 
@@ -105,7 +105,7 @@ MainWindow::~MainWindow() {
 void MainWindow::save() const {
     if (m_game != 0) {
         m_scene->activate(false);
-        QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, "bovorc");
+        QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, QStringLiteral("bovorc"));
         KConfig savegame(rc);
         KConfigGroup lastGroup(&savegame, "Game");
         if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
@@ -125,7 +125,7 @@ void MainWindow::setupThemes() {
     Q_FOREACH (const QString &themeDir, themeDirs) {
 	const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
         Q_FOREACH(const QString &d, entries) {
-            QString themeFile = themeDir + '/' + d + "/themerc";
+            QString themeFile = themeDir + QLatin1Char('/') + d + QLatin1String("/themerc");
 	    if (QFile::exists(themeFile))
 	        themercs.append(themeFile);
         }
@@ -154,7 +154,7 @@ void MainWindow::readConfig() {
     m_animate       = Settings::animation();
     m_aiFactory->changeAi(Settings::ai());
 
-    const QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, "bovorc");
+    const QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, QStringLiteral("bovorc"));
     KConfig savegame(rc);
     KConfigGroup lastGroup(&savegame, "Game");
     m_lastGame = lastGroup.readXdgListEntry("Unfinished", QStringList()); // XXX this is bogus
@@ -265,7 +265,7 @@ void MainWindow::slotNewGame() {
         m_demoAi->deleteLater();
         m_demoAi = 0;
     }
-    QAction* act = actionCollection()->action("replay");
+    QAction* act = actionCollection()->action(QStringLiteral("replay"));
     if (act != 0) {
         act->setEnabled(false);
     }
@@ -279,7 +279,7 @@ void MainWindow::slotNewGame() {
             m_scene = new Scene(m_theme, m_animate);
             if (!m_lastGame.empty()) {
                 QString tmp = m_lastGame.first();
-                m_computerStarts = tmp.startsWith('2') ? true : false;
+                m_computerStarts = tmp.startsWith(QLatin1Char('2')) ? true : false;
             }
             m_game = new Game(dimension, m_lastGame, Kg::difficultyLevel(),
                               m_playbackSpeed, m_aiFactory);
@@ -385,8 +385,8 @@ void MainWindow::slotGameOver() {
     }
     disconnect(m_game, 0, m_demoAi, 0);
     m_hintAct->setEnabled(false);
-    actionCollection()->action("replay")->setEnabled(true);
-    connect(actionCollection()->action("replay"), SIGNAL(triggered()),
+    actionCollection()->action(QStringLiteral("replay"))->setEnabled(true);
+    connect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
             this, SLOT(replay()));
 }
 
@@ -412,8 +412,8 @@ void MainWindow::slotUndo() {
         connect(m_game, SIGNAL(boardChanged(const Move&)),
                 m_demoAi, SLOT(changeBoard(const Move&)));
         m_hintAct->setEnabled(true);
-        actionCollection()->action("replay")->setEnabled(false);
-        disconnect(actionCollection()->action("replay"), SIGNAL(triggered()),
+        actionCollection()->action(QStringLiteral("replay"))->setEnabled(false);
+        disconnect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
                 this, SLOT(replay()));
     }
     m_game->undoLatest();
@@ -424,9 +424,9 @@ void MainWindow::replay() {
         return;
     }
     statusBar()->showMessage(i18n("Replaying game"));
-    actionCollection()->action("replay")->setEnabled(false);
+    actionCollection()->action(QStringLiteral("replay"))->setEnabled(false);
     disableUndo();
-    disconnect(actionCollection()->action("replay"), SIGNAL(triggered()),
+    disconnect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
             this, SLOT(replay()));
     disconnect(m_game, 0, this, 0);
     connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
@@ -438,9 +438,9 @@ void MainWindow::replay() {
 }
 
 void MainWindow::reEnableReplay() {
-    actionCollection()->action("replay")->setEnabled(true);
+    actionCollection()->action(QStringLiteral("replay"))->setEnabled(true);
     statusBar()->showMessage(i18n("Game replayed."));
-    connect(actionCollection()->action("replay"), SIGNAL(triggered()),
+    connect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
                this, SLOT(replay()));
 }
 

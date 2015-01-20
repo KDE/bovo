@@ -45,10 +45,10 @@ int main(int argc, char **argv) {
     KLocalizedString::setApplicationDomain("bovo");
 
     KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
-            BOVO_VERSION, i18n(description), KAboutLicense::GPL,
+            QStringLiteral(BOVO_VERSION), i18n(description), KAboutLicense::GPL,
             i18n(copyleft), QString(), QStringLiteral("http://games.kde.org/bovo"));
     aboutData.addAuthor(i18n("Aron Boström"),i18n("Author"),
-                        "aron.bostrom@gmail.com");
+                        QStringLiteral("aron.bostrom@gmail.com"));
 
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("bovo")));

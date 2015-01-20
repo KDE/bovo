@@ -187,8 +187,8 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
     sRect.setHeight(minSize*cellSize);
     sRect.setLeft(cellSize);*/
     QRectF tmpRect(size, size, minSize*shrinkSize, minSize*shrinkSize);
-    m_renderer->render(p, "background");
-    m_renderer->render(p, "grid", tmpRect);
+    m_renderer->render(p, QLatin1String("background"));
+    m_renderer->render(p, QLatin1String("grid"), tmpRect);
 }
 
 void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
@@ -199,7 +199,7 @@ void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
         rect.adjust(adjusting, adjusting, -adjusting, -adjusting);
         if (bounds.intersects(rect)) {
             p->setOpacity(0.4);
-            m_renderer->render(p, "x1", rect);
+            m_renderer->render(p, QStringLiteral("x1"), rect);
             p->setOpacity(1);
         }
     }
@@ -207,7 +207,7 @@ void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
         QRectF rect(cellTopLeft(m_lastCol, m_lastRow), QSizeF(m_curCellSize,
                        m_curCellSize));
         if (bounds.intersects(rect)) {
-            m_renderer->render(p, "last", rect);
+            m_renderer->render(p, QStringLiteral("last"), rect);
         }
     }
     if (!m_winningMoves.empty()) {
@@ -217,7 +217,7 @@ void Scene::drawForeground(QPainter *p, const QRectF& bounds) {
             QRectF tmpRect(cellTopLeft(it->x(), it->y()), QSizeF(m_curCellSize,
                            m_curCellSize));
             if (bounds.intersects(tmpRect)) {
-                m_renderer->render(p, "win", tmpRect);
+                m_renderer->render(p, QStringLiteral("win"), tmpRect);
             }
             ++it;
         }

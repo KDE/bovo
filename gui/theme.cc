@@ -40,9 +40,9 @@ Theme::Theme() {
 
 Theme::Theme(const QString& path, const int id) 
   : m_id(id), m_path(path) {
-    QString themePath = QString("themes/%1/").arg(m_path);
+    QString themePath = QStringLiteral("themes/%1/").arg(m_path);
             themePath = QStandardPaths::locate(QStandardPaths::DataLocation, themePath, QStandardPaths::LocateDirectory);
-    QString themerc = themePath + "themerc"; 
+    QString themerc = themePath + QLatin1String("themerc");
     KDesktopFile themeConfig(themerc);
     m_name = themeConfig.readName();
     m_comment = themeConfig.readComment();
@@ -54,11 +54,11 @@ Theme::Theme(const QString& path, const int id)
     m_gridColor = configGroup.readEntry("GridColor", "black");
 
     QString gridTypeStr = configGroup.readEntry("GridType", "svg");
-    if (gridTypeStr == "svg") {
+    if (gridTypeStr == QLatin1String("svg")) {
         m_gridType = SvgGrid;
-    } else if (gridTypeStr == "gomoku") {
+    } else if (gridTypeStr == QLatin1String("gomoku")) {
         m_gridType = GomokuGrid;
-    } else if (gridTypeStr == "squares") {
+    } else if (gridTypeStr == QLatin1String("squares")) {
         m_gridType = SquaresGrid;
     }
     
