@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
                         "aron.bostrom@gmail.com");
 
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
-    app.setWindowIcon(QIcon::fromTheme(QLatin1String("bovo")));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("bovo")));
     aboutData.setProductName(QByteArray("bovo"));
 	    
     KAboutData::setApplicationData(aboutData);
