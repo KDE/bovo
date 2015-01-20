@@ -20,5 +20,5 @@
 ********************************************************************/
 
 #ifndef BOVO_VERSION
-#define BOVO_VERSION "1.0"
+#define BOVO_VERSION "1.1"
 #endif
