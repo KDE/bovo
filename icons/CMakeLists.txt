@@ -5,6 +5,6 @@ ecm_install_icons(ICONS
     hi32-apps-bovo.png
     hi48-apps-bovo.png
     hi64-apps-bovo.png
-    DESTINATION ${ICON_INSTALL_DIR}
+    DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
