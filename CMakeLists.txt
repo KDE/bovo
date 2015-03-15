@@ -71,7 +71,7 @@ include_directories(
 	)
 
 kconfig_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-apps-bovo.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-bovo.png")
 ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
 
