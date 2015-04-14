@@ -36,12 +36,12 @@ using namespace gui;
 
 int main(int argc, char **argv) {
 
+    QApplication app(argc, argv);
     Kdelibs4ConfigMigrator migrate(QStringLiteral("bovo"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("bovorc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("bovoui.rc"));
     migrate.migrate();
 
-    QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("bovo");
 
     KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
