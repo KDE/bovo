@@ -39,7 +39,6 @@
 #include <kstandardgameaction.h>
 #include <kselectaction.h>
 #include <ktoggleaction.h>
-#include <kiconloader.h>
 #include <klocalizedstring.h>
 
 // Bovo includes

@@ -9,6 +9,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
 find_package(KF5 REQUIRED COMPONENTS 
 	    CoreAddons
+	    DBusAddons
+	    DocTools
 	    XmlGui
 	    )
 find_package(KF5KDEGames 4.9.0 REQUIRED)
@@ -17,7 +19,6 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(FeatureSummary)
-include(KDECoreMacros)
 include(ECMInstallIcons)
 include(ECMAddAppIcon)
 
@@ -73,7 +74,7 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-bovo.png")
 ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
 
-target_link_libraries(bovo KF5::XmlGui KF5::I18n KF5::IconThemes Qt5::Svg KF5KDEGames KF5::DBusAddons)
+target_link_libraries(bovo KF5::XmlGui KF5::I18n Qt5::Svg KF5KDEGames KF5::DBusAddons)
 
 add_subdirectory (themes)
 add_subdirectory (icons)
