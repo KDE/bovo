@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=High Contrast
+Name[ar]=تباين عالٍ
 Name[ast]=Altor contraste
 Name[be]=Высокакантрасны
 Name[br]=Dargemm huel
@@ -57,6 +58,7 @@ Name[x-test]=xxHigh Contrastxx
 Name[zh_CN]=高对比
 Name[zh_TW]=高對比
 Comment=A theme with a lot of contrast
+Comment[ar]=سمة بتباين كثير
 Comment[ast]=Un tema con un contraste grande
 Comment[bs]=Tema sa puno kontrasta
 Comment[ca]=Un tema amb molt contrast
