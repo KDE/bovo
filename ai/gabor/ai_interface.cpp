@@ -20,10 +20,10 @@
 ********************************************************************/
 
 
-#include <assert.h>
-
 #include "ai_interface.h"
 #include "ai_impl.h"
+
+#include <assert.h>
 
 AiInterface::AiInterface() {
 	aiImpl = new AiImpl();

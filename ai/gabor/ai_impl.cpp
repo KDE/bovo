@@ -20,15 +20,15 @@
 ********************************************************************/
 
 
+#include "ai_impl.h"
+#include "node.h"
+#include "standing.h"
+
 #include <cstdlib>
 #include <memory.h>
 #include <assert.h>
 #include <time.h>
 #include <stdio.h>
-
-#include "ai_impl.h"
-#include "node.h"
-#include "standing.h"
 
 // hash table
 static NodeHashData hashData[nodeHashSize];

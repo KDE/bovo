@@ -20,22 +20,23 @@
 ********************************************************************/
 
 
-/**
- * @file aigabor.cc implementing the AiGabor class
- */
-
-#include <QTime>
-#include <QtConcurrent>
 #include "aigabor.h"
 
 #include "coord.h"
 #include "dimension.h"
 #include "move.h"
 
+#include <QTime>
+#include <QtConcurrent>
+
 using namespace bovo;
 
 /** namespace for AI stuff */
 namespace ai {
+
+/**
+ * @file aigabor.cc implementing the AiGabor class
+ */
 
 AiGabor::AiGabor(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, 
        Player player) : m_player(player), m_minThink(200) {

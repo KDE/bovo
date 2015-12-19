@@ -19,19 +19,16 @@
 *
 ********************************************************************/
 
-// Qt includes
-#include <QStandardPaths>
 
-// Selc include
 #include "theme.h"
 
-// KDE includes
+#include "settings.h"
+
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kdesktopfile.h>
 
-// KConfig XT includes
-#include "settings.h"
+#include <QStandardPaths>
 
 namespace gui {
 

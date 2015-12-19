@@ -20,12 +20,12 @@
 ********************************************************************/
 
 
+#include "node.h"
+#include "ai_impl.h"
+#include "standing.h"
+
 #include <assert.h>
 #include <time.h>
-
-#include "ai_impl.h"
-#include "node.h"
-#include "standing.h"
 
 Node::Node(Standing* _standing, AiImpl* ai):
 	standing(_standing),

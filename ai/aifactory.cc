@@ -24,8 +24,8 @@
  * @file aifactory.cc implementing the AiFactory class
  */
 
-#include "ai.h"
 #include "aifactory.h"
+#include "ai.h"
 #include "aron/aiaron.h"
 #include "gabor/aigabor.h"
 

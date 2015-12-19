@@ -19,13 +19,12 @@
 *
 ********************************************************************/
 
+#include "standing.h"
 
 #include <cstdlib>
 #include <memory.h>
 #include <assert.h>
 #include <QString>
-
-#include "standing.h"
 
 typedef QString string;
 
