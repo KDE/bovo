@@ -1,6 +1,6 @@
 /*******************************************************************
 *
-* This file is part of the KDE project "Bovo"
+* Copyright 2009  Pelladi Gabor <pelladigabor@gmail.com>
 *
 * Bovo is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
