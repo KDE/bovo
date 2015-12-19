@@ -64,7 +64,7 @@ public:
      * by a Dimension
      * @param dimension the Dimension containing the width and height
      */
-    Board(const Dimension& dimension);
+    explicit Board(const Dimension& dimension);
 
     /**
      * @brief destructs this Board
