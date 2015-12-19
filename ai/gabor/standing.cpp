@@ -102,15 +102,15 @@ void Standing::initRefresh() {
 		mark_inv[1][mark[3]] = 3;
 
 		index_T patternDataIndex = 0;
-		for (index_T level = 0; level < heurLevels; level++) {
-			for (index_T patternIndex = 0; patternIndex < patternTotals[level]; patternIndex++) {
+		for (index_T level = 0; level < heurLevels; ++level) {
+			for (index_T patternIndex = 0; patternIndex < patternTotals[level]; ++patternIndex) {
 				patternData[patternDataIndex].length = (index_T) patterns[level][patternIndex].size();
 				assert(patternData[patternDataIndex].length <= max_pattern_length);
 				memcpy(&patternData[patternDataIndex].mark[0], patterns[level][patternIndex].toLatin1().data(), patternData[patternDataIndex].length);
 				patternData[patternDataIndex].level = level;
 
-				for (index_T q = 0; q <= patternData[patternDataIndex].length; q++) {
-					for (index_T a = 0; a < 4; a++) {
+				for (index_T q = 0; q <= patternData[patternDataIndex].length; ++q) {
+					for (index_T a = 0; a < 4; ++a) {
 						index_T k = min(patternData[patternDataIndex].length, q + 1);
 						mark_T current_mark = mark[a];
 						while (true) {
@@ -118,7 +118,7 @@ void Standing::initRefresh() {
 							bool good = !current_mark ? current_pattern == '-' || current_pattern == '+' || current_pattern == '.' || current_pattern == '?' :
 									current_mark == mark[0] ? current_pattern == '0' :
 									current_pattern == '@' || current_pattern == '?';
-							if (good) for (index_T i = 0; i < k - 1; i++) {
+							if (good) for (index_T i = 0; i < k - 1; ++i) {
 								mark_T mark1 = patternData[patternDataIndex].mark[i];
 								mark_T mark2 = patternData[patternDataIndex].mark[i + (q + 1 - k)];
 								if (mark1 == '-' || mark1 == '.') mark1 = '+';
@@ -140,7 +140,7 @@ void Standing::initRefresh() {
 					}
 				}
 
-				patternDataIndex++;
+				++patternDataIndex;
 			}
 		}
 		assert(patternDataIndex == patterns_total);
@@ -174,14 +174,14 @@ void Standing::step(pos_T x, pos_T y) {
 	current = 1 - current;
 	lastx = x;
 	lasty = y;
-	stepCount++;
+	++stepCount;
 	evaluate();
 }
 
 void Standing::step_server(pos_T x, pos_T y) {
 	assert(x < table_size_x && y < table_size_y);
 	table[x][y] = mark[2];
-	stepCount++;
+	++stepCount;
 	evaluate();
 }
 
@@ -235,7 +235,7 @@ void Standing::countMatches() {
 	sample.reserve(max(table_size_x, table_size_y) + 2);
 
 	sample.push_back(mark[2]);
-	for (pos_T x = 0; x < table_size_x; x++) {
+	for (pos_T x = 0; x < table_size_x; ++x) {
 		sample.push_back(table[x][lasty]);
 		suggestRow[0][x][lasty] = 0;
 		suggestRow[1][x][lasty] = 0;
@@ -245,7 +245,7 @@ void Standing::countMatches() {
 
 	sample.clear();
 	sample.push_back(mark[2]);
-	for (pos_T y = 0; y < table_size_y; y++) {
+	for (pos_T y = 0; y < table_size_y; ++y) {
 		sample.push_back(table[lastx][y]);
 		suggestColumn[0][lastx][y] = 0;
 		suggestColumn[1][lastx][y] = 0;
@@ -260,7 +260,7 @@ void Standing::countMatches() {
 	pos_T y0 = sum < table_size_x ? 0 : sum - table_size_x + 1;
 	pos_T ym = sum < table_size_y ? sum + 1 : table_size_y;
 	assert(y0 < ym);
-	for (pos_T y = y0; y < ym; y++) {
+	for (pos_T y = y0; y < ym; ++y) {
 		sample.push_back(table[sum - y][y]);
 		suggestDiagonalSum[0][sum - y][y] = 0;
 		suggestDiagonalSum[1][sum - y][y] = 0;
@@ -275,7 +275,7 @@ void Standing::countMatches() {
 	y0 = diff < 0 ? -diff : 0;
 	ym = min(table_size_y, table_size_x - diff);
 	assert(y0 < ym);
-	for (pos_T y = y0; y < ym; y++) {
+	for (pos_T y = y0; y < ym; ++y) {
 		sample.push_back(table[y + diff][y]);
 		suggestDiagonalDiff[0][y + diff][y] = 0;
 		suggestDiagonalDiff[1][y + diff][y] = 0;
@@ -290,20 +290,20 @@ void Standing::refresh(sample_T& sample_vect, PatternCount& local, int inv, posf
 
 	pos_T sample_size = (pos_T) sample_vect.size();
 	mark_T sample[2 * max_table_size - 1];
-	for (pos_T i = 0; i < sample_size; i++) {
+	for (pos_T i = 0; i < sample_size; ++i) {
 		sample[i] = sample_vect[i];
 	}
 
 	const pos_T range = 3;
 	pos_T begin_pos = 1;
-	while (!sample[begin_pos]) begin_pos++;
+	while (!sample[begin_pos]) ++begin_pos;
 	if (begin_pos < range) begin_pos = 0; else begin_pos -= range;
 	int end_pos = sample_size - 2;
 	while (!sample[end_pos]) end_pos--;
 	if (end_pos + range > sample_size - 1) end_pos = sample_size - 1; else end_pos += range;
 
 	index_T correct[2][patterns_total];
-	for (index_T i = 0; i < patterns_total; i++) {
+	for (index_T i = 0; i < patterns_total; ++i) {
 		correct[0][i] = 0;
 		correct[1][i] = 0;
 	}
@@ -312,12 +312,12 @@ void Standing::refresh(sample_T& sample_vect, PatternCount& local, int inv, posf
 	do {
 		index_T* correct_player = correct[player];
 		index_T* mark_inv_player = mark_inv[player];
-		for (pos_T i = begin_pos; i <= end_pos; i++) {
+		for (pos_T i = begin_pos; i <= end_pos; ++i) {
 			index_T sample_a = mark_inv_player[sample[i]];
 			assert(sample_a < 4);
 
 			index_T* current_correct = correct_player;
-			for (PatternData* current_pattern = patternData; current_pattern != patternDataEnd; current_pattern++) {
+			for (PatternData* current_pattern = patternData; current_pattern != patternDataEnd; ++current_pattern) {
 				index_T current_correct_val = current_pattern->next[sample_a][*current_correct];
 				*current_correct = current_correct_val;
 				if (current_correct_val == current_pattern->length) {
@@ -328,7 +328,7 @@ void Standing::refresh(sample_T& sample_vect, PatternCount& local, int inv, posf
 
 					// probably a match, but check once again because ? symbols
 					bool good_match = true;
-					for (pos_T j = 0; j < pattern_size; j++) {
+					for (pos_T j = 0; j < pattern_size; ++j) {
 						assert(match_start_pos + j < sample_size);
 						if ((pattern[j] == '+' || pattern[j] == '-' || pattern[j] == '.') && sample[match_start_pos + j]) {
 							good_match = false;
@@ -341,8 +341,8 @@ void Standing::refresh(sample_T& sample_vect, PatternCount& local, int inv, posf
 					}
 
 					if (good_match) {
-						newCount[player][level]++;
-						for (pos_T j = 0; j < pattern_size; j++) {
+						++newCount[player][level];
+						for (pos_T j = 0; j < pattern_size; ++j) {
 							assert(match_start_pos + j < sample_size);
 							if (pattern[j] == '+') {
 								(this->*posf)(match_start_pos + j, inv, suggestValues[player][level], suggestValues[1 - player][level]);
@@ -353,13 +353,13 @@ void Standing::refresh(sample_T& sample_vect, PatternCount& local, int inv, posf
 						}
 					}
 				}
-				current_correct++;
+				++current_correct;
 			}
 		}
 		player ^= 1;
 	} while (player != current);
 
-	for (index_T k = 0; k < heurLevels; k++) {
+	for (index_T k = 0; k < heurLevels; ++k) {
 		assert(matchCount[0][k] >= local[0][k] && matchCount[1][k] >= local[1][k]);
 		matchCount[0][k] = matchCount[0][k] + newCount[0][k] - local[0][k];
 		matchCount[1][k] = matchCount[1][k] + newCount[1][k] - local[1][k];
@@ -446,8 +446,8 @@ void Standing::getSuggestions(suggestions_T& suggestions) {
 		Field suggestPos[suggestValueCount];
 		assert((memset(suggestPos, 255, sizeof(suggestPos)), true));
 	
-		for (pos_T x = 0; x < table_size_x; x++) {
-			for (pos_T y = 0; y < table_size_y; y++) {
+		for (pos_T x = 0; x < table_size_x; ++x) {
+			for (pos_T y = 0; y < table_size_y; ++y) {
 				count_T val = max(suggestRow[current][x][y], suggestColumn[current][x][y]);
 				val = max(val, suggestDiagonalSum[current][x][y]);
 				val = max(val, suggestDiagonalDiff[current][x][y]);
@@ -483,22 +483,22 @@ void Standing::getSuggestions(suggestions_T& suggestions) {
 			int count = 0;
 			// filter far away defensive positions
 			if (treshold > 0) {
-				for (pos_T x = 0; x < table_size_x; x++) {
-					for (pos_T y = 0; y < table_size_y; y++) {
+				for (pos_T x = 0; x < table_size_x; ++x) {
+					for (pos_T y = 0; y < table_size_y; ++y) {
 						if (suggest[current][x][y] && suggest[current][x][y] <= 2) {
 							pos_T x1 = x > 0 ? x - 1 : 0;
 							pos_T x2 = x < table_size_x - 1 ? x + 2 : table_size_x;
 							pos_T y1 = y > 0 ? y - 1 : 0;
 							pos_T y2 = y < table_size_y - 1 ? y + 2 : table_size_y;
 							bool far = true;
-							for (pos_T xx = x1; xx < x2 && far; xx++) {
-								for (pos_T yy = y1; yy < y2 && far; yy++) {
+							for (pos_T xx = x1; xx < x2 && far; ++xx) {
+								for (pos_T yy = y1; yy < y2 && far; ++yy) {
 									if (table[xx][yy]) far = false;
 								}
 							}
 							if (far) suggest[current][x][y] = 0;
 						}
-						if (suggest[current][x][y]) count++;
+						if (suggest[current][x][y]) ++count;
 					}
 				}
 			}
@@ -507,15 +507,15 @@ void Standing::getSuggestions(suggestions_T& suggestions) {
 			if (count < 4) {
 				// check every near position
 				treshold = 1;
-				for (pos_T x = 0; x < table_size_x; x++) {
-					for (pos_T y = 0; y < table_size_y; y++) {
+				for (pos_T x = 0; x < table_size_x; ++x) {
+					for (pos_T y = 0; y < table_size_y; ++y) {
 						if (table[x][y] && table[x][y] != mark[2]) {
 							pos_T x1 = x > 0 ? x - 1 : 0;
 							pos_T x2 = x < table_size_x - 1 ? x + 2 : table_size_x;
 							pos_T y1 = y > 0 ? y - 1 : 0;
 							pos_T y2 = y < table_size_y - 1 ? y + 2 : table_size_y;
-							for (pos_T xx = x1; xx < x2; xx++) {
-								for (pos_T yy = y1; yy < y2; yy++) {
+							for (pos_T xx = x1; xx < x2; ++xx) {
+								for (pos_T yy = y1; yy < y2; ++yy) {
 									if (!table[xx][yy]) suggest[current][xx][yy] = 1;
 								}
 							}
@@ -525,23 +525,23 @@ void Standing::getSuggestions(suggestions_T& suggestions) {
 			}
 		}
 	
-		for (pos_T x = 0; x < table_size_x; x++) {
-			for (pos_T y = 0; y < table_size_y; y++) {
+		for (pos_T x = 0; x < table_size_x; ++x) {
+			for (pos_T y = 0; y < table_size_y; ++y) {
 				if (suggest[current][x][y] >= treshold) {
 					suggestions.push_back(Field(x, y));
 				}
 			}
 		}
 	} else {
-		for (pos_T x = 0; x < table_size_x; x++) {
-			for (pos_T y = 0; y < table_size_y; y++) {
+		for (pos_T x = 0; x < table_size_x; ++x) {
+			for (pos_T y = 0; y < table_size_y; ++y) {
 				if (table[x][y] && table[x][y] != mark[2]) {
 					pos_T x1 = x > 0 ? x - 1 : 0;
 					pos_T x2 = x < table_size_x - 1 ? x + 2 : table_size_x;
 					pos_T y1 = y > 0 ? y - 1 : 0;
 					pos_T y2 = y < table_size_y - 1 ? y + 2 : table_size_y;
-					for (pos_T xx = x1; xx < x2; xx++) {
-						for (pos_T yy = y1; yy < y2; yy++) {
+					for (pos_T xx = x1; xx < x2; ++xx) {
+						for (pos_T yy = y1; yy < y2; ++yy) {
 							if (!table[xx][yy]) suggest[current][xx][yy] = 1;
 						}
 					}
@@ -549,8 +549,8 @@ void Standing::getSuggestions(suggestions_T& suggestions) {
 			}
 		}
 	
-		for (pos_T x = 0; x < table_size_x; x++) {
-			for (pos_T y = 0; y < table_size_y; y++) {
+		for (pos_T x = 0; x < table_size_x; ++x) {
+			for (pos_T y = 0; y < table_size_y; ++y) {
 				if (suggest[current][x][y]) {
 					suggestions.push_back(Field(x, y));
 				}
