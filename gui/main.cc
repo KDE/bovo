@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("bovo")));
     aboutData.setProductName(QByteArray("bovo"));
-	    
+
     KAboutData::setApplicationData(aboutData);
 
     QCommandLineParser parser;
@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-    KDBusService service;	     
+    KDBusService service;
     if( app.isSessionRestored() ) {
         RESTORE(MainWindow);
     } else {
