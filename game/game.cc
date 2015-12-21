@@ -40,8 +40,8 @@ using namespace ai;
 namespace bovo
 {
 
-Game::Game(const Dimension& dimension, Player startingPlayer, 
-           KgDifficultyLevel::StandardLevel skill, DemoMode demoMode, 
+Game::Game(const Dimension& dimension, Player startingPlayer,
+           KgDifficultyLevel::StandardLevel skill, DemoMode demoMode,
            unsigned int playTime, AiFactory* aiFactory)
   : m_aiFactory(aiFactory), m_curPlayer(startingPlayer),m_computerMark(O),
   m_demoMode(demoMode), m_inUndoState(false), m_playerMark(X),
@@ -59,8 +59,8 @@ Game::Game(const Dimension& dimension, Player startingPlayer,
             this,  SLOT(move(const Move&)));
 }
 
-Game::Game(const Dimension& dimension, const QStringList &restoreGame, 
-	   KgDifficultyLevel::StandardLevel skill, unsigned int playTime,
+Game::Game(const Dimension& dimension, const QStringList &restoreGame,
+           KgDifficultyLevel::StandardLevel skill, unsigned int playTime,
            AiFactory* aiFactory)
   : m_aiFactory(aiFactory), m_computerMark(O), m_demoMode(NotDemo),
   m_inUndoState(false), m_playerMark(X), m_playTime(playTime),

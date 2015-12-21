@@ -122,11 +122,11 @@ void MainWindow::setupThemes() {
     QStringList themercs;
     const QStringList themeDirs = QStandardPaths::locateAll(QStandardPaths::DataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
     Q_FOREACH (const QString &themeDir, themeDirs) {
-	const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
-        Q_FOREACH(const QString &d, entries) {
-            QString themeFile = themeDir + QLatin1Char('/') + d + QLatin1String("/themerc");
-	    if (QFile::exists(themeFile))
-	        themercs.append(themeFile);
+    const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
+    Q_FOREACH(const QString &d, entries) {
+        QString themeFile = themeDir + QLatin1Char('/') + d + QLatin1String("/themerc");
+        if (QFile::exists(themeFile))
+            themercs.append(themeFile);
         }
     }
 
