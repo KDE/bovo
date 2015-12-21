@@ -21,13 +21,13 @@
 
 #include "scene.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QTime>
-#include <QtCore/QTimer>
-#include <QtGui/QPainter>
+#include <QObject>
+#include <QTime>
+#include <QTimer>
+#include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
-#include <QtSvg/QSvgRenderer>
+#include <QSvgRenderer>
 
 #include <kconfig.h>
 #include <kconfiggroup.h>

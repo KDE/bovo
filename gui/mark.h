@@ -22,7 +22,7 @@
 #ifndef BOVO_MARK_H
 #define BOVO_MARK_H
 
-#include <QtSvg/QGraphicsSvgItem>
+#include <QGraphicsSvgItem>
 
 #include "common.h"
 

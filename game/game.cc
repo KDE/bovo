@@ -23,9 +23,9 @@
 
 #include "game.h"
 
-#include <QtCore/QTimer>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
+#include <QTimer>
+#include <QString>
+#include <QStringList>
 
 #include "ai.h"
 #include "aifactory.h"

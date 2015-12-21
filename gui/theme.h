@@ -23,8 +23,8 @@
 #define BOVO_THEME_H
 
 // Qt includes
-#include <QtGui/QColor>
-#include <QtCore/QString>
+#include <QColor>
+#include <QString>
 
 namespace gui {
 

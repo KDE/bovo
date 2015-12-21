@@ -27,7 +27,8 @@
 #include "move.h"
 
 #include <QTime>
-#include <QtConcurrent>
+#include <QThread>
+#include <QtConcurrentRun>
 
 using namespace bovo;
 

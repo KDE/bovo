@@ -23,7 +23,7 @@
 #ifndef BOVO_HINTITEM_H
 #define BOVO_HINTITEM_H
 
-#include <QtSvg/QGraphicsSvgItem>
+#include <QGraphicsSvgItem>
 
 class QTimer;
 

@@ -21,10 +21,10 @@
 
 #include "hintitem.h"
 
-#include <QtCore/QTimer>
-#include <QtGui/QColor>
-#include <QtGui/QPainter>
-#include <QtSvg/QSvgRenderer>
+#include <QTimer>
+#include <QColor>
+#include <QPainter>
+#include <QSvgRenderer>
 
 #include "common.h"
 #include "coord.h"

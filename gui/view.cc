@@ -23,9 +23,9 @@
 #include "view.h"
 
 // Qt Includes
-#include <QtGui/QColor>
+#include <QColor>
 #include <QGraphicsScene>
-#include <QtGui/QPalette>
+#include <QPalette>
 #include <QResizeEvent>
 
 // Bovo includes
