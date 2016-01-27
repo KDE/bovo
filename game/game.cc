@@ -72,15 +72,15 @@ Game::Game(const Dimension& dimension, const QStringList &restoreGame,
     m_stepCount = 0;
     m_curPlayer = No;
     foreach (const QString &turn, restoreGame) {
-        QStringList tmp = turn.split(':');
+        QStringList tmp = turn.split(QLatin1Char(':'));
         if (tmp.count() != 2) {
             qFatal("Wrong save file format!");
         }
-        Player tmpPlayer = (tmp[0] == "1") ? X : O;
+        Player tmpPlayer = (tmp[0] == QLatin1String("1")) ? X : O;
         if (m_curPlayer == No) {
             m_curPlayer = tmpPlayer;
         }
-        tmp = tmp[1].split(',');
+        tmp = tmp[1].split(QLatin1Char(','));
         if (tmp.count() != 2) {
             qFatal("Wrong save file format!");
         }
@@ -145,20 +145,20 @@ bool Game::save(const QString& filename) const {
     Q_UNUSED( filename );
 
     QString fileContent;
-    fileContent.append(QString("<bovo width=\"%1\" height=\"%2\">")
-            .arg("").arg(""));
+    fileContent.append(QStringLiteral("<bovo width=\"%1\" height=\"%2\">")
+            .arg(QStringLiteral("")).arg(QStringLiteral("")));
     foreach (const Move &move, m_history) {
-        fileContent.append(QString("<move player=\"%1\" x=\"%2\" y=\"%3\" />").
+        fileContent.append(QStringLiteral("<move player=\"%1\" x=\"%2\" y=\"%3\" />").
                 arg(move.player()).arg(move.x()).arg(move.y()));
     }
-    fileContent.append("</bovo>");
+    fileContent.append(QLatin1String("</bovo>"));
     return false;
 }
 
 QStringList Game::saveLast() const {
     QStringList save;
     foreach (const Move &move, m_history) {
-        save << QString("%1:%2,%3").arg(move.player())
+        save << QStringLiteral("%1:%2,%3").arg(move.player())
                 .arg(move.x()).arg(move.y());
     }
     return save;
