@@ -25,6 +25,7 @@
 #include <kdelibs4configmigrator.h>
 #include <klocalizedstring.h>
 #include <KDBusService>
+#include <KCrash>
 
 #include "mainwindow.h"
 #include "version.h"
@@ -55,6 +56,7 @@ int main(int argc, char **argv) {
     aboutData.setProductName(QByteArray("bovo"));
 
     KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
 
     QCommandLineParser parser;
     parser.addVersionOption();
