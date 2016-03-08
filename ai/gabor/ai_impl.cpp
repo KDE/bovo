@@ -45,7 +45,7 @@ AiImpl::AiImpl() : table_size_x(20), table_size_y(20),
 {
 	if (!rand_inited) {
 		rand_inited = true;
-		srand((unsigned int) time(NULL));
+		qsrand((unsigned int) time(NULL));
 	}
 	memset(hashData, 0, sizeof(hashData));
 }
@@ -253,15 +253,15 @@ Field AiImpl::openingBook() {
 		pos_T x, y;
 		x = table_size_x / 2;
 		y = table_size_y / 2;
-		x += rand() % 5 - 2;
-		y += rand() % 5 - 2;
+		x += qrand() % 5 - 2;
+		y += qrand() % 5 - 2;
 		while (rememberedStanding.table[x][y]) x++;
 		return Field(x, y);
 	} else if (rememberedStanding.stepCount == 1) {
 		pos_T x, y;
 		x = rememberedStanding.lastx;
 		y = rememberedStanding.lasty;
-		int r = rand() % 100;
+		int r = qrand() % 100;
 		if (r >= 20) {
 			if (x < table_size_x / 2) {
 				x++;
@@ -291,19 +291,19 @@ Field AiImpl::openingBook() {
 		dy = (int) y1 - (int) y2;
 		if (-1 <= dx && dx <= 1 && -1 <= dy && dy <= 1) {
 			if (dx == 0) {
-				return Field((int) x1 + (rand() % 2) * 2 - 1, (int) y1 + rand() % 3 - 1);
+				return Field((int) x1 + (qrand() % 2) * 2 - 1, (int) y1 + qrand() % 3 - 1);
 			}
 			if (dy == 0) {
-				return Field((int) x1 + rand() % 3 - 1, (int) y1 + (rand() % 2) * 2 - 1);
+				return Field((int) x1 + qrand() % 3 - 1, (int) y1 + (qrand() % 2) * 2 - 1);
 			}
-			if (rand() % 2) {
-				if (rand() % 2) {
+			if (qrand() % 2) {
+				if (qrand() % 2) {
 					return Field((int) x1 + dx, y1);
 				} else {
 					return Field(x1, (int) y1 + dy);
 				}
 			} else {
-				if (rand() % 2) {
+				if (qrand() % 2) {
 					return Field((int) x1 - dx, (int) y1 + dy);
 				} else {
 					return Field((int) x1 + dx, (int) y1 - dy);

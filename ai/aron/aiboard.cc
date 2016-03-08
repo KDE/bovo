@@ -81,9 +81,9 @@ usi AiBoard::height() const {
 
 Coord AiBoard::move() {
     if (m_cleanBoard) {
-        srand(static_cast<int>(time(0)));
-        usi randX = rand()%(m_dimension->width()/3) + m_dimension->width()/3;
-        usi randY = rand()%(m_dimension->height()/3) + m_dimension->height()/3;
+        qsrand(static_cast<int>(time(0)));
+        usi randX = qrand()%(m_dimension->width()/3) + m_dimension->width()/3;
+        usi randY = qrand()%(m_dimension->height()/3) + m_dimension->height()/3;
         return Coord(randX, randY);
     }
     for (usi x = 0; x < m_dimension->width(); ++x) {

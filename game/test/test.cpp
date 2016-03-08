@@ -240,12 +240,12 @@ void testSetNonvalidPlayer() {
 void testEcho() {
   board b = board(dim(20, 20));
   unsigned short int player = 1;
-  srand((unsigned)time(0));
+  qsrand((unsigned)time(0));
   try {
     while (true) {
       coord c(0,0);
       while (true) {
-        c = coord(rand()%20, rand()%20);
+        c = coord(qrand()%20, qrand()%20);
         if (b.empty(c)) break;
       }
       b.setPlayer(c, player);
