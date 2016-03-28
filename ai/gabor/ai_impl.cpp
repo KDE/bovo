@@ -27,7 +27,7 @@
 #include <cstdlib>
 #include <memory.h>
 #include <assert.h>
-#include <time.h>
+#include <ctime>
 #include <stdio.h>
 
 // hash table
@@ -45,7 +45,7 @@ AiImpl::AiImpl() : table_size_x(20), table_size_y(20),
 {
 	if (!rand_inited) {
 		rand_inited = true;
-		qsrand((unsigned int) time(NULL));
+		qsrand(static_cast<unsigned int>(std::time(nullptr)));
 	}
 	memset(hashData, 0, sizeof(hashData));
 }

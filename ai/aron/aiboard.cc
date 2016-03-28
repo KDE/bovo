@@ -25,7 +25,7 @@
 
 #include "aiboard.h"
 
-#include <time.h>
+#include <ctime>
 
 #include <vector>
 #include <iostream>
@@ -81,7 +81,7 @@ usi AiBoard::height() const {
 
 Coord AiBoard::move() {
     if (m_cleanBoard) {
-        qsrand(static_cast<int>(time(0)));
+        qsrand(static_cast<int>(std::time(nullptr)));
         usi randX = qrand()%(m_dimension->width()/3) + m_dimension->width()/3;
         usi randY = qrand()%(m_dimension->height()/3) + m_dimension->height()/3;
         return Coord(randX, randY);

@@ -25,7 +25,6 @@
 #include "standing.h"
 
 #include <assert.h>
-#include <time.h>
 
 Node::Node(Standing* _standing, AiImpl* ai):
 	standing(_standing),
