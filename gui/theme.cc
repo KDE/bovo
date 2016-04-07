@@ -35,10 +35,10 @@ namespace gui {
 Theme::Theme() {
 }
 
-Theme::Theme(const QString& path, const int id) 
+Theme::Theme(const QString& path, const int id)
   : m_id(id), m_path(path) {
     QString themePath = QStringLiteral("themes/%1/").arg(m_path);
-            themePath = QStandardPaths::locate(QStandardPaths::DataLocation, themePath, QStandardPaths::LocateDirectory);
+            themePath = QStandardPaths::locate(QStandardPaths::AppDataLocation, themePath, QStandardPaths::LocateDirectory);
     QString themerc = themePath + QLatin1String("themerc");
     KDesktopFile themeConfig(themerc);
     m_name = themeConfig.readName();
@@ -58,7 +58,7 @@ Theme::Theme(const QString& path, const int id)
     } else if (gridTypeStr == QLatin1String("squares")) {
         m_gridType = SquaresGrid;
     }
-    
+
     m_svg = themePath + configGroup.readEntry("Svg", "theme.svg");
 }
 

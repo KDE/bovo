@@ -120,7 +120,7 @@ void MainWindow::save() const {
 
 void MainWindow::setupThemes() {
     QStringList themercs;
-    const QStringList themeDirs = QStandardPaths::locateAll(QStandardPaths::DataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
+    const QStringList themeDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
     Q_FOREACH (const QString &themeDir, themeDirs) {
     const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
     Q_FOREACH(const QString &d, entries) {
@@ -161,7 +161,7 @@ void MainWindow::readConfig() {
     if (!wins.isEmpty()) {
         bool ok;
         updateWins(wins.toUInt(&ok));
-        
+
     }
     const QString losses = lastGroup.readEntry("Losses", QString());
     if (!losses.isEmpty()) {
@@ -283,7 +283,7 @@ void MainWindow::slotNewGame() {
             m_game = new Game(dimension, m_lastGame, Kg::difficultyLevel(),
                               m_playbackSpeed, m_aiFactory);
         } else {
-            m_game = new Game(dimension, m_computerStarts ? O : X, 
+            m_game = new Game(dimension, m_computerStarts ? O : X,
                               Kg::difficultyLevel(), NotDemo, m_playbackSpeed,
                               m_aiFactory);
         }
