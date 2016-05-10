@@ -1,9 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
 
-  <!ENTITY kappname "&bovo;">
-  <!ENTITY kappversion "1.0"><!--Applicaion version. Use this variable everywhere it's needed.-->
-  <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
@@ -28,17 +25,13 @@
 <year>2007</year>
 <holder>Aron Bostrom</holder>
 </copyright>
-<!-- Translators: put here the copyright notice of the translation -->
-<!-- Put here the FDL notice.  Read the explanation in fdl-notice.docbook
-     and in the FDL itself on how to use it. -->
 <legalnotice>&FDLNotice;</legalnotice>
  
-<date>2013-05-03</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>&kappversion; (&kde; 4.11)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2016-05-09</date>
+<releaseinfo>1.1 (Applications 16.04)</releaseinfo>
  
-<!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &bovo; version &kappversion;</para>
+	<para>This documentation describes the game of &bovo; version 1.1</para>
 </abstract>
  
 <!--List of relevan keywords-->
@@ -79,6 +72,18 @@
 </chapter>
  
 <chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>&bovo; main screen</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Connect five of your own pieces in an unbroken row vertically, horizontally or diagonally.</para></note>
 	<para>
@@ -261,16 +266,6 @@ Documentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
  
 </chapter>
   
-<appendix id="installation">
- 
-<title>Compilation and Installation</title>
-
-&install.intro.documentation;
-  
-&install.compile.documentation;
- 
-</appendix>
- 
 &documentation.index; 
 </book>
 <!--
