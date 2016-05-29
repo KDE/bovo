@@ -236,7 +236,7 @@ of the &kde; Fundamentals.
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
-  <answer><para>No. There is no <quote>Save</quote> feature in &kappname;.</para></answer>
+  <answer><para>No. There is no <quote>Save</quote> feature in &kappname; but &kappname; restores the latest unfinished game on startup.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the highscores?</para></question>
