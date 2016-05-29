@@ -4,7 +4,7 @@
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
- 
+
 <book id="bovo" lang="&language;"> <!-- do not change this! -->
 <bookinfo>
 	<title>The &bovo; Handbook</title>
@@ -26,14 +26,14 @@
 <holder>Aron Bostrom</holder>
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
- 
+
 <date>2016-05-09</date>
 <releaseinfo>1.1 (Applications 16.04)</releaseinfo>
- 
+
 <abstract>
 	<para>This documentation describes the game of &bovo; version 1.1</para>
 </abstract>
- 
+
 <!--List of relevan keywords-->
 <keywordset>
 	<keyword>KDE</keyword> <!-- do not change this! -->
@@ -62,7 +62,7 @@
 <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
 	<note><title>Gametype:</title><para>Board, Arcade</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
- 
+
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para>
 	&bovo; is a Gomoku (from Japanese <foreignphrase lang="ja">五目並べ</foreignphrase>lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board.
@@ -70,7 +70,7 @@
 	</para>
 	<note><title>Note:</title><para>Also known as: Connect Five, Five in a row, X and O, Noughts and Crosses</para></note>
 </chapter>
- 
+
 <chapter id="howto"><title>How to play</title> <!-- do not change this! -->
 
 <screenshot>
@@ -99,7 +99,7 @@ If you are the first player - start the game by placing your pictogram anywhere 
 You have to place your pieces in a way that prevents your opponent from connecting five marks in an unbroken row vertically, horizontally or diagonally. In the same time you have to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally. Whoever succeeds in doing so first – wins the round.
 	</para>
 </chapter>
- 
+
 <chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
 	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
 	<sect1 id="rules">
@@ -129,7 +129,7 @@ You have to place your pieces in a way that prevents your opponent from connecti
 		</itemizedlist>
 	</sect1>
 </chapter>
-  
+
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 
 <sect1 id="menu">
@@ -205,7 +205,7 @@ You have to place your pieces in a way that prevents your opponent from connecti
 
 <varlistentry>
 <term><menuchoice><guimenu>Settings</guimenu><guisubmenu>Difficulty</guisubmenu></menuchoice></term>
-<listitem><para>Choose the game difficulty from various levels from <guimenuitem>Ridiculously Easy</guimenuitem> 
+<listitem><para>Choose the game difficulty from various levels from <guimenuitem>Ridiculously Easy</guimenuitem>
 up to <guimenuitem>Impossible</guimenuitem>.</para></listitem>
 </varlistentry>
 
@@ -220,36 +220,36 @@ of the &kde; Fundamentals.
 
 </sect1>
 </chapter>
-  
+
 <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
 <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Yes. To change &kappname;'s visual theme you can use the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu>
+ <answer><para>Yes. To change &bovo;'s visual theme you can use the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu>
 </menuchoice> option on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play this game? </para></question>
- <answer><para>No. The game of &kappname; cannot be played using keyboard.</para></answer>
+ <answer><para>No. The game of &bovo; cannot be played using keyboard.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
-  <answer><para>No. There is no <quote>Save</quote> feature in &kappname; but &kappname; restores the latest unfinished game on startup.</para></answer>
+  <answer><para>No. There is no <quote>Save</quote> feature in &bovo; but &bovo; restores the latest unfinished game on startup.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the highscores?</para></question>
- <answer><para>&kappname; does not have this feature.</para></answer>
+ <answer><para>&bovo; does not have this feature.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
- 
+
 </qandaset>
 </chapter>
- 
+
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
 <!--This chapter is for credits and licenses.-->
- 
+
 <para>
 &bovo;
 </para>
@@ -263,10 +263,10 @@ Documentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
 &underGPL;
- 
+
 </chapter>
-  
-&documentation.index; 
+
+&documentation.index;
 </book>
 <!--
 Local Variables:
