@@ -40,6 +40,7 @@
   <name xml:lang="x-test">xxBovoxx</name>
   <name xml:lang="zh-CN">Bovo</name>
   <name xml:lang="zh-TW">五子棋_Bovo</name>
+  <summary>"Five in a row" board game</summary>
   <description>
     <p>
       Bovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents
