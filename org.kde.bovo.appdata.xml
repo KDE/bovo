@@ -41,6 +41,11 @@
   <name xml:lang="zh-CN">Bovo</name>
   <name xml:lang="zh-TW">五子棋_Bovo</name>
   <summary>"Five in a row" board game</summary>
+  <summary xml:lang="ca">Joc de tauler «cinc en fila»</summary>
+  <summary xml:lang="nl">Bordspel "Vijf-op-een-rij"</summary>
+  <summary xml:lang="sv">"Fem-i-rad" brädspel</summary>
+  <summary xml:lang="uk">Настільна гра «П’ять у ряд»</summary>
+  <summary xml:lang="x-test">xx"Five in a row" board gamexx</summary>
   <description>
     <p>
       Bovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents
