@@ -45,7 +45,7 @@ public:
     void killAnimation();
     void kill();
     void setFill(qreal fill);
-    QRectF boundingRect() const;
+    QRectF boundingRect() const Q_DECL_OVERRIDE;
 
 public slots:
     void tick();
@@ -55,7 +55,7 @@ signals:
     void killed();
 
 protected:
-    void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=0);
+    void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=0) Q_DECL_OVERRIDE;
 
 private:
     Scene* m_scene;

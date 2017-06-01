@@ -43,13 +43,13 @@ class AiAron : public Ai {
 public:
     explicit AiAron(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, Player player);
     virtual ~AiAron();
-    virtual void cancelAndWait();
+    void cancelAndWait() Q_DECL_OVERRIDE;
 
 public slots:
-    virtual void changeBoard(const Move& move);
-    virtual void gameOver();
-    virtual void setSkill(KgDifficultyLevel::StandardLevel skill);
-    virtual void slotMove();
+    void changeBoard(const Move& move) Q_DECL_OVERRIDE;
+    void gameOver() Q_DECL_OVERRIDE;
+    void setSkill(KgDifficultyLevel::StandardLevel skill) Q_DECL_OVERRIDE;
+    void slotMove() Q_DECL_OVERRIDE;
 
 signals:
     void move(const Move& move);

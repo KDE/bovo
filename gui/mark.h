@@ -48,7 +48,7 @@ public:
     usi row() const;
     usi col() const;
     void setFill(qreal fill);
-    QRectF boundingRect() const;
+    QRectF boundingRect() const Q_DECL_OVERRIDE;
 
 public slots:
     void tick();
@@ -59,7 +59,7 @@ signals:
 
 protected:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
-               QWidget* widget=0);
+               QWidget* widget=0) Q_DECL_OVERRIDE;
 
 private:
     Scene* m_scene;

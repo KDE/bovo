@@ -35,8 +35,8 @@ public:
     View(Scene* scene, const QColor& bgColor, QWidget *parent);
 
 private:
-    virtual void resizeEvent( QResizeEvent* );
-    virtual QSize sizeHint() const;
+    void resizeEvent( QResizeEvent* ) Q_DECL_OVERRIDE;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
 
     Scene* m_scene;
 };

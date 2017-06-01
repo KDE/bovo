@@ -72,16 +72,16 @@ public slots:
     void killMark(Mark*);
 
 protected:
-    bool event(QEvent *event);
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
 
 signals:
     void move(const Move&);
 
 private:
-    virtual void drawBackground(QPainter *p, const QRectF& rect);
-    virtual void drawForeground(QPainter *p, const QRectF& rect);
-    virtual void mousePressEvent(QGraphicsSceneMouseEvent*);
-    virtual void mouseMoveEvent(QGraphicsSceneMouseEvent*);
+    void drawBackground(QPainter *p, const QRectF& rect) Q_DECL_OVERRIDE;
+    void drawForeground(QPainter *p, const QRectF& rect) Q_DECL_OVERRIDE;
+    void mousePressEvent(QGraphicsSceneMouseEvent*) Q_DECL_OVERRIDE;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent*) Q_DECL_OVERRIDE;
     void killAnimations();
     bool m_activate;
     Game *m_game;
