@@ -61,6 +61,7 @@
   <summary xml:lang="tr">"Satırda beş" tahta oyunu</summary>
   <summary xml:lang="uk">Настільна гра «П’ять у ряд»</summary>
   <summary xml:lang="x-test">xx"Five in a row" board gamexx</summary>
+  <summary xml:lang="zh-TW">「五子棋」棋盤遊戲</summary>
   <description>
     <p>
       Bovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents
