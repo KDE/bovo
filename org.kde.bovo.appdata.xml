@@ -61,6 +61,7 @@
   <summary xml:lang="tr">"Satırda beş" tahta oyunu</summary>
   <summary xml:lang="uk">Настільна гра «П’ять у ряд»</summary>
   <summary xml:lang="x-test">xx"Five in a row" board gamexx</summary>
+  <summary xml:lang="zh-CN">五子棋游戏</summary>
   <summary xml:lang="zh-TW">「五子棋」棋盤遊戲</summary>
   <description>
     <p>
@@ -99,6 +100,7 @@
     <p xml:lang="tr">Bovo, Gomoku (Japonca 五目並べ - "beş nokta") benzeri rakiplerin oyun kartına kendi simgelerini yerleştirdikleri iki oyunculu bir oyundur. (Şu isimlerle de bilinir: Beşliyi Bağla, Bir satırda beşli, X ve O, Satırlar ve Çarpılar)</p>
     <p xml:lang="uk">Bovo — гра, подібна до гомоку (від японського 五目並べ — букв. «п’ять точок»), розрахована на двох гравців. У грі суперники почергово малюють власні значки на ігровій дошці. Інші назви гри: з’єднай п’ять, п’ять у рядок, хрестики-нулики.</p>
     <p xml:lang="x-test">xxBovo is a Gomoku (from Japanese 五目並べ - lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board. (Also known as: Connect Five, Five in a row, X and O, Naughts and Crosses)xx</p>
+    <p xml:lang="zh-CN">Bovo 是一个双人五子棋游戏，对战双方在棋盘上各自放置自己的棋子。</p>
     <p xml:lang="zh-TW">Bovo 是一套五子棋遊戲，兩個玩家誰先形成五個子連在一起就獲勝。</p>
   </description>
   <url type="homepage">http://games.kde.org/</url>
