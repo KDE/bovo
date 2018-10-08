@@ -51,12 +51,12 @@ Game::Game(const Dimension& dimension, Player startingPlayer,
     m_winDir = -1;
     m_gameOver = false;
     m_stepCount = 0;
-    connect(this, SIGNAL(boardChanged(const Move&)),
-            m_ai, SLOT(changeBoard(const Move&)));
+    connect(this, SIGNAL(boardChanged(Move)),
+            m_ai, SLOT(changeBoard(Move)));
     connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
             Qt::QueuedConnection);
-    connect(m_ai, SIGNAL(move(const Move&)),
-            this,  SLOT(move(const Move&)));
+    connect(m_ai, SIGNAL(move(Move)),
+            this,  SLOT(move(Move)));
 }
 
 Game::Game(const Dimension& dimension, const QStringList &restoreGame,
@@ -178,15 +178,15 @@ void Game::start() {
 }
 
 void Game::startRestored() {
-    connect(this, SIGNAL(boardChanged(const Move&)),
-            m_ai, SLOT(changeBoard(const Move&)));
+    connect(this, SIGNAL(boardChanged(Move)),
+            m_ai, SLOT(changeBoard(Move)));
     foreach (const Move &move, m_history) {
         emit boardChanged(move);
     }
     connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
             Qt::QueuedConnection);
-    connect(m_ai, SIGNAL(move(const Move&)),
-            this,  SLOT(move(const Move&)));
+    connect(m_ai, SIGNAL(move(Move)),
+            this,  SLOT(move(Move)));
     if (!m_history.isEmpty() && m_history.last().player() == X) {
         m_curPlayer = O;
         emit oposerTurn();
@@ -245,12 +245,12 @@ void Game::undoLatest() {
     if (m_gameOver) {
         m_gameOver = false;
         m_winDir = -1;
-        connect(this, SIGNAL(boardChanged(const Move&)),
-                m_ai, SLOT(changeBoard(const Move&)));
+        connect(this, SIGNAL(boardChanged(Move)),
+                m_ai, SLOT(changeBoard(Move)));
         connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
                 Qt::QueuedConnection);
-        connect(m_ai, SIGNAL(move(const Move&)),
-                this,  SLOT(move(const Move&)));
+        connect(m_ai, SIGNAL(move(Move)),
+                this,  SLOT(move(Move)));
     }
     if (m_curPlayer == m_computerMark) {
         m_ai->cancelAndWait();

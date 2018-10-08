@@ -35,7 +35,7 @@ namespace bovo {
  * This class represents a Square in a playing board. It knows
  * if it is empty or if it is marked by a player.
  * You can set it to a player, if it is empty, otherwise it will
- * throw an exceptio @c busy.
+ * throw an exception @c busy.
  *
  * @code
  * Square square;

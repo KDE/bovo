@@ -33,7 +33,7 @@ namespace bovo {
  * A coordinate
  *
  * This class describes a coordinate on a playing field. It is
- * used as a cointainer of an (x, y) coordinate pair that starts to
+ * used as a container of an (x, y) coordinate pair that starts to
  * count with Origo (0, 0) in upper left corner. No negative coordinates
  * are allowed.
  *

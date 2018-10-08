@@ -272,7 +272,7 @@ signals:
     void oposerTurn();
 
     /**
-     * @brief emitted at replay, signalling the UI to clear itself
+     * @brief emitted at replay, signaling the UI to clear itself
      */
     void replayBegin();
 

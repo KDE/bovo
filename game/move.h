@@ -47,7 +47,7 @@ namespace bovo {
 class Move {
 public:
     /**
-     * @brief constucts Move
+     * @brief constructs Move
      * @description creates a Move with a Player and a coordinate
      * @param player player
      * @param col x-coordinate
@@ -56,7 +56,7 @@ public:
     explicit Move(Player player = No, int col = -1, int row = -1);
 
     /**
-     * @brief constucts Move
+     * @brief constructs Move
      * @description creates a Move with a Player and a coordinate
      * @param player player
      * @param coord coordinate

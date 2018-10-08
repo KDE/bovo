@@ -94,7 +94,7 @@ public:
 	index_T current;
 	// the move that created this standing
 	pos_T lastx, lasty;
-	// following move sugestion values
+	// following move suggestion values
 	suggest_T suggest;
 
 	// calculate constant values for refresh
@@ -121,7 +121,7 @@ private:
 	PatternCount matchCountColumn[max_table_size];
 	// occurrence of patterns in each diagonal, where the sum of coordinates is constant
 	PatternCount matchCountDiagonalSum[2 * max_table_size - 1];
-	// occurrence of patterns in each diagonal, where the diffeerence of coordinates is constant
+	// occurrence of patterns in each diagonal, where the difference of coordinates is constant
 	PatternCount matchCountDiagonalDiff[2 * max_table_size - 1];
 
 	// interesting field values coming from row patterns

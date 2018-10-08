@@ -43,7 +43,7 @@ class Square;
  *
  * Maybe this class should be renamed to Game, or a lot of its code moved into
  * gui/Game. On the other hand, maybe gui/Game should be moved into game,
- * making it game/Game. But as gui/Game is dependant on Qt4, which I have tried
+ * making it game/Game. But as gui/Game is dependent on Qt4, which I have tried
  * to make sure ai/ and game/ isn't, it would break that design decision.
  *
  * However, maybe that is a stupid design decision which deserves to be broken.

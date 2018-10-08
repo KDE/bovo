@@ -293,12 +293,12 @@ void MainWindow::slotNewGame() {
         connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
         connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
         connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
-        connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
+        connect(m_game, SIGNAL(gameOver(QList<Move>)),
                 this, SLOT(slotGameOver()));
-        connect(m_game, SIGNAL(boardChanged(const Move&)),
-                m_demoAi, SLOT(changeBoard(const Move&)));
-        connect(m_demoAi, SIGNAL(move(const Move&)),
-                m_scene,  SLOT(hint(const Move&)));
+        connect(m_game, SIGNAL(boardChanged(Move)),
+                m_demoAi, SLOT(changeBoard(Move)));
+        connect(m_demoAi, SIGNAL(move(Move)),
+                m_scene,  SLOT(hint(Move)));
         m_hintAct->setEnabled(true);
         if (m_lastGame.isEmpty()) {
             m_game->start();
@@ -327,13 +327,13 @@ void MainWindow::slotNewDemo() {
                       m_aiFactory);
     m_demoAi = m_aiFactory->createAi(dimension, Kg::difficultyLevel(), X, Demo);
     m_scene->setGame(m_game);
-    connect(m_game, SIGNAL(boardChanged(const Move&)),
-            m_demoAi, SLOT(changeBoard(const Move&)));
+    connect(m_game, SIGNAL(boardChanged(Move)),
+            m_demoAi, SLOT(changeBoard(Move)));
     connect(m_game, SIGNAL(playerTurn()), m_demoAi, SLOT(slotMove()),
             Qt::QueuedConnection);
-    connect(m_demoAi, SIGNAL(move(const Move&)),
-            m_game,  SLOT(move(const Move&)));
-    connect(m_game, SIGNAL(gameOver(const QList<Move>&)),
+    connect(m_demoAi, SIGNAL(move(Move)),
+            m_game,  SLOT(move(Move)));
+    connect(m_game, SIGNAL(gameOver(QList<Move>)),
             this, SLOT(slotNewDemoWait()));
     statusBar()->showMessage(i18n("Start a new Game to play"));
     m_game->start();
@@ -408,8 +408,8 @@ void MainWindow::slotUndo() {
                 decreaseLosses();
             }
         }
-        connect(m_game, SIGNAL(boardChanged(const Move&)),
-                m_demoAi, SLOT(changeBoard(const Move&)));
+        connect(m_game, SIGNAL(boardChanged(Move)),
+                m_demoAi, SLOT(changeBoard(Move)));
         m_hintAct->setEnabled(true);
         actionCollection()->action(QStringLiteral("replay"))->setEnabled(false);
         disconnect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
@@ -428,7 +428,7 @@ void MainWindow::replay() {
     disconnect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
             this, SLOT(replay()));
     disconnect(m_game, 0, this, 0);
-    connect(m_game, SIGNAL(replayEnd(const QList<Move>&)),
+    connect(m_game, SIGNAL(replayEnd(QList<Move>)),
             this, SLOT(reEnableReplay()));
     disconnect(m_game, 0, m_scene, 0);
     connect(m_game, &Game::replayBegin, m_scene, &Scene::replay);
