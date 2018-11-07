@@ -110,6 +110,7 @@
   <url type="homepage">http://games.kde.org/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=bovo</url>
   <url type="help">http://docs.kde.org/stable/en/kdegames/bovo/index.html</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=bovo&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <image>http://kde.org/images/screenshots/bovo.png</image>
