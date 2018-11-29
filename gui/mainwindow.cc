@@ -99,6 +99,7 @@ MainWindow::~MainWindow() {
     delete m_game;
     delete m_demoAi;
     delete m_aiFactory;
+    delete m_scene;
 }
 
 void MainWindow::save() const {
