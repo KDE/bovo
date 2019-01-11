@@ -158,7 +158,7 @@ Coord next(const Coord& c, usi dir) {
     return tmp;
 }
 
-bool cmp(const pair<uli, Coord> a, const pair<uli, Coord> b) {
+bool cmp(const pair<uli, Coord> &a, const pair<uli, Coord> &b) {
     return a.first > b.first;
 }
 
