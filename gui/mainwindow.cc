@@ -35,7 +35,7 @@
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <kgdifficulty.h>
-#include <qstatusbar.h>
+#include <QStatusBar>
 #include <kstandardgameaction.h>
 #include <kselectaction.h>
 #include <ktoggleaction.h>
