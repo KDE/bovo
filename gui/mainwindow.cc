@@ -77,7 +77,7 @@ MainWindow::MainWindow(QWidget* parent)
         KgDifficultyLevel::Impossible,
         KgDifficultyLevel::Medium //default level
     );
-    connect(diff, SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), SLOT(changeSkill()));
+    connect(diff, &KgDifficulty::currentLevelChanged, this, &MainWindow::changeSkill);
     KgDifficultyGUI::init(this);
     diff->setGameRunning(true);
 
@@ -196,7 +196,7 @@ void MainWindow::setupActions() {
     KToggleAction *animAct = new KToggleAction(i18n("&Animation"),this);
     actionCollection()->addAction( QStringLiteral( "animation" ), animAct);
     animAct->setChecked(m_animate);
-    connect(animAct, SIGNAL(toggled(bool)), this, SLOT(setAnimation(bool)));
+    connect(animAct, &QAction::toggled, this, &MainWindow::setAnimation);
 
     m_themeAct = new KSelectAction(i18n("Theme"), this);
     QStringList themes;
@@ -290,14 +290,14 @@ void MainWindow::slotNewGame() {
         }
         m_demoAi = m_aiFactory->createAi(dimension, KgDifficultyLevel::Easy, m_game->player(), Demo);
         m_scene->setGame(m_game);
-        connect(m_game, SIGNAL(undoAble()), this, SLOT(enableUndo()));
-        connect(m_game, SIGNAL(undoNotAble()), this, SLOT(disableUndo()));
-        connect(m_game, SIGNAL(playerTurn()), this, SLOT(slotPlayerTurn()));
-        connect(m_game, SIGNAL(oposerTurn()), this, SLOT(slotOposerTurn()));
-        connect(m_game, SIGNAL(gameOver(QList<Move>)),
-                this, SLOT(slotGameOver()));
-        connect(m_game, SIGNAL(boardChanged(Move)),
-                m_demoAi, SLOT(changeBoard(Move)));
+        connect(m_game, &Game::undoAble, this, &MainWindow::enableUndo);
+        connect(m_game, &Game::undoNotAble, this, &MainWindow::disableUndo);
+        connect(m_game, &Game::playerTurn, this, &MainWindow::slotPlayerTurn);
+        connect(m_game, &Game::oposerTurn, this, &MainWindow::slotOposerTurn);
+        connect(m_game, &Game::gameOver,
+                this, &MainWindow::slotGameOver);
+        connect(m_game, &Game::boardChanged,
+                m_demoAi, &Ai::changeBoard);
         connect(m_demoAi, SIGNAL(move(Move)),
                 m_scene,  SLOT(hint(Move)));
         m_hintAct->setEnabled(true);
@@ -328,21 +328,21 @@ void MainWindow::slotNewDemo() {
                       m_aiFactory);
     m_demoAi = m_aiFactory->createAi(dimension, Kg::difficultyLevel(), X, Demo);
     m_scene->setGame(m_game);
-    connect(m_game, SIGNAL(boardChanged(Move)),
-            m_demoAi, SLOT(changeBoard(Move)));
-    connect(m_game, SIGNAL(playerTurn()), m_demoAi, SLOT(slotMove()),
+    connect(m_game, &Game::boardChanged,
+            m_demoAi, &Ai::changeBoard);
+    connect(m_game, &Game::playerTurn, m_demoAi, &Ai::slotMove,
             Qt::QueuedConnection);
     connect(m_demoAi, SIGNAL(move(Move)),
             m_game,  SLOT(move(Move)));
-    connect(m_game, SIGNAL(gameOver(QList<Move>)),
-            this, SLOT(slotNewDemoWait()));
+    connect(m_game, &Game::gameOver,
+            this, &MainWindow::slotNewDemoWait);
     statusBar()->showMessage(i18n("Start a new Game to play"));
     m_game->start();
 }
 
 void MainWindow::slotNewDemoWait() {
 //    m_scene->setWin(m_game->history());
-    QTimer::singleShot(8*m_playbackSpeed, this, SLOT(slotNewDemo()));
+    QTimer::singleShot(8*m_playbackSpeed, this, &MainWindow::slotNewDemo);
 }
 
 void MainWindow::increaseWins() {
@@ -386,8 +386,8 @@ void MainWindow::slotGameOver() {
     disconnect(m_game, 0, m_demoAi, 0);
     m_hintAct->setEnabled(false);
     actionCollection()->action(QStringLiteral("replay"))->setEnabled(true);
-    connect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
-            this, SLOT(replay()));
+    connect(actionCollection()->action(QStringLiteral("replay")), &QAction::triggered,
+            this, &MainWindow::replay);
 }
 
 void MainWindow::slotPlayerTurn() {
@@ -409,12 +409,12 @@ void MainWindow::slotUndo() {
                 decreaseLosses();
             }
         }
-        connect(m_game, SIGNAL(boardChanged(Move)),
-                m_demoAi, SLOT(changeBoard(Move)));
+        connect(m_game, &Game::boardChanged,
+                m_demoAi, &Ai::changeBoard);
         m_hintAct->setEnabled(true);
         actionCollection()->action(QStringLiteral("replay"))->setEnabled(false);
-        disconnect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
-                this, SLOT(replay()));
+        disconnect(actionCollection()->action(QStringLiteral("replay")), &QAction::triggered,
+                this, &MainWindow::replay);
     }
     m_game->undoLatest();
 }
@@ -426,11 +426,11 @@ void MainWindow::replay() {
     statusBar()->showMessage(i18n("Replaying game"));
     actionCollection()->action(QStringLiteral("replay"))->setEnabled(false);
     disableUndo();
-    disconnect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
-            this, SLOT(replay()));
+    disconnect(actionCollection()->action(QStringLiteral("replay")), &QAction::triggered,
+            this, &MainWindow::replay);
     disconnect(m_game, 0, this, 0);
-    connect(m_game, SIGNAL(replayEnd(QList<Move>)),
-            this, SLOT(reEnableReplay()));
+    connect(m_game, &Game::replayEnd,
+            this, &MainWindow::reEnableReplay);
     disconnect(m_game, 0, m_scene, 0);
     connect(m_game, &Game::replayBegin, m_scene, &Scene::replay);
     connect(m_game, &Game::replayEnd, m_scene, &Scene::slotGameOver);
@@ -440,8 +440,8 @@ void MainWindow::replay() {
 void MainWindow::reEnableReplay() {
     actionCollection()->action(QStringLiteral("replay"))->setEnabled(true);
     statusBar()->showMessage(i18n("Game replayed."));
-    connect(actionCollection()->action(QStringLiteral("replay")), SIGNAL(triggered()),
-               this, SLOT(replay()));
+    connect(actionCollection()->action(QStringLiteral("replay")), &QAction::triggered,
+               this, &MainWindow::replay);
 }
 
 void MainWindow::changeSkill() {

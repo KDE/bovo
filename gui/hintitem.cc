@@ -39,7 +39,7 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
   : QGraphicsSvgItem(), m_scene(scene), m_row(hint.y()),
   m_col(hint.x()), m_fill(fill) {
     m_sizeShrink = 1.0/(qrand()%5+7.0);
-    setElementId(QString(hint.player() == X ? QLatin1String("x%1") : QLatin1String("o%1"))
+    setElementId(QString(hint.player() == X ? QStringLiteral("x%1") : QStringLiteral("o%1"))
             .arg(QString::number(qrand() % 5 + 1)));
     m_tick = 16;
     m_tickUp = true;

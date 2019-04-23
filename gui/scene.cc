@@ -187,8 +187,8 @@ void Scene::drawBackground(QPainter *p, const QRectF&) {
     sRect.setHeight(minSize*cellSize);
     sRect.setLeft(cellSize);*/
     QRectF tmpRect(size, size, minSize*shrinkSize, minSize*shrinkSize);
-    m_renderer->render(p, QLatin1String("background"));
-    m_renderer->render(p, QLatin1String("grid"), tmpRect);
+    m_renderer->render(p, QStringLiteral("background"));
+    m_renderer->render(p, QStringLiteral("grid"), tmpRect);
 }
 
 void Scene::drawForeground(QPainter *p, const QRectF& bounds) {

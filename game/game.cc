@@ -51,9 +51,9 @@ Game::Game(const Dimension& dimension, Player startingPlayer,
     m_winDir = -1;
     m_gameOver = false;
     m_stepCount = 0;
-    connect(this, SIGNAL(boardChanged(Move)),
-            m_ai, SLOT(changeBoard(Move)));
-    connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
+    connect(this, &Game::boardChanged,
+            m_ai, &Ai::changeBoard);
+    connect(this, &Game::oposerTurn, m_ai, &Ai::slotMove,
             Qt::QueuedConnection);
     connect(m_ai, SIGNAL(move(Move)),
             this,  SLOT(move(Move)));
@@ -178,12 +178,12 @@ void Game::start() {
 }
 
 void Game::startRestored() {
-    connect(this, SIGNAL(boardChanged(Move)),
-            m_ai, SLOT(changeBoard(Move)));
+    connect(this, &Game::boardChanged,
+            m_ai, &Ai::changeBoard);
     foreach (const Move &move, m_history) {
         emit boardChanged(move);
     }
-    connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
+    connect(this, &Game::oposerTurn, m_ai, &Ai::slotMove,
             Qt::QueuedConnection);
     connect(m_ai, SIGNAL(move(Move)),
             this,  SLOT(move(Move)));
@@ -230,8 +230,8 @@ void Game::replay() {
         m_replaying = true;
         m_replayIterator = m_history.constBegin();
         m_replayIteratorEnd = m_history.constEnd();
-        disconnect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
-        connect(this, SIGNAL(replayBegin()), this, SLOT(replayNext()));
+        disconnect(this, &Game::replayBegin, this, &Game::replayNext);
+        connect(this, &Game::replayBegin, this, &Game::replayNext);
         emit replayBegin();
     }
 }
@@ -245,9 +245,9 @@ void Game::undoLatest() {
     if (m_gameOver) {
         m_gameOver = false;
         m_winDir = -1;
-        connect(this, SIGNAL(boardChanged(Move)),
-                m_ai, SLOT(changeBoard(Move)));
-        connect(this, SIGNAL(oposerTurn()), m_ai, SLOT(slotMove()),
+        connect(this, &Game::boardChanged,
+                m_ai, &Ai::changeBoard);
+        connect(this, &Game::oposerTurn, m_ai, &Ai::slotMove,
                 Qt::QueuedConnection);
         connect(m_ai, SIGNAL(move(Move)),
                 this,  SLOT(move(Move)));
@@ -289,7 +289,7 @@ void Game::undoLatest() {
 
 void Game::replayNext() {
     if (m_replayIterator != m_replayIteratorEnd) {
-        QTimer::singleShot(m_playTime, this, SLOT(replayNext()));
+        QTimer::singleShot(m_playTime, this, &Game::replayNext);
         emit boardChanged(*m_replayIterator);
         ++m_replayIterator;
     } else {
@@ -324,13 +324,13 @@ void Game::makeMove(const Move& move) {
     } else {
         if (computerTurn()) {
             if (m_demoMode) {
-                QTimer::singleShot(m_playTime, this, SIGNAL(oposerTurn()));
+                QTimer::singleShot(m_playTime, this, &Game::oposerTurn);
             } else {
                 emit oposerTurn();
             }
         } else {
             if (m_demoMode) {
-                QTimer::singleShot(m_playTime, this, SIGNAL(playerTurn()));
+                QTimer::singleShot(m_playTime, this, &Game::playerTurn);
             } else {
                 emit playerTurn();
             }
