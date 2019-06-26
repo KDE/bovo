@@ -22,7 +22,6 @@
 #include "mark.h"
 
 #include <QTimer>
-#include <QColor>
 #include <QPainter>
 #include <QSvgRenderer>
 

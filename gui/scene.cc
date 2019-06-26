@@ -21,7 +21,6 @@
 
 #include "scene.h"
 
-#include <QObject>
 #include <QTime>
 #include <QTimer>
 #include <QPainter>

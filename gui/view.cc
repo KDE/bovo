@@ -25,7 +25,6 @@
 // Qt Includes
 #include <QColor>
 #include <QGraphicsScene>
-#include <QPalette>
 #include <QResizeEvent>
 
 // Bovo includes
