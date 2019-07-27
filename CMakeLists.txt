@@ -1,6 +1,13 @@
-project (bovo)
-
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+
+# KDE Application Version, managed by release script
+set(KDE_APPLICATIONS_VERSION_MAJOR "19")
+set(KDE_APPLICATIONS_VERSION_MINOR "07")
+set(KDE_APPLICATIONS_VERSION_MICRO "70")
+set(KDE_APPLICATIONS_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIONS_VERSION_MINOR}.${KDE_APPLICATIONS_VERSION_MICRO}")
+
+project(bovo VERSION ${KDE_APPLICATIONS_VERSION})
+
 set (QT_MIN_VERSION "5.7.0")
 set (KF5_MIN_VERSION "5.30.0")
 
@@ -22,6 +29,7 @@ include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 include(ECMInstallIcons)
+include(ECMSetupVersion)
 include(ECMAddAppIcon)
 
 # re-enabling exceptions (turned off in KDE)
@@ -66,6 +74,8 @@ set(bovogui_SRCS
 	gui/mainwindow.cc
 	gui/main.cc
 )
+
+ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX BOVO VERSION_HEADER bovo_version.h)
 
 set(bovo_SRCS
 	${bovogui_SRCS}
