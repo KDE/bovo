@@ -29,9 +29,6 @@ namespace bovo {
 Coord::Coord(usi x, usi y): m_x(x), m_y(y) {
 }
 
-Coord::Coord(const Coord& c) : m_x(c.m_x), m_y(c.m_y) {
-}
-
 Coord Coord::down() const {
     return Coord(m_x, m_y+1);
 }

@@ -164,10 +164,6 @@ Standing::Standing(pos_T _table_size_x, pos_T _table_size_y) :
 	memset(suggestDiagonalDiff, 0, sizeof(suggestDiagonalDiff));
 }
 
-Standing::Standing(const Standing& other) {
-	memcpy(this, &other, sizeof(Standing));
-}
-
 void Standing::step(pos_T x, pos_T y) {
 	assert(x < table_size_x && y < table_size_y);
 	table[x][y] = mark[current];
