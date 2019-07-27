@@ -69,7 +69,8 @@ public:
      * @description constructs a Coord that is a copy of a given Coord
      * @param coord Coord to copy
      */
-    Coord(const Coord& coord);
+    Coord(const Coord& coord) = default;
+    Coord& operator=(const Coord& coord) = default;
 
     /**
      * @brief

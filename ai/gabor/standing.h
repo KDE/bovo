@@ -103,7 +103,9 @@ public:
 	// new game
 	Standing(pos_T _table_size_x, pos_T _table_size_y);
 	// copy a game state
-	Standing(const Standing& other);
+	Standing(const Standing& other) = default;
+	Standing &operator=(const Standing& other) = default;
+
 
 	// make a step
 	void step(pos_T x, pos_T y);
