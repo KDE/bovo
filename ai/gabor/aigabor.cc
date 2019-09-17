@@ -26,7 +26,7 @@
 #include "dimension.h"
 #include "move.h"
 
-#include <QTime>
+#include <QElapsedTimer>
 #include <QThread>
 #include <QtConcurrentRun>
 
@@ -101,7 +101,7 @@ void AiGabor::slotMove() {
 }
 
 void AiGabor::slotMoveImpl() {
-    QTime time;
+    QElapsedTimer time;
     time.start();
     Field f = m_ai->think();
     for (;;) {
