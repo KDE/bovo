@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
 
     KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
             QStringLiteral(BOVO_VERSION_STRING), i18n(description), KAboutLicense::GPL,
-            i18n(copyleft), QString(), QStringLiteral("http://games.kde.org/bovo"));
+            i18n(copyleft), QString(), QStringLiteral("https://kde.org/applications/games/org.kde.bovo"));
     aboutData.addAuthor(i18n("Aron Boström"),i18n("Author"),
                         QStringLiteral("aron.bostrom@gmail.com"));
 
