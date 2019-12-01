@@ -95,6 +95,7 @@ include_directories(
 	)
 
 kconfig_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
+qt5_add_resources(bovo_SRCS bovo.qrc)
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-bovo.png")
 ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
@@ -113,7 +114,6 @@ add_subdirectory (icons)
 add_subdirectory (doc)
 
 install (TARGETS bovo ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
-install (FILES gui/bovoui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/bovo)
 install (PROGRAMS org.kde.bovo.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install (FILES org.kde.bovo.appdata.xml DESTINATION  ${CMAKE_INSTALL_METAINFODIR})
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

@@ -1,0 +1,5 @@
+<RCC>
+<qresource prefix="/kxmlgui5/bovo">
+<file alias="bovoui.rc">gui/bovoui.rc</file>
+</qresource>
+</RCC>
