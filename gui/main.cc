@@ -37,6 +37,8 @@ using namespace gui;
 
 int main(int argc, char **argv) {
 
+    // Fixes blurry icons with fractional scaling
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
     Kdelibs4ConfigMigrator migrate(QStringLiteral("bovo"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("bovorc"));
