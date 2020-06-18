@@ -50,6 +50,7 @@ Name[te]=గొమొకు
 Name[tr]=Gomoku
 Name[uk]=Гомоку
 Name[wa]=Gomoku
+Name[x-test]=xxGomokuxx
 Name[zh_CN]=五目连珠
 Name[zh_TW]=Gomoku
 Comment=A classic Japanese theme
@@ -98,6 +99,7 @@ Comment[sv]=Ett klassiskt japanskt tema
 Comment[tr]=Bir klasik Japonca teması
 Comment[uk]=Класична японська тема
 Comment[wa]=On tinme classike djaponès
+Comment[x-test]=xxA classic Japanese themexx
 Comment[zh_CN]=经典的和风主题
 Comment[zh_TW]=傳統的日式主題
 
