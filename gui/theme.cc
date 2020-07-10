@@ -24,9 +24,9 @@
 
 #include "settings.h"
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kdesktopfile.h>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KDesktopFile>
 
 #include <QStandardPaths>
 

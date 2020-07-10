@@ -29,7 +29,7 @@
 
 #include <QObject>
 
-#include <kgdifficulty.h>
+#include <KgDifficulty>
 
 #include "common.h"
 

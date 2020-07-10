@@ -21,9 +21,9 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
-#include <kaboutdata.h>
-#include <kdelibs4configmigrator.h>
-#include <klocalizedstring.h>
+#include <KAboutData>
+#include <Kdelibs4ConfigMigrator>
+#include <KLocalizedString>
 #include <KDBusService>
 #include <KCrash>
 

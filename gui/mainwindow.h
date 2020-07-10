@@ -25,7 +25,7 @@
 #include <QString>
 #include <QStringList>
 
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 
 #include "common.h"
 #include "theme.h"

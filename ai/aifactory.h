@@ -31,7 +31,7 @@
 #include <QString>
 #include <QStringList>
 
-#include <kgdifficulty.h>
+#include <KgDifficulty>
 
 #include "common.h"
 

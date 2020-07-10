@@ -31,15 +31,15 @@
 #include <QIcon>
 
 // KDE includes
-#include <kactioncollection.h>
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kgdifficulty.h>
+#include <KActionCollection>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KgDifficulty>
 #include <QStatusBar>
-#include <kstandardgameaction.h>
-#include <kselectaction.h>
-#include <ktoggleaction.h>
-#include <klocalizedstring.h>
+#include <KStandardGameAction>
+#include <KSelectAction>
+#include <KToggleAction>
+#include <KLocalizedString>
 
 // Bovo includes
 #include "ai.h"

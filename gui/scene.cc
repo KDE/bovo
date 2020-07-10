@@ -28,9 +28,9 @@
 #include <QGraphicsView>
 #include <QSvgRenderer>
 
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <kdesktopfile.h>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KDesktopFile>
 
 #include "common.h"
 #include "coord.h"

@@ -26,7 +26,7 @@
 #ifndef BOVO_AIBOARD_H
 #define BOVO_AIBOARD_H
 
-#include <kgdifficulty.h>
+#include <KgDifficulty>
 
 #include "common.h"
 

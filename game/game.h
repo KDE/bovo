@@ -27,7 +27,7 @@
 #include <QObject>
 #include <QList>
 
-#include <kgdifficulty.h>
+#include <KgDifficulty>
 
 #include "common.h"
 
