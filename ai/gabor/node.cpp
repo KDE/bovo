@@ -22,7 +22,6 @@
 
 #include "node.h"
 #include "ai_impl.h"
-#include "standing.h"
 
 #include <assert.h>
 

@@ -22,7 +22,6 @@
 
 #include "ai_impl.h"
 #include "node.h"
-#include "standing.h"
 
 #include <cstdlib>
 #include <memory.h>
