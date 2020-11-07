@@ -109,7 +109,7 @@ public:
      * @param coord Coord to check
      * @return @c true if coord is empty, @c false otherwise
      */
-    bool empty(const Coord&) const throw(outOfBounds);
+    bool empty(const Coord&) const;
 
     /**
      * @brief is a Coord empty or set?
@@ -120,7 +120,7 @@ public:
      * @param y X-part of coordinate to check
      * @return @c true if coord is empty, @c false otherwise
      */
-    bool empty(const usi x, const usi y) const throw(outOfBounds);
+    bool empty(const usi x, const usi y) const;
 
     /**
      * @brief height of AiBoard
@@ -153,7 +153,7 @@ public:
      * @return @c X if player 1, @c O if player 2, @c No if empty
      * @throw outOfBounds if coord isn't on the playing board
      */
-    Player player(const Coord&) const throw(outOfBounds);
+    Player player(const Coord&) const;
 
     /**
      * @brief the player occupying a Coord
@@ -163,7 +163,7 @@ public:
      * @return @c X if player 1, @c O if player 2, @c No if empty
      * @throw outOfBounds if coord isn't on the playing board
      */
-    Player player(const usi x, const usi y) const throw(outOfBounds);
+    Player player(const usi x, const usi y) const;
 
     /**
      * @brief set the player of a Coord
@@ -177,7 +177,7 @@ public:
      * @throw gameOver if game was already over
      * @throw notValidPlayer if player wasn't X or O
      */
-    bool setPlayer(const Move& move) throw(busy, gameover, notValidPlayer);
+    bool setPlayer(const Move& move);
 
     /**
      * @brief change Skill
@@ -216,9 +216,9 @@ private:
     Coord evaluate() const;
 
     /* returns, adds och sets points on a given square. */
-    uli points(const Coord&) const throw(outOfBounds);
-    void addPoints(const Coord&, const uli points) throw(outOfBounds);
-    void setPoints(const Coord&, const uli points) throw(outOfBounds);
+    uli points(const Coord&) const;
+    void addPoints(const Coord&, const uli points);
+    void setPoints(const Coord&, const uli points);
 
     /* initialize this class */
     void setup();

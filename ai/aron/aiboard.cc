@@ -64,14 +64,14 @@ AiBoard::~AiBoard() {
     delete m_dimension;
 }
 
-bool AiBoard::empty(const Coord& c) const throw(outOfBounds) {
+bool AiBoard::empty(const Coord& c) const {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
     return m_board[c.x()][c.y()].empty();
 }
 
-bool AiBoard::empty(const usi x, const usi y) const throw(outOfBounds) {
+bool AiBoard::empty(const usi x, const usi y) const {
     return empty(Coord(x, y));
 }
 
@@ -106,19 +106,18 @@ Coord* AiBoard::moves() {
     return new Coord();
 }
 
-Player AiBoard::player(const Coord& c) const throw(outOfBounds) {
+Player AiBoard::player(const Coord& c) const {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
     return m_board[c.x()][c.y()].player();
 }
 
-Player AiBoard::player(const usi x, const usi y) const throw(outOfBounds) {
+Player AiBoard::player(const usi x, const usi y) const {
     return player(Coord(x, y));
 }
 
-bool AiBoard::setPlayer(const Move& move)
-  throw(busy, gameover, notValidPlayer) {
+bool AiBoard::setPlayer(const Move& move) {
     m_cleanBoard = false;
     zero(move.coord());
     m_board[move.coord().x()][move.coord().y()].setPlayer(move.player());
@@ -240,21 +239,21 @@ Coord AiBoard::evaluate() const {
     return v3.begin()->second;
 }
 
-uli AiBoard::points(const Coord& c) const throw(outOfBounds) {
+uli AiBoard::points(const Coord& c) const {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
     return m_board[c.x()][c.y()].points();
 }
     
-void AiBoard::addPoints(const Coord& c, uli points) throw(outOfBounds) {
+void AiBoard::addPoints(const Coord& c, uli points) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
     m_board[c.x()][c.y()].setPoints(m_board[c.x()][c.y()].points() + points);
 }
 
-void AiBoard::setPoints(const Coord& c, uli points) throw(outOfBounds) {
+void AiBoard::setPoints(const Coord& c, uli points) {
     if (!m_dimension->ok(c)) {
         throw outOfBounds();
     }
