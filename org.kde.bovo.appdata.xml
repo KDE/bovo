@@ -119,7 +119,7 @@
     <p xml:lang="zh-CN">Bovo 是一个双人五子棋游戏，对战双方在棋盘上各自放置自己的棋子。</p>
     <p xml:lang="zh-TW">Bovo 是一套五子棋遊戲，兩個玩家誰先形成五個子連在一起就獲勝。</p>
   </description>
-  <url type="homepage">https://games.kde.org/game.php?game=bovo</url>
+  <url type="homepage">https://games.kde.org/games/bovo</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=bovo</url>
   <url type="help">https://docs.kde.org/?application=bovo</url>
   <url type="donation">https://www.kde.org/community/donations/?app=bovo&amp;source=appdata</url>
