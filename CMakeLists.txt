@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.16 FATAL_ERROR)
 
 # KDE Application Version, managed by release script
 set(RELEASE_SERVICE_VERSION_MAJOR "21")
@@ -8,8 +8,8 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(bovo VERSION ${RELEASE_SERVICE_VERSION})
 
-set (QT_MIN_VERSION "5.7.0")
-set (KF5_MIN_VERSION "5.30.0")
+set (QT_MIN_VERSION "5.15.0")
+set (KF5_MIN_VERSION "5.83.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
@@ -100,7 +100,7 @@ add_executable(bovo ${bovo_SRCS})
 target_link_libraries(bovo
 	KF5::XmlGui
 	KF5::I18n
-	Qt5::Svg
+	Qt::Svg
 	KF5KDEGames
 	KF5::DBusAddons
 	KF5::Crash
