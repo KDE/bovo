@@ -27,8 +27,8 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2016-05-09</date>
-<releaseinfo>1.1 (Applications 16.04)</releaseinfo>
+<date>2021-06-21</date>
+<releaseinfo>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 	<para>This documentation describes the game of &bovo; version 1.1</para>
@@ -65,7 +65,7 @@
 
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para>
-	&bovo; is a Gomoku (from Japanese <foreignphrase lang="ja">五目並べ</foreignphrase>lit. "five points") like game for two players, where the opponents alternate in placing their respective pictogram on the game board.
+	&bovo; is a Gomoku (from Japanese <foreignphrase lang="ja">五目並べ</foreignphrase>, <quote>five points</quote>) like game for two players, where the opponents alternate in placing their respective pictogram on the game board.
 	The aim of this game is to connect five of your own pieces in an unbroken row vertically, horizontally or diagonally.
 	</para>
 	<note><title>Note:</title><para>Also known as: Connect Five, Five in a row, X and O, Noughts and Crosses</para></note>
@@ -119,10 +119,10 @@ You have to place your pieces in a way that prevents your opponent from connecti
 			<listitem><para>When &bovo; is exited prior to game over, the active game is auto saved. If &bovo; detects an auto saved game at startup, it is restored. If not, &bovo; launches a demo mode.</para></listitem>
 			<listitem><para>You can always start a new game with the <guibutton>New</guibutton> button in the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry in the menubar or with the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></listitem>
 			<listitem><para>If a new game is started when a game is already active, it is counted as a loss.</para></listitem>
-			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, or from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
+			<listitem><para>Changing the difficulty can be done with the <guilabel>Difficulty</guilabel> drop down box in the right end of the status bar, or from the <menuchoice><guimenu>Settings</guimenu><guimenuitem>Difficulty</guimenuitem></menuchoice> menu entry in the menubar.</para></listitem>
 			<listitem><para>The effect of changing difficulty takes place immediately.</para></listitem>
-			<listitem><para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guisubmenu>Theme</guisubmenu></menuchoice> menu in the menubar. The theme is then switched immediately.</para></listitem>
-			<listitem><para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu in the menubar.</para></listitem>
+			<listitem><para>You can switch the theme of &bovo; from the <menuchoice><guimenu>Settings</guimenu> <guisubmenu>Theme</guisubmenu></menuchoice> menu entry in the menubar. The theme is then switched immediately.</para></listitem>
+			<listitem><para>Animation can be switched on or off as you like from the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Animation</guimenuitem></menuchoice> menu entry in the menubar.</para></listitem>
 			<listitem><para>If you just realized you made a very bad move, you have the possibility to undo your last move from the toolbar, the menubar or with the default undo keyboard shortcut <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>.</para><para>You can keep on undoing moves until you reaches the beginning of the game.</para></listitem>
 			<listitem><para>If you don't know what move to make, you can get a hint from the computer player with the <guibutton>Hint</guibutton> button. The game piece suggested by the &bovo; AI then flashes for a brief period of time.</para></listitem>
 			<listitem><para>When a game is over, the <guibutton>Replay</guibutton> action is enabled, which starts a replay of the last game.</para></listitem>
@@ -228,7 +228,7 @@ of the &kde; Fundamentals.
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
  <answer><para>Yes. To change &bovo;'s visual theme you can use the <menuchoice><guimenu>Settings</guimenu><guisubmenu>Theme</guisubmenu>
-</menuchoice> option on the menubar.</para></answer>
+</menuchoice> menu entry on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play this game? </para></question>
