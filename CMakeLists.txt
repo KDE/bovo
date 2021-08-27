@@ -44,6 +44,7 @@ add_definitions(
     -DQT_NO_URL_CAST_FROM_STRING
     -DQT_USE_QSTRINGBUILDER
 )
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055500)
 
 
 set( bovogame_SRCS
