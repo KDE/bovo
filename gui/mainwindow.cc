@@ -277,6 +277,8 @@ void MainWindow::slotNewGame() {
         m_demoMode = true;
         slotNewDemo();
     } else {
+        Kg::difficulty()->setGameRunning(true);
+
         Dimension dimension(NUMCOLS, NUMCOLS);
         if (m_scene == 0) {
             m_scene = new Scene(m_theme, m_animate);
@@ -341,6 +343,7 @@ void MainWindow::slotNewDemo() {
             this, &MainWindow::slotNewDemoWait);
     statusBar()->showMessage(i18n("Start a new Game to play"));
     m_game->start();
+    Kg::difficulty()->setGameRunning(false);
 }
 
 void MainWindow::slotNewDemoWait() {
