@@ -66,7 +66,6 @@ MainWindow::MainWindow(QWidget* parent)
   m_aiFactory(0), m_animate(true),
   m_winsLabel (new QLabel(i18n("Wins: %1", m_wins))),
   m_lossesLabel (new QLabel(i18n("Losses: %1", m_losses))) {
-    statusBar()->showMessage(QStringLiteral("            "));
     statusBar()->insertPermanentWidget(0, m_winsLabel);
     statusBar()->insertPermanentWidget(1, m_lossesLabel);
 
@@ -91,6 +90,10 @@ MainWindow::MainWindow(QWidget* parent)
     setCentralWidget(m_view);
     m_view->show();
     setupGUI();
+
+    QFontMetrics fm(font());
+    auto base = fm.boundingRect(QLatin1Char('x'));
+    setMinimumSize(base.width() * 45, base.height() * 55);
 }
 
 MainWindow::~MainWindow() {
