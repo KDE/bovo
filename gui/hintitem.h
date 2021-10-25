@@ -41,7 +41,7 @@ class HintItem : public QGraphicsSvgItem {
     Q_OBJECT
 public:
     HintItem(Scene *scene, const Move& move, bool animate = true, qreal fill = 0.75);
-    ~HintItem();
+    ~HintItem() override;
     void killAnimation();
     void kill();
     void setFill(qreal fill);

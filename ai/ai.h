@@ -63,7 +63,7 @@ public:
      * @brief destructs this Ai
      * @description destructs this Ai object
      */
-    virtual ~Ai();
+    ~Ai() override;
     virtual void cancelAndWait() = 0;
 
 public slots:

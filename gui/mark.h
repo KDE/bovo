@@ -42,7 +42,7 @@ class Mark : public QGraphicsSvgItem {
     Q_OBJECT
 public:
     Mark(Scene *scene, const Move& move, bool animate = true, qreal fill = 0.75);
-    ~Mark();
+    ~Mark() override;
     void killAnimation();
     void kill();
     usi row() const;

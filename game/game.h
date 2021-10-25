@@ -113,7 +113,7 @@ public:
      * @brief destructs this Game
      * @description destructs this Game object
      */
-    ~Game();
+    ~Game() override;
 
     /**
      * @brief is it the computer's turn?

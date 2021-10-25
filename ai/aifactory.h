@@ -63,7 +63,7 @@ public:
      * @brief destructs this AiFactory
      * @description destructs this AiFactory object
      */
-    virtual ~AiFactory();
+    ~AiFactory() override;
 
     /**
      * @brief Constructs an Ai with width, height, player and Skill

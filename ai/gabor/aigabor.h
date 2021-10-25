@@ -42,7 +42,7 @@ class AiGabor : public Ai, public AiTimeOver {
     Q_OBJECT
 public:
     explicit AiGabor(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, Player player);
-    virtual ~AiGabor();
+    ~AiGabor() override;
     void cancelAndWait() Q_DECL_OVERRIDE;
     bool isTimeOver() Q_DECL_OVERRIDE;
 

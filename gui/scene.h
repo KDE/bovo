@@ -49,7 +49,7 @@ class Scene : public QGraphicsScene
 
 public:
     explicit Scene(const Theme& theme, bool animation = true);
-    ~Scene();
+    ~Scene() override;
     void activate(bool activate);
     void setGame(Game* game);
     bool isBusy() const;

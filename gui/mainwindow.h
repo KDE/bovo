@@ -56,7 +56,7 @@ class MainWindow : public KXmlGuiWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget* parent=0);
-    ~MainWindow();
+    ~MainWindow() override;
 
 public slots:
     void hint();

@@ -42,7 +42,7 @@ class AiAron : public Ai {
     Q_OBJECT
 public:
     explicit AiAron(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, Player player);
-    virtual ~AiAron();
+    ~AiAron() override;
     void cancelAndWait() Q_DECL_OVERRIDE;
 
 public slots:
