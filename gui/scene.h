@@ -74,16 +74,16 @@ public Q_SLOTS:
     void killMark(Mark *);
 
 protected:
-    bool event(QEvent *event) Q_DECL_OVERRIDE;
+    bool event(QEvent *event) override;
 
 Q_SIGNALS:
     void move(const Move &);
 
 private:
-    void drawBackground(QPainter *p, const QRectF &rect) Q_DECL_OVERRIDE;
-    void drawForeground(QPainter *p, const QRectF &rect) Q_DECL_OVERRIDE;
-    void mousePressEvent(QGraphicsSceneMouseEvent *) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *) Q_DECL_OVERRIDE;
+    void drawBackground(QPainter *p, const QRectF &rect) override;
+    void drawForeground(QPainter *p, const QRectF &rect) override;
+    void mousePressEvent(QGraphicsSceneMouseEvent *) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *) override;
     void killAnimations();
     bool m_activate;
     Game *m_game;

@@ -51,7 +51,7 @@ public:
     usi row() const;
     usi col() const;
     void setFill(qreal fill);
-    QRectF boundingRect() const Q_DECL_OVERRIDE;
+    QRectF boundingRect() const override;
 
 public Q_SLOTS:
     void tick();
@@ -61,7 +61,7 @@ Q_SIGNALS:
     void killed(Mark *thisMark);
 
 protected:
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *widget = nullptr) Q_DECL_OVERRIDE;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *widget = nullptr) override;
 
 private:
     Scene *m_scene;

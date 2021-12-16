@@ -43,13 +43,13 @@ class AiAron : public Ai
 public:
     explicit AiAron(const Dimension &dimension, KgDifficultyLevel::StandardLevel skill, Player player);
     ~AiAron() override;
-    void cancelAndWait() Q_DECL_OVERRIDE;
+    void cancelAndWait() override;
 
 public Q_SLOTS:
-    void changeBoard(const Move &move) Q_DECL_OVERRIDE;
-    void gameOver() Q_DECL_OVERRIDE;
-    void setSkill(KgDifficultyLevel::StandardLevel skill) Q_DECL_OVERRIDE;
-    void slotMove() Q_DECL_OVERRIDE;
+    void changeBoard(const Move &move) override;
+    void gameOver() override;
+    void setSkill(KgDifficultyLevel::StandardLevel skill) override;
+    void slotMove() override;
 
 Q_SIGNALS:
     void move(const Move &move);
