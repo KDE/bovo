@@ -83,6 +83,29 @@ set(bovo_SRCS
 	${bovogui_SRCS}
 	${bovoai_SRCS}
 	${bovogame_SRCS}
+        gui/mainwindow.h
+        gui/mark.h
+        gui/hintitem.h
+        gui/view.h
+        gui/theme.h
+        gui/scene.h
+        ai/gabor/ai_impl.h
+        ai/gabor/ai_interface.h
+        ai/gabor/aigabor.h
+        ai/gabor/node.h
+        ai/gabor/standing.h
+        ai/ai.h
+        ai/aifactory.h
+        ai/aron/aiboard.h
+        ai/aron/aiaron.h
+        ai/aron/aisquare.h
+        game/board.h
+        game/coord.h
+        game/game.h
+        game/square.h
+        game/dimension.h
+        game/common.h
+        game/move.h
 	bovo.qrc
 )
 
