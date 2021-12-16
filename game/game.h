@@ -1,31 +1,31 @@
 /*******************************************************************
-*
-* Copyright 2007  Aron Boström <c02ab@efd.lth.se>
-*
-* Bovo is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2, or (at your option)
-* any later version.
-*
-* Bovo is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Bovo; see the file COPYING.  If not, write to
-* the Free Software Foundation, 51 Franklin Street, Fifth Floor,
-* Boston, MA 02110-1301, USA.
-*
-********************************************************************/
+ *
+ * Copyright 2007  Aron Boström <c02ab@efd.lth.se>
+ *
+ * Bovo is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * Bovo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Bovo; see the file COPYING.  If not, write to
+ * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ ********************************************************************/
 
 /** @file game.h declares class Game in namespace bovo */
 
 #ifndef BOVO_GAME_H
 #define BOVO_GAME_H
 
-#include <QObject>
 #include <QList>
+#include <QObject>
 
 #include <KgDifficulty>
 
@@ -34,9 +34,10 @@
 class QStringList;
 
 /** namespace for ai */
-namespace ai {
-    class Ai;
-    class AiFactory;
+namespace ai
+{
+class Ai;
+class AiFactory;
 } /* namespace ai */
 
 using namespace ai;
@@ -44,10 +45,10 @@ using namespace ai;
 /** namespace for game engine */
 namespace bovo
 {
-    class Board;
-    class Dimension;
-    class Coord;
-    class Move;
+class Board;
+class Dimension;
+class Coord;
+class Move;
 
 /**
  * The Game engine
@@ -74,7 +75,7 @@ namespace bovo
  * }
  * @endcode
  */
-class Game: public QObject
+class Game : public QObject
 {
     Q_OBJECT
 public:
@@ -90,9 +91,12 @@ public:
      * @param playTime time in ms for space between turns in demo and replay
      * @param aiFactory provider of AI implementations
      */
-    Game(const Dimension& dimension, Player startingPlayer,
-         KgDifficultyLevel::StandardLevel skill, DemoMode demoMode, unsigned int playTime,
-         AiFactory* aiFactory);
+    Game(const Dimension &dimension,
+         Player startingPlayer,
+         KgDifficultyLevel::StandardLevel skill,
+         DemoMode demoMode,
+         unsigned int playTime,
+         AiFactory *aiFactory);
 
     /**
      * @brief Re-Constructs a saved Game
@@ -105,9 +109,7 @@ public:
      * @param playTime time in ms for space between turns in demo and replay
      * @param aiFactory provider of AI implementations
      */
-    Game(const Dimension& dimension, const QStringList &restoreGame,
-         KgDifficultyLevel::StandardLevel skill, unsigned int playTime,
-         AiFactory* aiFactory);
+    Game(const Dimension &dimension, const QStringList &restoreGame, KgDifficultyLevel::StandardLevel skill, unsigned int playTime, AiFactory *aiFactory);
 
     /**
      * @brief destructs this Game
@@ -157,7 +159,7 @@ public:
      * @param coord coordinate to verify
      * @return \c true if coordinate is ok, \c false otherwise
      */
-    bool ok(const Coord& coord) const;
+    bool ok(const Coord &coord) const;
 
     /**
      * @brief the player id
@@ -184,7 +186,7 @@ public:
      * @param coord coordinate to query
      * @return \c X, \c O, or \c No
      */
-    Player player(const Coord& coord) const;
+    Player player(const Coord &coord) const;
 
     /**
      * @brief save game
@@ -192,7 +194,7 @@ public:
      * @param filename savegame file
      * @return \c true if game was saved successfully, \c false otherwise
      */
-    bool save(const QString& filename) const;
+    bool save(const QString &filename) const;
 
     /**
      * @brief return game history if it is not over yet
@@ -235,7 +237,7 @@ public Q_SLOTS:
      * @brief make a move
      * @param move move to make
      */
-    void move(const Move& move);
+    void move(const Move &move);
 
     /**
      * @brief start replaying game
@@ -253,13 +255,13 @@ Q_SIGNALS:
      * @brief emitted at game over
      * @param moves Winning moves (winning line)
      */
-    void gameOver(const QList<Move>& moves);
+    void gameOver(const QList<Move> &moves);
 
     /**
      * @brief emitted when board has changed (needs repainting)
      * @param move the Move that has changed the board, player()==No means undo
      */
-    void boardChanged(const Move& move);
+    void boardChanged(const Move &move);
 
     /**
      * @brief emitted when it is the player's turn
@@ -280,7 +282,7 @@ Q_SIGNALS:
      * @brief emitted when replay ends
      * @param moves winning line
      */
-    void replayEnd(const QList<Move>& moves);
+    void replayEnd(const QList<Move> &moves);
 
     /**
      * @brief emitted once this game is allowed to be undoed
@@ -301,13 +303,13 @@ private:
      * @description performs the specified move.
      * @param move move to make
      */
-    void makeMove(const Move& move);
+    void makeMove(const Move &move);
 
     /* get a neighbour coord in a given direction */
-    Coord next(const Coord& coord, usi direction) const;
+    Coord next(const Coord &coord, usi direction) const;
 
     /* calculates if a coord is part of a winning line */
-    short win(const Coord& coord) const;
+    short win(const Coord &coord) const;
 
     /* returns the winning line */
     QList<Move> winningMoves() const;

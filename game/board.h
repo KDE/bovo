@@ -1,23 +1,23 @@
 /*******************************************************************
-*
-* Copyright 2007  Aron Boström <c02ab@efd.lth.se>
-*
-* Bovo is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2, or (at your option)
-* any later version.
-*
-* Bovo is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Bovo; see the file COPYING.  If not, write to
-* the Free Software Foundation, 51 Franklin Street, Fifth Floor,
-* Boston, MA 02110-1301, USA.
-*
-********************************************************************/
+ *
+ * Copyright 2007  Aron Boström <c02ab@efd.lth.se>
+ *
+ * Bovo is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * Bovo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Bovo; see the file COPYING.  If not, write to
+ * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ ********************************************************************/
 
 #ifndef BOVO_BOARD_H
 #define BOVO_BOARD_H
@@ -27,7 +27,8 @@
 /** @file file declaring class Board */
 
 /** namespace for game engine */
-namespace bovo {
+namespace bovo
+{
 
 class Coord;
 class Dimension;
@@ -37,7 +38,7 @@ class Square;
 /**
  * A playing board
  *
- * This class might be somewhat missnamed. It doesn't just keep track of a 
+ * This class might be somewhat missnamed. It doesn't just keep track of a
  * playing board. It also keeps track of a game history, if a player has won,
  * and in that case how it has won.
  *
@@ -56,7 +57,8 @@ class Square;
  * board.setPlayer(Coord(x, y), X);
  * @endcode
  */
-class Board {
+class Board
+{
 public:
     /**
      * @brief Constructs a Board with width and height
@@ -64,7 +66,7 @@ public:
      * by a Dimension
      * @param dimension the Dimension containing the width and height
      */
-    explicit Board(const Dimension& dimension);
+    explicit Board(const Dimension &dimension);
 
     /**
      * @brief destructs this Board
@@ -74,12 +76,12 @@ public:
 
     /**
      * @brief is a Coord empty or set?
-     * @description tells whether a given Coord is marked as empty or 
+     * @description tells whether a given Coord is marked as empty or
      * marked by a player
      * @param coord Coord to check
      * @return @c true if coord is empty, @c false otherwise
      */
-    bool empty(const Coord& coord) const;
+    bool empty(const Coord &coord) const;
 
     /**
      * @brief is Game Over?
@@ -95,7 +97,7 @@ public:
      * @param coord coordinate to verify
      * @return \c true if coord exist, \c false otherwise
      */
-    bool ok(const Coord& coord) const;
+    bool ok(const Coord &coord) const;
 
     /**
      * @brief the player occupying a Coord
@@ -103,7 +105,7 @@ public:
      * @param coord the square to check
      * @return @c X if player 1, @c O if player 2, @c No if empty
      */
-    Player player(const Coord& coord) const;
+    Player player(const Coord &coord) const;
 
     /**
      * @brief set the player of a Coord
@@ -111,11 +113,11 @@ public:
      * playing board.
      * @param move the move to perform
      */
-    void setPlayer(const Move&);
+    void setPlayer(const Move &);
 
 private:
     /* property holding the actual playing board */
-    Square** m_board;
+    Square **m_board;
 
     /* property containing the dimension of the actual playing board */
     Dimension *m_dimension;

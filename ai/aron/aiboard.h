@@ -1,23 +1,23 @@
 /*******************************************************************
-*
-* Copyright 2007  Aron Boström <c02ab@efd.lth.se>
-*
-* Bovo is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2, or (at your option)
-* any later version.
-*
-* Bovo is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with Bovo; see the file COPYING.  If not, write to
-* the Free Software Foundation, 51 Franklin Street, Fifth Floor,
-* Boston, MA 02110-1301, USA.
-*
-********************************************************************/                     
+ *
+ * Copyright 2007  Aron Boström <c02ab@efd.lth.se>
+ *
+ * Bovo is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * Bovo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Bovo; see the file COPYING.  If not, write to
+ * the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ ********************************************************************/
 
 /**
  * @file file declaring the class AiBoard, which in fact is the AI
@@ -33,14 +33,16 @@
 using namespace bovo;
 
 /** namespace for game engine */
-namespace bovo {
-    class Coord;
-    class Dimension;
-    class Move;
+namespace bovo
+{
+class Coord;
+class Dimension;
+class Move;
 } /* namespace bovo */
 
 /** namespace for AI stuff */
-namespace ai {
+namespace ai
+{
 
 class AiSquare;
 
@@ -49,7 +51,7 @@ class AiSquare;
  *
  * This class might be somewhat missnamed. It doesn't just keep track of a
  * playing board on the behalf og the AI. It is the entire AI implementation.
- * it implements two algorithms to calculate best moves and it selects which 
+ * it implements two algorithms to calculate best moves and it selects which
  * move to play. It also can tell if a move is a winning move, but it doesn't
  * track a history yet (but maybe it should?).
  *
@@ -69,7 +71,8 @@ class AiSquare;
  * doSomethingWithAiMoveLikeDisplayingItInTheGui(aiMove);
  * @endcode
  */
-class AiBoard {
+class AiBoard
+{
 public:
     /**
      * @brief Constructs an AiBoard with width, height and Skill
@@ -79,9 +82,7 @@ public:
      * @param height the height
      * @param skill the skill (difficulty level) the AI player will be playing with
      */
-    AiBoard(const usi width, const usi height,
-            KgDifficultyLevel::StandardLevel skill = KgDifficultyLevel::Medium,
-            Player player = O);
+    AiBoard(const usi width, const usi height, KgDifficultyLevel::StandardLevel skill = KgDifficultyLevel::Medium, Player player = O);
 
     /**
      * @brief Constructs an AiBoard with width, height and Skill
@@ -91,9 +92,7 @@ public:
      * @param height the height
      * @param skill the skill (difficulty level) the AI player will be playing with
      */
-    explicit AiBoard(const Dimension& dimension,
-                     KgDifficultyLevel::StandardLevel skill = KgDifficultyLevel::Medium,
-                     Player player=O);
+    explicit AiBoard(const Dimension &dimension, KgDifficultyLevel::StandardLevel skill = KgDifficultyLevel::Medium, Player player = O);
 
     /**
      * @brief destructs this AiBoard
@@ -103,17 +102,17 @@ public:
 
     /**
      * @brief is a Coord empty or set?
-     * @description tells whether a given Coord is marked as empty or 
+     * @description tells whether a given Coord is marked as empty or
      * marked by a player
      * @throw outOfBounds when coord is not on playing board
      * @param coord Coord to check
      * @return @c true if coord is empty, @c false otherwise
      */
-    bool empty(const Coord&) const;
+    bool empty(const Coord &) const;
 
     /**
      * @brief is a Coord empty or set?
-     * @description tells whether a given Coord is marked as empty or 
+     * @description tells whether a given Coord is marked as empty or
      * marked by a player
      * @throw outOfBounds when coord is not on playing board
      * @param x X-part of coordinate to check
@@ -144,7 +143,7 @@ public:
      * @return the moves the AI suggest to play
      * @todo Implement!
      */
-    Coord* moves();
+    Coord *moves();
 
     /**
      * @brief the player occupying a Coord
@@ -153,7 +152,7 @@ public:
      * @return @c X if player 1, @c O if player 2, @c No if empty
      * @throw outOfBounds if coord isn't on the playing board
      */
-    Player player(const Coord&) const;
+    Player player(const Coord &) const;
 
     /**
      * @brief the player occupying a Coord
@@ -168,7 +167,7 @@ public:
     /**
      * @brief set the player of a Coord
      * @description sets which players should occupy a certain square in the
-     * playing board. Returns whether the game ends with this move (i.e. it 
+     * playing board. Returns whether the game ends with this move (i.e. it
      * was the winning move).
      * @param move the Move to place
      * @return @c true if this move resulted in a Game Over,
@@ -177,7 +176,7 @@ public:
      * @throw gameOver if game was already over
      * @throw notValidPlayer if player wasn't X or O
      */
-    bool setPlayer(const Move& move);
+    bool setPlayer(const Move &move);
 
     /**
      * @brief change Skill
@@ -194,7 +193,7 @@ public:
 
 private:
     /* Playing board property. */
-    AiSquare** m_board;
+    AiSquare **m_board;
 
     /* hasn't game really started? */
     bool m_cleanBoard;
@@ -216,29 +215,29 @@ private:
     Coord evaluate() const;
 
     /* returns, adds och sets points on a given square. */
-    uli points(const Coord&) const;
-    void addPoints(const Coord&, const uli points);
-    void setPoints(const Coord&, const uli points);
+    uli points(const Coord &) const;
+    void addPoints(const Coord &, const uli points);
+    void setPoints(const Coord &, const uli points);
 
     /* initialize this class */
     void setup();
 
     /* Do the real calculation of points for a given square.
      * Player is the AI player you're optimizing. */
-    uli value(const Coord&, const usi player) const;
+    uli value(const Coord &, const usi player) const;
 
-    /* value2 performs a second evaluation in order to make out the tiny 
-     * differences that haven't been spotted yet. 
+    /* value2 performs a second evaluation in order to make out the tiny
+     * differences that haven't been spotted yet.
      * Only run this when needed. */
-    uli value2(const Coord&) const;
+    uli value2(const Coord &) const;
 
     /* is this move (coord) a winning move? */
-    bool win(const Coord&) const;
+    bool win(const Coord &) const;
 
-    /* Marks all neighbour (5 squares in each 
-     * direction) as in need of a recalculation 
+    /* Marks all neighbour (5 squares in each
+     * direction) as in need of a recalculation
      * of its points. */
-    void zero(const Coord&); 
+    void zero(const Coord &);
 };
 
 } /* namespace ai */
