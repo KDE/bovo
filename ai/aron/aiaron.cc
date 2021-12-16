@@ -64,7 +64,7 @@ void AiAron::setSkill(KgDifficultyLevel::StandardLevel skill) {
 }
 
 void AiAron::slotMove() {
-    emit move(Move(m_player, m_board->move()));
+    Q_EMIT move(Move(m_player, m_board->move()));
 }
 
 } /* namespace ai */

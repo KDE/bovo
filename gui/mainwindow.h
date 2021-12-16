@@ -58,7 +58,7 @@ public:
     explicit MainWindow(QWidget* parent=0);
     ~MainWindow() override;
 
-public slots:
+public Q_SLOTS:
     void hint();
     void slotNewGame();
     void slotPlayerTurn();

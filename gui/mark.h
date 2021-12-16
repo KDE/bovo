@@ -50,11 +50,11 @@ public:
     void setFill(qreal fill);
     QRectF boundingRect() const Q_DECL_OVERRIDE;
 
-public slots:
+public Q_SLOTS:
     void tick();
     void killTick();
 
-signals:
+Q_SIGNALS:
     void killed(Mark* thisMark);
 
 protected:

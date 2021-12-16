@@ -93,7 +93,7 @@ void HintItem::killTick() {
     update();
     if (m_opacity <= 0.05) {
         m_ticker->stop();
-        emit killed();
+        Q_EMIT killed();
     }
 }
 

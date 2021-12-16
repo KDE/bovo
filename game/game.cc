@@ -171,9 +171,9 @@ void Game::setSkill(KgDifficultyLevel::StandardLevel skill) {
 
 void Game::start() {
     if (computerTurn()) {
-        emit oposerTurn();
+        Q_EMIT oposerTurn();
     } else {
-        emit playerTurn();
+        Q_EMIT playerTurn();
     }
 }
 
@@ -181,7 +181,7 @@ void Game::startRestored() {
     connect(this, &Game::boardChanged,
             m_ai, &Ai::changeBoard);
     foreach (const Move &move, m_history) {
-        emit boardChanged(move);
+        Q_EMIT boardChanged(move);
     }
     connect(this, &Game::oposerTurn, m_ai, &Ai::slotMove,
             Qt::QueuedConnection);
@@ -189,13 +189,13 @@ void Game::startRestored() {
             this,  SLOT(move(Move)));
     if (!m_history.isEmpty() && m_history.last().player() == X) {
         m_curPlayer = O;
-        emit oposerTurn();
+        Q_EMIT oposerTurn();
     } else {
         m_curPlayer = X;
-        emit playerTurn();
+        Q_EMIT playerTurn();
     }
     if (!m_history.isEmpty()) {
-        emit undoAble();
+        Q_EMIT undoAble();
     }
 }
 
@@ -221,7 +221,7 @@ void Game::move(const Move& move) {
     }
     makeMove(move);
     if (tmp_emptyHistory && !m_history.empty() && !m_demoMode) {
-        emit undoAble();
+        Q_EMIT undoAble();
     }
 }
 
@@ -232,7 +232,7 @@ void Game::replay() {
         m_replayIteratorEnd = m_history.constEnd();
         disconnect(this, &Game::replayBegin, this, &Game::replayNext);
         connect(this, &Game::replayBegin, this, &Game::replayNext);
-        emit replayBegin();
+        Q_EMIT replayBegin();
     }
 }
 
@@ -258,29 +258,29 @@ void Game::undoLatest() {
         m_history.removeLast();
         m_board->setPlayer(move);
         m_stepCount--;
-        emit boardChanged(move);
+        Q_EMIT boardChanged(move);
         m_curPlayer = m_playerMark;
-        emit playerTurn();
+        Q_EMIT playerTurn();
     } else if (m_curPlayer == m_playerMark) {
         Move move(No, m_history.last().coord());
         m_history.removeLast();
         m_board->setPlayer(move);
         m_stepCount--;
-        emit boardChanged(move);
+        Q_EMIT boardChanged(move);
         if (m_history.count() == 0) {
             m_curPlayer = m_computerMark;
-            emit oposerTurn();
+            Q_EMIT oposerTurn();
         } else {
             Move move2(No, m_history.last().coord());
             m_history.removeLast();
             m_board->setPlayer(move2);
             m_stepCount--;
-            emit boardChanged(move2);
-            emit playerTurn();
+            Q_EMIT boardChanged(move2);
+            Q_EMIT playerTurn();
         }
     }
     if (m_history.empty() && !m_demoMode) {
-        emit undoNotAble();
+        Q_EMIT undoNotAble();
     }
     m_inUndoState = false;
 }
@@ -290,11 +290,11 @@ void Game::undoLatest() {
 void Game::replayNext() {
     if (m_replayIterator != m_replayIteratorEnd) {
         QTimer::singleShot(m_playTime, this, &Game::replayNext);
-        emit boardChanged(*m_replayIterator);
+        Q_EMIT boardChanged(*m_replayIterator);
         ++m_replayIterator;
     } else {
         m_replaying = false;
-        emit replayEnd(winningMoves()); // FIX:!!!!!!!
+        Q_EMIT replayEnd(winningMoves()); // FIX:!!!!!!!
     }
 }
 
@@ -316,23 +316,23 @@ void Game::makeMove(const Move& move) {
     }
     m_history << move;
     m_curPlayer = (m_curPlayer == X ? O : X );
-    emit boardChanged(move);
+    Q_EMIT boardChanged(move);
     if (m_gameOver) {
         QList<Move> moves = winningMoves();
-        emit gameOver(moves);
+        Q_EMIT gameOver(moves);
         this->disconnect(m_ai);
     } else {
         if (computerTurn()) {
             if (m_demoMode) {
                 QTimer::singleShot(m_playTime, this, &Game::oposerTurn);
             } else {
-                emit oposerTurn();
+                Q_EMIT oposerTurn();
             }
         } else {
             if (m_demoMode) {
                 QTimer::singleShot(m_playTime, this, &Game::playerTurn);
             } else {
-                emit playerTurn();
+                Q_EMIT playerTurn();
             }
         }
     }

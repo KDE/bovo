@@ -262,7 +262,7 @@ void Scene::mousePressEvent( QGraphicsSceneMouseEvent* ev ) {
     row = qMin(NUMCOLS-1, row);
     col = qMax(col, 0);
     col = qMin(NUMCOLS-1, col);
-    emit move(Move(m_player, Coord(col, row)));
+    Q_EMIT move(Move(m_player, Coord(col, row)));
 }
 
 void Scene::removePaintMarker() {

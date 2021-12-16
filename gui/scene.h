@@ -58,7 +58,7 @@ public:
     QPointF cellCenter( int x, int y ) const;
     QPointF cellTopLeft( int x, int y ) const;
 
-public slots:
+public Q_SLOTS:
     void updateBoard(const Move& move);
     void slotPlayerTurn();
     void slotOposerTurn();
@@ -74,7 +74,7 @@ public slots:
 protected:
     bool event(QEvent *event) Q_DECL_OVERRIDE;
 
-signals:
+Q_SIGNALS:
     void move(const Move&);
 
 private:

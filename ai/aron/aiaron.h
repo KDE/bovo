@@ -45,13 +45,13 @@ public:
     ~AiAron() override;
     void cancelAndWait() Q_DECL_OVERRIDE;
 
-public slots:
+public Q_SLOTS:
     void changeBoard(const Move& move) Q_DECL_OVERRIDE;
     void gameOver() Q_DECL_OVERRIDE;
     void setSkill(KgDifficultyLevel::StandardLevel skill) Q_DECL_OVERRIDE;
     void slotMove() Q_DECL_OVERRIDE;
 
-signals:
+Q_SIGNALS:
     void move(const Move& move);
 
 private:

@@ -112,7 +112,7 @@ void AiGabor::slotMoveImpl() {
         QThread::yieldCurrentThread();
     }
     if (!m_canceling) {
-        emit move(Move(m_player, Coord(f.x, f.y)));
+        Q_EMIT move(Move(m_player, Coord(f.x, f.y)));
     }
 }
 

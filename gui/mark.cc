@@ -98,7 +98,7 @@ void Mark::killTick() {
     update();
     if (m_opacity <= 0.1) {
         m_ticker->stop();
-        emit killed(this);
+        Q_EMIT killed(this);
     }
 }
 

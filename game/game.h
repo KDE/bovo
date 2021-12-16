@@ -230,7 +230,7 @@ public:
      */
     void cancelAndWait();
 
-public slots:
+public Q_SLOTS:
     /**
      * @brief make a move
      * @param move move to make
@@ -248,7 +248,7 @@ public slots:
      */
     void undoLatest();
 
-signals:
+Q_SIGNALS:
     /**
      * @brief emitted at game over
      * @param moves Winning moves (winning line)
@@ -292,7 +292,7 @@ signals:
      */
     void undoNotAble();
 
-private slots:
+private Q_SLOTS:
     void replayNext();
 
 private:

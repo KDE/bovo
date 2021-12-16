@@ -66,7 +66,7 @@ public:
     ~Ai() override;
     virtual void cancelAndWait() = 0;
 
-public slots:
+public Q_SLOTS:
     virtual void changeBoard(const Move& move) = 0;
     virtual void gameOver() = 0;
     virtual void setSkill(KgDifficultyLevel::StandardLevel skill) = 0;
