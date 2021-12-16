@@ -125,9 +125,9 @@ void MainWindow::save() const {
 void MainWindow::setupThemes() {
     QStringList themercs;
     const QStringList themeDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
-    Q_FOREACH (const QString &themeDir, themeDirs) {
+    for (const QString &themeDir : themeDirs) {
     const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
-    Q_FOREACH(const QString &d, entries) {
+    for(const QString &d : entries) {
         QString themeFile = themeDir + QLatin1Char('/') + d + QLatin1String("/themerc");
         if (QFile::exists(themeFile))
             themercs.append(themeFile);
@@ -135,7 +135,7 @@ void MainWindow::setupThemes() {
     }
 
     int i = 0;
-    foreach (const QString &themerc, themercs) {
+    for (const QString &themerc : std::as_const(themercs)) {
         KConfig config(themerc);
         KConfigGroup configGroup(&config, "Config");
         const QString pathName = configGroup.readEntry("Path", QString());
@@ -146,7 +146,7 @@ void MainWindow::setupThemes() {
 
 void MainWindow::readConfig() {
     const QString themePath = Settings::theme();
-    foreach (const Theme &tmpTheme, m_themes) {
+    for (const Theme &tmpTheme : m_themes) {
         if (tmpTheme.path() == themePath) {
             m_theme = tmpTheme;
             break;
@@ -203,12 +203,12 @@ void MainWindow::setupActions() {
 
     m_themeAct = new KSelectAction(i18n("Theme"), this);
     QStringList themes;
-    foreach (const Theme &theme, m_themes) {
+    for (const Theme &theme : std::as_const(m_themes)) {
         themes << theme.name();
     }
     m_themeAct->setItems(themes);
     int themeId = 0;
-    foreach (const Theme &theme, m_themes) {
+    for (const Theme &theme : std::as_const(m_themes)) {
         if (theme.path() == m_theme.path()) {
             themeId = theme.id();
             break;
@@ -228,9 +228,9 @@ void MainWindow::setupActions() {
 }
 
 void MainWindow::hint() {
-    if (m_game != 0) {
+    if (m_game != nullptr) {
         if (!m_game->computerTurn()) {
-            if (m_demoAi != 0) {
+            if (m_demoAi != nullptr) {
                 m_demoAi->slotMove();
             }
         }
@@ -238,7 +238,7 @@ void MainWindow::hint() {
 }
 
 void MainWindow::setAnimation(bool enabled) {
-    if (m_scene != 0) {
+    if (m_scene != nullptr) {
         if (enabled != m_animate) {
             m_scene->enableAnimation(enabled);
         }
@@ -249,10 +249,10 @@ void MainWindow::setAnimation(bool enabled) {
 
 void MainWindow::slotNewGame() {
     m_demoMode = false;
-    if (m_game != 0) {
+    if (m_game != nullptr) {
         m_game->cancelAndWait();
-        if (m_scene != 0) {
-            disconnect(m_game, 0, m_scene, 0);
+        if (m_scene != nullptr) {
+            disconnect(m_game, nullptr, m_scene, 0);
         }
         if (!m_game->isGameOver() && m_game->history().size() > 1) {
             m_lossesLabel->setText(i18n("Losses: %1",++m_losses));
@@ -261,18 +261,18 @@ void MainWindow::slotNewGame() {
             m_computerStarts = !m_computerStarts;
         }
         m_game->deleteLater();
-        m_game = 0;
+        m_game = nullptr;
     }
-    if (m_demoAi != 0) {
+    if (m_demoAi != nullptr) {
         m_demoAi->cancelAndWait();
         m_demoAi->deleteLater();
-        m_demoAi = 0;
+        m_demoAi = nullptr;
     }
     QAction* act = actionCollection()->action(QStringLiteral("replay"));
-    if (act != 0) {
+    if (act != nullptr) {
         act->setEnabled(false);
     }
-    if (m_scene == 0 && (m_lastGame.isEmpty())) { //first time, demo time
+    if (m_scene == nullptr && (m_lastGame.isEmpty())) { //first time, demo time
         m_scene = new Scene(m_theme, m_animate);
         m_demoMode = true;
         slotNewDemo();
@@ -280,7 +280,7 @@ void MainWindow::slotNewGame() {
         Kg::difficulty()->setGameRunning(true);
 
         Dimension dimension(NUMCOLS, NUMCOLS);
-        if (m_scene == 0) {
+        if (m_scene == nullptr) {
             m_scene = new Scene(m_theme, m_animate);
             if (!m_lastGame.empty()) {
                 QString tmp = m_lastGame.first();
@@ -320,13 +320,13 @@ void MainWindow::slotNewDemo() {
         // a new game already started, do not start demo
         return;
     }
-    if (m_game != 0) {
+    if (m_game != nullptr) {
         m_game->deleteLater();
-        m_game = 0;
+        m_game = nullptr;
     }
-    if (m_demoAi != 0) {
+    if (m_demoAi != nullptr) {
         m_demoAi->deleteLater();
-        m_demoAi = 0;
+        m_demoAi = nullptr;
     }
     Dimension dimension(NUMCOLS, NUMCOLS);
     m_game = new Game(dimension, O, Kg::difficultyLevel(), Demo, m_playbackSpeed,
@@ -389,7 +389,7 @@ void MainWindow::slotGameOver() {
             increaseLosses();
         }
     }
-    disconnect(m_game, 0, m_demoAi, 0);
+    disconnect(m_game, nullptr, m_demoAi, nullptr);
     m_hintAct->setEnabled(false);
     actionCollection()->action(QStringLiteral("replay"))->setEnabled(true);
     connect(actionCollection()->action(QStringLiteral("replay")), &QAction::triggered,
@@ -405,7 +405,7 @@ void MainWindow::slotOposerTurn() {
 }
 
 void MainWindow::slotUndo() {
-    if (m_game == 0)
+    if (m_game == nullptr)
         return;
     if (m_game->isGameOver()) {
         if (!m_game->boardFull()) {
@@ -434,10 +434,10 @@ void MainWindow::replay() {
     disableUndo();
     disconnect(actionCollection()->action(QStringLiteral("replay")), &QAction::triggered,
             this, &MainWindow::replay);
-    disconnect(m_game, 0, this, 0);
+    disconnect(m_game, nullptr, this, nullptr);
     connect(m_game, &Game::replayEnd,
             this, &MainWindow::reEnableReplay);
-    disconnect(m_game, 0, m_scene, 0);
+    disconnect(m_game, nullptr, m_scene, nullptr);
     connect(m_game, &Game::replayBegin, m_scene, &Scene::replay);
     connect(m_game, &Game::replayEnd, m_scene, &Scene::slotGameOver);
     m_game->replay();
@@ -451,12 +451,12 @@ void MainWindow::reEnableReplay() {
 }
 
 void MainWindow::changeSkill() {
-    if (m_game!=0)
+    if (m_game!=nullptr)
         m_game->setSkill(Kg::difficultyLevel());
 }
 
 void MainWindow::changeTheme(int themeId) {
-    foreach (const Theme &theme, m_themes) {
+    for (const Theme &theme : std::as_const(m_themes)) {
         if (themeId == theme.id()) {
             m_theme = theme;
             m_scene->setTheme(m_theme);

@@ -45,16 +45,16 @@ using namespace bovo;
 namespace gui {
 
 Scene::Scene(const Theme& theme, bool animation)
-  : m_activate(false), m_game(0), m_curCellSize(10.0), m_player(No), m_animation(animation),
+  : m_activate(false), m_game(nullptr), m_curCellSize(10.0), m_player(No), m_animation(animation),
   m_paintMarker(false), m_showLast(false) {
     /** @todo read theme from some configuration, I guess */
     /** @todo read file names from from some configuration, I guess */
-    m_renderer = 0;
+    m_renderer = nullptr;
     loadTheme(theme);
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_hintTimer = new QTimer(this);
     m_hintTimer->setSingleShot(true);
-    m_hintItem = 0;
+    m_hintItem = nullptr;
     setSceneRect( 0, 0, m_curCellSize*(NUMCOLS+2), m_curCellSize*(NUMCOLS+2) );
 }
 
@@ -80,16 +80,17 @@ void Scene::loadTheme(const Theme& theme) {
     m_fill = theme.fill();
     QColor color(theme.backgroundColor());
     QPalette bgPal;
-    foreach (QGraphicsView* view, views()) {
+    const auto vs = views();
+    for (QGraphicsView* view : vs) {
         bgPal.setColor(view->backgroundRole(), color.isValid() ? color : Qt::white);
         view->setPalette(bgPal);
     }
-    if (m_renderer == 0)
+    if (m_renderer == nullptr)
         m_renderer = new QSvgRenderer(theme.svg());
     else
         m_renderer->load(theme.svg());
-    QList<QGraphicsItem*> allMarks = items();
-    foreach (QGraphicsItem* item, allMarks) {
+    const QList<QGraphicsItem*> allMarks = items();
+    for (QGraphicsItem* item : allMarks) {
         if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
             mark->setFill(m_fill);
             mark->update(mark->boundingRect());
@@ -149,8 +150,8 @@ void Scene::updateBoard(const Move& move) {
             invalidate(0, 0, width(), height());
         }
         removeShowLast();
-        QList<QGraphicsItem*> allMarks = items();
-        foreach (QGraphicsItem* item, allMarks) {
+        const QList<QGraphicsItem*> allMarks = items();
+        for (QGraphicsItem* item : allMarks) {
             if (Mark* mark = qgraphicsitem_cast<Mark *>(item)) {
                 if (mark->row() == move.y() && mark->col() == move.x()) {
                     if (m_animation) {
@@ -342,20 +343,20 @@ void Scene::hint(const Move& hint) {
 }
 
 void Scene::destroyHint() {
-    if (m_hintItem != 0) {
+    if (m_hintItem != nullptr) {
         m_hintTimer->disconnect();
         m_hintTimer->stop();
         m_hintItem->killAnimation();
         removeItem(m_hintItem);
         m_hintItem->deleteLater();
-        m_hintItem = 0;
+        m_hintItem = nullptr;
     }
 }
 
 void Scene::hintTimeout() {
     if (!m_animation) {
         destroyHint();
-    } else if (m_hintItem != 0) {
+    } else if (m_hintItem != nullptr) {
         connect(m_hintItem, &HintItem::killed, this, &Scene::destroyHint);
         m_hintItem->kill();
     }
@@ -369,7 +370,7 @@ void Scene::enableAnimation(bool enabled) {
 }
 
 void Scene::killAnimations() {
-    if (m_hintItem != 0) {
+    if (m_hintItem != nullptr) {
         m_hintItem->killAnimation();
     }
 }
@@ -380,8 +381,8 @@ void Scene::killMark(Mark* mark) {
 }
 
 void Scene::replay() {
-    QList<QGraphicsItem*> allMarks = items();
-    foreach (QGraphicsItem* mark, allMarks) {
+    const QList<QGraphicsItem*> allMarks = items();
+    for (QGraphicsItem* mark : allMarks) {
         removeItem(mark);
         delete mark;
     }
