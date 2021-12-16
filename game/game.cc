@@ -165,7 +165,7 @@ QStringList Game::saveLast() const {
 }
 
 void Game::setSkill(KgDifficultyLevel::StandardLevel skill) {
-    if (m_ai!=0)
+    if (m_ai!=nullptr)
         m_ai->setSkill(skill);
 }
 
@@ -386,7 +386,7 @@ short Game::win(const Coord& c) const {
 
 QList<Move> Game::winningMoves() const {
     if (m_winDir == -1) {
-        return QList<Move>();
+        return {};
     }
     QList<Move> moves;
     short dy, dx;

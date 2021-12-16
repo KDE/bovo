@@ -38,11 +38,9 @@ Move::Move(Player player, const Coord& coord)
 }
 
 Move::Move(const Move &m)
- : m_coord(m.m_coord), m_player(m.m_player) {
-}
+  = default;
 
-Move::~Move() {
-}
+Move::~Move() = default;
 
 Coord Move::coord() const {
     return m_coord;

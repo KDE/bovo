@@ -23,11 +23,11 @@
 #include "ai_impl.h"
 #include "node.h"
 
+#include <cassert>
+#include <cstdio>
 #include <cstdlib>
-#include <memory.h>
-#include <assert.h>
 #include <ctime>
-#include <stdio.h>
+#include <memory.h>
 
 // hash table
 static NodeHashData hashData[nodeHashSize];
@@ -40,7 +40,7 @@ bool rand_inited = false;
 AiImpl::AiImpl() : table_size_x(20), table_size_y(20),
 	start_depth(6), max_depth(6), depth_increment(2),
 	force_thinking(false), heur_seed(normal_heur_seed), print_info(true), max_branch(100),
-	timeOver(NULL), rememberedStanding(table_size_x, table_size_y)
+	timeOver(nullptr), rememberedStanding(table_size_x, table_size_y)
 {
 	if (!rand_inited) {
 		rand_inited = true;
@@ -49,8 +49,7 @@ AiImpl::AiImpl() : table_size_x(20), table_size_y(20),
 	memset(hashData, 0, sizeof(hashData));
 }
 
-AiImpl::~AiImpl() {
-}
+AiImpl::~AiImpl() = default;
 
 void AiImpl::newGame() {
 	Standing::initRefresh();
@@ -111,10 +110,10 @@ Field AiImpl::think() {
 			suggestedX = root->steps.front()->lastx;
 			suggestedY = root->steps.front()->lasty;
 			rootValue = 0;
-			act = NULL;
+			act = nullptr;
 		}
 
-		while (act && (timeOver == NULL || !timeOver->isTimeOver())) {
+		while (act && (timeOver == nullptr || !timeOver->isTimeOver())) {
 			// if this is a parent whose child has just been evaluated
 			if (act->child) {
 				if (act->signum > 0) {
@@ -152,7 +151,7 @@ Field AiImpl::think() {
 				}
 
 				delete act->child;
-				act->child = NULL;
+				act->child = nullptr;
 			}
 
 			// if this parent has no more children to process
@@ -241,10 +240,10 @@ Field AiImpl::think() {
 		} else {
 			depth_limit += depth_increment;
 		}
-	} while (depth_limit <= max_depth && (timeOver == NULL || !timeOver->isTimeOver()));
+	} while (depth_limit <= max_depth && (timeOver == nullptr || !timeOver->isTimeOver()));
 	
-	assert((timeOver == NULL || !timeOver->isTimeOver()) || !rememberedStanding.table[bestX][bestY]);
-	return Field(bestX, bestY);
+	assert((timeOver == nullptr || !timeOver->isTimeOver()) || !rememberedStanding.table[bestX][bestY]);
+	return {bestX, bestY};
 }
 
 Field AiImpl::openingBook() {
@@ -255,7 +254,7 @@ Field AiImpl::openingBook() {
 		x += qrand() % 5 - 2;
 		y += qrand() % 5 - 2;
 		while (rememberedStanding.table[x][y]) x++;
-		return Field(x, y);
+		return {x, y};
 	} else if (rememberedStanding.stepCount == 1) {
 		pos_T x, y;
 		x = rememberedStanding.lastx;
@@ -275,14 +274,14 @@ Field AiImpl::openingBook() {
 				y--;
 			}
 		}
-		return Field(x, y);
+		return {x, y};
 	} else if (rememberedStanding.stepCount == 2) {
 		pos_T x1, y1, x2, y2;
 		int dx, dy;
 		x1 = previousStandings.last().lastx;
 		y1 = previousStandings.last().lasty;
 		if (!(1 <= x1 && x1 < table_size_x - 1 && 1 <= y1 && y1 < table_size_y - 1)) {
-			return Field(max_table_size, max_table_size);
+			return {max_table_size, max_table_size};
 		}
 		x2 = rememberedStanding.lastx;
 		y2 = rememberedStanding.lasty;
@@ -290,25 +289,25 @@ Field AiImpl::openingBook() {
 		dy = (int) y1 - (int) y2;
 		if (-1 <= dx && dx <= 1 && -1 <= dy && dy <= 1) {
 			if (dx == 0) {
-				return Field((int) x1 + (qrand() % 2) * 2 - 1, (int) y1 + qrand() % 3 - 1);
+				return {static_cast<pos_T>((int) x1 + (qrand() % 2) * 2 - 1), static_cast<pos_T>((int) y1 + qrand() % 3 - 1)};
 			}
 			if (dy == 0) {
-				return Field((int) x1 + qrand() % 3 - 1, (int) y1 + (qrand() % 2) * 2 - 1);
+				return {static_cast<pos_T>((int) x1 + qrand() % 3 - 1), static_cast<pos_T>((int) y1 + (qrand() % 2) * 2 - 1)};
 			}
 			if (qrand() % 2) {
 				if (qrand() % 2) {
-					return Field((int) x1 + dx, y1);
+					return {static_cast<pos_T>((int) x1 + dx), y1};
 				} else {
-					return Field(x1, (int) y1 + dy);
+					return {x1, static_cast<pos_T>((int) y1 + dy)};
 				}
 			} else {
 				if (qrand() % 2) {
-					return Field((int) x1 - dx, (int) y1 + dy);
+					return {static_cast<pos_T>((int) x1 - dx), static_cast<pos_T>((int) y1 + dy)};
 				} else {
-					return Field((int) x1 + dx, (int) y1 - dy);
+					return {static_cast<pos_T>((int) x1 + dx), static_cast<pos_T>((int) y1 - dy)};
 				}
 			}
 		}
 	}
-	return Field(max_table_size, max_table_size);
+	return {max_table_size, max_table_size};
 }

@@ -39,8 +39,7 @@ AiFactory::AiFactory() {
     m_ai = 0;
 }
 
-AiFactory::~AiFactory() {
-}
+AiFactory::~AiFactory() = default;
 
 Ai* AiFactory::createAi(const Dimension& dimension, KgDifficultyLevel::StandardLevel skill, 
        Player player, DemoMode demoMode) const {
@@ -53,7 +52,7 @@ Ai* AiFactory::createAi(const Dimension& dimension, KgDifficultyLevel::StandardL
             return new AiAron(dimension, skill, player);
         } else {
             qFatal("Invalid AI!");
-            return 0;
+            return nullptr;
         }
     }
 }

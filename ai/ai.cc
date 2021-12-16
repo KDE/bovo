@@ -32,8 +32,7 @@
 /** namespace for AI stuff */
 namespace ai {
 
-Ai::~Ai() {
-}
+Ai::~Ai() = default;
 
 } /* namespace ai */
 

@@ -50,8 +50,8 @@ void View::resizeEvent( QResizeEvent* ev ) {
 }
 
 QSize View::sizeHint() const {
-    return QSize(static_cast<int>(m_scene->width()),
-                 static_cast<int>(m_scene->height()));
+    return {static_cast<int>(m_scene->width()),
+                 static_cast<int>(m_scene->height())};
 }
 
 } /* namespace gui */

@@ -59,7 +59,7 @@ Q_SIGNALS:
 
 protected:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem*,
-               QWidget* widget=0) Q_DECL_OVERRIDE;
+               QWidget* widget=nullptr) Q_DECL_OVERRIDE;
 
 private:
     Scene* m_scene;

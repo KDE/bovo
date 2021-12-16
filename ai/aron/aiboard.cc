@@ -27,10 +27,10 @@
 
 #include <ctime>
 
-#include <vector>
-#include <iostream>
-#include <stdlib.h>
 #include <algorithm>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
 
 #include "aisquare.h"
 #include "coord.h"
@@ -167,12 +167,12 @@ Coord AiBoard::evaluate() const {
     std::vector<std::pair<uli, Coord> > v, v2, v3;
     for (int x = 0; x < m_dimension->width(); ++x) {
         for (int y = 0; y < m_dimension->height(); ++y) {
-            v.push_back(make_pair(points(Coord(x, y)), Coord(x, y)));
+            v.emplace_back(points(Coord(x, y)), Coord(x, y));
         }
     }
     sort(v.begin(), v.end(), cmp);
     uli max = v.begin()->first;
-    for (vector<pair<uli, Coord> >::const_iterator it = v.begin(); 
+    for (auto it = v.begin(); 
       it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
@@ -228,9 +228,9 @@ Coord AiBoard::evaluate() const {
     } else if (v2.size() == 1) {
         return v2.begin()->second;
     }
-    for (vector<pair<uli, Coord> >::const_iterator it = v2.begin(); 
+    for (auto it = v2.begin(); 
       it != v2.end(); ++it) {
-        v3.push_back(make_pair(value2(it->second), it->second));
+        v3.emplace_back(value2(it->second), it->second);
     }
     sort(v3.begin(), v3.end(), cmp);
     if (v3.size() > 1) {

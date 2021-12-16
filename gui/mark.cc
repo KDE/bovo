@@ -40,7 +40,7 @@ Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphics
     setElementId(QString(move.player() == X ? QStringLiteral("x%1") : QStringLiteral("o%1"))
             .arg(QString::number(qrand() % 5 + 1)));
     m_tick = 20;
-    m_ticker = 0;
+    m_ticker = nullptr;
     if (animate) {
         m_ticker = new QTimer(this);
         m_opacity = 0.0;
@@ -65,18 +65,18 @@ QRectF Mark::boundingRect() const {
     qreal width = m_scene->squareSize();
     qreal height = width;
     qreal margin = (1.0-m_fill) * width / 2.0;
-    return QRectF( -width / 2.0  + margin,
+    return { -width / 2.0  + margin,
                 -height / 2.0 + margin,
                 width  - 2.0*margin,
-                height - 2.0*margin);
+                height - 2.0*margin};
 }
 
 void Mark::killAnimation() {
-    if (m_ticker != 0) {
+    if (m_ticker != nullptr) {
         m_ticker->stop();
-        disconnect(m_ticker, 0, this, 0);
+        disconnect(m_ticker, nullptr, this, nullptr);
         m_ticker->deleteLater();
-        m_ticker = 0;
+        m_ticker = nullptr;
         m_opacity = 1.0;
         update();
     }

@@ -29,12 +29,12 @@
 #include "standing.h"
 
 // list of following steps
-typedef QLinkedList<Standing*> steps_T;
+using steps_T = QLinkedList<Standing *>;
 // type of hash value
-typedef unsigned long long hash_T;
+using hash_T = unsigned long long;
 
 // hash table entry type
-typedef index_T entry_type_T;
+using entry_type_T = index_T;
 enum { exact = 1, lower_bound = 2, upper_bound = 3 };
 
 //pragmas are not in the C++ standard and Sun Studio does not support the pack(x, y) one

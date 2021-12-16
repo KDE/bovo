@@ -21,12 +21,12 @@
 
 #include "standing.h"
 
+#include <QString>
+#include <cassert>
 #include <cstdlib>
 #include <memory.h>
-#include <assert.h>
-#include <QString>
 
-typedef QString string;
+using string = QString;
 
 // these are used by refresh() and getSuggestions()
 const static PatternCount suggestValues = { {0, 8, 8, 6, 5, 3}, {0, 7, 7, 4, 2, 1} };
@@ -284,7 +284,7 @@ void Standing::refresh(sample_T& sample_vect, PatternCount& local, int inv, posf
 	PatternCount newCount;
 	memset(newCount, 0, sizeof(newCount));
 
-	pos_T sample_size = (pos_T) sample_vect.size();
+	auto sample_size = (pos_T) sample_vect.size();
 	mark_T sample[2 * max_table_size - 1];
 	for (pos_T i = 0; i < sample_size; ++i) {
 		sample[i] = sample_vect[i];

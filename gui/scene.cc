@@ -95,7 +95,7 @@ void Scene::loadTheme(const Theme& theme) {
             mark->setFill(m_fill);
             mark->update(mark->boundingRect());
         }
-        else if (HintItem* hintItem = qgraphicsitem_cast<HintItem *>(item)) {
+        else if (auto hintItem = qgraphicsitem_cast<HintItem *>(item)) {
             hintItem->setFill(m_fill);
             hintItem->update(hintItem->boundingRect());
         }
@@ -172,7 +172,7 @@ QPointF Scene::cellCenter(int x, int y) const {
 }
 
 QPointF Scene::cellTopLeft(int x, int y) const {
-    return QPointF((x+1) * m_curCellSize, (y+1) * m_curCellSize);
+    return {(x+1) * m_curCellSize, (y+1) * m_curCellSize};
 }
 
 void Scene::drawBackground(QPainter *p, const QRectF&) {

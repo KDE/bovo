@@ -42,7 +42,7 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
             .arg(QString::number(qrand() % 5 + 1)));
     m_tick = 16;
     m_tickUp = true;
-    m_ticker = 0;
+    m_ticker = nullptr;
     if (animate) {
         m_ticker = new QTimer(this);
         m_opacity = 0.0;
@@ -57,7 +57,7 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
 
 HintItem::~HintItem() {
     if (m_ticker) {
-        disconnect(m_ticker, 0, this, 0);
+        disconnect(m_ticker, nullptr, this, nullptr);
         m_ticker->stop();
         m_ticker->deleteLater();
     }
@@ -67,17 +67,17 @@ QRectF HintItem::boundingRect() const {
     qreal width = m_scene->squareSize();
     qreal height = width;
     qreal margin = (1.0-m_fill) * width / 2.0;
-    return QRectF( -width / 2.0  + margin,
+    return { -width / 2.0  + margin,
                 -height / 2.0 + margin,
                 width  - 2.0*margin,
-                height - 2.0*margin);
+                height - 2.0*margin};
 }
 
 
 void HintItem::killAnimation() {
     if (m_ticker) {
         m_ticker->stop();
-        disconnect(m_ticker, 0, this, 0);
+        disconnect(m_ticker, nullptr, this, nullptr);
         m_opacity = 0.4;
         update();
     }

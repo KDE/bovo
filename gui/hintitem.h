@@ -55,7 +55,7 @@ Q_SIGNALS:
     void killed();
 
 protected:
-    void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=0) Q_DECL_OVERRIDE;
+    void paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget* widget=nullptr) Q_DECL_OVERRIDE;
 
 private:
     Scene* m_scene;

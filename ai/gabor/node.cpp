@@ -23,11 +23,11 @@
 #include "node.h"
 #include "ai_impl.h"
 
-#include <assert.h>
+#include <cassert>
 
 Node::Node(Standing* _standing, AiImpl* ai):
 	standing(_standing),
-	parent(NULL), child(NULL), depth(0),
+	parent(nullptr), child(nullptr), depth(0),
 	signum(_standing->current == 0 ? 1 : -1), alpha(MinHeur - 1), beta(MaxHeur + 1), is_exact(false),
 	evaluated(false), depth_limit(ai->depth_limit), max_branch(ai->max_branch)
 {
@@ -36,7 +36,7 @@ Node::Node(Standing* _standing, AiImpl* ai):
 
 Node::Node(Standing* _standing, Node* _parent):
 	standing(_standing),
-	parent(_parent), child(NULL), depth(_parent->depth + 1),
+	parent(_parent), child(nullptr), depth(_parent->depth + 1),
 	signum(-(_parent->signum)), alpha(_parent->alpha), beta(_parent->beta), is_exact(false),
 	evaluated(false), depth_limit(_parent->depth_limit), max_branch(_parent->max_branch)
 {
@@ -69,7 +69,7 @@ void Node::generateSteps() {
 		pos_T x = s->x;
 		pos_T y = s->y;
 		assert(!standing->table[x][y]);
-		Standing* p = new Standing(*this->standing);
+		auto p = new Standing(*this->standing);
 		p->step(x, y);
 
 		heur_T pv = p->hval * signum;

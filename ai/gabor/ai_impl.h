@@ -28,7 +28,7 @@
 #include "ai_interface.h"
 #include "standing.h"
 
-typedef QLinkedList<Standing> previous_standings_T;
+using previous_standings_T = QLinkedList<Standing>;
 
 class AiImpl {
 public:

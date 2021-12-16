@@ -23,7 +23,7 @@
 #include "ai_interface.h"
 #include "ai_impl.h"
 
-#include <assert.h>
+#include <cassert>
 
 AiInterface::AiInterface() {
 	aiImpl = new AiImpl();

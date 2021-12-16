@@ -61,9 +61,9 @@ using namespace ai;
 namespace gui {
 
 MainWindow::MainWindow(QWidget* parent)
-  : KXmlGuiWindow(parent), m_scene(0), m_game(0), m_wins(0),
-  m_losses(0), m_computerStarts(false), m_demoAi(0),
-  m_aiFactory(0), m_animate(true),
+  : KXmlGuiWindow(parent), m_scene(nullptr), m_game(nullptr), m_wins(0),
+  m_losses(0), m_computerStarts(false), m_demoAi(nullptr),
+  m_aiFactory(nullptr), m_animate(true),
   m_winsLabel (new QLabel(i18n("Wins: %1", m_wins))),
   m_lossesLabel (new QLabel(i18n("Losses: %1", m_losses))) {
     statusBar()->insertPermanentWidget(0, m_winsLabel);
@@ -106,7 +106,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::save() const {
-    if (m_game != 0) {
+    if (m_game != nullptr) {
         m_scene->activate(false);
         QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, QStringLiteral("bovorc"));
         KConfig savegame(rc);
@@ -186,7 +186,7 @@ void MainWindow::setupActions() {
     KStandardGameAction::gameNew(this, SLOT(slotNewGame()), actionCollection());
     KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 
-    QAction *replayAct = new QAction(QIcon::fromTheme( QStringLiteral( "media-playback-start" )),
+    auto replayAct = new QAction(QIcon::fromTheme( QStringLiteral( "media-playback-start" )),
                             i18n("&Replay"), this);
     actionCollection()->addAction( QStringLiteral( "replay" ), replayAct);
     replayAct->setToolTip(i18n("Replay game"));
@@ -196,7 +196,7 @@ void MainWindow::setupActions() {
     m_hintAct = KStandardGameAction::hint(this, SLOT(hint()), actionCollection());
     m_hintAct->setEnabled(false);
 
-    KToggleAction *animAct = new KToggleAction(i18n("&Animation"),this);
+    auto animAct = new KToggleAction(i18n("&Animation"),this);
     actionCollection()->addAction( QStringLiteral( "animation" ), animAct);
     animAct->setChecked(m_animate);
     connect(animAct, &QAction::toggled, this, &MainWindow::setAnimation);
@@ -252,7 +252,7 @@ void MainWindow::slotNewGame() {
     if (m_game != nullptr) {
         m_game->cancelAndWait();
         if (m_scene != nullptr) {
-            disconnect(m_game, nullptr, m_scene, 0);
+            disconnect(m_game, nullptr, m_scene, nullptr);
         }
         if (!m_game->isGameOver() && m_game->history().size() > 1) {
             m_lossesLabel->setText(i18n("Losses: %1",++m_losses));

@@ -29,8 +29,7 @@ Dimension::Dimension(usi width, usi height)
 }
 
 Dimension::Dimension(const Dimension& dimension) 
-  : m_height(dimension.m_height), m_width(dimension.m_width) {
-}
+   = default;
 
 usi Dimension::height() const {
     return m_height;

@@ -29,11 +29,11 @@
 #include "ai_interface.h"
 
 // a mark on the table
-typedef unsigned char mark_T;
+using mark_T = unsigned char;
 // occurrences of a certain position
-typedef unsigned char count_T;
+using count_T = unsigned char;
 // small index for a constant array
-typedef unsigned char index_T;
+using index_T = unsigned char;
 
 // table symbols indexed with player number
 const mark_T mark[] = {'o', 'x', '!', '\0'};
@@ -44,10 +44,10 @@ typedef mark_T table_T[max_table_size][max_table_size];
 typedef count_T suggest_T[2][max_table_size][max_table_size];
 
 // heuristic type
-typedef signed short heur_T;
+using heur_T = short;
 
 // type for total number of marks on the table
-typedef unsigned short stepCount_T;
+using stepCount_T = unsigned short;
 
 // maximal and minimal value of the heuristic function
 const heur_T MaxHeur = 10000;
@@ -67,13 +67,13 @@ const index_T heurLevels = 6;
 typedef count_T PatternCount[2][heurLevels];
 
 // a row, column or diagonal of the table
-typedef QVector<mark_T> sample_T;
+using sample_T = QVector<mark_T>;
 // interesting fields for the two players for the next step
-typedef QLinkedList<Field> suggestions_T;
+using suggestions_T = QLinkedList<Field>;
 
 class Standing;
 // callback function to convert a position of the sample into coordinates, and update suggestions accordingly
-typedef void (Standing::*posf_T)(pos_T pos, int inv, count_T value0, count_T value1);
+using posf_T = void (Standing::*)(pos_T, int, count_T, count_T);
 
 // game state class
 class Standing {

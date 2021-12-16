@@ -24,7 +24,7 @@
 #define BOVO_AI_INTERFACE_H
 
 // a coordinate of the table
-typedef unsigned char pos_T;
+using pos_T = unsigned char;
 // memory allocated for a standing
 const pos_T max_table_size = 22;
 
@@ -41,7 +41,7 @@ class AiImpl;
 
 class AiTimeOver {
 public:
-    virtual ~AiTimeOver() {}
+    virtual ~AiTimeOver() = default;
     virtual bool isTimeOver() = 0;
 };
 

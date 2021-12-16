@@ -31,10 +31,10 @@
 namespace bovo {
 
 /* a very short positive natural number, such as a X or Y coordinate */
-typedef unsigned short int usi;
+using usi = unsigned short;
 
 /* a very long positive natural number, such as score for a certain square */
-typedef unsigned long int uli;
+using uli = unsigned long;
 
 /**
  * @brief Exception for a busy square

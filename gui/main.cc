@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
     if( app.isSessionRestored() ) {
         kRestoreMainWindows<MainWindow>();
     } else {
-        MainWindow *mainWin = new MainWindow();
+        auto mainWin = new MainWindow();
         mainWin->show();
     }
 

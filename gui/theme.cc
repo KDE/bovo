@@ -32,8 +32,7 @@
 
 namespace gui {
 
-Theme::Theme() {
-}
+Theme::Theme() = default;
 
 Theme::Theme(const QString& path, const int id)
   : m_id(id), m_path(path) {
