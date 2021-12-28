@@ -24,14 +24,13 @@
 #ifndef BOVO_GAME_H
 #define BOVO_GAME_H
 
+#include <KgDifficulty>
 #include <QList>
 #include <QObject>
-
-#include <KgDifficulty>
+#include <QStringList>
 
 #include "common.h"
 
-class QStringList;
 
 /** namespace for ai */
 namespace ai
