@@ -9,12 +9,17 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(bovo VERSION ${RELEASE_SERVICE_VERSION})
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.89.0")
-
+set (KF5_MIN_VERSION "5.90.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
+include(KDEInstallDirs)
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6SvgWidgets)
+endif()
+find_package(Qt${QT_MAJOR_VERSION}QuickWidgets ${REQUIRED_QT_VERSION} CONFIG)
+
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 	    CoreAddons
 	    Crash
@@ -24,7 +29,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 	    )
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
-include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
@@ -115,7 +119,6 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/game
 	${CMAKE_SOURCE_DIR}/gui
 	${CMAKE_SOURCE_DIR}/ai
-	${Qt5Concurrent_INCLUDE_DIRS}
 	)
 
 kconfig_add_kcfg_files(bovo_SRCS gui/settings.kcfgc)
@@ -126,11 +129,16 @@ add_executable(bovo ${bovo_SRCS})
 target_link_libraries(bovo
 	KF5::XmlGui
 	KF5::I18n
-	Qt::Svg
 	KF5KDEGames
 	KF5::DBusAddons
 	KF5::Crash
+        Qt${QT_MAJOR_VERSION}::Svg
+        Qt${QT_MAJOR_VERSION}::Concurrent
 )
+
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(bovo Qt6::SvgWidgets)
+endif()
 
 add_subdirectory (themes)
 add_subdirectory (icons)
