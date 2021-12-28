@@ -35,13 +35,16 @@ using namespace gui;
 int main(int argc, char **argv) {
 
     // Fixes blurry icons with fractional scaling
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
     QApplication app(argc, argv);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     Kdelibs4ConfigMigrator migrate(QStringLiteral("bovo"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("bovorc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("bovoui.rc"));
     migrate.migrate();
-
+#endif
     KLocalizedString::setApplicationDomain("bovo");
 
     KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
