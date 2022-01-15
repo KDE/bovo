@@ -42,13 +42,6 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # re-enabling exceptions (turned off in KDE)
 kde_enable_exceptions()
-
-add_definitions(
-    -DQT_NO_CAST_FROM_ASCII
-    -DQT_NO_CAST_TO_ASCII
-    -DQT_NO_CAST_FROM_BYTEARRAY
-    -DQT_NO_URL_CAST_FROM_STRING
-)
 #add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055900)
 
