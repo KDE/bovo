@@ -44,7 +44,8 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_enable_exceptions()
 #add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055900)
-
+# Force c++11 as random_shuffle is removed in freebsd c++17
+set(CMAKE_CXX_STANDARD 11)
 
 set( bovogame_SRCS
 	game/game.cc

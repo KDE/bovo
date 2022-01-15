@@ -135,7 +135,7 @@ void MainWindow::setupThemes() {
     }
 
     int i = 0;
-    for (const QString &themerc : std::as_const(themercs)) {
+    for (const QString &themerc : qAsConst(themercs)) {
         KConfig config(themerc);
         KConfigGroup configGroup(&config, "Config");
         const QString pathName = configGroup.readEntry("Path", QString());
@@ -203,12 +203,12 @@ void MainWindow::setupActions() {
 
     m_themeAct = new KSelectAction(i18n("Theme"), this);
     QStringList themes;
-    for (const Theme &theme : std::as_const(m_themes)) {
+    for (const Theme &theme : qAsConst(m_themes)) {
         themes << theme.name();
     }
     m_themeAct->setItems(themes);
     int themeId = 0;
-    for (const Theme &theme : std::as_const(m_themes)) {
+    for (const Theme &theme : qAsConst(m_themes)) {
         if (theme.path() == m_theme.path()) {
             themeId = theme.id();
             break;
@@ -456,7 +456,7 @@ void MainWindow::changeSkill() {
 }
 
 void MainWindow::changeTheme(int themeId) {
-    for (const Theme &theme : std::as_const(m_themes)) {
+    for (const Theme &theme : qAsConst(m_themes)) {
         if (themeId == theme.id()) {
             m_theme = theme;
             m_scene->setTheme(m_theme);

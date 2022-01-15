@@ -147,7 +147,7 @@ bool Game::save(const QString& filename) const {
     QString fileContent;
     fileContent.append(QStringLiteral("<bovo width=\"%1\" height=\"%2\">")
             .arg(QStringLiteral("")).arg(QStringLiteral("")));
-    for (const Move &move : std::as_const(m_history)) {
+    for (const Move &move : qAsConst(m_history)) {
         fileContent.append(QStringLiteral("<move player=\"%1\" x=\"%2\" y=\"%3\" />").
                 arg(move.player()).arg(move.x()).arg(move.y()));
     }
@@ -157,7 +157,7 @@ bool Game::save(const QString& filename) const {
 
 QStringList Game::saveLast() const {
     QStringList save;
-    for (const Move &move : std::as_const(m_history)) {
+    for (const Move &move : qAsConst(m_history)) {
         save << QStringLiteral("%1:%2,%3").arg(move.player())
                 .arg(move.x()).arg(move.y());
     }
@@ -180,7 +180,7 @@ void Game::start() {
 void Game::startRestored() {
     connect(this, &Game::boardChanged,
             m_ai, &Ai::changeBoard);
-    for (const Move &move : std::as_const(m_history)) {
+    for (const Move &move : qAsConst(m_history)) {
         Q_EMIT boardChanged(move);
     }
     connect(this, &Game::oposerTurn, m_ai, &Ai::slotMove,
