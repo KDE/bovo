@@ -121,6 +121,7 @@ ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
 
 target_link_libraries(bovo
+	KF5::CoreAddons
 	KF5::XmlGui
 	KF5::I18n
 	KF5KDEGames
