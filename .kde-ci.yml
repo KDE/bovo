@@ -11,3 +11,5 @@ Dependencies:
     'frameworks/kdbusaddons': '@stable'
     'frameworks/kdoctools': '@stable'
     'frameworks/kxmlgui': '@stable'
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD']
