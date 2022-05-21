@@ -139,6 +139,9 @@ add_subdirectory (themes)
 add_subdirectory (icons)
 add_subdirectory (doc)
 
+ki18n_install(po)
+kdoctools_install(po)
+
 install (TARGETS bovo ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS org.kde.bovo.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install (FILES org.kde.bovo.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
