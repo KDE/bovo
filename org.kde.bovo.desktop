@@ -2,7 +2,6 @@
 Type=Application
 Exec=bovo -qwindowtitle %c
 Icon=bovo
-Terminal=false
 StartupNotify=true
 X-DBUS-StartupType=Multi
 X-DBUS-ServiceName=org.kde.bovo
