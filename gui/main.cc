@@ -53,9 +53,7 @@ int main(int argc, char **argv) {
     aboutData.addAuthor(i18n("Aron Boström"),i18n("Author"),
                         QStringLiteral("aron.bostrom@gmail.com"));
 
-    aboutData.setOrganizationDomain(QByteArray("kde.org"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("bovo")));
-    aboutData.setProductName(QByteArray("bovo"));
 
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
