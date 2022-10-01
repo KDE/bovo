@@ -22,6 +22,7 @@
   <name xml:lang="hu">Bovo</name>
   <name xml:lang="id">Bovo</name>
   <name xml:lang="it">Bovo</name>
+  <name xml:lang="ka">Bovo</name>
   <name xml:lang="ko">Bovo</name>
   <name xml:lang="nds">Bovo</name>
   <name xml:lang="nl">Bovo</name>
@@ -60,6 +61,7 @@
   <summary xml:lang="hu">Ötöt egy sorba táblajáték</summary>
   <summary xml:lang="id">Permainan kartu "five in a row"</summary>
   <summary xml:lang="it">Gioco da tavolo «Five in a row»</summary>
+  <summary xml:lang="ka">"ხუთი ზედიზედ" სამაგიდო თამაში</summary>
   <summary xml:lang="ko">오목 게임</summary>
   <summary xml:lang="nl">Bordspel "Vijf-op-een-rij"</summary>
   <summary xml:lang="nn">«Fem på rad»-spel</summary>
