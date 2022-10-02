@@ -1,0 +1,164 @@
+# translation of bovo.po to Francais
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Mickael Sibelle <kimael@gmail.com>, 2007, 2008.
+# Sebastien Renard <renard@kde.org>, 2013.
+# xavier <xavier.besnard@neuf.fr>, 2013.
+# Simon Depiets <sdepiets@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bovo\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2017-05-09 16:29+0800\n"
+"Last-Translator: Simon Depiets <sdepiets@gmail.com>\n"
+"Language-Team: French <kde-francophone@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 2.0\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Mickaël Sibelle, Simon Depiets"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kimael@gmail.com, sdepiets@gmail.com"
+
+#. i18n: ectx: label, entry (theme), group (bovo)
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#, kde-format
+msgid "Theme"
+msgstr "Thème"
+
+#. i18n: ectx: label, entry (playbackSpeed), group (bovo)
+#: gui/bovo.kcfg:13
+#, kde-format
+msgid "Speed of demo and replay playback."
+msgstr "Vitesse de la démonstration et des parties enregistrées."
+
+#. i18n: ectx: label, entry (animation), group (bovo)
+#: gui/bovo.kcfg:19
+#, kde-format
+msgid "Whether moves should be animated or not."
+msgstr "Détermine si les déplacements doivent être animés ou non."
+
+#. i18n: ectx: label, entry (ai), group (bovo)
+#: gui/bovo.kcfg:23
+#, kde-format
+msgid "AI engine to use."
+msgstr "Moteur d'IA à utiliser."
+
+#: gui/main.cc:50
+#, kde-format
+msgid "Bovo"
+msgstr "Bovo"
+
+#: gui/main.cc:51
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr "Jeu de plateau « Cinq-en-ligne » pour KDE"
+
+#: gui/main.cc:52
+#, kde-format
+msgid "(c) 2002-2007, Aron Boström"
+msgstr "(c) 2002-2007, Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Aron Boström"
+msgstr "Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Author"
+msgstr "Auteur"
+
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
+#, kde-format
+msgid "Wins: %1"
+msgstr "Victoires : %1"
+
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
+#, kde-format
+msgid "Losses: %1"
+msgstr "Défaites : %1"
+
+#: gui/mainwindow.cc:190
+#, kde-format
+msgid "&Replay"
+msgstr "&Revoir"
+
+#: gui/mainwindow.cc:192
+#, kde-format
+msgid "Replay game"
+msgstr "Revoir une partie"
+
+#: gui/mainwindow.cc:193
+#, kde-format
+msgid "Replays your last game for you to watch."
+msgstr ""
+"Permet de revoir votre dernière partie pour vous permettre de l'analyser."
+
+#: gui/mainwindow.cc:199
+#, kde-format
+msgid "&Animation"
+msgstr "&Animation"
+
+#: gui/mainwindow.cc:344
+#, kde-format
+msgid "Start a new Game to play"
+msgstr "Démarrer une nouvelle partie"
+
+#: gui/mainwindow.cc:382
+#, kde-format
+msgid "GAME OVER. Tie!"
+msgstr "Partie terminée. Égalité !"
+
+#: gui/mainwindow.cc:385
+#, kde-format
+msgid "GAME OVER. You won!"
+msgstr "Partie terminée. Vous avez gagné !"
+
+#: gui/mainwindow.cc:388
+#, kde-format
+msgid "GAME OVER. You lost!"
+msgstr "Partie terminée. Vous avez perdu !"
+
+#: gui/mainwindow.cc:400
+#, kde-format
+msgid "It is your turn."
+msgstr "C'est à votre tour."
+
+#: gui/mainwindow.cc:404
+#, kde-format
+msgid "Waiting for computer."
+msgstr "En attente de l'ordinateur."
+
+#: gui/mainwindow.cc:432
+#, kde-format
+msgid "Replaying game"
+msgstr "Revue de la partie"
+
+#: gui/mainwindow.cc:448
+#, kde-format
+msgid "Game replayed."
+msgstr "Fin de revue de la partie."
+
+#~ msgid "Difficulty level: strength of the computer player."
+#~ msgstr "Niveau de difficulté : force du joueur dirigé par l'ordinateur."
+
+#~ msgid "You won!"
+#~ msgstr "Vous avez gagné !"
+
+#~ msgid "You lost!"
+#~ msgstr "Vous avez perdu !"

@@ -1,0 +1,612 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Підручник з &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>21 червня 2021 року</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+	<para
+>У цій документації описано гру &bovo; версії 1.1.</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>гра</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>аркада</keyword>
+	<keyword
+>дошка</keyword>
+	<keyword
+>хрестики і нулики</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>два гравці</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>нулики</keyword>
+	<keyword
+>хрестики</keyword>
+	<keyword
+>Гомоку</keyword>
+	<keyword
+>П’ять-у-рядок</keyword>
+	<keyword
+>Connect5</keyword>
+	<keyword
+>Гра на дошці</keyword>
+	<keyword
+>X і O</keyword>
+	<keyword
+>П’ять-у-ряд</keyword>
+	<keyword
+>Головоломка</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Вступ</title
+> <!-- do not change this! -->
+	<note
+><title
+>Тип гри:</title
+><para
+>Гра на дошці, аркада</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Можлива кількість гравців:</title
+><para
+>Два</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; — це гра схожа на Гомоку (від японського <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+> буквально «п’ять точок») для двох гравців, де суперники по черзі викладають власні позначки на ігровій дошці. Метою гри є викласти п’ять ваших позначок у неперервному рядку вертикально, горизонтально або по діагоналі. </para>
+	<note
+><title
+>Примітка:</title
+><para
+>Ця гра також відома за назвами: з’єднай п’ять, п’ять-у-рядок, X і O, хрестики-нулики</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Як грати</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Головне вікно &bovo;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Мета:</title
+><para
+>Викласти п’ять ваших позначок у неперервному рядку вертикально, горизонтально або по діагоналі.</para
+></note>
+	<para
+>Після першого запуску &bovo; почне роботу у режимі демонстрації, якому два комп’ютерних гравці змагатимуться один з одним. Ви у будь-який час можете розпочати нову гру за допомогою кнопки <guibutton
+>Створити</guibutton
+>, розташованої на панелі інструментів, пункту меню <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+></menuchoice
+> або за допомогою типового клавіатурного скорочення <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Примітка:</title
+><para
+>Оскільки гравець, який ходить першим, завжди має перевагу на гравцем, який ходить другим, &bovo; буде міняти гравця, який розпочинає гру. </para
+></note>
+	<para
+>Якщо ви ходите першим (першою), почніть гру з викладання вашої позначки у будь-якому місці ігрової дошки. Якщо ви ходите другим (другою), зачекайте доки перший гравець викладе свою позначку, а потім викладіть власну. Ви можете викласти свою позначку будь-де на дошці, якщо місце, куди ви маєте намір викласти позначку ще не зайняте іншою ігровою позначкою (не має значення, чи це ваша позначка, чи позначка вашого суперника). </para>
+	<para
+>Вам слід викладати свої позначки так, щоб запобігти створенню вашим суперником неперервного рядка з п’яти позначок у вертикальному, горизонтальному або діагональному напрямку. Ви у свою чергу маєте намагатися утворити неперервний рядок з ваших власних позначок у вертикальному, горизонтальному або діагональному напрямку. Той з суперників, хто першим (першою) зможе досягти цієї мети, виграє раунд. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Правила гри, стратегія та поради</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Правила гри</title>
+		<itemizedlist>
+			<listitem
+><para
+>Гравці по черзі викладають власні позначки на ігрову дошку.</para
+></listitem>
+			<listitem
+><para
+>Гравцям не дозволяється пересувати вже викладені позначки або викладати свої позначки замість вже викладених позначок.</para
+></listitem>
+			<listitem
+><para
+>Гравці не можуть пропускати свій хід.</para
+></listitem>
+			<listitem
+><para
+>Гравець, який першим викладе прямий рядок з п’яти своїх позначок (у вертикальному, горизонтальному або діагональному напрямку) виграє гру.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Ігрові підказки</title>
+		<itemizedlist>
+			<listitem
+><para
+>Після першого запуску &bovo; вікно програми може потребувати зміни розмірів. Змініть розміри ігрового вікна на бажані, а &bovo; автоматично змінить розміри ігрової дошки.</para
+></listitem>
+			<listitem
+><para
+>Після першого запуску &bovo; працюватиме у режимі демонстрації: двоє комп’ютерних гравців змагатимуться між собою.</para
+></listitem>
+			<listitem
+><para
+>Якщо завершити роботу &bovo; перш ніж гру буде завершено, поточну гру буде автоматично збережено. Якщо під час запуску &bovo; виявить автоматично збережену гру, цю гру буде відновлено. Якщо такої гри виявлено не буде, &bovo; буде запущено у режимі демонстрації.</para
+></listitem>
+			<listitem
+><para
+>Ви у будь-який час можете розпочати нову гру за допомогою кнопки <guibutton
+>Створити</guibutton
+>, розташованої на панелі інструментів, пункту меню <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+></menuchoice
+> або за допомогою типового клавіатурного скорочення <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Якщо нову гру буде розпочато до виграшу поточної, поточну гру буде зараховано як програш.</para
+></listitem>
+			<listitem
+><para
+>Змінити складність можна за допомогою спадного списку <guilabel
+>Складність</guilabel
+>, розташованого у правому кінці смужки стану, або за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Складність</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Зміна рівня складності набуває чинності негайно.</para
+></listitem>
+			<listitem
+><para
+>Ви можете змінити тему &bovo; за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Тема</guisubmenu
+></menuchoice
+>. Якщо ви скористаєтеся цим пунктом, тему буде змінено негайно.</para
+></listitem>
+			<listitem
+><para
+>Увімкнути або вимкнути анімацію можна за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Анімація</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Якщо ви раптом виявили, що тільки-но зробили поганий хід, ви можете скасувати цей останній хід за допомогою панелі інструментів, панелі меню або типового клавіатурного скорочення для скасування дій <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Ви можете скасовувати ходи, аж до першого ходу у грі.</para
+></listitem>
+			<listitem
+><para
+>Якщо ви не можете визначити, який хід зробити наступним, ви можете отримати підказку від комп’ютерного гравця за допомогою кнопки <guibutton
+>Підказка</guibutton
+>. Якщо ви скористаєтеся цією можливістю, на дошці певний час блиматиме позначка, яку пропонує викласти комп’ютерний гравець &bovo;.</para
+></listitem>
+			<listitem
+><para
+>Після завершення гри стане можливою дія <guibutton
+>Повторити гру</guibutton
+>, за допомогою цієї дії ви зможете послідовно переглянути ходи останньої гри.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Огляд інтерфейсу</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Пункти меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Починає нову гру.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Повторити гру</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Повторює останню гру.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Вийти</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Вибір цього пункту меню призведе до завершення поточної гри і закриття вікна &bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Вернути</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Скасовує останній зроблений вами хід.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Підказка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показує</action
+> підказку щодо наступного ходу. Якщо ви скористаєтеся цією можливістю, на дошці певний час блиматиме позначка, яку пропонує викласти комп’ютерний гравець &bovo;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Тема</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Тут можна обрати для гри одну з тем: <guimenuitem
+>Шкрябанина</guimenuitem
+>, <guimenuitem
+>Висока контрастність</guimenuitem
+>, <guimenuitem
+>Космічна</guimenuitem
+> або <guimenuitem
+>Гомоку</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Анімація</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Вмикає або вимикає анімацію.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+><guisubmenu
+>Складність</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Тут ви можете обрати складність гри: від <guimenuitem
+>Фантастично проста</guimenuitem
+> до <guimenuitem
+>Неможливо складна</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Крім того, у &bovo; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Часті запитання</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Я хочу змінити вигляд цієї гри. Як це зробити? </para
+></question>
+ <answer
+><para
+>Так. Щоб змінити візуальну тему &bovo;, скористайтеся пунктом меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Тема</guisubmenu
+> </menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Чи можна використовувати для гри клавіатуру? </para
+></question>
+ <answer
+><para
+>Ні. Грати у &bovo; за допомогою клавіатури неможливо.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Я змушений (змушена) перервати гру, але гру ще не завершено. Чи можу я зберегти поточний стан?</para
+></question>
+  <answer
+><para
+>Ні. У &bovo; немає можливості <quote
+>Зберегти</quote
+>, але після запуску &bovo; відновлює попередню незавершену гру.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Де список найкращих результатів?</para
+></question>
+ <answer
+><para
+>У &bovo; такої можливості немає.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Подяки і ліцензія</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Авторські права на програму належать &Aron.Bostrom; &Aron.Bostrom.mail;, ©2002, 2007 </para>
+
+<para
+>Авторські права на документацію до програми належать &Aron.Bostrom; &Aron.Bostrom.mail;, ©2007</para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

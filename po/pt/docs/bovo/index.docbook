@@ -1,0 +1,615 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>O Manual do &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-05-09</date>
+<releaseinfo
+>1.1 (Aplicações 16.04)</releaseinfo>
+
+<abstract>
+	<para
+>Esta documentação descreve o jogo &bovo; na versão 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jogo</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>arcada</keyword>
+	<keyword
+>tabuleiro</keyword>
+	<keyword
+>bolas e cruzes</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>dois jogadores</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>bolas</keyword>
+	<keyword
+>cruzes</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Cinco-em-Linha</keyword>
+	<keyword
+>Ligar 5</keyword>
+	<keyword
+>Jogo de tabuleiro</keyword>
+	<keyword
+>X e O</keyword>
+	<keyword
+>Cinco em linha</keyword>
+	<keyword
+>Puzzle</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introdução</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipo de jogo:</title
+><para
+>Tabuleiro, Arcada</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Número de jogadores possíveis:</title
+><para
+>Dois</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>O &bovo; é um jogo do tipo do Gomoku (do Japonês <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>lit. "cinco pontos") para dois jogadores, onde os adversários alternam na colocação das suas marcas respectivas no tabuleiro. O objectivo deste jogo é ligar cinco das suas peças numa linha não-interrompida na vertical, horizontal ou diagonal. </para>
+	<note
+><title
+>Nota:</title
+><para
+>Também conhecido como: Ligar Cinco, Cinco-em-Linha, X e O, Bolas e Cruzes</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Como jogar</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ecrã principal do &bovo;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectivo:</title
+><para
+>Ligue 5 peças suas numa linha não-interrompida na vertical, horizontal ou diagonal.</para
+></note>
+	<para
+>Da primeira vez que o &bovo; é iniciado, é lançado no modo de demonstração, onde dois jogadores de IA batalham um contra o outro. Poderá sempre iniciar um jogo novo com o botão <guibutton
+>Novo</guibutton
+> da barra de ferramentas, a opção do menu <menuchoice
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+> ou com o atalho de teclado predefinido <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Nota:</title
+><para
+>Dado que o primeiro jogador tem sempre vantagem sobre o segundo, o &bovo; irá alternar os jogadores, trocando-os em cada jogo novo. </para
+></note>
+	<para
+>Se for o primeiro jogador - comece o jogo colocando a sua marca em qualquer ponto do campo de jogo. Se for o segundo jogador, espere até que o primeiro jogador acabe de colocar a sua marca e depois faça você o mesmo. Poderá colocar a sua marca em qualquer quadrado do campo, a menos que já esteja ocupado por uma outra marca do jogo (seja sua ou do seu adversário). </para>
+	<para
+>Tem de colocar as suas peças de uma forma que impeça o seu adversário de ligar cinco marcas numa linha não-interrompida na vertical, horizontal ou diagonal. Ao mesmo tempo, terá também de tentar ligar cinco marcas suas numa linha não-interrompida na vertical, horizontal ou diagonal. Quem conseguir este feito em primeiro lugar - ganha o jogo. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Regras do Jogo, Estratégias e Sugestões</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Regras do Jogo</title>
+		<itemizedlist>
+			<listitem
+><para
+>Os jogadores aproveitam os seus turnos para colocar as suas marcas respectivas no campo de jogo.</para
+></listitem>
+			<listitem
+><para
+>Um jogador não poderá mexer a sua marca já colocada ou colocar a sua marca sobre outra.</para
+></listitem>
+			<listitem
+><para
+>Os jogadores não podem ceder as suas jogadas.</para
+></listitem>
+			<listitem
+><para
+>O jogador que atingir cinco marcas ligadas numa linha recta (vertical, horizontal ou diagonal) ganha o jogo.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Sugestões do Jogo</title>
+		<itemizedlist>
+			<listitem
+><para
+>Quando o &bovo; é iniciado, este precisa de ser dimensionado. Ajuste a janela do jogo para o tamanho desejado, pelo que o &bovo; irá aumentando a área de jogo.</para
+></listitem>
+			<listitem
+><para
+>Da primeira vez que o &bovo; é iniciado, é lançado no modo de demonstração, onde dois jogadores de IA batalham um com o outro.</para
+></listitem>
+			<listitem
+><para
+>Quando sai do &bovo; antes de o jogo terminar, o jogo activo é gravado automaticamente. Se o &bovo; detectar um jogo gravado automaticamente no arranque, este é reposto. Caso contrário, o &bovo; lança um modo de demonstração.</para
+></listitem>
+			<listitem
+><para
+>Poderá sempre iniciar um jogo novo com o botão <guibutton
+>Novo</guibutton
+> da barra de ferramentas, a opção do menu <menuchoice
+> <guimenu
+>Jogo</guimenu
+><guimenuitem
+>Novo</guimenuitem
+></menuchoice
+> ou com o atalho de teclado predefinido <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Se for iniciado um jogo novo quando já está um activo, então irá contar como perda.</para
+></listitem>
+			<listitem
+><para
+>A modificação da dificuldade poderá ser feita com a lista <guilabel
+>Dificuldade</guilabel
+> do lado direito da barra de estado ou na opção do menu <menuchoice
+><guimenu
+>Configuração</guimenu
+><guimenuitem
+>Dificuldade</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>O efeito de modificar a dificuldade toma lugar imediatamente.</para
+></listitem>
+			<listitem
+><para
+>Poderá alterar o tema do &bovo; na opção do menu <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Tema</guimenuitem
+></menuchoice
+>. O tema irá mudar então imediatamente.</para
+></listitem>
+			<listitem
+><para
+>A animação poderá ser activada ou desactivada como desejar na opção do menu <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Animação</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Se tiver descoberto que fez uma jogada muito má, terá a possibilidade de anular a sua última jogada na barra de ferramentas, no menu ou com o atalho de teclado predefinido <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Poderá continuar a anular jogadas até atingir o início do jogo.</para
+></listitem>
+			<listitem
+><para
+>Se não souber qual a jogada a efectuar, poderá obter uma sugestão do computador com o botão <guibutton
+>Dica</guibutton
+>. A peça do jogo sugerida pela IA do &bovo; irá então piscar durante um período de tempo breve.</para
+></listitem>
+			<listitem
+><para
+>Quando um jogo terminar, fica activa a opção de <guibutton
+>Repetição</guibutton
+>, a qual irá iniciar uma repetição do último jogo.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Apresentação à Interface</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Opções do Menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Inicia um novo jogo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Repetir</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Repete o último jogo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Se seleccionar este item, irá terminar o seu jogo actual e sair do &bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Desfaz a última jogada que fez.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Dica</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Apresenta</action
+> uma sugestão do computador com o botão <guibutton
+>Dica</guibutton
+>. A peça do jogo sugerida pela IA do &bovo; irá então piscar durante um período de tempo breve.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+><guisubmenu
+>Tema</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Escolha um dos temas <guimenuitem
+>Scribble</guimenuitem
+>, <guimenuitem
+>Alto Contraste</guimenuitem
+>, <guimenuitem
+>Espacial</guimenuitem
+> ou <guimenuitem
+>Gomoku</guimenuitem
+> para o jogo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+><guimenuitem
+>Animação</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Activa ou desactiva as animações.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+><guisubmenu
+>Dificuldade</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Escolha a dificuldade do jogo, entre vários níveis do <guimenuitem
+>Extremamente Fácil</guimenuitem
+>  até ao <guimenuitem
+>Impossível</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Para além disso, o &bovo; tem os itens de menu <guimenu
+>Configuração</guimenu
+> e <guimenu
+>Ajuda</guimenu
+> normais do &kde;; para mais informações, leia as secções sobre o menu <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Configuração</ulink
+> e <ulink url="help:/fundamentals/ui.html#menus-help"
+>Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Perguntas mais frequentes</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Quero alterar a forma como este jogo aparece. Posso fazê-lo? </para
+></question>
+ <answer
+><para
+>Sim. Para alterar o visual do &bovo;, pode usar a opção do <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Posso usar o teclado para jogar neste jogo? </para
+></question>
+ <answer
+><para
+>Não. O jogo &bovo; não pode ser jogado com o teclado.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Tenho de sair do jogo agora, mas ainda não terminei. Posso gravar a minha situação actual?</para
+></question>
+  <answer
+><para
+>Não. Não existe uma funcionalidade para <quote
+>Gravar</quote
+> no &bovo;, mas o &bovo; retoma o último jogo não terminado no arranque.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Onde aparecem os recordes?</para
+></question>
+ <answer
+><para
+>O &bovo; não tem esta funcionalidade.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Créditos e Licença</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Programa com 'copyright' 2002, 2007 de &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Documentação com 'copyright' 2007 de &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Tradução de José Nuno Pires <email
+>zepires@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

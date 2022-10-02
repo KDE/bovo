@@ -1,0 +1,172 @@
+# translation of bovo.po to Belarusian
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Darafei Praliaskouski <komzpa@licei2.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: bovo\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2007-06-01 10:33+0300\n"
+"Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
+"Language-Team: Belarusian <i18n@mova.org>\n"
+"Language: be\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
+"%100>=11 && n%100<=14 ? 2 : 3);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, fuzzy, kde-format
+#| msgid "You lost!"
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Вы прайгралі!"
+
+#. i18n: ectx: label, entry (theme), group (bovo)
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#, kde-format
+msgid "Theme"
+msgstr "Тэма"
+
+#. i18n: ectx: label, entry (playbackSpeed), group (bovo)
+#: gui/bovo.kcfg:13
+#, kde-format
+msgid "Speed of demo and replay playback."
+msgstr ""
+
+#. i18n: ectx: label, entry (animation), group (bovo)
+#: gui/bovo.kcfg:19
+#, kde-format
+msgid "Whether moves should be animated or not."
+msgstr ""
+
+#. i18n: ectx: label, entry (ai), group (bovo)
+#: gui/bovo.kcfg:23
+#, kde-format
+msgid "AI engine to use."
+msgstr ""
+
+#: gui/main.cc:50
+#, kde-format
+msgid "Bovo"
+msgstr ""
+
+#: gui/main.cc:51
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr ""
+
+#: gui/main.cc:52
+#, kde-format
+msgid "(c) 2002-2007, Aron Boström"
+msgstr ""
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Aron Boström"
+msgstr ""
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Author"
+msgstr "Аўтар"
+
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
+#, kde-format
+msgid "Wins: %1"
+msgstr ""
+
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
+#, kde-format
+msgid "Losses: %1"
+msgstr ""
+
+#: gui/mainwindow.cc:190
+#, kde-format
+msgid "&Replay"
+msgstr ""
+
+#: gui/mainwindow.cc:192
+#, kde-format
+msgid "Replay game"
+msgstr ""
+
+#: gui/mainwindow.cc:193
+#, kde-format
+msgid "Replays your last game for you to watch."
+msgstr ""
+
+#: gui/mainwindow.cc:199
+#, kde-format
+msgid "&Animation"
+msgstr ""
+
+#: gui/mainwindow.cc:344
+#, kde-format
+msgid "Start a new Game to play"
+msgstr ""
+
+#: gui/mainwindow.cc:382
+#, kde-format
+msgid "GAME OVER. Tie!"
+msgstr ""
+
+#: gui/mainwindow.cc:385
+#, kde-format
+msgid "GAME OVER. You won!"
+msgstr ""
+
+#: gui/mainwindow.cc:388
+#, kde-format
+msgid "GAME OVER. You lost!"
+msgstr ""
+
+#: gui/mainwindow.cc:400
+#, kde-format
+msgid "It is your turn."
+msgstr "Ваш ход."
+
+#: gui/mainwindow.cc:404
+#, kde-format
+msgid "Waiting for computer."
+msgstr "Чакаем камп'ютэр"
+
+#: gui/mainwindow.cc:432
+#, kde-format
+msgid "Replaying game"
+msgstr ""
+
+#: gui/mainwindow.cc:448
+#, kde-format
+msgid "Game replayed."
+msgstr ""
+
+#~ msgid "You won!"
+#~ msgstr "Вы выйгралі!"
+
+#~ msgid "You lost!"
+#~ msgstr "Вы прайгралі!"
+
+#~ msgid "Very Easy"
+#~ msgstr "Вельмі просты"
+
+#~ msgid "Easy"
+#~ msgstr "Лёгка"
+
+#~ msgid "Medium"
+#~ msgstr "Сярэдні"
+
+#~ msgid "Hard"
+#~ msgstr "Складана"
+
+#~ msgid "Normal"
+#~ msgstr "Звычайны"

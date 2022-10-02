@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2022-09-20 01:55\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/bovo/bovo.pot\n"
+"X-Crowdin-File-ID: 5652\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "KDE 中国"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-china@kde.org"
+
+#. i18n: ectx: label, entry (theme), group (bovo)
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#, kde-format
+msgid "Theme"
+msgstr "主题"
+
+#. i18n: ectx: label, entry (playbackSpeed), group (bovo)
+#: gui/bovo.kcfg:13
+#, kde-format
+msgid "Speed of demo and replay playback."
+msgstr "演示和重放的速度。"
+
+#. i18n: ectx: label, entry (animation), group (bovo)
+#: gui/bovo.kcfg:19
+#, kde-format
+msgid "Whether moves should be animated or not."
+msgstr "是否用动画表示落子。"
+
+#. i18n: ectx: label, entry (ai), group (bovo)
+#: gui/bovo.kcfg:23
+#, kde-format
+msgid "AI engine to use."
+msgstr "使用的人工智能引擎。"
+
+#: gui/main.cc:50
+#, kde-format
+msgid "Bovo"
+msgstr "Bovo"
+
+#: gui/main.cc:51
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr "KDE 五子棋游戏"
+
+#: gui/main.cc:52
+#, kde-format
+msgid "(c) 2002-2007, Aron Boström"
+msgstr "(c) 2002-2007, Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Aron Boström"
+msgstr "Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Author"
+msgstr "作者"
+
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
+#, kde-format
+msgid "Wins: %1"
+msgstr "胜利次数： %1"
+
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
+#, kde-format
+msgid "Losses: %1"
+msgstr "失败次数： %1"
+
+#: gui/mainwindow.cc:190
+#, kde-format
+msgid "&Replay"
+msgstr "重玩(&R)"
+
+#: gui/mainwindow.cc:192
+#, kde-format
+msgid "Replay game"
+msgstr "重玩游戏"
+
+#: gui/mainwindow.cc:193
+#, kde-format
+msgid "Replays your last game for you to watch."
+msgstr "播放您的上一次游戏供观看。"
+
+#: gui/mainwindow.cc:199
+#, kde-format
+msgid "&Animation"
+msgstr "动画(&A)"
+
+#: gui/mainwindow.cc:344
+#, kde-format
+msgid "Start a new Game to play"
+msgstr "开始一个新游戏"
+
+#: gui/mainwindow.cc:382
+#, kde-format
+msgid "GAME OVER. Tie!"
+msgstr "游戏结束。平手！"
+
+#: gui/mainwindow.cc:385
+#, kde-format
+msgid "GAME OVER. You won!"
+msgstr "游戏结束。您赢了！"
+
+#: gui/mainwindow.cc:388
+#, kde-format
+msgid "GAME OVER. You lost!"
+msgstr "游戏结束。您输了！"
+
+#: gui/mainwindow.cc:400
+#, kde-format
+msgid "It is your turn."
+msgstr "轮到您了。"
+
+#: gui/mainwindow.cc:404
+#, kde-format
+msgid "Waiting for computer."
+msgstr "正在等待电脑。"
+
+#: gui/mainwindow.cc:432
+#, kde-format
+msgid "Replaying game"
+msgstr "正在回放游戏"
+
+#: gui/mainwindow.cc:448
+#, kde-format
+msgid "Game replayed."
+msgstr "游戏已回放。"

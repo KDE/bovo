@@ -1,0 +1,157 @@
+# translation of bovo.po to Kashubian
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Michôł Òstrowsczi <michol@linuxcsb.org>, 2007.
+# Mark Kwidzińśczi <mark@linuxcsb.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: bovo\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2009-10-19 17:05+0200\n"
+"Last-Translator: Mark Kwidzińśczi <mark@linuxcsb.org>\n"
+"Language-Team: Kaszëbsczi <i18n-csb@linuxcsb.org>\n"
+"Language: csb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2)\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Michôł Òstrowsczi, Mark Kwidzińsczi"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "michol@linuxcsb.org, mark@linuxcsb.org"
+
+#. i18n: ectx: label, entry (theme), group (bovo)
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#, kde-format
+msgid "Theme"
+msgstr "Téma"
+
+#. i18n: ectx: label, entry (playbackSpeed), group (bovo)
+#: gui/bovo.kcfg:13
+#, kde-format
+msgid "Speed of demo and replay playback."
+msgstr ""
+
+#. i18n: ectx: label, entry (animation), group (bovo)
+#: gui/bovo.kcfg:19
+#, kde-format
+msgid "Whether moves should be animated or not."
+msgstr ""
+
+#. i18n: ectx: label, entry (ai), group (bovo)
+#: gui/bovo.kcfg:23
+#, kde-format
+msgid "AI engine to use."
+msgstr ""
+
+#: gui/main.cc:50
+#, kde-format
+msgid "Bovo"
+msgstr "Bovo"
+
+#: gui/main.cc:51
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr "Planszowô gra KDE piãc w réze"
+
+#: gui/main.cc:52
+#, fuzzy, kde-format
+#| msgid "(c) 2002,2007 Aron Boström"
+msgid "(c) 2002-2007, Aron Boström"
+msgstr "(c) 2002,2007 Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Aron Boström"
+msgstr "Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Author"
+msgstr "Ùsôdzca"
+
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
+#, kde-format
+msgid "Wins: %1"
+msgstr "Dobëté: %1"
+
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
+#, kde-format
+msgid "Losses: %1"
+msgstr "Straconé: %1"
+
+#: gui/mainwindow.cc:190
+#, kde-format
+msgid "&Replay"
+msgstr "&Pòwtórzenié"
+
+#: gui/mainwindow.cc:192
+#, kde-format
+msgid "Replay game"
+msgstr "Pòwtórzenié grë"
+
+#: gui/mainwindow.cc:193
+#, kde-format
+msgid "Replays your last game for you to watch."
+msgstr "Pòkażë pòwtórzenié twòji slédny grë."
+
+#: gui/mainwindow.cc:199
+#, kde-format
+msgid "&Animation"
+msgstr "&Animacëjô"
+
+#: gui/mainwindow.cc:344
+#, kde-format
+msgid "Start a new Game to play"
+msgstr "Sztartëje nową grã"
+
+#: gui/mainwindow.cc:382
+#, kde-format
+msgid "GAME OVER. Tie!"
+msgstr "KÙŃC GRË. JO!"
+
+#: gui/mainwindow.cc:385
+#, kde-format
+msgid "GAME OVER. You won!"
+msgstr "KÙŃC GRË. Môsz wëgróné!"
+
+#: gui/mainwindow.cc:388
+#, kde-format
+msgid "GAME OVER. You lost!"
+msgstr "KÙŃC GRË. Môsz przegróné!"
+
+#: gui/mainwindow.cc:400
+#, kde-format
+msgid "It is your turn."
+msgstr "Terô të grajesz."
+
+#: gui/mainwindow.cc:404
+#, kde-format
+msgid "Waiting for computer."
+msgstr "Żdanié na kòmpùtr."
+
+#: gui/mainwindow.cc:432
+#, kde-format
+msgid "Replaying game"
+msgstr "Pòwtórzenié grë"
+
+#: gui/mainwindow.cc:448
+#, kde-format
+msgid "Game replayed."
+msgstr "Gra òdegrónô."
+
+#~ msgid "You won!"
+#~ msgstr "Môsz dobëté!"
+
+#~ msgid "You lost!"
+#~ msgstr "Môsz przerzniãté!"

@@ -1,0 +1,149 @@
+# Translation of bovo to Korean.
+# Copyright (C) 2007 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kdegames package.
+# Myong-sung Kim <xfuncrushx@gmail.com>, 2007.
+# Shinjo Park <kde@peremen.name>, 2011, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdegames\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2015-04-26 18:25+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "김명성"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xfuncrushx@gmail.com"
+
+#. i18n: ectx: label, entry (theme), group (bovo)
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#, kde-format
+msgid "Theme"
+msgstr "테마"
+
+#. i18n: ectx: label, entry (playbackSpeed), group (bovo)
+#: gui/bovo.kcfg:13
+#, kde-format
+msgid "Speed of demo and replay playback."
+msgstr "데모와 복기 재생 속도입니다."
+
+#. i18n: ectx: label, entry (animation), group (bovo)
+#: gui/bovo.kcfg:19
+#, kde-format
+msgid "Whether moves should be animated or not."
+msgstr "이동 애니메이션 사용 여부입니다."
+
+#. i18n: ectx: label, entry (ai), group (bovo)
+#: gui/bovo.kcfg:23
+#, kde-format
+msgid "AI engine to use."
+msgstr "사용할 인공 지능 엔진입니다."
+
+#: gui/main.cc:50
+#, kde-format
+msgid "Bovo"
+msgstr "Bovo"
+
+#: gui/main.cc:51
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr "KDE 오목 게임"
+
+#: gui/main.cc:52
+#, kde-format
+msgid "(c) 2002-2007, Aron Boström"
+msgstr "(c) 2002-2007, Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Aron Boström"
+msgstr "Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Author"
+msgstr "작성자"
+
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
+#, kde-format
+msgid "Wins: %1"
+msgstr "승리: %1"
+
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
+#, kde-format
+msgid "Losses: %1"
+msgstr "패배: %1"
+
+#: gui/mainwindow.cc:190
+#, kde-format
+msgid "&Replay"
+msgstr "다시 보기(&R)"
+
+#: gui/mainwindow.cc:192
+#, kde-format
+msgid "Replay game"
+msgstr "게임 다시 보기"
+
+#: gui/mainwindow.cc:193
+#, kde-format
+msgid "Replays your last game for you to watch."
+msgstr "마지막 게임을 다시 봅니다."
+
+#: gui/mainwindow.cc:199
+#, kde-format
+msgid "&Animation"
+msgstr "애니메이션 효과(&A)"
+
+#: gui/mainwindow.cc:344
+#, kde-format
+msgid "Start a new Game to play"
+msgstr "새 게임을 시작하세요"
+
+#: gui/mainwindow.cc:382
+#, kde-format
+msgid "GAME OVER. Tie!"
+msgstr "게임 종료. 무승부입니다!"
+
+#: gui/mainwindow.cc:385
+#, kde-format
+msgid "GAME OVER. You won!"
+msgstr "게임 종료. 이겼습니다!"
+
+#: gui/mainwindow.cc:388
+#, kde-format
+msgid "GAME OVER. You lost!"
+msgstr "게임 종료. 졌습니다!"
+
+#: gui/mainwindow.cc:400
+#, kde-format
+msgid "It is your turn."
+msgstr "당신 차례입니다."
+
+#: gui/mainwindow.cc:404
+#, kde-format
+msgid "Waiting for computer."
+msgstr "컴퓨터가 수를 두고 있습니다."
+
+#: gui/mainwindow.cc:432
+#, kde-format
+msgid "Replaying game"
+msgstr "게임 다시 보는 중"
+
+#: gui/mainwindow.cc:448
+#, kde-format
+msgid "Game replayed."
+msgstr "게임 다시 보기 완료."

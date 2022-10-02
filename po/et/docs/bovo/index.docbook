@@ -1,0 +1,622 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY kappname "&bovo;">
+  <!ENTITY kappversion "1.0"
+><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>&bovo; käsiraamat</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+> <surname
+>Laane</surname
+> <affiliation
+><address
+><email
+>bald@smail.ee</email
+></address
+></affiliation
+> <contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<!-- Translators: put here the copyright notice of the translation -->
+<!-- Put here the FDL notice.  Read the explanation in fdl-notice.docbook
+     and in the FDL itself on how to use it. -->
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2013-05-03</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; (&kde; 4.11)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>See käsiraamat kirjeldab mängu &bovo; versiooni &kappversion;.</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>mäng</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>arkaadmäng</keyword>
+	<keyword
+>lauamäng</keyword>
+	<keyword
+>nullid ja ristid</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>kaks mängijat</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>nullid</keyword>
+	<keyword
+>ristid</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Viis ühte ritta</keyword>
+	<keyword
+>Connect5</keyword>
+	<keyword
+>Lauamäng</keyword>
+	<keyword
+>X ja O</keyword>
+	<keyword
+>Viis ühte ritta</keyword>
+	<keyword
+>Mõistatus</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Sissejuhatus</title
+> <!-- do not change this! -->
+	<note
+><title
+>Mängu tüüp:</title
+><para
+>lauamäng, arkaadmäng</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Mängijate arv:</title
+><para
+>Kaks</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; on Gomoku (jaapani keeles <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>, otsetõlkes "viis punkti") moodi kahe mängijaga mäng, kus vastased vaheldumisi asetavad oma nuppe mängulauale. Mängu eesmärk on saada viis enda nuppu ühte ritta püst- või rõhtsuunas või diagonaalselt. </para>
+	<note
+><title
+>Märkus:</title
+><para
+>seda mängu tuntakse ka nimetuste all Connect Fice, Viis ühte ritta, X ja O, Nullid ja ristid.</para
+></note>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Kuidas mängida</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Eesmärk:</title
+><para
+>ühendada viis oma nuppu katkematusse ritta kas püst- või rõhtsuunas või diagonaalselt.</para
+></note>
+	<para
+>&bovo; esmakäivitusel näidatakse demoversiooni, kus kaks arvutimängijat mängivad teineteise vastu. Uue mängu käivitamiseks saab kasutada tööriistariba nuppu <guibutton
+>Uus</guibutton
+>, menüükäsku <menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Uus</guimenuitem
+></menuchoice
+> või vaikimisi kiirklahvi <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Märkus:</title
+><para
+>Et esimese käigu tegijal on alati teatav eelis, vahetab &bovo; iga uue mängu käivitamisel mängijaid. </para
+></note>
+	<para
+>Kui oled esimese käigu tegija, aseta oma nupp mõnele mänguvälja ruudule. Kui sinu teha on teine käik, oota, kuini esimene mängija on käinud ja soorita siis oma käik. Nupu võib asetada mänguvälja mis tahes ruudule, kui seal ei asu juba varem nuppu (olgu see siis sinu enda või vastase nupp). </para>
+	<para
+>Sul tuleb asetada oma nupud nii, et vastasel ei õnnestuks seada oma nuppe nii, et moodustub viiest nupust koosnev katkematu rida rõht- või püstsuunas või diagonaalselt. Samal ajal tuleb sul endal proovida luua oma nuppudest viiest nupust koosnev katkematu rida rõht- või püstsuunas või diagonaalselt. Kellel see esimesena õnnestub, võidab vooru. </para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Mängureeglid, strateegia ja nõuanded</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Mängureeglid</title>
+		<itemizedlist>
+			<listitem
+><para
+>Mängijad asetavad kordamööda oma nuppe mänguväljale.</para
+></listitem>
+			<listitem
+><para
+>Mängija ei saa liigutada juba asetatud nuppu ega asetada oma nuppu ruutu, kus juba on nupp.</para
+></listitem>
+			<listitem
+><para
+>Mängijad ei saa oma käiku vahele jätta.</para
+></listitem>
+			<listitem
+><para
+>Mängija, kel õnnestub asetada viis nuppu katkematusse ritta, olgu rõht- või püstsuunas või diagonaalselt, võidab mängu.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Mängimise nõuanded</title>
+		<itemizedlist>
+			<listitem
+><para
+>&bovo; esmakäivituse ajal on vaja selle suurust muuta. Anna aknale vajalik suurus ning &bovo; skaleerib vastavalt mänguvälja.</para
+></listitem>
+			<listitem
+><para
+>Esimesel käivitamisel alustab &bovo; demorežiimis, milles teineteise vastu mängivad kaks arvutimängijat.</para
+></listitem>
+			<listitem
+><para
+>Kui &bovo; töö lõpetatakse enne mängu lõppemist, salvestatakse aktiivne mäng automaatselt. Kui &bovo; avastab käivitamisel automaatselt salvestatud mängu, taastatakse selle seis, nii nagu see oli katkestamise ajal, kui mitte, käivitatakse &bovo; taas demorežiimis.</para
+></listitem>
+			<listitem
+><para
+>Uue mängu saab alati käivitada kas tööriistariba nupuga <guibutton
+>Uus</guibutton
+>, menüükäsuga <menuchoice
+><guimenu
+>Mäng</guimenu
+><guimenuitem
+>Uus</guimenuitem
+></menuchoice
+> või vaikimisi kiirklahviga <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Kui uus mäng käivitatakse ajal, mil mäng on juba käivitatud, loetakse viimast kaotatuks.</para
+></listitem>
+			<listitem
+><para
+>Raskusastet saab muuta olekuriba paremas servas olevast rippmenüüst <guilabel
+>Raskusaste</guilabel
+> või menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Raskusaste</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Raskusastme muutmine rakendub otsekohe.</para
+></listitem>
+			<listitem
+><para
+>&bovo; teemat saab vahetada menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guisubmenu
+>Teema</guisubmenu
+></menuchoice
+>. Teema vahetamine rakendub otsekohe.</para
+></listitem>
+			<listitem
+><para
+>Animatsiooni saab soovi kohaselt sisse või välja lülitada menüükäsuga <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Animatsioon</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Kui leiad, et sooritasid väga halva käigu, saab viimase käigu tagasi võtta tööriistariba abil, menüükäsuga või vaikimisi kiirklahviga <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Käike saab tagasi võtta kuni mängu alguseni.</para
+></listitem>
+			<listitem
+><para
+>Kui sa ei tea, millist käiku sooritada, võib paluda arvutilt vihjet, klõpsates nupule <guibutton
+>Vihje</guibutton
+>. Seejärel vilksab korraks nupp, mida pakub välja &bovo; arvutimõistus.</para
+></listitem>
+			<listitem
+><para
+>Kui mäng on läbi, saab kasutada toimingut <guibutton
+>Mängi uuesti</guibutton
+>, mis võimaldab viimase mängu uuesti läbi mängida.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+  
+<chapter id="interface"
+><title
+>Liidese tutvustus</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Menüükirjed</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Uus</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Alustab uut mängu.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Mängi uuesti</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Võimaldab viimase mängu uuesti läbi mängida.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mäng</guimenu
+> <guimenuitem
+>Välju</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Lõpetab aktiivse mängu ning &bovo; töö.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Võta tagasi</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Tühistab viimase käigu.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Liikumine</guimenu
+> <guimenuitem
+>Vihje</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Näitab</action
+> vihjet järgmiseks käiguks. Selleks vilksatab põgusalt nupp, mida &bovo; tehisaju soovitab käia.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+><guisubmenu
+>Teema</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Võimaldab valida mängu teemaks <guimenuitem
+>Scribble</guimenuitem
+>, <guimenuitem
+>Suur kontrast</guimenuitem
+>, <guimenuitem
+>Kosmik</guimenuitem
+> või <guimenuitem
+>Gomoku</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+><guimenuitem
+>Animatsioon</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Lülitab animatsiooni sisse või välja.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Seadistused</guimenu
+><guisubmenu
+>Raskusaste</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Võimaldab valida mängu raskusastme vahemikus <guimenuitem
+>Naeruväärselt kerge</guimenuitem
+> kuni <guimenuitem
+>Võimatu</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Lisaks on &bovo;l tavapärased &kde; <guimenu
+>seadistuste</guimenu
+> ja <guimenu
+>abi</guimenu
+>menüü elemendid, mille kohta leiab rohkem teavet &kde; põhialuste käsiraamatu osadest <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Menüü Seadistused</ulink
+> ja <ulink url="help:/fundamentals/ui.html#menus-help"
+>Menüü Abi</ulink
+>. </para>
+
+</sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Korduma kippuvad küsimused</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Ma soovin muuta mängu välimust. On see võimalik? </para
+></question>
+ <answer
+><para
+>Jah. &kappname; teema muutmiseks kasuta menüükäsku <menuchoice
+><guimenu
+>Seadistused</guimenu
+><guisubmenu
+>Teema</guisubmenu
+></menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kas mängida saab ka klaviatuuri abil? </para
+></question>
+ <answer
+><para
+>Ei, &kappname;t ei saa mängida klaviatuuri abil.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ma pean mängust väljuma, aga mäng ei ole veel läbi. Kas ma saan oma seisu salvestada?</para
+></question>
+  <answer
+><para
+>Ei, &kappname; ei paku <quote
+>salvestamise</quote
+> võimalust.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kus saab näha rekordeid?</para
+></question>
+ <answer
+><para
+>&kappname;l puudub selline võimalus.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Autorid ja litsents</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&bovo; </para>
+<para
+>Rakenduse autoriõigus 2002, 2007: &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Dokumentatsiooni autoriõigus 2007: &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Tõlge eesti keelde: Marek Laane <email
+>bald@smail.ee</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+ 
+<title
+>Kompileerimine ja paigaldamine</title>
+
+&install.intro.documentation;
+  
+&install.compile.documentation;
+ 
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

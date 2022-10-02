@@ -1,0 +1,181 @@
+# Irish translation of bovo
+# Copyright (C) 2009 This_file_is_part_of_KDE
+# This file is distributed under the same license as the bovo package.
+# Kevin Scannell <kscanne@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: playground-games/bovo.po\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"PO-Revision-Date: 2007-04-15 19:39-0500\n"
+"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
+"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
+"3 : 4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kevin Scannell"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kscanne@gmail.com"
+
+#. i18n: ectx: label, entry (theme), group (bovo)
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#, kde-format
+msgid "Theme"
+msgstr "Téama"
+
+#. i18n: ectx: label, entry (playbackSpeed), group (bovo)
+#: gui/bovo.kcfg:13
+#, kde-format
+msgid "Speed of demo and replay playback."
+msgstr "Luas an chluiche taispeántais agus athsheinm."
+
+#. i18n: ectx: label, entry (animation), group (bovo)
+#: gui/bovo.kcfg:19
+#, kde-format
+msgid "Whether moves should be animated or not."
+msgstr "Úsáid beochan nó ná húsáid."
+
+#. i18n: ectx: label, entry (ai), group (bovo)
+#: gui/bovo.kcfg:23
+#, kde-format
+msgid "AI engine to use."
+msgstr "Inneall AI le húsáid."
+
+#: gui/main.cc:50
+#, kde-format
+msgid "Bovo"
+msgstr "Bovo"
+
+#: gui/main.cc:51
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr "Cluiche Cláir Cúig-Cinn-As-A-Chéile le haghaidh KDE"
+
+#: gui/main.cc:52
+#, fuzzy, kde-format
+#| msgid "(c) 2002,2007 Aron Boström"
+msgid "(c) 2002-2007, Aron Boström"
+msgstr "© 2002,2007 Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Aron Boström"
+msgstr "Aron Boström"
+
+#: gui/main.cc:55
+#, kde-format
+msgid "Author"
+msgstr "Údar"
+
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
+#, kde-format
+msgid "Wins: %1"
+msgstr "Cluichí buaite: %1"
+
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
+#, kde-format
+msgid "Losses: %1"
+msgstr "Cluichí caillte: %1"
+
+#: gui/mainwindow.cc:190
+#, kde-format
+msgid "&Replay"
+msgstr "&Athchluiche"
+
+#: gui/mainwindow.cc:192
+#, kde-format
+msgid "Replay game"
+msgstr "Imir an cluiche arís"
+
+#: gui/mainwindow.cc:193
+#, kde-format
+msgid "Replays your last game for you to watch."
+msgstr "Imir an cluiche is déanaí sa chaoi gur féidir leat é a fheiceáil arís."
+
+#: gui/mainwindow.cc:199
+#, kde-format
+msgid "&Animation"
+msgstr "Beoch&an"
+
+#: gui/mainwindow.cc:344
+#, kde-format
+msgid "Start a new Game to play"
+msgstr "Tosaigh cluiche nua"
+
+#: gui/mainwindow.cc:382
+#, kde-format
+msgid "GAME OVER. Tie!"
+msgstr "CLUICHE THART. Ar comhscór!"
+
+#: gui/mainwindow.cc:385
+#, kde-format
+msgid "GAME OVER. You won!"
+msgstr "CLUICHE THART. Bhí an bua agat!"
+
+#: gui/mainwindow.cc:388
+#, kde-format
+msgid "GAME OVER. You lost!"
+msgstr "CLUICHE THART. Chaill tú!"
+
+#: gui/mainwindow.cc:400
+#, kde-format
+msgid "It is your turn."
+msgstr "Is leatsa an imirt."
+
+#: gui/mainwindow.cc:404
+#, kde-format
+msgid "Waiting for computer."
+msgstr "Feitheamh leis an ríomhaire."
+
+#: gui/mainwindow.cc:432
+#, kde-format
+msgid "Replaying game"
+msgstr "Cluiche á imirt arís"
+
+#: gui/mainwindow.cc:448
+#, kde-format
+msgid "Game replayed."
+msgstr "Imríodh an cluiche arís."
+
+#~ msgid "Difficulty level: strength of the computer player."
+#~ msgstr "Leibhéal deacrachta: neart an imreora ríomhaire."
+
+#~ msgid "You won!"
+#~ msgstr "Bhí an bua agat!"
+
+#~ msgid "You lost!"
+#~ msgstr "Chaill tú!"
+
+#~ msgid "New game"
+#~ msgstr "Cluiche nua"
+
+#~ msgid "Start a new game."
+#~ msgstr "Tosaigh cluiche nua."
+
+#~ msgid "&Hint"
+#~ msgstr "&Leid"
+
+#~ msgid "Hint a move"
+#~ msgstr "Tabhair leid"
+
+#~ msgid "Easy"
+#~ msgstr "Éasca"
+
+#~ msgid "Medium"
+#~ msgstr "Measartha"
+
+#~ msgid "Hard"
+#~ msgstr "Crua"
+
+#~ msgid "Normal"
+#~ msgstr "Gnáth"

@@ -1,0 +1,598 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>El manual del &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>21 de juny de 2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+	<para
+>Aquesta documentació descriu el joc &bovo; versió 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>joc</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>arcade</keyword>
+	<keyword
+>tauler</keyword>
+	<keyword
+>zeros i creus</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>dos jugadors</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>zeros</keyword>
+	<keyword
+>creus</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Connecta cinc</keyword>
+	<keyword
+>Connecta5</keyword>
+	<keyword
+>joc de taula</keyword>
+	<keyword
+>X i O</keyword>
+	<keyword
+>Cinc en una fila</keyword>
+	<keyword
+>trencaclosques</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introducció</title
+> <!-- do not change this! -->
+	<note
+><title
+>Tipus de joc:</title
+><para
+>Tauler, arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Nombre de possibles jugadors:</title
+><para
+>Dos</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>El &bovo; és un Gomoku (del japonès <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>, <quote
+>cinc punts</quote
+>) com un joc per a dos jugadors, on els adversaris s'alternen per a col·locar els seus respectius pictogrames sobre el tauler de joc. L'objectiu és connectar cinc de les teves pròpies peces en una fila de forma ininterrompuda en vertical, horitzontal o diagonal. </para>
+	<note
+><title
+>Nota:</title
+><para
+>També conegut com: Connecta cinc, Cinc en una fila, X i O, Zeros i creus</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Com es juga</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Pantalla principal del &bovo;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectiu:</title
+><para
+>Connectar cinc de les peces pròpies en una fila de forma ininterrompuda en vertical, horitzontal o diagonal.</para
+></note>
+	<para
+>La primera vegada que s'inicia el &bovo;, s'inicia en el mode de demostració on dos jugadors de la IA lluiten entre si. Sempre podreu iniciar una partida nova emprant el botó <guibutton
+>Nova</guibutton
+> de la barra d'eines, l'entrada de menú <menuchoice
+><guimenu
+>Joc</guimenu
+><guimenuitem
+>Nova</guimenuitem
+></menuchoice
+> a la barra de menús o emprant la drecera predeterminada <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Nota:</title
+><para
+>A causa que el primer jugador sempre té un avantatge sobre el segon, el &bovo; alternarà els jugadors, canviant-los en cada partida nova. </para
+></note>
+	<para
+>Si sou el primer jugador, comenceu la partida col·locant el pictograma en qualsevol lloc del camp de joc. Si sou el segon jugador, espereu fins que el primer jugador col·loqui el seu pictograma i després feu el mateix. Podeu col·locar la vostra marca en qualsevol quadrat del camp, a menys que ja estigui ocupat per una altra peça del joc (independentment de si és el vostre pictograma o el de l'adversari). </para>
+	<para
+>Heu de situar les vostres peces tot evitant que l'adversari connecti cinc marques en una fila de forma ininterrompuda en vertical, horitzontal o diagonal. Al mateix temps, n'heu de connectar cinc de les vostres pròpies en aquest mateix format. Qui ho aconsegueixi primer, guanyarà la tanda. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Les regles del joc, estratègies i consells</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Les regles del joc</title>
+		<itemizedlist>
+			<listitem
+><para
+>Els jugadors fan torns per a posar les seves respectives marques sobre el tauler de joc.</para
+></listitem>
+			<listitem
+><para
+>Un jugador no pot moure la seva marca ja col·locada o posar-ne una sobre d'una altra.</para
+></listitem>
+			<listitem
+><para
+>Els jugadors no poden perdre el seu torn.</para
+></listitem>
+			<listitem
+><para
+>El jugador que aconsegueixi cinc marques connectades en línia recta (ja sigui en vertical, horitzontal o diagonal) guanyarà la partida.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Consells de joc</title>
+		<itemizedlist>
+			<listitem
+><para
+>Quan s'inicia el &bovo; per primera vegada, caldrà canviar-ne la mida. Canvieu la mida de la finestra de joc a la mida desitjada i el &bovo; escalarà el tauler de joc.</para
+></listitem>
+			<listitem
+><para
+>La primera vegada que s'inicia el &bovo;, s'inicia en el mode de demostració, on dos jugadors de la IA s'enfronten entre si.</para
+></listitem>
+			<listitem
+><para
+>Quan se surt del &bovo; abans que acabi la partida, la partida activa es desarà automàticament. Si durant l'inici, el &bovo; detecta una partida desada automàticament, es restaurà. Si no és així, el &bovo; llançarà un mode de demostració.</para
+></listitem>
+			<listitem
+><para
+>Sempre podeu iniciar una patida nova amb el botó <guibutton
+>Nova</guibutton
+> de la barra d'eines, l'entrada de menú <menuchoice
+><guimenu
+>Joc</guimenu
+><guimenuitem
+>Nova</guimenuitem
+></menuchoice
+> a la barra de menús o amb la drecera predeterminada <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Si s'inicia una partida nova quan ja n'hi ha una activa, aquesta última es comptarà com a perduda.</para
+></listitem>
+			<listitem
+><para
+>Es pot canviar la dificultat amb la llista desplegable <guilabel
+>Dificultat</guilabel
+> al costat dret de la barra d'estat, o des de l'entrada de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Dificultat</guimenuitem
+></menuchoice
+> a la barra de menús.</para
+></listitem>
+			<listitem
+><para
+>L'efecte de canviar la dificultat té lloc immediatament.</para
+></listitem>
+			<listitem
+><para
+>Podeu canviar el tema del &bovo; des de l'entrada de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+> a la barra de menús. A continuació, el tema es canviarà immediatament.</para
+></listitem>
+			<listitem
+><para
+>L'animació es pot activar o desactivar com més us agradi des de l'entrada de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Animació</guimenuitem
+></menuchoice
+> a la barra de menús.</para
+></listitem>
+			<listitem
+><para
+>Si us adoneu que heu realitzat un moviment molt dolent, teniu la possibilitat de desfer el vostre últim moviment des de la barra d'eines, la barra de menús o amb la drecera de teclat predeterminada per a desfer <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Podreu seguir desfent moviments fins que arribeu al començament de la partida.</para
+></listitem>
+			<listitem
+><para
+>Si no sabeu quin moviment fer, podeu obtenir un consell del jugador ordinador amb el botó <guibutton
+>Consell</guibutton
+>. La peça de la partida aconsellada pel &bovo; parpellejarà durant un breu període de temps.</para
+></listitem>
+			<listitem
+><para
+>Quan s'acabi una partida, s'habilitarà l'acció <guibutton
+>Repeteix</guibutton
+>, la qual començarà una repetició de l'última partida.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Resum de la interfície</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Elements de menú</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Comença una partida nova.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Repetició</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Torna a jugar l'última partida.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>En seleccionar aquest element s'acabarà la teva partida en joc i se sortirà del &nbsp;&bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Desfà l'últim moviment que heu realitzat.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Consell</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Mostra</action
+> una pista per al pròxim moviment. La peça del joc aconsellada per la IA del &nbsp;&bovo; parpellejarà durant un breu període de temps.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Tria un dels temes <guimenuitem
+>Scribble</guimenuitem
+>, <guimenuitem
+>Contrast alt</guimenuitem
+>, <guimenuitem
+>Espai</guimenuitem
+> o <guimenuitem
+>Gomoku</guimenuitem
+> per al joc.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Animació</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Activa o desactiva l'animació.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Dificultat</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Tria la dificultat del joc entre diversos nivells, des de <guimenuitem
+> Ridículament fàcil</guimenuitem
+> fins a <guimenuitem
+>Impossible</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De manera addicional, el &bovo; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Preguntes més freqüents</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Vull canviar l'aparença d'aquest joc. Puc fer-ho? </para
+></question>
+ <answer
+><para
+>Sí. Per a canviar el tema visual del &bovo;, podeu utilitzar l'entrada de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+> a la barra de menús.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puc utilitzar el teclat per a jugar a aquest joc? </para
+></question>
+ <answer
+><para
+>No. Aquest joc no es pot jugar amb el teclat.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>He de sortir del joc ara, però encara no he acabat. Puc desar el meu progrés?</para
+></question>
+  <answer
+><para
+>No. No hi ha una característica com <quote
+>Desa</quote
+> en el &bovo;, però a l'inici sí que es restaura la darrera partida sense acabar.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>On es troben les puntuacions més altes?</para
+></question>
+ <answer
+><para
+>El &bovo; no té aquesta característica.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Crèdits i llicència</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Copyright del programa 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Copyright de la documentació 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

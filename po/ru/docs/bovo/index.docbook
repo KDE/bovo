@@ -1,0 +1,609 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Russian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Руководство пользователя &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Евгений</firstname
+> <surname
+>Трунев</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Александр</firstname
+><surname
+>Поташев</surname
+><affiliation
+><address
+><email
+>aspotashev@gmail.com</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>9 мая 2016 г.</date>
+<releaseinfo
+>1.1 (Приложения KDE 16.04)</releaseinfo>
+
+<abstract>
+	<para
+>Это руководство описывает игру &bovo; версии 1.1.</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>игра</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>аркада</keyword>
+	<keyword
+>настольная</keyword>
+	<keyword
+>крестики-нолики</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>для двух игроков</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>нолики</keyword>
+	<keyword
+>крестики</keyword>
+	<keyword
+>гомоку</keyword>
+	<keyword
+>Connect Five</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>настольная игра</keyword>
+	<keyword
+>X и O</keyword>
+	<keyword
+>пять в ряд</keyword>
+	<keyword
+>головоломка</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Введение</title
+> <!-- do not change this! -->
+	<note
+><title
+>Вид игры:</title
+><para
+>Настольная, аркада</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Возможное число игроков</title
+><para
+>Двое</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; — это разновидность игры гомоку (в переводе с японского <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+> — пять точек) для двух игроков, в которой соперники по очереди ставят свои знаки на игровом поле. Цель игры — выстроить неразрывный ряд из своих знаков по горизонтали, вертикали или диагонали. </para>
+	<note
+><title
+>Примечание:</title
+><para
+>Названия этой и похожих игр: пять в ряд, Гомоку, крестики-нолики.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Как играть</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Основной экран &bovo;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Цель:</title
+><para
+>Расположите 5 знаков вашего вида в ряд по вертикали, горизонтали или диагонали без разрывов.</para
+></note>
+	<para
+>При первом запуске &bovo; демонстрируется игра искусственного интеллекта против самого себя. Новую игру можно начать в любой момент, нажав кнопку <guibutton
+>Начать игру</guibutton
+> на панели инструментов, выбрав в меню <menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Начать игру</guimenuitem
+></menuchoice
+> или используя стандартную комбинацию клавиш <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Примечание:</title
+><para
+>Поскольку игрок, который ходит первым, имеет преимущество, &bovo; будет давать право первого хода поочерёдно каждому из игроков при начале новой игры. </para
+></note>
+	<para
+>Если вы ходите первым, начните игру, поставив ваш знак в произвольной клетке игрового поля. Если вы ходите вторым, сначала подождите, пока первый игрок делает свой ход. Поставить знак можно в любую свободную клетку, то есть в которой нет ни вашего, ни вражеского знака. </para>
+	<para
+>Необходимо делать такие ходы, чтобы не позволить противнику выиграть. В то же время, вам нужно также стремиться собрать неразрывный ряд из пяти знаков и сделать это первым, чтобы выиграть. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Правила игры, стратегии и советы</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Правила игры</title>
+		<itemizedlist>
+			<listitem
+><para
+>Игроки хотят по очереди, ставя свои знаки на игровом поле.</para
+></listitem>
+			<listitem
+><para
+>Запрещено двигать свои отметки или ставить знак поверх другой отметки.</para
+></listitem>
+			<listitem
+><para
+>Запрещено пропускать ходы.</para
+></listitem>
+			<listitem
+><para
+>Выигрывает игрок, который первым поставит 5 крестиков или ноликов подряд на горизонтальной, вертикальной или диагональной линии.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Полезные советы</title>
+		<itemizedlist>
+			<listitem
+><para
+>При первом запуске &bovo; рекомендуем изменить размер окна, чтобы игровое поле стало достаточно крупным.</para
+></listitem>
+			<listitem
+><para
+>При первом запуске &bovo; демонстрируется игра искусственного интеллекта против самого себя.</para
+></listitem>
+			<listitem
+><para
+>Если закрыть &bovo; до окончания игры, она будет автоматически сохранена. &bovo; найдёт эту сохранённую игру и восстановит её при следующем запуске.</para
+></listitem>
+			<listitem
+><para
+>Новую игру можно начать в любой момент, нажав кнопку <guibutton
+>Начать игру</guibutton
+> на панели инструментов, выбрав в меню <menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Начать игру</guimenuitem
+></menuchoice
+> или используя стандартную комбинацию клавиш <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Если начать новую игру, когда текущая игра не окончена, то вам будет засчитано поражение в текущей игре.</para
+></listitem>
+			<listitem
+><para
+>Чтобы сменить уровень сложности, выберите его в выпадающем списке в строке состояния или в меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Уровень сложности</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Смена уровня сложности происходит сразу после выбора его в меню.</para
+></listitem>
+			<listitem
+><para
+>Оформление &bovo; можно сменить в меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Оформление</guisubmenu
+></menuchoice
+>. Оформление меняется сразу после выбора его в меню.</para
+></listitem>
+			<listitem
+><para
+>Можно включить или выключить анимацию, используя пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Анимация</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+			<listitem
+><para
+>Если вы поняли, что только что сделали очень плохой ход, его можно отменить используя соответствующую кнопку на панели инструментов или пункт меню, либо нажав комбинацию клавиш <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Можно продолжать отменять ходы, пока не вернётесь к самому началу игры.</para
+></listitem>
+			<listitem
+><para
+>Если не знаете, какой сделать ход, можно получить от компьютера подсказку, нажав кнопку <guibutton
+>Подсказка</guibutton
+>. Ход, предлагаемый вам искусственным интеллектом &bovo;, будет показан на игровом поле.</para
+></listitem>
+			<listitem
+><para
+>Когда игра окончена, можно нажать кнопку <guibutton
+>Повтор</guibutton
+>, чтобы воспроизвести последовательность ходов в завершившейся игре.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Обзор интерфейса</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Команды меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Начать игру</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Начать новую игру.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Повтор</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Воспроизвести ходы закончившейся игры.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Прервать текущую игру и завершить работу программы &bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Отменить</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Отменить ваш последний ход.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Подсказка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Показать</action
+> подсказку для следующего хода. Ход, предлагаемый вам искусственным интеллектом &bovo;, будет показан на игровом поле.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Оформление</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Выбрать одно из оформлений для игры: <guimenuitem
+>рэндзю</guimenuitem
+>, <guimenuitem
+>контраст</guimenuitem
+>, <guimenuitem
+>мазня</guimenuitem
+> или <guimenuitem
+>космос</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Анимация</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Выключить или выключить анимацию.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Уровень сложности</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Выбрать уровень сложности игры, от <guimenuitem
+>Смехотворно лёгкого</guimenuitem
+> до <guimenuitem
+>Невозможного</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>В дополнение к перечисленным пунктам меню, &bovo; имеет общие для приложений &kde; пункты в меню <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>. Информацию о них можно найти в разделах документации о <ulink url="help:/fundamentals/ui.html#menus-settings"
+>меню Настройка</ulink
+> и о <ulink url="help:/fundamentals/ui.html#menus-help"
+>меню Справка</ulink
+>. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Вопросы и ответы</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Я хочу сменить внешний вид игрового поля. Как это сделать? </para
+></question>
+ <answer
+><para
+>Чтобы сменить оформление &bovo;, используйте меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guisubmenu
+>Оформление</guisubmenu
+></menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Как делать ходы, используя только клавиатуру? </para
+></question>
+ <answer
+><para
+>В &bovo; нельзя играть, используя только клавиатуру.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Мне сейчас нужно закрыть программу, но я ещё не закончил играть. Как сохранить игру?</para
+></question>
+  <answer
+><para
+>В &bovo; не реализована функция сохранения игры, но при следующем запуске программы будет автоматически восстановлена последняя незавершённая игра.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Как посмотреть таблицу результатов?</para
+></question>
+ <answer
+><para
+>В &bovo; отсутствует такое понятие как таблица результатов.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Авторские права и лицензия</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>&copy; &Aron.Bostrom; &Aron.Bostrom.mail;, программа, 2002, 2007 </para>
+
+<para
+>&copy; &Aron.Bostrom; &Aron.Bostrom.mail;, документация, 2007</para>
+
+<para
+>Перевод на русский язык: Александр Поташев<email
+>aspotashev@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

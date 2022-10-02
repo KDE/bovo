@@ -1,0 +1,612 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Czech "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Příručka aplikace &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Lukáš</firstname
+><surname
+>Vlček</surname
+><affiliation
+><address
+><email
+>lukas.vlcek777@gmail.com</email
+></address
+></affiliation
+><contrib
+>Překlad</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>9.5.2016</date>
+<releaseinfo
+>1.1 (Aplikace 16.04)</releaseinfo>
+
+<abstract>
+	<para
+>Tato dokumentace popisuje hru &bovo; ve verzi 1.1.</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>hra</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>arkáda</keyword>
+	<keyword
+>desková</keyword>
+	<keyword
+>nuly a křížky</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>dva hráči</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>nuly</keyword>
+	<keyword
+>křížky</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Spoj pět</keyword>
+	<keyword
+>Spoj5</keyword>
+	<keyword
+>Desková hra</keyword>
+	<keyword
+>X a O</keyword>
+	<keyword
+>Pět v řadě</keyword>
+	<keyword
+>Hlavolam</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Úvod</title
+> <!-- do not change this! -->
+	<note
+><title
+>Typ hry:</title
+><para
+>Desková, arkáda</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Počet možných hráčů:</title
+><para
+>Dva</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; je hra Gomoku (z japonského <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+> doslovně "pět bodů") pro dva soupeřící hráče, kteří se střídají v umísťování svých značek na herní desku. Cílem hry je spojit pět vlastních neoddělených značek v řádku, sloupci či úhlopříčce. </para>
+	<note
+><title
+>Poznámka:</title
+><para
+>Je také známá jako: Spoj pět, Pět v řadě, X a O, Nuly a křížky</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Jak hrát</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Hlavní obrazovka hry &bovo;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Cíl:</title
+><para
+>Spojte pět Vašich vlastních symbolů v neporušené svislé, vodorovné nebo úhlopříčné řadě.</para
+></note>
+	<para
+>Aplikace &bovo; je při prvním startu spuštěna v režimu demo, ve kterém soupeří dva hráči oba s umělou inteligencí. Spustit novou hru můžete vždy použitím tlačítka <guibutton
+>Nová</guibutton
+> na nástrojové liště, vybráním položky <menuchoice
+><guimenu
+>Hra</guimenu
+><guimenuitem
+>Nová</guimenuitem
+></menuchoice
+> z hlavní nabídky nebo použitím klávesové zkratky <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Poznámka:</title
+><para
+>Protože první hráč má vždy přednost před druhým hráčem, aplikace &bovo; bude střídat hráče při každé nové hře. </para
+></note>
+	<para
+>Jste-li první hráč - začínáte hru umístěním Vašeho symbolu kdekoli na herní ploše. Jste-li druhý hráč, čekáte dokud první hráč neumístí symbol a je řada na Vás. Váši značku můžete umístit do kteréhokoli čtverce na ploše, není-li již obsazen jiným herním obrazcem (bez ohledu, je-li to Váš symbol nebo Vašeho protivníka). </para>
+	<para
+>Váš obrazec musíte umístit tak, že zabrání Vašemu protivníkovi ve spojení pěti značek v nepřerušené vodorovné, svislé nebo úhlopříčné řadě. Kdokoli uspěje jako první - vyhrává kolo. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Herní pravidla, strategie a tipy</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Herní pravidla</title>
+		<itemizedlist>
+			<listitem
+><para
+>Hráči se střídají v umísťování svých vlastních značek na herní desku.</para
+></listitem>
+			<listitem
+><para
+>Hráč nemůže přesunout jejich již umístěné značky nebo umístit svoji značku na již umístěnou značku.</para
+></listitem>
+			<listitem
+><para
+>Hráči nemohou přijít o svoje hodnocení.</para
+></listitem>
+			<listitem
+><para
+>Hráč, který dosáhne pěti značek spojených rovnou čarou (svislou, vodorovnou nebo úhlopříčnou), vyhrává hru.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Herní tipy</title>
+		<itemizedlist>
+			<listitem
+><para
+>Když &bovo; spuštěno poprvé, potřebuje změnit velikost okna. Změňte velikost herního okna na požadovanou velikost a aplikace &bovo; překreslí hrací desku.</para
+></listitem>
+			<listitem
+><para
+>Aplikace &bovo; je při prvním startu spuštěna v režimu demo, ve kterém soupeří dva hráči oba s umělou inteligencí.</para
+></listitem>
+			<listitem
+><para
+>Když je aplikace &bovo; ukončena před koncem hry, je aktivní hra automaticky uložena. Zjistí-li aplikace &bovo; při startu uloženou hru, obnoví ji. Nezjisti-li, aplikace &bovo; spustí režim demo.</para
+></listitem>
+			<listitem
+><para
+>Novou hru můžete začít vždy pomocí tlačítka <guibutton
+>Nová</guibutton
+>, zvolením položky <menuchoice
+><guimenu
+>Hra</guimenu
+><guimenuitem
+>Nová</guimenuitem
+></menuchoice
+> v hlavní nabídce nebo pomocí výchozí klávesové zkratky <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Je-li nová hra spuštěna při již aktivní hře, je to započítáno jako prohra.</para
+></listitem>
+			<listitem
+><para
+>Obtížnost můžete měnit pomocí roletového seznamu <guilabel
+>Obtížnost</guilabel
+> v pravé části stavové lišty nebo položkou <menuchoice
+><guimenu
+>Nastavení</guimenu
+><guimenuitem
+>Obtížnost</guimenuitem
+></menuchoice
+> v hlavní nabídce.</para
+></listitem>
+			<listitem
+><para
+>Provedení změny obtížnosti proběhne ihned.</para
+></listitem>
+			<listitem
+><para
+>Motiv aplikace &bovo; můžete přepnout pomocí nabídky <menuchoice
+><guimenu
+>Nastavení</guimenu
+> <guisubmenu
+>Motiv</guisubmenu
+></menuchoice
+> v hlavní nabídce. Motiv je pak ihned přepnut.</para
+></listitem>
+			<listitem
+><para
+>Animaci můžete zapnout nebo vypnout, jak se Vám líbí, položkou <menuchoice
+><guimenu
+>Nastavení</guimenu
+> <guimenuitem
+>Animace</guimenuitem
+></menuchoice
+> v hlavní nabídce.</para
+></listitem>
+			<listitem
+><para
+>Pokud jste si uvědomili, že jste udělali velmi špatný tah, máte možnost vrátit poslední tah z nástrojové lišty, hlavní nabídky nebo pomocí výchozí klávesové zkratky <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Tahy můžete neustále vracet, dokud nedosáhnete začátku hry.</para
+></listitem>
+			<listitem
+><para
+>Nevíte-li jak táhnout, můžete dostat radu od počítačového hráče pomocí tlačítka <guibutton
+>Rada</guibutton
+>. Herní symbol je navržen umělou inteligencí aplikací &bovo;, který pak na krátkou dobu bliká.</para
+></listitem>
+			<listitem
+><para
+>Když hra skončila, je zpřístupněna činnost <guibutton
+>Přehrát</guibutton
+>, která spouští přehrávání poslední hry.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Náhled na rozhraní</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Položky hlavní nabídky</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+> <guimenuitem
+>Nová</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Spouští novou hru.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Hra</guimenu
+> <guimenuitem
+>Přehrát</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Přehraje poslední hru.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Hra</guimenu
+> <guimenuitem
+>Ukončit</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Výběr této položky ukončí hru a zavře aplikaci &bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Tah</guimenu
+> <guimenuitem
+>Zpět</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Vrací zpět poslední tah.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Tah</guimenu
+> <guimenuitem
+>Rada</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Zobrazuje</action
+> radu pro další tah. Herní symbol je navržen umělou inteligencí aplikací &bovo;, který pak na krátkou dobu bliká.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Nastavení</guimenu
+><guisubmenu
+>Motiv</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Vyberte jeden z motivů pro hru: <guimenuitem
+>Scribble</guimenuitem
+>, <guimenuitem
+>Vysoký kontrast</guimenuitem
+>, <guimenuitem
+>Vesmír</guimenuitem
+> nebo <guimenuitem
+>Gomoku</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Nastavení</guimenu
+><guimenuitem
+>Animace </guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Zapíná nebo vypíná animaci.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Nastavení</guimenu
+><guisubmenu
+>Obtížnost</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Vyberte obtížnost hry od <guimenuitem
+>Směšně jednoduchá</guimenuitem
+> až po <guimenuitem
+>Nemožná</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>&bovo; má běžné položky &kde; nabídek <guimenu
+>Nastavení</guimenu
+> a <guimenu
+>Nápověda</guimenu
+>. Pro více informací si přečtěte část o <ulink url="help:/fundamentals/ui.html#menus-settings"
+>nabídce Nastavení</ulink
+> a <ulink url="help:/fundamentals/ui.html#menus-help"
+>nabídce Nápověda</ulink
+> v nápovědě Základy &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Často kladené otázky</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Chci změnit vzhled hry. Mohu? </para
+></question>
+ <answer
+><para
+>Ano. Chcete-li změnit visuální motiv aplikace &bovo;, můžete použít volbu hlavní nabídky <menuchoice
+><guimenu
+>Nastavení</guimenu
+><guisubmenu
+>Motiv</guisubmenu
+> </menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Mohu při hraní použít klávesnici? </para
+></question>
+ <answer
+><para
+>Ne. Hru &bovo; nelze hrát pomocí klávesnice.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Musím ukončit svoji hru ještě před dokončením. Mohu uložit svůj průběh?</para
+></question>
+  <answer
+><para
+>Ne. Zde v aplikaci &bovo; není možnost <quote
+>Uložit</quote
+>, ale &bovo; ukládá poslední nedokončenou hru.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kde jsou nejlepší výsledky?</para
+></question>
+ <answer
+><para
+>&bovo; nemá tuto funkci.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Informace o autorech a licenční ujednání</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Documentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Překlad dokumentace Lukáš Vlček <email
+>lukas.vlcek777@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

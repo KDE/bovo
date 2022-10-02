@@ -1,0 +1,596 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manuel de &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+&traducteurStanislasZeller; 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>21-06-2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+	<para
+>Cette documentation décrit le jeu &bovo; version 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>jeu kde</keyword
+> <!-- do not change this! -->
+	<keyword
+>jeu</keyword
+> <!-- do not change this! -->
+	<keyword
+>Bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>arcade</keyword>
+	<keyword
+>plateau</keyword>
+	<keyword
+>morpions</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>deux joueurs</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>ronds</keyword>
+	<keyword
+>croix</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Variante du Morpion</keyword>
+	<keyword
+>Variante du Morpion</keyword>
+	<keyword
+>jeu de plateau</keyword>
+	<keyword
+>X et O</keyword>
+	<keyword
+>Cinq sur une ligne</keyword>
+	<keyword
+>Puzzle</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introduction</title
+> <!-- do not change this! -->
+	<note
+><title
+>Type de jeu : </title
+><para
+>Plateau, arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Deux</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; est un jeu de type Gomoku (du japonais <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>lit. « cinq points ») pour deux joueurs, où les adversaires jouent chacun à leur tour en plaçant leur pictogramme respectif sur le plateau de jeu. Le but de ce jeu est d'aligner cinq de vos pictogrammes sur une ligne continue verticale, horizontale ou diagonale. </para>
+	<note
+><title
+>Remarque : </title
+><para
+>Aussi connu comme une variante du Morpion (souvenez vous à l'école... :-)</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Comment jouer</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>L'écran principal de &bovo; </phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectif : </title
+><para
+>Aligner cinq de vos pictogrammes dans une ligne verticale, horizontale ou diagonale.</para
+></note>
+	<para
+>La première fois que &bovo; démarre une partie de démonstration est lancée où l'ordinateur dirige deux joueurs. Vous pouvez toujours démarrer une partie en utilisant le bouton <guibutton
+>Nouveau</guibutton
+> sur la barre d'outils, <menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+> sur la barre de menu ou le raccourci par défaut <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Remarque : </title
+><para
+>Parce que le premier joueur a toujours l'avantage sur le deuxième joueur, &bovo; alternera les joueurs à chaque démarrage d'une nouvelle partie. </para
+></note>
+	<para
+>Si vous êtes le premier joueur, démarrez la partie en plaçant votre pictogramme où vous le voulez sur le plateau de jeu. Si vous êtes le deuxième joueur, veuillez patienter jusqu'à ce que le premier joueur place son pictogramme et ensuite faites en de même. Vous pouvez placer votre pictogramme dans n'importe quelle case du champ, à moins que cette case ne soit toujours occupée par un autre pictogramme (en analysant si c'est votre pictogramme ou celui de votre adversaire). </para>
+	<para
+>Vous devez placer votre pictogramme de telle manière que votre adversaire ne puisse pas aligner cinq de ses pictogrammes sur une ligne verticale, horizontale ou diagonale. Dans le même temps, vous devez connecter cinq de vos pictogrammes de cette manière. Le premier qui arrive à aligner les cinq remporte la partie. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Règles du jeu, stratégies et astuces</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Règles du jeu</title>
+		<itemizedlist>
+			<listitem
+><para
+>Les joueurs placent chacun à leur tour leur pictogramme sur le plateau de jeu.</para
+></listitem>
+			<listitem
+><para
+>Un joueur ne peut pas déplacer un pictogramme déjà placé ou en placer un sur une case déjà occupée.</para
+></listitem>
+			<listitem
+><para
+>Les joueurs ne peuvent pas passer leur tour.</para
+></listitem>
+			<listitem
+><para
+>Le joueur qui arrive à aligner cinq pictogrammes sur une ligne (qui doit être verticale, horizontale ou diagonale) remporte la partie.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Astuces du jeu</title>
+		<itemizedlist>
+			<listitem
+><para
+>Quand &bovo; démarre la première fois, il doit être re-dimensionné. Re-dimensionnez la fenêtre de jeu à la taille désirée et &bovo; va adapter le plateau de jeu.</para
+></listitem>
+			<listitem
+><para
+>La première fois que &bovo; démarre, une partie de démonstration est lancée où l'ordinateur dirige deux joueurs.</para
+></listitem>
+			<listitem
+><para
+>Quand &bovo; quitte avant la fin de la partie, celle ci est enregistrer automatiquement. Si &bovo; détecte une partie enregistrée au démarrage, celle ci est restaurée. Si non, &bovo; lance le mode de démonstration.</para
+></listitem>
+			<listitem
+><para
+>Vous pouvez toujours démarrer une nouvelle partie avec le bouton <guibutton
+>Nouveau</guibutton
+> dans la barre d'outils, <menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+> dans la barre de menu ou le raccourci par défaut <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Si une nouvelle partie est démarrée quand une autre est toujours active, cette dernière est comptée comme perdue.</para
+></listitem>
+			<listitem
+><para
+>La modification du niveau de difficulté peut être réalisée avec la boîte déroulante <guilabel
+>Difficulté</guilabel
+> sur le côté droit de la barre d'état ou depuis l'entrée de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Difficulté</guimenuitem
+></menuchoice
+> dans la barre de menus.</para
+></listitem>
+			<listitem
+><para
+>La modification du niveau de difficulté est pris en compte immédiatement.</para
+></listitem>
+			<listitem
+><para
+>Vous pouvez choisir un thème pour &bovo; depuis l'entrée de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guisubmenu
+>Thème</guisubmenu
+></menuchoice
+> dans la barre de menus. Le thème est appliqué immédiatement.</para
+></listitem>
+			<listitem
+><para
+>L'animation peut être activée ou désactivée depuis l'entrée de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Animation</guimenuitem
+></menuchoice
+> dans la barre de menus.</para
+></listitem>
+			<listitem
+><para
+>Si vous réalisez avoir effectué un mauvais mouvement, vous avez la possibilité d'annuler ce dernier mouvement depuis la barre d'outils, la barre de menu ou avec le raccourci clavier par défaut <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Vous pouvez continuer à annuler les déplacements jusqu'à revenir au début du jeu.</para
+></listitem>
+			<listitem
+><para
+>Si vous ne savez pas quel mouvement réaliser, vous pouvez avoir recours à un conseil avec le bouton <guibutton
+>Conseil</guibutton
+>. L'emplacement du pictogramme suggéré par l'ordinateur va clignoter pendant un courte période de temps.</para
+></listitem>
+			<listitem
+><para
+>Quand une partie est terminée, le bouton <guibutton
+>Rejouer</guibutton
+> est activé qui vous permet de revoir la dernière partie jouée.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Vue d'ensemble de l'interface.</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Éléments de menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Démarre une nouvelle partie.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Rejouer</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Rejouer la dernière partie.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Sélectionner cet élément va mettre fin à la partie courante et quitter &bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Annuler</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Annuler le dernier mouvement effectué.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Conseil</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Affiche</action
+> un conseil pour le déplacement suivant. La pièce du jeu suggérée par &bovo; s'allume pendant une courte durée.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guisubmenu
+>Thème</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Choisir un des thèmes pour le jeu : <guimenuitem
+>Crayonné</guimenuitem
+>, <guimenuitem
+>Contraste élevé</guimenuitem
+>, <guimenuitem
+>Spatial</guimenuitem
+> ou <guimenuitem
+>Gomoku</guimenuitem
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Animation</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Active ou désactive l'animation.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+><guisubmenu
+>Difficulté</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Choisissez le niveau de difficulté du jeu selon de nombreux niveaux de <guimenuitem
+>Ridiculement facile</guimenuitem
+> à <guimenuitem
+>Impossible</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De plus, &bovo; possède des éléments communs de menu &kde; <guimenu
+>Configuration</guimenu
+> et <guimenu
+>Aide</guimenu
+>. Pour plus d'informations, veuillez consulter les sections <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu de configuration</ulink
+> et <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu d'aide </ulink
+> des fondamentaux de &kde;. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Foire aux questions</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Je veux modifier la façon dont le jeu s'affiche. Est-ce possible ? </para
+></question>
+ <answer
+><para
+>Oui. Pour modifier le thème visuel de &bovo;, vous pouvez utiliser l'entrée de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+><guisubmenu
+>Thème</guisubmenu
+> </menuchoice
+> dans la barre de menus.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puis-je utiliser le clavier pour jouer à ce jeu ? </para
+></question>
+ <answer
+><para
+>Non. &bovo; ne permet pas de jouer avec le clavier.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Je veux quitter le jeu maintenant, mais ma partie n'est pas terminée. Puis je l'enregistrer ?</para
+></question>
+  <answer
+><para
+>Non, &bovo; ne propose pas la fonctionnalité <quote
+>d'enregistrement</quote
+>. Mais il peut restaurer au démarrage, le dernier jeu non terminé.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Où se trouve les meilleurs scores ?</para
+></question>
+ <answer
+><para
+>&bovo; ne propose pas cette fonctionnalité.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Remerciements et licence</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Copyright du programme 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Copyright de la documentation 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Traduction française par &StanislasZeller;.</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

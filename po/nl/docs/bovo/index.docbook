@@ -1,0 +1,596 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Het handboek van &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+&Freek.de.Kruijf;&Ronald.Stroethoff; 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-21</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+	<para
+>Deze documentatie beschrijft het spel &bovo; versie 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>arcade</keyword>
+	<keyword
+>bord</keyword>
+	<keyword
+>rondjes en kruisjes</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>twee spelers</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>rondjes</keyword>
+	<keyword
+>kruisjes</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Vijf verbinden</keyword>
+	<keyword
+>5 verbinden</keyword>
+	<keyword
+>Bordspel</keyword>
+	<keyword
+>X en O</keyword>
+	<keyword
+>Vijf op een rij</keyword>
+	<keyword
+>Puzzel</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Inleiding</title
+> <!-- do not change this! -->
+	<note
+><title
+>Speltype:</title
+><para
+>Bord, Arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Aantal mogelijke spelers:</title
+><para
+>Twee</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; is een op Gomoku (uit het Japans <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>lit. <quote
+>vijf punten</quote
+>) lijkend spel voor twee spelers, waar de tegenspelers afwisselend hun respectievelijke pictogram op het speelbord zetten. Het doel van dit spel is om  vijf van uw eigen stukken aaneengesloten op een rij verticaal, horizontaal of diagonaal te verbinden. </para>
+	<note
+><title
+>Notitie:</title
+><para
+>Ook bekend als: Connect Five, Vijf op een rij, X en O, Noughts and Crosses</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Hoe te spelen</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>&bovo; hoofdscherm</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Doel:</title
+><para
+>Vijf van uw eigen stukken aaneengesloten op een rij verticaal, horizontaal of diagonaal verbinden.</para
+></note>
+	<para
+>De eerste keer dat &bovo; wordt gestart, start het in demomodus waar twee computerspelers met elkaar spelen. U kunt altijd een nieuw spel beginnen met de knop <guibutton
+>Nieuw</guibutton
+> op de werkbalk, het menu=item <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+> op de menubalk of met de standaard sneltoets <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Notitie:</title
+><para
+>Omdat de eerste speler altijd een voordeel heeft boven de tweede speler, zal &bovo; de spelers afwisselen en ze elk nieuw spel omschakelen. </para
+></note>
+	<para
+>Als u de eerste speler bent - start het spel door uw pictogram ergens op het speelveld te plaatsen. Als u de tweede speler bent, wacht u totdat de eerste speler zijn pictogram heeft geplaatst waarna u hetzelfde doet. U kunt uw spelteken in elk ruit van het veld plaatsen, tenzij het al bezet is door een ander spelteken (onafhankelijk of deze van u is of van uw tegenstander). </para>
+	<para
+>U moet uw speltekens zodanig plaatsen dat het uw tegenstander verhindert om vijf speltekens aaneengesloten verticaal, horizontaal of diagonaal op een rij te plaatsen. Tegelijkertijd moet u uw eigen speltekens juist wel aaneengesloten verticaal, horizontaal of diagonaal op een rij plaatsen. Wie als eerste daarin slaagt - wint deze ronde. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelregels, strategieën en tips</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Spelregels</title>
+		<itemizedlist>
+			<listitem
+><para
+>Om de beurt plaatsen de spelers hun speltekens op het speelbord.</para
+></listitem>
+			<listitem
+><para
+>Een speler kan een al geplaatst spelteken niet meer verplaatsen of een spelteken op een al bezet vak plaatsen.</para
+></listitem>
+			<listitem
+><para
+>Spelers kunnen hun beurt niet overslaan.</para
+></listitem>
+			<listitem
+><para
+>De speler die vijf verbonden stenen in een rechte lijn verbindt (verticaal, horizontaal of diagonaal) wint het spel.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Spel tips</title>
+		<itemizedlist>
+			<listitem
+><para
+>Wanneer &bovo; voor de eerste keer is gestart, dan is het speelvenster beeldvullend en kunt u de grootte van het speelvenster aanpassen. Stel het speelvenster in op de gewenste grootte, en &bovo; zal het speelbord schalen.</para
+></listitem>
+			<listitem
+><para
+>De eerste keer start u &bovo; in de demo-modus, waar twee AI-spelers tegen elkaar strijden. </para
+></listitem>
+			<listitem
+><para
+>Wanneer u &bovo; afsluit voordat het spel is uitgespeeld dan slaat het de stand van het actieve spel automatisch op. Als &bovo; een automatisch opgeslagen spel opmerkt tijdens het opstarten dan laadt het deze weer. Als &bovo; geen opgeslagen spel opmerkt dan start het in de demo-modus.</para
+></listitem>
+			<listitem
+><para
+>U kunt altijd een nieuw spel starten met de knop <guibutton
+>Nieuw</guibutton
+> in de werkbalk of via het menuitem <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+> in de menubalk of met de standaard sneltoets <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Als u een nieuw speelronde start terwijl een speelronde nog actief is dan telt dat als verloren.</para
+></listitem>
+			<listitem
+><para
+>U kunt de moeilijkheidsgraad instellen met de keuzelijst <guilabel
+>Moeilijkheid</guilabel
+>  aan de rechterkant van de statusbalk of via het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Moeilijkheid</guimenuitem
+></menuchoice
+> in de menubalk.</para
+></listitem>
+			<listitem
+><para
+>De gewijzigde moeilijkheidsgraad is onmiddellijk geldig.</para
+></listitem>
+			<listitem
+><para
+>U kunt het thema van &bovo; wijzigen via het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Thema</guisubmenu
+></menuchoice
+> in de menubalk. Het nieuwe thema is dan onmiddellijk geldig.</para
+></listitem>
+			<listitem
+><para
+>Animatie kunt u desgewenst aan- en uitschakelen via het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Animatie</guimenuitem
+></menuchoice
+> in de menubalk.</para
+></listitem>
+			<listitem
+><para
+>Als u zich realiseert dat u een zeer slechte zet heeft gedaan dan heeft u de mogelijkheid om de laatste zet ongedaan te maken via de werkbalk, de menubalk of met de standaard sneltoets Ongedaan maken <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>U kunt doorgaan met het ongedaan maken van de zetten totdat u het begin van de spelronde bereikt.</para
+></listitem>
+			<listitem
+><para
+>Als u niet weet welke zet te doen dan kunt u een hint van de computerspeler krijgen met de knop <guibutton
+>Hint</guibutton
+>. Het door de AI van &bovo; voorgestelde spelteken zal gedurende een korte tijd knipperen.</para
+></listitem>
+			<listitem
+><para
+>Na het einde van de speelronde is de knop <guibutton
+>Opnieuw spelen</guibutton
+> ingeschakeld en kunt u erop drukken zodat de laatste speelronde opnieuw wordt afgespeeld.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Overzicht van het interface</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Menu-items</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Start een nieuw spel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Opnieuw spelen</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Speelt het laatst gespeelde spel opnieuw af.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Als u dit selecteert dan stopt uw speelronde en sluit &bovo; af.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Ongedaan maken</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Maakt uw laatste zet ongedaan.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Hint</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Toont</action
+> een hint voor de volgende zet. Het door de AI van &bovo; voorgestelde spelteken zal gedurende een korte tijd knipperen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guisubmenu
+>Thema</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Kies voor het spel uit de thema's <guimenuitem
+>Scribble</guimenuitem
+>, <guimenuitem
+>Hoog contrast</guimenuitem
+>, <guimenuitem
+>Spacy</guimenuitem
+> of <guimenuitem
+>Gomoku</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Animatie </guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Schakel de animatie in of uit.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guisubmenu
+>Moeilijkheidsgraad</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Kies de moeilijkheidsgraad van het spel uit de verschillende niveau's van <guimenuitem
+>Belachelijk eenvoudig</guimenuitem
+> tot aan <guimenuitem
+>Onmogelijk</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Bovendien heeft &bovo; de gezamenlijke menu-items van &kde; <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, voor meer informatie lees de secties over de <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu-instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde;-fundamentals. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Veel voorkomende vragen</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Ik wil het uiterlijk van dit spel wijzigen. Kan dat? </para
+></question>
+ <answer
+><para
+>Ja. Om het visuele uiterlijk van &bovo; te wijzigen gaat u naar menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guisubmenu
+>Thema</guisubmenu
+> </menuchoice
+> in de menubalk.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan ik het toetsenbord gebruiken om dit spel te spelen? </para
+></question>
+ <answer
+><para
+>Nee. Het spel &bovo; kunt u niet met het toetsenbord spelen.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ik moet het spel nu beëindigen, maar ik ben nog niet klaar. Kan ik mijn spel opslaan?</para
+></question>
+  <answer
+><para
+>Nee. De mogelijkheid tot <quote
+>Opslaan</quote
+> is niet aanwezig in &bovo;, maar &bovo; herstelt het laatste niet afgemaakte spel bij opstarten.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Waar zijn de topscores?</para
+></question>
+ <answer
+><para
+>&bovo; heeft deze functie niet.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Dankbetuiging en licentie</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Programma copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Documentatie copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+&meld.fouten;&vertaling.freek; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

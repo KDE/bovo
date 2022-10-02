@@ -1,0 +1,612 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Das Handbuch zu &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>Burkhard</firstname
+><surname
+>Lück</surname
+><affiliation
+><address
+><email
+>lueck@hube-lueck.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-21</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+	<para
+>Dieses Handbuch beschreibt das Spiel &bovo; in der Version 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>Spiel</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>Arcade</keyword>
+	<keyword
+>Brettspiel</keyword>
+	<keyword
+>Nullen und Kreuze</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>zwei Spieler</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>Nullen</keyword>
+	<keyword
+>Kreuze</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Fünf verbinden</keyword>
+	<keyword
+>5 verbinden</keyword>
+	<keyword
+>Brettspiel</keyword>
+	<keyword
+>X und O</keyword>
+	<keyword
+>Fünf in einer Reihe</keyword>
+	<keyword
+>Spiel</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Einführung</title
+> <!-- do not change this! -->
+	<note
+><title
+>Spieltyp:</title
+><para
+>Brettspiel, Arcade</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Anzahl der Spieler:</title
+><para
+>Zwei</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; ist ein Gomoku (aus dem japanischen <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>, wörtlich <quote
+>Fünf Punkte</quote
+>) ähnliches Spiel für zwei Spieler, bei dem die Gegner abwechselnd ihre jeweiligen Piktogramme auf dem Brett platzieren. Das Ziel des Spiels ist es, fünf der eigenen Symbole in einer durchgehenden Reihe vertikal, horizontal oder diagonal zu verbinden. </para>
+	<note
+><title
+>Hinweis:</title
+><para
+>Auch bekannt als: Fünf verbinden, Fünf in einer Reihe, X und O, Nullen und Kreuze</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Spielanleitung</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>&bovo;-Hauptfenster</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Ziel des Spiels:</title
+><para
+>Verbinden Sie fünf Ihrer eigenen Symbole in einer durchgehenden Reihe vertikal, horizontal oder diagonal. </para
+></note>
+	<para
+>Beim ersten Start von &bovo; wird ein Demomodus gestartet, bei dem zwei KI-Spieler gegeneinander antreten. Sie können mit dem Knopf <guibutton
+>Neu</guibutton
+> in der Werkzeugleiste, dem Menüeintrag <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Neu</guimenuitem
+></menuchoice
+> oder durch das voreingestellte Tastenkürzel <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> jederzeit ein neues Spiel starten. </para>
+	<note
+><title
+>Hinweis:</title
+><para
+>Da der erste Spieler dem zweiten gegenüber immer einen Vorteil hat, führen die Spieler bei jedem neuen Spiel abwechselnd den ersten Zug aus.  </para
+></note>
+	<para
+>Wenn Sie der erste Spieler sind, starten Sie das Spiel, indem Sie Ihr Piktogramm irgendwo auf dem Spielfeld platzieren. Als zweiter Spieler warten Sie, bis der erste Spieler sein Piktogramm platziert hat und verfahren dann ebenso. Sie können ihr Symbol in jedes Quadrat auf dem Feld setzen, sofern es noch nicht besetzt ist (sei es von einem eigenen Symbol oder dem des Gegners).  </para>
+	<para
+>Sie müssen durch geschicktes Setzen ihrer Symbole verhindern, dass Ihr Gegner fünf Markierungen in einer durchgehenden Reihe vertikal, horizontal oder diagonal anordnet. Gleichzeitig müssen Sie fünf Ihrer eigenen Symbole vertikal, horizontal oder diagonal in einer durchgehenden Reihe platzieren. Wer zuerst Erfolg damit hat, gewinnt die Runde. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spielregeln, Spielstrategien und Tipps</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Spielregeln</title>
+		<itemizedlist>
+			<listitem
+><para
+>Die Spieler setzen abwechselnd ihre jeweiligen Symbole auf das Spielbrett.</para
+></listitem>
+			<listitem
+><para
+>Ein bereits platziertes Symbol kann vom Spieler weder bewegt noch durch ein anderes Symbol ersetzt werden.</para
+></listitem>
+			<listitem
+><para
+>Spieler müssen in jeder Runde einen Zug ausführen und können nicht aussetzen.</para
+></listitem>
+			<listitem
+><para
+>Der Spieler, der fünf Symbole in einer geraden Linie (sei es vertikal, horizontal oder diagonal) verbinden kann, gewinnt das Spiel.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Spieltipps</title>
+		<itemizedlist>
+			<listitem
+><para
+>Beim ersten Start von &bovo; muss die Größe des Spielfelds angepasst werden. Verändern Sie die Fenstergröße wie gewünscht, das Spielbrett wird der neuen Fenstergröße angepasst.</para
+></listitem>
+			<listitem
+><para
+>Beim ersten Start von &bovo; wird ein Demomodus gestartet, bei dem zwei KI-Spieler gegeneinander antreten.</para
+></listitem>
+			<listitem
+><para
+>Wenn &bovo; vor Spielende geschlossen wird, wird das laufende Spiel automatisch gesichert. Entdeckt &bovo; beim Start ein automatisch gesichertes Spiel, wird dieses wiederhergestellt. Anderenfalls wird ein Demomodus gestartet.</para
+></listitem>
+			<listitem
+><para
+>Um ein neues Spiel zu starten, klicken Sie in der Werkzeugleiste auf <guibutton
+>Neu</guibutton
+>, wählen im Menü <menuchoice
+><guimenu
+>Spiel</guimenu
+><guimenuitem
+>Neu</guimenuitem
+></menuchoice
+> oder drücken auf der Tastatur <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Wenn Sie ein neues Spiel beginnen, wird das laufende Spiel als verloren gewertet.</para
+></listitem>
+			<listitem
+><para
+>Der Schwierigkeitsgrad kann über das Auswahlfeld <guilabel
+>Schwierigkeitsgrad</guilabel
+> am rechten Ende der Statusleiste oder mit <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Schwierigkeitsgrad</guimenuitem
+></menuchoice
+> in der Menüleiste geändert werden.</para
+></listitem>
+			<listitem
+><para
+>Der Schwierigkeitsgrad ändert sich umgehend.</para
+></listitem>
+			<listitem
+><para
+>Sie können das Design von &bovo; mit <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guisubmenu
+>Design</guisubmenu
+></menuchoice
+> in der Menüleiste wechseln. Das Design wird umgehend geändert.</para
+></listitem>
+			<listitem
+><para
+>Animationen können auf Wunsch mit <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>Animation</guimenuitem
+></menuchoice
+> in der Menüleiste an- oder ausgeschaltet werden.</para
+></listitem>
+			<listitem
+><para
+>Wenn Sie bemerken, dass Sie einen sehr schlechten Zug getätigt haben, können Sie diesen über die Werkzeugleiste, die Menüleiste oder durch das Standard-Tastenkürzel <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> zurücknehmen.</para
+><para
+>Sie können bis zum Anfang des Spiels alle Spielzüge zurücknehmen.</para
+></listitem>
+			<listitem
+><para
+>Falls Sie nicht wissen, welchen Zug Sie tätigen sollen, können Sie mit dem Knopf <guibutton
+>Tipp</guibutton
+> einen Tipp vom Computer-Spieler erhalten. Der von &bovo; vorgeschlagene Spielzug wird dann für kurze Zeit angezeigt.</para
+></listitem>
+			<listitem
+><para
+>Wenn ein Spiel zu Ende ist, wird der Knopf <guibutton
+>Vorführung</guibutton
+> aktiviert, der das letzte Spiels wieder vorführt.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Die Benutzeroberfläche</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Menüeinträge</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Neu</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Startet ein neues Spiel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Vorführung</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Das letzte Spiel vorführen.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spiel</guimenu
+> <guimenuitem
+>Beenden</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Wählen Sie diesen Eintrag, wird das aktuelle Spiel und auch &bovo; beendet.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Zug</guimenu
+> <guimenuitem
+>Zurücknehmen</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Nimmt den zuletzt ausgeführten Zug wieder zurück.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Zug</guimenu
+> <guimenuitem
+>Tipp</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Einen Tipp für den nächsten Zug <action
+>anzeigen</action
+>. Der von &bovo; vorgeschlagene Spielzug wird dann für kurze Zeit angezeigt.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guisubmenu
+>Design</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Auswahl eines der Designs <guimenuitem
+>Scribble</guimenuitem
+>, <guimenuitem
+>Hoher Kontrast</guimenuitem
+>, <guimenuitem
+>Spacy</guimenuitem
+> oder <guimenuitem
+>Gomoku</guimenuitem
+> für das Spiel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guimenuitem
+>Animation </guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Schaltet die Animation ein oder aus.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guisubmenu
+>Schwierigkeitsgrad</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Auswahl von verschiedenen Schwierigkeitsstufen von <guimenuitem
+>Lächerlich einfach</guimenuitem
+> bis <guimenuitem
+>Unmöglich</guimenuitem
+> für das Spiel.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Zusätzlich hat &bovo; die bekannten &kde;-Einträge im Menü <guimenu
+>Einstellungen</guimenu
+> und <guimenu
+>Hilfe</guimenu
+>, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Einstellungen</ulink
+> und <ulink url="help:/fundamentals/menus.html#menus-help"
+>Hilfe</ulink
+> der &kde;-Grundlagen. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Häufig gestellte Fragen</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Kann ich das Erscheinungsbild des Spiels ändern? </para
+></question>
+ <answer
+><para
+>Ja, um das Design für &bovo; zu ändern, wählen Sie <menuchoice
+><guimenu
+>Einstellungen</guimenu
+><guisubmenu
+>Design</guisubmenu
+></menuchoice
+> in der Menüleiste.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kann ich mit der Tastatur spielen? </para
+></question>
+ <answer
+><para
+>Nein, &bovo; kann nicht mit der Tastatur gespielt werden.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ich muss das Spiel unterbrechen, kann ich den aktuellen Spielstand speichern?</para
+></question>
+  <answer
+><para
+>Nein, in &bovo; können Sie den aktuellen Spielstand nicht speichern.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Wo finde ich die Bestenliste?</para
+></question>
+ <answer
+><para
+>In &bovo; gibt es keine Bestenliste.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Danksagungen und Lizenz</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Programm Copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Dokumentation Copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Übersetzung Burkhard Lück<email
+>lueck@hube-lueck.de</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

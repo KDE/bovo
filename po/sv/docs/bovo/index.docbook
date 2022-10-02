@@ -1,0 +1,614 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Handbok &bovo;</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-21</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+	<para
+>Denna dokumentation beskriver spelet &bovo;, version 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>bovo</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>spelhall</keyword>
+	<keyword
+>bräde</keyword>
+	<keyword
+>ringar och kryss</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>två spelare</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>ringar</keyword>
+	<keyword
+>kryss</keyword>
+	<keyword
+>Gomoku</keyword>
+	<keyword
+>Luffarschack</keyword>
+	<keyword
+>Luffarschack</keyword>
+	<keyword
+>Brädspel</keyword>
+	<keyword
+>Kryss och ringar</keyword>
+	<keyword
+>Fem-i-rad</keyword>
+	<keyword
+>Huvudbry</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Inledning</title
+> <!-- do not change this! -->
+	<note
+><title
+>Speltyp:</title
+><para
+>Brädspel, spelhall</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Antal möjliga spelare:</title
+><para
+>Två</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>&bovo; är ett spel för två spelare som liknar Gomoku (från japanska <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>, ordagrant <quote
+>fem poäng</quote
+>), där motståndarna omväxlande placerar sina respektive symboler på spelbrädet. Spelets syfte är att sammanbinda fem av dina egna pjäser i en obruten rad vertikalt, horisontellt eller diagonalt. </para>
+	<note
+><title
+>Observera:</title
+><para
+>Också känt som: luffarschack, fem-i-rad, kryss och ringar.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Hur man spelar</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Huvudskärmen i &bovo;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Syfte:</title
+><para
+>Placera fem av dina egna symboler i en obruten rad, vertikalt, horisontellt eller diagonalt.</para
+></note>
+	<para
+>Första gången &bovo; startas visas demonstrationsläget där två artificiella intelligenser slåss med varandra. Du kan alltid starta ett nytt spel med knappen <guibutton
+>Ny</guibutton
+> i verktygsraden, menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+></menuchoice
+> i menyraden eller med den vanliga snabbtangenten <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>Observera:</title
+><para
+>Eftersom den första spelaren alltid har en fördel över den andra spelaren, alternerar &bovo; spelarna, och byter dem vid varje nytt spel. </para
+></note>
+	<para
+>Om du är den första spelaren: Börja spelet genom att placera din symbol var som helst på spelbrädet. Om du är den andra spelaren: vänta till den första spelaren har placerat sin symbol och gör därefter detsamma själv. Du kan placera din markering i vilket ruta som helst på brädet, om den inte redan är upptagen av en annan spelpjäs (oberoende av om det är din symbol eller motspelarens). </para>
+	<para
+>Du måste placera dina pjäser på ett sätt som förhindrar motspelaren från att sammanbinda fem märken i en obruten rad vertikalt, horisontellt eller diagonalt. På samma gång måste du förbinda fem av dina egna pjäser i en obruten rad vertikalt, horisontellt eller diagonalt. Vem som än lyckas göra det först vinner omgången. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelets regler, strategi och tips</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Spelregler</title>
+		<itemizedlist>
+			<listitem
+><para
+>Spelare placerar i tur och ordning sina markeringar på spelbrädet.</para
+></listitem>
+			<listitem
+><para
+>En spelare kan inte flytta redan gjorda markeringar, eller placera en markering där en annan redan har placerats.</para
+></listitem>
+			<listitem
+><para
+>Spelare kan inte ge upp sin tur.</para
+></listitem>
+			<listitem
+><para
+>Spelare som når fem markeringar sammanbundna i en rät linje (vare sig den är vertikal, horisontell eller diagonal) vinner spelet.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Speltips</title>
+		<itemizedlist>
+			<listitem
+><para
+>När &bovo; startas för första gången behöver storleken ändras. Ändra spelfönstrets storlek till önskad storlek, så ändrar &bovo; spelbrädets skala.</para
+></listitem>
+			<listitem
+><para
+>Första gången &bovo; startas används demonstrationsläge, där två artificiella intelligenser spelar mot varandra.</para
+></listitem>
+			<listitem
+><para
+>Om &bovo; avslutas innan spelet är klart, sparas det pågående spelet automatiskt. Om &bovo; hittar ett automatiskt sparat spel vid start återställs det. Annars startar &bovo; demonstrationsläget.</para
+></listitem>
+			<listitem
+><para
+>Du kan alltid starta ett nytt spel med knappen <guibutton
+>Ny</guibutton
+> i verktygsraden, menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+></menuchoice
+> i menyraden eller med den vanliga snabbtangenten <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>Om ett nytt spel startas medan ett spel redan pågår, räknas det som en förlust.</para
+></listitem>
+			<listitem
+><para
+>Svårighetsgraden kan ändras med kombinationsrutan <guilabel
+>Svårighet</guilabel
+> längst till höger på statusraden, eller med menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Svårighet</guimenuitem
+></menuchoice
+> i menyraden.</para
+></listitem>
+			<listitem
+><para
+>Effekten av att ändra svårighetsgraden införs omedelbart.</para
+></listitem>
+			<listitem
+><para
+>Du kan byta tema i &bovo; med menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Tema</guimenuitem
+></menuchoice
+> i menyraden. Temat byts då omedelbart.</para
+></listitem>
+			<listitem
+><para
+>Animering kan sättas på eller stängas av som du vill från menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Animering</guimenuitem
+></menuchoice
+> i menyraden.</para
+></listitem>
+			<listitem
+><para
+>Om du just insåg att du gjorde ett mycket dåligt drag, har du möjlighet att ångra ditt senaste drag från verktygsraden, menyraden eller med den vanliga snabbtangenten för att ångra sig, <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>Du kan fortsätta ångra drag till du når spelets början.</para
+></listitem>
+			<listitem
+><para
+>Om du inte vet vilket drag du ska göra, kan du få ett tips av datorspelaren med knappen <guibutton
+>Tips</guibutton
+>. Spelpjäsen som föreslås av &bovo;s artificiella intelligens blinkar då en kort stund.</para
+></listitem>
+			<listitem
+><para
+>När spelet är slut aktiveras alternativet <guibutton
+>Visa spel</guibutton
+>, som startar en uppspelning av det senaste spelet.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Översikt av gränssnittet</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>Menyalternativ</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Startar ett nytt spel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa spel</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Spela om senaste spel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Att välja det här alternativet avslutar det nuvarande spelet, och avslutar &bovo;.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>Ångra det senaste draget du gjorde.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Tips</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>Visar</action
+> ett tips om nästa drag. Spelpjäsen som föreslås av &bovo;s artificiella intelligens blinkar då en kort stund.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Välj ett av spelets teman: <guimenuitem
+>Kladd</guimenuitem
+>, <guimenuitem
+>Hög kontrast</guimenuitem
+>, <guimenuitem
+>Rymd</guimenuitem
+> eller <guimenuitem
+>Gomoku</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Animering</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>Stäng av eller sätt på animering.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Svårighet</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>Välj spelets svårighetsgrad bland diverse nivåer från <guimenuitem
+>Löjligt lätt</guimenuitem
+> upp till <guimenuitem
+>Omöjligt</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Dessutom har &bovo; de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Vanliga frågor</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Jag vill ändra hur spelet ser ut. Kan man göra det? </para
+></question>
+ <answer
+><para
+>Ja. Man kan använda menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+> i menyraden för att byta visuellt tema i &bovo;.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan man använda tangentbordet för att spela? </para
+></question>
+ <answer
+><para
+>Nej. Spelet &bovo; kan inte spelas med tangentbordet.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Jag måste avsluta spelet nu, men jag är inte klar än. Kan man spara det man har gjort?</para
+></question>
+  <answer
+><para
+>Nej. Det finns ingen funktion för att <quote
+>spara</quote
+> i &bovo;, men &bovo; återställer senaste oavslutade spel vid start.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Var finns bästa resultat?</para
+></question>
+ <answer
+><para
+>&bovo; har inte denna funktion.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>Tack till och licens</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>&bovo; </para>
+<para
+>Program copyright 2002, 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>Dokumentation copyright 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
