@@ -67,7 +67,7 @@ private:
     bool m_animate;
     qreal m_opacity;
     bool m_tickUp;
-    qreal m_sizeShrink, m_fill;
+    qreal m_fill;
     QTimer *m_ticker;
 };
 

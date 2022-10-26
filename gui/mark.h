@@ -67,7 +67,7 @@ private:
     Scene *m_scene;
     int m_row;
     int m_col;
-    qreal m_sizeShrink, m_fill;
+    qreal m_fill;
     int m_tick;
     bool m_animate;
     qreal m_opacity;
