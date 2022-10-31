@@ -30,6 +30,7 @@
 #include <QStringList>
 
 #include "common.h"
+#include "move.h"
 
 
 /** namespace for ai */
@@ -47,7 +48,6 @@ namespace bovo
 class Board;
 class Dimension;
 class Coord;
-class Move;
 
 /**
  * The Game engine
