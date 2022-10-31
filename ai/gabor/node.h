@@ -22,13 +22,13 @@
 #ifndef BOVO_NODE_H
 #define BOVO_NODE_H
 
-#include <QLinkedList>
-
 #include "ai_interface.h"
 #include "standing.h"
 
+#include <list>
+
 // list of following steps
-using steps_T = QLinkedList<Standing *>;
+using steps_T = std::list<Standing *>;
 // type of hash value
 using hash_T = unsigned long long;
 

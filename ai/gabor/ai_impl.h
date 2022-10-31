@@ -22,12 +22,12 @@
 #ifndef BOVO_AI_IMPL_H
 #define BOVO_AI_IMPL_H
 
-#include <QLinkedList>
-
 #include "ai_interface.h"
 #include "standing.h"
 
-using previous_standings_T = QLinkedList<Standing>;
+#include <list>
+
+using previous_standings_T = std::list<Standing>;
 
 class AiImpl
 {

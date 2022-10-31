@@ -22,10 +22,11 @@
 #ifndef BOVO_STANDING_H
 #define BOVO_STANDING_H
 
-#include <QLinkedList>
 #include <QVector>
 
 #include "ai_interface.h"
+
+#include <list>
 
 // a mark on the table
 using mark_T = unsigned char;
@@ -68,7 +69,7 @@ typedef count_T PatternCount[2][heurLevels];
 // a row, column or diagonal of the table
 using sample_T = QVector<mark_T>;
 // interesting fields for the two players for the next step
-using suggestions_T = QLinkedList<Field>;
+using suggestions_T = std::list<Field>;
 
 class Standing;
 // callback function to convert a position of the sample into coordinates, and update suggestions accordingly

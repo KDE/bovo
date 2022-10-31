@@ -79,8 +79,8 @@ void AiImpl::stepServer(pos_T x, pos_T y)
 void AiImpl::undo()
 {
     assert(!previousStandings.empty());
-    rememberedStanding = previousStandings.last();
-    previousStandings.removeLast();
+    rememberedStanding = previousStandings.back();
+    previousStandings.pop_back();
 }
 
 Field AiImpl::think()
@@ -289,8 +289,8 @@ Field AiImpl::openingBook()
     } else if (rememberedStanding.stepCount == 2) {
         pos_T x1, y1, x2, y2;
         int dx, dy;
-        x1 = previousStandings.last().lastx;
-        y1 = previousStandings.last().lasty;
+        x1 = previousStandings.back().lastx;
+        y1 = previousStandings.back().lasty;
         if (!(1 <= x1 && x1 < table_size_x - 1 && 1 <= y1 && y1 < table_size_y - 1)) {
             return {max_table_size, max_table_size};
         }
