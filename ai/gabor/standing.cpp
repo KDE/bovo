@@ -21,6 +21,7 @@
 
 #include "standing.h"
 
+#include <QRandomGenerator>
 #include <QString>
 #include <cassert>
 #include <cstdlib>
@@ -284,7 +285,7 @@ void Standing::evaluate()
     decide();
     if (current)
         hval *= -1;
-    int current_seed = qrand() % (2 * (int)heur_seed + 1) - (int)heur_seed;
+    int current_seed = QRandomGenerator::global()->bounded(2 * (int)heur_seed + 1) - (int)heur_seed;
     int hval_int = (int)hval + current_seed;
     hval = hval_int > MaxHeur ? MaxHeur : hval_int < MinHeur ? MinHeur : hval_int;
 }

@@ -24,6 +24,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <QSvgRenderer>
+#include <QRandomGenerator>
 
 #include "common.h"
 #include "coord.h"
@@ -37,7 +38,7 @@ namespace gui {
 Mark::Mark(Scene* scene, const Move& move, bool animate, qreal fill) : QGraphicsSvgItem(),
   m_scene(scene), m_row(move.y()), m_col(move.x()), m_fill(fill) {
     setElementId(QString(move.player() == X ? QStringLiteral("x%1") : QStringLiteral("o%1"))
-            .arg(QString::number(qrand() % 5 + 1)));
+            .arg(QString::number(QRandomGenerator::global()->bounded(5) + 1)));
     m_tick = 20;
     m_ticker = nullptr;
     if (animate) {

@@ -28,13 +28,13 @@
 #include <ctime>
 #include <memory.h>
 
+#include <QRandomGenerator>
+
 // hash table
 static NodeHashData hashData[nodeHashSize];
 
 const int hashMaxDepth = 8;
 const int hashMinRemainingDepth = 2;
-
-bool rand_inited = false;
 
 AiImpl::AiImpl()
     : table_size_x(20)
@@ -49,10 +49,6 @@ AiImpl::AiImpl()
     , timeOver(nullptr)
     , rememberedStanding(table_size_x, table_size_y)
 {
-    if (!rand_inited) {
-        rand_inited = true;
-        qsrand(static_cast<unsigned int>(std::time(nullptr)));
-    }
     memset(hashData, 0, sizeof(hashData));
 }
 
@@ -265,8 +261,8 @@ Field AiImpl::openingBook()
         pos_T x, y;
         x = table_size_x / 2;
         y = table_size_y / 2;
-        x += qrand() % 5 - 2;
-        y += qrand() % 5 - 2;
+        x += QRandomGenerator::global()->bounded(5) - 2;
+        y += QRandomGenerator::global()->bounded(5) - 2;
         while (rememberedStanding.table[x][y])
             x++;
         return {x, y};
@@ -274,7 +270,7 @@ Field AiImpl::openingBook()
         pos_T x, y;
         x = rememberedStanding.lastx;
         y = rememberedStanding.lasty;
-        int r = qrand() % 100;
+        int r = QRandomGenerator::global()->bounded(100);
         if (r >= 20) {
             if (x < table_size_x / 2) {
                 x++;
@@ -304,19 +300,21 @@ Field AiImpl::openingBook()
         dy = (int)y1 - (int)y2;
         if (-1 <= dx && dx <= 1 && -1 <= dy && dy <= 1) {
             if (dx == 0) {
-                return {static_cast<pos_T>((int)x1 + (qrand() % 2) * 2 - 1), static_cast<pos_T>((int)y1 + qrand() % 3 - 1)};
+                return {static_cast<pos_T>((int)x1 + (QRandomGenerator::global()->bounded(2)) * 2 - 1),
+                        static_cast<pos_T>((int)y1 + QRandomGenerator::global()->bounded(3) - 1)};
             }
             if (dy == 0) {
-                return {static_cast<pos_T>((int)x1 + qrand() % 3 - 1), static_cast<pos_T>((int)y1 + (qrand() % 2) * 2 - 1)};
+                return {static_cast<pos_T>((int)x1 + QRandomGenerator::global()->bounded(3) - 1),
+                        static_cast<pos_T>((int)y1 + (QRandomGenerator::global()->bounded(2)) * 2 - 1)};
             }
-            if (qrand() % 2) {
-                if (qrand() % 2) {
+            if (QRandomGenerator::global()->bounded(2)) {
+                if (QRandomGenerator::global()->bounded(2)) {
                     return {static_cast<pos_T>((int)x1 + dx), y1};
                 } else {
                     return {x1, static_cast<pos_T>((int)y1 + dy)};
                 }
             } else {
-                if (qrand() % 2) {
+                if (QRandomGenerator::global()->bounded(2)) {
                     return {static_cast<pos_T>((int)x1 - dx), static_cast<pos_T>((int)y1 + dy)};
                 } else {
                     return {static_cast<pos_T>((int)x1 + dx), static_cast<pos_T>((int)y1 - dy)};

@@ -51,7 +51,6 @@ Scene::Scene(const Theme& theme, bool animation)
     /** @todo read file names from from some configuration, I guess */
     m_renderer = nullptr;
     loadTheme(theme);
-    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     m_hintTimer = new QTimer(this);
     m_hintTimer->setSingleShot(true);
     m_hintItem = nullptr;

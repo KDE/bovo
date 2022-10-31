@@ -24,6 +24,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <QSvgRenderer>
+#include <QRandomGenerator>
 
 #include "common.h"
 #include "coord.h"
@@ -38,7 +39,7 @@ HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
   : QGraphicsSvgItem(), m_scene(scene), m_row(hint.y()),
   m_col(hint.x()), m_fill(fill) {
     setElementId(QString(hint.player() == X ? QStringLiteral("x%1") : QStringLiteral("o%1"))
-            .arg(QString::number(qrand() % 5 + 1)));
+            .arg(QString::number(QRandomGenerator::global()->bounded(5) + 1)));
     m_tick = 16;
     m_tickUp = true;
     m_ticker = nullptr;

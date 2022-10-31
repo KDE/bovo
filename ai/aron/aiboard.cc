@@ -32,6 +32,8 @@
 #include <iostream>
 #include <vector>
 
+#include <QRandomGenerator>
+
 #include "aisquare.h"
 #include "coord.h"
 #include "dimension.h"
@@ -81,9 +83,8 @@ usi AiBoard::height() const {
 
 Coord AiBoard::move() {
     if (m_cleanBoard) {
-        qsrand(static_cast<int>(std::time(nullptr)));
-        usi randX = qrand()%(m_dimension->width()/3) + m_dimension->width()/3;
-        usi randY = qrand()%(m_dimension->height()/3) + m_dimension->height()/3;
+        usi randX = QRandomGenerator::global()->bounded(m_dimension->width()/3) + m_dimension->width()/3;
+        usi randY = QRandomGenerator::global()->bounded(m_dimension->height()/3) + m_dimension->height()/3;
         return Coord(randX, randY);
     }
     for (usi x = 0; x < m_dimension->width(); ++x) {
