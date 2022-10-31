@@ -97,7 +97,7 @@ void AiGabor::slotMove() {
         qFatal("Concurrent AI error");
     }
     m_canceling = false;
-    m_future = QtConcurrent::run(this, &ai::AiGabor::slotMoveImpl);
+    m_future = QtConcurrent::run([this] { slotMoveImpl(); });
 }
 
 void AiGabor::slotMoveImpl() {
