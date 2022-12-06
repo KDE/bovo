@@ -9,7 +9,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 project(bovo VERSION ${RELEASE_SERVICE_VERSION})
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.90.0")
+set (KF5_MIN_VERSION "5.92.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
 include(KDEInstallDirs)
@@ -37,13 +37,18 @@ include(ECMSetupVersion)
 include(ECMAddAppIcon)
 include(KDEGitCommitHooks)
 include(KDEClangFormat)
+include(ECMDeprecationSettings)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # re-enabling exceptions (turned off in KDE)
 kde_enable_exceptions()
-#add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055900)
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+    KF 5.101
+    KDEGAMES 7.3
+)
+
 # Force c++11 as random_shuffle is removed in freebsd c++17
 set(CMAKE_CXX_STANDARD 11)
 
