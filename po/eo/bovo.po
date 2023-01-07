@@ -1,15 +1,16 @@
 # translation of bovo.po to esperanto
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the "bovo" package.
 # Pierre-Marie Pédrot <pedrotpmx@wanadoo.fr>, 2007.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2007-12-08 12:49+0100\n"
-"Last-Translator: Pierre-Marie Pédrot <pedrotpmx@wanadoo.fr>\n"
+"PO-Revision-Date: 2023-01-06 22:00+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -63,10 +64,9 @@ msgid "KDE Five in a Row Board Game"
 msgstr "KDE gobanga ludo"
 
 #: gui/main.cc:52
-#, fuzzy, kde-format
-#| msgid "(c) 2002,2007 Aron Boström"
+#, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr "(c) 2002,2007 Aron Boström"
+msgstr "(c) 2002-2007, Aron Boström"
 
 #: gui/main.cc:55
 #, kde-format
@@ -114,10 +114,9 @@ msgid "Start a new Game to play"
 msgstr "Komenci no"
 
 #: gui/mainwindow.cc:382
-#, fuzzy, kde-format
-#| msgid "GAME OVER. You won!"
+#, kde-format
 msgid "GAME OVER. Tie!"
-msgstr "Fino de ludo. Vi gajnis!"
+msgstr "Fino de ludo. Remizo!"
 
 #: gui/mainwindow.cc:385
 #, kde-format
@@ -148,9 +147,3 @@ msgstr "Refarante la ludon"
 #, kde-format
 msgid "Game replayed."
 msgstr "Ludo refariĝis."
-
-#~ msgid "You won!"
-#~ msgstr "Vi gajnis!"
-
-#~ msgid "You lost!"
-#~ msgstr "Vi perdis!"
