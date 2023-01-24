@@ -5,6 +5,7 @@
   <project_license>GPL-2.0+</project_license>
   <name>Bovo</name>
   <name xml:lang="ar">بوڤو</name>
+  <name xml:lang="bg">Bovo</name>
   <name xml:lang="bs">Bovo</name>
   <name xml:lang="ca">Bovo</name>
   <name xml:lang="ca-valencia">Bovo</name>
@@ -45,6 +46,7 @@
   <name xml:lang="zh-TW">五子棋_Bovo</name>
   <summary>"Five in a row" board game</summary>
   <summary xml:lang="ar">لعبة خمسة في صفّ</summary>
+  <summary xml:lang="bg">Игра на пет поредни</summary>
   <summary xml:lang="ca">Joc de tauler «cinc en fila»</summary>
   <summary xml:lang="ca-valencia">Joc de tauler «cinc en fila»</summary>
   <summary xml:lang="cs">Desková hra "Pět v řadě"</summary>
@@ -88,6 +90,7 @@
       Naughts and Crosses)
     </p>
     <p xml:lang="ar">بوفو هي لعبة تشبه جوموكا (من اليابانية  五目並べ حرفيا "خمس نقاط") للاعبين، حيث يتناوب الخصوم في وضع الرسم التخطيطي الخاص بهم على لوحة اللعبة.  (المعروفة أيضا باسم: صل الخمسة، خمسة في صف، X و O، الأصفار و الأخطاء)</p>
+    <p xml:lang="bg">Bovo е игра подобна на  Gomoku (от японски 五目並べ - буквално. "пет точки")  за двама играчи, в която опонентите се редуват в поставянето на съответната пиктограма на игралното поле. Известна е също и като: Connect Five, Five in a row, X и O, Naughts and Crosses</p>
     <p xml:lang="bs">Bovo je Gomoku (od japanskog 五目並べ - lit. "pet poena") slična igra za dva igrača, gdje se protivnici smjenjuju u stavljanju svog dijela piktograma na tabli. (Poznat i kao: poveži pet, pet u nizu, X i O, križić i kružić)</p>
     <p xml:lang="ca">El Bovo és un joc semblant al Gomoku (del japonès 五目並べ - lit. «cinc punts») per a dos jugadors, a on els oponents situen els seus ideogrames respectius alternativament en el tauler de joc. També conegut com a: Connecta cinc, Cinc en fila, X i O, Zeros i creus.</p>
     <p xml:lang="ca-valencia">Bovo és un joc pareixent a Gomoku (del japonés 五目並べ - lit. «cinc punts») per a dos jugadors, a on els oponents situen els seus ideogrames respectius de manera alternativa en el tauler de joc. També conegut com a: Connecta cinc, Cinc en fila, X i O, Zeros i creus.</p>
