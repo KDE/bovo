@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Scribble
 Name[ar]=خربشة
+Name[bg]=Scribble
 Name[bs]=Piskaranje
 Name[ca]=Scribble
 Name[ca@valencia]=Scribble
@@ -56,6 +57,7 @@ Name[zh_CN]=涂鸦
 Name[zh_TW]=Scribble
 Comment=A pen and paper theme
 Comment[ar]=سمة ورقة وقلم
+Comment[bg]=Тема с хартия и химикалка
 Comment[bs]=Tema olovke i papira
 Comment[ca]=Un tema de paper i llapis
 Comment[ca@valencia]=Un tema de paper i llapis

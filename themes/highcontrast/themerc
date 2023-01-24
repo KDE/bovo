@@ -2,6 +2,7 @@
 Name=High Contrast
 Name[ar]=تباين عالٍ
 Name[be]=Высокакантрасны
+Name[bg]=Висок контраст
 Name[br]=Dargemm huel
 Name[bs]=Visok Kontrast
 Name[ca]=Contrast alt
@@ -60,6 +61,7 @@ Name[zh_CN]=高对比度
 Name[zh_TW]=高對比
 Comment=A theme with a lot of contrast
 Comment[ar]=سمة بتباين كثير
+Comment[bg]=Тема с много контраст
 Comment[bs]=Tema sa puno kontrasta
 Comment[ca]=Un tema amb molt contrast
 Comment[ca@valencia]=Un tema amb molt contrast
