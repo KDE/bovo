@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Petar Toushkov <pt.launchpad@gmail.com>, 2009.
+# Mincho Kondarev <mkondarev@yahoo.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-20 00:42+0000\n"
-"PO-Revision-Date: 2009-05-08 20:34+0200\n"
-"Last-Translator: Petar Toushkov <pt.launchpad@gmail.com>\n"
+"PO-Revision-Date: 2023-01-22 22:46+0100\n"
+"Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -62,9 +63,9 @@ msgid "KDE Five in a Row Board Game"
 msgstr "Игра на пет поредни за KDE."
 
 #: gui/main.cc:52
-#, fuzzy, kde-format
+#, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr "(c) 2002,2007 Aron Boström"
+msgstr "(c) 2002-2007, Aron Boström"
 
 #: gui/main.cc:55
 #, kde-format
