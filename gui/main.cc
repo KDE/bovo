@@ -22,7 +22,9 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <KAboutData>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <Kdelibs4ConfigMigrator>
+#endif
 #include <KLocalizedString>
 #include <KDBusService>
 #include <KCrash>

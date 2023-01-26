@@ -14,20 +14,7 @@ find_package(ECM ${KF_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
 include(KDEInstallDirs)
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Qt6SvgWidgets)
-endif()
-find_package(Qt${QT_MAJOR_VERSION}QuickWidgets ${REQUIRED_QT_VERSION} CONFIG)
 
-find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-	    CoreAddons
-	    Crash
-	    DBusAddons
-	    DocTools
-	    XmlGui
-	    )
-find_package(KF5KDEGames 7.3.0 REQUIRED)
 
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
@@ -38,13 +25,36 @@ include(ECMAddAppIcon)
 include(KDEGitCommitHooks)
 include(KDEClangFormat)
 include(ECMDeprecationSettings)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    set(QT_REQUIRED_VERSION "6.4.0")
+    set(KF_MIN_VERSION "5.240.0")
+    set(KF_MAJOR_VERSION "6")
+else()
+    set(KF_MAJOR_VERSION "5")
+endif()
+
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(Qt6SvgWidgets)
+endif()
+find_package(Qt${QT_MAJOR_VERSION}QuickWidgets ${REQUIRED_QT_VERSION} CONFIG)
+
+find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+            CoreAddons
+            Crash
+            DBusAddons
+            DocTools
+            XmlGui
+            )
+find_package(KF5KDEGames 7.3.0 REQUIRED)
+
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # re-enabling exceptions (turned off in KDE)
 kde_enable_exceptions()
 ecm_set_disabled_deprecation_versions(
-    QT 5.15.2
+    QT 6.4
     KF 5.101
     KDEGAMES 7.3
 )
@@ -126,12 +136,12 @@ ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
 
 target_link_libraries(bovo
-	KF5::CoreAddons
-	KF5::XmlGui
-	KF5::I18n
+	KF${KF_MAJOR_VERSION}::CoreAddons
+	KF${KF_MAJOR_VERSION}::XmlGui
+	KF${KF_MAJOR_VERSION}::I18n
 	KF5KDEGames
-	KF5::DBusAddons
-	KF5::Crash
+	KF${KF_MAJOR_VERSION}::DBusAddons
+	KF${KF_MAJOR_VERSION}::Crash
         Qt${QT_MAJOR_VERSION}::Svg
         Qt${QT_MAJOR_VERSION}::Concurrent
 )
