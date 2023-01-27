@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2023-01-27 00:55+0000\n"
 "PO-Revision-Date: 2022-11-27 11:41+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -52,27 +52,27 @@ msgstr "უნდა იყოს თუ არა ნაბიჯები ა�
 msgid "AI engine to use."
 msgstr "AI ძრავის გამოყენება."
 
-#: gui/main.cc:50
+#: gui/main.cc:52
 #, kde-format
 msgid "Bovo"
 msgstr "Bovo"
 
-#: gui/main.cc:51
+#: gui/main.cc:53
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "KDE ხუთი ზედიზედ სამაგიდო თამაშში"
 
-#: gui/main.cc:52
+#: gui/main.cc:54
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "(გ) 2002-2007, Aron Boström"
 
-#: gui/main.cc:55
+#: gui/main.cc:57
 #, kde-format
 msgid "Aron Boström"
 msgstr "Aron Boström"
 
-#: gui/main.cc:55
+#: gui/main.cc:57
 #, kde-format
 msgid "Author"
 msgstr "ავტორი"

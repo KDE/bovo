@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2023-01-27 00:55+0000\n"
 "PO-Revision-Date: 2015-04-09 18:16+0200\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -52,27 +52,27 @@ msgstr "Animáltak legyenek-e a lépések."
 msgid "AI engine to use."
 msgstr "A használandó gépi AI algoritmus."
 
-#: gui/main.cc:50
+#: gui/main.cc:52
 #, kde-format
 msgid "Bovo"
 msgstr "Bovo"
 
-#: gui/main.cc:51
+#: gui/main.cc:53
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "KDE-s amőba játék"
 
-#: gui/main.cc:52
+#: gui/main.cc:54
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "(c) Aron Boström, 2002-2007."
 
-#: gui/main.cc:55
+#: gui/main.cc:57
 #, kde-format
 msgid "Aron Boström"
 msgstr "Aron Boström"
 
-#: gui/main.cc:55
+#: gui/main.cc:57
 #, kde-format
 msgid "Author"
 msgstr "Szerző"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-20 00:42+0000\n"
+"POT-Creation-Date: 2023-01-27 00:55+0000\n"
 "PO-Revision-Date: 2015-01-27 14:25+0200\n"
 "Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -58,27 +58,27 @@ msgstr "Käytettävä tekoälymoottori."
 
 # pmap: =/gen=Bovon/
 # pmap: =/elat=Bovosta/
-#: gui/main.cc:50
+#: gui/main.cc:52
 #, kde-format
 msgid "Bovo"
 msgstr "Bovo"
 
-#: gui/main.cc:51
+#: gui/main.cc:53
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "KDE-ristinolla"
 
-#: gui/main.cc:52
+#: gui/main.cc:54
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "© 2002–2007 Aron Boström"
 
-#: gui/main.cc:55
+#: gui/main.cc:57
 #, kde-format
 msgid "Aron Boström"
 msgstr "Aron Boström"
 
-#: gui/main.cc:55
+#: gui/main.cc:57
 #, kde-format
 msgid "Author"
 msgstr "Tekijä"
