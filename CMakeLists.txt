@@ -55,7 +55,7 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_enable_exceptions()
 ecm_set_disabled_deprecation_versions(
     QT 6.4
-    KF 5.101
+    KF 5.103
     KDEGAMES 7.3
 )
 
