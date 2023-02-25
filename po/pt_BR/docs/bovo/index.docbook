@@ -63,9 +63,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->09/05/2016</date>
+>21/06/2021</date>
 <releaseinfo
->1.1 (Applications 16.04)</releaseinfo>
+>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 	<para
@@ -141,7 +141,9 @@
 	<para
 >O &bovo; é um jogo do tipo do Gomoku (do Japonês <foreignphrase lang="ja"
 >五目並べ</foreignphrase
->lit. "cinco pontos") para dois jogadores, onde os adversários alternam na colocação das suas marcas respectivas no tabuleiro. O objetivo deste jogo é conectar cinco das suas peças numa linha não-interrompida na vertical, horizontal ou diagonal. </para>
+>lit. <quote
+>cinco pontos</quote
+>) para dois jogadores, onde os adversários alternam na colocação das suas marcas respectivas no tabuleiro. O objetivo deste jogo é conectar cinco das suas peças numa linha não-interrompida na vertical, horizontal ou diagonal. </para>
 	<note
 ><title
 >Nota:</title
