@@ -57,12 +57,12 @@ msgstr "محرّك الذّكاء الإصطناعيّ لاستخدامه."
 #: gui/main.cc:50
 #, kde-format
 msgid "Bovo"
-msgstr "بوڤو"
+msgstr "بوفو"
 
 #: gui/main.cc:51
 #, kde-format
 msgid "KDE Five in a Row Board Game"
-msgstr "لعبة كدي خمسة في صفّ"
+msgstr "لعبة كِيدِي خمسة في صفّ"
 
 #: gui/main.cc:52
 #, kde-format
