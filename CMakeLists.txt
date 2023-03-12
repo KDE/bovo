@@ -46,7 +46,11 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
             DocTools
             XmlGui
             )
-find_package(KF5KDEGames 7.3.0 REQUIRED)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    find_package(KDEGames6 7.5.0 REQUIRED)
+else()
+    find_package(KF5KDEGames 7.3.0 REQUIRED)
+endif()
 
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
@@ -135,11 +139,16 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-bovo.png")
 ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(bovo KDEGames6)
+else()
+    target_link_libraries(bovo KF5KDEGames)
+endif()
+
 target_link_libraries(bovo
 	KF${KF_MAJOR_VERSION}::CoreAddons
 	KF${KF_MAJOR_VERSION}::XmlGui
 	KF${KF_MAJOR_VERSION}::I18n
-	KF5KDEGames
 	KF${KF_MAJOR_VERSION}::DBusAddons
 	KF${KF_MAJOR_VERSION}::Crash
         Qt${QT_MAJOR_VERSION}::Svg
