@@ -1,0 +1,40 @@
+{
+    "id": "org.kde.bovo",
+    "branch": "master",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "bovo",
+    "tags": [
+        "nightly"
+    ],
+    "desktop-file-name-suffix": " (Nightly)",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland"
+    ],
+    "modules": [
+        {
+            "name": "libkdegames",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://invent.kde.org/games/libkdegames",
+                    "branch": "master"
+                }
+            ]
+        },
+        {
+            "name": "bovo",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
+        }
+    ]
+}
