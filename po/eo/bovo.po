@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-01-27 00:55+0000\n"
-"PO-Revision-Date: 2023-01-06 22:00+0100\n"
+"PO-Revision-Date: 2023-05-29 21:25+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -22,12 +22,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Pierre-Marie Pédrot"
+msgstr "Pierre-Marie Pédrot,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "pedrotpmx@wanadoo.fr"
+msgstr "pedrotpmx@wanadoo.fr,okellogg@users.sourceforge.net"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
 #: gui/bovo.kcfg:9 gui/mainwindow.cc:204
@@ -39,19 +39,19 @@ msgstr "Etoso"
 #: gui/bovo.kcfg:13
 #, kde-format
 msgid "Speed of demo and replay playback."
-msgstr ""
+msgstr "Rapideco de demonstro kaj reproduktado."
 
 #. i18n: ectx: label, entry (animation), group (bovo)
 #: gui/bovo.kcfg:19
 #, kde-format
 msgid "Whether moves should be animated or not."
-msgstr ""
+msgstr "Ĉu movoj estu animaciataj aŭ ne."
 
 #. i18n: ectx: label, entry (ai), group (bovo)
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr ""
+msgstr "AI-motoro uzenda."
 
 #: gui/main.cc:52
 #, kde-format
