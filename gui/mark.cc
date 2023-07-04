@@ -134,4 +134,4 @@ usi Mark::row() const {
 
 } /* namespace gui */
 
-
+#include "moc_mark.cpp"

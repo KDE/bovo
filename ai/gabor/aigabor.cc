@@ -118,4 +118,4 @@ void AiGabor::slotMoveImpl() {
 
 } /* namespace ai */
 
-
+#include "moc_aigabor.cpp"

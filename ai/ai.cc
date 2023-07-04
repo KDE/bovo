@@ -36,4 +36,4 @@ Ai::~Ai() = default;
 
 } /* namespace ai */
 
-
+#include "moc_ai.cpp"

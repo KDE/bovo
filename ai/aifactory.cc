@@ -73,4 +73,4 @@ void AiFactory::changeAi(int ai) {
 
 } /* namespace ai */
 
-
+#include "moc_aifactory.cpp"

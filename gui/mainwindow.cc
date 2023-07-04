@@ -477,4 +477,4 @@ void MainWindow::disableUndo() {
 } /* namespace gui */
 
 // Class moc
-
+#include "moc_mainwindow.cpp"

@@ -417,4 +417,4 @@ QList<Move> Game::winningMoves() const {
 
 }
 
-
+#include "moc_game.cpp"
