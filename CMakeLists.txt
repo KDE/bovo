@@ -26,7 +26,7 @@ include(KDEGitCommitHooks)
 include(KDEClangFormat)
 include(ECMDeprecationSettings)
 if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.4.0")
+    set(QT_REQUIRED_VERSION "6.5.0")
     set(KF_MIN_VERSION "5.240.0")
     set(KF_MAJOR_VERSION "6")
 else()
@@ -57,11 +57,20 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 # re-enabling exceptions (turned off in KDE)
 kde_enable_exceptions()
-ecm_set_disabled_deprecation_versions(
-    QT 6.4
-    KF 5.103
-    KDEGAMES 7.3
-)
+
+if (QT_MAJOR_VERSION STREQUAL "6")
+    ecm_set_disabled_deprecation_versions(
+        QT 6.5
+        KF 5.239
+        KDEGAMES 7.5
+    )
+else()
+    ecm_set_disabled_deprecation_versions(
+        QT 5.15.2
+        KF 5.103
+        KDEGAMES 7.3
+    )
+endif()
 
 # Force c++11 as random_shuffle is removed in freebsd c++17
 set(CMAKE_CXX_STANDARD 11)
