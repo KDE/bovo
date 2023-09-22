@@ -72,9 +72,6 @@ else()
     )
 endif()
 
-# Force c++11 as random_shuffle is removed in freebsd c++17
-set(CMAKE_CXX_STANDARD 11)
-
 set( bovogame_SRCS
 	game/game.cc
 	game/board.cc

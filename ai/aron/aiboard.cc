@@ -190,7 +190,7 @@ Coord AiBoard::evaluate() const {
                 if (it->first * 1.2 >= max) {
                     v2.push_back(*it);
                 } else {
-                    random_shuffle(v2.begin(), v2.end());
+                    shuffle(v2.begin(), v2.end(), *QRandomGenerator::global());
                     return v2.begin()->second;
                 }
                 break;
@@ -198,7 +198,7 @@ Coord AiBoard::evaluate() const {
                 if (it->first * 2 >= max) {
                     v2.push_back(*it);
                 } else {
-                    random_shuffle(v2.begin(), v2.end());
+                    shuffle(v2.begin(), v2.end(), *QRandomGenerator::global());
                     return v2.begin()->second;
                 }
                 break;
@@ -206,7 +206,7 @@ Coord AiBoard::evaluate() const {
                 if (it->first * 4 >= max) {
                     v2.push_back(*it);
                 } else {
-                    random_shuffle(v2.begin(), v2.end());
+                    shuffle(v2.begin(), v2.end(), *QRandomGenerator::global());
                     return v2.begin()->second;
                 }
                 break;
@@ -215,7 +215,7 @@ Coord AiBoard::evaluate() const {
                 if (it->first * 7 >= max) {
                     v2.push_back(*it);
                 } else {
-                    random_shuffle(v2.begin(), v2.end());
+                    shuffle(v2.begin(), v2.end(), *QRandomGenerator::global());
                     return v2.begin()->second;
                 }
                 break;
@@ -235,7 +235,7 @@ Coord AiBoard::evaluate() const {
     }
     sort(v3.begin(), v3.end(), cmp);
     if (v3.size() > 1) {
-        random_shuffle(v3.begin(), v3.end());
+        shuffle(v3.begin(), v3.end(), *QRandomGenerator::global());
     }
     return v3.begin()->second;
 }
