@@ -8,16 +8,16 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(bovo VERSION ${RELEASE_SERVICE_VERSION})
 
-set (QT_MIN_VERSION "5.15.0")
-set (KF_MIN_VERSION "5.92.0")
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
+
 find_package(ECM ${KF_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
+
 include(KDEInstallDirs)
-
-
-
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+
 include(FeatureSummary)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
@@ -25,32 +25,23 @@ include(ECMAddAppIcon)
 include(KDEGitCommitHooks)
 include(KDEClangFormat)
 include(ECMDeprecationSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.5.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Qt6SvgWidgets)
-endif()
-find_package(Qt${QT_MAJOR_VERSION}QuickWidgets ${REQUIRED_QT_VERSION} CONFIG)
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Concurrent
+    Svg
+    SvgWidgets
+    Widgets
+)
 
-find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
-            CoreAddons
-            Crash
-            DBusAddons
-            DocTools
-            XmlGui
-            )
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(KDEGames6 7.5.0 REQUIRED)
-else()
-    find_package(KF5KDEGames 7.3.0 REQUIRED)
-endif()
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+    CoreAddons
+    Crash
+    DBusAddons
+    DocTools
+    XmlGui
+)
+
+find_package(KDEGames6 7.5.0 REQUIRED)
 
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
@@ -58,19 +49,11 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 # re-enabling exceptions (turned off in KDE)
 kde_enable_exceptions()
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    ecm_set_disabled_deprecation_versions(
-        QT 6.5
-        KF 5.239
-        KDEGAMES 7.5
-    )
-else()
-    ecm_set_disabled_deprecation_versions(
-        QT 5.15.2
-        KF 5.103
-        KDEGAMES 7.3
-    )
-endif()
+ecm_set_disabled_deprecation_versions(
+    QT 6.5
+    KF 5.239
+    KDEGAMES 7.5
+)
 
 set( bovogame_SRCS
 	game/game.cc
@@ -145,25 +128,17 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-bovo.png")
 ecm_add_app_icon(bovo_SRCS ICONS ${ICONS_SRCS})
 add_executable(bovo ${bovo_SRCS})
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(bovo KDEGames6)
-else()
-    target_link_libraries(bovo KF5KDEGames)
-endif()
-
 target_link_libraries(bovo
-	KF${KF_MAJOR_VERSION}::CoreAddons
-	KF${KF_MAJOR_VERSION}::XmlGui
-	KF${KF_MAJOR_VERSION}::I18n
-	KF${KF_MAJOR_VERSION}::DBusAddons
-	KF${KF_MAJOR_VERSION}::Crash
-        Qt${QT_MAJOR_VERSION}::Svg
-        Qt${QT_MAJOR_VERSION}::Concurrent
+    KDEGames6
+    KF6::CoreAddons
+    KF6::XmlGui
+    KF6::I18n
+    KF6::DBusAddons
+    KF6::Crash
+    Qt6::Svg
+    Qt6::Concurrent
+    Qt6::SvgWidgets
 )
-
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(bovo Qt6::SvgWidgets)
-endif()
 
 add_subdirectory (themes)
 add_subdirectory (icons)
@@ -175,6 +150,6 @@ kdoctools_install(po)
 install (TARGETS bovo ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install (PROGRAMS org.kde.bovo.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install (FILES org.kde.bovo.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
+
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
-
