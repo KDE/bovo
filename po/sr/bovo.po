@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-10 03:20+0200\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2015-01-31 12:56+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -32,7 +32,7 @@ msgid "Your emails"
 msgstr "slsimic@gmail.com"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
-#: gui/bovo.kcfg:9 gui/mainwindow.cc:201
+#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
 #, kde-format
 msgid "Theme"
 msgstr "Тема"
@@ -55,101 +55,101 @@ msgstr "Треба ли анимирати потезе."
 msgid "AI engine to use."
 msgstr "Жељени мотор ВИ."
 
-#: gui/main.cc:33
-#, kde-format
-msgid "KDE Five in a Row Board Game"
-msgstr "Игра на табли „пет у низу“ за КДЕ"
-
-#: gui/main.cc:34
-#, kde-format
-msgid "(c) 2002-2007, Aron Boström"
-msgstr "© 2002–2007, Арон Бострем"
-
-#: gui/main.cc:50
+#: gui/main.cc:40
 #, kde-format
 msgid "Bovo"
 msgstr "Бово"
 
-#: gui/main.cc:53
+#: gui/main.cc:41
+#, kde-format
+msgid "KDE Five in a Row Board Game"
+msgstr "Игра на табли „пет у низу“ за КДЕ"
+
+#: gui/main.cc:42
+#, kde-format
+msgid "(c) 2002-2007, Aron Boström"
+msgstr "© 2002–2007, Арон Бострем"
+
+#: gui/main.cc:45
 #, kde-format
 msgid "Aron Boström"
 msgstr "Арон Бострем"
 
-#: gui/main.cc:53
+#: gui/main.cc:45
 #, kde-format
 msgid "Author"
 msgstr "Аутор"
 
 # >> @info:status
-#: gui/mainwindow.cc:67 gui/mainwindow.cc:358
+#: gui/mainwindow.cc:67 gui/mainwindow.cc:364
 #, kde-format
 msgid "Wins: %1"
 msgstr "победа: %1"
 
 # >> @info:status
-#: gui/mainwindow.cc:68 gui/mainwindow.cc:255 gui/mainwindow.cc:371
+#: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
 #, kde-format
 msgid "Losses: %1"
 msgstr "пораза: %1"
 
-#: gui/mainwindow.cc:187
+#: gui/mainwindow.cc:190
 #, kde-format
 msgid "&Replay"
 msgstr "&Понови"
 
-#: gui/mainwindow.cc:189
+#: gui/mainwindow.cc:192
 #, kde-format
 msgid "Replay game"
 msgstr "Понови партију"
 
-#: gui/mainwindow.cc:190
+#: gui/mainwindow.cc:193
 #, kde-format
 msgid "Replays your last game for you to watch."
 msgstr "Понавља последњу партију коју сте одиграли."
 
-#: gui/mainwindow.cc:196
+#: gui/mainwindow.cc:199
 #, kde-format
 msgid "&Animation"
 msgstr "&Анимација"
 
 # >> @info:status
-#: gui/mainwindow.cc:339
+#: gui/mainwindow.cc:344
 #, kde-format
 msgid "Start a new Game to play"
 msgstr "Започните нову партију"
 
-#: gui/mainwindow.cc:376
+#: gui/mainwindow.cc:382
 #, kde-format
 msgid "GAME OVER. Tie!"
 msgstr "КРАЈ ИГРЕ. Нерешено!"
 
-#: gui/mainwindow.cc:379
+#: gui/mainwindow.cc:385
 #, kde-format
 msgid "GAME OVER. You won!"
 msgstr "КРАЈ ИГРЕ. Победа!"
 
-#: gui/mainwindow.cc:382
+#: gui/mainwindow.cc:388
 #, kde-format
 msgid "GAME OVER. You lost!"
 msgstr "КРАЈ ИГРЕ. Пораз!"
 
-#: gui/mainwindow.cc:394
+#: gui/mainwindow.cc:400
 #, kde-format
 msgid "It is your turn."
 msgstr "Ваш потез."
 
-#: gui/mainwindow.cc:398
+#: gui/mainwindow.cc:404
 #, kde-format
 msgid "Waiting for computer."
 msgstr "Чека се рачунар."
 
 # >> @info:status
-#: gui/mainwindow.cc:426
+#: gui/mainwindow.cc:432
 #, kde-format
 msgid "Replaying game"
 msgstr "Понављам партију"
 
-#: gui/mainwindow.cc:442
+#: gui/mainwindow.cc:448
 #, kde-format
 msgid "Game replayed."
 msgstr "Партија поновљена."

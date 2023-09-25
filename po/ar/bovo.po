@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-27 00:55+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2021-07-26 23:02+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -54,27 +54,27 @@ msgstr "ما إذا كان يجب تحريك الحركات أم لا."
 msgid "AI engine to use."
 msgstr "محرّك الذّكاء الإصطناعيّ لاستخدامه."
 
-#: gui/main.cc:52
+#: gui/main.cc:40
 #, kde-format
 msgid "Bovo"
 msgstr "بوفو"
 
-#: gui/main.cc:53
+#: gui/main.cc:41
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "لعبة كِيدِي خمسة في صفّ"
 
-#: gui/main.cc:54
+#: gui/main.cc:42
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "(c) 2002-2007, Aron Boström"
 
-#: gui/main.cc:57
+#: gui/main.cc:45
 #, kde-format
 msgid "Aron Boström"
 msgstr "Aron Boström"
 
-#: gui/main.cc:57
+#: gui/main.cc:45
 #, kde-format
 msgid "Author"
 msgstr "المؤلّف"
