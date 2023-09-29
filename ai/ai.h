@@ -28,7 +28,7 @@
 
 #include <QObject>
 
-#include <KgDifficulty>
+#include <KGameDifficulty>
 
 #include "common.h"
 
@@ -71,7 +71,7 @@ public:
 public Q_SLOTS:
     virtual void changeBoard(const Move &move) = 0;
     virtual void gameOver() = 0;
-    virtual void setSkill(KgDifficultyLevel::StandardLevel skill) = 0;
+    virtual void setSkill(KGameDifficultyLevel::StandardLevel skill) = 0;
     virtual void slotMove() = 0;
 };
 

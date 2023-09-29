@@ -24,7 +24,7 @@
 #ifndef BOVO_GAME_H
 #define BOVO_GAME_H
 
-#include <KgDifficulty>
+#include <KGameDifficulty>
 #include <QList>
 #include <QObject>
 #include <QStringList>
@@ -92,7 +92,7 @@ public:
      */
     Game(const Dimension &dimension,
          Player startingPlayer,
-         KgDifficultyLevel::StandardLevel skill,
+         KGameDifficultyLevel::StandardLevel skill,
          DemoMode demoMode,
          unsigned int playTime,
          AiFactory *aiFactory);
@@ -108,7 +108,7 @@ public:
      * @param playTime time in ms for space between turns in demo and replay
      * @param aiFactory provider of AI implementations
      */
-    Game(const Dimension &dimension, const QStringList &restoreGame, KgDifficultyLevel::StandardLevel skill, unsigned int playTime, AiFactory *aiFactory);
+    Game(const Dimension &dimension, const QStringList &restoreGame, KGameDifficultyLevel::StandardLevel skill, unsigned int playTime, AiFactory *aiFactory);
 
     /**
      * @brief destructs this Game
@@ -171,7 +171,7 @@ public:
      * @description sets the skill level of the AI
      * @param skill new skill (difficulty level) for the AI
      */
-    void setSkill(KgDifficultyLevel::StandardLevel skill);
+    void setSkill(KGameDifficultyLevel::StandardLevel skill);
 
     /**
      * @brief starts a new turn

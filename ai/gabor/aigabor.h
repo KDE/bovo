@@ -42,7 +42,7 @@ class AiGabor : public Ai, public AiTimeOver
 {
     Q_OBJECT
 public:
-    explicit AiGabor(const Dimension &dimension, KgDifficultyLevel::StandardLevel skill, Player player);
+    explicit AiGabor(const Dimension &dimension, KGameDifficultyLevel::StandardLevel skill, Player player);
     ~AiGabor() override;
     void cancelAndWait() override;
     bool isTimeOver() override;
@@ -50,7 +50,7 @@ public:
 public Q_SLOTS:
     void changeBoard(const Move &move) override;
     void gameOver() override;
-    void setSkill(KgDifficultyLevel::StandardLevel skill) override;
+    void setSkill(KGameDifficultyLevel::StandardLevel skill) override;
     void slotMove() override;
 
 Q_SIGNALS:

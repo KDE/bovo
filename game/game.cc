@@ -41,7 +41,7 @@ namespace bovo
 {
 
 Game::Game(const Dimension& dimension, Player startingPlayer,
-           KgDifficultyLevel::StandardLevel skill, DemoMode demoMode,
+           KGameDifficultyLevel::StandardLevel skill, DemoMode demoMode,
            unsigned int playTime, AiFactory* aiFactory)
   : m_aiFactory(aiFactory), m_curPlayer(startingPlayer),m_computerMark(O),
   m_demoMode(demoMode), m_inUndoState(false), m_playerMark(X),
@@ -60,7 +60,7 @@ Game::Game(const Dimension& dimension, Player startingPlayer,
 }
 
 Game::Game(const Dimension& dimension, const QStringList &restoreGame,
-           KgDifficultyLevel::StandardLevel skill, unsigned int playTime,
+           KGameDifficultyLevel::StandardLevel skill, unsigned int playTime,
            AiFactory* aiFactory)
   : m_aiFactory(aiFactory), m_computerMark(O), m_demoMode(NotDemo),
   m_inUndoState(false), m_playerMark(X), m_playTime(playTime),
@@ -164,7 +164,7 @@ QStringList Game::saveLast() const {
     return save;
 }
 
-void Game::setSkill(KgDifficultyLevel::StandardLevel skill) {
+void Game::setSkill(KGameDifficultyLevel::StandardLevel skill) {
     if (m_ai!=nullptr)
         m_ai->setSkill(skill);
 }

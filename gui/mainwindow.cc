@@ -34,7 +34,7 @@
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigGroup>
-#include <KgDifficulty>
+#include <KGameDifficulty>
 #include <QStatusBar>
 #include <KStandardGameAction>
 #include <KSelectAction>
@@ -70,14 +70,14 @@ MainWindow::MainWindow(QWidget* parent)
     statusBar()->insertPermanentWidget(1, m_lossesLabel);
 
     m_aiFactory = new AiFactory();
-    KgDifficulty* diff = Kg::difficulty();
+    KGameDifficulty* diff = KGameDifficulty::global();
     diff->addStandardLevelRange(
-        KgDifficultyLevel::RidiculouslyEasy,
-        KgDifficultyLevel::Impossible,
-        KgDifficultyLevel::Medium //default level
+        KGameDifficultyLevel::RidiculouslyEasy,
+        KGameDifficultyLevel::Impossible,
+        KGameDifficultyLevel::Medium //default level
     );
-    connect(diff, &KgDifficulty::currentLevelChanged, this, &MainWindow::changeSkill);
-    KgDifficultyGUI::init(this);
+    connect(diff, &KGameDifficulty::currentLevelChanged, this, &MainWindow::changeSkill);
+    KGameDifficultyGUI::init(this);
     diff->setGameRunning(true);
 
     setupThemes();
@@ -277,7 +277,7 @@ void MainWindow::slotNewGame() {
         m_demoMode = true;
         slotNewDemo();
     } else {
-        Kg::difficulty()->setGameRunning(true);
+        KGameDifficulty::global()->setGameRunning(true);
 
         Dimension dimension(NUMCOLS, NUMCOLS);
         if (m_scene == nullptr) {
@@ -286,14 +286,14 @@ void MainWindow::slotNewGame() {
                 QString tmp = m_lastGame.first();
                 m_computerStarts = tmp.startsWith(QLatin1Char('2')) ? true : false;
             }
-            m_game = new Game(dimension, m_lastGame, Kg::difficultyLevel(),
+            m_game = new Game(dimension, m_lastGame, KGameDifficulty::globalLevel(),
                               m_playbackSpeed, m_aiFactory);
         } else {
             m_game = new Game(dimension, m_computerStarts ? O : X,
-                              Kg::difficultyLevel(), NotDemo, m_playbackSpeed,
+                              KGameDifficulty::globalLevel(), NotDemo, m_playbackSpeed,
                               m_aiFactory);
         }
-        m_demoAi = m_aiFactory->createAi(dimension, KgDifficultyLevel::Easy, m_game->player(), Demo);
+        m_demoAi = m_aiFactory->createAi(dimension, KGameDifficultyLevel::Easy, m_game->player(), Demo);
         m_scene->setGame(m_game);
         connect(m_game, &Game::undoAble, this, &MainWindow::enableUndo);
         connect(m_game, &Game::undoNotAble, this, &MainWindow::disableUndo);
@@ -329,9 +329,9 @@ void MainWindow::slotNewDemo() {
         m_demoAi = nullptr;
     }
     Dimension dimension(NUMCOLS, NUMCOLS);
-    m_game = new Game(dimension, O, Kg::difficultyLevel(), Demo, m_playbackSpeed,
+    m_game = new Game(dimension, O, KGameDifficulty::globalLevel(), Demo, m_playbackSpeed,
                       m_aiFactory);
-    m_demoAi = m_aiFactory->createAi(dimension, Kg::difficultyLevel(), X, Demo);
+    m_demoAi = m_aiFactory->createAi(dimension, KGameDifficulty::globalLevel(), X, Demo);
     m_scene->setGame(m_game);
     connect(m_game, &Game::boardChanged,
             m_demoAi, &Ai::changeBoard);
@@ -343,7 +343,7 @@ void MainWindow::slotNewDemo() {
             this, &MainWindow::slotNewDemoWait);
     statusBar()->showMessage(i18n("Start a new Game to play"));
     m_game->start();
-    Kg::difficulty()->setGameRunning(false);
+    KGameDifficulty::global()->setGameRunning(false);
 }
 
 void MainWindow::slotNewDemoWait() {
@@ -452,7 +452,7 @@ void MainWindow::reEnableReplay() {
 
 void MainWindow::changeSkill() {
     if (m_game!=nullptr)
-        m_game->setSkill(Kg::difficultyLevel());
+        m_game->setSkill(KGameDifficulty::globalLevel());
 }
 
 void MainWindow::changeTheme(int themeId) {

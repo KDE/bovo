@@ -45,14 +45,14 @@ using namespace std;
 namespace ai {
 
 AiBoard::AiBoard(const usi width, const usi height,
-                 KgDifficultyLevel::StandardLevel skill, Player player)
+                 KGameDifficultyLevel::StandardLevel skill, Player player)
   : m_cleanBoard(true), m_player(player), m_skill(skill) {
     m_dimension = new Dimension(width, height);
     setup();
 }
 
 AiBoard::AiBoard(const Dimension& dimension,
-                 KgDifficultyLevel::StandardLevel skill, Player player) 
+                 KGameDifficultyLevel::StandardLevel skill, Player player)
   : m_cleanBoard(true), m_player(player), m_skill(skill) {
     m_dimension = new Dimension(dimension.width(), dimension.height());
     setup();
@@ -129,7 +129,7 @@ bool AiBoard::setPlayer(const Move& move) {
     return false;
 }
 
-void AiBoard::setSkill(KgDifficultyLevel::StandardLevel skill) {
+void AiBoard::setSkill(KGameDifficultyLevel::StandardLevel skill) {
     m_skill = skill;
 }
 
@@ -177,16 +177,16 @@ Coord AiBoard::evaluate() const {
       it != v.end(); ++it) {
         bool doBreak = false;
         switch (m_skill) {
-            case KgDifficultyLevel::Impossible: // @TODO: Implement Impossible
-            case KgDifficultyLevel::VeryHard: //@TODO: Implement Very Hard
-            case KgDifficultyLevel::Hard:
+            case KGameDifficultyLevel::Impossible: // @TODO: Implement Impossible
+            case KGameDifficultyLevel::VeryHard: //@TODO: Implement Very Hard
+            case KGameDifficultyLevel::Hard:
                 if (it->first == max) {
                     v2.push_back(*it);
                 } else {
                     doBreak = true;
                 }
                 break;
-            case KgDifficultyLevel::Medium:
+            case KGameDifficultyLevel::Medium:
                 if (it->first * 1.2 >= max) {
                     v2.push_back(*it);
                 } else {
@@ -194,7 +194,7 @@ Coord AiBoard::evaluate() const {
                     return v2.begin()->second;
                 }
                 break;
-            case KgDifficultyLevel::Easy:
+            case KGameDifficultyLevel::Easy:
                 if (it->first * 2 >= max) {
                     v2.push_back(*it);
                 } else {
@@ -202,7 +202,7 @@ Coord AiBoard::evaluate() const {
                     return v2.begin()->second;
                 }
                 break;
-            case KgDifficultyLevel::VeryEasy:
+            case KGameDifficultyLevel::VeryEasy:
                 if (it->first * 4 >= max) {
                     v2.push_back(*it);
                 } else {
@@ -210,7 +210,7 @@ Coord AiBoard::evaluate() const {
                     return v2.begin()->second;
                 }
                 break;
-            case KgDifficultyLevel::RidiculouslyEasy:
+            case KGameDifficultyLevel::RidiculouslyEasy:
             default: // in case the gui sets the level to an illegal value
                 if (it->first * 7 >= max) {
                     v2.push_back(*it);
@@ -331,21 +331,21 @@ uli AiBoard::value(const Coord& c, const usi pl) const {
             tmpPoint = 1;
             switch (tp) {
                 case 4:
-                    tmpPoint *= (m_skill == KgDifficultyLevel::RidiculouslyEasy ? 7 : 231);
+                    tmpPoint *= (m_skill == KGameDifficultyLevel::RidiculouslyEasy ? 7 : 231);
                 case 3:
-                    tmpPoint *= (m_skill == KgDifficultyLevel::VeryEasy ? 21 : 
-                        (m_skill == KgDifficultyLevel::RidiculouslyEasy ? 12 : 231));
+                    tmpPoint *= (m_skill == KGameDifficultyLevel::VeryEasy ? 21 :
+                        (m_skill == KGameDifficultyLevel::RidiculouslyEasy ? 12 : 231));
                 case 2:
-                    tmpPoint *= (m_skill == KgDifficultyLevel::VeryEasy ? 21 : 231 );
+                    tmpPoint *= (m_skill == KGameDifficultyLevel::VeryEasy ? 21 : 231 );
                     break;
                 case 1:
-                    tmpPoint *= m_skill == KgDifficultyLevel::RidiculouslyEasy ? 3 : 1;
+                    tmpPoint *= m_skill == KGameDifficultyLevel::RidiculouslyEasy ? 3 : 1;
                     break;
                 case 0:
                     tmpPoint = 0;
             }
-            if (pl == m_player && m_skill != KgDifficultyLevel::RidiculouslyEasy 
-                               && m_skill != KgDifficultyLevel::VeryEasy) {
+            if (pl == m_player && m_skill != KGameDifficultyLevel::RidiculouslyEasy
+                               && m_skill != KGameDifficultyLevel::VeryEasy) {
                 tmpPoint *= 21;
             }
             if (empty < 2 && await > 0 && leftsideEmpty > 0) {
