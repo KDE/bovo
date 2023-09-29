@@ -22,7 +22,7 @@
 #ifndef BOVO_STANDING_H
 #define BOVO_STANDING_H
 
-#include <QVector>
+#include <QList>
 
 #include "ai_interface.h"
 
@@ -67,7 +67,7 @@ const index_T heurLevels = 6;
 typedef count_T PatternCount[2][heurLevels];
 
 // a row, column or diagonal of the table
-using sample_T = QVector<mark_T>;
+using sample_T = QList<mark_T>;
 // interesting fields for the two players for the next step
 using suggestions_T = std::list<Field>;
 
