@@ -1,7 +1,5 @@
-set (theme gomoku)
-
-set (files
+install (FILES
     theme.svg
     themerc
+    DESTINATION ${KDE_INSTALL_DATADIR}/bovo/themes/gomoku
 )
-install (FILES ${files} DESTINATION ${KDE_INSTALL_DATADIR}/bovo/themes/${theme})

@@ -1,7 +1,5 @@
-set (theme spacy)
-
-set (files
+install (FILES
     theme.svg
     themerc
+    DESTINATION ${KDE_INSTALL_DATADIR}/bovo/themes/spacy
 )
-install (FILES ${files} DESTINATION ${KDE_INSTALL_DATADIR}/bovo/themes/${theme})
