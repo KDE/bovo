@@ -211,7 +211,7 @@
 ><guimenuitem
 >Nuevo</guimenuitem
 ></menuchoice
-> en la barra de menús o usando el acceso rápido predeterminado <keycombo action="simul"
+> en la barra de menús o usando el atajo de teclado predeterminado <keycombo action="simul"
 >&Ctrl;<keycap
 >N</keycap
 ></keycombo
@@ -281,7 +281,7 @@
 ><guimenuitem
 >Nuevo</guimenuitem
 ></menuchoice
-> de la barra de menú o con el acceso rápido predeterminado <keycombo action="simul"
+> de la barra de menú o con el atajo de teclado predeterminado <keycombo action="simul"
 >&Ctrl;<keycap
 >N</keycap
 ></keycombo
@@ -329,7 +329,7 @@
 ></listitem>
 			<listitem
 ><para
->Si se da cuenta de que ha realizado un mal movimiento, tiene la posibilidad de deshacerlo usando la barra de herramientas, la barra de menú o el acceso rápido de teclado predeterminado para «deshacer» <keycombo action="simul"
+>Si se da cuenta de que ha realizado un mal movimiento, tiene la posibilidad de deshacerlo usando la barra de herramientas, la barra de menú o el atajo de teclado predeterminado para «deshacer» <keycombo action="simul"
 > &Ctrl;<keycap
 >Z</keycap
 ></keycombo
