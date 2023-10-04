@@ -45,12 +45,12 @@ public:
     int max_depth;
     // the increment of the depth in every iteration
     int depth_increment;
-    // if set, the ai will think in advance even when he has only one good move
-    // prevents the ai from wasting thinking time in a competition environment
+    // if set, the AI will think in advance even when he has only one good move
+    // prevents the AI from wasting thinking time in a competition environment
     bool force_thinking;
     // the amount of random seed added to the heuristic function in every standing
     heur_T heur_seed;
-    // if set, the ai will print information on the standard output
+    // if set, the AI will print information on the standard output
     bool print_info;
     // limits the amount of following steps to be investigated from a standing
     unsigned int max_branch;

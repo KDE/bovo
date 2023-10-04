@@ -40,7 +40,7 @@ const static index_T suggestValueCount = 9;
 // '+' : free cell, where the player can continue the position or the enemy can block the position
 // '-' : free cell, where the enemy can block the position
 // '.' : free cell, but nobody should place here
-// '?' : everything but player's mark, ie. wall, enemy or empty
+// '?' : everything but player's mark, i.e. wall, enemy or empty
 const static string level0[] = {QStringLiteral("00000")};
 const static string level1[] = {QStringLiteral(".0000+")};
 const static string level2[] = {QStringLiteral("@0000+"),

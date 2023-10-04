@@ -77,12 +77,12 @@ public:
     void setMaxDepth(int startDepth);
     // set the increment of the depth in every iteration
     void setDepthIncrement(int startDepth);
-    // if set, the ai will think in advance even when he has only one good move
-    // prevents the ai from wasting thinking time in a competition environment
+    // if set, the AI will think in advance even when he has only one good move
+    // prevents the AI from wasting thinking time in a competition environment
     void setForceThinking(bool forceThinking);
     // the amount of random seed added to the heuristic function in every standing
     void setRandomAmount(int randomAmount);
-    // if set, the ai will print information on the standard output
+    // if set, the AI will print information on the standard output
     void setPrintInfo(bool printInfo);
     // interrupt function, returns true if time is over
     void setTimeOver(AiTimeOver *timeOver);
