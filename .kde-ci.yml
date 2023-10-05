@@ -10,6 +10,7 @@ Dependencies:
     'frameworks/kcrash': '@latest-kf6'
     'frameworks/kdbusaddons': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
+    'frameworks/ki18n': '@latest-kf6'
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'frameworks/kxmlgui': '@latest-kf6'
 
