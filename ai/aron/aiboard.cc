@@ -101,9 +101,7 @@ Coord AiBoard::move() {
 }
 
 Coord* AiBoard::moves() {
-#ifdef __GNUC__
-#warning Implement - Coord* AiBoard::moves(const Coord& c)
-#endif
+    // FIXME: Implement - Coord* AiBoard::moves(const Coord& c)
     return new Coord();
 }
 
