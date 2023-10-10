@@ -23,6 +23,7 @@
 
 #include <QRandomGenerator>
 #include <QString>
+#include <array>
 #include <cassert>
 #include <cstdlib>
 #include <memory.h>
@@ -556,8 +557,8 @@ void Standing::getSuggestions(suggestions_T &suggestions)
 {
     // should we use smart cut-offs or play like a fool?
     if (heur_seed < MaxHeur) {
-        Field suggestPos[suggestValueCount];
-        assert((memset(suggestPos, 255, sizeof(suggestPos)), true));
+        std::array<Field, suggestValueCount> suggestPos;
+        assert((suggestPos.fill({255, 255}), true));
 
         for (pos_T x = 0; x < table_size_x; ++x) {
             for (pos_T y = 0; y < table_size_y; ++y) {
