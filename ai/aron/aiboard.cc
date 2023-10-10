@@ -330,9 +330,11 @@ uli AiBoard::value(const Coord& c, const usi pl) const {
             switch (tp) {
                 case 4:
                     tmpPoint *= (m_skill == KGameDifficultyLevel::RidiculouslyEasy ? 7 : 231);
+                    [[fallthrough]];
                 case 3:
                     tmpPoint *= (m_skill == KGameDifficultyLevel::VeryEasy ? 21 :
                         (m_skill == KGameDifficultyLevel::RidiculouslyEasy ? 12 : 231));
+                    [[fallthrough]];
                 case 2:
                     tmpPoint *= (m_skill == KGameDifficultyLevel::VeryEasy ? 21 : 231 );
                     break;
