@@ -36,7 +36,7 @@
 #include <KConfigGroup>
 #include <KGameDifficulty>
 #include <QStatusBar>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 #include <KSelectAction>
 #include <KToggleAction>
 #include <KLocalizedString>
@@ -183,8 +183,8 @@ void MainWindow::saveSettings() {
 }
 
 void MainWindow::setupActions() {
-    KStandardGameAction::gameNew(this, &MainWindow::slotNewGame, actionCollection());
-    KStandardGameAction::quit(this, &MainWindow::close, actionCollection());
+    KGameStandardAction::gameNew(this, &MainWindow::slotNewGame, actionCollection());
+    KGameStandardAction::quit(this, &MainWindow::close, actionCollection());
 
     auto replayAct = new QAction(QIcon::fromTheme( QStringLiteral( "media-playback-start" )),
                             i18n("&Replay"), this);
@@ -193,7 +193,7 @@ void MainWindow::setupActions() {
     replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
     replayAct->setEnabled(false);
 
-    m_hintAct = KStandardGameAction::hint(this, &MainWindow::hint, actionCollection());
+    m_hintAct = KGameStandardAction::hint(this, &MainWindow::hint, actionCollection());
     m_hintAct->setEnabled(false);
 
     auto animAct = new KToggleAction(i18n("&Animation"),this);
@@ -219,7 +219,7 @@ void MainWindow::setupActions() {
     m_themeAct->setIcon(QIcon::fromTheme( QStringLiteral( "games-config-theme" )));
     connect(m_themeAct, &KSelectAction::indexTriggered, this, &MainWindow::changeTheme);
 
-    m_undoAct = KStandardGameAction::undo(this, &MainWindow::slotUndo, actionCollection());
+    m_undoAct = KGameStandardAction::undo(this, &MainWindow::slotUndo, actionCollection());
     m_undoAct->setEnabled(false);
 
     addAction(replayAct);
