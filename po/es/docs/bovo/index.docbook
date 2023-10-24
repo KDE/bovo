@@ -116,7 +116,7 @@
 ><!--Application name goes here-->
 <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<keyword
->arcade</keyword>
+>recreativo</keyword>
 	<keyword
 >tablero</keyword>
 	<keyword
@@ -132,7 +132,7 @@
 	<keyword
 >Gomoku</keyword>
 	<keyword
->Cinco en línea</keyword>
+>Conecta cinco</keyword>
 	<keyword
 >Conecta5</keyword>
 	<keyword
@@ -154,7 +154,7 @@
 ><title
 >Tipo de juego:</title
 ><para
->Tablero, Arcade</para
+>Tablero, Recreativo</para
 ></note
 ><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<note
@@ -167,9 +167,9 @@
 
 <!--Short game description starts here. 3-4 sentences (paragraphs)-->
 	<para
->&bovo; es un Gomoku (del japonés <foreignphrase lang="ja"
+>&bovo; es un juego semejante al Gomoku (del japonés <foreignphrase lang="ja"
 >五目並べ</foreignphrase
->, literalmente «cinco puntos») como el juego para dos jugadores, en el que los oponentes se alternan para situar sus respectivos pictogramas en el tablero de juego. El propósito de este juego es conectar cinco de sus piezas en una línea continua vertical, horizontal o diagonal. </para>
+>, literalmente «cinco puntos») para dos jugadores, en el que los oponentes se alternan para situar sus respectivos pictogramas en el tablero de juego. El objetivo de este juego es conectar cinco piezas iguales en una línea continua vertical, horizontal o diagonal. </para>
 	<note
 ><title
 >Nota:</title
@@ -200,18 +200,18 @@
 ><title
 >Objetivo:</title
 ><para
->Conectar cinco de sus piezas en una línea continua vertical, horizontal o diagonal.</para
+>Conecta cinco de tus piezas en una línea continua vertical, horizontal o diagonal.</para
 ></note>
 	<para
->La primera vez que se inicia &bovo; se inicia en modo de demostración, donde dos jugadores de IA se baten el uno contra el otro. Siempre puede iniciar una nueva partida usando el botón <guibutton
+>Al ejecutar &bovo; por primera vez se inicia en modo de demostración, donde dos jugadores de IA se baten el uno contra el otro. Puedes iniciar una nueva partida en cualquier momento pulsando el botón <guibutton
 >Nuevo</guibutton
-> de la barra de herramientas, la entrada de menú <menuchoice
+> de la barra de herramientas, usando la opción <menuchoice
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
 >Nuevo</guimenuitem
 ></menuchoice
-> en la barra de menús o usando el atajo de teclado predeterminado <keycombo action="simul"
+> en la barra de menú o usando el atajo de teclado predeterminado <keycombo action="simul"
 >&Ctrl;<keycap
 >N</keycap
 ></keycombo
@@ -223,9 +223,9 @@
 >Puesto que el primer jugador siempre tiene ventaja sobre el segundo, &bovo; alternará los jugadores, cambiándolos en cada nueva partida. </para
 ></note>
 	<para
->Si es el primer jugador - inicie el juego colocando su pictograma en cualquier punto del tablero de juego. Si es el segundo jugador espere hasta que el primer jugador haya colocado el pictograma y a continuación haga lo mismo. Puede colocar su marca en cualquier cuadrado del campo, a menos que ya esté ocupado por otra pieza del juego (no importa si es un pictograma suyo o de su oponente). </para>
+>Si eres el primer jugador, inicia el juego colocando tu pictograma en cualquier punto del tablero de juego. Si eres el segundo jugador, espera hasta que el primer jugador haya colocado su pictograma y, a continuación, haz lo mismo. Puedes colocar tu marca en cualquier cuadrado del campo, a menos que ya esté ocupado por otra pieza del juego (no importa si es un pictograma tuyo o de tu oponente). </para>
 	<para
->Debe colocar sus piezas de forma que evite que su oponente conecte cinco marcas en una línea continua vertical, horizontal o diagonal. Al mismo tiempo, debe conectar cinco de sus propias piezas en una línea continua vertical, horizontal o diagonal. El que consiga hacerlo primero, gana la partida. </para>
+>Debes colocar tus piezas de forma que eviten que tu oponente conecte cinco marcas en una línea continua vertical, horizontal o diagonal. Al mismo tiempo, debes conectar cinco de tus propias piezas en una línea continua vertical, horizontal o diagonal. El que consiga hacerlo primero, ganará la partida. </para>
 </chapter>
 
 <chapter id="rules_and_tips"
@@ -239,15 +239,15 @@
 		<itemizedlist>
 			<listitem
 ><para
->Los jugadores se turnarán para colocar sus respectivas marcas en el tablero de juego.</para
+>Los jugadores se turnan para colocar sus respectivas marcas en el tablero de juego.</para
 ></listitem>
 			<listitem
 ><para
->Un jugador no puede mover una marca que ya esté colocada o colocar su marca sobre otra ya existente.</para
+>Un jugador no puede mover una marca que ya esté colocada ni situar su marca sobre otra ya existente.</para
 ></listitem>
 			<listitem
 ><para
->Los jugadores no pueden penalizar sus turnos.</para
+>Los jugadores no pueden perder su turno.</para
 ></listitem>
 			<listitem
 ><para
@@ -261,7 +261,7 @@
 		<itemizedlist>
 			<listitem
 ><para
->Cuando &bovo; se inicia por primera vez, necesita redimensionarse. Redimensione la ventana de juego al tamaño deseado, y &bovo; escalará el tablero de juego.</para
+>Cuando &bovo; se inicia por primera vez, necesita que se modifique el tamaño de la ventana. Cambia su tamaño según tus preferencias para que &bovo; escale el tablero de juego.</para
 ></listitem>
 			<listitem
 ><para
@@ -269,13 +269,13 @@
 ></listitem>
 			<listitem
 ><para
->Si se sale de &bovo; antes de finalizar la partida, el juego activo se guarda automáticamente. Si &bovo; detecta un juego guardado de forma automática al inicio, lo restaura. Si no, &bovo; inicia el modo de demostración.</para
+>Si sales de &bovo; antes de terminar la partida, el juego activo se guarda automáticamente. Si &bovo; detecta un juego guardado de forma automática durante el inicio, lo restaura. Si no, &bovo; inicia el modo de demostración.</para
 ></listitem>
 			<listitem
 ><para
->Siempre puede iniciar una partida nueva con el botón <guibutton
+>Puedes iniciar una partida nueva en cualquier momento con el botón <guibutton
 >Nuevo</guibutton
-> de la barra de herramientas, la entrada de menú <menuchoice
+> de la barra de herramientas, la opción <menuchoice
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
@@ -289,13 +289,13 @@
 ></listitem>
 			<listitem
 ><para
->Si se inicia una partida nueva cuando exista una partida activa, esta se cuenta como perdida.</para
+>Si se inicia una partida nueva cuando hay una partida activa, esta se cuenta como perdida.</para
 ></listitem>
 			<listitem
 ><para
->Se puede cambiar la dificultad con el desplegable <guilabel
+>Se puede cambiar la dificultad con la lista desplegable <guilabel
 >Dificultad</guilabel
-> en el extremo derecho de la barra de estado, o usando la opción del menú <menuchoice
+> que hay en el extremo derecho de la barra de estado, o usando la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
@@ -305,11 +305,11 @@
 ></listitem>
 			<listitem
 ><para
->El cambio en la dificultad tendrá efecto inmediatamente.</para
+>El cambio de la dificultad tendrá efecto inmediatamente.</para
 ></listitem>
 			<listitem
 ><para
->Puede cambiar el tema de &bovo; usando la opción del menú <menuchoice
+>Puedes cambiar el tema de &bovo; usando la opción del menú <menuchoice
 > <guimenu
 >Preferencias</guimenu
 > <guisubmenu
@@ -319,7 +319,7 @@
 ></listitem>
 			<listitem
 ><para
->Se puede activar y desactivar la animación a voluntad usando la opción del menú <menuchoice
+>Puedes activar y desactivar la animación usando la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
@@ -329,17 +329,17 @@
 ></listitem>
 			<listitem
 ><para
->Si se da cuenta de que ha realizado un mal movimiento, tiene la posibilidad de deshacerlo usando la barra de herramientas, la barra de menú o el atajo de teclado predeterminado para «deshacer» <keycombo action="simul"
+>Si te das cuenta de que has realizado un mal movimiento, tienes la posibilidad de deshacerlo usando la barra de herramientas, la barra de menú o el atajo de teclado predeterminado para «deshacer» <keycombo action="simul"
 > &Ctrl;<keycap
 >Z</keycap
 ></keycombo
 >.</para
 ><para
->Puede continuar deshaciendo movimientos hasta que alcance el inicio de la partida.</para
+>Puedes continuar deshaciendo movimientos hasta que alcances el inicio de la partida.</para
 ></listitem>
 			<listitem
 ><para
->Si no sabe qué movimiento hacer, puede pedir una pista a la máquina con el botón <guibutton
+>Si no sabes qué movimiento hacer, puedes pedir una pista a la máquina con el botón <guibutton
 >Pista</guibutton
 >. El movimiento sugerido por la IA de &bovo; parpadeará durante un breve periodo de tiempo.</para
 ></listitem>
@@ -416,7 +416,7 @@
 ></term>
 <listitem
 ><para
->Seleccionando este elemento finalizará su partida actual y saldrá de &bovo;.</para
+>Si seleccionas esta opción terminarás partida actual y saldrás de &bovo;.</para
 ></listitem>
 </varlistentry>
 
@@ -459,8 +459,8 @@
 <listitem>
 <para
 ><action
->Mostrar</action
-> proporciona una pista para el siguiente movimiento. La pieza sugerida por la IA de &bovo; parpadea por un breve periodo de tiempo.</para>
+>Muestra</action
+> una pista para el siguiente movimiento. La pieza sugerida por la IA de &bovo; parpadea por un breve período de tiempo.</para>
 </listitem>
 </varlistentry>
 
@@ -513,7 +513,7 @@
 ></term>
 <listitem
 ><para
->Permite seleccionar entre varios niveles de dificultad del juego, desde <guimenuitem
+>Permite seleccionar entre varios niveles de dificultad para el juego, desde <guimenuitem
 >Ridículamente fácil</guimenuitem
 > hasta <guimenuitem
 >Imposible</guimenuitem
@@ -524,11 +524,11 @@
 </variablelist>
 
 <para
->Además &bovo; tiene las opciones de menú <guimenu
+>Además, &bovo; tiene las opciones de menú <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
 > y <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
@@ -553,7 +553,7 @@
 ></question>
  <answer
 ><para
->Sí. Para cambiar el tema visual de &bovo; puede usar la opción del menú <menuchoice
+>Sí. Para cambiar el tema visual de &bovo; puedes usar la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guisubmenu
@@ -569,17 +569,17 @@
 ></question>
  <answer
 ><para
->No. Las partidas de &bovo; no se pueden jugar usando el teclado.</para
+>No. El juego &bovo; no se puede jugar usando el teclado.</para
 ></answer>
 </qandaentry>
 <qandaentry>
  <question
 ><para
->Tengo que salir de la partida ahora, pero todavía no he terminado. ¿Puedo guardar mi progreso?</para
+>Tengo que salir de la partida ahora, pero todavía no he terminado. ¿Puedo guardar la posición actual?</para
 ></question>
   <answer
 ><para
->No. No existe la función «Guardar» en &bovo;, aunque &bovo; restaura la última partida no finalizada cuando se inicia.</para
+>No. No existe la función «Guardar» en &bovo;, aunque &bovo; restaura la última partida no terminada cuando se inicia.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -612,12 +612,14 @@
 >Copyright de la documentación 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
 
 <para
->Traducido por Rocío Gallego <email
+>Documentación traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
 >, Santiago Fernández Sancho <email
 >santi@kde-es.org</email
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
+>. Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
 >.</para
 > &underFDL; &underGPL; </chapter>
 
