@@ -44,7 +44,7 @@ Theme::Theme(const QString& path, const int id)
     m_comment = themeConfig.readComment();
 
     KConfig config(themerc);
-    KConfigGroup configGroup(&config, "Config");
+    KConfigGroup configGroup(&config, QStringLiteral("Config"));
     m_backgroundColor = configGroup.readEntry("BackgroundColor", "white");
     m_fill = configGroup.readEntry("Fill", 0.75);
     m_gridColor = configGroup.readEntry("GridColor", "black");

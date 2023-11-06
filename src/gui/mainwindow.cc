@@ -110,7 +110,7 @@ void MainWindow::save() const {
         m_scene->activate(false);
         QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, QStringLiteral("bovorc"));
         KConfig savegame(rc);
-        KConfigGroup lastGroup(&savegame, "Game");
+        KConfigGroup lastGroup(&savegame, QStringLiteral("Game"));
         if (!m_game->isGameOver() && m_game->demoMode() == NotDemo) {
             const QStringList lastGame = m_game->saveLast();
             lastGroup.writeXdgListEntry("Unfinished", lastGame); // XXX this is bogus
@@ -137,7 +137,7 @@ void MainWindow::setupThemes() {
     int i = 0;
     for (const QString &themerc : std::as_const(themercs)) {
         KConfig config(themerc);
-        KConfigGroup configGroup(&config, "Config");
+        KConfigGroup configGroup(&config, QStringLiteral("Config"));
         const QString pathName = configGroup.readEntry("Path", QString());
         m_themes << Theme(pathName, i);
         ++i;
@@ -159,7 +159,7 @@ void MainWindow::readConfig() {
 
     const QString rc = QStandardPaths::locate(QStandardPaths::ConfigLocation, QStringLiteral("bovorc"));
     KConfig savegame(rc);
-    KConfigGroup lastGroup(&savegame, "Game");
+    KConfigGroup lastGroup(&savegame, QStringLiteral("Game"));
     m_lastGame = lastGroup.readXdgListEntry("Unfinished", QStringList()); // XXX this is bogus
     const QString wins = lastGroup.readEntry("Wins", QString());
     if (!wins.isEmpty()) {
