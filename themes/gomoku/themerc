@@ -125,3 +125,4 @@ GridType=Intersect #intersect,svg,squares
 GridColor=#000000
 GridWidth=1
 GridFrameWidth=0
+Svg=theme.svgz

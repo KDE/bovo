@@ -116,3 +116,4 @@ Comment[zh_TW]=紙筆式的主題
 
 [Config]
 Path=scribble
+Svg=theme.svgz
