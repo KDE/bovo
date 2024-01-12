@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2021, 2023 Friedrich W. H. Kossebau <kossebau@kde.org>
+# SPDX-FileCopyrightText: 2021-2023 Friedrich W. H. Kossebau <kossebau@kde.org>
 #
 # SPDX-License-Identifier: BSD-3-Clause
 
@@ -32,10 +32,12 @@ function(generate_svgz svg_file svgz_file target_prefix)
         message(FATAL_ERROR "No such file found: ${svg_file}")
     endif()
     get_filename_component(_fileName "${svg_file}" NAME)
+    get_filename_component(_svgzdir "${svgz_file}" DIRECTORY)
 
     if(TARGET 7Zip::7Zip)
         add_custom_command(
             OUTPUT ${svgz_file}
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${_svgzdir} # ensure output dir exists
             COMMAND 7Zip::7Zip
             ARGS
                 a
@@ -49,6 +51,7 @@ function(generate_svgz svg_file svgz_file target_prefix)
     else()
         add_custom_command(
             OUTPUT ${svgz_file}
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${_svgzdir} # ensure output dir exists
             COMMAND gzip::gzip
             ARGS
                 -9 # compress best
