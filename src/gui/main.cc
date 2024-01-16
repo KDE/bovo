@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("bovo");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("bovo"));
 
     KAboutData aboutData(QStringLiteral("bovo"), i18n("Bovo"),
             QStringLiteral(BOVO_VERSION_STRING), i18n("KDE Five in a Row Board Game"), KAboutLicense::GPL,
