@@ -4,37 +4,38 @@
 #
 # Maris Nartiss <maris.kde@gmail.com>, 2007.
 # Einars Sprugis <einars8@gmail.com>, 2009.
+# SPDX-FileCopyrightText: 2024 Toms Trasūns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:39+0000\n"
-"PO-Revision-Date: 2009-07-24 22:35+0300\n"
-"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
+"PO-Revision-Date: 2024-02-29 11:09+0200\n"
+"Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Māris Nartišs"
+msgstr "Māris Nartišs, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "maris.kde@gmail.com"
+msgstr "maris.kde@gmail.com, toms.trasuns@posteo.net"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
 #: gui/bovo.kcfg:9 gui/mainwindow.cc:204
 #, kde-format
 msgid "Theme"
-msgstr "Tēma"
+msgstr "Motīvs"
 
 #. i18n: ectx: label, entry (playbackSpeed), group (bovo)
 #: gui/bovo.kcfg:13
@@ -46,13 +47,13 @@ msgstr "Demonstrāciju un spēļu atkārtojumu atskaņošanas ātrums."
 #: gui/bovo.kcfg:19
 #, kde-format
 msgid "Whether moves should be animated or not."
-msgstr "Vai gājienus vajadzētu animēt."
+msgstr "Vai gājienus animēt."
 
 #. i18n: ectx: label, entry (ai), group (bovo)
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr "Izmantojamais AI dzinējs."
+msgstr "Izmantojamais MI dzinējs."
 
 #: gui/main.cc:40
 #, kde-format
@@ -62,13 +63,12 @@ msgstr "Bovo"
 #: gui/main.cc:41
 #, kde-format
 msgid "KDE Five in a Row Board Game"
-msgstr "KDE četri rindā galda spēle"
+msgstr "KDE pieci rindā galda spēle"
 
 #: gui/main.cc:42
-#, fuzzy, kde-format
-#| msgid "(c) 2002,2007 Aron Boström"
+#, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr "(c) 2002,2007 Aron Boström"
+msgstr "(c) 2002—2007, Aron Boström"
 
 #: gui/main.cc:45
 #, kde-format
