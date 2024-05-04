@@ -146,7 +146,7 @@ bool Game::save(const QString& filename) const {
 
     QString fileContent;
     fileContent.append(QStringLiteral("<bovo width=\"%1\" height=\"%2\">")
-            .arg(QStringLiteral("")).arg(QStringLiteral("")));
+            .arg(QString(), QString()));
     for (const Move &move : std::as_const(m_history)) {
         fileContent.append(QStringLiteral("<move player=\"%1\" x=\"%2\" y=\"%3\" />").
                 arg(move.player()).arg(move.x()).arg(move.y()));
