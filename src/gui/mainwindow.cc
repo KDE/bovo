@@ -187,21 +187,21 @@ void MainWindow::setupActions() {
     KGameStandardAction::quit(this, &MainWindow::close, actionCollection());
 
     auto replayAct = new QAction(QIcon::fromTheme( QStringLiteral( "media-playback-start" )),
-                            i18n("&Replay"), this);
+                            i18nc("@action", "&Replay"), this);
     actionCollection()->addAction( QStringLiteral( "replay" ), replayAct);
-    replayAct->setToolTip(i18n("Replay game"));
-    replayAct->setWhatsThis(i18n("Replays your last game for you to watch."));
+    replayAct->setToolTip(i18nc("@info:tooltip", "Replay game"));
+    replayAct->setWhatsThis(i18nc("@info:whatsthis", "Replays your last game for you to watch."));
     replayAct->setEnabled(false);
 
     m_hintAct = KGameStandardAction::hint(this, &MainWindow::hint, actionCollection());
     m_hintAct->setEnabled(false);
 
-    auto animAct = new KToggleAction(i18n("&Animation"),this);
+    auto animAct = new KToggleAction(i18nc("@option:check", "&Animation"),this);
     actionCollection()->addAction( QStringLiteral( "animation" ), animAct);
     animAct->setChecked(m_animate);
     connect(animAct, &QAction::toggled, this, &MainWindow::setAnimation);
 
-    m_themeAct = new KSelectAction(i18n("Theme"), this);
+    m_themeAct = new KSelectAction(i18nc("@title:menu", "Theme"), this);
     QStringList themes;
     for (const Theme &theme : std::as_const(m_themes)) {
         themes << theme.name();
@@ -341,7 +341,7 @@ void MainWindow::slotNewDemo() {
             m_game,  SLOT(move(Move)));
     connect(m_game, &Game::gameOver,
             this, &MainWindow::slotNewDemoWait);
-    statusBar()->showMessage(i18n("Start a new Game to play"));
+    statusBar()->showMessage(i18n("Start a new game to play."));
     m_game->start();
     KGameDifficulty::global()->setGameRunning(false);
 }
