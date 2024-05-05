@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:36+0000\n"
 "PO-Revision-Date: 2015-02-15 20:24+0800\n"
 "Last-Translator: Franklin\n"
 "Language-Team: Chinese Traditional <kde-i18n-doc@kde.org>\n"
@@ -31,7 +31,7 @@ msgid "Your emails"
 msgstr "franklin@goodhorse.idv.tw"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
-#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#: gui/bovo.kcfg:9
 #, kde-format
 msgid "Theme"
 msgstr "外觀主題"
@@ -90,28 +90,44 @@ msgid "Losses: %1"
 msgstr "敗場：%1"
 
 #: gui/mainwindow.cc:190
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Replay"
+msgctxt "@action"
 msgid "&Replay"
 msgstr "重播(&R)"
 
 #: gui/mainwindow.cc:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replay game"
+msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "重播遊戲"
 
 #: gui/mainwindow.cc:193
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replays your last game for you to watch."
+msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "重播您上次玩的遊戲讓您觀看。"
 
 #: gui/mainwindow.cc:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Animation"
+msgctxt "@option:check"
 msgid "&Animation"
 msgstr "動畫(&A)"
 
+#: gui/mainwindow.cc:204
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
+msgid "Theme"
+msgstr "外觀主題"
+
 #: gui/mainwindow.cc:344
-#, kde-format
-msgid "Start a new Game to play"
+#, fuzzy, kde-format
+#| msgid "Start a new Game to play"
+msgid "Start a new game to play."
 msgstr "開始玩新遊戲"
 
 #: gui/mainwindow.cc:382

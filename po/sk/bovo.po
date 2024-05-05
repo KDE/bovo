@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:36+0000\n"
 "PO-Revision-Date: 2015-01-26 18:47+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -29,7 +29,7 @@ msgid "Your emails"
 msgstr "vydrajojo@gmail.com,misurel@gmail.com"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
-#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#: gui/bovo.kcfg:9
 #, kde-format
 msgid "Theme"
 msgstr "Téma"
@@ -88,28 +88,44 @@ msgid "Losses: %1"
 msgstr "Prehry: %1"
 
 #: gui/mainwindow.cc:190
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Replay"
+msgctxt "@action"
 msgid "&Replay"
 msgstr "P&rehrať"
 
 #: gui/mainwindow.cc:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replay game"
+msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Prehrať hru"
 
 #: gui/mainwindow.cc:193
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replays your last game for you to watch."
+msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "Prehrá vašu poslednú hru"
 
 #: gui/mainwindow.cc:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Animation"
+msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Animácia"
 
+#: gui/mainwindow.cc:204
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
+msgid "Theme"
+msgstr "Téma"
+
 #: gui/mainwindow.cc:344
-#, kde-format
-msgid "Start a new Game to play"
+#, fuzzy, kde-format
+#| msgid "Start a new Game to play"
+msgid "Start a new game to play."
 msgstr "Spustiť novú hru"
 
 #: gui/mainwindow.cc:382

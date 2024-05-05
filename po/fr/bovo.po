@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:36+0000\n"
 "PO-Revision-Date: 2017-05-09 16:29+0800\n"
 "Last-Translator: Simon Depiets <sdepiets@gmail.com>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -35,7 +35,7 @@ msgid "Your emails"
 msgstr "kimael@gmail.com, sdepiets@gmail.com"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
-#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#: gui/bovo.kcfg:9
 #, kde-format
 msgid "Theme"
 msgstr "Thème"
@@ -94,29 +94,45 @@ msgid "Losses: %1"
 msgstr "Défaites : %1"
 
 #: gui/mainwindow.cc:190
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Replay"
+msgctxt "@action"
 msgid "&Replay"
 msgstr "&Revoir"
 
 #: gui/mainwindow.cc:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replay game"
+msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Revoir une partie"
 
 #: gui/mainwindow.cc:193
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replays your last game for you to watch."
+msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr ""
 "Permet de revoir votre dernière partie pour vous permettre de l'analyser."
 
 #: gui/mainwindow.cc:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Animation"
+msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Animation"
 
+#: gui/mainwindow.cc:204
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
+msgid "Theme"
+msgstr "Thème"
+
 #: gui/mainwindow.cc:344
-#, kde-format
-msgid "Start a new Game to play"
+#, fuzzy, kde-format
+#| msgid "Start a new Game to play"
+msgid "Start a new game to play."
 msgstr "Démarrer une nouvelle partie"
 
 #: gui/mainwindow.cc:382

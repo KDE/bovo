@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:36+0000\n"
 "PO-Revision-Date: 2015-02-15 19:53+0000\n"
 "Last-Translator: İşbaran <isbaran@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/kdegames-k-tr/"
@@ -30,7 +30,7 @@ msgid "Your emails"
 msgstr "tulliana@gmail.com"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
-#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#: gui/bovo.kcfg:9
 #, kde-format
 msgid "Theme"
 msgstr "Tema"
@@ -89,28 +89,44 @@ msgid "Losses: %1"
 msgstr "Kaybeder: %1"
 
 #: gui/mainwindow.cc:190
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Replay"
+msgctxt "@action"
 msgid "&Replay"
 msgstr "&Yeniden Oyna"
 
 #: gui/mainwindow.cc:192
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replay game"
+msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Oyunu yeniden oynat"
 
 #: gui/mainwindow.cc:193
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Replays your last game for you to watch."
+msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "İzlemeniz için son oyunu yeniden oynatır."
 
 #: gui/mainwindow.cc:199
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Animation"
+msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Canlandırma"
 
+#: gui/mainwindow.cc:204
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
+msgid "Theme"
+msgstr "Tema"
+
 #: gui/mainwindow.cc:344
-#, kde-format
-msgid "Start a new Game to play"
+#, fuzzy, kde-format
+#| msgid "Start a new Game to play"
+msgid "Start a new game to play."
 msgstr "Oynamak için yeni bir oyun başlatın"
 
 #: gui/mainwindow.cc:382

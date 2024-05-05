@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2024-05-05 00:36+0000\n"
 "PO-Revision-Date: 2023-11-07 01:07+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -28,7 +28,7 @@ msgid "Your emails"
 msgstr "alministradores@softastur.org"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
-#: gui/bovo.kcfg:9 gui/mainwindow.cc:204
+#: gui/bovo.kcfg:9
 #, kde-format
 msgid "Theme"
 msgstr "Estilu"
@@ -88,27 +88,38 @@ msgstr ""
 
 #: gui/mainwindow.cc:190
 #, kde-format
+msgctxt "@action"
 msgid "&Replay"
 msgstr ""
 
 #: gui/mainwindow.cc:192
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr ""
 
 #: gui/mainwindow.cc:193
 #, kde-format
+msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr ""
 
 #: gui/mainwindow.cc:199
 #, kde-format
+msgctxt "@option:check"
 msgid "&Animation"
 msgstr ""
 
+#: gui/mainwindow.cc:204
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
+msgid "Theme"
+msgstr "Estilu"
+
 #: gui/mainwindow.cc:344
 #, kde-format
-msgid "Start a new Game to play"
+msgid "Start a new game to play."
 msgstr ""
 
 #: gui/mainwindow.cc:382
