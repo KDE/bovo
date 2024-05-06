@@ -4,14 +4,14 @@
 # opensourcecat <opensourcecat@gmail.com>, 2007.
 # Andrea Celli <andrea.celli@libero.it>, 2007.
 # Marcello Anni <marcello.anni@alice.it>, 2009.
-# Luigi Toscano <luigi.toscano@tiscali.it>, 2016.
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:39+0000\n"
-"PO-Revision-Date: 2016-11-24 23:07+0100\n"
+"PO-Revision-Date: 2024-05-05 14:50+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -63,7 +63,7 @@ msgstr "Bovo"
 #: gui/main.cc:41
 #, kde-format
 msgid "KDE Five in a Row Board Game"
-msgstr "\"Forza 5\" per KDE"
+msgstr "\"Forza 5\" di KDE"
 
 #: gui/main.cc:42
 #, kde-format
@@ -103,7 +103,7 @@ msgstr "Replay della partita"
 #: gui/mainwindow.cc:193
 #, kde-format
 msgid "Replays your last game for you to watch."
-msgstr "Ripercorre l'ultima partita per poterla rivedere"
+msgstr "Ripercorre l'ultima partita per poterla rivedere."
 
 #: gui/mainwindow.cc:199
 #, kde-format
@@ -123,12 +123,12 @@ msgstr "Partita finita. Pareggio!"
 #: gui/mainwindow.cc:385
 #, kde-format
 msgid "GAME OVER. You won!"
-msgstr "Partita finita. Hai Vinto!"
+msgstr "Partita finita. Hai vinto!"
 
 #: gui/mainwindow.cc:388
 #, kde-format
 msgid "GAME OVER. You lost!"
-msgstr "Partita finita. Hai Perso!"
+msgstr "Partita finita. Hai perso!"
 
 #: gui/mainwindow.cc:400
 #, kde-format
