@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:36+0000\n"
-"PO-Revision-Date: 2022-11-27 11:41+0100\n"
+"PO-Revision-Date: 2024-05-05 05:27+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -88,45 +88,39 @@ msgid "Losses: %1"
 msgstr "წაგებები: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
-msgstr "&გამეორება"
+msgstr "გამეო&რება"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "თამაშის გამეორება"
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "საყურებლად ბოლო თამაშის გამეორება."
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&ანიმაცია"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "თემა"
 
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "სათამაშოდ დაიწყეთ ახალი თამაში"
+msgstr "სათამაშოდ დაიწყეთ ახალი თამაში."
 
 #: gui/mainwindow.cc:382
 #, kde-format

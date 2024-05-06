@@ -4,20 +4,21 @@
 #
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009, 2015.
+# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:36+0000\n"
-"PO-Revision-Date: 2015-02-15 20:24+0800\n"
-"Last-Translator: Franklin\n"
-"Language-Team: Chinese Traditional <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2024-05-05 17:16+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "dot tw>\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 24.04.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -90,45 +91,39 @@ msgid "Losses: %1"
 msgstr "敗場：%1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
 msgstr "重播(&R)"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "重播遊戲"
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "重播您上次玩的遊戲讓您觀看。"
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "動畫(&A)"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "外觀主題"
 
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "開始玩新遊戲"
+msgstr "開始玩新遊戲。"
 
 #: gui/mainwindow.cc:382
 #, kde-format

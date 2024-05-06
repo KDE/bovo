@@ -3,26 +3,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Rinse de Vries <rinsedevries@kde.nl>, 2007.
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2015, 2022.
+# SPDX-FileCopyrightText: 2009, 2015, 2022, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:36+0000\n"
-"PO-Revision-Date: 2022-04-26 12:08+0200\n"
+"PO-Revision-Date: 2024-05-05 14:39+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Rinse de Vries - 2007,Freek de Kruijf - 2015"
+msgstr "Rinse de Vries - 2007,Freek de Kruijf - 2015;2024"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -89,45 +89,39 @@ msgid "Losses: %1"
 msgstr "Verloren: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
 msgstr "Opnieu&w afspelen"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Spel opnieuw spelen"
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "Speelt het spel opnieuw af zodat u kunt toekijken."
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Animatie"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Thema"
 
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "Start een nieuw spel om te spelen"
+msgstr "Start een nieuw spel om te spelen."
 
 #: gui/mainwindow.cc:382
 #, kde-format
