@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the bovo package.
 #
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:36+0000\n"
-"PO-Revision-Date: 2023-12-28 19:32+0100\n"
+"PO-Revision-Date: 2024-05-06 11:24+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -87,18 +87,16 @@ msgid "Losses: %1"
 msgstr "Perditas: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
 msgstr "&Replica"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
-msgstr "&Replica"
+msgstr "Rejoca Joco"
 
 #: gui/mainwindow.cc:193
 #, kde-format
@@ -107,15 +105,13 @@ msgid "Replays your last game for you to watch."
 msgstr ""
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Animation"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Thema"
