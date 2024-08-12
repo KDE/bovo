@@ -55,7 +55,7 @@ kde_enable_exceptions()
 
 ecm_set_disabled_deprecation_versions(
     QT 6.7
-    KF 6.4
+    KF 6.5
     KDEGAMES 6.0
 )
 
