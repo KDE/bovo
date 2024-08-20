@@ -2,14 +2,14 @@
 # Copyright (C) 2007 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdegames package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2007.
-# Shinjo Park <kde@peremen.name>, 2011, 2015.
+# SPDX-FileCopyrightText: 2011, 2015, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:36+0000\n"
-"PO-Revision-Date: 2015-04-26 18:25+0200\n"
+"PO-Revision-Date: 2024-08-19 22:09+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -89,45 +89,39 @@ msgid "Losses: %1"
 msgstr "패배: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
 msgstr "다시 보기(&R)"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "게임 다시 보기"
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "마지막 게임을 다시 봅니다."
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
-msgstr "애니메이션 효과(&A)"
+msgstr "애니메이션(&A)"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "테마"
 
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "새 게임을 시작하세요"
+msgstr "새 게임을 시작합니다."
 
 #: gui/mainwindow.cc:382
 #, kde-format
