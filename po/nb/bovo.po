@@ -91,42 +91,36 @@ msgstr "Tapt: %1"
 
 #: gui/mainwindow.cc:190
 #, fuzzy, kde-format
-#| msgid "&Replay"
 msgctxt "@action"
 msgid "&Replay"
 msgstr "&Vis omgang på nytt"
 
 #: gui/mainwindow.cc:192
 #, fuzzy, kde-format
-#| msgid "Replay game"
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Vis omgang på nytt"
 
 #: gui/mainwindow.cc:193
 #, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "Viser den siste omgangen du spilte."
 
 #: gui/mainwindow.cc:199
 #, fuzzy, kde-format
-#| msgid "&Animation"
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Animasjon"
 
 #: gui/mainwindow.cc:204
 #, fuzzy, kde-format
-#| msgid "Theme"
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Tema"
 
 #: gui/mainwindow.cc:344
 #, fuzzy, kde-format
-#| msgid "Start a new Game to play"
 msgid "Start a new game to play."
 msgstr "Start et nytt spill"
 
