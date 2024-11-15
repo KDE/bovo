@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the bovo package.
 #
-# giovanni <g.sora@tiscali.it>, 2023, 2024.
+# SPDX-FileCopyrightText: 2023, 2024 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:36+0000\n"
-"PO-Revision-Date: 2024-05-06 11:24+0200\n"
+"PO-Revision-Date: 2024-11-14 09:53+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -37,19 +37,19 @@ msgstr "Thema"
 #: gui/bovo.kcfg:13
 #, kde-format
 msgid "Speed of demo and replay playback."
-msgstr ""
+msgstr "Velocitate de Demo e reproduce a repetition."
 
 #. i18n: ectx: label, entry (animation), group (bovo)
 #: gui/bovo.kcfg:19
 #, kde-format
 msgid "Whether moves should be animated or not."
-msgstr ""
+msgstr "Si motion deberea esser animate o non."
 
 #. i18n: ectx: label, entry (ai), group (bovo)
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr ""
+msgstr "Motor de IA a usar."
 
 #: gui/main.cc:40
 #, kde-format
@@ -59,17 +59,17 @@ msgstr "Bovo"
 #: gui/main.cc:41
 #, kde-format
 msgid "KDE Five in a Row Board Game"
-msgstr ""
+msgstr "KDE Five a Row Joco de Tabula (Cinque in un rango)"
 
 #: gui/main.cc:42
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr ""
+msgstr "(c) 2002-2007, Aron Boström"
 
 #: gui/main.cc:45
 #, kde-format
 msgid "Aron Boström"
-msgstr ""
+msgstr "Aron Boström"
 
 #: gui/main.cc:45
 #, kde-format
@@ -102,7 +102,7 @@ msgstr "Rejoca Joco"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
-msgstr ""
+msgstr "Repite tu ultime joco per te a guardar"
 
 #: gui/mainwindow.cc:199
 #, kde-format
@@ -119,39 +119,39 @@ msgstr "Thema"
 #: gui/mainwindow.cc:344
 #, kde-format
 msgid "Start a new game to play."
-msgstr ""
+msgstr "Starta un nove joco a jocar"
 
 #: gui/mainwindow.cc:382
 #, kde-format
 msgid "GAME OVER. Tie!"
-msgstr ""
+msgstr "JOCO TERMINATE. Ligate (tie)!"
 
 #: gui/mainwindow.cc:385
 #, kde-format
 msgid "GAME OVER. You won!"
-msgstr ""
+msgstr "JOCO TERMKINATE. Tu ganiava!"
 
 #: gui/mainwindow.cc:388
 #, kde-format
 msgid "GAME OVER. You lost!"
-msgstr ""
+msgstr "JOCO TERMINATE. Tu Perdeva!"
 
 #: gui/mainwindow.cc:400
 #, kde-format
 msgid "It is your turn."
-msgstr ""
+msgstr "Il es tu torno."
 
 #: gui/mainwindow.cc:404
 #, kde-format
 msgid "Waiting for computer."
-msgstr ""
+msgstr "Expectante computator."
 
 #: gui/mainwindow.cc:432
 #, kde-format
 msgid "Replaying game"
-msgstr ""
+msgstr "Rejocar Joco"
 
 #: gui/mainwindow.cc:448
 #, kde-format
 msgid "Game replayed."
-msgstr ""
+msgstr "Joco rejocate."
