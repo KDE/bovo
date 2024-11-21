@@ -80,6 +80,7 @@ target_link_libraries(bovo
     Qt6::Svg
     Qt6::Concurrent
     Qt6::SvgWidgets
+    KF6::IconThemes
 )
 
 install (TARGETS bovo ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
