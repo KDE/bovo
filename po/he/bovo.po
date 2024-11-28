@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:36+0000\n"
+"POT-Creation-Date: 2024-11-28 00:38+0000\n"
 "PO-Revision-Date: 2024-05-05 09:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -52,27 +52,27 @@ msgstr "האם מהלכים יונפשו או לא."
 msgid "AI engine to use."
 msgstr "מנוע בינה מלאכותית לשימוש."
 
-#: gui/main.cc:40
+#: gui/main.cc:58
 #, kde-format
 msgid "Bovo"
 msgstr "Bovo"
 
-#: gui/main.cc:41
+#: gui/main.cc:59
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "משחק לוח חמישה בשורה מבית KDE"
 
-#: gui/main.cc:42
+#: gui/main.cc:60
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "(c) 2002-‏2007, ארון בוסטרום"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Aron Boström"
 msgstr "ארון בוסטרום"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Author"
 msgstr "יוצר"

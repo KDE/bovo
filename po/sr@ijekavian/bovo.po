@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:36+0000\n"
+"POT-Creation-Date: 2024-11-28 00:38+0000\n"
 "PO-Revision-Date: 2015-01-31 12:56+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -55,27 +55,27 @@ msgstr "Треба ли анимирати потезе."
 msgid "AI engine to use."
 msgstr "Жељени мотор ВИ."
 
-#: gui/main.cc:40
+#: gui/main.cc:58
 #, kde-format
 msgid "Bovo"
 msgstr "Бово"
 
-#: gui/main.cc:41
+#: gui/main.cc:59
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "Игра на табли „пет у низу“ за КДЕ"
 
-#: gui/main.cc:42
+#: gui/main.cc:60
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "© 2002–2007, Арон Бострем"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Aron Boström"
 msgstr "Арон Бострем"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Author"
 msgstr "Аутор"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:36+0000\n"
+"POT-Creation-Date: 2024-11-28 00:38+0000\n"
 "PO-Revision-Date: 2024-08-19 22:09+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -53,27 +53,27 @@ msgstr "이동 애니메이션 사용 여부입니다."
 msgid "AI engine to use."
 msgstr "사용할 인공 지능 엔진입니다."
 
-#: gui/main.cc:40
+#: gui/main.cc:58
 #, kde-format
 msgid "Bovo"
 msgstr "Bovo"
 
-#: gui/main.cc:41
+#: gui/main.cc:59
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "KDE 오목 게임"
 
-#: gui/main.cc:42
+#: gui/main.cc:60
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "(c) 2002-2007, Aron Boström"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Aron Boström"
 msgstr "Aron Boström"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Author"
 msgstr "작성자"

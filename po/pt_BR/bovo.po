@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:36+0000\n"
+"POT-Creation-Date: 2024-11-28 00:38+0000\n"
 "PO-Revision-Date: 2019-02-08 15:03-0200\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -54,27 +54,27 @@ msgstr "Determina se os movimentos devem ser animados ou não."
 msgid "AI engine to use."
 msgstr "Mecanismo de IA a usar."
 
-#: gui/main.cc:40
+#: gui/main.cc:58
 #, kde-format
 msgid "Bovo"
 msgstr "Bovo"
 
-#: gui/main.cc:41
+#: gui/main.cc:59
 #, kde-format
 msgid "KDE Five in a Row Board Game"
 msgstr "Jogo de tabuleiro cinco em linha para o KDE"
 
-#: gui/main.cc:42
+#: gui/main.cc:60
 #, kde-format
 msgid "(c) 2002-2007, Aron Boström"
 msgstr "(c) 2002-2007, Aron Boström"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Aron Boström"
 msgstr "Aron Boström"
 
-#: gui/main.cc:45
+#: gui/main.cc:63
 #, kde-format
 msgid "Author"
 msgstr "Autor"
