@@ -41,6 +41,7 @@
   <name xml:lang="pt-BR">Bovo</name>
   <name xml:lang="ro">Bovo</name>
   <name xml:lang="ru">Bovo</name>
+  <name xml:lang="sa">एक वृषभः</name>
   <name xml:lang="sk">Bovo</name>
   <name xml:lang="sl">Bovo</name>
   <name xml:lang="sr">Бово</name>
@@ -85,6 +86,7 @@
   <summary xml:lang="pt-BR">Jogo de tabuleiro "Cinco em linha"</summary>
   <summary xml:lang="ro">Joc de table Cinci-în-linie</summary>
   <summary xml:lang="ru">Японские крестики-нолики</summary>
+  <summary xml:lang="sa">"पङ्क्तितः पञ्च" बोर्डक्रीडा</summary>
   <summary xml:lang="sk">Stolová hra Piškvorky</summary>
   <summary xml:lang="sl">Namizna igra »Pet v vrsto«</summary>
   <summary xml:lang="sr">Игра на табли „пет у низу“</summary>
@@ -134,6 +136,7 @@
     <p xml:lang="pt">O Bovo é um jogo semelhante ao Gomoku (do Japonês 五目並べ - lit. "cinco pontos") para dois jogadores, onde os adversários vão colocando o seu pictograma respectivo no tabuleiro do jogo. (Também conhecido como: Liga Cinco, Cinco em Linha, X e O, Bolas e Cruzes)</p>
     <p xml:lang="pt-BR">Bovo é um jogo do tipo Gomoku (do Japonês 五目並べ - lit. "cinco pontos") para dois jogadores, onde os adversários alternam na colocação das suas marcas respectivas no tabuleiro. (Também conhecido como: Conectar Cinco, Cinco-em-Linha, X e O, Bolas e Cruzes)</p>
     <p xml:lang="ru">Bovo — игра для двух игроков, произошедшая от Гомоку (в переводе с японского 五目並べ — «пять точек»). Соперники по очереди ставят свою отметку на игровой доске. Другие названия: крестики-нолики, пять в ряд.</p>
+    <p xml:lang="sa">बोवो इति द्वयोः खिलाडयोः कृते गोमोकु (जापानीभाषायाः 五目並べ - शाब्दिकतः "पञ्चबिन्दव") इव क्रीडा, यत्र प्रतिद्वन्द्विनः क्रीडाफलके स्वस्वचित्रचित्रं स्थापयितुं क्रमेण भवन्ति (इति ज्ञायते: पञ्च, पञ्च पङ्क्तिबद्धरूपेण, X तथा O, Naughts and Crosses इति संयोजयन्तु)</p>
     <p xml:lang="sk">Bovo je Gomoku (z japonského 五目並べ - "päť bodov") hra pre dvoch hráčov, kde protivníci sa striedajú v umiestňovaní ich piktogramov na hraciu plochu. (Známe aj ako: Connect Five, Päť v rade, X a O, Naughts and Crosses)</p>
     <p xml:lang="sl">Bovo je igra podobna Gomoku (iz japonskega 五目並べ - lit. "pet točk") za dva igralca, ki izmenično postavljata njun piktogram na igralno ploščo. Igra je znana tudi kot: Poveži pet, Pet v vrsto, Križci in krogci.</p>
     <p xml:lang="sr">Бово је игра налик на гомоку (од јапанског 五目並べ, буквално „пет тачака“) за два играча, где противници наизменично смештају свој пиктограм на играчку таблу. Проширена верзија икс‑окса.</p>
