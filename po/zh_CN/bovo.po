@@ -119,7 +119,7 @@ msgstr "主题"
 #: gui/mainwindow.cc:344
 #, kde-format
 msgid "Start a new game to play."
-msgstr ""
+msgstr "开始一个新游戏。"
 
 #: gui/mainwindow.cc:382
 #, kde-format
