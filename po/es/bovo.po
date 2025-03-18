@@ -1,12 +1,11 @@
-# translation of bovo.po to Spanish
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for bovo.po package.
+# Copyright (C) 2007-2025 This_file_is_part_of_KDE
+# This file is distributed under the same license as the bovo package.
 #
-# Santiago Fernández Sancho <santi@kde-es.org>, 2007.
+# SPDX-FileCopyrightText: 2007 Santiago Fernández Sancho <santi@kde-es.org>
 # SPDX-FileCopyrightText: 2009, 2015, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Huever, 2009.
-# Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
+# SPDX-FileCopyrightText: 2010 Kira J. Fernandez <kirajfdez@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
