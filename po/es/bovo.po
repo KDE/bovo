@@ -1,5 +1,5 @@
 # Spanish translations for bovo.po package.
-# Copyright (C) 2007-2025 This_file_is_part_of_KDE
+# Copyright (C) 2007-2025 This file is copyright:
 # This file is distributed under the same license as the bovo package.
 #
 # SPDX-FileCopyrightText: 2007 Santiago Fernández Sancho <santi@kde-es.org>
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-28 00:38+0000\n"
-"PO-Revision-Date: 2024-05-05 04:29+0100\n"
+"PO-Revision-Date: 2025-06-29 14:29+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
