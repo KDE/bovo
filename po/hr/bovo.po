@@ -6,16 +6,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-28 00:38+0000\n"
-"PO-Revision-Date: 2010-01-13 10:49+0100\n"
+"PO-Revision-Date: 2025-11-02 09:42+0100\n"
 "Last-Translator: Andrej Dundović <adundovi@gmail.com>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -23,36 +23,36 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Igor Dobrača"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "igor.dobraca@skole.hr"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
 #: gui/bovo.kcfg:9
 #, kde-format
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #. i18n: ectx: label, entry (playbackSpeed), group (bovo)
 #: gui/bovo.kcfg:13
 #, kde-format
 msgid "Speed of demo and replay playback."
-msgstr ""
+msgstr "Brzina reprodukcije demo i ponavljanja."
 
 #. i18n: ectx: label, entry (animation), group (bovo)
 #: gui/bovo.kcfg:19
 #, kde-format
 msgid "Whether moves should be animated or not."
-msgstr ""
+msgstr "Trebaju li potezi biti animirani ili ne."
 
 #. i18n: ectx: label, entry (ai), group (bovo)
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr ""
+msgstr "Koristi AI."
 
 #: gui/main.cc:58
 #, kde-format
@@ -62,100 +62,99 @@ msgstr "Bovo"
 #: gui/main.cc:59
 #, kde-format
 msgid "KDE Five in a Row Board Game"
-msgstr ""
+msgstr "KDE Pet u nizu društvena igra"
 
 #: gui/main.cc:60
-#, fuzzy, kde-format
-#| msgid "(c) 2002,2007 Aron Boström"
+#, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr "© 2002,2007 Aron Boström"
+msgstr "(c) 2002-2007, Aron Boström"
 
 #: gui/main.cc:63
 #, kde-format
 msgid "Aron Boström"
-msgstr ""
+msgstr "Aron Boström"
 
 #: gui/main.cc:63
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: gui/mainwindow.cc:67 gui/mainwindow.cc:364
 #, kde-format
 msgid "Wins: %1"
-msgstr ""
+msgstr "Pobjeda: %1"
 
 #: gui/mainwindow.cc:68 gui/mainwindow.cc:258 gui/mainwindow.cc:377
 #, kde-format
 msgid "Losses: %1"
-msgstr ""
+msgstr "Gubitaka: %1"
 
 #: gui/mainwindow.cc:190
 #, kde-format
 msgctxt "@action"
 msgid "&Replay"
-msgstr ""
+msgstr "&Ponovi"
 
 #: gui/mainwindow.cc:192
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
-msgstr ""
+msgstr "Ponovite igru"
 
 #: gui/mainwindow.cc:193
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
-msgstr ""
+msgstr "Ponavlja vašu posljednju igru koju možete pogledati."
 
 #: gui/mainwindow.cc:199
 #, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
-msgstr ""
+msgstr "&Animacija"
 
 #: gui/mainwindow.cc:204
 #, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: gui/mainwindow.cc:344
 #, kde-format
 msgid "Start a new game to play."
-msgstr ""
+msgstr "Započnite novu igru."
 
 #: gui/mainwindow.cc:382
 #, kde-format
 msgid "GAME OVER. Tie!"
-msgstr ""
+msgstr "KRAJ IGRE. Neriješeno!"
 
 #: gui/mainwindow.cc:385
 #, kde-format
 msgid "GAME OVER. You won!"
-msgstr ""
+msgstr "KRAJ IGRE. Pobijedili ste!"
 
 #: gui/mainwindow.cc:388
 #, kde-format
 msgid "GAME OVER. You lost!"
-msgstr ""
+msgstr "KRAJ IGRE. Izgubili ste!"
 
 #: gui/mainwindow.cc:400
 #, kde-format
 msgid "It is your turn."
-msgstr ""
+msgstr "Ti si na redu."
 
 #: gui/mainwindow.cc:404
 #, kde-format
 msgid "Waiting for computer."
-msgstr ""
+msgstr "Čekanje računala."
 
 #: gui/mainwindow.cc:432
 #, kde-format
 msgid "Replaying game"
-msgstr ""
+msgstr "Ponovno igranje igre"
 
 #: gui/mainwindow.cc:448
 #, kde-format
 msgid "Game replayed."
-msgstr ""
+msgstr "Igra je ponovljena."
