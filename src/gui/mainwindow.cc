@@ -126,7 +126,7 @@ void MainWindow::setupThemes() {
     QStringList themercs;
     const QStringList themeDirs = QStandardPaths::locateAll(QStandardPaths::AppDataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
     for (const QString &themeDir : themeDirs) {
-    const QStringList entries = QDir(themeDir).entryList(QDir::Dirs);
+    const QStringList entries = QDir(themeDir).entryList(QDir::Dirs | QDir::NoDotAndDotDot);
     for(const QString &d : entries) {
         QString themeFile = themeDir + QLatin1Char('/') + d + QLatin1String("/themerc");
         if (QFile::exists(themeFile))
