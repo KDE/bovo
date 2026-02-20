@@ -62,10 +62,9 @@ msgid "KDE Five in a Row Board Game"
 msgstr "Cluiche Cláir Cúig-Cinn-As-A-Chéile le haghaidh KDE"
 
 #: gui/main.cc:60
-#, fuzzy, kde-format
-#| msgid "(c) 2002,2007 Aron Boström"
+#, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr "© 2002,2007 Aron Boström"
+msgstr ""
 
 #: gui/main.cc:63
 #, kde-format
@@ -88,45 +87,39 @@ msgid "Losses: %1"
 msgstr "Cluichí caillte: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
-msgstr "&Athchluiche"
+msgstr ""
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
-msgstr "Imir an cluiche arís"
+msgstr ""
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
-msgstr "Imir an cluiche is déanaí sa chaoi gur féidir leat é a fheiceáil arís."
+msgstr ""
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
-msgstr "Beoch&an"
+msgstr ""
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
-msgstr "Téama"
+msgstr ""
 
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "Tosaigh cluiche nua"
+msgstr ""
 
 #: gui/mainwindow.cc:382
 #, kde-format
@@ -162,36 +155,3 @@ msgstr "Cluiche á imirt arís"
 #, kde-format
 msgid "Game replayed."
 msgstr "Imríodh an cluiche arís."
-
-#~ msgid "Difficulty level: strength of the computer player."
-#~ msgstr "Leibhéal deacrachta: neart an imreora ríomhaire."
-
-#~ msgid "You won!"
-#~ msgstr "Bhí an bua agat!"
-
-#~ msgid "You lost!"
-#~ msgstr "Chaill tú!"
-
-#~ msgid "New game"
-#~ msgstr "Cluiche nua"
-
-#~ msgid "Start a new game."
-#~ msgstr "Tosaigh cluiche nua."
-
-#~ msgid "&Hint"
-#~ msgstr "&Leid"
-
-#~ msgid "Hint a move"
-#~ msgstr "Tabhair leid"
-
-#~ msgid "Easy"
-#~ msgstr "Éasca"
-
-#~ msgid "Medium"
-#~ msgstr "Measartha"
-
-#~ msgid "Hard"
-#~ msgstr "Crua"
-
-#~ msgid "Normal"
-#~ msgstr "Gnáth"
