@@ -1,0 +1,614 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+
+  <!ENTITY % English "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="bovo" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>كتيب بوفو</title>
+
+<authorgroup>
+<author
+><firstname
+>Aron</firstname
+><surname
+>Bostrom</surname
+> <affiliation
+><address
+>&Aron.Bostrom.mail;</address
+></affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+><surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>2007</year>
+<holder
+>Aron Bostrom</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-21</date>
+<releaseinfo
+>ترس كيدي 21.04</releaseinfo>
+
+<abstract>
+	<para
+>يصف هذا التوثيق لعبة بوفو الإصدارة 1.1</para>
+</abstract>
+
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>ألعاب كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>لعبة</keyword
+> <!-- do not change this! -->
+	<keyword
+>بوفو</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>أركيد</keyword>
+	<keyword
+>لوحة</keyword>
+	<keyword
+>إكس أو</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>لاعبان</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>أصفار</keyword>
+	<keyword
+>صلبان</keyword>
+	<keyword
+>غوموكو</keyword>
+	<keyword
+>صل خمسة</keyword>
+	<keyword
+>صل5</keyword>
+	<keyword
+>لعبة لوحية</keyword>
+	<keyword
+>إكس و أو</keyword>
+	<keyword
+>خمسة في صف</keyword>
+	<keyword
+>أحجية</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>مقدمة</title
+> <!-- do not change this! -->
+	<note
+><title
+>نوع اللعبة:</title
+><para
+>لوحية، أركيد</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>عدد اللاعبين الممكنين:</title
+><para
+>اثنان</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+
+<!--Short game description starts here. 3-4 sentences (paragraphs)-->
+	<para
+>بوفو هي لعبة تشبه الغوموكو (من اليابانية <foreignphrase lang="ja"
+>五目並べ</foreignphrase
+>، وتعني <quote
+>خمس نقاط</quote
+>) مخصصة للاعبين، حيث يتناوب الخصمان في وضع الرموز الخاصة بهما على لوحة اللعبة. تهدف هذه اللعبة إلى توصيل خمس قطع من قطعك في صف غير منقطع رأسيًا أو أفقيًا أو قطريًا. </para>
+	<note
+><title
+>ملاحظة:</title
+><para
+>تعرف أيضًا بـ: صل خمسة، خمسة في صف، X و O، أو إكس أو</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>كيف تلعب</title
+> <!-- do not change this! -->
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="mainscreen.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>شاشة بوفو الرئيسية</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>الهدف:</title
+><para
+>صل خمسة من قطعك في صف غير منقطع رأسيًا أو أفقيًا أو قطريًا.</para
+></note>
+	<para
+>عند تشغيل بوفو للمرة الأولى، يُبدأ بوضع العرض حيث يتقاتل لاعبان من الذكاء الاصطناعي. يمكنك دائمًا بدء لعبة جديدة باستخدام زر <guibutton
+>جديد</guibutton
+> في شريط الأدوات، أو مدخل القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+><guimenuitem
+>جديد</guimenuitem
+></menuchoice
+> في شريط القائمة أو باستخدام الاختصار المبدئي <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>. </para>
+	<note
+><title
+>ملاحظة:</title
+><para
+>نظرًا لأن اللاعب الأول يتمتع دائمًا بميزة على اللاعب الثاني، ستقوم بوفو بالمداورة بين اللاعبين، وتبديلهم في كل لعبة جديدة. </para
+></note>
+	<para
+>إذا كنت اللاعب الأول - ابدأ اللعبة بوضع رمزك في أي مكان في ميدان اللعب. أما إذا كنت اللاعب الثاني فانتظر حتى يضع اللاعب الأول رمزه ثم افعل الشيء نفسه. يمكنك وضع علامتك في أي مربع في الميدان، ما لم يكن مشغولاً بالفعل بقطعة لعبة أخرى (بغض النظر عما إذا كان رمزك أو رمز خصمك). </para>
+	<para
+>عليك وضع قطعك بطريقة تمنع خصمك من توصيل خمس علامات في صف غير منقطع رأسيًا أو أفقيًا أو قطريًا. وفي الوقت نفسه، عليك توصيل خمسة من قطعك في صف غير منقطع رأسيًا أو أفقيًا أو قطريًا. ومن ينجح في فعل ذلك أولاً يفوز بالجولة. </para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>قواعد اللعبة</title>
+		<itemizedlist>
+			<listitem
+><para
+>يتناوب اللاعبون على وضع علاماتهم الخاصة على لوحة اللعب.</para
+></listitem>
+			<listitem
+><para
+>لا يمكن للاعب نقل علامته التي وُضعت بالفعل أو وضع علامته فوق علامة موضوعة سابقًا.</para
+></listitem>
+			<listitem
+><para
+>لا يمكن للاعبين التنازل عن أدوارهم.</para
+></listitem>
+			<listitem
+><para
+>اللاعب الذي يصل إلى خمس علامات متصلة في خط مستقيم (سواء كان رأسيًا أو أفقيًا أو قطريًا) يفوز باللعبة.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>تلميحات اللعبة</title>
+		<itemizedlist>
+			<listitem
+><para
+>عند بدء بوفو للمرة الأولى، ستحتاج إلى تغيير حجمها. اضبط حجم نافذة اللعبة على الحجم المطلوب، وستقوم بوفو بتوسيع لوحة اللعب.</para
+></listitem>
+			<listitem
+><para
+>عند بدء تشغيل بوفو للمرة الأولى، تُطلق في وضع العرض، حيث يتقاتل لاعبان من الذكاء الاصطناعي.</para
+></listitem>
+			<listitem
+><para
+>عند الخروج من بوفو قبل انتهاء اللعبة، تُحفظ اللعبة النشطة آليًا. إذا اكتشفت بوفو لعبة محفوظة آليًا عند بدء التشغيل، فستُستعاد. وإلا، فستبدأ بوفو وضع العرض.</para
+></listitem>
+			<listitem
+><para
+>يمكنك دائمًا بدء لعبة جديدة باستخدام زر <guibutton
+>جديد</guibutton
+> في شريط الأدوات، أو مدخل القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+><guimenuitem
+>جديد</guimenuitem
+></menuchoice
+> في شريط القائمة أو باستخدام الاختصار المبدئي <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+>.</para
+></listitem>
+			<listitem
+><para
+>إذا بُدئت لعبة جديدة بينما كانت هناك لعبة نشطة بالفعل، فستُحتسب خسارة.</para
+></listitem>
+			<listitem
+><para
+>يمكن تغيير الصعوبة باستخدام مربع السرد <guilabel
+>الصعوبة</guilabel
+> في الطرف الأيمن من شريط الحالة، أو من مدخل القائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>الصعوبة</guimenuitem
+></menuchoice
+> في شريط القائمة.</para
+></listitem>
+			<listitem
+><para
+>يُطبق تأثير تغيير الصعوبة فورًا.</para
+></listitem>
+			<listitem
+><para
+>يمكنك تبديل سمة بوفو من مدخل القائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+>السمة</guisubmenu
+></menuchoice
+> في شريط القائمة. تُبدل السمة عندها فورًا.</para
+></listitem>
+			<listitem
+><para
+>يمكن تشغيل الرسوم المتحركة أو إيقافها حسب رغبتك من مدخل القائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>الرسوم المتحركة</guimenuitem
+></menuchoice
+> في شريط القائمة.</para
+></listitem>
+			<listitem
+><para
+>إذا أدركت للتو أنك قمت بنقلة سيئة للغاية، فلديك إمكانية تراجع عن نقلتك الأخيرة من شريط الأدوات أو شريط القائمة أو باستخدام اختصار التراجع المبدئي في لوحة المفاتيح <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+>.</para
+><para
+>يمكنك الاستمرار في التراجع عن النقلات حتى تصل إلى بداية اللعبة.</para
+></listitem>
+			<listitem
+><para
+>إذا لم تكن تعرف النقلة التي يجب القيام بها، يمكنك الحصول على تلميحة من لاعب الحاسوب باستخدام زر <guibutton
+>تلميحة</guibutton
+>. ستومض قطعة اللعبة المقترحة من ذكاء بوفو الاصطناعي لفترة وجيزة من الوقت.</para
+></listitem>
+			<listitem
+><para
+>عند انتهاء اللعبة، يُفعّل إجراء <guibutton
+>إعادة العرض</guibutton
+>، والذي يبدأ إعادة عرض اللعبة الأخيرة.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>نظرة عامة على الواجهة</title
+> <!-- do not change this! -->
+
+<sect1 id="menu">
+<title
+>عناصر القائمة</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>يبدأ لعبة جديدة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>
+<menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>إعادة عرض</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>يُعيد عرض اللعبة الأخيرة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>سيؤدي اختيار هذا العنصر إلى إنهاء لعبتك الحالية والخروج من بوفو.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>نقلة</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+> </menuchoice>
+</term>
+<listitem>
+<para
+><action
+>يتراجع عن آخر نقلة قمت بها.</action
+></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>نقلة</guimenu
+> <guimenuitem
+>تلميحة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+><action
+>يعرض</action
+> تلميحة للنقلة التالية. ستومض قطعة اللعبة المقترحة من ذكاء بوفو الاصطناعي لفترة وجيزة من الوقت.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guisubmenu
+>السمة</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>اختر واحدة من السمات <guimenuitem
+>خربشة</guimenuitem
+>، أو <guimenuitem
+>تباين عالٍ</guimenuitem
+>، أو <guimenuitem
+>فضائي</guimenuitem
+> أو <guimenuitem
+>غوموكو</guimenuitem
+> للعبة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>الرسوم المتحركة</guimenuitem
+></menuchoice
+></term>
+<listitem
+><para
+>يشغل الرسوم المتحركة أو يوقفها.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guisubmenu
+>الصعوبة</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+>اختر صعوبة اللعبة من مستويات مختلفة تبدأ من <guimenuitem
+>سهل للغاية</guimenuitem
+> وحتى <guimenuitem
+>مستحيل</guimenuitem
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>بالإضافة إلى ذلك، تمتلك بوفو عناصر قائمة كيدي الشائعة <guimenu
+>الإعدادات</guimenu
+> و <guimenu
+>مساعدة</guimenu
+>، لمزيد من المعلومات اقرأ الأقسام حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة مساعدة</ulink
+> في أساسيات كيدي. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>الأسئلة الشائعة</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>أريد تغيير شكل اللعبة. هل يمكنني ذلك؟ </para
+></question>
+ <answer
+><para
+>نعم. لتغيير سمة بوفو المرئية، يمكنك استخدام مدخل القائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guisubmenu
+>السمة</guisubmenu
+> </menuchoice
+> في شريط القائمة.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>هل يمكنني استخدام لوحة المفاتيح للعب هذه اللعبة؟ </para
+></question>
+ <answer
+><para
+>لا. لا يمكن لعب لعبة بوفو باستخدام لوحة المفاتيح.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>يجب أن أخرج من اللعبة الآن، لكنني لم أنتهِ بعد. هل يمكنني حفظ تقدمي؟</para
+></question>
+  <answer
+><para
+>لا. لا توجد ميزة <quote
+>حفظ</quote
+> في بوفو، ولكن بوفو تستعيد آخر لعبة غير منتهية عند بدء التشغيل.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>أين هي أعلى النتائج؟</para
+></question>
+ <answer
+><para
+>بوفو لا تملك هذه الميزة.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="credits"
+><title
+>المساهمون والترخيص</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+
+<para
+>بوفو </para>
+<para
+>حقوق نشر البرنامج 2002، 2007 &Aron.Bostrom; &Aron.Bostrom.mail; </para>
+
+<para
+>حقوق نشر التوثيق 2007 &Aron.Bostrom; &Aron.Bostrom.mail;</para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
