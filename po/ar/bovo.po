@@ -51,7 +51,7 @@ msgstr "ما إذا كان يجب تحريك الحركات أم لا."
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr "محرّك الذّكاء الإصطناعيّ لاستخدامه."
+msgstr "محرّك الذّكاء الاصطناعيّ لاستخدامه."
 
 #: gui/main.cc:58
 #, kde-format
