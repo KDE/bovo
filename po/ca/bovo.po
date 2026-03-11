@@ -162,6 +162,3 @@ msgstr "S'està repetint la partida"
 #, kde-format
 msgid "Game replayed."
 msgstr "S'ha acabat la repetició de la partida."
-
-#~ msgid "Difficulty level: strength of the computer player."
-#~ msgstr "Nivell de dificultat: destresa del jugador ordinador."
