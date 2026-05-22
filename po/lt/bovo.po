@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2015-12-29 17:52+0200\n"
+"PO-Revision-Date: 2026-05-21 19:21+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrius Štikonas"
+msgstr "Andrius Štikonas, Moo"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "andrius@stikonas.eu"
+msgstr "andrius@stikonas.eu, <>"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
 #: gui/bovo.kcfg:9
@@ -40,19 +40,19 @@ msgstr "Apipavidalinimas"
 #: gui/bovo.kcfg:13
 #, kde-format
 msgid "Speed of demo and replay playback."
-msgstr "Demonstracijos ir pakartojimo greitis."
+msgstr "Demonstracijos ir pakartojimo atkūrimo greitis."
 
 #. i18n: ectx: label, entry (animation), group (bovo)
 #: gui/bovo.kcfg:19
 #, kde-format
 msgid "Whether moves should be animated or not."
-msgstr "Animuoti ėjimus ar ne."
+msgstr "Ar animuoti ėjimus, ar ne."
 
 #. i18n: ectx: label, entry (ai), group (bovo)
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr "Naudotinas dirbtinio intelekto variklis."
+msgstr "Kurį dirbtinio intelekto modulį naudoti."
 
 #: gui/main.cc:58
 #, kde-format
@@ -62,13 +62,12 @@ msgstr "Bovo"
 #: gui/main.cc:59
 #, kde-format
 msgid "KDE Five in a Row Board Game"
-msgstr "KDE penki eilėje stalo žaidimas"
+msgstr "KDE penkių vienoje eilutėje stalo žaidimas"
 
 #: gui/main.cc:60
-#, fuzzy, kde-format
-#| msgid "(c) 2002,2007 Aron Boström"
+#, kde-format
 msgid "(c) 2002-2007, Aron Boström"
-msgstr "(c) 2002,2007 Aron Boström"
+msgstr "(c) 2002–2007, Aron Boström"
 
 #: gui/main.cc:63
 #, kde-format
@@ -91,45 +90,39 @@ msgid "Losses: %1"
 msgstr "Pralaimėjimų: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
 msgstr "&Pakartoti"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Pakartoti žaidimą"
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
-msgstr "Pakartoja paskutinį žaidimą jūsų peržiūrai."
+msgstr "Pakartoja ir leidžia peržiūrėti paskutinį žaidimą."
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Animacija"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Apipavidalinimas"
 
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "Pradėti naują žaidimą"
+msgstr "Pradėti žaisti naują žaidimą."
 
 #: gui/mainwindow.cc:382
 #, kde-format
@@ -154,7 +147,7 @@ msgstr "Jūsų ėjimas."
 #: gui/mainwindow.cc:404
 #, kde-format
 msgid "Waiting for computer."
-msgstr "Laukiama kompiuterio"
+msgstr "Laukiama kompiuterio."
 
 #: gui/mainwindow.cc:432
 #, kde-format
