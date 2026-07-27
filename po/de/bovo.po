@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: 2009, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2007 Stefan Winter <swinter@kde.org>
+# SPDX-FileCopyrightText: 2009, 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # Stefan Winter <Stefan Winter <swinter@kde.org>>, 2007.
 # SPDX-FileCopyrightText: 2009 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2011 Frederik Schwarzer <schwarzer@kde.org>
