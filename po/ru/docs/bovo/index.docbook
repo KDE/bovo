@@ -63,9 +63,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->9 мая 2016 г.</date>
+>21 июня 2021 г.</date>
 <releaseinfo
->1.1 (Приложения KDE 16.04)</releaseinfo>
+>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 	<para
@@ -141,7 +141,7 @@
 	<para
 >&bovo; — это разновидность игры гомоку (в переводе с японского <foreignphrase lang="ja"
 >五目並べ</foreignphrase
-> — пять точек) для двух игроков, в которой соперники по очереди ставят свои знаки на игровом поле. Цель игры — выстроить неразрывный ряд из своих знаков по горизонтали, вертикали или диагонали. </para>
+> — «пять точек») для двух игроков, в которой соперники по очереди ставят свои знаки на игровом поле. Цель игры — выстроить неразрывный ряд из пяти своих знаков по горизонтали, вертикали или диагонали. </para>
 	<note
 ><title
 >Примечание:</title
@@ -265,7 +265,9 @@
 ></listitem>
 			<listitem
 ><para
->Чтобы сменить уровень сложности, выберите его в выпадающем списке в строке состояния или в меню <menuchoice
+>Чтобы сменить уровень сложности, выберите его в выпадающем списке <guilabel
+>Уровень сложности</guilabel
+> в правой части строки состояния или в меню <menuchoice
 ><guimenu
 >Настройка</guimenu
 ><guimenuitem
@@ -289,10 +291,10 @@
 ></listitem>
 			<listitem
 ><para
->Можно включить или выключить анимацию, используя пункт меню <menuchoice
+>Анимация включается и выключается с помощью пункта меню <menuchoice
 ><guimenu
 >Настройка</guimenu
-><guimenuitem
+> <guimenuitem
 >Анимация</guimenuitem
 ></menuchoice
 >.</para
@@ -494,14 +496,14 @@
 </variablelist>
 
 <para
->В дополнение к перечисленным пунктам меню, &bovo; имеет общие для приложений &kde; пункты в меню <guimenu
+>В дополнение к перечисленным пунктам меню &bovo; имеет общие для приложений &kde; пункты в меню <guimenu
 >Настройка</guimenu
 > и <guimenu
 >Справка</guimenu
->. Информацию о них можно найти в разделах документации о <ulink url="help:/fundamentals/ui.html#menus-settings"
->меню Настройка</ulink
-> и о <ulink url="help:/fundamentals/ui.html#menus-help"
->меню Справка</ulink
+>. Подробнее о них — в разделах справки «Основы &kde;», посвящённых <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Справка»</ulink
 >. </para>
 
 </sect1>
@@ -523,7 +525,7 @@
 ></question>
  <answer
 ><para
->Чтобы сменить оформление &bovo;, используйте меню <menuchoice
+>Да. Чтобы сменить оформление &bovo;, используйте меню <menuchoice
 ><guimenu
 >Настройка</guimenu
 ><guisubmenu
@@ -585,8 +587,7 @@
 >Перевод на русский язык: Александр Поташев<email
 >aspotashev@gmail.com</email
 ></para
-> 
-&underFDL; &underGPL; </chapter>
+> &underFDL; &underGPL; </chapter>
 
 &documentation.index;
 </book>
