@@ -2,13 +2,14 @@
 # Slobodan Simic <slsimic@gmail.com>, 2007, 2009.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2015.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: bovo\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:49+0000\n"
-"PO-Revision-Date: 2015-01-31 12:56+0100\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-05 01:57+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +25,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Слободан Симић"
+msgstr "Слободан Симић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "slsimic@gmail.com"
+msgstr "slsimic@gmail.com,nemhirsl@gmail.com"
 
 #. i18n: ectx: label, entry (theme), group (bovo)
 #: gui/bovo.kcfg:9
@@ -93,46 +94,40 @@ msgid "Losses: %1"
 msgstr "пораза: %1"
 
 #: gui/mainwindow.cc:190
-#, fuzzy, kde-format
-#| msgid "&Replay"
+#, kde-format
 msgctxt "@action"
 msgid "&Replay"
 msgstr "&Понови"
 
 #: gui/mainwindow.cc:192
-#, fuzzy, kde-format
-#| msgid "Replay game"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Replay game"
 msgstr "Понови партију"
 
 #: gui/mainwindow.cc:193
-#, fuzzy, kde-format
-#| msgid "Replays your last game for you to watch."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
 msgstr "Понавља последњу партију коју сте одиграли."
 
 #: gui/mainwindow.cc:199
-#, fuzzy, kde-format
-#| msgid "&Animation"
+#, kde-format
 msgctxt "@option:check"
 msgid "&Animation"
 msgstr "&Анимација"
 
 #: gui/mainwindow.cc:204
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Тема"
 
 # >> @info:status
 #: gui/mainwindow.cc:344
-#, fuzzy, kde-format
-#| msgid "Start a new Game to play"
+#, kde-format
 msgid "Start a new game to play."
-msgstr "Започните нову партију"
+msgstr "Започните нову партију."
 
 #: gui/mainwindow.cc:382
 #, kde-format
