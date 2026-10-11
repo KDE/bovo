@@ -57,7 +57,7 @@ msgstr "Анимировать ходы."
 #: gui/bovo.kcfg:23
 #, kde-format
 msgid "AI engine to use."
-msgstr "Используемый движок искусственного интеллекта."
+msgstr "Используемый модуль искусственного интеллекта."
 
 #: gui/main.cc:58
 #, kde-format
