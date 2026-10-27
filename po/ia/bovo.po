@@ -102,7 +102,7 @@ msgstr "Rejoca Joco"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Replays your last game for you to watch."
-msgstr "Repite tu ultime joco per te a guardar"
+msgstr "Repete tu ultime joco per te a guardar"
 
 #: gui/mainwindow.cc:199
 #, kde-format
